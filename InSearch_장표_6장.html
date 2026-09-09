@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InSearch — 온디바이스 자연어 검색 에이전트</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--u:min(1vw,1.6vh)}   /* 1u = 1280x800 기준 12.8px · 화면 크기에 비례 */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-snap-type:y proximity;scroll-behavior:smooth}
+body{font-family:'Pretendard Variable',Pretendard,'Malgun Gothic','Apple SD Gothic Neo',sans-serif;background:#fff;color:#39354A;word-break:keep-all;-webkit-font-smoothing:antialiased}
+b,strong{color:#17151F}
+
+/* ── layout ── */
+section.slide{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:calc(5.2 * var(--u)) calc(4.6 * var(--u)) calc(6 * var(--u));position:relative;scroll-snap-align:start}
+section.slide.alt{background:#F9F8FD}
+.inner{max-width:calc(90.8 * var(--u));width:100%}
+.center{text-align:center}
+
+/* ── eyebrow ── */
+.eb{display:flex;justify-content:space-between;align-items:baseline;gap:calc(1.25 * var(--u));margin-bottom:calc(1.56 * var(--u));font-size:calc(1.18 * var(--u));font-weight:800;color:#6C6680}
+.eb b{color:#6D4FE0;margin-right:calc(0.62 * var(--u))}
+.eb .tag{font-size:calc(1.06 * var(--u));font-weight:800;color:#6C6680;letter-spacing:.08em;white-space:nowrap}
+
+/* ── type ── */
+h1{font-size:calc(5.83 * var(--u));font-weight:800;letter-spacing:-.03em;line-height:1.16;color:#17151F}
+h2{font-size:calc(3.24 * var(--u));font-weight:800;letter-spacing:-.025em;line-height:1.25;color:#17151F;margin-bottom:calc(0.78 * var(--u))}
+h3{font-size:calc(1.94 * var(--u));font-weight:800;letter-spacing:-.02em;color:#17151F}
+.lead{font-size:calc(1.73 * var(--u));line-height:1.7;color:#39354A;max-width:calc(70 * var(--u));margin-bottom:calc(1.88 * var(--u))}
+h2.head{font-size:calc(3.02 * var(--u));margin-bottom:calc(1.56 * var(--u))}
+h2.head.tight{font-size:calc(2.59 * var(--u));margin-bottom:calc(1.41 * var(--u))}
+.eb{margin-bottom:calc(0.94 * var(--u))}
+.grad{background:linear-gradient(90deg,#8B6CF6 0%,#2EC9A0 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.muted{color:#6C6680}
+.small{font-size:calc(1.13 * var(--u));line-height:1.6;color:#6C6680}
+
+/* ── hero numbers ── */
+.huge{font-size:calc(11.88 * var(--u));font-weight:800;letter-spacing:-.045em;line-height:1;background:linear-gradient(90deg,#8B6CF6,#2EC9A0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.huge span.u{font-size:.42em;letter-spacing:-.02em}
+.hugecap{font-size:calc(2.05 * var(--u));font-weight:700;color:#39354A;margin-top:calc(1.41 * var(--u));line-height:1.5}
+
+/* ── cards ── */
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:calc(1.41 * var(--u))}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(1.25 * var(--u))}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:calc(1.09 * var(--u))}
+.card{background:#fff;border:1px solid #E7E4F2;border-radius:calc(1.56 * var(--u));padding:calc(2.03 * var(--u));box-shadow:0 18px 44px -30px rgba(77,58,150,.35)}
+.card.soft{background:linear-gradient(155deg,#F3EFFD 0%,#EFEAFE 100%);border:1px solid #E3DBF7}
+.card.flat{box-shadow:none}
+.pill{display:inline-block;align-self:flex-start;font-size:calc(1.02 * var(--u));font-weight:800;letter-spacing:.04em;padding:calc(0.31 * var(--u)) calc(0.86 * var(--u));border-radius:999px;background:#EFEAFE;color:#6D4FE0}
+.pill.green{background:#DEF7EF;color:#159B79}
+.pill.gray{background:#F3F1FA;color:#6C6680;font-size:calc(0.97 * var(--u));font-weight:700;padding:calc(0.23 * var(--u)) calc(0.7 * var(--u))}
+.attach{display:inline-block;font-size:calc(0.93 * var(--u));font-weight:800;letter-spacing:.02em;color:#6D4FE0;background:#EFEAFE;border-radius:999px;padding:calc(0.16 * var(--u)) calc(0.62 * var(--u));vertical-align:calc(0.16 * var(--u));margin-left:calc(0.31 * var(--u))}
+.idx{display:inline-flex;align-items:center;justify-content:center;min-width:calc(1.9 * var(--u));height:calc(1.9 * var(--u));padding:0 calc(0.35 * var(--u));border-radius:calc(0.55 * var(--u));background:#EFEAFE;color:#6D4FE0;font-size:calc(1.06 * var(--u));font-weight:800;line-height:1}
+.statnum{font-size:calc(4.1 * var(--u));font-weight:800;letter-spacing:-.03em;line-height:1;background:linear-gradient(90deg,#8B6CF6,#2EC9A0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.statnum span.u{font-size:.5em}
+.statcap{font-size:calc(1.06 * var(--u));font-weight:700;color:#6C6680;margin-top:calc(0.55 * var(--u))}
+.cardtitle{font-size:calc(1.94 * var(--u));font-weight:800;letter-spacing:-.02em;line-height:1.3;color:#17151F;margin-bottom:calc(0.62 * var(--u))}
+.cardbody{font-size:calc(1.22 * var(--u));line-height:1.65;color:#39354A}
+
+/* ── bullets ── */
+ul.dots{list-style:none;display:flex;flex-direction:column;gap:calc(0.78 * var(--u))}
+ul.dots li{position:relative;padding-left:calc(1.25 * var(--u));font-size:calc(1.22 * var(--u));line-height:1.6;color:#39354A}
+ul.dots li::before{content:"";position:absolute;left:0;top:calc(0.7 * var(--u));width:calc(0.39 * var(--u));height:calc(0.39 * var(--u));border-radius:50%;background:#2EC9A0}
+ul.dots.purple li::before{background:#8B6CF6}
+
+/* ── table ── */
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #E7E4F2;border-radius:calc(1.41 * var(--u));overflow:hidden;box-shadow:0 18px 44px -30px rgba(77,58,150,.35)}
+th{background:#F6F4FC;font-size:calc(1.1 * var(--u));font-weight:800;letter-spacing:.04em;color:#4B3D82;text-align:left;padding:calc(0.94 * var(--u)) calc(1.41 * var(--u));border-bottom:calc(0.08 * var(--u)) solid #E7E4F2}
+td{font-size:calc(1.22 * var(--u));line-height:1.6;color:#39354A;padding:calc(1.09 * var(--u)) calc(1.41 * var(--u));border-bottom:calc(0.08 * var(--u)) solid #F0EEF7;vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.k{font-weight:800;color:#17151F}
+td.nw{white-space:nowrap}
+.yes{color:#159B79;font-weight:800}
+.no{color:#C64B62;font-weight:800}
+
+/* ── callouts ── */
+.callout{margin-top:calc(1.25 * var(--u));border-left:calc(0.23 * var(--u)) solid #2EC9A0;background:#F4FBF8;border-radius:0 calc(1.09 * var(--u)) calc(1.09 * var(--u)) 0;padding:calc(1.25 * var(--u)) calc(1.72 * var(--u));font-size:calc(1.62 * var(--u));line-height:1.65;color:#39354A}
+.callout.purple{border-left-color:#8B6CF6;background:#F6F3FE}
+.callout.warn{border-left-color:#E0A23C;background:#FDF8EF}
+.band{margin-top:calc(1.56 * var(--u));text-align:center;background:linear-gradient(90deg,#EFEAFE,#DEF7EF);border-radius:calc(1.25 * var(--u));padding:calc(1.41 * var(--u)) calc(2.03 * var(--u));font-size:calc(1.73 * var(--u));font-weight:700;color:#17151F;line-height:1.5}
+.query{background:#17151F;border-radius:calc(1.41 * var(--u));padding:calc(1.88 * var(--u)) calc(2.19 * var(--u));color:#fff;font-size:calc(2.48 * var(--u));font-weight:800;letter-spacing:-.02em;line-height:1.4}
+.query .q{color:#8B6CF6}
+.query .lbl{color:#8B6CF6;margin-right:calc(1.09 * var(--u));font-size:.62em;letter-spacing:.04em;vertical-align:middle}
+
+/* ── flow ── */
+.flow{display:flex;flex-direction:column;align-items:center;gap:0}
+.flow .step{background:#fff;border:1px solid #E7E4F2;border-radius:calc(1.09 * var(--u));padding:calc(1.02 * var(--u)) calc(2.03 * var(--u));font-size:calc(1.62 * var(--u));font-weight:700;color:#17151F;box-shadow:0 14px 34px -28px rgba(77,58,150,.5);text-align:center;min-width:min(calc(33 * var(--u)),86vw)}
+.flow .step.hi{background:linear-gradient(90deg,#EFEAFE,#DEF7EF);border-color:#DCD3F6}
+.flow .arr{color:#B7AEDC;font-size:calc(1.44 * var(--u));line-height:1;padding:calc(0.55 * var(--u)) 0;font-weight:800}
+
+/* ── footer ── */
+footer.fb{position:absolute;bottom:calc(2.1 * var(--u));left:calc(4.6 * var(--u));right:calc(4.6 * var(--u));display:flex;justify-content:space-between;font-size:calc(1.02 * var(--u));color:#6C6680;letter-spacing:.04em}
+.scrollhint{position:absolute;bottom:calc(4.6 * var(--u));left:50%;transform:translateX(-50%);font-size:calc(1.1 * var(--u));color:#6C6680;letter-spacing:.1em;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+
+/* ── divider (chapter) ── */
+section.chap{background:#17151F}
+section.chap h2{color:#fff;font-size:calc(4.75 * var(--u));margin:0}
+section.chap .num{font-size:calc(7.56 * var(--u));font-weight:800;letter-spacing:-.04em;line-height:1;background:linear-gradient(90deg,#8B6CF6,#2EC9A0);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:calc(0.78 * var(--u))}
+section.chap footer.fb{color:#8B84A8}
+
+/* 창 높이가 낮은 브라우저에서 슬라이드가 넘치지 않도록 */
+@media (max-width:900px){
+  :root{--u:min(3.4vw,1.6vh)}
+  .grid2,.grid3,.grid4{grid-template-columns:1fr}
+  section.slide{min-height:auto;padding:calc(6 * var(--u)) calc(5 * var(--u)) calc(7 * var(--u))}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<section class="slide" data-slide data-label="InSearch">
+  <div class="inner center">
+    <p style="font-size:calc(2.05 * var(--u));font-weight:800;letter-spacing:-.02em;line-height:1.4;color:#6C6680;margin-bottom:calc(1.41 * var(--u))">폰 안에 있는데 찾을 수가 없다</p>
+    <div style="font-size:calc(8.64 * var(--u));font-weight:800;letter-spacing:-.045em;line-height:1;color:#17151F">InSearch</div>
+    <p style="font-size:calc(3.03 * var(--u));font-weight:800;letter-spacing:-.025em;line-height:1.4;color:#17151F;margin-top:calc(1.6 * var(--u))"><span class="grad">떠오르는 대로 말하면</span> 기기 안에서 찾아주는 검색 에이전트</p>
+    <p class="muted" style="font-size:calc(1.51 * var(--u));font-weight:700;margin-top:calc(1.5 * var(--u))">1단계 · 갤러리 사진 검색</p>
+  </div>
+  <div class="scrollhint">아래로 스크롤 ↓</div>
+  <footer class="fb"><span>InSearch</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ 01 문제 ══ -->
+<section class="slide alt" data-slide data-label="01 · 문제">
+  <div class="inner">
+    <div class="eb"><span><b>01</b> PROBLEM</span><span class="tag">사진은 쌓이는데, 찾을 수는 없다</span></div>
+    <h2 class="head">사진첩은 <span class="grad">저장소</span>가 됐지만, <span class="grad">검색 도구</span>는 되지 못했다</h2>
+    <div class="grid3" style="margin-top:calc(0.62 * var(--u))">
+      <div class="card"><div class="statnum">2,700<span class="u">장</span></div><div class="statcap">1인당 보유 사진<br><span class="muted">2015년 630장 → 4배</span></div></div>
+      <div class="card"><div class="statnum">54<span class="u">%</span></div><div class="statcap">"예전 사진 찾는 게 부담스럽다"</div></div>
+      <div class="card soft"><div class="statnum">40<span class="u">%</span></div><div class="statcap">1년 이상 지난 사진 <b>검색 실패율</b></div></div>
+    </div>
+    <p class="small muted" style="margin-top:calc(1.09 * var(--u))">※ 해외 업체 설문 및 학술 연구(Whittaker et al.) 기반. 사내 사용자 조사로 대체·병기 예정.</p>
+  </div>
+  <footer class="fb"><span>01 · 문제</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ 02 실패 ══ -->
+<section class="slide" data-slide data-label="02 · 실패 구조">
+  <div class="inner">
+    <div class="eb"><span><b>02</b> AS-IS · 사내 실패 사례</span><span class="tag">왜 못 찾는가</span></div>
+    <h2 class="head tight">없어서 못 찾은 게 아니라, <span class="grad">찾을 수 없는 구조</span>였다</h2>
+    <div class="grid2" style="gap:calc(1.56 * var(--u));align-items:center;margin-bottom:calc(1.72 * var(--u))">
+      <div class="query" style="margin:0"><span class="lbl">검색어</span><br><span class="q">“</span>광교산에서 흰옷 입고 찍은 사진<span class="q">”</span></div>
+      <div class="card soft" style="text-align:center;padding:calc(1.72 * var(--u))"><div class="statnum">0<span class="u">건</span></div><div class="statcap"><b>사진은 폰 안에 있었다</b><span class="muted"> — 없어서 못 찾은 게 아니다</span></div></div>
+    </div>
+    <table>
+      <tr><th style="width:calc(3.4 * var(--u))"></th><th style="width:46%">기존 검색이 실패하는 5가지 지점</th><th>이 사례에서는</th></tr>
+      <tr><td class="k"><span class="idx">1</span></td><td>문장을 <b>검색 조건으로 분해하지 못한다</b> — 단어 단위로만 처리</td><td>"흰옷 입고"를 <span class="muted">조건이 아닌 단어로 취급</span></td></tr>
+      <tr><td class="k"><span class="idx">2</span></td><td>항목은 있으나 <b>값이 기록돼 있지 않다</b></td><td>GPS 미기록</td></tr>
+      <tr><td class="k"><span class="idx">3</span></td><td>애초에 <b>그런 항목이 없다</b></td><td>"입고 있는 옷의 색"</td></tr>
+      <tr><td class="k"><span class="idx">4</span></td><td>사용자가 쓰는 말과 <b>시스템이 가진 말이 다르다</b></td><td>사용자 <b>"광교산"</b> ↔ 시스템 <b>"장안구"</b></td></tr>
+      <tr><td class="k"><span class="idx">5</span></td><td>조건 하나만 어긋나도 <b>결과가 0건이다</b> — 부분 정답을 못 낸다</td><td>→ <b>0건</b></td></tr>
+    </table>
+  </div>
+  <footer class="fb"><span>02 · 실패 구조</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ 03 전환 ══ -->
+<section class="slide alt" data-slide data-label="03 · 전환">
+  <div class="inner">
+    <div class="eb"><span><b>03</b> TO-BE · 무엇이 달라졌나</span><span class="tag">묻는 방향이 뒤집힌다</span></div>
+    <h2 class="head tight">저장할 때 정해두는 대신, <span class="grad">사용자가 물어본 순간에 판단한다</span></h2>
+    <div class="grid2" style="gap:calc(1.56 * var(--u));margin-bottom:calc(0.78 * var(--u))">
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center;min-height:calc(10 * var(--u));padding:calc(1.72 * var(--u)) calc(1.88 * var(--u))">
+        <div class="pill gray" style="margin-bottom:calc(0.78 * var(--u))">기존 · 사진을 저장할 때</div>
+        <div style="font-size:calc(2.16 * var(--u));font-weight:800;letter-spacing:-.03em;color:#6C6680;line-height:1.35">시스템이 스스로 묻는다<br>"이 사진에 어떤 이름을 붙일까?"</div>
+        <p class="small muted" style="margin-top:calc(0.78 * var(--u))">→ 그때 붙여둔 이름 <b>목록 안에서만</b> 검색된다</p>
+      </div>
+      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center;min-height:calc(10 * var(--u));padding:calc(1.72 * var(--u)) calc(1.88 * var(--u))">
+        <div class="pill" style="margin-bottom:calc(0.78 * var(--u))">InSearch · 사용자가 물어볼 때</div>
+        <div style="font-size:calc(2.16 * var(--u));font-weight:800;letter-spacing:-.03em;line-height:1.35;color:#17151F">시스템이 사진마다 확인한다<br><span class="grad">"이 사진이 이 말에 맞는가?"</span></div>
+        <p class="small muted" style="margin-top:calc(0.78 * var(--u))">→ <b>미리 붙여둘 이름이 필요 없다</b></p>
+      </div>
+    </div>
+    <table>
+      <tr><th style="width:calc(3.4 * var(--u))"></th><th style="width:44%">앞의 실패 지점</th><th>InSearch의 대응</th></tr>
+      <tr><td class="k"><span class="idx">1</span></td><td>문장을 조건으로 분해 못 함</td><td>AI가 문장을 <b>조건으로 나눠서 해석</b>한다</td></tr>
+      <tr><td class="k"><span class="idx">2</span></td><td>값이 기록돼 있지 않음</td><td><b>사진을 직접 보고 판단</b>한다 — 기록이 없어도 무관</td></tr>
+      <tr><td class="k"><span class="idx">3</span></td><td>항목 자체가 없음</td><td><b>항목을 미리 정하지 않는다</b> — 어떤 설명이든 대조 가능</td></tr>
+      <tr><td class="k"><span class="idx">4</span></td><td>사용자와 시스템의 말이 다름</td><td>모르는 건 <b>외부에서 조회</b>하고, 그래도 안 되면 <b>사용자에게 되묻는다</b></td></tr>
+      <tr><td class="k"><span class="idx">5</span></td><td>조건 하나 어긋나면 0건</td><td>0건 대신 <b>가능성 높은 순으로 제시</b>한다</td></tr>
+    </table>
+  </div>
+  <footer class="fb"><span>03 · 전환</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ 04 유스케이스 ══ -->
+<section class="slide" data-slide data-label="04 · 유스케이스">
+  <div class="inner">
+    <div class="eb"><span><b>04</b> USE CASES</span><span class="tag">이런 것을 찾을 수 있다</span></div>
+    <h2 class="head tight">사람은 보면 아는데, <span class="grad">지금 검색은 못 찾는 것들</span></h2>
+    <table>
+      <tr><th style="width:calc(3.4 * var(--u))"></th><th style="width:29%">질의</th><th>지금은 왜 안 되나</th><th style="width:27%">필요한 능력</th></tr>
+      <tr><td><span class="idx">1</span></td><td class="k">"창밖으로 바다가 보이는 카페에서 찍은 사진"</td><td>"바다" "카페" 태그는 붙어도 <b>"창밖에 바다"</b>는 없다</td><td><b>장면의 구성을 알아본다</b></td></tr>
+      <tr><td><span class="idx">2</span></td><td class="k">"이 신발 신고 찍은 사진" <span class="attach">사진 첨부</span></td><td>사진을 검색어로 쓰는 기능이 <b>기본 갤러리에 없다</b></td><td><b>사진으로 검색한다</b></td></tr>
+      <tr><td><span class="idx">3</span></td><td class="k">"3만원 넘게 쓴 영수증"</td><td>글자는 읽지만 그게 <b>금액인지 모르고 비교도 못 한다</b></td><td><b>글자의 의미를 안다</b></td></tr>
+      <tr><td><span class="idx">4</span></td><td class="k">"엄마랑 <b class="grad">둘이만</b> 찍은 사진"</td><td><b>"둘뿐"이라는 조건을 걸 수 없다</b>. "엄마"가 누군지도 모른다</td><td><b>조건을 조합한다</b> <span class="muted">+ 모르면 되묻는다</span></td></tr>
+      <tr><td><span class="idx">5</span></td><td class="k">"광교산에서 찍은 사진"</td><td>좌표는 남아 있어도 그게 <b>"광교산"인지 모른다</b></td><td><b>모르는 이름은 밖에서 찾아온다</b></td></tr>
+      <tr><td><span class="idx">6</span></td><td class="k">"출장 중에 갔던 멕시칸 식당"</td><td>"출장"은 <b>사진에 없는 정보</b> — 캘린더·메일에서 알아내야 한다</td><td><b>사진 밖에서 추론한다</b></td></tr>
+    </table>
+  </div>
+  <footer class="fb"><span>04 · 유스케이스</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ 05 실현 ══ -->
+<section class="slide alt" data-slide data-label="05 · 실현 방안">
+  <div class="inner">
+    <div class="eb"><span><b>05</b> FEASIBILITY</span><span class="tag">폰에서 실현 가능한가</span></div>
+    <h2 class="head tight">무거운 작업을 <span class="grad">검색 시점에서 빼내면</span> 폰에서 된다</h2>
+    <p class="lead" style="margin-bottom:calc(1.25 * var(--u));font-size:calc(1.62 * var(--u))">매 검색마다 3,000장을 AI로 판단하는 것은 불가능하다. 그래서 한 번만 하는 일과, 매번 하는 일을 나눈다.</p>
+    <table>
+      <tr><th style="width:calc(3.4 * var(--u))"></th><th style="width:calc(7.6 * var(--u))">단계</th><th>하는 일</th><th style="width:calc(12.7 * var(--u))">시점</th><th style="width:calc(13.5 * var(--u))">비용</th></tr>
+      <tr><td><span class="idx">1</span></td><td class="k nw">사전 준비</td><td>사진 1장당 1회만 해석해 결과를 저장</td><td>충전 중 · 유휴 시</td><td class="no">무거움 <span class="muted">(1회성)</span></td></tr>
+      <tr><td><span class="idx">2</span></td><td class="k nw">후보 추리기</td><td>저장된 결과 전체와 질의를 대조해 순위 산출</td><td>검색 시</td><td class="yes">매우 가벼움</td></tr>
+      <tr><td><span class="idx">3</span></td><td class="k nw">정밀 판단</td><td>상위 후보만 사진을 직접 보고 확인</td><td>검색 시</td><td class="yes">수십 장 한정</td></tr>
+    </table>
+  </div>
+  <footer class="fb"><span>05 · 실현 방안</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ 06 제품화 옵션 ══ -->
+<section class="slide" data-slide data-label="06 · 제품화 옵션">
+  <div class="inner">
+    <div class="eb"><span><b>06</b> PRODUCTIZATION</span></div>
+    <h2 class="head tight">제품화 옵션은 <span class="grad">두 가지</span></h2>
+    <table>
+      <tr><th style="width:19%">옵션</th><th style="width:13%">부르는 법</th><th style="width:19%">사진 처리</th><th style="width:21%">해석 결과 저장</th><th style="width:16%">착수 조건</th><th>적용 범위</th></tr>
+      <tr><td class="k">갤러리 내장<br><span class="muted" style="font-weight:400">갤러리 앱의 검색 기능</span></td><td>갤러리 검색창</td><td>시스템 작업 — 충전 중 완료 · 새 사진 즉시 반영</td><td>갤러리 DB 확장<br><span class="muted">지원이 안 되면 검색 전용 저장소를 따로</span></td><td>OS 일정 · 갤러리팀 협의</td><td>적용 모델부터</td></tr>
+      <tr><td class="k">독립 에이전트<br><span class="muted" style="font-weight:400">전용 앱 · 프리로드</span></td><td>아이콘 · 위젯 · 딥링크</td><td>백그라운드 실행 예외가 필요하고, 그만큼 지연</td><td>에이전트 안에</td><td>단독 착수 가능</td><td>쓰던 기기 포함</td></tr>
+    </table>
+  </div>
+  <footer class="fb"><span>06 · 제품화 옵션</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ 07 범위와 검증 ══ -->
+<section class="slide" data-slide data-label="07 · 범위와 검증">
+  <div class="inner">
+    <div class="eb"><span><b>07</b> SCOPE</span><span class="tag">1단계 · 갤러리 사진 검색</span></div>
+    <h2 class="head">사진첩은 종착지가 아니라 <span class="grad">출발점</span>이다</h2>
+    <div class="pill" style="margin-bottom:calc(0.9 * var(--u))">범위</div>
+    <table style="margin-bottom:calc(0.45 * var(--u))">
+      <tr><th style="width:calc(3.4 * var(--u))"></th><th style="width:calc(6.4 * var(--u))">단계</th><th style="width:32%">검색 대상</th><th>이 단계라야 나오는 질의</th></tr>
+      <tr><td><span class="idx">1</span></td><td class="k nw">본 기획</td><td>사진 · 동영상</td><td>"창밖으로 바다가 보이는 카페에서 찍은 사진"</td></tr>
+      <tr><td><span class="idx">2</span></td><td class="k nw">확장</td><td>메시지 · 캘린더 · 메일 · 문서 · 통화기록 · 재생 이력</td><td>"서진이가 지난주에 보낸 링크"<br>"제주 성이시돌 목장에서 들었던 노래"</td></tr>
+    </table>
+    <p class="small muted" style="margin-bottom:calc(1.15 * var(--u))">두 단계는 같은 뼈대를 쓴다 — 질문 해석 · 통합 순위. 1단계에서 만드는 것은 사진 전용 기능이 아니다.</p>
+
+    <div class="pill green" style="margin-bottom:calc(0.9 * var(--u))">규명할 것</div>
+    <table>
+      <tr><th style="width:calc(3.4 * var(--u))"></th><th style="width:34%">항목</th><th>산출</th></tr>
+      <tr><td><span class="idx">1</span></td><td class="k">기존 실패 질의 30건 재현</td><td><b>30건 중 몇 건이 해결되는가</b> <span class="muted">— 핵심 근거</span></td></tr>
+      <tr><td><span class="idx">2</span></td><td class="k">실기 성능 실측</td><td>초기 처리 시간 · 배터리 · 응답 속도</td></tr>
+      <tr><td><span class="idx">3</span></td><td class="k">취약 영역 대응</td><td>사진 속 글자 · 개수 · 부정 조건</td></tr>
+      <tr><td><span class="idx">4</span></td><td class="k">1단계 범위 확정</td><td>검색만인가, 정리·분류까지인가</td></tr>
+    </table>
+  </div>
+  <footer class="fb"><span>07 · 범위와 검증</span><span class="pg"></span></footer>
+</section>
+
+<script>
+(function(){
+  var slides = [].slice.call(document.querySelectorAll('[data-slide]'));
+  var total = slides.length;
+  slides.forEach(function(s,i){
+    var pg = s.querySelector('.pg');
+    if (pg) pg.textContent = String(i+1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+  });
+  window.addEventListener('keydown', function(ev){
+    var y = window.scrollY + window.innerHeight/2, cur = 0;
+    slides.forEach(function(s,i){ if (s.offsetTop <= y) cur = i; });
+    if (['ArrowDown','ArrowRight','PageDown',' '].indexOf(ev.key) > -1) {
+      ev.preventDefault();
+      window.scrollTo({top:slides[Math.min(cur+1, total-1)].offsetTop, behavior:'smooth'});
+    } else if (['ArrowUp','ArrowLeft','PageUp'].indexOf(ev.key) > -1) {
+      ev.preventDefault();
+      window.scrollTo({top:slides[Math.max(cur-1, 0)].offsetTop, behavior:'smooth'});
+    }
+  });
+})();
+</script>
+</body>
+</html>

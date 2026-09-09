@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InSearch — 온디바이스 자연어 검색 에이전트</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-snap-type:y proximity;scroll-behavior:smooth}
+body{font-family:'Pretendard Variable',Pretendard,'Malgun Gothic','Apple SD Gothic Neo',sans-serif;background:#fff;color:#39354A;word-break:keep-all;-webkit-font-smoothing:antialiased}
+b,strong{color:#17151F}
+
+/* ── layout ── */
+section.slide{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:84px 6vw 96px;position:relative;scroll-snap-align:start}
+section.slide.alt{background:#F9F8FD}
+.inner{max-width:1000px;width:100%}
+.center{text-align:center}
+
+/* ── eyebrow ── */
+.eb{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:20px;font-size:14px;font-weight:800;color:#6C6680}
+.eb b{color:#6D4FE0;margin-right:8px}
+.eb .tag{font-size:12.5px;font-weight:800;color:#6C6680;letter-spacing:.08em;white-space:nowrap}
+
+/* ── type ── */
+h1{font-size:clamp(38px,5.4vw,68px);font-weight:800;letter-spacing:-.03em;line-height:1.16;color:#17151F}
+h2{font-size:clamp(24px,3vw,38px);font-weight:800;letter-spacing:-.025em;line-height:1.25;color:#17151F;margin-bottom:10px}
+h3{font-size:clamp(17px,1.8vw,21px);font-weight:800;letter-spacing:-.02em;color:#17151F}
+.lead{font-size:clamp(16px,1.6vw,19px);line-height:1.7;color:#39354A;max-width:860px;margin-bottom:24px}
+.grad{background:linear-gradient(90deg,#8B6CF6 0%,#2EC9A0 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.muted{color:#6C6680}
+.small{font-size:13.5px;line-height:1.6;color:#6C6680}
+
+/* ── hero numbers ── */
+.huge{font-size:clamp(64px,11vw,150px);font-weight:800;letter-spacing:-.045em;line-height:1;background:linear-gradient(90deg,#8B6CF6,#2EC9A0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.huge span.u{font-size:.42em;letter-spacing:-.02em}
+.hugecap{font-size:clamp(17px,1.9vw,23px);font-weight:700;color:#39354A;margin-top:18px;line-height:1.5}
+
+/* ── cards ── */
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{background:#fff;border:1px solid #E7E4F2;border-radius:20px;padding:26px;box-shadow:0 18px 44px -30px rgba(77,58,150,.35)}
+.card.soft{background:linear-gradient(155deg,#F3EFFD 0%,#EFEAFE 100%);border:1px solid #E3DBF7}
+.card.flat{box-shadow:none}
+.pill{display:inline-block;align-self:flex-start;font-size:12px;font-weight:800;letter-spacing:.04em;padding:4px 11px;border-radius:999px;background:#EFEAFE;color:#6D4FE0}
+.pill.green{background:#DEF7EF;color:#159B79}
+.pill.gray{background:#F3F1FA;color:#6C6680;font-size:11.5px;font-weight:700;padding:3px 9px}
+.statnum{font-size:clamp(30px,3.8vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1;background:linear-gradient(90deg,#8B6CF6,#2EC9A0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.statnum span.u{font-size:.5em}
+.statcap{font-size:12.5px;font-weight:700;color:#6C6680;margin-top:7px}
+.cardtitle{font-size:clamp(17px,1.8vw,21px);font-weight:800;letter-spacing:-.02em;line-height:1.3;color:#17151F;margin-bottom:8px}
+.cardbody{font-size:14.5px;line-height:1.65;color:#39354A}
+
+/* ── bullets ── */
+ul.dots{list-style:none;display:flex;flex-direction:column;gap:10px}
+ul.dots li{position:relative;padding-left:16px;font-size:14.5px;line-height:1.6;color:#39354A}
+ul.dots li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:#2EC9A0}
+ul.dots.purple li::before{background:#8B6CF6}
+
+/* ── table ── */
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #E7E4F2;border-radius:18px;overflow:hidden;box-shadow:0 18px 44px -30px rgba(77,58,150,.35)}
+th{background:#F6F4FC;font-size:13px;font-weight:800;letter-spacing:.04em;color:#4B3D82;text-align:left;padding:14px 18px;border-bottom:1px solid #E7E4F2}
+td{font-size:14.5px;line-height:1.6;color:#39354A;padding:15px 18px;border-bottom:1px solid #F0EEF7;vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.k{font-weight:800;color:#17151F;white-space:nowrap}
+.yes{color:#159B79;font-weight:800}
+.no{color:#C64B62;font-weight:800}
+
+/* ── callouts ── */
+.callout{margin-top:20px;border-left:3px solid #2EC9A0;background:#F4FBF8;border-radius:0 14px 14px 0;padding:16px 22px;font-size:clamp(14.5px,1.5vw,16.5px);line-height:1.65;color:#39354A}
+.callout.purple{border-left-color:#8B6CF6;background:#F6F3FE}
+.callout.warn{border-left-color:#E0A23C;background:#FDF8EF}
+.band{margin-top:20px;text-align:center;background:linear-gradient(90deg,#EFEAFE,#DEF7EF);border-radius:16px;padding:18px 26px;font-size:clamp(15.5px,1.6vw,18px);font-weight:700;color:#17151F;line-height:1.5}
+.query{background:#17151F;border-radius:18px;padding:24px 28px;color:#fff;font-size:clamp(19px,2.3vw,30px);font-weight:800;letter-spacing:-.02em;line-height:1.4}
+.query .q{color:#8B6CF6}
+.query .lbl{color:#8B6CF6;margin-right:14px;font-size:.62em;letter-spacing:.04em;vertical-align:middle}
+
+/* ── flow ── */
+.flow{display:flex;flex-direction:column;align-items:center;gap:0}
+.flow .step{background:#fff;border:1px solid #E7E4F2;border-radius:14px;padding:13px 26px;font-size:clamp(14.5px,1.5vw,16.5px);font-weight:700;color:#17151F;box-shadow:0 14px 34px -28px rgba(77,58,150,.5);text-align:center;min-width:min(420px,86vw)}
+.flow .step.hi{background:linear-gradient(90deg,#EFEAFE,#DEF7EF);border-color:#DCD3F6}
+.flow .arr{color:#B7AEDC;font-size:17px;line-height:1;padding:7px 0;font-weight:800}
+
+/* ── footer ── */
+footer.fb{position:absolute;bottom:26px;left:6vw;right:6vw;display:flex;justify-content:space-between;font-size:12px;color:#6C6680;letter-spacing:.04em}
+.scrollhint{position:absolute;bottom:64px;left:50%;transform:translateX(-50%);font-size:13px;color:#6C6680;letter-spacing:.1em;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+
+/* ── divider (chapter) ── */
+section.chap{background:#17151F}
+section.chap h2{color:#fff;font-size:clamp(30px,4.4vw,54px);margin:0}
+section.chap .num{font-size:clamp(46px,7vw,88px);font-weight:800;letter-spacing:-.04em;line-height:1;background:linear-gradient(90deg,#8B6CF6,#2EC9A0);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:10px}
+section.chap footer.fb{color:#8B84A8}
+
+@media (max-width:900px){
+  .grid2,.grid3,.grid4{grid-template-columns:1fr}
+  section.slide{padding:72px 6vw 88px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ 00 COVER ══ -->
+<section class="slide" data-slide data-label="InSearch">
+  <div class="inner center">
+    <div style="font-size:14px;font-weight:800;color:#6C6680;letter-spacing:.06em;margin-bottom:22px"><b style="color:#6D4FE0;margin-right:8px">ON-DEVICE SEARCH AGENT</b> 1단계 · 갤러리 사진 검색</div>
+    <h1>폰 안에 있는데<br><span class="grad">찾을 수가 없다</span></h1>
+    <div style="font-size:clamp(30px,4vw,46px);font-weight:800;letter-spacing:-.03em;color:#17151F;margin-top:34px">InSearch</div>
+    <p class="lead" style="margin:14px auto 0;text-align:center">적혀 있는 것을 찾는 검색에서 <b>적혀 있지 않은 것을 알아보는</b> 검색으로.</p>
+  </div>
+  <div class="scrollhint">아래로 스크롤 ↓</div>
+  <footer class="fb"><span>InSearch · 온디바이스 자연어 검색 에이전트</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ CH 1 ══ -->
+<section class="slide chap" data-slide data-label="PROBLEM">
+  <div class="inner center">
+    <div class="num">01</div>
+    <h2>사진은 쌓이는데,<br>찾을 수는 없다</h2>
+  </div>
+  <footer class="fb"><span>PROBLEM</span><span class="pg"></span></footer>
+</section>
+
+<!-- S1 -->
+<section class="slide" data-slide data-label="PROBLEM · 보유량">
+  <div class="inner">
+    <div class="eb"><span><b>PROBLEM</b> 우리는 사진을 얼마나 갖고 있나</span><span class="tag">S1 · 보유량</span></div>
+    <div class="center" style="padding:14px 0 6px">
+      <div class="huge">2,000<span class="u"> ~ </span>3,000<span class="u">장</span></div>
+      <div class="hugecap">사용자 1인당 폰에 저장된 사진</div>
+    </div>
+    <div class="grid2" style="margin-top:34px">
+      <div class="card"><div class="cardtitle">플랫폼별</div><div class="cardbody">iOS 약 <b>2,400장</b> · Android 약 <b>1,900장</b></div></div>
+      <div class="card"><div class="cardtitle">조사별 편차</div><div class="cardbody"><b>2,795장 ~ 3,000장</b> — 조사 주체에 따라 다르지만 규모의 자릿수는 같다</div></div>
+    </div>
+  </div>
+  <footer class="fb"><span>PROBLEM · 보유량</span><span class="pg"></span></footer>
+</section>
+
+<!-- S2 -->
+<section class="slide alt" data-slide data-label="PROBLEM · 증가 속도">
+  <div class="inner">
+    <div class="eb"><span><b>PROBLEM</b> 10년 만에 4배</span><span class="tag">S2 · 증가 속도</span></div>
+    <h2>사진은 <span class="grad">4배</span> 늘었고, 검색 방식은 그대로다</h2>
+    <div class="grid3" style="margin-top:26px;align-items:stretch">
+      <div class="card center" style="display:flex;flex-direction:column;justify-content:center"><div class="pill gray" style="margin-bottom:12px">2015</div><div class="statnum">630<span class="u">장</span></div></div>
+      <div class="card center flat" style="background:transparent;border:none;display:flex;align-items:center;justify-content:center;font-size:44px;color:#B7AEDC;font-weight:800">→</div>
+      <div class="card center" style="display:flex;flex-direction:column;justify-content:center"><div class="pill" style="margin-bottom:12px">2025</div><div class="statnum">2,700<span class="u">장</span></div></div>
+    </div>
+    <div class="callout purple">스크롤로 찾는 방식은 <b>630장 시절에 설계됐다.</b> 담을 양은 4배가 됐는데, 꺼내는 방법만 그대로다.</div>
+  </div>
+  <footer class="fb"><span>PROBLEM · 증가 속도</span><span class="pg"></span></footer>
+</section>
+
+<!-- S3 -->
+<section class="slide" data-slide data-label="PROBLEM · 사용자 인식">
+  <div class="inner">
+    <div class="eb"><span><b>PROBLEM</b> 절반 이상이 포기 직전</span><span class="tag">S3 · 사용자 인식</span></div>
+    <div class="grid2" style="margin-top:8px;gap:18px">
+      <div class="card soft" style="min-height:280px;display:flex;flex-direction:column;justify-content:center;text-align:center">
+        <div class="huge" style="font-size:clamp(58px,8vw,110px)">54%</div>
+        <div class="cardbody" style="margin-top:16px;font-size:16.5px">"예전 사진 찾으려 사진첩 뒤지는 게 <b>부담스럽다</b>"</div>
+      </div>
+      <div class="card" style="min-height:280px;display:flex;flex-direction:column;justify-content:center;text-align:center">
+        <div class="huge" style="font-size:clamp(58px,8vw,110px)">19%</div>
+        <div class="cardbody" style="margin-top:16px;font-size:16.5px">"사진을 <b>거의 다시 들여다보지 않는다</b>"</div>
+      </div>
+    </div>
+    <div class="callout">저장은 하지만 <b>다시 꺼내 쓰지 못하는 상태</b> — 사진첩이 아카이브가 아니라 적치장이 됐다.</div>
+  </div>
+  <footer class="fb"><span>PROBLEM · 사용자 인식</span><span class="pg"></span></footer>
+</section>
+
+<!-- S4 -->
+<section class="slide alt" data-slide data-label="PROBLEM · 검색 실패">
+  <div class="inner">
+    <div class="eb"><span><b>PROBLEM</b> 그리고 실제로 못 찾는다</span><span class="tag">S4 · 검색 실패</span></div>
+    <div class="grid2" style="gap:24px;align-items:center">
+      <div class="center">
+        <div class="huge">40%</div>
+        <div class="hugecap">1년 이상 지난 사진 검색 실패율</div>
+        <div class="small" style="margin-top:10px">가족 사진 장기 검색 실험, Whittaker et al.</div>
+      </div>
+      <div class="card">
+        <div class="pill" style="margin-bottom:14px">실패 원인</div>
+        <ul class="dots">
+          <li>사진이 너무 많음</li>
+          <li>정리 체계 부재</li>
+          <li>여러 저장소에 분산</li>
+          <li><b>"나는 내 사진을 잘 찾는다"는 착각</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout purple">사용자는 실패를 <b>인지조차 못 한다.</b> 못 찾으면 "없나 보다"로 끝나기 때문이다.</div>
+  </div>
+  <footer class="fb"><span>PROBLEM · 검색 실패</span><span class="pg"></span></footer>
+</section>
+
+<!-- S5 -->
+<section class="slide" data-slide data-label="PROBLEM · 요약">
+  <div class="inner">
+    <div class="eb"><span><b>PROBLEM</b> 한 장으로 요약하면</span><span class="tag">S5 · 요약</span></div>
+    <h2>사진첩은 <span class="grad">저장소</span>가 됐지만, <span class="grad">검색 도구</span>는 되지 못했다</h2>
+    <div class="grid4" style="margin-top:26px">
+      <div class="card center"><div class="statnum">2,700<span class="u">장</span></div><div class="statcap">보유량</div></div>
+      <div class="card center"><div class="statnum">54<span class="u">%</span></div><div class="statcap">검색 부담</div></div>
+      <div class="card center"><div class="statnum">40<span class="u">%</span></div><div class="statcap">검색 실패</div></div>
+      <div class="card center"><div class="statnum">19<span class="u">%</span></div><div class="statcap">사장된 사진</div></div>
+    </div>
+    <div class="callout warn"><b>보완 필요</b> — 위 수치는 해외 업체 설문 및 학술 연구 기반. 사내 제안 시 <b>자체 사용자 조사 데이터로 대체 또는 병기</b> 권장.</div>
+  </div>
+  <footer class="fb"><span>PROBLEM · 요약</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ CH 2 ══ -->
+<section class="slide chap" data-slide data-label="FAILURE">
+  <div class="inner center">
+    <div class="num">02</div>
+    <h2>우리가 겪은 실패</h2>
+  </div>
+  <footer class="fb"><span>FAILURE</span><span class="pg"></span></footer>
+</section>
+
+<!-- S6 -->
+<section class="slide" data-slide data-label="FAILURE · 사내 사례">
+  <div class="inner">
+    <div class="eb"><span><b>FAILURE</b> 사내 검색 실패 사례</span><span class="tag">S6 · 실제 질의</span></div>
+    <div class="query"><span class="lbl">검색어</span>"광교산에서 흰옷 입고 찍은 사진"</div>
+    <div class="grid2" style="margin-top:18px">
+      <div class="card center" style="display:flex;flex-direction:column;justify-content:center;min-height:190px">
+        <div class="pill gray" style="margin-bottom:12px">결과</div>
+        <div class="huge" style="font-size:clamp(52px,7vw,96px);background:linear-gradient(90deg,#C64B62,#8B6CF6);-webkit-background-clip:text;background-clip:text">0건</div>
+      </div>
+      <div class="card soft center" style="display:flex;flex-direction:column;justify-content:center;min-height:190px">
+        <div class="pill" style="margin-bottom:12px">그리고</div>
+        <div style="font-size:clamp(21px,2.6vw,32px);font-weight:800;letter-spacing:-.025em;color:#17151F;line-height:1.35">사진은 <b class="grad">폰 안에 있었다</b></div>
+      </div>
+    </div>
+    <div class="callout">없어서 못 찾은 게 아니다. <b>있는데 못 찾았다.</b></div>
+  </div>
+  <footer class="fb"><span>FAILURE · 사내 사례</span><span class="pg"></span></footer>
+</section>
+
+<!-- S7 -->
+<section class="slide alt" data-slide data-label="FAILURE · 원인 분해">
+  <div class="inner">
+    <div class="eb"><span><b>FAILURE</b> 조건은 단 두 개였다</span><span class="tag">S7 · 원인 분해</span></div>
+    <table>
+      <tr><th style="width:130px">조건</th><th>실패 원인</th></tr>
+      <tr><td class="k">광교산</td><td>GPS 미기록 / 좌표→산이름 변환 데이터 없음 <span class="muted">(행정구역·상업시설 기준)</span></td></tr>
+      <tr><td class="k">흰옷</td><td>"사람이 입은 옷의 색"이라는 <b>항목 자체가 없음</b></td></tr>
+    </table>
+    <div class="band" style="margin-top:20px">조건 2개 중 <span class="grad">1개만 비어도 0건</span></div>
+    <div class="grid3" style="margin-top:18px">
+      <div class="card flat"><div class="cardbody">나머지 조건이 맞는 사진도 <b>나오지 않는다</b></div></div>
+      <div class="card flat"><div class="cardbody">사용자 — <b>"있는데 왜 안 나와?"</b></div></div>
+      <div class="card flat"><div class="cardbody">시스템 — <b>"조건 충족 0건"</b> · 정직하게 실패</div></div>
+    </div>
+    <div class="callout purple"><b>부분 정답을 낼 수 없는 구조</b>가 문제다. 90점짜리 답도 0건으로 처리된다.</div>
+  </div>
+  <footer class="fb"><span>FAILURE · 원인 분해</span><span class="pg"></span></footer>
+</section>
+
+<!-- S8 -->
+<section class="slide" data-slide data-label="FAILURE · 근본 원인">
+  <div class="inner">
+    <div class="eb"><span><b>FAILURE</b> 근본 원인</span><span class="tag">S8 · 구조의 한계</span></div>
+    <h2>기존 검색 = <span class="grad">미리 채운 칸</span> 안에서만 찾기</h2>
+    <div class="grid2" style="margin-top:24px">
+      <div class="card">
+        <div class="pill" style="margin-bottom:14px">전제</div>
+        <ul class="dots purple">
+          <li><b>전제 1</b> — 어떤 질문이 올지 <b>미리 알아야</b> 한다</li>
+          <li><b>전제 2</b> — 그 칸이 <b>실제로 채워져</b> 있어야 한다</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="pill green" style="margin-bottom:14px">현실</div>
+        <ul class="dots">
+          <li>사용자는 <b>예상 못 한 방식</b>으로 묻는다</li>
+          <li>인물 태그, GPS는 실제 데이터에서 <b>자주 비어 있다</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="band">둘 다 <span class="grad">성립하지 않는다</span></div>
+  </div>
+  <footer class="fb"><span>FAILURE · 근본 원인</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ CH 3 ══ -->
+<section class="slide chap" data-slide data-label="SHIFT">
+  <div class="inner center">
+    <div class="num">03</div>
+    <h2>무엇이 달라졌나</h2>
+  </div>
+  <footer class="fb"><span>SHIFT</span><span class="pg"></span></footer>
+</section>
+
+<!-- S9 -->
+<section class="slide" data-slide data-label="SHIFT · 사람의 방식">
+  <div class="inner">
+    <div class="eb"><span><b>SHIFT</b> 사람은 이렇게 찾는다</span><span class="tag">S9 · 탐색 행동</span></div>
+    <div class="grid2" style="gap:28px;align-items:center">
+      <div class="flow">
+        <div class="step">대략의 시기로 이동</div><div class="arr">↓</div>
+        <div class="step">훑어본다</div><div class="arr">↓</div>
+        <div class="step hi">걸리는 게 있으면 멈춤</div><div class="arr">↓</div>
+        <div class="step">자세히 확인</div><div class="arr">↓</div>
+        <div class="step">아니면 다시</div>
+      </div>
+      <div>
+        <h2 style="margin-bottom:16px">미리 정리해두고 조회하는 게 아니라 <span class="grad">보면서 판단한다</span></h2>
+        <p class="lead" style="margin-bottom:0">사람은 사진첩을 색인하지 않는다. 후보를 좁히고, 훑고, 걸리면 멈춘다. <b>검색이 아니라 탐색이다.</b></p>
+      </div>
+    </div>
+  </div>
+  <footer class="fb"><span>SHIFT · 사람의 방식</span><span class="pg"></span></footer>
+</section>
+
+<!-- S10 -->
+<section class="slide alt" data-slide data-label="SHIFT · 질문의 전환">
+  <div class="inner">
+    <div class="eb"><span><b>SHIFT</b> 질문의 방향이 바뀐다</span><span class="tag">S10 · 라벨링 → 판별</span></div>
+    <table>
+      <tr><th style="width:180px"></th><th>기존</th><th>신규</th></tr>
+      <tr><td class="k">질문</td><td>이 사진에 붙일 <b>라벨은?</b></td><td>이 사진이 <b>이 설명에 맞나?</b></td></tr>
+      <tr><td class="k">필요</td><td>라벨 후보 목록</td><td class="yes">없음</td></tr>
+      <tr><td class="k">목록 밖 개념</td><td class="no">영원히 못 찾음</td><td class="yes">문제없음</td></tr>
+    </table>
+    <div class="callout purple">"무엇으로 부를지"를 미리 정하지 않아도 된다. <b>질문이 오면 그때 판별한다.</b></div>
+  </div>
+  <footer class="fb"><span>SHIFT · 질문의 전환</span><span class="pg"></span></footer>
+</section>
+
+<!-- S11 -->
+<section class="slide" data-slide data-label="SHIFT · 한 줄 정의">
+  <div class="inner center">
+    <div class="eb" style="justify-content:center"><span><b>SHIFT</b> 한 줄로 말하면</span></div>
+    <div class="grid2" style="margin-top:20px;gap:20px;text-align:left">
+      <div class="card" style="min-height:230px;display:flex;flex-direction:column;justify-content:center">
+        <div class="pill gray" style="margin-bottom:16px">기존 검색</div>
+        <div style="font-size:clamp(24px,2.9vw,36px);font-weight:800;letter-spacing:-.03em;color:#6C6680;line-height:1.3">적혀 있는 것을<br>찾는다</div>
+      </div>
+      <div class="card soft" style="min-height:230px;display:flex;flex-direction:column;justify-content:center">
+        <div class="pill" style="margin-bottom:16px">InSearch</div>
+        <div style="font-size:clamp(24px,2.9vw,36px);font-weight:800;letter-spacing:-.03em;line-height:1.3;color:#17151F">적혀 있지 않은 것을<br><span class="grad">알아본다</span></div>
+      </div>
+    </div>
+  </div>
+  <footer class="fb"><span>SHIFT · 한 줄 정의</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ CH 4 ══ -->
+<section class="slide chap" data-slide data-label="USE CASES">
+  <div class="inner center">
+    <div class="num">04</div>
+    <h2>이런 것을<br>찾을 수 있습니다</h2>
+  </div>
+  <footer class="fb"><span>USE CASES</span><span class="pg"></span></footer>
+</section>
+
+<!-- S12 -->
+<section class="slide" data-slide data-label="USE CASE ① 장면">
+  <div class="inner">
+    <div class="eb"><span><b>USE CASE ①</b> 장면을 알아본다</span><span class="tag">S12 · 위치 정보 없이</span></div>
+    <div class="query"><span class="q">“</span>바다 보이는 카페에서 찍은 사진<span class="q">”</span></div>
+    <div class="grid3" style="margin-top:20px">
+      <div class="card"><div class="cardtitle">위치 정보</div><div class="cardbody"><b class="yes">없어도 됨</b> — GPS가 비어 있어도 무관</div></div>
+      <div class="card"><div class="cardtitle">"카페" 태그</div><div class="cardbody"><b class="yes">없어도 됨</b> — 사전에 분류돼 있지 않아도 됨</div></div>
+      <div class="card soft"><div class="cardtitle">근거</div><div class="cardbody"><b>사진을 보면 안다</b> — 창밖 수평선과 테이블이 함께 찍힌 장면</div></div>
+    </div>
+  </div>
+  <footer class="fb"><span>USE CASE ① 장면</span><span class="pg"></span></footer>
+</section>
+
+<!-- S13 -->
+<section class="slide alt" data-slide data-label="USE CASE ② 이미지 질의">
+  <div class="inner">
+    <div class="eb"><span><b>USE CASE ②</b> 사진을 검색어로 쓴다</span><span class="tag">S13 · 이미지 질의</span></div>
+    <div class="query"><span class="q">“</span>친구가 보내준 이 옷이랑 비슷한 거 찾아줘<span class="q">”</span></div>
+    <div class="grid3" style="margin-top:20px">
+      <div class="card"><div class="cardtitle">말로 설명할 필요 없음</div><div class="cardbody">"베이지색 오버핏 니트"라고 <b>언어화하지 않아도</b> 된다</div></div>
+      <div class="card"><div class="cardtitle">외부에서 받은 사진도 질의</div><div class="cardbody">메신저로 받은 이미지가 <b>그대로 검색어</b>가 된다</div></div>
+      <div class="card soft"><div class="cardtitle">경쟁 상황</div><div class="cardbody"><b class="grad">현재 어떤 기본 갤러리도 지원하지 않음</b></div></div>
+    </div>
+  </div>
+  <footer class="fb"><span>USE CASE ② 이미지 질의</span><span class="pg"></span></footer>
+</section>
+
+<!-- S14 -->
+<section class="slide" data-slide data-label="USE CASE ③ 글자의 의미">
+  <div class="inner">
+    <div class="eb"><span><b>USE CASE ③</b> 글자의 의미를 안다</span><span class="tag">S14 · 읽기 → 이해</span></div>
+    <div class="query"><span class="q">“</span>3만원 넘게 쓴 영수증<span class="q">”</span></div>
+    <table style="margin-top:20px">
+      <tr><td class="k" style="width:200px">지금 되는 것</td><td>글자를 <b>읽는다</b> — OCR로 "30,000"이라는 문자열을 추출</td></tr>
+      <tr><td class="k">안 되는 것</td><td>그게 <b>금액</b>임을 알고 <b>비교</b>한다 — 30,000 &gt; 30,000원 기준 판정</td></tr>
+    </table>
+    <div class="callout warn">"3만원"으로 검색하면 <b>그 글자가 적힌 사진만</b> 나온다. 32,400원짜리 영수증은 영원히 안 나온다.</div>
+  </div>
+  <footer class="fb"><span>USE CASE ③ 글자의 의미</span><span class="pg"></span></footer>
+</section>
+
+<!-- S15 -->
+<section class="slide alt" data-slide data-label="USE CASE ④ 조건 조합">
+  <div class="inner">
+    <div class="eb"><span><b>USE CASE ④</b> 조건을 조합한다</span><span class="tag">S15 · 인원수 제한</span></div>
+    <div class="query"><span class="q">“</span>엄마랑 <span class="grad">둘이만</span> 찍은 사진<span class="q">”</span></div>
+    <div class="grid3" style="margin-top:20px">
+      <div class="card"><div class="cardtitle">인물 조건</div><div class="cardbody">특정 인물이 <b>포함</b>돼야 한다</div></div>
+      <div class="card"><div class="cardtitle">인원수 제한</div><div class="cardbody">셋이 찍힌 건 <b class="no">제외</b>해야 한다 — 포함이 아니라 <b>배타</b> 조건</div></div>
+      <div class="card soft"><div class="cardtitle">사람 기준</div><div class="cardbody"><b>보면 즉시 안다.</b> 그런데 기존 검색은 이 조건을 표현할 칸이 없다</div></div>
+    </div>
+  </div>
+  <footer class="fb"><span>USE CASE ④ 조건 조합</span><span class="pg"></span></footer>
+</section>
+
+<!-- S16 -->
+<section class="slide" data-slide data-label="USE CASE ④-1 되묻기">
+  <div class="inner">
+    <div class="eb"><span><b>USE CASE ④-1</b> 그런데 "엄마"가 누군지 모른다면</span><span class="tag">S16 · 되묻기 설계</span></div>
+    <div class="grid2" style="gap:28px;align-items:center">
+      <div class="flow">
+        <div class="step">"엄마랑 둘이만 찍은 사진 찾아줘"</div><div class="arr">↓</div>
+        <div class="step">중년 여성이 자주 등장하는 사진 3건 제시</div><div class="arr">↓</div>
+        <div class="step hi">"이 중에 어머니가 계신가요?"</div><div class="arr">↓</div>
+        <div class="step">사용자 선택</div><div class="arr">↓</div>
+        <div class="step">해당 인물 + 2인 프레임 사진 제시</div><div class="arr">↓</div>
+        <div class="step hi">이후 "엄마"를 계속 알아들음</div>
+      </div>
+      <div>
+        <div class="card">
+          <div class="pill" style="margin-bottom:14px">포인트</div>
+          <ul class="dots purple">
+            <li>미리 태그해둘 필요 없음</li>
+            <li><b>필요한 순간에 한 번만</b> 물어봄</li>
+            <li>물을 때는 <b>좁혀서</b> 물어봄 <span class="muted">(100명 아닌 3명)</span></li>
+            <li>한 번 배우면 기억함</li>
+          </ul>
+        </div>
+        <div class="callout">사람에게 부탁해도 똑같이 물어본다 — <b>"어느 분이 어머니세요?"</b></div>
+      </div>
+    </div>
+  </div>
+  <footer class="fb"><span>USE CASE ④-1 되묻기</span><span class="pg"></span></footer>
+</section>
+
+<!-- S17 -->
+<section class="slide alt" data-slide data-label="USE CASE ⑤ 외부 추론">
+  <div class="inner">
+    <div class="eb"><span><b>USE CASE ⑤</b> 사진 밖에서 추론한다</span><span class="tag">S17 · 컨텍스트 확장</span></div>
+    <div class="query"><span class="q">“</span>출장 중에 갔던 멕시칸 식당<span class="q">”</span></div>
+    <div class="band" style="margin-top:18px">"출장"은 <span class="grad">사진에 없는 정보</span>다</div>
+    <table style="margin-top:18px">
+      <tr><th style="width:90px">단계</th><th>무엇</th></tr>
+      <tr><td class="k">1</td><td>출장 기간 파악 — <b>캘린더 · 메일 · 이동 패턴</b></td></tr>
+      <tr><td class="k">2</td><td>그 기간으로 사진 범위 확정</td></tr>
+      <tr><td class="k">3</td><td>범위 내에서 멕시칸 식당 판별</td></tr>
+    </table>
+    <div class="callout purple"><b>1단계는 사진첩 밖에서 일어난다.</b> 이 한 줄이 6장의 확장 로드맵을 결정한다.</div>
+  </div>
+  <footer class="fb"><span>USE CASE ⑤ 외부 추론</span><span class="pg"></span></footer>
+</section>
+
+<!-- S18 -->
+<section class="slide" data-slide data-label="USE CASES · 공통 요구">
+  <div class="inner">
+    <div class="eb"><span><b>USE CASES</b> 다섯 예시가 공통으로 요구하는 것</span><span class="tag">S18 · 요약</span></div>
+    <table>
+      <tr><th style="width:220px">예시</th><th>알아봐야 하는 것</th></tr>
+      <tr><td class="k">바다 카페</td><td>이 <b>장면이 무엇</b>인지</td></tr>
+      <tr><td class="k">옷 비교</td><td>두 사진이 <b>같은 것을 담았는지</b></td></tr>
+      <tr><td class="k">영수증</td><td>이 숫자가 <b>금액이라는 것</b></td></tr>
+      <tr><td class="k">엄마 · 둘이만</td><td>프레임 안에 <b>두 사람뿐이라는 것</b></td></tr>
+      <tr><td class="k">출장 멕시칸</td><td>이 기간이 <b>출장이었다는 것</b></td></tr>
+    </table>
+    <div class="band">전부 <span class="grad">사진에 적혀 있지 않다</span></div>
+  </div>
+  <footer class="fb"><span>USE CASES · 공통 요구</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ CH 5 ══ -->
+<section class="slide chap" data-slide data-label="HOW">
+  <div class="inner center">
+    <div class="num">05</div>
+    <h2>어떻게 만드나</h2>
+  </div>
+  <footer class="fb"><span>HOW</span><span class="pg"></span></footer>
+</section>
+
+<!-- S19 -->
+<section class="slide" data-slide data-label="HOW · 3단계 구조">
+  <div class="inner">
+    <div class="eb"><span><b>HOW</b> 3단계 구조</span><span class="tag">S19 · 준비 · 훑기 · 판단</span></div>
+    <h2>비싼 작업을 <span class="grad">검색 시점에서 빼낸다</span></h2>
+    <table style="margin-top:20px">
+      <tr><th style="width:110px"></th><th>하는 일</th><th style="width:150px">시점</th><th style="width:150px">비용</th></tr>
+      <tr><td class="k">준비</td><td>사진 1장당 1회 해석 후 저장</td><td>미리 <span class="muted">(야간)</span></td><td class="no">비쌈</td></tr>
+      <tr><td class="k">훑기</td><td>저장된 결과 전체와 대조·순위</td><td>검색 시</td><td class="yes">매우 쌈</td></tr>
+      <tr><td class="k">판단</td><td>상위 후보만 정밀 확인</td><td>검색 시</td><td class="yes">수십 장뿐</td></tr>
+    </table>
+    <div class="callout">사용자가 기다리는 시간에는 <b>가장 싼 연산만</b> 남는다. 무거운 해석은 충전 중에 이미 끝나 있다.</div>
+  </div>
+  <footer class="fb"><span>HOW · 3단계 구조</span><span class="pg"></span></footer>
+</section>
+
+<!-- S20 -->
+<section class="slide alt" data-slide data-label="HOW · 저장 대상">
+  <div class="inner">
+    <div class="eb"><span><b>HOW</b> 무엇을 저장하나</span><span class="tag">S20 · 3,000장 기준 수 MB</span></div>
+    <div class="grid2" style="margin-top:8px">
+      <div class="card">
+        <div class="pill" style="margin-bottom:14px">확실한 정보 · 자르는 용도</div>
+        <div class="cardbody" style="margin-bottom:14px">촬영 시각 · 파일 종류 · 스크린샷 여부 · 앱 출처 · GPS(있으면)</div>
+        <div class="small">→ 정확히 얻어지는 것만. <b>부실한 항목은 억지로 채우지 않는다</b></div>
+      </div>
+      <div class="card soft">
+        <div class="pill green" style="margin-bottom:14px">사진의 전체 인상 · 훑는 용도</div>
+        <div class="cardbody" style="margin-bottom:14px">사진 1장당 계산 결과 1건</div>
+        <div class="small">→ <b>미리 어떤 항목을 채울지 정할 필요가 없다</b></div>
+      </div>
+    </div>
+    <div class="band">용량 — 3,000장 기준 <span class="grad">수 MB</span></div>
+  </div>
+  <footer class="fb"><span>HOW · 저장 대상</span><span class="pg"></span></footer>
+</section>
+
+<!-- S21 -->
+<section class="slide" data-slide data-label="HOW · 저장 위치 & 유지">
+  <div class="inner">
+    <div class="eb"><span><b>HOW</b> 저장 위치 &amp; 유지</span><span class="tag">S21 · 운영 설계</span></div>
+    <div class="band" style="margin-top:0;margin-bottom:20px"><span class="grad">갤러리 앱 수정 불필요</span> — 읽기 권한만 있으면 된다</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="pill" style="margin-bottom:14px">저장 옵션</div>
+        <ul class="dots purple">
+          <li>시스템 내 검색 전용 저장소 <span class="muted">(내부 개발 시 권장)</span></li>
+          <li>갤러리 DB 확장</li>
+          <li>별도 앱 내부</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="pill green" style="margin-bottom:14px">유지 관리 대상</div>
+        <ul class="dots">
+          <li>삭제 → 결과도 삭제</li>
+          <li>편집 → 재처리</li>
+          <li>대량 유입<span class="muted">(여행·복원)</span> → 초기 상황 재발</li>
+          <li>모델 교체 → <b>전체 재처리</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <footer class="fb"><span>HOW · 저장 위치 &amp; 유지</span><span class="pg"></span></footer>
+</section>
+
+<!-- S22 -->
+<section class="slide alt" data-slide data-label="HOW · 에이전트의 행동">
+  <div class="inner">
+    <div class="eb"><span><b>HOW</b> 에이전트의 3가지 행동</span><span class="tag">S22 · 0건을 없앤다</span></div>
+    <div class="grid3" style="margin-top:8px">
+      <div class="card"><div class="cardtitle">모르면 묻는다</div><div class="cardbody">좁힌 선택지로 되묻기 <span class="muted">(S16 참조)</span></div></div>
+      <div class="card"><div class="cardtitle">없으면 찾아온다</div><div class="cardbody">지명 · 좌표 → <b>외부 조회</b></div></div>
+      <div class="card soft"><div class="cardtitle">0건 대신 순위를 낸다</div><div class="cardbody">완벽한 답이 없어도 <b>가까운 순으로</b> 제시</div></div>
+    </div>
+    <div class="callout">사람은 <b>10장만 봐도 즉시 알아본다.</b> 완벽한 1건보다 그럴듯한 10건이 낫다.</div>
+  </div>
+  <footer class="fb"><span>HOW · 에이전트의 행동</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ CH 6 ══ -->
+<section class="slide chap" data-slide data-label="WHY PHOTOS">
+  <div class="inner center">
+    <div class="num">06</div>
+    <h2>왜 사진첩부터인가</h2>
+  </div>
+  <footer class="fb"><span>WHY PHOTOS</span><span class="pg"></span></footer>
+</section>
+
+<!-- S23 -->
+<section class="slide" data-slide data-label="WHY PHOTOS · 첫 진입점">
+  <div class="inner">
+    <div class="eb"><span><b>WHY PHOTOS</b> 최종 목표가 아니라 첫 진입점</span><span class="tag">S23 · 선택 근거</span></div>
+    <div class="grid3" style="margin-top:8px">
+      <div class="card"><div class="cardtitle">양이 압도적</div><div class="cardbody">개인 데이터 중 <b>단일 규모 1위</b></div></div>
+      <div class="card"><div class="cardtitle">가장 안 되는 영역</div><div class="cardbody">검색이 가장 안 된다 → <b>개선 효과가 가시적</b></div></div>
+      <div class="card soft"><div class="cardtitle">데이터 밀도가 높다</div><div class="cardbody">사진 1장에 <b>시간·장소·사람·글자·앱출처</b>가 모두 들어 있다</div></div>
+    </div>
+    <div class="callout purple">여기서 만든 구조가 <b>다음 데이터로 그대로 확장된다.</b></div>
+  </div>
+  <footer class="fb"><span>WHY PHOTOS · 첫 진입점</span><span class="pg"></span></footer>
+</section>
+
+<!-- S24 -->
+<section class="slide alt" data-slide data-label="WHY PHOTOS · 확장 로드맵">
+  <div class="inner">
+    <div class="eb"><span><b>WHY PHOTOS</b> 확장은 선택이 아니라 필수</span><span class="tag">S24 · 로드맵</span></div>
+    <div class="query"><span class="q">“</span>출장 중에 갔던 멕시칸 식당<span class="q">”</span></div>
+    <div class="band" style="margin-top:18px">사진첩만으로는 <span class="grad">풀리지 않는다</span></div>
+    <table style="margin-top:18px">
+      <tr><th style="width:90px">단계</th><th>대상</th><th style="width:170px">상태</th></tr>
+      <tr><td class="k">1</td><td>사진 · 동영상</td><td class="yes">본 기획</td></tr>
+      <tr><td class="k">2</td><td>캘린더 / 메일 / 메시지 / 문서 / 통화기록</td><td class="muted">순서 미정</td></tr>
+      <tr><td class="k">3</td><td>—</td><td class="muted">미정</td></tr>
+    </table>
+    <div class="callout">캘린더를 붙이는 이유는 검색 대상을 늘리기 위해서가 아니라 <b>사진 검색을 완성하기 위해서다.</b></div>
+  </div>
+  <footer class="fb"><span>WHY PHOTOS · 확장 로드맵</span><span class="pg"></span></footer>
+</section>
+
+<!-- S25 -->
+<section class="slide" data-slide data-label="WHY PHOTOS · 설계 원칙">
+  <div class="inner">
+    <div class="eb"><span><b>WHY PHOTOS</b> 설계 원칙 — 재사용 가능한 뼈대</span><span class="tag">S25 · 아키텍처</span></div>
+    <div class="grid3" style="margin-top:8px">
+      <div class="card"><div class="cardtitle">질문 해석</div><div class="cardbody">어디를 뒤질지 <b>결정</b>한다</div></div>
+      <div class="card"><div class="cardtitle">공통 형식</div><div class="cardbody">데이터 종류와 <b>무관한</b> 표현</div></div>
+      <div class="card"><div class="cardtitle">통합 순위</div><div class="cardbody">여러 출처의 결과를 <b>하나로</b> 정렬</div></div>
+    </div>
+    <div class="band">1단계에서 만드는 것은 <span class="grad">사진 전용 기능이 아니다</span></div>
+  </div>
+  <footer class="fb"><span>WHY PHOTOS · 설계 원칙</span><span class="pg"></span></footer>
+</section>
+
+<!-- S26 -->
+<section class="slide alt" data-slide data-label="PRIVACY · 경계선">
+  <div class="inner">
+    <div class="eb"><span><b>PRIVACY</b> 개인정보 경계선</span><span class="tag">S26 · 온디바이스 원칙</span></div>
+    <div class="grid2" style="margin-top:8px">
+      <div class="card">
+        <div class="pill" style="margin-bottom:14px">기기 밖으로 안 나감</div>
+        <ul class="dots purple">
+          <li>내 사진 · 메시지 · 통화기록</li>
+          <li>거기서 추출한 내용</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="pill green" style="margin-bottom:14px">외부 조회 허용</div>
+        <ul class="dots">
+          <li>지명 · 좌표</li>
+          <li>일반 상식 · 계산</li>
+        </ul>
+      </div>
+    </div>
+    <table style="margin-top:18px">
+      <tr><th colspan="2">질문 분리 처리</th></tr>
+      <tr><td class="k" style="width:180px"><span class="yes">✅</span> 외부 조회</td><td>"광교산 좌표"</td></tr>
+      <tr><td class="k"><span class="no">❌</span> 외부 미전송</td><td>"흰옷 입고 찍은 사진"</td></tr>
+    </table>
+  </div>
+  <footer class="fb"><span>PRIVACY · 경계선</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ CH 7 ══ -->
+<section class="slide chap" data-slide data-label="NATIVE">
+  <div class="inner center">
+    <div class="num">07</div>
+    <h2>내부 개발이<br>필요한 이유</h2>
+  </div>
+  <footer class="fb"><span>NATIVE</span><span class="pg"></span></footer>
+</section>
+
+<!-- S27 -->
+<section class="slide" data-slide data-label="NATIVE · 내부 vs 앱">
+  <div class="inner">
+    <div class="eb"><span><b>NATIVE</b> 앱으로도 되지만, 반쪽이 된다</span><span class="tag">S27 · 비교</span></div>
+    <table>
+      <tr><th style="width:220px"></th><th>제조사 내부</th><th>별도 앱</th></tr>
+      <tr><td class="k">사진 읽기</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+      <tr><td class="k">초기 3,000장 처리</td><td class="yes">충전 중 자동 완료</td><td class="no">앱 실행 중에만 · 수일 소요</td></tr>
+      <tr><td class="k">신규 사진 반영</td><td class="yes">즉시</td><td class="no">지연</td></tr>
+      <tr><td class="k">진입점</td><td>갤러리 · 어시스턴트 통합</td><td class="no">별도 앱 실행</td></tr>
+      <tr><td class="k">확장 데이터</td><td>캘린더 · 메시지 · 통화</td><td class="no">사진 위주로 제한</td></tr>
+    </table>
+    <div class="callout purple">기능이 안 되는 게 아니라 <b>첫인상이 나빠지고 확장 경로가 막힌다.</b></div>
+  </div>
+  <footer class="fb"><span>NATIVE · 내부 vs 앱</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ CH 8 ══ -->
+<section class="slide chap" data-slide data-label="VALIDATION">
+  <div class="inner center">
+    <div class="num">08</div>
+    <h2>검증 계획</h2>
+  </div>
+  <footer class="fb"><span>VALIDATION</span><span class="pg"></span></footer>
+</section>
+
+<!-- S28 -->
+<section class="slide alt" data-slide data-label="VALIDATION · 승인 전 데이터">
+  <div class="inner">
+    <div class="eb"><span><b>VALIDATION</b> 승인 전 확보할 데이터</span><span class="tag">S28 · 3종</span></div>
+    <div class="grid3" style="margin-top:8px">
+      <div class="card soft">
+        <div class="pill" style="margin-bottom:12px">① 실패 사례 재현 ★</div>
+        <ul class="dots purple" style="margin-bottom:12px">
+          <li>기존 실패 질의 <b>30건</b> 선정</li>
+          <li>신규 방식으로 재실행</li>
+        </ul>
+        <div class="small">산출 — <b>"실패 30건 중 N건 해결"</b></div>
+      </div>
+      <div class="card">
+        <div class="pill green" style="margin-bottom:12px">② 성능 실측</div>
+        <ul class="dots" style="margin-bottom:12px">
+          <li>3,000장 초기 처리 시간 / 배터리 소모율</li>
+          <li>검색 응답 시간 / 저장 용량</li>
+        </ul>
+        <div class="small">산출 — <b>"충전 중 N분이면 완료"</b></div>
+      </div>
+      <div class="card">
+        <div class="pill green" style="margin-bottom:12px">③ 질의 유형별 성공률</div>
+        <ul class="dots">
+          <li>단일 조건 / 복합 조건</li>
+          <li>사진 속 글자 · 부정 조건 · 인원수 조건</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">①이 제안서의 <b>척추</b>다. <b class="grad">"AI가 좋아졌다"보다 실측 비교가 압도적으로 강하다.</b></div>
+  </div>
+  <footer class="fb"><span>VALIDATION · 승인 전 데이터</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ CH 9 ══ -->
+<section class="slide chap" data-slide data-label="OPEN ISSUES">
+  <div class="inner center">
+    <div class="num">09</div>
+    <h2>한계와 남은 결정</h2>
+  </div>
+  <footer class="fb"><span>OPEN ISSUES</span><span class="pg"></span></footer>
+</section>
+
+<!-- S29 -->
+<section class="slide" data-slide data-label="OPEN ISSUES · 알려진 한계">
+  <div class="inner">
+    <div class="eb"><span><b>OPEN ISSUES</b> 알려진 한계 <span class="muted">(선제 공개)</span></span><span class="tag">S29 · 리스크</span></div>
+    <div class="grid2" style="margin-top:8px">
+      <div class="card"><div class="cardtitle">사진 속 글자</div><div class="cardbody">별도 처리 필요. <b>스크린샷 비중 높은 국내 환경</b>에서 특히 중요</div></div>
+      <div class="card"><div class="cardtitle">개수 세기 · 부정 조건 · 유사 인물 구분</div><div class="cardbody">여전히 <b class="no">약함</b></div></div>
+      <div class="card"><div class="cardtitle">인물 이름</div><div class="cardbody">되묻기로 해결하되, <b>최초 1회 사용자 입력</b> 필요</div></div>
+      <div class="card"><div class="cardtitle">초기 처리 시간</div><div class="cardbody">설치 직후 <b class="no">즉시 사용 불가</b></div></div>
+    </div>
+  </div>
+  <footer class="fb"><span>OPEN ISSUES · 알려진 한계</span><span class="pg"></span></footer>
+</section>
+
+<!-- S30 -->
+<section class="slide alt" data-slide data-label="OPEN ISSUES · 남은 결정">
+  <div class="inner">
+    <div class="eb"><span><b>OPEN ISSUES</b> 남은 결정 사항</span><span class="tag">S30 · 의사결정 요청</span></div>
+    <table>
+      <tr><th style="width:220px">항목</th><th>상태</th></tr>
+      <tr><td class="k">제안 대상</td><td class="muted">미정</td></tr>
+      <tr><td class="k">확장 순서</td><td class="muted">미정</td></tr>
+      <tr><td class="k">1단계 범위</td><td>검색만? <b>정리·분류 포함?</b></td></tr>
+      <tr><td class="k">진입점</td><td>갤러리 통합 / 어시스턴트 / 별도</td></tr>
+      <tr><td class="k">성공 지표</td><td>검색 성공률 / 사용 빈도 / 만족도</td></tr>
+      <tr><td class="k">사내 조사</td><td>자체 데이터 확보 방법</td></tr>
+    </table>
+  </div>
+  <footer class="fb"><span>OPEN ISSUES · 남은 결정</span><span class="pg"></span></footer>
+</section>
+
+<!-- S31 -->
+<section class="slide" data-slide data-label="CLOSING">
+  <div class="inner center">
+    <div class="eb" style="justify-content:center"><span><b>CLOSING</b> 마무리</span></div>
+    <h1 style="font-size:clamp(30px,4.4vw,54px)">사진첩은 저장소가 됐지만<br><span class="grad">검색 도구는 되지 못했다</span></h1>
+    <div class="grid2" style="margin-top:38px;text-align:left">
+      <div class="card">
+        <div class="pill" style="margin-bottom:14px">우리가 만들 것</div>
+        <div class="cardbody" style="font-size:clamp(16px,1.7vw,19px)">폰 안의 내 데이터를 <b class="grad">말로 찾는</b> 검색 에이전트</div>
+      </div>
+      <div class="card soft">
+        <div class="pill green" style="margin-bottom:14px">시작점</div>
+        <div class="cardbody" style="font-size:clamp(16px,1.7vw,19px)"><b>사진</b> — 가장 많고, 가장 안 찾아지고, 가장 확장성 있는 데이터</div>
+      </div>
+    </div>
+  </div>
+  <footer class="fb"><span>CLOSING</span><span class="pg"></span></footer>
+</section>
+
+<!-- 출처 -->
+<div style="padding:34px 6vw 60px;border-top:1px solid #E7E4F2;background:#F9F8FD">
+  <div style="max-width:1000px;margin:0 auto">
+    <p style="font-size:13px;color:#6C6680;line-height:1.8"><b>인용 근거</b> — 1인당 보유 사진 수(iOS 약 2,400장 / Android 약 1,900장, 조사별 2,795~3,000장) 및 2015년 630장 대비 증가 추이는 해외 업체 설문 기반 · 검색 부담 54% · 재열람 없음 19% · 1년 이상 지난 사진 검색 실패율 40%(Whittaker et al., 가족 사진 장기 검색 실험).<br>위 수치는 모두 해외 설문·학술 연구 기반이며, 사내 제안 시 자체 사용자 조사 데이터로 대체 또는 병기 권장. InSearch 장표 초안 v3 · 2026.09</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var slides = [].slice.call(document.querySelectorAll('[data-slide]'));
+  var total = slides.length;
+  slides.forEach(function(s,i){
+    var pg = s.querySelector('.pg');
+    if (pg) pg.textContent = String(i+1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+  });
+  window.addEventListener('keydown', function(ev){
+    var y = window.scrollY + window.innerHeight/2, cur = 0;
+    slides.forEach(function(s,i){ if (s.offsetTop <= y) cur = i; });
+    if (['ArrowDown','ArrowRight','PageDown',' '].indexOf(ev.key) > -1) {
+      ev.preventDefault();
+      window.scrollTo({top: slides[Math.min(cur+1, total-1)].offsetTop, behavior:'smooth'});
+    } else if (['ArrowUp','ArrowLeft','PageUp'].indexOf(ev.key) > -1) {
+      ev.preventDefault();
+      window.scrollTo({top: slides[Math.max(cur-1, 0)].offsetTop, behavior:'smooth'});
+    }
+  });
+})();
+</script>
+</body>
+</html>
