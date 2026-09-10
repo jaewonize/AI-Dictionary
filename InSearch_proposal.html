@@ -71,6 +71,10 @@ td{font-size:calc(1.22 * var(--u));line-height:1.6;color:#39354A;padding:calc(1.
 tr:last-child td{border-bottom:none}
 td.k{font-weight:800;color:#17151F}
 td.nw{white-space:nowrap}
+.mk{font-weight:800;font-size:calc(1.45 * var(--u));line-height:1}
+.mk.old{color:#6C6680}
+.mk.new{color:#6D4FE0}
+.mk.off{color:#D5D0E6}
 .yes{color:#159B79;font-weight:800}
 .no{color:#C64B62;font-weight:800}
 
@@ -161,27 +165,27 @@ section.chap footer.fb{color:#8B84A8}
 <!-- ══ 03 전환 ══ -->
 <section class="slide alt" data-slide data-label="03 · 전환">
   <div class="inner">
-    <div class="eb"><span><b>03</b> TO-BE · 무엇이 달라졌나</span><span class="tag">묻는 방향이 뒤집힌다</span></div>
-    <h2 class="head tight">저장할 때 정해두는 대신, <span class="grad">사용자가 물어본 순간에 판단한다</span></h2>
-    <div class="grid2" style="gap:calc(1.56 * var(--u));margin-bottom:calc(0.78 * var(--u))">
-      <div class="card" style="display:flex;flex-direction:column;justify-content:center;min-height:calc(10 * var(--u));padding:calc(1.72 * var(--u)) calc(1.88 * var(--u))">
-        <div class="pill gray" style="margin-bottom:calc(0.78 * var(--u))">기존 · 사진을 저장할 때</div>
-        <div style="font-size:calc(2.16 * var(--u));font-weight:800;letter-spacing:-.03em;color:#6C6680;line-height:1.35">시스템이 스스로 묻는다<br>"이 사진에 어떤 이름을 붙일까?"</div>
-        <p class="small muted" style="margin-top:calc(0.78 * var(--u))">→ 그때 붙여둔 이름 <b>목록 안에서만</b> 검색된다</p>
+    <div class="eb"><span><b>03</b> TO-BE</span><span class="tag">무엇을 써서 찾나</span></div>
+    <h2 class="head tight">라벨을 맞추던 검색에서, <span class="grad">사진을 판단하는 검색</span>으로</h2>
+    <div class="grid2" style="gap:calc(1.4 * var(--u));margin-bottom:calc(1.1 * var(--u))">
+      <div class="card" style="padding:calc(1.3 * var(--u)) calc(1.6 * var(--u))">
+        <div class="pill gray" style="margin-bottom:calc(0.6 * var(--u))">기존 · 사진을 저장할 때</div>
+        <div style="font-size:calc(1.75 * var(--u));font-weight:800;letter-spacing:-.03em;color:#6C6680;line-height:1.35">시스템이 스스로 묻는다<br>"이 사진에 어떤 라벨을 붙일까?"</div>
       </div>
-      <div class="card soft" style="display:flex;flex-direction:column;justify-content:center;min-height:calc(10 * var(--u));padding:calc(1.72 * var(--u)) calc(1.88 * var(--u))">
-        <div class="pill" style="margin-bottom:calc(0.78 * var(--u))">InSearch · 사용자가 물어볼 때</div>
-        <div style="font-size:calc(2.16 * var(--u));font-weight:800;letter-spacing:-.03em;line-height:1.35;color:#17151F">시스템이 사진마다 확인한다<br><span class="grad">"이 사진이 이 말에 맞는가?"</span></div>
-        <p class="small muted" style="margin-top:calc(0.78 * var(--u))">→ <b>미리 붙여둘 이름이 필요 없다</b></p>
+      <div class="card soft" style="padding:calc(1.3 * var(--u)) calc(1.6 * var(--u))">
+        <div class="pill" style="margin-bottom:calc(0.6 * var(--u))">InSearch · 사용자가 물어볼 때</div>
+        <div style="font-size:calc(1.75 * var(--u));font-weight:800;letter-spacing:-.03em;line-height:1.35;color:#17151F">시스템이 사진마다 확인한다<br><span class="grad">"이 사진이 이 말에 맞는가?"</span></div>
       </div>
     </div>
     <table>
-      <tr><th style="width:calc(3.4 * var(--u))"></th><th style="width:44%">앞의 실패 지점</th><th>InSearch의 대응</th></tr>
-      <tr><td class="k"><span class="idx">1</span></td><td>문장을 조건으로 분해 못 함</td><td>AI가 문장을 <b>조건으로 나눠서 해석</b>한다</td></tr>
-      <tr><td class="k"><span class="idx">2</span></td><td>값이 기록돼 있지 않음</td><td><b>사진을 직접 보고 판단</b>한다 — 기록이 없어도 무관</td></tr>
-      <tr><td class="k"><span class="idx">3</span></td><td>항목 자체가 없음</td><td><b>항목을 미리 정하지 않는다</b> — 어떤 설명이든 대조 가능</td></tr>
-      <tr><td class="k"><span class="idx">4</span></td><td>사용자와 시스템의 말이 다름</td><td>모르는 건 <b>외부에서 조회</b>하고, 그래도 안 되면 <b>사용자에게 되묻는다</b></td></tr>
-      <tr><td class="k"><span class="idx">5</span></td><td>조건 하나 어긋나면 0건</td><td>0건 대신 <b>가능성 높은 순으로 제시</b>한다</td></tr>
+      <tr><th style="width:27%">검색에 쓰는 것</th><th>하는 일</th><th style="width:13%;text-align:center">기존 검색</th><th style="width:13%;text-align:center">InSearch</th></tr>
+      <tr><td class="k">라벨 · 태그</td><td>붙여둔 라벨과 검색어가 일치하는지 맞춰본다</td><td style="text-align:center"><span class="mk old">●</span></td><td style="text-align:center"><span class="mk new">●</span></td></tr>
+      <tr><td class="k">사진 속 광경</td><td>사진을 보고 장면과 구도를 읽는다</td><td style="text-align:center"><span class="mk off">—</span></td><td style="text-align:center"><span class="mk new">●</span></td></tr>
+      <tr><td class="k">맥락</td><td>촬영 시각 · 위치를 캘린더 · 메일과 엮어 상황을 세운다</td><td style="text-align:center"><span class="mk off">—</span></td><td style="text-align:center"><span class="mk new">●</span></td></tr>
+      <tr><td class="k">LLM 추론</td><td>문장을 조건으로 나누고, 금액 · 인원수를 따진다</td><td style="text-align:center"><span class="mk off">—</span></td><td style="text-align:center"><span class="mk new">●</span></td></tr>
+      <tr><td class="k">사진 대조</td><td>받은 사진을 검색어로 삼아 맞춰본다</td><td style="text-align:center"><span class="mk off">—</span></td><td style="text-align:center"><span class="mk new">●</span></td></tr>
+      <tr><td class="k">웹 검색</td><td>모르는 지명 · 상식을 밖에서 가져온다</td><td style="text-align:center"><span class="mk off">—</span></td><td style="text-align:center"><span class="mk new">●</span></td></tr>
+      <tr><td class="k">사용자에게 질문</td><td>좁힌 선택지로 되물어 확정한다</td><td style="text-align:center"><span class="mk off">—</span></td><td style="text-align:center"><span class="mk new">●</span></td></tr>
     </table>
   </div>
   <footer class="fb"><span>03 · 전환</span><span class="pg"></span></footer>
@@ -198,7 +202,7 @@ section.chap footer.fb{color:#8B84A8}
       <tr><td><span class="idx">2</span></td><td class="k">"이 신발 신고 찍은 사진" <span class="attach">사진 첨부</span></td><td>사진을 검색어로 쓰는 기능이 <b>기본 갤러리에 없다</b></td><td><b>사진으로 검색한다</b></td></tr>
       <tr><td><span class="idx">3</span></td><td class="k">"3만원 넘게 쓴 영수증"</td><td>글자는 읽지만 그게 <b>금액인지 모르고 비교도 못 한다</b></td><td><b>글자의 의미를 안다</b></td></tr>
       <tr><td><span class="idx">4</span></td><td class="k">"엄마랑 <b class="grad">둘이만</b> 찍은 사진"</td><td><b>"둘뿐"이라는 조건을 걸 수 없다</b>. "엄마"가 누군지도 모른다</td><td><b>조건을 조합한다</b> <span class="muted">+ 모르면 되묻는다</span></td></tr>
-      <tr><td><span class="idx">5</span></td><td class="k">"광교산에서 찍은 사진"</td><td>좌표는 남아 있어도 그게 <b>"광교산"인지 모른다</b></td><td><b>모르는 이름은 밖에서 찾아온다</b></td></tr>
+      <tr><td><span class="idx">5</span></td><td class="k">"광교산에서 찍은 사진"</td><td>좌표는 남아 있어도 그게 <b>"광교산"인지 모른다</b></td><td><b>모르는 지명은 밖에서 찾아온다</b></td></tr>
       <tr><td><span class="idx">6</span></td><td class="k">"출장 중에 갔던 멕시칸 식당"</td><td>"출장"은 <b>사진에 없는 정보</b> — 캘린더·메일에서 알아내야 한다</td><td><b>사진 밖에서 추론한다</b></td></tr>
     </table>
   </div>
