@@ -66,6 +66,11 @@ a.replay{text-decoration:none}
 @keyframes blink{50%{opacity:.25}}
 .step .body{flex:1;min-width:0}
 .step .t{font-size:17px;font-weight:800;color:#17151F;letter-spacing:-.025em;line-height:1.45}
+.hop{display:inline-flex;gap:4px;margin-left:7px;vertical-align:3px}
+.hop i{width:5px;height:5px;border-radius:50%;background:#6D4FE0;animation:hop .95s ease-in-out infinite}
+.hop i:nth-child(2){animation-delay:.16s}
+.hop i:nth-child(3){animation-delay:.32s}
+@keyframes hop{0%,62%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-5px);opacity:1}}
 .step .d{font-size:14.5px;font-weight:500;color:#8B84A8;line-height:1.55;margin-top:5px}
 .step .d b{color:#39354A;font-weight:700}
 .step .d i{font-style:normal;color:#C4BED6;font-weight:600;margin-right:1px}
@@ -211,7 +216,7 @@ const SCENARIOS = [
      tags:[["대상","카페에서 찍은 사진"],["장면","창밖으로 바다가 보이는 구도"]]},
     {type:"stores", t:"사진이 있는 곳을 모두 찾아봤어요", rows:STORES_ALL},
     {type:"narrow", t:"카페에서 찍은 사진을 모았어요", from:"2,481", to:"24", unit:"장"},
-    {type:"note", t:"한 장씩 확인했어요",
+    {type:"note", t:"한 장씩 확인했어요", hop:true, wait:1400,
      d:"창이 보이는지, <b>창밖이 바다인지</b> 확인했어요"},
     {type:"note", t:"세 번 다녀오셨네요",
      d:"<b>2022년 6월</b> · <b>2024년 7월</b> · <b>2026년 9월</b>, 서로 다른 카페예요"}
@@ -240,7 +245,7 @@ const SCENARIOS = [
      d:"진열대의 다른 신발은 빼고, <b>초록색 스웨이드 · 아이보리 끈 · 검 밑창</b>이 기준이에요"},
     {type:"stores", t:"사람이 나온 사진을 모두 찾아봤어요", rows:STORES_ALL},
     {type:"narrow", t:"발이 보이는 사진을 모았어요", from:"1,840", to:"18", unit:"장"},
-    {type:"note", t:"같은 신발이 맞는지 확인했어요",
+    {type:"note", t:"같은 신발이 맞는지 확인했어요", hop:true, wait:1500,
      d:"색과 무늬까지 비교해 <b>비슷한 다른 신발</b>은 제외했어요"}
   ],
   results:[
@@ -257,7 +262,7 @@ const SCENARIOS = [
     {type:"cond", t:"찾을 내용을 정리했어요",
      tags:[["대상","문서"],["종류","견적서"],["금액","500만 원 넘는"]]},
     {type:"stores", t:"문서가 있는 곳을 모두 찾아봤어요", rows:STORES_DOC},
-    {type:"narrow", t:"견적서만 모았어요",
+    {type:"narrow", t:"견적서만 모았어요", hop:true, wait:1600,
      d:"파일 이름이 아니라 <b>문서 안을 열어서</b> 확인했어요", from:"214", to:"38", unit:"건"},
     {type:"note", t:"금액을 확인했어요",
      d:"견적서마다 <b>부가세 포함 합계</b>를 읽고 500만 원과 비교했어요"},
@@ -281,7 +286,7 @@ const SCENARIOS = [
   steps:[
     {type:"cond", t:"찾을 내용을 정리했어요",
      tags:[["대상","자료"],["받은 곳","회의"],["언제","‘지난번’이 언제일까요",1]]},
-    {type:"ask", t:"어느 회의인지 알려주세요",
+    {type:"ask", t:"어느 회의인지 알려주세요", hop:true, wait:1400,
      d:"최근 2주 안에 자료를 받은 회의가 <b>세 번</b> 있었어요",
      opts:[
       ["9월 24일 · 신규 기능 리뷰","카카오톡으로 2개 · 메일로 1개", {
@@ -332,10 +337,10 @@ const SCENARIOS = [
   q:"디올 성수에서 찍은 사진", layout:"grid", core:"웹에서 알아내 비교한다",
   steps:[
     {type:"cond", t:"찾을 내용을 정리했어요",
-     tags:[["대상","사진"],["장소","디올 성수"],["언제","아직 모르겠어요",1]]},
-    {type:"note", t:"이곳을 몰라서 먼저 알아봤어요",
-     d:"어디에 있고 어떻게 생겼는지 <b>웹에서 찾아봤어요</b>"},
-    {type:"facts", t:"이렇게 확인했어요",
+     tags:[["대상","사진"],["주제","디올 성수"],["언제","아직 모르겠어요",1]]},
+    {type:"note", t:"웹에서 검색 중", hop:true, wait:1800,
+     d:"<b>디올 성수</b>를 웹에서 찾아봤어요"},
+    {type:"facts", t:"디올 성수에 대해 알아왔어요",
      facts:[["장소","서울 성동구 연무장길"],["운영","상시 · 시기마다 테마가 바뀜"],["설치물","2023 동물 조형물 · 2024 대형 의자"]]},
     {type:"narrow", t:"그 장소에서 찍은 사진을 모았어요", from:"312", to:"5", unit:"장"},
     {type:"note", t:"두 번 다녀오셨네요",
@@ -357,7 +362,7 @@ const SCENARIOS = [
   steps:[
     {type:"cond", t:"찾을 게 둘이라 나눠서 찾을게요",
      tags:[["하나","작년 송년회 · 와인"],["둘","4년 전 생일 · 와인"]]},
-    {type:"note", t:"두 날이 언제인지 먼저 확인했어요",
+    {type:"note", t:"두 날이 언제인지 먼저 확인했어요", hop:true, wait:1500,
      d:"일정과 사진을 보고 <b>2025.12.19</b> · <b>2022.03.19</b>로 확인했어요"},
     {type:"stores", t:"두 날짜를 따로 찾아봤어요", rows:STORES_ALL},
     {type:"narrow", t:"와인이 보이는 사진을 모았어요", from:"430", to:"11", unit:"장"},
@@ -387,7 +392,7 @@ const SCENARIOS = [
     {type:"note", t:"사진만 봐서는 찾을 수 없어요",
      d:"‘합격’은 <b>사진에 찍히는 장면이 아니에요</b>"},
     {type:"stores", t:"사진과 글이 함께 있는 곳을 찾아봤어요", rows:[["페이스북","1,240"],["인스타그램","980"]]},
-    {type:"note", t:"올릴 때 쓴 글에서 날짜를 찾았어요",
+    {type:"note", t:"올릴 때 쓴 글에서 날짜를 찾았어요", hop:true, wait:1600,
      d:"“동생 드디어 합격! 오늘은 집에서 조촐하게 축하 파티 🎉”라고 쓴 <b>게시글의 날짜</b>는 2024.04.12예요"},
     {type:"narrow", t:"그날 찍은 파티 사진을 모았어요",
      d:"케이크 · 건배 · 상차림처럼 <b>파티 장면</b>인 사진이에요", from:"48", to:"6", unit:"장"}
@@ -410,7 +415,7 @@ const SCENARIOS = [
     {type:"stores", t:"보낸 메일함을 확인했어요", rows:[["메일 첨부","860"]]},
     {type:"note", t:"어느 PDF인지 확인했어요",
      d:"가장 최근에 보낸 <b>브랜드전략_제안.pdf</b> · 4쪽 · 2026.09.24 발송"},
-    {type:"narrow", t:"같은 문서일 만한 파일을 모았어요",
+    {type:"narrow", t:"같은 문서일 만한 파일을 모았어요", hop:true, wait:1500,
      d:"표지와 <b>쪽 구성</b>을 비교했어요", from:"96", to:"4", unit:"건"},
     {type:"note", t:"원본이 어느 쪽인지 확인했어요",
      d:"두 후보 모두 4쪽이지만, <b>표지와 실행 일정</b>까지 PDF와 같은 건 하나예요"}
@@ -490,6 +495,7 @@ function run(){
 /* 단계 하나를 그리고, 다음 단계까지 걸릴 시간을 반환 */
 function step(S,i,no){
   chat.querySelectorAll('.dot.live').forEach(d=>d.classList.remove('live'));
+  chat.querySelectorAll('.hop').forEach(h=>h.remove());   /* 검색이 끝나면 도트를 멈춘다 */
   if(i>=S.steps.length){ results(S); return; }
   const s=S.steps[i]; let inner='';
 
@@ -508,14 +514,17 @@ function step(S,i,no){
       +s.opts.map((o,k)=>'<button class="rv" data-k="'+k+'">'+o[0]+'</button>').join('')+'</div>';
 
   const el=add('<div class="step"><div class="dot live"></div>'
-    +'<div class="body"><div class="t">'+s.t+'</div>'+inner+'</div></div>');
+    +'<div class="body"><div class="t">'+s.t
+    +(s.hop?'<span class="hop"><i></i><i></i><i></i></span>':'')+'</div>'+inner+'</div></div>');
 
   /* 한 줄씩 차례로 띄워 처리 중인 느낌을 낸다 */
   const rows=[...el.querySelectorAll('.rv')];
-  rows.forEach((n,k)=>wait(260+k*230,()=>{n.classList.add('on');chat.scrollTop=chat.scrollHeight;}));
-  const dur=700+rows.length*230;
+  const lag=s.wait||0;                       /* 도트만 도는 구간 */
+  rows.forEach((n,k)=>wait(lag+260+k*230,()=>{n.classList.add('on');chat.scrollTop=chat.scrollHeight;}));
+  const dur=700+rows.length*230+lag;
 
   if(s.type==='ask'){                        /* 사용자가 고를 때까지 멈춤 */
+    if(s.hop) wait(lag+260+rows.length*230,()=>el.querySelectorAll('.hop').forEach(h=>h.remove()));
     el.querySelectorAll('.ask button').forEach(b=>b.onclick=()=>{
       const o=s.opts[+b.dataset.k];
       el.querySelector('.ask').remove();
