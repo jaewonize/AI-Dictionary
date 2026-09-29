@@ -23,7 +23,7 @@
       "search_placement": "상위",
       "match_type": "document_content",
       "evidence": "최종 합계 (부가세 포함): 8,420,000원",
-      "thumbnail_filename": "인테리어_견적서_최종.png"
+      "thumbnail_filename": "인테리어_견적서_최종.jpg"
     },
     {
       "filename": "사무실이전_견적_v3.xlsx",
@@ -43,7 +43,7 @@
       "search_placement": "상위",
       "match_type": "document_content",
       "evidence": "최종 합계 (부가세 포함): 12,700,000원",
-      "thumbnail_filename": "사무실이전_견적_v3.png"
+      "thumbnail_filename": "사무실이전_견적_v3.jpg"
     },
     {
       "filename": "촬영장비_렌탈견적.pdf",
@@ -63,7 +63,7 @@
       "search_placement": "상위",
       "match_type": "document_content",
       "evidence": "최종 합계 (부가세 포함): 6,150,000원",
-      "thumbnail_filename": "촬영장비_렌탈견적.png"
+      "thumbnail_filename": "촬영장비_렌탈견적.jpg"
     },
     {
       "filename": "웹사이트_구축제안견적.pdf",
@@ -84,7 +84,7 @@
       "search_placement": "상위",
       "match_type": "document_content",
       "evidence": "최종 합계 (부가세 포함): 5,500,000원",
-      "thumbnail_filename": "웹사이트_구축제안견적.png"
+      "thumbnail_filename": "웹사이트_구축제안견적.jpg"
     }
   ]
 }

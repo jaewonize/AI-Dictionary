@@ -53,7 +53,7 @@
         "리뷰"
       ],
       "description": "통합 검색 신규 기능의 검토 범위, 사용성 이슈와 후속 일정을 정리한 발표 자료.",
-      "thumbnail_filename": "신규기능_리뷰_0924.png",
+      "thumbnail_filename": "신규기능_리뷰_0924.jpg",
       "search_placement": "선택한 회의의 검색결과",
       "match_type": "meeting_attachment_context"
     },
@@ -73,7 +73,7 @@
         "개선 과제"
       ],
       "description": "참여자 8명의 검색 과제 결과와 회의 후보 선택 단계의 개선 과제를 정리한 보고서.",
-      "thumbnail_filename": "사용성테스트_요약.png",
+      "thumbnail_filename": "사용성테스트_요약.jpg",
       "search_placement": "선택한 회의의 검색결과",
       "match_type": "meeting_attachment_context"
     },
@@ -93,7 +93,7 @@
         "개발"
       ],
       "description": "검색 입력, 사진 첨부, 회의 후보 선택과 자료 연결 기능의 개발·검수 일정.",
-      "thumbnail_filename": "기능별_일정표_v2.png",
+      "thumbnail_filename": "기능별_일정표_v2.jpg",
       "search_placement": "선택한 회의의 검색결과",
       "match_type": "meeting_attachment_context"
     },
@@ -113,7 +113,7 @@
         "심의안"
       ],
       "description": "4분기 요청 예산 6,200만 원과 심의안 6,000만 원의 월별 계획 및 조정 내역.",
-      "thumbnail_filename": "4분기_예산안_v4.png",
+      "thumbnail_filename": "4분기_예산안_v4.jpg",
       "search_placement": "선택한 회의의 검색결과",
       "match_type": "meeting_attachment_context"
     },
@@ -133,7 +133,7 @@
         "예산"
       ],
       "description": "2026년 상반기 예산 1억 원 대비 집행액 8,200만 원과 미집행 사유를 정리한 보고서.",
-      "thumbnail_filename": "상반기_집행실적.png",
+      "thumbnail_filename": "상반기_집행실적.jpg",
       "search_placement": "선택한 회의의 검색결과",
       "match_type": "meeting_attachment_context"
     },
@@ -153,7 +153,7 @@
         "후속 조치"
       ],
       "description": "항목별 심의 의견, 도구 비용 200만 원 감액과 후속 제출 일정을 정리한 문서.",
-      "thumbnail_filename": "예산_심의의견_취합.png",
+      "thumbnail_filename": "예산_심의의견_취합.jpg",
       "search_placement": "선택한 회의의 검색결과",
       "match_type": "meeting_attachment_context"
     },
@@ -173,7 +173,7 @@
         "디자인"
       ],
       "description": "검색 중심 메인화면 A안과 회의 자료 검색의 후보 선택 화면을 담은 디자인 문서.",
-      "thumbnail_filename": "메인화면_시안_A안.png",
+      "thumbnail_filename": "메인화면_시안_A안.jpg",
       "search_placement": "선택한 회의의 검색결과",
       "match_type": "meeting_attachment_context"
     },
@@ -193,7 +193,7 @@
         "디자인"
       ],
       "description": "A안의 화면 구성 원칙과 검색 흐름, 검토 항목을 설명하는 발표 자료.",
-      "thumbnail_filename": "시안_설명자료.png",
+      "thumbnail_filename": "시안_설명자료.jpg",
       "search_placement": "선택한 회의의 검색결과",
       "match_type": "meeting_attachment_context"
     }
