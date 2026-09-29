@@ -1,0 +1,90 @@
+{
+  "scenario": "메일 첨부 PDF의 원본으로 추정되는 PPTX 찾기",
+  "synthetic": true,
+  "note": "브랜드·문서 내용·메일·저장소·시각은 검색 UI 시연용 가상 설정. 실제 메일 발송이나 저장소 검색은 하지 않음.",
+  "query_example": "메일로 받은 브랜드전략_제안.pdf의 원본 파일 찾아줘",
+  "email": {
+    "subject": "오온 브랜드 전략 제안서 공유",
+    "sender_display_name": "브랜드전략팀",
+    "sent_at": "2026-09-24T09:15:00+09:00",
+    "body": "검토하실 브랜드 전략 제안서를 PDF로 첨부합니다. 핵심 메시지와 실행 일정을 확인해 주세요.",
+    "attachments": [
+      "브랜드전략_제안.pdf"
+    ]
+  },
+  "files": [
+    {
+      "filename": "브랜드전략_제안.pdf",
+      "type": "pdf",
+      "role": "메일 첨부파일",
+      "repository": "메일",
+      "modified_at": "2026-09-24T09:12:00+09:00",
+      "pages": 4,
+      "thumbnail": "브랜드전략_제안.png",
+      "description": "오온 브랜드 전략 제안서의 메일 첨부 PDF",
+      "candidate_order": null
+    },
+    {
+      "filename": "브랜드전략_제안_v7.pptx",
+      "type": "pptx",
+      "role": "원본 후보 1",
+      "repository": "내 파일",
+      "modified_at": "2026-09-23T18:42:00+09:00",
+      "pages": 4,
+      "thumbnail": "브랜드전략_제안_v7.png",
+      "description": "PDF와 4쪽의 내용·배치가 일치하는 편집 가능한 제안서",
+      "candidate_order": 1,
+      "evidence": [
+        "4쪽의 제목과 본문이 PDF와 일치",
+        "표지 문구: 일상에 오래 남는 선택",
+        "10월 1~2주 정리, 10월 3~4주 시범 적용, 11월 순차 적용",
+        "PDF 공유 이전의 수정 시각"
+      ],
+      "result_label": "가장 유력한 원본 후보"
+    },
+    {
+      "filename": "브랜드전략_제안_v6.pptx",
+      "type": "pptx",
+      "role": "원본 후보 2",
+      "repository": "클라우드 드라이브",
+      "modified_at": "2026-09-20T16:10:00+09:00",
+      "pages": 4,
+      "thumbnail": "브랜드전략_제안_v6.png",
+      "description": "같은 제안서의 수정 전 버전. 핵심 메시지와 실행 일정이 PDF와 다름",
+      "candidate_order": 2,
+      "evidence": [
+        "동일한 제목·브랜드·4쪽 구성",
+        "고객과 브랜드의 약속 본문이 동일",
+        "표지·3쪽 핵심 메시지와 4쪽 실행 일정이 PDF와 다름"
+      ],
+      "result_label": "이전 버전 후보"
+    }
+  ],
+  "comparison": {
+    "input": "브랜드전략_제안.pdf",
+    "results": [
+      "브랜드전략_제안_v7.pptx",
+      "브랜드전략_제안_v6.pptx"
+    ],
+    "result_count": 2,
+    "creation_ground_truth": "브랜드전략_제안_v7.pptx를 PDF로 내보내 생성함",
+    "ui_claim": "내용·레이아웃과 시각을 근거로 원본 후보를 제시하며, 두 PPTX 모두 결과로 제공",
+    "differences": [
+      {
+        "pages": "표지·3쪽",
+        "v7": "일상에 오래 남는 선택",
+        "v6": "생활을 바꾸는 새로운 선택"
+      },
+      {
+        "pages": "3쪽",
+        "v7": "관리 방법·부품 교체·실제 사용 장면 중심",
+        "v6": "디자인 특징·신제품 소식·스타일링 중심"
+      },
+      {
+        "pages": "4쪽",
+        "v7": "10월 정리·시범 적용, 11월 순차 적용",
+        "v6": "10월 방향 정리, 11월 동시 적용, 12월 패키지 변경"
+      }
+    ]
+  }
+}

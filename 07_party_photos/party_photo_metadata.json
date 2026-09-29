@@ -1,0 +1,140 @@
+{
+  "query_number": 7,
+  "query": "동생 합격했다고 올렸던 날 파티 사진",
+  "synthetic": true,
+  "scenario_counts": {
+    "same_day_candidates": 48,
+    "party_results": 6,
+    "excluded": 42,
+    "note": "사용자 지정 데모 수치. 실제 저장소 검색을 수행한 결과가 아니며, 최종 6장만 생성함."
+  },
+  "text_evidence": {
+    "id": "FB_POST_20240412_01",
+    "repository": "페이스북",
+    "posted_at": "2024-04-12T22:18:00+09:00",
+    "caption": "동생 드디어 합격! 오늘은 집에서 조촐하게 축하 파티 🎉 고생 많았다!",
+    "attached_files": [
+      "IMG_005218.png",
+      "IMG_005216.png"
+    ],
+    "caption_match": "동생 드디어 합격",
+    "resolved_date": "2024-04-12",
+    "date_basis": "합격을 언급한 캡션의 게시일. 캡션의 오늘로 같은 날 파티임을 연결."
+  },
+  "search_flow": [
+    {
+      "step": 1,
+      "text": "찾을 내용을 정리했어요",
+      "detail": "대상: 그날 찍은 파티 사진. 단서: 사진 밖 글에 담긴 합격."
+    },
+    {
+      "step": 2,
+      "text": "사진만 봐서는 찾을 수 없어요",
+      "detail": "이 예시의 사진에는 합격을 확인할 문구나 증빙이 없음."
+    },
+    {
+      "step": 3,
+      "text": "사진과 글이 함께 있는 곳을 봤어요",
+      "detail": "페이스북·인스타그램 게시물 캡션을 확인."
+    },
+    {
+      "step": 4,
+      "text": "올릴 때 쓴 글에서 날짜를 찾았어요",
+      "detail": "페이스북 합격 캡션과 게시일을 연결해 2024.04.12 확인."
+    },
+    {
+      "step": 5,
+      "text": "그날 찍은 파티 사진만 남겼어요",
+      "detail": "페이스북·갤러리·카카오·인스타그램의 해당 날짜 사진 48장 중 시각적 파티 장면 6장.",
+      "before": 48,
+      "after": 6
+    }
+  ],
+  "retrieval_policy": "캡션은 날짜 식별에 사용. 해당 날짜의 여러 저장소 사진에서 파티 장면을 시각적으로 선별. 모든 최종 결과는 함께 제공.",
+  "photos": [
+    {
+      "filename": "IMG_005218.png",
+      "repository": "페이스북",
+      "captured_at": "2024-04-12T20:06:18+09:00",
+      "event_id": "PARTY_20240412",
+      "location": "집 거실",
+      "visible_description": "네 사람이 딸기 케이크의 촛불 앞에서 웃는 단체 사진",
+      "visual_category": "파티",
+      "acceptance_visible_in_image": false,
+      "selected": true,
+      "date_evidence_id": "FB_POST_20240412_01",
+      "party_evidence": "네 사람이 딸기 케이크의 촛불 앞에서 웃는 단체 사진",
+      "synthetic": true
+    },
+    {
+      "filename": "IMG_005220.png",
+      "repository": "갤러리",
+      "captured_at": "2024-04-12T20:07:03+09:00",
+      "event_id": "PARTY_20240412",
+      "location": "집 거실",
+      "visible_description": "남성이 촛불을 끄고 옆 사람들이 박수치는 장면",
+      "visual_category": "파티",
+      "acceptance_visible_in_image": false,
+      "selected": true,
+      "date_evidence_id": "FB_POST_20240412_01",
+      "party_evidence": "남성이 촛불을 끄고 옆 사람들이 박수치는 장면",
+      "synthetic": true
+    },
+    {
+      "filename": "IMG_005237.png",
+      "repository": "카카오",
+      "captured_at": "2024-04-12T20:24:11+09:00",
+      "event_id": "PARTY_20240412",
+      "location": "집 거실",
+      "visible_description": "네 사람이 음료 잔을 모아 건배하는 장면",
+      "visual_category": "파티",
+      "acceptance_visible_in_image": false,
+      "selected": true,
+      "date_evidence_id": "FB_POST_20240412_01",
+      "party_evidence": "네 사람이 음료 잔을 모아 건배하는 장면",
+      "synthetic": true
+    },
+    {
+      "filename": "IMG_005216.png",
+      "repository": "페이스북",
+      "captured_at": "2024-04-12T20:03:42+09:00",
+      "event_id": "PARTY_20240412",
+      "location": "집 거실",
+      "visible_description": "풍선과 케이크 앞에서 함께 포즈를 취한 두 사람",
+      "visual_category": "파티",
+      "acceptance_visible_in_image": false,
+      "selected": true,
+      "date_evidence_id": "FB_POST_20240412_01",
+      "party_evidence": "풍선과 케이크 앞에서 함께 포즈를 취한 두 사람",
+      "synthetic": true
+    },
+    {
+      "filename": "IMG_005217.png",
+      "repository": "인스타그램",
+      "captured_at": "2024-04-12T20:05:26+09:00",
+      "event_id": "PARTY_20240412",
+      "location": "집 거실",
+      "visible_description": "촛불 케이크, 피자와 치킨이 놓인 파티 테이블",
+      "visual_category": "파티",
+      "acceptance_visible_in_image": false,
+      "selected": true,
+      "date_evidence_id": "FB_POST_20240412_01",
+      "party_evidence": "촛불 케이크, 피자와 치킨이 놓인 파티 테이블",
+      "synthetic": true
+    },
+    {
+      "filename": "IMG_005232.png",
+      "repository": "갤러리",
+      "captured_at": "2024-04-12T20:20:09+09:00",
+      "event_id": "PARTY_20240412",
+      "location": "집 거실",
+      "visible_description": "남성이 케이크 한 조각을 접시에 나눠 담는 장면",
+      "visual_category": "파티",
+      "acceptance_visible_in_image": false,
+      "selected": true,
+      "date_evidence_id": "FB_POST_20240412_01",
+      "party_evidence": "남성이 케이크 한 조각을 접시에 나눠 담는 장면",
+      "synthetic": true
+    }
+  ]
+}

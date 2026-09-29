@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "query": "견적 금액 500만 원 넘는 견적서",
   "metadata_is_synthetic": true,
   "metadata_note": "PoC용 가상 문서와 거래 정보. total_amount는 부가세 포함 최종 합계이며, 검색 조건은 5,000,000원 초과입니다.",
@@ -20,10 +20,15 @@
         "최종본"
       ],
       "description": "주거 공간 부분 리모델링에 대한 견적서. 부가세 포함 최종 합계는 8,420,000원이다.",
-      "search_placement": "상위",
+      "search_placement": "함께 제공",
       "match_type": "document_content",
       "evidence": "최종 합계 (부가세 포함): 8,420,000원",
-      "thumbnail_filename": "인테리어_견적서_최종.jpg"
+      "thumbnail_filename": "인테리어_견적서_최종.png",
+      "file_type": "pdf",
+      "asset_type": "document",
+      "list_display": "file_type_icon",
+      "preview_filename": "인테리어_견적서_최종.png",
+      "thumbnail_usage": "preview_only"
     },
     {
       "filename": "사무실이전_견적_v3.xlsx",
@@ -40,13 +45,18 @@
         "v3"
       ],
       "description": "40석 사무실 이전 / 약 150㎡에 대한 견적서. 부가세 포함 최종 합계는 12,700,000원이다.",
-      "search_placement": "상위",
+      "search_placement": "함께 제공",
       "match_type": "document_content",
       "evidence": "최종 합계 (부가세 포함): 12,700,000원",
-      "thumbnail_filename": "사무실이전_견적_v3.jpg"
+      "thumbnail_filename": "사무실이전_견적_v3.png",
+      "file_type": "xlsx",
+      "asset_type": "document",
+      "list_display": "file_type_icon",
+      "preview_filename": "사무실이전_견적_v3.png",
+      "thumbnail_usage": "preview_only"
     },
     {
-      "filename": "촬영장비_렌탈견적.pdf",
+      "filename": "IMG_008426.png",
       "document_date": "2025-10-08",
       "document_type": "견적서",
       "issuer": "프레임온 렌탈",
@@ -57,13 +67,19 @@
         "견적서",
         "촬영장비",
         "렌탈",
-        "영상 제작"
+        "영상 제작",
+        "스크린샷"
       ],
-      "description": "브랜드 영상 촬영 장비 / 2일에 대한 견적서. 부가세 포함 최종 합계는 6,150,000원이다.",
-      "search_placement": "상위",
-      "match_type": "document_content",
+      "description": "촬영장비 렌탈 견적서 화면을 저장한 스크린샷. 이미지 속 최종 합계는 부가세 포함 6,150,000원이다.",
+      "search_placement": "함께 제공",
+      "match_type": "image_ocr",
       "evidence": "최종 합계 (부가세 포함): 6,150,000원",
-      "thumbnail_filename": "촬영장비_렌탈견적.jpg"
+      "thumbnail_filename": "IMG_008426.png",
+      "file_type": "png",
+      "asset_type": "screenshot",
+      "list_display": "image_thumbnail",
+      "preview_filename": "IMG_008426.png",
+      "thumbnail_usage": "list_and_preview"
     },
     {
       "filename": "웹사이트_구축제안견적.pdf",
@@ -81,10 +97,16 @@
         "구축"
       ],
       "description": "기업 소개 반응형 웹사이트에 대한 견적서. 부가세 포함 최종 합계는 5,500,000원이다.",
-      "search_placement": "상위",
+      "search_placement": "함께 제공",
       "match_type": "document_content",
       "evidence": "최종 합계 (부가세 포함): 5,500,000원",
-      "thumbnail_filename": "웹사이트_구축제안견적.jpg"
+      "thumbnail_filename": "웹사이트_구축제안견적.png",
+      "file_type": "pdf",
+      "asset_type": "document",
+      "list_display": "file_type_icon",
+      "preview_filename": "웹사이트_구축제안견적.png",
+      "thumbnail_usage": "preview_only"
     }
-  ]
+  ],
+  "retrieval_policy": "파일 형식을 제한하지 않고 문서 본문과 이미지 OCR에서 견적 내용 및 부가세 포함 합계 5,000,000원 초과 여부를 확인한다. 최종 결과는 문서 3개와 스크린샷 1개, 총 4개다."
 }
