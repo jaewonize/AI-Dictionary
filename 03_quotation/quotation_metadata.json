@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "query": "견적 금액 500만 원 넘는 견적서",
+  "metadata_is_synthetic": true,
+  "metadata_note": "PoC용 가상 문서와 거래 정보. total_amount는 부가세 포함 최종 합계이며, 검색 조건은 5,000,000원 초과입니다.",
+  "currency": "KRW",
+  "documents": [
+    {
+      "filename": "인테리어_견적서_최종.pdf",
+      "document_date": "2023-11-16",
+      "document_type": "견적서",
+      "issuer": "온결 인테리어",
+      "total_amount": 8420000,
+      "currency": "KRW",
+      "tax_included": true,
+      "labels": [
+        "견적서",
+        "인테리어",
+        "리모델링",
+        "최종본"
+      ],
+      "description": "주거 공간 부분 리모델링에 대한 견적서. 부가세 포함 최종 합계는 8,420,000원이다.",
+      "search_placement": "상위",
+      "match_type": "document_content",
+      "evidence": "최종 합계 (부가세 포함): 8,420,000원",
+      "thumbnail_filename": "인테리어_견적서_최종.png"
+    },
+    {
+      "filename": "사무실이전_견적_v3.xlsx",
+      "document_date": "2024-08-23",
+      "document_type": "견적서",
+      "issuer": "바른이전 서비스",
+      "total_amount": 12700000,
+      "currency": "KRW",
+      "tax_included": true,
+      "labels": [
+        "견적서",
+        "사무실 이전",
+        "이사",
+        "v3"
+      ],
+      "description": "40석 사무실 이전 / 약 150㎡에 대한 견적서. 부가세 포함 최종 합계는 12,700,000원이다.",
+      "search_placement": "상위",
+      "match_type": "document_content",
+      "evidence": "최종 합계 (부가세 포함): 12,700,000원",
+      "thumbnail_filename": "사무실이전_견적_v3.png"
+    },
+    {
+      "filename": "촬영장비_렌탈견적.pdf",
+      "document_date": "2025-10-08",
+      "document_type": "견적서",
+      "issuer": "프레임온 렌탈",
+      "total_amount": 6150000,
+      "currency": "KRW",
+      "tax_included": true,
+      "labels": [
+        "견적서",
+        "촬영장비",
+        "렌탈",
+        "영상 제작"
+      ],
+      "description": "브랜드 영상 촬영 장비 / 2일에 대한 견적서. 부가세 포함 최종 합계는 6,150,000원이다.",
+      "search_placement": "상위",
+      "match_type": "document_content",
+      "evidence": "최종 합계 (부가세 포함): 6,150,000원",
+      "thumbnail_filename": "촬영장비_렌탈견적.png"
+    },
+    {
+      "filename": "웹사이트_구축제안견적.pdf",
+      "document_date": "2026-03-12",
+      "document_type": "견적서",
+      "issuer": "모노웹 스튜디오",
+      "total_amount": 5500000,
+      "currency": "KRW",
+      "tax_included": true,
+      "labels": [
+        "견적서",
+        "제안서",
+        "웹사이트",
+        "반응형 웹",
+        "구축"
+      ],
+      "description": "기업 소개 반응형 웹사이트에 대한 견적서. 부가세 포함 최종 합계는 5,500,000원이다.",
+      "search_placement": "상위",
+      "match_type": "document_content",
+      "evidence": "최종 합계 (부가세 포함): 5,500,000원",
+      "thumbnail_filename": "웹사이트_구축제안견적.png"
+    }
+  ]
+}

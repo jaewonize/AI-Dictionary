@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "query": "이 신발 신고 찍은 사진",
+  "metadata_is_synthetic": true,
+  "metadata_note": "PoC용 가상 촬영 시각·장소 및 라벨 정의. 이미지 파일명은 filename과 일치함. 촬영 메타데이터는 이미지에 내장되지 않음.",
+  "timezone": "Asia/Seoul",
+  "reference_filename": "IMG_012684.jpg",
+  "visits": [
+    {
+      "visit_id": "Q",
+      "date": "2026-09-28",
+      "location": "서울 자택",
+      "situation": "대조용 신발 촬영",
+      "fictional_location": true
+    },
+    {
+      "visit_id": "S1",
+      "date": "2023-04-02",
+      "location": "일본 교토 히가시야마 골목",
+      "situation": "봄 여행",
+      "fictional_location": true
+    },
+    {
+      "visit_id": "S2",
+      "date": "2024-06-08",
+      "location": "서울 연남동 야외 카페",
+      "situation": "여름 오후 카페 방문",
+      "fictional_location": true
+    },
+    {
+      "visit_id": "S3",
+      "date": "2024-09-21",
+      "location": "서울 한강변 산책로",
+      "situation": "초가을 저녁 산책",
+      "fictional_location": true
+    },
+    {
+      "visit_id": "S4",
+      "date": "2025-04-19",
+      "location": "서울 한강공원 잔디밭",
+      "situation": "봄 피크닉",
+      "fictional_location": true
+    },
+    {
+      "visit_id": "S5",
+      "date": "2026-08-20",
+      "location": "서울 업무용 건물 엘리베이터",
+      "situation": "출근길 거울 셀카",
+      "fictional_location": true
+    }
+  ],
+  "photos": [
+    {
+      "filename": "IMG_012684.jpg",
+      "captured_at": "2026-09-28T14:20:06+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "Q",
+      "location": "서울 자택",
+      "labels": [
+        "신발",
+        "초록색 운동화",
+        "스웨이드",
+        "아이보리 타원 패치",
+        "갈색 밑창"
+      ],
+      "description": "밝은 원목 바닥 위에 초록색 스웨이드 운동화 한 짝이 놓여 있다. 아이보리 끈과 타원형 옆면 패치, 갈색 고무 밑창이 선명하게 보인다.",
+      "shoe_worn": false,
+      "search_placement": "대조용",
+      "match_type": "reference"
+    },
+    {
+      "filename": "IMG_004318.jpg",
+      "captured_at": "2023-04-02T10:42:18+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "S1",
+      "location": "일본 교토 히가시야마 골목",
+      "labels": [
+        "여행",
+        "교토",
+        "벚꽃",
+        "인물",
+        "청바지",
+        "초록색 운동화"
+      ],
+      "description": "벚꽃이 핀 교토 골목에서 흰 티셔츠와 밝은 청바지를 입은 여성이 서 있다. 발에는 아이보리 타원 패치와 갈색 밑창이 있는 초록색 운동화를 신고 있다.",
+      "shoe_worn": true,
+      "search_placement": "상위",
+      "match_type": "visual"
+    },
+    {
+      "filename": "IMG_006825.jpg",
+      "captured_at": "2024-06-08T15:26:43+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "S2",
+      "location": "서울 연남동 야외 카페",
+      "labels": [
+        "카페",
+        "아이스커피",
+        "남색 바지",
+        "흰 양말",
+        "초록색 운동화"
+      ],
+      "description": "야외 카페 의자에 앉은 인물의 하반신을 가까이 촬영했다. 남색 바지와 흰 양말 아래로 초록색 운동화 두 짝이 보이고, 옆에는 아이스커피와 에코백이 놓여 있다.",
+      "shoe_worn": true,
+      "search_placement": "상위",
+      "match_type": "visual"
+    },
+    {
+      "filename": "IMG_007986.jpg",
+      "captured_at": "2024-09-21T18:19:32+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "S3",
+      "location": "서울 한강변 산책로",
+      "labels": [
+        "산책",
+        "한강",
+        "노을",
+        "두 사람",
+        "초록색 운동화"
+      ],
+      "description": "노을이 비치는 강변 산책로에서 두 여성이 나란히 걷고 있다. 남색 바람막이와 베이지색 바지를 입은 인물은 초록색 운동화를, 동행은 회색 운동화를 신고 있다.",
+      "shoe_worn": true,
+      "search_placement": "상위",
+      "match_type": "visual"
+    },
+    {
+      "filename": "IMG_009641.jpg",
+      "captured_at": "2025-04-19T13:48:09+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "S4",
+      "location": "서울 한강공원 잔디밭",
+      "labels": [
+        "피크닉",
+        "공원",
+        "두 사람",
+        "카디건",
+        "초록색 운동화"
+      ],
+      "description": "공원 피크닉 매트 위에서 적갈색 카디건과 크림색 바지를 입은 여성이 친구와 대화하고 있다. 앞으로 뻗은 다리에 초록색 운동화를 신고 있으며 주변에 과일과 도시락이 놓여 있다.",
+      "shoe_worn": true,
+      "search_placement": "상위",
+      "match_type": "visual"
+    },
+    {
+      "filename": "IMG_011872.jpg",
+      "captured_at": "2026-08-20T08:42:51+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "S5",
+      "location": "서울 업무용 건물 엘리베이터",
+      "labels": [
+        "출근",
+        "엘리베이터",
+        "거울 셀카",
+        "검은 바지",
+        "초록색 운동화"
+      ],
+      "description": "밝은 파란 셔츠와 검은 발목 길이 바지를 입은 여성이 엘리베이터 거울 앞에서 셀카를 찍고 있다. 발에는 아이보리 패치와 갈색 밑창이 있는 초록색 운동화를 신고 있다.",
+      "shoe_worn": true,
+      "search_placement": "상위",
+      "match_type": "visual"
+    }
+  ]
+}

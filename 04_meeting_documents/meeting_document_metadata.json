@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.0",
+  "query": "지난번 회의 때 받은 자료",
+  "query_reference_date": "2026-09-29",
+  "metadata_is_synthetic": true,
+  "metadata_note": "회의명·날짜·파일명은 사용자 지정. 연도·시각·장소·공유 맥락·문서 내용과 수치는 PoC용 가상 설정.",
+  "timezone": "Asia/Seoul",
+  "interaction": {
+    "first_step": "select_meeting",
+    "candidate_order": "meeting_date_desc",
+    "result_filter": "selected_meeting_id"
+  },
+  "meetings": [
+    {
+      "meeting_id": "M20260924",
+      "meeting_name": "신규 기능 리뷰",
+      "started_at": "2026-09-24T14:00:00+09:00",
+      "ended_at": "2026-09-24T15:00:00+09:00",
+      "location": "온라인 회의",
+      "file_count": 3
+    },
+    {
+      "meeting_id": "M20260917",
+      "meeting_name": "분기 예산 회의",
+      "started_at": "2026-09-17T10:00:00+09:00",
+      "ended_at": "2026-09-17T11:00:00+09:00",
+      "location": "회의실 B",
+      "file_count": 3
+    },
+    {
+      "meeting_id": "M20260911",
+      "meeting_name": "디자인 시안 공유",
+      "started_at": "2026-09-11T10:00:00+09:00",
+      "ended_at": "2026-09-11T11:00:00+09:00",
+      "location": "온라인 회의",
+      "file_count": 2
+    }
+  ],
+  "files": [
+    {
+      "filename": "신규기능_리뷰_0924.pptx",
+      "file_type": "pptx",
+      "meeting_id": "M20260924",
+      "meeting_name": "신규 기능 리뷰",
+      "meeting_started_at": "2026-09-24T14:00:00+09:00",
+      "shared_at": "2026-09-24T14:05:00+09:00",
+      "timezone": "Asia/Seoul",
+      "source": "회의 채팅 첨부",
+      "shared_by_role": "제품 기획",
+      "labels": [
+        "신규 기능",
+        "통합 검색",
+        "리뷰"
+      ],
+      "description": "통합 검색 신규 기능의 검토 범위, 사용성 이슈와 후속 일정을 정리한 발표 자료.",
+      "thumbnail_filename": "신규기능_리뷰_0924.png",
+      "search_placement": "선택한 회의의 검색결과",
+      "match_type": "meeting_attachment_context"
+    },
+    {
+      "filename": "사용성테스트_요약.pdf",
+      "file_type": "pdf",
+      "meeting_id": "M20260924",
+      "meeting_name": "신규 기능 리뷰",
+      "meeting_started_at": "2026-09-24T14:00:00+09:00",
+      "shared_at": "2026-09-24T14:18:00+09:00",
+      "timezone": "Asia/Seoul",
+      "source": "회의 채팅 첨부",
+      "shared_by_role": "UX 리서치",
+      "labels": [
+        "사용성 테스트",
+        "검색",
+        "개선 과제"
+      ],
+      "description": "참여자 8명의 검색 과제 결과와 회의 후보 선택 단계의 개선 과제를 정리한 보고서.",
+      "thumbnail_filename": "사용성테스트_요약.png",
+      "search_placement": "선택한 회의의 검색결과",
+      "match_type": "meeting_attachment_context"
+    },
+    {
+      "filename": "기능별_일정표_v2.xlsx",
+      "file_type": "xlsx",
+      "meeting_id": "M20260924",
+      "meeting_name": "신규 기능 리뷰",
+      "meeting_started_at": "2026-09-24T14:00:00+09:00",
+      "shared_at": "2026-09-24T14:42:00+09:00",
+      "timezone": "Asia/Seoul",
+      "source": "회의 채팅 첨부",
+      "shared_by_role": "개발",
+      "labels": [
+        "일정",
+        "기능",
+        "개발"
+      ],
+      "description": "검색 입력, 사진 첨부, 회의 후보 선택과 자료 연결 기능의 개발·검수 일정.",
+      "thumbnail_filename": "기능별_일정표_v2.png",
+      "search_placement": "선택한 회의의 검색결과",
+      "match_type": "meeting_attachment_context"
+    },
+    {
+      "filename": "4분기_예산안_v4.xlsx",
+      "file_type": "xlsx",
+      "meeting_id": "M20260917",
+      "meeting_name": "분기 예산 회의",
+      "meeting_started_at": "2026-09-17T10:00:00+09:00",
+      "shared_at": "2026-09-17T10:05:00+09:00",
+      "timezone": "Asia/Seoul",
+      "source": "회의 채팅 첨부",
+      "shared_by_role": "예산 담당",
+      "labels": [
+        "예산",
+        "4분기",
+        "심의안"
+      ],
+      "description": "4분기 요청 예산 6,200만 원과 심의안 6,000만 원의 월별 계획 및 조정 내역.",
+      "thumbnail_filename": "4분기_예산안_v4.png",
+      "search_placement": "선택한 회의의 검색결과",
+      "match_type": "meeting_attachment_context"
+    },
+    {
+      "filename": "상반기_집행실적.pdf",
+      "file_type": "pdf",
+      "meeting_id": "M20260917",
+      "meeting_name": "분기 예산 회의",
+      "meeting_started_at": "2026-09-17T10:00:00+09:00",
+      "shared_at": "2026-09-17T10:15:00+09:00",
+      "timezone": "Asia/Seoul",
+      "source": "회의 채팅 첨부",
+      "shared_by_role": "예산 담당",
+      "labels": [
+        "집행실적",
+        "상반기",
+        "예산"
+      ],
+      "description": "2026년 상반기 예산 1억 원 대비 집행액 8,200만 원과 미집행 사유를 정리한 보고서.",
+      "thumbnail_filename": "상반기_집행실적.png",
+      "search_placement": "선택한 회의의 검색결과",
+      "match_type": "meeting_attachment_context"
+    },
+    {
+      "filename": "예산_심의의견_취합.docx",
+      "file_type": "docx",
+      "meeting_id": "M20260917",
+      "meeting_name": "분기 예산 회의",
+      "meeting_started_at": "2026-09-17T10:00:00+09:00",
+      "shared_at": "2026-09-17T10:48:00+09:00",
+      "timezone": "Asia/Seoul",
+      "source": "회의 채팅 첨부",
+      "shared_by_role": "회의 진행",
+      "labels": [
+        "심의 의견",
+        "예산",
+        "후속 조치"
+      ],
+      "description": "항목별 심의 의견, 도구 비용 200만 원 감액과 후속 제출 일정을 정리한 문서.",
+      "thumbnail_filename": "예산_심의의견_취합.png",
+      "search_placement": "선택한 회의의 검색결과",
+      "match_type": "meeting_attachment_context"
+    },
+    {
+      "filename": "메인화면_시안_A안.pdf",
+      "file_type": "pdf",
+      "meeting_id": "M20260911",
+      "meeting_name": "디자인 시안 공유",
+      "meeting_started_at": "2026-09-11T10:00:00+09:00",
+      "shared_at": "2026-09-11T10:12:00+09:00",
+      "timezone": "Asia/Seoul",
+      "source": "회의 채팅 첨부",
+      "shared_by_role": "UX 디자인",
+      "labels": [
+        "메인화면",
+        "A안",
+        "디자인"
+      ],
+      "description": "검색 중심 메인화면 A안과 회의 자료 검색의 후보 선택 화면을 담은 디자인 문서.",
+      "thumbnail_filename": "메인화면_시안_A안.png",
+      "search_placement": "선택한 회의의 검색결과",
+      "match_type": "meeting_attachment_context"
+    },
+    {
+      "filename": "시안_설명자료.pptx",
+      "file_type": "pptx",
+      "meeting_id": "M20260911",
+      "meeting_name": "디자인 시안 공유",
+      "meeting_started_at": "2026-09-11T10:00:00+09:00",
+      "shared_at": "2026-09-11T10:35:00+09:00",
+      "timezone": "Asia/Seoul",
+      "source": "회의 채팅 첨부",
+      "shared_by_role": "UX 디자인",
+      "labels": [
+        "시안",
+        "설명",
+        "디자인"
+      ],
+      "description": "A안의 화면 구성 원칙과 검색 흐름, 검토 항목을 설명하는 발표 자료.",
+      "thumbnail_filename": "시안_설명자료.png",
+      "search_placement": "선택한 회의의 검색결과",
+      "match_type": "meeting_attachment_context"
+    }
+  ]
+}

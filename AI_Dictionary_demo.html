@@ -8,35 +8,38 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
-  background:#17151F;color:#39354A;word-break:keep-all;-webkit-font-smoothing:antialiased;
-  min-height:100vh;display:flex;align-items:center;justify-content:center;gap:52px;padding:40px 24px;flex-wrap:wrap}
+  background:#F4F2FA;color:#39354A;word-break:keep-all;-webkit-font-smoothing:antialiased;
+  min-height:100vh;display:flex;align-items:center;justify-content:center;gap:64px;padding:40px 28px;flex-wrap:wrap}
 
-.aside{width:300px;display:flex;flex-direction:column;gap:13px}
-.aside .brand{font-size:12px;font-weight:800;letter-spacing:.1em;color:#8B6CF6}
-.qpick{display:flex;flex-direction:column;gap:6px}
-.qpick button{font-family:inherit;text-align:left;display:flex;gap:9px;align-items:center;width:100%;
-  background:#211E2C;border:1px solid #302B40;border-radius:10px;padding:10px 12px;cursor:pointer;transition:.15s}
-.qpick button:hover{background:#2A2539;border-color:#6D4FE0}
-.qpick button.on{background:#2C2440;border-color:#6D4FE0}
-.qpick .n{width:17px;height:17px;flex:none;border-radius:5px;background:#332B4E;color:#A98CF8;
-  font-size:9.5px;font-weight:800;display:flex;align-items:center;justify-content:center}
-.qpick .q{font-size:12px;font-weight:700;color:#BDB5D2;letter-spacing:-.02em;line-height:1.35}
-.qpick button:hover .q,.qpick button.on .q{color:#fff}
-.qpick .att{font-size:8.5px;font-weight:800;color:#2EC9A0;background:#1B3730;padding:2px 5px;border-radius:4px;margin-left:auto;flex:none}
-.replay{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;border:1px solid #3B3650;background:#221F2E;
-  color:#C9C2DC;font-family:inherit;font-size:12.5px;font-weight:700;padding:9px 15px;border-radius:999px;cursor:pointer;transition:.18s}
-.replay:hover{background:#2C2840;border-color:#6D4FE0;color:#fff}
+.aside{width:600px;display:flex;flex-direction:column;gap:18px}
+.aside .brand{font-size:20px;font-weight:800;letter-spacing:-.01em;color:#6D4FE0}
+.qpick{display:flex;flex-direction:column;gap:9px}
+.qpick button{font-family:inherit;text-align:left;display:flex;gap:13px;align-items:center;width:100%;
+  background:#fff;border:1px solid #E7E4F2;border-radius:13px;padding:15px 18px;cursor:pointer;transition:.15s}
+.qpick button:hover{background:#FBFAFE;border-color:#6D4FE0}
+.qpick button.on{background:#F6F4FC;border-color:#6D4FE0}
+.qpick .n{width:23px;height:23px;flex:none;border-radius:7px;background:#EFEAFE;color:#6D4FE0;
+  font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.qpick .q{font-size:18px;font-weight:700;color:#4A4460;letter-spacing:-.02em;line-height:1.35}
+.qpick button:hover .q,.qpick button.on .q{color:#17151F}
+.qpick .att{font-size:10.5px;font-weight:800;color:#159B79;background:#DEF7EF;padding:2px 5px;border-radius:4px;margin-left:-6px;flex:none}
+.qpick .core{margin-left:auto;padding-left:16px;flex:none;font-size:13px;font-weight:700;color:#A79FBD;letter-spacing:-.01em}
+.qpick button:hover .core,.qpick button.on .core{color:#6D4FE0}
+.replay{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;border:1px solid #DCD6EC;background:#fff;
+  color:#5B5474;font-family:inherit;font-size:14px;font-weight:700;padding:11px 18px;border-radius:999px;cursor:pointer;transition:.18s}
+.replay:hover{background:#F6F4FC;border-color:#6D4FE0;color:#17151F}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+a.replay{text-decoration:none}
 
 /* ══ 폰 360x780 ══ */
 .phone{width:360px;height:780px;background:#fff;border-radius:38px;position:relative;flex:none;
-  box-shadow:0 0 0 9px #26222F,0 0 0 10.5px #3A3548,0 30px 70px rgba(0,0,0,.6);
+  box-shadow:0 0 0 5px #26222F,0 0 0 6px #3A3548,0 26px 60px rgba(40,30,90,.18);
   display:flex;flex-direction:column;overflow:hidden}
-.notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:104px;height:26px;background:#17151F;border-radius:999px;z-index:30}
+.notch{position:absolute;top:13px;left:50%;transform:translateX(-50%);width:11px;height:11px;background:#17151F;border-radius:50%;z-index:30}
 .statusbar{height:44px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:12px;font-weight:700;color:#17151F}
 .statusbar .ic{display:flex;gap:5px;align-items:center}
-.apphead{flex:none;padding:4px 18px 12px;display:flex;align-items:center;gap:9px;border-bottom:1px solid #F0EDF7}
-.logo{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#8B6CF6,#2EC9A0);flex:none}
-.apphead .nm{font-size:14.5px;font-weight:800;color:#17151F;letter-spacing:-.02em}
+.apphead{flex:none;padding:18px 18px 20px 26px;display:flex;align-items:center;gap:9px}
+.apphead .nm{font-size:23px;font-weight:700;color:#17151F;letter-spacing:-.02em}
 .apphead .nm span{background:linear-gradient(90deg,#8B6CF6,#2EC9A0);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 .chat{flex:1;overflow-y:auto;padding:16px 14px 8px;scroll-behavior:smooth}
@@ -44,7 +47,7 @@ body{font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun 
 
 /* ── 빈 상태 ── */
 .empty{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:70px}
-.empty .mark{width:54px;height:54px;border-radius:19px;background:linear-gradient(135deg,#8B6CF6,#2EC9A0);opacity:.15;margin-bottom:19px}
+.empty .mark{width:58px;height:58px;margin-bottom:19px}
 .empty h2{font-size:19px;font-weight:800;color:#17151F;letter-spacing:-.03em;line-height:1.4;text-align:center}
 .empty p{font-size:13.5px;font-weight:500;color:#8B84A8;line-height:1.6;text-align:center;margin-top:7px}
 
@@ -56,64 +59,52 @@ body{font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun 
   display:flex;align-items:center;justify-content:center;gap:6px;font-size:10.5px;font-weight:700;color:#fff}
 
 /* ── 단계 ── */
-.step{display:flex;gap:9px;margin-bottom:11px}
-.step .dot{width:22px;height:22px;border-radius:50%;flex:none;margin-top:1px;background:#EFEAFE;
-  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#6D4FE0}
+.step{display:flex;gap:10px;margin-bottom:17px}
+.step .dot{width:7px;height:7px;border-radius:50%;flex:none;margin-top:8px;background:#C9BCF7}
+.step .dot.live{background:#6D4FE0;animation:blink 1s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
 .step .body{flex:1;min-width:0}
-.step .t{font-size:12.5px;font-weight:800;color:#17151F;letter-spacing:-.015em;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.step .d{font-size:11.5px;font-weight:500;color:#6C6680;line-height:1.55;margin-top:3px}
-.step .d b{color:#17151F;font-weight:800}
+.step .t{font-size:17px;font-weight:800;color:#17151F;letter-spacing:-.025em;line-height:1.45}
+.step .d{font-size:14.5px;font-weight:500;color:#8B84A8;line-height:1.55;margin-top:5px}
+.step .d b{color:#39354A;font-weight:700}
+.step .d i{font-style:normal;color:#C4BED6;font-weight:600;margin-right:1px}
 
+/* 한 줄씩 차례로 나타난다 */
+.rv{opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s}
+.rv.on{opacity:1;transform:none}
 
-.cond{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
-.cond span{font-size:11px;font-weight:700;color:#39354A;background:#F6F4FC;border:1px solid #EAE5F7;padding:4px 8px;border-radius:7px}
-.cond span i{font-style:normal;color:#9A93B0;font-weight:600;margin-right:4px}
-.cond span.warn{background:#FDF3E3;border-color:#F4E3C4;color:#A8762A}
-
-.stores{margin-top:8px;display:flex;flex-direction:column;gap:4px}
-.srow{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:#8B84A8;opacity:.35;transition:opacity .25s}
-.srow.on{opacity:1;color:#39354A}
+.stores{margin-top:6px;display:flex;flex-wrap:wrap;gap:4px 14px}
+.srow{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#8B84A8}
+.srow.on{color:#39354A}
 .srow .ck{width:13px;height:13px;border-radius:50%;flex:none;border:1.5px solid #D9D3E8;position:relative;transition:.25s}
-.srow.on .ck{background:#2EC9A0;border-color:#2EC9A0}
-.srow.on .ck::after{content:"";position:absolute;left:3.6px;top:1.4px;width:3.2px;height:6.4px;border:solid #fff;border-width:0 1.6px 1.6px 0;transform:rotate(43deg)}
-.srow .n{margin-left:auto;font-size:10.5px;font-weight:700;color:#B5AEC8;font-variant-numeric:tabular-nums}
-.srow.on .n{color:#6C6680}
+.srow.on .ck{background:#17151F;border-color:#17151F}
+.srow.on .ck::after{content:"";position:absolute;left:50%;top:50%;width:3px;height:5px;border:solid #fff;border-width:0 1.5px 1.5px 0;transform:translate(-50%,-70%) rotate(45deg)}
 
-.narrow{margin-top:9px;background:#F9F8FD;border:1px solid #EFEBF9;border-radius:10px;padding:10px 11px}
-.narrow .row{display:flex;align-items:baseline;gap:6px;font-size:11.5px;font-weight:700;color:#6C6680}
-.narrow .big{font-size:17px;font-weight:800;color:#17151F;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.narrow .arw{color:#B5AEC8;font-weight:800}
+.narrow{margin-top:5px;display:flex;align-items:baseline;gap:5px;font-size:14px;font-weight:600;color:#8B84A8}
+.narrow .big{font-size:17px;font-weight:800;color:#39354A;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .narrow .hit{color:#6D4FE0}
-.bar{margin-top:7px;height:4px;border-radius:99px;background:#EAE5F7;overflow:hidden}
-.bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#8B6CF6,#2EC9A0);transition:width 1.1s cubic-bezier(.4,0,.2,1)}
 
 /* 웹에서 가져온 사실 */
-.facts{margin-top:8px;border:1px solid #F4E3C4;background:#FEFAF2;border-radius:10px;padding:9px 11px;display:flex;flex-direction:column;gap:5px}
-.facts .f{display:flex;gap:8px;font-size:11px;font-weight:700;color:#17151F;line-height:1.4}
-.facts .f i{font-style:normal;color:#A8762A;font-weight:700;flex:none;width:52px}
+.facts{margin-top:5px;display:flex;flex-direction:column;gap:2px}
+.facts .f{display:flex;gap:8px;font-size:14px;font-weight:600;color:#39354A;line-height:1.5}
+.facts .f i{font-style:normal;color:#B5AEC8;font-weight:600;flex:none;width:44px}
 
 /* 되묻기 */
-.ask{margin-top:7px;display:flex;flex-direction:column;gap:5px}
-.ask button{font-family:inherit;text-align:left;font-size:11.5px;font-weight:700;color:#39354A;background:#fff;
-  border:1px solid #DCD6EC;border-radius:9px;padding:8px 11px;cursor:pointer;transition:.15s;line-height:1.4}
+.ask{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+.ask button{font-family:inherit;text-align:left;font-size:13px;font-weight:700;color:#39354A;background:#fff;
+  border:1px solid #DCD6EC;border-radius:10px;padding:11px 13px;cursor:pointer;transition:.15s;line-height:1.4}
 .ask button:hover{border-color:#6D4FE0;background:#F9F8FD;color:#6D4FE0}
-.ask button .sub{display:block;font-size:10px;font-weight:600;color:#9A93B0;margin-top:2px}
 
 /* ── 결과 ── */
 .reshead{display:flex;align-items:baseline;gap:6px;margin:3px 0 10px 1px}
-.reshead .t{font-size:14.5px;font-weight:800;color:#17151F;letter-spacing:-.025em}
+.reshead .t{font-size:15px;font-weight:800;color:#17151F;letter-spacing:-.025em}
 .reshead .t b{color:#6D4FE0}
-.reshead .s{font-size:10.5px;font-weight:700;color:#B5AEC8;margin-left:auto}
 
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.card{border-radius:13px;overflow:hidden;background:#fff;border:1px solid #EFEBF9;cursor:pointer;transition:.18s}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.card{border-radius:10px;overflow:hidden;background:#fff;border:1px solid #EFEBF9;cursor:pointer;transition:.18s}
 .card:hover{border-color:#C9BCF7;box-shadow:0 6px 18px rgba(109,79,224,.13);transform:translateY(-1px)}
 .thumb{position:relative;aspect-ratio:1/1;background:linear-gradient(145deg,#EDE9FA,#DFF4EE);display:flex;align-items:center;justify-content:center}
-.thumb .badge{position:absolute;top:6px;left:6px;font-size:9px;font-weight:800;color:#fff;background:rgba(23,21,31,.62);padding:3px 6px;border-radius:5px}
-.thumb .date{position:absolute;bottom:6px;right:6px;font-size:9px;font-weight:700;color:#fff;background:rgba(23,21,31,.5);padding:2.5px 5px;border-radius:4px;font-variant-numeric:tabular-nums}
-.card .meta{padding:8px 9px 9px}
-.card .fn{font-size:10.5px;font-weight:800;color:#17151F;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.card .why{font-size:10px;font-weight:600;color:#8B84A8;line-height:1.45;margin-top:2px}
+.thumb .badge{position:absolute;top:5px;left:5px;font-size:8.5px;font-weight:800;color:#fff;background:rgba(23,21,31,.62);padding:2.5px 5px;border-radius:4px}
 
 /* 문서 결과 리스트 */
 .list{display:flex;flex-direction:column;gap:7px}
@@ -137,7 +128,7 @@ body{font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun 
 .follow button:hover{background:#EFEAFE;border-color:#C9BCF7}
 
 /* ── 입력창 ── */
-.inputbar{flex:none;border-top:1px solid #F0EDF7;padding:10px 12px 16px;background:#fff}
+.inputbar{flex:none;padding:10px 12px 16px;background:#fff}
 .ibox{display:flex;align-items:center;gap:8px;background:#F6F4FC;border:1px solid #EAE5F7;border-radius:999px;padding:6px 6px 6px 16px}
 .ibox input{flex:1;min-width:0;border:0;background:none;outline:none;font-family:inherit;font-size:13.5px;font-weight:600;color:#17151F;letter-spacing:-.02em;padding:6px 0}
 .ibox input::placeholder{color:#B5AEC8;font-weight:500}
@@ -158,9 +149,12 @@ body{font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun 
 <body>
 
 <div class="aside">
-  <div class="brand">AI ( ) DICTIONARY</div>
+  <div class="brand">지금 검색은 못 찾는 것들</div>
   <div class="qpick" id="qpick"></div>
-  <button class="replay" onclick="reset()">↻ 처음부터</button>
+  <div class="acts">
+    <button class="replay" onclick="reset()">↻ 처음부터</button>
+    <a class="replay" href="AI_Dictionary_proposal.html#p6" target="aidict-proposal">← 제안서로 돌아가기</a>
+  </div>
 </div>
 
 <div class="phone">
@@ -174,7 +168,6 @@ body{font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun 
   </div>
 
   <div class="apphead">
-    <div class="logo"></div>
     <div class="nm">AI <span>(&nbsp;&nbsp;)</span> Dictionary</div>
   </div>
 
@@ -205,10 +198,10 @@ const STORES_DOC = [["파일","3,210"],["메일 첨부","860"],["카카오 받�
 
 const SCENARIOS = [
 {
-  q:"창밖으로 바다가 보이는 카페에서 찍은 사진", layout:"grid",
+  q:"창밖으로 바다가 보이는 카페에서 찍은 사진", layout:"grid", core:"장면의 구성을 읽는다",
   steps:[
     {type:"cond", t:"찾을 내용을 정리했어요",
-     tags:[["대상","사진"],["장소","카페"],["창밖 풍경","바다"]]},
+     tags:[["대상","카페에서 찍은 사진"],["장면","창밖으로 바다가 보이는 구도"]]},
     {type:"stores", t:"사진이 있는 곳을 모두 찾아봤어요", rows:STORES_ALL},
     {type:"narrow", t:"카페에서 찍은 사진부터 추렸어요", from:"2,481", to:"24", unit:"장"},
     {type:"note", t:"한 장씩 확인했어요",
@@ -225,7 +218,7 @@ const SCENARIOS = [
   follow:["작년 것만 보기","세로 사진만","이 카페 이름 알려줘"]
 },
 {
-  q:"이 신발 신고 찍은 사진", attach:"신발 사진 1장", layout:"grid",
+  q:"이 신발 신고 찍은 사진", attach:"신발 사진 1장", layout:"grid", core:"이미지를 검색어로 쓴다",
   steps:[
     {type:"cond", t:"보내주신 사진을 기준으로 찾을게요",
      tags:[["기준","보내주신 사진"],["대상","사진"],["조건","같은 신발을 신은"]]},
@@ -246,7 +239,7 @@ const SCENARIOS = [
   follow:["산 날짜 · 영수증 찾기","가장 최근 것부터","같이 신은 옷 보기"]
 },
 {
-  q:"견적 금액 500만 원 넘는 견적서", layout:"list",
+  q:"견적 금액 500만 원 넘는 견적서", layout:"list", core:"문서를 읽고 값을 비교한다",
   steps:[
     {type:"cond", t:"찾을 내용을 정리했어요",
      tags:[["대상","문서"],["종류","견적서"],["금액","500만 원 넘는"]]},
@@ -265,50 +258,75 @@ const SCENARIOS = [
   follow:["금액 높은 순","올해 것만","엑셀로 정리해줘"]
 },
 {
-  q:"지난번 회의 때 받은 자료", layout:"list",
+  q:"지난번 회의 때 받은 자료", layout:"list", core:"애매하면 먼저 되묻는다",
   steps:[
     {type:"cond", t:"찾을 내용을 정리했어요",
      tags:[["대상","자료"],["받은 곳","회의"],["언제","‘지난번’이 언제일까요",1]]},
     {type:"ask", t:"어느 회의인지 알려주세요",
      d:"최근 2주 안에 자료를 받은 회의가 <b>세 번</b> 있었어요",
-     opts:[["9월 24일 · 신규 기능 리뷰","카카오로 4개 · 메일로 1개"],
-           ["9월 17일 · 분기 예산 회의","메일로 3개"],
-           ["9월 11일 · 디자인 시안 공유","카카오로 2개"]]},
-    {type:"stores", t:"그날 받은 파일만 다시 봤어요", rows:[["카카오 받은 파일","4"],["메일 첨부","1"]]},
-    {type:"note", t:"회의 자료가 아닌 건 뺐어요",
-     d:"같은 날 받았어도 <b>회의와 상관없는 파일</b>은 제외했어요"}
-  ],
-  results:[
-    {ext:"pptx", file:"신규기능_리뷰_0924.pptx", store:"카카오", date:"2025.09.24", why:"회의 시작 12분 전 수신 · <em>본 자료</em>"},
-    {ext:"pdf",  file:"사용성테스트_요약.pdf", store:"카카오", date:"2025.09.24", why:"회의 중 공유 · 참고 자료"},
-    {ext:"xlsx", file:"기능별_일정표_v2.xlsx", store:"메일 첨부", date:"2025.09.24", why:"회의 직후 발송 · 후속 일정"}
+     opts:[
+      ["9월 24일 · 신규 기능 리뷰","카카오로 4개 · 메일로 1개", {
+        steps:[
+          {type:"stores", t:"그날 받은 파일만 다시 봤어요", rows:[["카카오 받은 파일","4"],["메일 첨부","1"]]},
+          {type:"note", t:"회의 자료가 아닌 건 뺐어요",
+           d:"같은 날 받았어도 <b>회의와 상관없는 파일</b>은 제외했어요"}
+        ],
+        results:[
+          {ext:"pptx", file:"신규기능_리뷰_0924.pptx", store:"카카오", date:"2025.09.24", why:"회의 시작 12분 전 수신 · <em>본 자료</em>"},
+          {ext:"pdf",  file:"사용성테스트_요약.pdf", store:"카카오", date:"2025.09.24", why:"회의 중 공유 · 참고 자료"},
+          {ext:"xlsx", file:"기능별_일정표_v2.xlsx", store:"메일 첨부", date:"2025.09.24", why:"회의 직후 발송 · 후속 일정"}
+        ]}],
+      ["9월 17일 · 분기 예산 회의","메일로 3개", {
+        steps:[
+          {type:"stores", t:"그날 받은 파일만 다시 봤어요", rows:[["메일 첨부","3"]]},
+          {type:"note", t:"회의 자료가 아닌 건 뺐어요",
+           d:"같은 날 받았어도 <b>회의와 상관없는 파일</b>은 제외했어요"}
+        ],
+        results:[
+          {ext:"xlsx", file:"4분기_예산안_v4.xlsx", store:"메일 첨부", date:"2025.09.17", why:"회의 전날 배포 · <em>본 자료</em>"},
+          {ext:"pdf",  file:"상반기_집행실적.pdf", store:"메일 첨부", date:"2025.09.17", why:"회의 중 참고 · 실적 요약"},
+          {ext:"docx", file:"예산_심의의견_취합.docx", store:"메일 첨부", date:"2025.09.17", why:"회의 직후 발송 · 의견 정리"}
+        ]}],
+      ["9월 11일 · 디자인 시안 공유","카카오로 2개", {
+        steps:[
+          {type:"stores", t:"그날 받은 파일만 다시 봤어요", rows:[["카카오 받은 파일","2"]]},
+          {type:"note", t:"회의 자료가 아닌 건 뺐어요",
+           d:"같은 날 받았어도 <b>회의와 상관없는 파일</b>은 제외했어요"}
+        ],
+        results:[
+          {ext:"pdf",  file:"메인화면_시안_A안.pdf", store:"카카오", date:"2025.09.11", why:"회의 시작 직전 수신 · <em>본 자료</em>"},
+          {ext:"pptx", file:"시안_설명자료.pptx", store:"카카오", date:"2025.09.11", why:"회의 중 공유 · 설명 자료"}
+        ]}]
+     ]}
   ],
   follow:["다른 회의 것도 보기","이 회의 대화 내용 보기","한 폴더로 묶기"]
 },
 {
-  q:"디올 팝업에서 찍은 사진", layout:"grid",
+  q:"디올 성수에서 찍은 사진", layout:"grid", core:"웹에서 알아내 맞춰본다",
   steps:[
     {type:"cond", t:"찾을 내용을 정리했어요",
-     tags:[["대상","사진"],["장소","디올 팝업"],["언제","아직 모르겠어요",1]]},
-    {type:"note", t:"이 팝업을 몰라서 먼저 알아봤어요",
-     d:"언제 어디서 열렸는지 <b>밖에서 찾아봤어요</b>"},
+     tags:[["대상","사진"],["장소","디올 성수"],["언제","아직 모르겠어요",1]]},
+    {type:"note", t:"이곳을 몰라서 먼저 알아봤어요",
+     d:"어디에 있고 어떻게 생겼는지 <b>웹에서 찾아봤어요</b>"},
     {type:"facts", t:"이렇게 알아냈어요",
-     facts:[["장소","디올 성수 · 서울 성동구 연무장길"],["기간","2024.05.17 – 06.02"],["외관","흰 격자 건물 · 정원 형태"]]},
-    {type:"narrow", t:"그때 그 근처에서 찍은 사진을 모았어요", from:"312", to:"26", unit:"장"},
-    {type:"note", t:"맞는 장소인지 확인했어요",
-     d:"팝업 <b>외관과 내부 사진</b>이랑 비교해서 다른 곳은 걸러냈어요"}
+     facts:[["장소","서울 성동구 연무장길"],["운영","상시 · 시기마다 테마가 바뀜"],["설치물","2023 동물 조형물 · 2024 대형 의자"]]},
+    {type:"narrow", t:"그 장소에서 찍은 사진을 모았어요", from:"312", to:"5", unit:"장"},
+    {type:"note", t:"두 번 다녀오셨네요",
+     d:"<b>2023년 5월</b>과 <b>2024년 5월</b>, 테마가 다른 두 시기의 사진이에요"},
+    {type:"note", t:"간판이 안 보이는 사진도 넣었어요",
+     d:"같은 날 · 같은 옷차림으로 이어진 사진이라 <b>같은 방문</b>으로 묶었어요"}
   ],
   results:[
-    {file:"IMG_3901.HEIC", store:"갤러리", date:"2024.05.25", why:"흰 격자 파사드 정면", src:null},
-    {file:"IMG_3915.HEIC", store:"갤러리", date:"2024.05.25", why:"내부 정원 · 포토존", src:null},
-    {file:"insta_story_44.jpg", store:"인스타", date:"2024.05.25", why:"입구 사이니지", src:null},
-    {file:"IMG_3922.HEIC", store:"갤러리", date:"2024.05.25", why:"제품 진열대 · 2층", src:null},
-    {file:"KakaoTalk_0553.jpg", store:"카카오", date:"2024.05.25", why:"일행이 보내준 사진", src:null}
+    {file:"IMG_006321.png", store:"갤러리", date:"2024.05.25", why:"DIOR 간판 · 대형 의자", src:"05_dior_photos/IMG_006321.jpg"},
+    {file:"IMG_006326.png", store:"갤러리", date:"2024.05.25", why:"대형 의자 앞", src:"05_dior_photos/IMG_006326.jpg"},
+    {file:"IMG_006332.png", store:"갤러리", date:"2024.05.25", why:"같은 방문 · 간판은 안 보임", src:"05_dior_photos/IMG_006332.jpg"},
+    {file:"IMG_003714.png", store:"갤러리", date:"2023.05.21", why:"DIOR 간판 · 동물 조형물", src:"05_dior_photos/IMG_003714.jpg"},
+    {file:"IMG_003719.png", store:"갤러리", date:"2023.05.21", why:"동물 조형물 옆", src:"05_dior_photos/IMG_003719.jpg"}
   ],
-  follow:["그날 동선 보기","다른 팝업 사진도","인스타에 올린 것만"]
+  follow:["2024년 것만","2023년 것만","인스타에 올린 것만"]
 },
 {
-  q:"작년 송년회 와인이랑 4년 전 생일 와인", layout:"grid",
+  q:"작년 송년회 와인이랑 4년 전 생일 와인", layout:"grid", core:"여러 갈래로 찾아 합친다",
   steps:[
     {type:"cond", t:"찾을 게 둘이라 나눠서 찾을게요",
      tags:[["하나","작년 송년회 · 와인"],["둘","4년 전 생일 · 와인"]]},
@@ -330,25 +348,30 @@ const SCENARIOS = [
   follow:["두 와인 이름 알려줘","같은 와인이 또 있나","가격 찾아줘"]
 },
 {
-  q:"잔금 날짜 적힌 인테리어 공사 계약서", layout:"list",
+  q:"동생 합격했다고 올렸던 날 파티 사진", layout:"grid", core:"사진 밖의 글을 읽는다",
   steps:[
     {type:"cond", t:"찾을 내용을 정리했어요",
-     tags:[["대상","문서"],["종류","인테리어 공사 계약서"],["들어갈 내용","잔금 날짜"]]},
-    {type:"stores", t:"어디서 받았는지 몰라 전부 찾아봤어요", rows:STORES_ALL},
-    {type:"narrow", t:"계약서만 골라냈어요",
-     d:"‘갑 · 을’, 서명란처럼 <b>계약서에만 있는 부분</b>으로 확인했어요", from:"127", to:"9", unit:"건"},
-    {type:"note", t:"잔금 날짜를 찾았어요",
-     d:"계약서 안에서 <b>잔금 조항</b>을 찾아 날짜가 적힌 것만 남겼어요"}
+     tags:[["대상","그날 찍은 파티 사진"],["단서","사진에는 안 보이는 ‘합격’"]]},
+    {type:"note", t:"사진만 봐서는 찾을 수 없어요",
+     d:"‘합격’은 <b>사진에 찍히는 장면이 아니에요</b>"},
+    {type:"stores", t:"사진과 글이 함께 있는 곳을 봤어요", rows:[["페이스북","1,240"],["인스타그램","980"]]},
+    {type:"note", t:"올릴 때 쓴 글에서 날짜를 찾았어요",
+     d:"“동생 합격 축하 🎉”라고 쓴 <b>게시글의 날짜</b>는 2024.04.12예요"},
+    {type:"narrow", t:"그날 찍은 파티 사진만 남겼어요",
+     d:"케이크 · 건배 · 상차림처럼 <b>파티 장면</b>인 것만 골랐어요", from:"48", to:"6", unit:"장"}
   ],
   results:[
-    {ext:"pdf",  file:"인테리어_공사계약서_서명본.pdf", store:"카카오", date:"2025.01.09", why:"잔금 <em>2025.03.14</em> · 준공 검수 후 지급"},
-    {ext:"docx", file:"공사계약서_수정안_0104.docx", store:"메일 첨부", date:"2025.01.04", why:"잔금 <em>2025.03.10</em> · 서명 전 수정안"},
-    {ext:"pdf",  file:"추가공사_변경계약서.pdf", store:"파일", date:"2025.02.20", why:"잔금 <em>2025.04.02</em> · 변경 후 재산정"}
+    {file:"fb_post_0412_1.jpg", store:"페이스북", date:"2024.04.12", why:"게시글 사진 · 케이크", src:null},
+    {file:"fb_post_0412_2.jpg", store:"페이스북", date:"2024.04.12", why:"게시글 사진 · 건배", src:null},
+    {file:"IMG_3041.HEIC", store:"갤러리", date:"2024.04.12", why:"올리지 않은 원본 · 상차림", src:null},
+    {file:"IMG_3046.HEIC", store:"갤러리", date:"2024.04.12", why:"가족 단체샷", src:null},
+    {file:"KakaoTalk_0412.jpg", store:"카카오", date:"2024.04.12", why:"동생이 보내준 사진", src:null},
+    {file:"insta_0412.jpg", store:"인스타", date:"2024.04.12", why:"스토리 · 케이크 컷", src:null}
   ],
-  follow:["서명본만 보기","잔금 날짜 캘린더에 넣기","이전 버전과 비교"]
+  follow:["그날 사진 전부 보기","게시글 원문 보기","가족 사진만"]
 },
 {
-  q:"메일로 보낸 그 PDF의 원본 PPT", layout:"list",
+  q:"메일로 보낸 그 PDF의 원본 PPT", layout:"list", core:"같은 문서의 원본을 짚는다",
   steps:[
     {type:"cond", t:"찾을 내용을 정리했어요",
      tags:[["기준","메일로 보낸 PDF"],["찾을 것","같은 문서의 원본"]]},
@@ -373,6 +396,7 @@ const ICON_PHOTO = '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" 
 
 const chat=document.getElementById('chat'), inp=document.getElementById('inp'),
       send=document.getElementById('send'), qpick=document.getElementById('qpick');
+window.name='aidict-demo';                  /* 제안서에서 이 탭을 다시 쓰도록 이름을 붙인다 */
 let timers=[], busy=false;
 
 const wait=(ms,fn)=>timers.push(setTimeout(fn,ms));
@@ -382,7 +406,8 @@ const add=html=>{const d=document.createElement('div');d.className='fade';d.inne
 /* 왼쪽 패널 — 제안서 05장 질의 8개 (폰 밖 데모 조작부) */
 qpick.innerHTML=SCENARIOS.map((s,i)=>
   '<button data-i="'+i+'"><span class="n">'+(i+1)+'</span><span class="q">'+s.q+'</span>'
-  +(s.attach?'<span class="att">사진 첨부</span>':'')+'</button>').join('');
+  +(s.attach?'<span class="att">사진 첨부</span>':'')
+  +'<span class="core">'+s.core+'</span></button>').join('');
 qpick.querySelectorAll('button').forEach(b=>b.onclick=()=>{
   qpick.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
   b.classList.add('on');
@@ -392,7 +417,15 @@ qpick.querySelectorAll('button').forEach(b=>b.onclick=()=>{
 function reset(){
   timers.forEach(clearTimeout); timers=[]; busy=false;
   inp.value=''; inp.disabled=false; send.disabled=false;
-  chat.innerHTML='<div class="empty"><div class="mark"></div>'
+  chat.innerHTML='<div class="empty">'
+    +'<svg class="mark" viewBox="0 0 48 48" fill="none">'            /* 펼친 사전 + 돋보기 */
+    +'<g stroke="#6D4FE0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".5">'
+    +'<path d="M5 12c5.5-3 11.5-3 19 1v23c-7.5-4-13.5-4-19-1V12z"/>'
+    +'<path d="M43 12c-5.5-3-11.5-3-19 1v23c7.5-4 13.5-4 19-1V12z"/></g>'
+    +'<g stroke="#fff" stroke-width="6.5" stroke-linecap="round">'
+    +'<circle cx="31" cy="30" r="8.5"/><path d="M37.2 36.2 43 42"/></g>'
+    +'<g stroke="#6D4FE0" stroke-width="2.6" stroke-linecap="round">'
+    +'<circle cx="31" cy="30" r="8.5"/><path d="M37.2 36.2 43 42"/></g></svg>'
     +'<h2>기억나는 대로 말해보세요</h2><p>알아서 찾아드려요</p></div>';
   qpick.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
 }
@@ -418,40 +451,31 @@ function run(){
 
 /* 단계 하나를 그리고, 다음 단계까지 걸릴 시간을 반환 */
 function step(S,i,no){
+  chat.querySelectorAll('.dot.live').forEach(d=>d.classList.remove('live'));
   if(i>=S.steps.length){ results(S); return; }
-  const s=S.steps[i]; let dur=1100, inner='';
+  const s=S.steps[i]; let inner='';
 
-  if(s.type==='cond'){
-    inner='<div class="cond">'+s.tags.map(t=>'<span'+(t[2]?' class="warn"':'')+'><i>'+t[0]+'</i>'+t[1]+'</span>').join('')+'</div>';
-    dur=900;
-  }
-  else if(s.type==='stores'){
-    inner='<div class="stores">'+s.rows.map((r,k)=>'<div class="srow"><span class="ck"></span><span>'+r[0]+'</span><span class="n">'+r[1]+'</span></div>').join('')+'</div>';
-    dur=380+s.rows.length*190;
-  }
-  else if(s.type==='narrow'){
-    inner=(s.d?'<div class="d">'+s.d+'</div>':'')
-      +'<div class="narrow"><div class="row"><span class="big">'+s.from+'</span><span>'+s.unit+'</span>'
-      +'<span class="arw">→</span><span class="big hit">'+s.to+'</span><span>'+s.unit+'</span></div>'
-      +'<div class="bar"><i></i></div></div>';
-    dur=1350;
-  }
-  else if(s.type==='note'){ inner='<div class="d">'+s.d+'</div>'; dur=950; }
-  else if(s.type==='facts'){
-    inner='<div class="facts">'+s.facts.map(f=>'<div class="f"><i>'+f[0]+'</i><span>'+f[1]+'</span></div>').join('')+'</div>';
-    dur=1250;
-  }
-  else if(s.type==='ask'){
-    inner='<div class="d">'+s.d+'</div><div class="ask">'
-      +s.opts.map((o,k)=>'<button data-k="'+k+'">'+o[0]+'<span class="sub">'+o[1]+'</span></button>').join('')+'</div>';
-  }
+  if(s.type==='cond')
+    inner='<div class="d rv">'+s.tags.map(t=>'<i>'+t[0]+'</i> '+(t[2]?'<b>'+t[1]+'</b>':t[1])).join(' · ')+'</div>';
+  else if(s.type==='stores')
+    inner='<div class="stores">'+s.rows.map(r=>'<div class="srow rv"><span class="ck"></span><span>'+r[0]+'</span></div>').join('')+'</div>';
+  else if(s.type==='narrow')
+    inner='<div class="narrow rv"><span class="big">'+s.from+'</span><span>'+s.unit+'</span>'
+      +'<span>→</span><span class="big hit">'+s.to+'</span><span>'+s.unit+'</span></div>';
+  else if(s.type==='note') inner='<div class="d rv">'+s.d+'</div>';
+  else if(s.type==='facts')
+    inner='<div class="facts">'+s.facts.map(f=>'<div class="f rv"><i>'+f[0]+'</i><span>'+f[1]+'</span></div>').join('')+'</div>';
+  else if(s.type==='ask')
+    inner='<div class="d rv">'+s.d+'</div><div class="ask">'
+      +s.opts.map((o,k)=>'<button class="rv" data-k="'+k+'">'+o[0]+'</button>').join('')+'</div>';
 
-  const el=add('<div class="step"><div class="dot">'+(s.type==='ask'?'?':no)+'</div>'
+  const el=add('<div class="step"><div class="dot live"></div>'
     +'<div class="body"><div class="t">'+s.t+'</div>'+inner+'</div></div>');
 
-  if(s.type==='stores')
-    el.querySelectorAll('.srow').forEach((r,k)=>wait(150+k*190,()=>{r.classList.add('on');chat.scrollTop=chat.scrollHeight;}));
-  if(s.type==='narrow') wait(90,()=>el.querySelector('.bar i').style.width='100%');
+  /* 한 줄씩 차례로 띄워 처리 중인 느낌을 낸다 */
+  const rows=[...el.querySelectorAll('.rv')];
+  rows.forEach((n,k)=>wait(260+k*230,()=>{n.classList.add('on');chat.scrollTop=chat.scrollHeight;}));
+  const dur=700+rows.length*230;
 
   if(s.type==='ask'){                        /* 사용자가 고를 때까지 멈춤 */
     el.querySelectorAll('.ask button').forEach(b=>b.onclick=()=>{
@@ -459,7 +483,10 @@ function step(S,i,no){
       el.querySelector('.ask').remove();
       el.querySelector('.d').innerHTML='선택: <b>'+o[0]+'</b>';
       add('<div class="me"><div class="b">'+o[0]+'</div></div>');
-      wait(420,()=>step(S,i+1,no+1));
+      /* 고른 선택지에 따라 이후 단계와 결과가 달라진다 */
+      const N=o[2] ? Object.assign({},S,{steps:S.steps.slice(0,i+1).concat(o[2].steps),
+                                         results:o[2].results, follow:o[2].follow||S.follow}) : S;
+      wait(420,()=>step(N,i+1,no+1));
     });
     chat.scrollTop=chat.scrollHeight;
     return;
@@ -473,16 +500,15 @@ function results(S){
     body='<div class="grid">'+S.results.map(r=>
       '<div class="card"><div class="thumb" data-file="'+r.file+'">'
       +(r.src?'<img src="'+r.src+'" alt="" style="width:100%;height:100%;object-fit:cover">':ICON_PHOTO)
-      +'<span class="badge">'+r.store+'</span><span class="date">'+r.date+'</span></div>'
-      +'<div class="meta"><div class="fn">'+r.file+'</div><div class="why">'+r.why+'</div></div></div>').join('')+'</div>';
+      +'<span class="badge">'+r.store+'</span></div></div>').join('')+'</div>';
   } else {
     body='<div class="list">'+S.results.map(r=>
       '<div class="doc" data-file="'+r.file+'"><div class="ext '+r.ext+'">'+r.ext.toUpperCase()+'</div>'
       +'<div class="dm"><div class="fn">'+r.file+'</div><div class="why">'+r.why+'</div>'
-      +'<div class="src"><span>'+r.store+'</span><span>'+r.date+'</span></div></div></div>').join('')+'</div>';
+      +'<div class="src"><span>'+r.store+'</span></div></div></div>').join('')+'</div>';
   }
   add('<div><div class="reshead"><div class="t"><b>'+S.results.length+''+(S.layout==='grid'?'장':'건')+'</b> 찾았어요</div>'
-    +'<div class="s">정확도순</div></div>'+body
+    +'</div>'+body
     +'<div class="follow">'+S.follow.map(f=>'<button>'+f+'</button>').join('')+'</div></div>');
   inp.disabled=false; send.disabled=false; busy=false;
   chat.scrollTop=chat.scrollHeight;

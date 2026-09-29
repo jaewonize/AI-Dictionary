@@ -1,0 +1,329 @@
+{
+  "schema_version": "1.0",
+  "query": "작년 송년회 와인이랑 4년 전 생일 와인",
+  "query_reference_date": "2026-09-28",
+  "metadata_is_synthetic": true,
+  "metadata_note": "PoC용 가상 촬영 시각·장소·행사와 와인 라벨 설정. 와인명은 시안용 가상 이름이며 실제 상품 식별 정보가 아님. 이미지 파일명은 filename과 일치함. 촬영 메타데이터는 이미지에 내장되지 않음.",
+  "timezone": "Asia/Seoul",
+  "visits": [
+    {
+      "visit_id": "Y2025",
+      "event_name": "2025년 송년회",
+      "date": "2025-12-19",
+      "location": "서울 레스토랑 별실",
+      "situation": "동료 4명의 송년 저녁 식사",
+      "wine_ids": [
+        "W01",
+        "W02",
+        "W03"
+      ],
+      "fictional_location": true
+    },
+    {
+      "visit_id": "B2022",
+      "event_name": "2022년 생일",
+      "date": "2022-03-19",
+      "location": "서울 자택 다이닝 공간",
+      "situation": "친구 3명의 생일 저녁 모임",
+      "wine_ids": [
+        "W04",
+        "W05"
+      ],
+      "fictional_location": true
+    }
+  ],
+  "wines": [
+    {
+      "wine_id": "W01",
+      "name": "CLOS DES AULNES",
+      "designation": "BORDEAUX",
+      "vintage": 2021,
+      "type": "레드",
+      "label_description": "크림색 라벨, 저택 그림, 버건디 캡슐"
+    },
+    {
+      "wine_id": "W02",
+      "name": "VILLA ORIA",
+      "designation": "CHIANTI",
+      "vintage": 2022,
+      "type": "레드",
+      "label_description": "테라코타색 라벨, 크림색 타원 그림, 검은 캡슐"
+    },
+    {
+      "wine_id": "W03",
+      "name": "MONT CLAIR",
+      "designation": "CHARDONNAY",
+      "vintage": 2023,
+      "type": "화이트",
+      "label_description": "연한 파란색 라벨, 풍경 그림, 아이보리 캡슐"
+    },
+    {
+      "wine_id": "W04",
+      "name": "DOMAINE LORIEL",
+      "designation": "PINOT NOIR",
+      "vintage": 2018,
+      "type": "레드",
+      "label_description": "크림색 라벨, 자주색 식물 그림, 더스티 로즈 캡슐"
+    },
+    {
+      "wine_id": "W05",
+      "name": "BELLE RIVE",
+      "designation": "BRUT",
+      "vintage": null,
+      "type": "스파클링",
+      "label_description": "크림색 타원 라벨, 작은 금색 별, 금박 병목"
+    }
+  ],
+  "photos": [
+    {
+      "filename": "IMG_010842.jpg",
+      "captured_at": "2025-12-19T19:08:24+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "Y2025",
+      "location": "서울 레스토랑 별실",
+      "labels": [
+        "송년회",
+        "와인",
+        "세 병",
+        "레드 와인",
+        "화이트 와인",
+        "인물",
+        "저녁 식사"
+      ],
+      "description": "원목 식탁 앞에서 동료 네 명이 대화하고 있다. 크림색·테라코타색·연한 파란색 라벨의 와인 세 병이 음식과 함께 놓여 있다.",
+      "visible_bottle_count": 3,
+      "visible_wine_ids": [
+        "W01",
+        "W02",
+        "W03"
+      ],
+      "search_placement": "상위",
+      "match_type": "visual_and_event_context"
+    },
+    {
+      "filename": "IMG_010844.jpg",
+      "captured_at": "2025-12-19T19:12:06+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "Y2025",
+      "location": "서울 레스토랑 별실",
+      "labels": [
+        "송년회",
+        "와인",
+        "한 병",
+        "레드 와인",
+        "스테이크",
+        "라벨"
+      ],
+      "description": "스테이크와 와인잔 옆의 CLOS DES AULNES BORDEAUX 2021 한 병을 가까이 촬영했다. 뒤로 솔가지 장식과 일행의 옷이 보인다.",
+      "visible_bottle_count": 1,
+      "visible_wine_ids": [
+        "W01"
+      ],
+      "search_placement": "상위",
+      "match_type": "visual_and_event_context"
+    },
+    {
+      "filename": "IMG_010847.jpg",
+      "captured_at": "2025-12-19T19:21:38+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "Y2025",
+      "location": "서울 레스토랑 별실",
+      "labels": [
+        "송년회",
+        "와인",
+        "두 병",
+        "레드 와인",
+        "화이트 와인",
+        "음식"
+      ],
+      "description": "같은 원목 테이블 위에 VILLA ORIA CHIANTI 2022와 MONT CLAIR CHARDONNAY 2023 두 병이 놓여 있고, 일행이 빵을 집고 있다.",
+      "visible_bottle_count": 2,
+      "visible_wine_ids": [
+        "W02",
+        "W03"
+      ],
+      "search_placement": "상위",
+      "match_type": "visual_and_event_context"
+    },
+    {
+      "filename": "IMG_010851.jpg",
+      "captured_at": "2025-12-19T19:38:17+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "Y2025",
+      "location": "서울 레스토랑 별실",
+      "labels": [
+        "송년회",
+        "건배",
+        "네 사람",
+        "와인",
+        "세 병"
+      ],
+      "description": "일행 네 명이 잔을 들어 건배하고 있다. 테이블 앞쪽에는 같은 행사에서 마신 레드 와인 두 병과 화이트 와인 한 병이 함께 보인다.",
+      "visible_bottle_count": 3,
+      "visible_wine_ids": [
+        "W01",
+        "W02",
+        "W03"
+      ],
+      "search_placement": "상위",
+      "match_type": "visual_and_event_context"
+    },
+    {
+      "filename": "IMG_010853.jpg",
+      "captured_at": "2025-12-19T19:45:52+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "Y2025",
+      "location": "서울 레스토랑 별실",
+      "labels": [
+        "송년회",
+        "와인",
+        "한 병",
+        "화이트 와인",
+        "와인잔",
+        "라벨"
+      ],
+      "description": "연한 파란색 라벨의 MONT CLAIR CHARDONNAY 2023 한 병과 화이트 와인잔을 가까이 촬영했다. 뒤로 크림색 니트를 입은 일행이 보인다.",
+      "visible_bottle_count": 1,
+      "visible_wine_ids": [
+        "W03"
+      ],
+      "search_placement": "상위",
+      "match_type": "visual_and_event_context"
+    },
+    {
+      "filename": "IMG_010861.jpg",
+      "captured_at": "2025-12-19T20:16:09+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "Y2025",
+      "location": "서울 레스토랑 별실",
+      "labels": [
+        "송년회",
+        "와인",
+        "두 병",
+        "레드 와인",
+        "식사 후"
+      ],
+      "description": "식사가 진행된 원목 테이블을 비스듬히 내려다본 사진이다. 음식이 남은 접시 옆에 CLOS DES AULNES와 VILLA ORIA 두 레드 와인 병이 보인다.",
+      "visible_bottle_count": 2,
+      "visible_wine_ids": [
+        "W01",
+        "W02"
+      ],
+      "search_placement": "상위",
+      "match_type": "visual_and_event_context"
+    },
+    {
+      "filename": "IMG_002184.jpg",
+      "captured_at": "2022-03-19T19:06:31+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "B2022",
+      "location": "서울 자택 다이닝 공간",
+      "labels": [
+        "생일",
+        "케이크",
+        "촛불",
+        "세 사람",
+        "와인",
+        "두 병"
+      ],
+      "description": "초 세 개가 켜진 딸기 생크림 케이크를 앞에 두고 세 친구가 웃고 있다. 케이크 양옆으로 DOMAINE LORIEL 레드 와인과 BELLE RIVE 스파클링 와인이 놓여 있다.",
+      "visible_bottle_count": 2,
+      "visible_wine_ids": [
+        "W04",
+        "W05"
+      ],
+      "search_placement": "상위",
+      "match_type": "visual_and_event_context"
+    },
+    {
+      "filename": "IMG_002186.jpg",
+      "captured_at": "2022-03-19T19:08:14+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "B2022",
+      "location": "서울 자택 다이닝 공간",
+      "labels": [
+        "생일",
+        "케이크",
+        "와인",
+        "한 병",
+        "레드 와인",
+        "선물"
+      ],
+      "description": "딸기 케이크 옆의 DOMAINE LORIEL PINOT NOIR 2018 한 병을 가까이 촬영했다. 크림색 식물 그림 라벨과 파란 꽃무늬 선물 상자가 보인다.",
+      "visible_bottle_count": 1,
+      "visible_wine_ids": [
+        "W04"
+      ],
+      "search_placement": "상위",
+      "match_type": "visual_and_event_context"
+    },
+    {
+      "filename": "IMG_002189.jpg",
+      "captured_at": "2022-03-19T19:11:47+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "B2022",
+      "location": "서울 자택 다이닝 공간",
+      "labels": [
+        "생일",
+        "와인",
+        "한 병",
+        "스파클링 와인",
+        "와인잔",
+        "선물"
+      ],
+      "description": "금박 병목과 크림색 타원 라벨의 BELLE RIVE BRUT 한 병이 건배하는 세 잔과 함께 보인다. 옆으로 파란 꽃무늬 선물 상자와 케이크 일부가 보인다.",
+      "visible_bottle_count": 1,
+      "visible_wine_ids": [
+        "W05"
+      ],
+      "search_placement": "상위",
+      "match_type": "visual_and_event_context"
+    },
+    {
+      "filename": "IMG_002194.jpg",
+      "captured_at": "2022-03-19T19:17:22+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "B2022",
+      "location": "서울 자택 다이닝 공간",
+      "labels": [
+        "생일",
+        "건배",
+        "세 사람",
+        "케이크",
+        "와인",
+        "두 병"
+      ],
+      "description": "촛불을 끈 뒤 세 친구가 잔을 들어 생일을 축하하고 있다. 케이크와 선물 앞에 같은 레드 와인과 스파클링 와인 두 병이 보인다.",
+      "visible_bottle_count": 2,
+      "visible_wine_ids": [
+        "W04",
+        "W05"
+      ],
+      "search_placement": "상위",
+      "match_type": "visual_and_event_context"
+    },
+    {
+      "filename": "IMG_002203.jpg",
+      "captured_at": "2022-03-19T20:04:58+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "B2022",
+      "location": "서울 자택 다이닝 공간",
+      "labels": [
+        "생일",
+        "케이크",
+        "와인",
+        "두 병",
+        "디저트",
+        "테이블"
+      ],
+      "description": "일부를 자른 딸기 케이크와 사용한 접시가 놓인 테이블을 비스듬히 내려다본 사진이다. DOMAINE LORIEL과 BELLE RIVE 두 병이 함께 보인다.",
+      "visible_bottle_count": 2,
+      "visible_wine_ids": [
+        "W04",
+        "W05"
+      ],
+      "search_placement": "상위",
+      "match_type": "visual_and_event_context"
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.5",
+  "query": "창밖으로 바다가 보이는 카페에서 찍은 사진",
+  "metadata_is_synthetic": true,
+  "metadata_note": "PoC용 가상 촬영 시각·장소 및 라벨 정의. 이미지 파일명은 filename과 일치함. 촬영 메타데이터는 이미지에 내장되지 않음.",
+  "timezone": "Asia/Seoul",
+  "visits": [
+    {
+      "visit_id": "A",
+      "date": "2022-06-14",
+      "location": "제주 월정리 해안 카페 A",
+      "situation": "맑은 오후",
+      "fictional_location": true
+    },
+    {
+      "visit_id": "B",
+      "date": "2024-07-19",
+      "location": "강릉 안목해변 카페 B",
+      "situation": "비 오는 오후",
+      "fictional_location": true
+    },
+    {
+      "visit_id": "C",
+      "date": "2026-09-05",
+      "location": "인천 영종도 해안 카페 C",
+      "situation": "해 질 무렵",
+      "fictional_location": true
+    }
+  ],
+  "photos": [
+    {
+      "filename": "IMG_002934.jpg",
+      "captured_at": "2022-06-14T14:32:08+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "A",
+      "location": "제주 월정리 해안 카페 A",
+      "labels": [
+        "카페",
+        "인물",
+        "파란 셔츠",
+        "흰 창틀",
+        "바다"
+      ],
+      "description": "흰 창틀 너머 푸른 바다가 보이는 자리에서 파란 셔츠를 입은 여성이 커피와 함께 앉아 있다.",
+      "sea_visible": true,
+      "search_placement": "상위",
+      "match_type": "visual"
+    },
+    {
+      "filename": "IMG_002935.jpg",
+      "captured_at": "2022-06-14T14:32:41+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "A",
+      "location": "제주 월정리 해안 카페 A",
+      "labels": [
+        "카페",
+        "인물",
+        "파란 셔츠",
+        "원목 테이블",
+        "실내"
+      ],
+      "description": "파란 셔츠를 입은 여성 뒤로 흰 벽과 원목 가구가 보이며, 테이블에는 짙은 파란 컵과 크루아상이 놓여 있다.",
+      "sea_visible": false,
+      "search_placement": "후순위",
+      "match_type": "contextual"
+    },
+    {
+      "filename": "IMG_002937.jpg",
+      "captured_at": "2022-06-14T14:34:12+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "A",
+      "location": "제주 월정리 해안 카페 A",
+      "labels": [
+        "카페",
+        "커피",
+        "크루아상",
+        "파란 컵",
+        "음식"
+      ],
+      "description": "원목 테이블 위의 파란 커피잔과 크루아상을 가까이 촬영했으며, 인물의 파란 셔츠 소매가 함께 보인다.",
+      "sea_visible": false,
+      "search_placement": "후순위",
+      "match_type": "contextual"
+    },
+    {
+      "filename": "IMG_002938.jpg",
+      "captured_at": "2022-06-14T14:35:03+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "A",
+      "location": "제주 월정리 해안 카페 A",
+      "labels": [
+        "카페",
+        "인물",
+        "파란 셔츠",
+        "창가",
+        "바다"
+      ],
+      "description": "테이블의 커피와 크루아상 너머로 오른쪽에 앉은 여성과 왼쪽 창밖의 푸른 바다가 보인다.",
+      "sea_visible": true,
+      "search_placement": "상위",
+      "match_type": "visual"
+    },
+    {
+      "filename": "IMG_002941.jpg",
+      "captured_at": "2022-06-14T14:38:26+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "A",
+      "location": "제주 월정리 해안 카페 A",
+      "labels": [
+        "카페",
+        "인물 뒷모습",
+        "흰 창틀",
+        "바다"
+      ],
+      "description": "파란 셔츠를 입은 여성의 뒤쪽에서 창가 테이블과 햇빛이 비치는 바다를 함께 촬영했다.",
+      "sea_visible": true,
+      "search_placement": "상위",
+      "match_type": "visual"
+    },
+    {
+      "filename": "IMG_007452.jpg",
+      "captured_at": "2024-07-19T16:08:17+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "B",
+      "location": "강릉 안목해변 카페 B",
+      "labels": [
+        "카페",
+        "두 사람",
+        "비",
+        "검은 창틀",
+        "바다"
+      ],
+      "description": "두 사람이 창가 테이블에서 대화하고 있으며, 빗방울이 맺힌 검은 창틀 너머로 회색 바다와 파도가 보인다.",
+      "sea_visible": true,
+      "search_placement": "상위",
+      "match_type": "visual"
+    },
+    {
+      "filename": "IMG_007454.jpg",
+      "captured_at": "2024-07-19T16:10:09+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "B",
+      "location": "강릉 안목해변 카페 B",
+      "labels": [
+        "카페",
+        "두 사람",
+        "녹색 타일",
+        "황동 조명",
+        "케이크"
+      ],
+      "description": "녹색 타일 벽과 황동 조명 아래 두 사람이 앉아 있고, 테이블에는 호박색 유리컵과 피스타치오 케이크가 놓여 있다.",
+      "sea_visible": false,
+      "search_placement": "후순위",
+      "match_type": "contextual"
+    },
+    {
+      "filename": "IMG_007457.jpg",
+      "captured_at": "2024-07-19T16:13:42+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "B",
+      "location": "강릉 안목해변 카페 B",
+      "labels": [
+        "카페",
+        "두 사람",
+        "실내 전경",
+        "비",
+        "바다"
+      ],
+      "description": "다른 좌석 쪽에서 창가에 앉은 두 사람과 카페 내부를 넓게 촬영했으며, 창밖으로 비 내리는 바다가 보인다.",
+      "sea_visible": true,
+      "search_placement": "상위",
+      "match_type": "visual"
+    },
+    {
+      "filename": "IMG_012216.jpg",
+      "captured_at": "2026-09-05T18:47:11+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "C",
+      "location": "인천 영종도 해안 카페 C",
+      "labels": [
+        "카페",
+        "인물",
+        "아치 창",
+        "노을",
+        "바다"
+      ],
+      "description": "크림색 스웨터를 입은 인물이 테라코타색 좌석에 앉아 커다란 아치 창 너머 바다의 노을을 바라본다.",
+      "sea_visible": true,
+      "search_placement": "상위",
+      "match_type": "visual"
+    },
+    {
+      "filename": "IMG_012218.jpg",
+      "captured_at": "2026-09-05T18:48:36+09:00",
+      "timezone": "Asia/Seoul",
+      "visit_id": "C",
+      "location": "인천 영종도 해안 카페 C",
+      "labels": [
+        "카페",
+        "인물",
+        "테라코타 좌석",
+        "노을",
+        "바다"
+      ],
+      "description": "같은 인물과 둥근 테이블, 곡선 좌석을 조금 더 넓게 담았으며, 아치 창 너머 주황빛 바다와 수평선이 보인다.",
+      "sea_visible": true,
+      "search_placement": "상위",
+      "match_type": "visual"
+    }
+  ]
+}
