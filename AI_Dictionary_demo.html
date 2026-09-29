@@ -55,7 +55,8 @@ a.replay{text-decoration:none}
 .me{display:flex;justify-content:flex-end;margin-bottom:16px}
 .me .b{max-width:86%;background:#6D4FE0;color:#fff;font-size:13.5px;font-weight:600;line-height:1.5;
   letter-spacing:-.015em;padding:11px 14px;border-radius:17px 17px 5px 17px}
-.me .attimg{margin-top:7px;height:64px;border-radius:9px;background:linear-gradient(145deg,rgba(255,255,255,.34),rgba(255,255,255,.14));
+.me .attimg img{height:100%;width:auto;max-width:100%;border-radius:9px;object-fit:cover;display:block}
+.me .attimg{margin-top:7px;height:84px;border-radius:9px;background:linear-gradient(145deg,rgba(255,255,255,.34),rgba(255,255,255,.14));
   display:flex;align-items:center;justify-content:center;gap:6px;font-size:10.5px;font-weight:700;color:#fff}
 
 /* ── 단계 ── */
@@ -116,6 +117,12 @@ a.replay{text-decoration:none}
 .ext.xlsx{background:linear-gradient(160deg,#4FCCA4,#12916F)}
 .ext.pptx{background:linear-gradient(160deg,#F0A24E,#D2761A)}
 .ext.docx{background:linear-gradient(160deg,#7E8AD4,#3F4C9E)}
+.ext.png{background:linear-gradient(160deg,#9B8BEA,#6D4FE0)}
+.doc .pv{width:34px;height:40px;flex:none;border-radius:6px;overflow:hidden;position:relative;
+  border:1px solid #EAE5F7;background:#F6F4FC}
+.doc .pv img{width:100%;height:100%;object-fit:cover;object-position:top}
+.doc .pv .tag{position:absolute;left:0;right:0;bottom:0;background:#6D4FE0;font-size:7px;font-weight:800;
+  color:#fff;text-align:center;padding:1.5px 0;letter-spacing:-.01em}
 .doc .dm{flex:1;min-width:0}
 .doc .fn{font-size:11.5px;font-weight:800;color:#17151F;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .doc .why{font-size:10.5px;font-weight:600;color:#6C6680;line-height:1.45;margin-top:3px}
@@ -203,40 +210,46 @@ const SCENARIOS = [
     {type:"cond", t:"찾을 내용을 정리했어요",
      tags:[["대상","카페에서 찍은 사진"],["장면","창밖으로 바다가 보이는 구도"]]},
     {type:"stores", t:"사진이 있는 곳을 모두 찾아봤어요", rows:STORES_ALL},
-    {type:"narrow", t:"카페에서 찍은 사진부터 추렸어요", from:"2,481", to:"24", unit:"장"},
+    {type:"narrow", t:"카페에서 찍은 사진을 모았어요", from:"2,481", to:"24", unit:"장"},
     {type:"note", t:"한 장씩 확인했어요",
-     d:"창이 보이는지, <b>창밖이 바다인지</b> 확인했어요"}
+     d:"창이 보이는지, <b>창밖이 바다인지</b> 확인했어요"},
+    {type:"note", t:"세 번 다녀오셨네요",
+     d:"<b>2022년 6월</b> · <b>2024년 7월</b> · <b>2026년 9월</b>, 서로 다른 카페예요"}
   ],
   results:[
-    {file:"IMG_4820.HEIC", store:"갤러리", date:"2025.07.12", why:"창가 자리 · 통창 너머 수평선", src:null},
-    {file:"IMG_3317.HEIC", store:"갤러리", date:"2024.09.28", why:"테라스 · 바다 정면", src:null},
-    {file:"KakaoTalk_0912.jpg", store:"카카오", date:"2025.05.03", why:"창틀 안쪽 · 해안선", src:null},
-    {file:"insta_saved_07.jpg", store:"인스타", date:"2023.08.19", why:"유리창 반사 · 바다 배경", src:null},
-    {file:"IMG_2044.HEIC", store:"갤러리", date:"2023.06.02", why:"카페 내부 · 창밖 항구", src:null},
-    {file:"photo_mail_12.jpg", store:"메일", date:"2022.10.15", why:"창측 좌석 · 먼바다", src:null}
+    {file:"IMG_012216.jpg", store:"갤러리", date:"2026.09.05", why:"아치 창 너머 노을 진 바다", src:"01_cafe_photo/IMG_012216.jpg"},
+    {file:"IMG_012218.jpg", store:"갤러리", date:"2026.09.05", why:"같은 자리 · 창밖 주황빛 바다", src:"01_cafe_photo/IMG_012218.jpg"},
+    {file:"IMG_007452.jpg", store:"갤러리", date:"2024.07.19", why:"빗방울 맺힌 창 너머 회색 바다", src:"01_cafe_photo/IMG_007452.jpg"},
+    {file:"IMG_007457.jpg", store:"카카오", date:"2024.07.19", why:"창가 좌석 · 비 내리는 바다", src:"01_cafe_photo/IMG_007457.jpg"},
+    {file:"IMG_002934.jpg", store:"갤러리", date:"2022.06.14", why:"흰 창틀 너머 푸른 바다", src:"01_cafe_photo/IMG_002934.jpg"},
+    {file:"IMG_002938.jpg", store:"인스타", date:"2022.06.14", why:"테이블 너머 창밖 바다", src:"01_cafe_photo/IMG_002938.jpg"},
+    {file:"IMG_002941.jpg", store:"갤러리", date:"2022.06.14", why:"창가 테이블 · 햇빛 비치는 바다", src:"01_cafe_photo/IMG_002941.jpg"},
+    {file:"IMG_007454.jpg", store:"갤러리", date:"2024.07.19", why:"같은 카페 · 창은 안 보임", src:"01_cafe_photo/IMG_007454.jpg", sub:true},
+    {file:"IMG_002935.jpg", store:"페이스북", date:"2022.06.14", why:"같은 방문 · 실내 쪽", src:"01_cafe_photo/IMG_002935.jpg", sub:true},
+    {file:"IMG_002937.jpg", store:"갤러리", date:"2022.06.14", why:"같은 방문 · 테이블 클로즈업", src:"01_cafe_photo/IMG_002937.jpg", sub:true}
   ],
-  follow:["작년 것만 보기","세로 사진만","이 카페 이름 알려줘"]
+  follow:["올해 것만 보기","이 카페 이름 알려줘","창밖이 보이는 것만"]
 },
 {
-  q:"이 신발 신고 찍은 사진", attach:"신발 사진 1장", layout:"grid", core:"이미지를 검색어로 쓴다",
+  q:"이 신발 신고 찍은 사진", attach:"매장 진열대 위 에메랄드 스니커즈.png", attachSrc:"02_shoe_photo/매장 진열대 위 에메랄드 스니커즈.png",
+  layout:"grid", core:"이미지를 검색어로 쓴다",
   steps:[
     {type:"cond", t:"보내주신 사진을 기준으로 찾을게요",
      tags:[["기준","보내주신 사진"],["대상","사진"],["조건","같은 신발을 신은"]]},
-    {type:"note", t:"사진에서 신발만 봤어요",
-     d:"배경은 빼고 <b>신발 모양과 색</b>만 기억해뒀어요"},
+    {type:"note", t:"신발만 따로 확인했어요",
+     d:"진열대의 다른 신발은 빼고, <b>초록색 스웨이드 · 아이보리 끈 · 검 밑창</b>이 기준이에요"},
     {type:"stores", t:"사람이 나온 사진을 모두 찾아봤어요", rows:STORES_ALL},
-    {type:"narrow", t:"발이 보이는 사진부터 추렸어요", from:"1,840", to:"18", unit:"장"},
+    {type:"narrow", t:"발이 보이는 사진을 모았어요", from:"1,840", to:"18", unit:"장"},
     {type:"note", t:"같은 신발이 맞는지 확인했어요",
-     d:"색과 무늬까지 비교해서 <b>비슷한 다른 신발</b>은 걸러냈어요"}
+     d:"색과 무늬까지 비교해 <b>비슷한 다른 신발</b>은 제외했어요"}
   ],
   results:[
-    {file:"IMG_5102.HEIC", store:"갤러리", date:"2025.04.06", why:"전신 · 같은 흰 스니커즈", src:null},
-    {file:"IMG_4977.HEIC", store:"갤러리", date:"2025.03.22", why:"발끝만 보임 · 밑창 일치", src:null},
-    {file:"insta_post_31.jpg", store:"인스타", date:"2024.11.09", why:"측면 · 로고 위치 일치", src:null},
-    {file:"KakaoTalk_1177.jpg", store:"카카오", date:"2024.08.14", why:"단체 사진 · 오른쪽 끝", src:null},
-    {file:"IMG_4410.HEIC", store:"갤러리", date:"2024.05.30", why:"계단 · 정면 클로즈업", src:null}
+    {file:"IMG_011872.jpg", store:"갤러리", date:"2026.08.20", why:"거울 셀카 · 정면에서 보임", src:"02_shoe_photo/IMG_011872.jpg"},
+    {file:"IMG_009641.jpg", store:"인스타", date:"2025.04.19", why:"피크닉 · 앞코와 아이보리 끈", src:"02_shoe_photo/IMG_009641.jpg"},
+    {file:"IMG_006825.jpg", store:"갤러리", date:"2024.06.08", why:"카페 의자 · 흰 양말 아래", src:"02_shoe_photo/IMG_006825.jpg"},
+    {file:"IMG_004318.jpg", store:"카카오", date:"2023.04.02", why:"교토 골목 · 전신 사진", src:"02_shoe_photo/IMG_004318.jpg"}
   ],
-  follow:["산 날짜 · 영수증 찾기","가장 최근 것부터","같이 신은 옷 보기"]
+  follow:["가장 최근 것부터","같이 신은 옷 보기","산 날짜 찾기"]
 },
 {
   q:"견적 금액 500만 원 넘는 견적서", layout:"list", core:"문서를 읽고 값을 비교한다",
@@ -244,16 +257,22 @@ const SCENARIOS = [
     {type:"cond", t:"찾을 내용을 정리했어요",
      tags:[["대상","문서"],["종류","견적서"],["금액","500만 원 넘는"]]},
     {type:"stores", t:"문서가 있는 곳을 모두 찾아봤어요", rows:STORES_DOC},
-    {type:"narrow", t:"견적서만 골라냈어요",
+    {type:"narrow", t:"견적서만 모았어요",
      d:"파일 이름이 아니라 <b>문서 안을 열어서</b> 확인했어요", from:"214", to:"38", unit:"건"},
     {type:"note", t:"금액을 확인했어요",
-     d:"견적서마다 <b>합계 금액</b>을 읽고 500만 원과 비교했어요"}
+     d:"견적서마다 <b>부가세 포함 합계</b>를 읽고 500만 원과 비교했어요"},
+    {type:"note", t:"사진으로 찍어둔 견적서도 찾았어요",
+     d:"문서 파일이 아니라 <b>화면을 캡처한 이미지</b> 안의 금액도 읽었어요"}
   ],
   results:[
-    {ext:"pdf",  file:"인테리어_견적서_최종.pdf", store:"메일 첨부", date:"2025.02.18", why:"합계 <em>8,420,000원</em> · 부가세 별도"},
-    {ext:"xlsx", file:"사무실이전_견적_v3.xlsx", store:"파일", date:"2024.11.02", why:"합계 <em>12,700,000원</em> · 3개 업체 비교"},
-    {ext:"pdf",  file:"촬영장비_렌탈견적.pdf", store:"카카오", date:"2024.07.25", why:"합계 <em>6,150,000원</em> · 7일 기준"},
-    {ext:"pdf",  file:"웹사이트_구축_제안견적.pdf", store:"메일 첨부", date:"2023.09.11", why:"합계 <em>5,500,000원</em> · 유지보수 별도"}
+    {ext:"xlsx", file:"사무실이전_견적_v3.xlsx", store:"파일", date:"2024.08.23",
+     why:"부가세 포함 <em>12,700,000원</em> · 40석 사무실 이전", thumb:"03_quotation/사무실이전_견적_v3.png"},
+    {ext:"pdf",  file:"인테리어_견적서_최종.pdf", store:"카카오", date:"2023.11.16",
+     why:"부가세 포함 <em>8,420,000원</em> · 주거 공간 부분 리모델링", thumb:"03_quotation/인테리어_견적서_최종.png"},
+    {ext:"png",  file:"IMG_008426.png", store:"갤러리", date:"2025.10.08", shot:true,
+     why:"부가세 포함 <em>6,150,000원</em> · 촬영장비 렌탈 <b>스크린샷에서 읽음</b>", thumb:"03_quotation/IMG_008426.png"},
+    {ext:"pdf",  file:"웹사이트_구축제안견적.pdf", store:"메일 첨부", date:"2026.03.12",
+     why:"부가세 포함 <em>5,500,000원</em> · 반응형 웹사이트 구축", thumb:"03_quotation/웹사이트_구축제안견적.png"}
   ],
   follow:["금액 높은 순","올해 것만","엑셀로 정리해줘"]
 },
@@ -265,37 +284,45 @@ const SCENARIOS = [
     {type:"ask", t:"어느 회의인지 알려주세요",
      d:"최근 2주 안에 자료를 받은 회의가 <b>세 번</b> 있었어요",
      opts:[
-      ["9월 24일 · 신규 기능 리뷰","카카오로 4개 · 메일로 1개", {
+      ["9월 24일 · 신규 기능 리뷰","카카오로 2개 · 메일로 1개", {
         steps:[
-          {type:"stores", t:"그날 받은 파일만 다시 봤어요", rows:[["카카오 받은 파일","4"],["메일 첨부","1"]]},
-          {type:"note", t:"회의 자료가 아닌 건 뺐어요",
-           d:"같은 날 받았어도 <b>회의와 상관없는 파일</b>은 제외했어요"}
+          {type:"stores", t:"그날 받은 파일만 다시 확인했어요", rows:[["카카오 받은 파일","2"],["메일 첨부","1"]]},
+          {type:"note", t:"회의와 상관없는 파일은 제외했어요",
+           d:"같은 날 받았어도 <b>회의 내용과 이어지지 않는</b> 파일이에요"}
         ],
         results:[
-          {ext:"pptx", file:"신규기능_리뷰_0924.pptx", store:"카카오", date:"2025.09.24", why:"회의 시작 12분 전 수신 · <em>본 자료</em>"},
-          {ext:"pdf",  file:"사용성테스트_요약.pdf", store:"카카오", date:"2025.09.24", why:"회의 중 공유 · 참고 자료"},
-          {ext:"xlsx", file:"기능별_일정표_v2.xlsx", store:"메일 첨부", date:"2025.09.24", why:"회의 직후 발송 · 후속 일정"}
+          {ext:"pptx", file:"신규기능_리뷰_0924.pptx", store:"카카오", date:"2026.09.24 14:05",
+           why:"검토 범위와 사용성 이슈, 후속 일정 · <em>본 자료</em>", thumb:"04_meeting_documents/신규기능_리뷰_0924.jpg"},
+          {ext:"pdf",  file:"사용성테스트_요약.pdf", store:"카카오", date:"2026.09.24 14:18",
+           why:"참여자 8명의 검색 과제 결과 보고서", thumb:"04_meeting_documents/사용성테스트_요약.jpg"},
+          {ext:"xlsx", file:"기능별_일정표_v2.xlsx", store:"메일 첨부", date:"2026.09.24 14:42",
+           why:"검색 입력 · 사진 첨부 기능의 개발 · 검수 일정", thumb:"04_meeting_documents/기능별_일정표_v2.jpg"}
         ]}],
       ["9월 17일 · 분기 예산 회의","메일로 3개", {
         steps:[
-          {type:"stores", t:"그날 받은 파일만 다시 봤어요", rows:[["메일 첨부","3"]]},
-          {type:"note", t:"회의 자료가 아닌 건 뺐어요",
-           d:"같은 날 받았어도 <b>회의와 상관없는 파일</b>은 제외했어요"}
+          {type:"stores", t:"그날 받은 파일만 다시 확인했어요", rows:[["메일 첨부","3"]]},
+          {type:"note", t:"회의와 상관없는 파일은 제외했어요",
+           d:"같은 날 받았어도 <b>회의 내용과 이어지지 않는</b> 파일이에요"}
         ],
         results:[
-          {ext:"xlsx", file:"4분기_예산안_v4.xlsx", store:"메일 첨부", date:"2025.09.17", why:"회의 전날 배포 · <em>본 자료</em>"},
-          {ext:"pdf",  file:"상반기_집행실적.pdf", store:"메일 첨부", date:"2025.09.17", why:"회의 중 참고 · 실적 요약"},
-          {ext:"docx", file:"예산_심의의견_취합.docx", store:"메일 첨부", date:"2025.09.17", why:"회의 직후 발송 · 의견 정리"}
+          {ext:"xlsx", file:"4분기_예산안_v4.xlsx", store:"메일 첨부", date:"2026.09.17 10:05",
+           why:"요청 예산 6,200만 원 · 심의안 6,000만 원 · <em>본 자료</em>", thumb:"04_meeting_documents/4분기_예산안_v4.jpg"},
+          {ext:"pdf",  file:"상반기_집행실적.pdf", store:"메일 첨부", date:"2026.09.17 10:15",
+           why:"예산 1억 원 대비 집행액 8,200만 원과 미집행 사유", thumb:"04_meeting_documents/상반기_집행실적.jpg"},
+          {ext:"docx", file:"예산_심의의견_취합.docx", store:"메일 첨부", date:"2026.09.17 10:48",
+           why:"항목별 심의 의견과 도구 비용 200만 원 감액", thumb:"04_meeting_documents/예산_심의의견_취합.jpg"}
         ]}],
       ["9월 11일 · 디자인 시안 공유","카카오로 2개", {
         steps:[
-          {type:"stores", t:"그날 받은 파일만 다시 봤어요", rows:[["카카오 받은 파일","2"]]},
-          {type:"note", t:"회의 자료가 아닌 건 뺐어요",
-           d:"같은 날 받았어도 <b>회의와 상관없는 파일</b>은 제외했어요"}
+          {type:"stores", t:"그날 받은 파일만 다시 확인했어요", rows:[["카카오 받은 파일","2"]]},
+          {type:"note", t:"회의와 상관없는 파일은 제외했어요",
+           d:"같은 날 받았어도 <b>회의 내용과 이어지지 않는</b> 파일이에요"}
         ],
         results:[
-          {ext:"pdf",  file:"메인화면_시안_A안.pdf", store:"카카오", date:"2025.09.11", why:"회의 시작 직전 수신 · <em>본 자료</em>"},
-          {ext:"pptx", file:"시안_설명자료.pptx", store:"카카오", date:"2025.09.11", why:"회의 중 공유 · 설명 자료"}
+          {ext:"pdf",  file:"메인화면_시안_A안.pdf", store:"카카오", date:"2026.09.11 10:12",
+           why:"검색 중심 메인화면 A안 · <em>본 자료</em>", thumb:"04_meeting_documents/메인화면_시안_A안.jpg"},
+          {ext:"pptx", file:"시안_설명자료.pptx", store:"카카오", date:"2026.09.11 10:35",
+           why:"A안의 화면 구성 원칙과 검색 흐름 설명", thumb:"04_meeting_documents/시안_설명자료.jpg"}
         ]}]
      ]}
   ],
@@ -308,20 +335,20 @@ const SCENARIOS = [
      tags:[["대상","사진"],["장소","디올 성수"],["언제","아직 모르겠어요",1]]},
     {type:"note", t:"이곳을 몰라서 먼저 알아봤어요",
      d:"어디에 있고 어떻게 생겼는지 <b>웹에서 찾아봤어요</b>"},
-    {type:"facts", t:"이렇게 알아냈어요",
+    {type:"facts", t:"이렇게 확인했어요",
      facts:[["장소","서울 성동구 연무장길"],["운영","상시 · 시기마다 테마가 바뀜"],["설치물","2023 동물 조형물 · 2024 대형 의자"]]},
     {type:"narrow", t:"그 장소에서 찍은 사진을 모았어요", from:"312", to:"5", unit:"장"},
     {type:"note", t:"두 번 다녀오셨네요",
      d:"<b>2023년 5월</b>과 <b>2024년 5월</b>, 테마가 다른 두 시기의 사진이에요"},
-    {type:"note", t:"간판이 안 보이는 사진도 넣었어요",
-     d:"같은 날 · 같은 옷차림으로 이어진 사진이라 <b>같은 방문</b>으로 묶었어요"}
+    {type:"note", t:"간판이 안 보이는 사진도 함께 보여드려요",
+     d:"같은 날 · 같은 옷차림으로 이어진 <b>같은 방문</b>의 사진이에요"}
   ],
   results:[
-    {file:"IMG_006321.png", store:"갤러리", date:"2024.05.25", why:"DIOR 간판 · 대형 의자", src:"05_dior_photos/IMG_006321.jpg"},
-    {file:"IMG_006326.png", store:"갤러리", date:"2024.05.25", why:"대형 의자 앞", src:"05_dior_photos/IMG_006326.jpg"},
-    {file:"IMG_006332.png", store:"갤러리", date:"2024.05.25", why:"같은 방문 · 간판은 안 보임", src:"05_dior_photos/IMG_006332.jpg"},
-    {file:"IMG_003714.png", store:"갤러리", date:"2023.05.21", why:"DIOR 간판 · 동물 조형물", src:"05_dior_photos/IMG_003714.jpg"},
-    {file:"IMG_003719.png", store:"갤러리", date:"2023.05.21", why:"동물 조형물 옆", src:"05_dior_photos/IMG_003719.jpg"}
+    {file:"IMG_006321.jpg", store:"갤러리", date:"2024.05.25", why:"DIOR 간판 · 대형 의자", src:"05_dior_photos/IMG_006321.jpg"},
+    {file:"IMG_006326.jpg", store:"인스타", date:"2024.05.25", why:"대형 의자 앞", src:"05_dior_photos/IMG_006326.jpg"},
+    {file:"IMG_006332.jpg", store:"갤러리", date:"2024.05.25", why:"같은 방문 · 간판은 안 보임", src:"05_dior_photos/IMG_006332.jpg"},
+    {file:"IMG_003714.jpg", store:"갤러리", date:"2023.05.21", why:"DIOR 간판 · 동물 조형물", src:"05_dior_photos/IMG_003714.jpg"},
+    {file:"IMG_003719.jpg", store:"카카오", date:"2023.05.21", why:"동물 조형물 옆", src:"05_dior_photos/IMG_003719.jpg"}
   ],
   follow:["2024년 것만","2023년 것만","인스타에 올린 것만"]
 },
@@ -330,22 +357,27 @@ const SCENARIOS = [
   steps:[
     {type:"cond", t:"찾을 게 둘이라 나눠서 찾을게요",
      tags:[["하나","작년 송년회 · 와인"],["둘","4년 전 생일 · 와인"]]},
-    {type:"note", t:"두 날이 언제인지 먼저 짚었어요",
-     d:"일정과 사진을 보고 <b>2024.12.21</b> · <b>2021.03.08</b>로 확인했어요"},
+    {type:"note", t:"두 날이 언제인지 먼저 확인했어요",
+     d:"일정과 사진을 보고 <b>2025.12.19</b> · <b>2022.03.19</b>로 확인했어요"},
     {type:"stores", t:"두 날짜를 따로 찾아봤어요", rows:STORES_ALL},
-    {type:"narrow", t:"와인이 보이는 사진만 추려서 합쳤어요", from:"430", to:"11", unit:"장"},
+    {type:"narrow", t:"와인이 보이는 사진을 모았어요", from:"430", to:"11", unit:"장"},
     {type:"note", t:"라벨을 읽었어요",
-     d:"병에 적힌 <b>이름과 연도</b>까지 확인했어요"}
+     d:"병에 적힌 <b>이름과 연도</b>까지 확인했어요 · 송년회 3종 · 생일 2종"}
   ],
   results:[
-    {file:"IMG_7712.HEIC", store:"갤러리", date:"2024.12.21", why:"송년회 · 라벨 정면", src:null},
-    {file:"IMG_7719.HEIC", store:"갤러리", date:"2024.12.21", why:"송년회 · 잔과 병", src:null},
-    {file:"KakaoTalk_2210.jpg", store:"카카오", date:"2024.12.21", why:"송년회 · 단체샷 테이블", src:null},
-    {file:"IMG_1188.HEIC", store:"갤러리", date:"2021.03.08", why:"생일 · 케이크 옆 병", src:null},
-    {file:"IMG_1193.HEIC", store:"갤러리", date:"2021.03.08", why:"생일 · 라벨 클로즈업", src:null},
-    {file:"fb_album_02.jpg", store:"페이스북", date:"2021.03.08", why:"생일 · 건배 장면", src:null}
+    {file:"IMG_010842.jpg", store:"갤러리", date:"2025.12.19", why:"송년회 · 와인 세 병과 식탁", src:"06_wine_photos/IMG_010842.jpg"},
+    {file:"IMG_010844.jpg", store:"갤러리", date:"2025.12.19", why:"송년회 · CLOS DES AULNES 2021", src:"06_wine_photos/IMG_010844.jpg"},
+    {file:"IMG_010847.jpg", store:"카카오", date:"2025.12.19", why:"송년회 · VILLA ORIA 2022", src:"06_wine_photos/IMG_010847.jpg"},
+    {file:"IMG_010851.jpg", store:"갤러리", date:"2025.12.19", why:"송년회 · 건배 · 레드 두 병", src:"06_wine_photos/IMG_010851.jpg"},
+    {file:"IMG_010853.jpg", store:"인스타", date:"2025.12.19", why:"송년회 · MONT CLAIR 2023", src:"06_wine_photos/IMG_010853.jpg"},
+    {file:"IMG_010861.jpg", store:"갤러리", date:"2025.12.19", why:"송년회 · 식사 마무리 테이블", src:"06_wine_photos/IMG_010861.jpg"},
+    {file:"IMG_002184.jpg", store:"갤러리", date:"2022.03.19", why:"생일 · 케이크 양옆의 병", src:"06_wine_photos/IMG_002184.jpg"},
+    {file:"IMG_002186.jpg", store:"갤러리", date:"2022.03.19", why:"생일 · DOMAINE LORIEL 2018", src:"06_wine_photos/IMG_002186.jpg"},
+    {file:"IMG_002189.jpg", store:"페이스북", date:"2022.03.19", why:"생일 · BELLE RIVE BRUT", src:"06_wine_photos/IMG_002189.jpg"},
+    {file:"IMG_002194.jpg", store:"갤러리", date:"2022.03.19", why:"생일 · 건배 · 같은 레드", src:"06_wine_photos/IMG_002194.jpg"},
+    {file:"IMG_002203.jpg", store:"카카오", date:"2022.03.19", why:"생일 · 케이크와 남은 병", src:"06_wine_photos/IMG_002203.jpg"}
   ],
-  follow:["두 와인 이름 알려줘","같은 와인이 또 있나","가격 찾아줘"]
+  follow:["와인 이름 정리해줘","송년회 것만","같은 와인이 또 있나"]
 },
 {
   q:"동생 합격했다고 올렸던 날 파티 사진", layout:"grid", core:"사진 밖의 글을 읽는다",
@@ -354,21 +386,21 @@ const SCENARIOS = [
      tags:[["대상","그날 찍은 파티 사진"],["단서","사진에는 안 보이는 ‘합격’"]]},
     {type:"note", t:"사진만 봐서는 찾을 수 없어요",
      d:"‘합격’은 <b>사진에 찍히는 장면이 아니에요</b>"},
-    {type:"stores", t:"사진과 글이 함께 있는 곳을 봤어요", rows:[["페이스북","1,240"],["인스타그램","980"]]},
+    {type:"stores", t:"사진과 글이 함께 있는 곳을 찾아봤어요", rows:[["페이스북","1,240"],["인스타그램","980"]]},
     {type:"note", t:"올릴 때 쓴 글에서 날짜를 찾았어요",
-     d:"“동생 합격 축하 🎉”라고 쓴 <b>게시글의 날짜</b>는 2024.04.12예요"},
-    {type:"narrow", t:"그날 찍은 파티 사진만 남겼어요",
-     d:"케이크 · 건배 · 상차림처럼 <b>파티 장면</b>인 것만 골랐어요", from:"48", to:"6", unit:"장"}
+     d:"“동생 드디어 합격! 오늘은 집에서 조촐하게 축하 파티 🎉”라고 쓴 <b>게시글의 날짜</b>는 2024.04.12예요"},
+    {type:"narrow", t:"그날 찍은 파티 사진을 모았어요",
+     d:"케이크 · 건배 · 상차림처럼 <b>파티 장면</b>인 사진이에요", from:"48", to:"6", unit:"장"}
   ],
   results:[
-    {file:"fb_post_0412_1.jpg", store:"페이스북", date:"2024.04.12", why:"게시글 사진 · 케이크", src:null},
-    {file:"fb_post_0412_2.jpg", store:"페이스북", date:"2024.04.12", why:"게시글 사진 · 건배", src:null},
-    {file:"IMG_3041.HEIC", store:"갤러리", date:"2024.04.12", why:"올리지 않은 원본 · 상차림", src:null},
-    {file:"IMG_3046.HEIC", store:"갤러리", date:"2024.04.12", why:"가족 단체샷", src:null},
-    {file:"KakaoTalk_0412.jpg", store:"카카오", date:"2024.04.12", why:"동생이 보내준 사진", src:null},
-    {file:"insta_0412.jpg", store:"인스타", date:"2024.04.12", why:"스토리 · 케이크 컷", src:null}
+    {file:"IMG_005216.png", store:"페이스북", date:"2024.04.12 20:03", why:"게시글에 올린 사진 · 풍선과 케이크", src:"07_party_photos/IMG_005216.png"},
+    {file:"IMG_005217.png", store:"인스타", date:"2024.04.12 20:05", why:"파티 테이블 · 케이크와 피자", src:"07_party_photos/IMG_005217.png"},
+    {file:"IMG_005218.png", store:"페이스북", date:"2024.04.12 20:06", why:"게시글에 올린 사진 · 촛불 단체샷", src:"07_party_photos/IMG_005218.png"},
+    {file:"IMG_005220.png", store:"갤러리", date:"2024.04.12 20:07", why:"올리지 않은 원본 · 촛불 끄는 장면", src:"07_party_photos/IMG_005220.png"},
+    {file:"IMG_005232.png", store:"갤러리", date:"2024.04.12 20:20", why:"올리지 않은 원본 · 케이크 나누기", src:"07_party_photos/IMG_005232.png"},
+    {file:"IMG_005237.png", store:"카카오", date:"2024.04.12 20:24", why:"동생이 보내준 사진 · 건배", src:"07_party_photos/IMG_005237.png"}
   ],
-  follow:["그날 사진 전부 보기","게시글 원문 보기","가족 사진만"]
+  follow:["게시글 원문 보기","올리지 않은 것만","그날 사진 전부 보기"]
 },
 {
   q:"메일로 보낸 그 PDF의 원본 PPT", layout:"list", core:"같은 문서의 원본을 짚는다",
@@ -376,22 +408,26 @@ const SCENARIOS = [
     {type:"cond", t:"찾을 내용을 정리했어요",
      tags:[["기준","메일로 보낸 PDF"],["찾을 것","같은 문서의 원본"]]},
     {type:"stores", t:"보낸 메일함을 확인했어요", rows:[["메일 첨부","860"]]},
-    {type:"note", t:"어느 PDF인지 정했어요",
-     d:"가장 최근에 보낸 <b>브랜드전략_제안.pdf</b> · 24장 · 2025.08.12 발송"},
-    {type:"narrow", t:"같은 문서일 만한 파일을 추렸어요",
-     d:"표지와 <b>장표 구성</b>을 비교했어요", from:"96", to:"4", unit:"건"},
-    {type:"note", t:"같은 문서가 맞는지 확인했어요",
-     d:"제목과 목차, <b>장표 수 24장</b>이 같은지 확인했어요"}
+    {type:"note", t:"어느 PDF인지 확인했어요",
+     d:"가장 최근에 보낸 <b>브랜드전략_제안.pdf</b> · 4쪽 · 2026.09.24 발송"},
+    {type:"narrow", t:"같은 문서일 만한 파일을 모았어요",
+     d:"표지와 <b>쪽 구성</b>을 비교했어요", from:"96", to:"4", unit:"건"},
+    {type:"note", t:"원본이 어느 쪽인지 확인했어요",
+     d:"두 후보 모두 4쪽이지만, <b>표지와 실행 일정</b>까지 PDF와 같은 건 하나예요"}
   ],
   results:[
-    {ext:"pptx", file:"브랜드전략_제안_v7.pptx", store:"파일", date:"2025.08.12", why:"<em>원본</em> · 24장 · PDF 발송 11분 전 저장"},
-    {ext:"pptx", file:"브랜드전략_제안_v6.pptx", store:"파일", date:"2025.08.09", why:"이전 버전 · 22장"},
-    {ext:"pdf",  file:"브랜드전략_제안.pdf", store:"메일 첨부", date:"2025.08.12", why:"기준이 된 PDF · 보낸 메일함"}
+    {ext:"pptx", file:"브랜드전략_제안_v7.pptx", store:"내 파일", date:"2026.09.23 18:42",
+     why:"<em>가장 유력한 원본</em> · 4쪽 내용이 PDF와 일치 · PDF 공유 전 수정", thumb:"08_brand_documents/브랜드전략_제안_v7.png"},
+    {ext:"pptx", file:"브랜드전략_제안_v6.pptx", store:"클라우드 드라이브", date:"2026.09.20 16:10",
+     why:"이전 버전 · 같은 4쪽이지만 <b>핵심 메시지와 실행 일정이 다름</b>", thumb:"08_brand_documents/브랜드전략_제안_v6.png"},
+    {ext:"pdf",  file:"브랜드전략_제안.pdf", store:"메일", date:"2026.09.24 09:12",
+     why:"기준이 된 PDF · 메일 첨부파일", thumb:"08_brand_documents/브랜드전략_제안.png"}
   ],
-  follow:["원본만 열기","v6와 달라진 점","같은 폴더 보기"]
+  follow:["v7만 열기","v6와 달라진 점","같은 폴더 보기"]
 }
 ];
 
+const U = path => encodeURI(path);   /* 한글 · 공백이 든 실제 파일 경로 */
 const ICON_PHOTO = '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6D4FE0" stroke-width="1.6" opacity=".3"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m3 16.5 4.5-4 4 3.5 4-5 4.5 5.5"/></svg>';
 
 const chat=document.getElementById('chat'), inp=document.getElementById('inp'),
@@ -443,7 +479,9 @@ function run(){
   chat.innerHTML=''; inp.value='';
 
   add('<div class="me"><div class="b">'+q
-    +(S.attach?'<div class="attimg">'+ICON_PHOTO.replace(/#6D4FE0/g,'#fff').replace('opacity=".3"','opacity=".85"').replace(/30"/g,'22"')+S.attach+'</div>':'')
+    +(S.attach?'<div class="attimg">'+(S.attachSrc
+        ? '<img src="'+U(S.attachSrc)+'" alt="">'
+        : ICON_PHOTO.replace(/#6D4FE0/g,'#fff').replace('opacity=".3"','opacity=".85"').replace(/30"/g,'22"')+S.attach)+'</div>':'')
     +'</div></div>');
 
   wait(420, ()=>step(S,0,1));
@@ -499,11 +537,14 @@ function results(S){
   if(S.layout==='grid'){
     body='<div class="grid">'+S.results.map(r=>
       '<div class="card"><div class="thumb" data-file="'+r.file+'">'
-      +(r.src?'<img src="'+r.src+'" alt="" style="width:100%;height:100%;object-fit:cover">':ICON_PHOTO)
+      +(r.src?'<img src="'+U(r.src)+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover">':ICON_PHOTO)
       +'<span class="badge">'+r.store+'</span></div></div>').join('')+'</div>';
   } else {
     body='<div class="list">'+S.results.map(r=>
-      '<div class="doc" data-file="'+r.file+'"><div class="ext '+r.ext+'">'+r.ext.toUpperCase()+'</div>'
+      '<div class="doc" data-file="'+r.file+'">'
+      +(r.shot
+        ? '<div class="pv"><img src="'+U(r.thumb)+'" alt="" loading="lazy"><span class="tag">'+r.ext.toUpperCase()+'</span></div>'
+        : '<div class="ext '+r.ext+'">'+r.ext.toUpperCase()+'</div>')
       +'<div class="dm"><div class="fn">'+r.file+'</div><div class="why">'+r.why+'</div>'
       +'<div class="src"><span>'+r.store+'</span></div></div></div>').join('')+'</div>';
   }
