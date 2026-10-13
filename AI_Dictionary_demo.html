@@ -618,7 +618,7 @@ function results(S, grouped=false, existing=null){
     +'<div class="follow">'
     +(S.clusters?'<button data-action="group-results">'+(grouped?'한데 모아 보기':'이벤트별로 나눠 보기')+'</button>':'')
     +(S.origin?'<button data-follow="이전 결과로 돌아가기">이전 결과로 돌아가기</button>':'')
-    +S.follow.filter(f=>!(S.usedFollow||[]).includes(f)).map(f=>'<button data-follow="'+h(f)+'">'+f+'</button>').join('')+'</div></div>';
+    +availableFollow(S).map(f=>'<button data-follow="'+h(f)+'">'+f+'</button>').join('')+'</div></div>';
   const result=existing || add(html);
   if(existing) result.innerHTML=html;
   const groupChip=result.querySelector('[data-action="group-results"]');
@@ -626,9 +626,6 @@ function results(S, grouped=false, existing=null){
   activeScenario=S;
   result.querySelectorAll('[data-follow]').forEach(button=>button.onclick=()=>{
     const label=button.dataset.follow;
-    if(label!=='이전 결과로 돌아가기'){
-      S.usedFollow=[...new Set([...(S.usedFollow||[]),label])];
-    }
     button.remove();
     applyFollow(S,label,result);
   });

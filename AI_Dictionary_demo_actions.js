@@ -5,7 +5,7 @@ const plain=value=>String(value).replace(/<[^>]*>/g,'');
 const rootScenario=S=>S.origin||S;
 function followAction(S,label){
   const root=rootScenario(S), all=root.results||[], items=S.results||[];
-  const filter=(predicate,notice)=>({items:all.filter(predicate),notice});
+  const filter=(predicate,notice)=>({items:items.filter(predicate),notice});
   const detail=(title,html)=>({detail:{title,html}});
   switch(label){
     case '올해 것만 보기': case '올해 것만': return filter(r=>r.date.startsWith('2026'),'2026년 결과만 보여드려요');
@@ -57,6 +57,16 @@ function followAction(S,label){
     default: throw new Error('연결되지 않은 후속 질문: '+label);
   }
 }
+function availableFollow(S){
+  return S.follow.filter(label=>{
+    if((S.usedFollow||[]).includes(label)) return false;
+    const action=followAction(S,label);
+    if(!action.items) return true;
+    // 현재 결과와 같거나 결과가 없는 필터/정렬은 추천하지 않는다.
+    return action.items.length>0 && (action.items.length!==S.results.length
+      || action.items.some((item,index)=>item.file!==S.results[index].file));
+  });
+}
 function quoteAmount(r){return DEMO_DATA.quotation.documents.find(d=>d.filename===r.file)?.total_amount||0;}
 function openDetail(title,html){
   let dialog=document.getElementById('demo-detail');
@@ -71,12 +81,15 @@ function previewFile(r){
 }
 function applyFollow(S,label,result){
   const action=followAction(S,label);
+  const usedFollow=[...new Set([...(S.usedFollow||[]),label])];
+  // 결과 전환 전의 칩 상태는 보존하고, 상세/다운로드 작업만 현재 상태에 기록한다.
+  if(!action.restore && !action.items) S.usedFollow=usedFollow;
   if(action.restore)results(action.restore,false,result);
   else if(action.detail)openDetail(action.detail.title,action.detail.html);
   else if(action.preview)previewFile(action.preview);
   else if(action.download){downloadQuotes(S.results);openDetail('엑셀로 정리했어요','<p>현재 결과 '+S.results.length+'건의 파일명, 날짜, 출처, 부가세 포함 금액을 엑셀 파일로 저장했어요.</p>');}
   else if(action.folder)openDetail('회의 자료 폴더','<p>선택한 자료 '+S.results.length+'개를 모았어요. 각 파일을 다운로드할 수 있어요.</p><div class="folder-files">'+S.results.map(r=>'<a href="'+U(filePath(r))+'" download="'+h(r.file)+'">▱ '+h(r.file)+'</a>').join('')+'</div>');
-  else if(action.items){results({...rootScenario(S),origin:rootScenario(S),previous:S,usedFollow:S.usedFollow||[],results:action.items,notice:action.notice},false,result);}
+  else if(action.items){results({...rootScenario(S),origin:rootScenario(S),previous:S,usedFollow,results:action.items,notice:action.notice},false,result);}
 }
 /* 라이브러리 없이 생성하는 표준 XLSX: ZIP 컨테이너와 Office Open XML */
 function makeWorkbook(rows){
