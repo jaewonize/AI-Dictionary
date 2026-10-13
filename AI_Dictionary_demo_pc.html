@@ -466,9 +466,9 @@ const SCENARIOS = [
     {type:"stores", t:"보낸 메일함을 확인했어요", rows:[["메일 첨부","860"]]},
     {type:"note", t:"어느 PDF인지 확인했어요",
      d:"가장 최근에 보낸 <b>브랜드전략_제안.pdf</b> · 4쪽 · 2026.09.24 발송"},
-    {type:"stores", t:"원본을 찾아봤어요",
+    {type:"stores", t:"원본을 찾아봤어요", hop:true, wait:1500,
      rows:[["모바일 파일","3,210"],["PC 파일","1,940"],["메일 첨부","860"]]},
-    {type:"narrow", t:"PDF와 일치하는 원본을 찾지 못했어요", hop:true, wait:1500,
+    {type:"narrow", t:"PDF와 일치하는 원본을 찾지 못했어요",
      from:"96", to:"0", unit:"건"}
   ],
   results:[],
@@ -672,12 +672,13 @@ function results(S, grouped=false, existing=null){
   if(groupChip) groupChip.onclick=()=>results(S,!grouped,result);
   activeScenario=S;
   result.querySelectorAll('[data-follow]').forEach(button=>button.onclick=()=>{
+    if(busy) return;
     const label=button.dataset.follow;
     button.remove();
     applyFollow(S,label,result);
   });
   result.querySelectorAll('.card,.doc').forEach(card=>{
-    const open=()=>previewFile(S.results.find(r=>r.file===card.dataset.file));
+    const open=()=>{if(!busy)previewFile(S.results.find(r=>r.file===card.dataset.file));};
     card.onclick=open;
     card.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};
   });

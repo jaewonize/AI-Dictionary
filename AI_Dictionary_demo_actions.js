@@ -91,6 +91,33 @@ function previewFile(r){
   openDetail(r.file,'<p>'+(r.inTrash?'휴지통 · ':'')+h(r.store)+' · '+h(r.date)+'</p><p>'+r.why+'</p><img class="detail-image" src="'+U(r.src||r.thumb)+'" alt="'+h(r.file)+'"><p><a class="detail-link" href="'+U(filePath(r))+'" download="'+h(r.file)+'">원본 파일 다운로드</a></p>');
 }
 function applyFollow(S,label,result){
+  if(busy) return;
+  if(label==='이전 결과로 돌아가기'){
+    completeFollow(S,label,result);
+    return;
+  }
+  busy=true; inp.disabled=true; send.disabled=true;
+  const buttons=[...result.querySelectorAll('button')];
+  buttons.forEach(button=>button.disabled=true);
+  result.setAttribute('aria-busy','true');
+  const status=document.createElement('div');
+  status.className='result-notice';
+  status.setAttribute('role','status');
+  status.innerHTML='<span class="hop" aria-hidden="true"><i></i><i></i><i></i></span> '
+    +(label==='휴지통에서 찾기'?'모바일·PC·메일함 휴지통에서 찾고 있어요…':'‘'+h(label)+'’ 요청을 처리하고 있어요…');
+  result.prepend(status);
+  wait(label==='휴지통에서 찾기'?1600:1000,()=>{
+    try{
+      completeFollow(S,label,result);
+    } finally {
+      status.remove();
+      result.removeAttribute('aria-busy');
+      buttons.forEach(button=>button.disabled=false);
+      busy=false; inp.disabled=false; send.disabled=false;
+    }
+  });
+}
+function completeFollow(S,label,result){
   const action=followAction(S,label);
   const usedFollow=[...new Set([...(S.usedFollow||[]),label])];
   // 결과 전환 전의 칩 상태는 보존하고, 상세/다운로드 작업만 현재 상태에 기록한다.
