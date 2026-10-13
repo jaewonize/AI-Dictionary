@@ -4,7 +4,10 @@ const h=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;',
 const plain=value=>String(value).replace(/<[^>]*>/g,'');
 const rootScenario=S=>S.origin||S;
 function followAction(S,label){
-  const root=rootScenario(S), all=root.results||[], items=S.results||[];
+  const root=rootScenario(S), items=S.results||[];
+  const all=S.includeTrash
+    ? (root.trashResults||root.results||[]).map(r=>({...r,inTrash:true}))
+    : root.results||[];
   const filter=(predicate,notice)=>({items:items.filter(predicate),notice});
   const detail=(title,html)=>({detail:{title,html}});
   switch(label){
@@ -53,11 +56,19 @@ function followAction(S,label){
     case 'v7만 열기': return {preview:all.find(r=>r.file.includes('_v7'))};
     case 'v6와 달라진 점': return detail('v7과 v6 비교','<div class="comparison">'+DEMO_DATA.brand.comparison.differences.map(d=>'<p><b>'+h(d.pages)+'</b><br><strong>v7</strong> '+h(d.v7)+'<br><strong>v6</strong> '+h(d.v6)+'</p>').join('')+'</div>');
     case '같은 폴더 보기': return {items:all.filter(r=>r.ext==='pptx'),notice:'브랜드전략 폴더의 편집 가능한 버전 2개예요'};
+    case '휴지통에서 찾기': return {
+      items:(S.trashResults||[]).map(r=>({...r,inTrash:true})),
+      includeTrash:true,
+      notice:Array.isArray(S.trashResults)
+        ? (S.trashResults.length?'모바일·PC·메일함 휴지통을 검색했어요. 휴지통에 있는 파일만 표시합니다.':'휴지통에도 검색 조건에 맞는 결과가 없어요.')
+        : '이 데모에는 휴지통 데이터가 없어 휴지통 검색 결과를 확인할 수 없어요.'
+    };
     case '이전 결과로 돌아가기': return {restore:S.previous||root};
     default: throw new Error('연결되지 않은 후속 질문: '+label);
   }
 }
 function availableFollow(S){
+  if(!S.results.length) return S.includeTrash?[]:['휴지통에서 찾기'];
   return S.follow.filter(label=>{
     if((S.usedFollow||[]).includes(label)) return false;
     const action=followAction(S,label);
@@ -77,7 +88,7 @@ function openDetail(title,html){
 }
 function filePath(r){return r.src||(r.shot?r.thumb:r.thumb.slice(0,r.thumb.lastIndexOf('/')+1)+r.file);}
 function previewFile(r){
-  openDetail(r.file,'<p>'+h(r.store)+' · '+h(r.date)+'</p><p>'+r.why+'</p><img class="detail-image" src="'+U(r.src||r.thumb)+'" alt="'+h(r.file)+'"><p><a class="detail-link" href="'+U(filePath(r))+'" download="'+h(r.file)+'">원본 파일 다운로드</a></p>');
+  openDetail(r.file,'<p>'+(r.inTrash?'휴지통 · ':'')+h(r.store)+' · '+h(r.date)+'</p><p>'+r.why+'</p><img class="detail-image" src="'+U(r.src||r.thumb)+'" alt="'+h(r.file)+'"><p><a class="detail-link" href="'+U(filePath(r))+'" download="'+h(r.file)+'">원본 파일 다운로드</a></p>');
 }
 function applyFollow(S,label,result){
   const action=followAction(S,label);
@@ -89,7 +100,7 @@ function applyFollow(S,label,result){
   else if(action.preview)previewFile(action.preview);
   else if(action.download){downloadQuotes(S.results);openDetail('엑셀로 정리했어요','<p>현재 결과 '+S.results.length+'건의 파일명, 날짜, 출처, 부가세 포함 금액을 엑셀 파일로 저장했어요.</p>');}
   else if(action.folder)openDetail('회의 자료 폴더','<p>선택한 자료 '+S.results.length+'개를 모았어요. 각 파일을 다운로드할 수 있어요.</p><div class="folder-files">'+S.results.map(r=>'<a href="'+U(filePath(r))+'" download="'+h(r.file)+'">▱ '+h(r.file)+'</a>').join('')+'</div>');
-  else if(action.items){results({...rootScenario(S),origin:rootScenario(S),previous:S,usedFollow,results:action.items,notice:action.notice},false,result);}
+  else if(action.items){results({...rootScenario(S),origin:rootScenario(S),previous:S,usedFollow,includeTrash:S.includeTrash||action.includeTrash||false,results:action.items,notice:action.notice},false,result);}
 }
 /* 라이브러리 없이 생성하는 표준 XLSX: ZIP 컨테이너와 Office Open XML */
 function makeWorkbook(rows){

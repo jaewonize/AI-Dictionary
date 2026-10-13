@@ -425,27 +425,29 @@ const SCENARIOS = [
   follow:["게시글 원문 보기","올리지 않은 것만","그날 사진 전부 보기"]
 },
 {
-  q:"메일로 보낸 그 PDF의 원본 PPT", layout:"list", core:"같은 문서의 원본을 찾는다",
+  q:"메일로 보낸 그 PDF의 원본 PPT", layout:"list", core:"휴지통까지 넓혀 원본을 찾는다",
   steps:[
     {type:"cond", t:"찾을 내용을 정리했어요",
-     tags:[["기준","메일로 보낸 PDF"],["찾을 것","같은 문서의 원본"]]},
+     tags:[["기준","메일로 보낸 PDF"],["찾을 것","같은 문서의 원본 PPT"]]},
     {type:"stores", t:"보낸 메일함을 확인했어요", rows:[["메일 첨부","860"]]},
     {type:"note", t:"어느 PDF인지 확인했어요",
      d:"가장 최근에 보낸 <b>브랜드전략_제안.pdf</b> · 4쪽 · 2026.09.24 발송"},
-    {type:"narrow", t:"같은 문서일 만한 파일을 모았어요", hop:true, wait:1500,
-     d:"표지와 <b>쪽 구성</b>을 비교했어요", from:"96", to:"4", unit:"건"},
-    {type:"note", t:"원본이 어느 쪽인지 확인했어요",
-     d:"두 후보 모두 4쪽이지만, <b>표지와 실행 일정</b>까지 PDF와 같은 건 하나예요"}
+    {type:"stores", t:"원본을 찾아봤어요",
+     rows:[["모바일 파일","3,210"],["PC 파일","1,940"],["메일 첨부","860"]]},
+    {type:"narrow", t:"PDF와 일치하는 원본을 찾지 못했어요", hop:true, wait:1500,
+     from:"96", to:"0", unit:"건"}
   ],
-  results:[
-    {ext:"pptx", file:"브랜드전략_제안_v7.pptx", store:"내 파일", date:"2026.09.23 18:42",
+  results:[],
+  notice:"원본 PPT를 찾지 못했어요. 삭제한 파일이라면 휴지통에서 찾아볼 수 있어요.",
+  trashResults:[
+    {ext:"pptx", file:"브랜드전략_제안_v7.pptx", store:"PC", date:"2026.09.23 18:42",
      why:"<em>가장 유력한 원본</em> · 4쪽 내용이 PDF와 일치 · PDF 공유 전 수정", thumb:"08_brand_documents/브랜드전략_제안_v7.png"},
-    {ext:"pptx", file:"브랜드전략_제안_v6.pptx", store:"클라우드 드라이브", date:"2026.09.20 16:10",
+    {ext:"pptx", file:"브랜드전략_제안_v6.pptx", store:"모바일", date:"2026.09.20 16:10",
      why:"이전 버전 · 같은 4쪽이지만 <b>핵심 메시지와 실행 일정이 다름</b>", thumb:"08_brand_documents/브랜드전략_제안_v6.png"},
-    {ext:"pdf",  file:"브랜드전략_제안.pdf", store:"메일", date:"2026.09.24 09:12",
-     why:"기준이 된 PDF · 메일 첨부파일", thumb:"08_brand_documents/브랜드전략_제안.png"}
+    {ext:"pdf", file:"브랜드전략_제안.pdf", store:"메일함", date:"2026.09.24 09:12",
+     why:"대조용 PDF 사본 · 삭제된 메일의 첨부파일", thumb:"08_brand_documents/브랜드전략_제안.png"}
   ],
-  follow:["v7만 열기","v6와 달라진 점","같은 폴더 보기"]
+  follow:["v7만 열기","v6와 달라진 점"]
 }
 ];
 
@@ -510,7 +512,7 @@ function typeQuery(q){
 
 function run(){
   const q=inp.value.trim(); if(!q||busy||inp.readOnly) return;
-  if(activeScenario && [...activeScenario.follow,'이전 결과로 돌아가기'].includes(q)){
+  if(activeScenario && [...availableFollow(activeScenario),...(activeScenario.origin?['이전 결과로 돌아가기']:[])].includes(q)){
     inp.value='';
     const latest=chat.querySelector('[data-results="current"]');
     if(latest){
@@ -525,7 +527,8 @@ function run(){
   const S=exact||SCENARIOS.find((s,i)=>keywords[i].every(word=>q.toLowerCase().includes(word.toLowerCase())));
   if(!S){
     add('<div class="me"><div class="b">'+h(q)+'</div></div>');
-    add('<div class="result-notice">찾을 대상을 조금 더 구체적으로 알려주세요. 사진 속 장면이나 파일의 내용, 날짜를 함께 적어주시면 좋아요.</div>');
+    chat.querySelectorAll('[data-results="current"]').forEach(el=>el.removeAttribute('data-results'));
+    results({q,layout:'grid',results:[],follow:[],notice:'이 검색어에 해당하는 준비된 결과가 없어요. 사진 속 장면이나 파일의 내용, 날짜를 함께 적어주시면 좋아요.'});
     inp.value=''; send.disabled=false;return;
   }
   busy=true; inp.disabled=true; send.disabled=true;
@@ -595,7 +598,7 @@ function results(S, grouped=false, existing=null){
     const renderGrid=items=>'<div class="grid">'+items.map(r=>
       '<div class="card" role="button" tabindex="0" aria-label="'+h(r.file)+'" data-file="'+r.file+'"><div class="thumb">'
       +(r.src?'<img src="'+U(r.src)+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover">':ICON_PHOTO)
-      +'<span class="badge">'+r.store+'</span></div></div>').join('')+'</div>';
+      +'<span class="badge">'+(r.inTrash?'휴지통 · ':'')+r.store+'</span></div></div>').join('')+'</div>';
     body=grouped && S.clusters
       ? '<div class="clusters">'+S.clusters.map(group=>{
           const items=S.results.filter(r=>r.date.slice(0,10)===group.date);
@@ -611,7 +614,7 @@ function results(S, grouped=false, existing=null){
         ? '<div class="pv"><img src="'+U(r.thumb)+'" alt="" loading="lazy"><span class="tag">'+r.ext.toUpperCase()+'</span></div>'
         : '<div class="ext '+r.ext+'">'+r.ext.toUpperCase()+'</div>')
       +'<div class="dm"><div class="fn">'+r.file+'</div><div class="why">'+r.why+'</div>'
-      +'<div class="src"><span>'+r.store+'</span><span>'+r.date+'</span></div></div></div>').join('')+'</div>';
+      +'<div class="src"><span>'+(r.inTrash?'휴지통 · ':'')+r.store+'</span><span>'+r.date+'</span></div></div></div>').join('')+'</div>';
   }
   const html='<div data-results="current"><div class="reshead"><div class="t"><b>'+S.results.length+(S.layout==='grid'?'장':'건')+'</b> 찾았어요'
     +(grouped && S.clusters?' · '+S.clusters.length+'개 그룹':'')+'</div></div>'+(S.notice?'<div class="result-notice">'+h(S.notice)+'</div>':'')+body
