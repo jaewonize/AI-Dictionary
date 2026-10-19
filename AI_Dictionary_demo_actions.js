@@ -56,6 +56,14 @@ function followAction(S,label){
     case 'v7만 열기': return {preview:all.find(r=>r.file.includes('_v7'))};
     case 'v6와 달라진 점': return detail('v7과 v6 비교','<div class="comparison">'+DEMO_DATA.brand.comparison.differences.map(d=>'<p><b>'+h(d.pages)+'</b><br><strong>v7</strong> '+h(d.v7)+'<br><strong>v6</strong> '+h(d.v6)+'</p>').join('')+'</div>');
     case '같은 폴더 보기': return {items:all.filter(r=>r.ext==='pptx'),notice:'브랜드전략 폴더의 편집 가능한 버전 2개예요'};
+    case '이 자료 어떤 내용이야': return detail('2027_주거경험_트렌드.pptx',
+      '<p>2026.10.18 주거 경험 기획 회의 자료 · 3장</p>'
+      +'<p><b>표지</b><br>2027 주거 경험 트렌드 — 일상을 바꾸는 집의 역할</p>'
+      +'<p><b>01 집에서 보내는 시간의 재설계</b><br>유연한 공간 · 감각적인 일상</p>'
+      +'<p><b>02 다음 기획에서 확인할 질문</b><br>공간 · 경험 · 실행</p>');
+    case '같은 글꼴 쓴 자료 더 보기': return detail(label,
+      '<p>저장된 발표 자료 중 표지 제목에 <b>Noto Sans KR</b>을 지정한 자료는 이 파일뿐이에요.</p>'
+      +'<p>나머지 자료는 글꼴을 따로 고르지 않아 문서 기본값인 <b>Aptos</b>가 쓰였어요.</p>');
     case '휴지통에서 찾기': return {
       items:(S.trashResults||[]).map(r=>({...r,inTrash:true})),
       includeTrash:true,
