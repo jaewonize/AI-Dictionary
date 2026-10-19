@@ -171,20 +171,20 @@ a.replay{text-decoration:none}
 @media(max-width:760px){.result-cluster{padding:12px}.cluster-head h3{font-size:15px}.cluster-head p{font-size:11px}}
 /* PC workspace */
 body{display:grid;grid-template-columns:320px minmax(0,1fr);align-items:stretch;gap:0;padding:0;height:100vh;height:100dvh;min-height:640px;overflow:hidden;background:#F8F7FC}
-.aside{width:auto;min-height:0;padding:30px 22px 22px;background:#F5F3FA;border-right:1px solid #E7E4F2;gap:22px;overflow-y:auto}
+.aside{width:auto;min-height:0;padding:22px 20px 18px;background:#F5F3FA;border-right:1px solid #E7E4F2;gap:13px;overflow-y:auto}
 .aside .brand{font-size:19px;display:flex;align-items:center;gap:10px}
 .pc-tag{font-size:10px;padding:4px 6px;background:#E9E3FB;border-radius:5px}
 .sidebar-intro{font-size:17px;font-weight:750;color:#39354A;line-height:1.5}
-.sidebar-intro span{display:block;font-size:12px;font-weight:500;color:#8B84A8;margin-top:3px}
-.qpick{gap:7px}
-.qpick button{padding:12px;gap:10px;flex-wrap:wrap;border-radius:11px}
+.sidebar-intro span{display:block;font-size:12px;font-weight:500;color:#8B84A8;margin-top:2px}
+.qpick{gap:6px}
+.qpick button{padding:10px 12px;gap:10px;flex-wrap:wrap;border-radius:11px}
 .qpick .q{font-size:13px;flex:1;min-width:0}
 .qpick .n{width:21px;height:21px;font-size:10px}
-.qpick .core{margin-left:31px;padding:0;font-size:11px;width:calc(100% - 31px)}
+.qpick .core{margin-left:31px;padding:0;font-size:11px;width:calc(100% - 31px);margin-top:1px}
 .qpick .att{font-size:9px;margin:0}
-.connections{margin-top:auto;font-size:11px;color:#7C748F;display:flex;flex-direction:column;gap:11px;padding-top:18px;border-top:1px solid #E2DDEC}
-.connections-title{font-weight:750;color:#4A4460;font-size:12px;margin-bottom:2px}
-.connections span{float:right;color:#A79FBD;font-variant-numeric:tabular-nums}
+
+
+
 .acts{gap:7px}
 .replay{font-size:11px;padding:8px 11px}
 .desktop{min-width:0;min-height:0;display:flex;flex-direction:column;background:white;margin:22px;border:1px solid #E7E4F2;border-radius:18px;overflow:hidden;box-shadow:0 12px 40px rgba(40,30,90,.05)}
@@ -192,8 +192,13 @@ body{display:grid;grid-template-columns:320px minmax(0,1fr);align-items:stretch;
 .windowbar>span:first-child{display:flex;gap:6px}.windowbar i{width:8px;height:8px;background:#DCD6E8;border-radius:50%}
 .apphead{padding:23px 32px;border-bottom:1px solid #F1EDF8;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .apphead .nm{font-size:23px}.workspace-label{font-size:12px;color:#9A92AB}
-.chat{padding:28px clamp(24px,4vw,64px) 24px;scrollbar-width:thin;scrollbar-color:#DED7EF transparent}
-.chat::-webkit-scrollbar{width:6px}.chat::-webkit-scrollbar-thumb{background:#DED7EF;border-radius:6px}
+.chat{padding:28px clamp(24px,4vw,64px) 24px}
+  /* 스크롤바는 평소 숨기고, 마우스를 올렸을 때만 얇게 드러낸다 */
+  .aside,.chat{scrollbar-width:thin;scrollbar-color:transparent transparent}
+  .aside:hover,.chat:hover{scrollbar-color:#D5CCEA transparent}
+  .aside::-webkit-scrollbar,.chat::-webkit-scrollbar{width:11px}
+  .aside::-webkit-scrollbar-thumb,.chat::-webkit-scrollbar-thumb{background:transparent;border:3.5px solid transparent;border-radius:999px;background-clip:padding-box}
+  .aside:hover::-webkit-scrollbar-thumb,.chat:hover::-webkit-scrollbar-thumb{background:#D5CCEA;background-clip:padding-box}
 .empty{padding-bottom:30px}.empty .mark{width:76px;height:76px}.empty h2{font-size:28px}.empty p{font-size:15px}
 .me{margin-bottom:26px}.me .b{max-width:75%;font-size:15px;padding:13px 18px}.me .attimg{height:120px}
 .step{margin-bottom:22px;gap:13px}.step .t{font-size:17px}.step .d{font-size:14px}.stores{gap:9px 20px}
@@ -204,7 +209,7 @@ body{display:grid;grid-template-columns:320px minmax(0,1fr);align-items:stretch;
 .inputbar{padding:18px clamp(24px,4vw,64px) 24px;border-top:1px solid #F1EDF8}.ibox{padding:9px 9px 9px 22px;border-radius:16px}.ibox input{font-size:15px}.send{width:38px;height:38px}
 @media(min-width:1600px){body{grid-template-columns:350px minmax(0,1fr)}.grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
 @media(max-width:1100px){body{grid-template-columns:270px minmax(0,1fr)}.aside{padding:24px 16px}.desktop{margin:14px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.workspace-label{display:none}}
-@media(max-width:760px){body{display:flex;flex-direction:column;height:auto;min-height:100dvh;overflow:auto;gap:0;padding:0}.aside{order:0;width:100%;max-width:none;padding:20px;gap:14px;border-right:0}.qpick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.qpick .core,.connections{display:none}.desktop{width:calc(100% - 24px);height:80dvh;min-height:600px;margin:12px;flex:none}.apphead{padding:20px}.chat{padding:22px 18px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.inputbar{padding:14px 18px}.empty h2{font-size:23px}.me .b{max-width:90%}.doc .fn{white-space:normal;overflow-wrap:anywhere}}
+@media(max-width:760px){body{display:flex;flex-direction:column;height:auto;min-height:100dvh;overflow:auto;gap:0;padding:0}.aside{order:0;width:100%;max-width:none;padding:20px;gap:14px;border-right:0}.qpick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.qpick .core,.desktop{width:calc(100% - 24px);height:80dvh;min-height:600px;margin:12px;flex:none}.apphead{padding:20px}.chat{padding:22px 18px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.inputbar{padding:14px 18px}.empty h2{font-size:23px}.me .b{max-width:90%}.doc .fn{white-space:normal;overflow-wrap:anywhere}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.fade{opacity:1;transform:none}}
 
 
@@ -218,7 +223,6 @@ body{display:grid;grid-template-columns:320px minmax(0,1fr);align-items:stretch;
   <div class="brand">AI ( ) Dictionary <span class="pc-tag">PC</span></div>
   <div class="sidebar-intro">기억나는 대로 찾는 내 파일<span>검색 예시를 선택해 보세요</span></div>
   <div class="qpick" id="qpick"></div>
-  <div class="connections"><div class="connections-title">연결된 폴더 · 서비스</div><div>▱ 사진 폴더 <span>12,480</span></div><div>▱ 문서 폴더 <span>3,210</span></div><div>▱ 카카오톡 받은 파일 <span>1,940</span></div><div>◌ 메일 · 인스타그램 · 페이스북</div></div>
   <div class="acts">
     <button class="replay" onclick="reset()">↻ 처음부터</button>
     <a class="replay" href="AI_Dictionary_demo.html">모바일 화면</a>
