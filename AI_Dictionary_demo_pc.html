@@ -74,6 +74,10 @@ a.replay{text-decoration:none}
 .step .d{font-size:14.5px;font-weight:500;color:#8B84A8;line-height:1.55;margin-top:5px}
 .step .d b{color:#39354A;font-weight:700}
 .step .d i{font-style:normal;color:#C4BED6;font-weight:600;margin-right:1px}
+.answer{border:1px solid #DCD2FA;background:#F8F6FF;border-radius:13px;padding:14px 16px;margin-bottom:12px}
+.answer .lbl{font-size:12px;font-weight:800;color:#9A8FC4;letter-spacing:.03em}
+.answer .val{font-size:26px;font-weight:800;color:#17151F;letter-spacing:-.035em;line-height:1.25;margin-top:4px}
+.answer .sub{font-size:12.5px;font-weight:600;color:#6C6680;line-height:1.5;margin-top:5px}
 
 /* 한 줄씩 차례로 나타난다 */
 .rv{opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s}
@@ -482,6 +486,24 @@ const SCENARIOS = [
      why:"대조용 PDF 사본 · 삭제된 메일의 첨부파일", thumb:"08_brand_documents/브랜드전략_제안.png"}
   ],
   follow:["v7만 열기","v6와 달라진 점"]
+},
+{
+  q:"어제 회의 자료 표지에 쓴 제목 폰트와 커버 이미지", layout:"grid", core:"자료 안에 쓴 것을 꺼낸다",
+  steps:[
+    {type:"cond", t:"찾을 내용을 정리했어요",
+     tags:[["자료","어제 회의 자료"],["찾을 것","표지 제목 폰트 · 커버 이미지"]]},
+    {type:"stores", t:"문서가 있는 곳을 찾아봤어요", rows:STORES_DOC},
+    {type:"note", t:"어제 만든 자료는 하나였어요",
+     d:"<b>2026.10.18</b> 주거 경험 기획 회의 · 2027_주거경험_트렌드.pptx"},
+    {type:"note", t:"파일 안을 열어봤어요", hop:true, wait:1600,
+     d:"표지 슬라이드에서 <b>글꼴 지정과 이미지</b>를 꺼냈어요"}
+  ],
+  answer:{label:"표지 제목 폰트", value:"Noto Sans KR", sub:"45pt · 문서 기본 글꼴은 Aptos인데 표지 제목만 따로 지정했어요"},
+  results:[
+    {file:"IMG_013402.png", store:"문서 폴더", date:"2026.10.18", why:"표지에 깔린 커버 이미지 · 1672×941",
+     src:"09_interior_trend_documents/IMG_013402.png"}
+  ],
+  follow:["이 자료 어떤 내용이야","같은 글꼴 쓴 자료 더 보기"]
 }
 ];
 
@@ -660,7 +682,9 @@ function results(S, grouped=false, existing=null){
       +'<div class="dm"><div class="fn">'+r.file+'</div><div class="why">'+r.why+'</div>'
       +'<div class="src"><span>'+(r.inTrash?'휴지통 · ':'')+r.store+'</span><span>'+r.date+'</span></div></div></div>').join('')+'</div>';
   }
-  const html='<div data-results="current"><div class="reshead"><div class="t"><b>'+S.results.length+(S.layout==='grid'?'장':'건')+'</b> 찾았어요'
+  const answer=S.answer?'<div class="answer"><div class="lbl">'+h(S.answer.label)+'</div>'
+    +'<div class="val">'+h(S.answer.value)+'</div><div class="sub">'+h(S.answer.sub)+'</div></div>':'';
+  const html='<div data-results="current">'+answer+'<div class="reshead"><div class="t"><b>'+S.results.length+(S.layout==='grid'?'장':'건')+'</b> 찾았어요'
     +(grouped && S.clusters?' · '+S.clusters.length+'개 그룹':'')+'</div></div>'+(S.notice?'<div class="result-notice">'+h(S.notice)+'</div>':'')+body
     +'<div class="follow">'
     +(S.clusters?'<button data-action="group-results">'+(grouped?'한데 모아 보기':'이벤트별로 나눠 보기')+'</button>':'')
