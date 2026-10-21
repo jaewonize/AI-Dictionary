@@ -47,9 +47,9 @@ h2.head.tight{font-size:calc(2.59 * var(--u));margin-bottom:calc(1.41 * var(--u)
 .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:calc(1.41 * var(--u))}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(1.25 * var(--u))}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:calc(1.09 * var(--u))}
-.card{background:#fff;border:1px solid #E7E4F2;border-radius:calc(1.56 * var(--u));padding:calc(2.03 * var(--u));box-shadow:0 18px 44px -30px rgba(77,58,150,.35)}
-.card.soft{background:linear-gradient(155deg,#F3EFFD 0%,#EFEAFE 100%);border:1px solid #E3DBF7}
-.card.flat{box-shadow:none}
+.statcard{background:#fff;border:1px solid #E7E4F2;border-radius:calc(1.56 * var(--u));padding:calc(2.03 * var(--u));box-shadow:0 18px 44px -30px rgba(77,58,150,.35)}
+.statcard.soft{background:linear-gradient(155deg,#F3EFFD 0%,#EFEAFE 100%);border:1px solid #E3DBF7}
+.statcard.flat{box-shadow:none}
 .pill{display:inline-block;align-self:flex-start;font-size:calc(1.02 * var(--u));font-weight:800;letter-spacing:.04em;padding:calc(0.31 * var(--u)) calc(0.86 * var(--u));border-radius:999px;background:#EFEAFE;color:#6D4FE0}
 .pill.green{background:#DEF7EF;color:#159B79}
 .pill.gray{background:#F3F1FA;color:#6C6680;font-size:calc(0.97 * var(--u));font-weight:700;padding:calc(0.23 * var(--u)) calc(0.7 * var(--u))}
@@ -132,6 +132,165 @@ section.chap footer.fb{color:#8B84A8}
   .grid2,.grid3,.grid4{grid-template-columns:1fr}
   section.slide{min-height:auto;padding:calc(6 * var(--u)) calc(5 * var(--u)) calc(7 * var(--u))}
 }
+
+/* ══════ 05장 데모 화면 — AI_Dictionary_demo.html 에서 가져옴 ══════ */
+section.demo-stage{padding:0;align-items:stretch}
+.demo-wrap{display:flex;align-items:center;justify-content:center;gap:clamp(28px,4vw,64px);flex-wrap:wrap;width:100%;padding:24px;font-family:'Pretendard Variable',Pretendard,sans-serif}
+section.demo-stage .phone{height:min(780px,calc(100vh - 56px))}
+section.demo-stage .aside{max-height:calc(100vh - 56px);overflow-y:auto;scrollbar-width:none}
+section.demo-stage .aside::-webkit-scrollbar{width:0}
+.aside{width:600px;display:flex;flex-direction:column;gap:18px}
+.aside .brand{font-size:20px;font-weight:800;letter-spacing:-.01em;color:#6D4FE0}
+.qpick{display:flex;flex-direction:column;gap:9px}
+.qpick button{font-family:inherit;text-align:left;display:flex;gap:13px;align-items:center;width:100%;
+  background:#fff;border:1px solid #E7E4F2;border-radius:13px;padding:15px 18px;cursor:pointer;transition:.15s}
+.qpick button:hover{background:#FBFAFE;border-color:#6D4FE0}
+.qpick button.on{background:#F6F4FC;border-color:#6D4FE0}
+.qpick .n{width:23px;height:23px;flex:none;border-radius:7px;background:#EFEAFE;color:#6D4FE0;
+  font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.qpick .q{font-size:18px;font-weight:700;color:#4A4460;letter-spacing:-.02em;line-height:1.35}
+.qpick button:hover .q,.qpick button.on .q{color:#17151F}
+.qpick .att{font-size:10.5px;font-weight:800;color:#159B79;background:#DEF7EF;padding:2px 5px;border-radius:4px;margin-left:-6px;flex:none}
+.qpick .core{margin-left:auto;padding-left:16px;flex:none;font-size:13px;font-weight:700;color:#A79FBD;letter-spacing:-.01em}
+.qpick button:hover .core,.qpick button.on .core{color:#6D4FE0}
+.replay{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;border:1px solid #DCD6EC;background:#fff;
+  color:#5B5474;font-family:inherit;font-size:14px;font-weight:700;padding:11px 18px;border-radius:999px;cursor:pointer;transition:.18s}
+.replay:hover{background:#F6F4FC;border-color:#6D4FE0;color:#17151F}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+a.replay{text-decoration:none}
+/* ══ 폰 360x780 ══ */
+.phone{width:360px;height:780px;background:#fff;border-radius:38px;position:relative;flex:none;
+  box-shadow:0 0 0 5px #26222F,0 0 0 6px #3A3548,0 26px 60px rgba(40,30,90,.18);
+  display:flex;flex-direction:column;overflow:hidden}
+.notch{position:absolute;top:13px;left:50%;transform:translateX(-50%);width:11px;height:11px;background:#17151F;border-radius:50%;z-index:30}
+.statusbar{height:44px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:12px;font-weight:700;color:#17151F}
+.statusbar .ic{display:flex;gap:5px;align-items:center}
+.apphead{flex:none;padding:18px 18px 20px 26px;display:flex;align-items:center;gap:9px}
+.apphead .nm{font-size:23px;font-weight:700;color:#17151F;letter-spacing:-.02em}
+.apphead .nm span{background:linear-gradient(90deg,#8B6CF6,#2EC9A0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.chat{flex:1;overflow-y:auto;padding:16px 14px 8px;scroll-behavior:smooth}
+.chat::-webkit-scrollbar{width:0}
+/* ── 빈 상태 ── */
+.empty{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:70px}
+.empty .mark{width:58px;height:58px;margin-bottom:19px}
+.empty h2{font-size:19px;font-weight:800;color:#17151F;letter-spacing:-.03em;line-height:1.4;text-align:center}
+.empty p{font-size:13.5px;font-weight:500;color:#8B84A8;line-height:1.6;text-align:center;margin-top:7px}
+/* ── 버블 ── */
+.me{display:flex;justify-content:flex-end;margin-bottom:16px}
+.me .b{max-width:86%;background:#6D4FE0;color:#fff;font-size:13.5px;font-weight:600;line-height:1.5;
+  letter-spacing:-.015em;padding:11px 14px;border-radius:17px 17px 5px 17px}
+.me .attimg img{height:100%;width:auto;max-width:100%;border-radius:9px;object-fit:cover;display:block}
+.me .attimg{margin-top:7px;height:84px;border-radius:9px;background:linear-gradient(145deg,rgba(255,255,255,.34),rgba(255,255,255,.14));
+  display:flex;align-items:center;justify-content:center;gap:6px;font-size:10.5px;font-weight:700;color:#fff}
+/* ── 단계 ── */
+.step{display:flex;gap:10px;margin-bottom:17px}
+.step .dot{width:7px;height:7px;border-radius:50%;flex:none;margin-top:8px;background:#C9BCF7}
+.step .dot.live{background:#6D4FE0;animation:blink 1s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+.step .body{flex:1;min-width:0}
+.step .t{font-size:17px;font-weight:800;color:#17151F;letter-spacing:-.025em;line-height:1.45}
+.hop{display:inline-flex;gap:4px;margin-left:7px;vertical-align:3px}
+.hop i{width:5px;height:5px;border-radius:50%;background:#6D4FE0;animation:hop .95s ease-in-out infinite}
+.hop i:nth-child(2){animation-delay:.16s}
+.hop i:nth-child(3){animation-delay:.32s}
+@keyframes hop{0%,62%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-5px);opacity:1}}
+.step .d{font-size:14.5px;font-weight:500;color:#8B84A8;line-height:1.55;margin-top:5px}
+.step .d b{color:#39354A;font-weight:700}
+.step .d i{font-style:normal;color:#C4BED6;font-weight:600;margin-right:1px}
+.answer{border:1px solid #DCD2FA;background:#F8F6FF;border-radius:13px;padding:13px 15px;margin-bottom:11px}
+.answer .lbl{font-size:11.5px;font-weight:800;color:#9A8FC4;letter-spacing:.03em}
+.answer .val{font-size:24px;font-weight:800;color:#17151F;letter-spacing:-.035em;line-height:1.25;margin-top:4px}
+.answer .sub{font-size:12px;font-weight:600;color:#6C6680;line-height:1.5;margin-top:5px}
+/* 한 줄씩 차례로 나타난다 */
+.rv{opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s}
+.rv.on{opacity:1;transform:none}
+.stores{margin-top:6px;display:flex;flex-wrap:wrap;gap:4px 14px}
+.srow{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#8B84A8}
+.srow.on{color:#39354A}
+.srow .ck{width:13px;height:13px;border-radius:50%;flex:none;border:1.5px solid #D9D3E8;position:relative;transition:.25s}
+.srow.on .ck{background:#17151F;border-color:#17151F}
+.srow.on .ck::after{content:"";position:absolute;left:50%;top:50%;width:3px;height:5px;border:solid #fff;border-width:0 1.5px 1.5px 0;transform:translate(-50%,-70%) rotate(45deg)}
+.narrow{margin-top:5px;display:flex;align-items:baseline;gap:5px;font-size:14px;font-weight:600;color:#8B84A8}
+.narrow .big{font-size:17px;font-weight:800;color:#39354A;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.narrow .hit{color:#6D4FE0}
+/* 웹에서 가져온 사실 */
+.facts{margin-top:5px;display:flex;flex-direction:column;gap:2px}
+.facts .f{display:flex;gap:8px;font-size:14px;font-weight:600;color:#39354A;line-height:1.5}
+.facts .f i{font-style:normal;color:#B5AEC8;font-weight:600;flex:none;width:44px}
+/* 되묻기 */
+.ask{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+.ask button{font-family:inherit;text-align:left;font-size:13px;font-weight:700;color:#39354A;background:#fff;
+  border:1px solid #DCD6EC;border-radius:10px;padding:11px 13px;cursor:pointer;transition:.15s;line-height:1.4}
+.ask button:hover{border-color:#6D4FE0;background:#F9F8FD;color:#6D4FE0}
+/* ── 결과 ── */
+.reshead{display:flex;align-items:baseline;gap:6px;margin:3px 0 10px 1px}
+.reshead .t{font-size:15px;font-weight:800;color:#17151F;letter-spacing:-.025em}
+.reshead .t b{color:#6D4FE0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.card{border-radius:10px;overflow:hidden;background:#fff;border:1px solid #EFEBF9;cursor:pointer;transition:.18s}
+.card:hover{border-color:#C9BCF7;box-shadow:0 6px 18px rgba(109,79,224,.13);transform:translateY(-1px)}
+.thumb{position:relative;aspect-ratio:1/1;background:linear-gradient(145deg,#EDE9FA,#DFF4EE);display:flex;align-items:center;justify-content:center}
+.thumb .badge{position:absolute;top:5px;left:5px;font-size:8.5px;font-weight:800;color:#fff;background:rgba(23,21,31,.62);padding:2.5px 5px;border-radius:4px}
+/* 문서 결과 리스트 */
+.list{display:flex;flex-direction:column;gap:7px}
+.doc{display:flex;gap:10px;align-items:flex-start;border:1px solid #EFEBF9;border-radius:12px;padding:10px 11px;background:#fff;cursor:pointer;transition:.18s}
+.doc:hover{border-color:#C9BCF7;box-shadow:0 6px 18px rgba(109,79,224,.13)}
+.ext{width:34px;height:40px;flex:none;border-radius:6px;display:flex;align-items:flex-end;justify-content:center;
+  padding-bottom:5px;font-size:8.5px;font-weight:800;color:#fff;letter-spacing:-.02em}
+.ext.pdf{background:linear-gradient(160deg,#F2707A,#DC3B47)}
+.ext.xlsx{background:linear-gradient(160deg,#4FCCA4,#12916F)}
+.ext.pptx{background:linear-gradient(160deg,#F0A24E,#D2761A)}
+.ext.docx{background:linear-gradient(160deg,#7E8AD4,#3F4C9E)}
+.ext.png{background:linear-gradient(160deg,#9B8BEA,#6D4FE0)}
+.doc .pv{width:34px;height:40px;flex:none;border-radius:6px;overflow:hidden;position:relative;
+  border:1px solid #EAE5F7;background:#F6F4FC}
+.doc .pv img{width:100%;height:100%;object-fit:cover;object-position:top}
+.doc .pv .tag{position:absolute;left:0;right:0;bottom:0;background:#6D4FE0;font-size:7px;font-weight:800;
+  color:#fff;text-align:center;padding:1.5px 0;letter-spacing:-.01em}
+.doc .dm{flex:1;min-width:0}
+.doc .fn{font-size:11.5px;font-weight:800;color:#17151F;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc .why{font-size:10.5px;font-weight:600;color:#6C6680;line-height:1.45;margin-top:3px}
+.doc .why em{font-style:normal;font-weight:800;color:#6D4FE0;background:#F3F0FD;padding:1px 4px;border-radius:4px}
+.doc .src{font-size:9.5px;font-weight:700;color:#B5AEC8;margin-top:4px;display:flex;gap:6px}
+.follow{margin-top:13px;display:flex;flex-wrap:wrap;gap:6px}
+.follow button{font-family:inherit;font-size:11.5px;font-weight:700;color:#6D4FE0;background:#F6F4FC;
+  border:1px solid #EAE5F7;padding:7px 11px;border-radius:999px;cursor:pointer;transition:.15s}
+.follow button:hover{background:#EFEAFE;border-color:#C9BCF7}
+/* ── 입력창 ── */
+.inputbar{flex:none;padding:10px 12px 16px;background:#fff}
+.ibox{display:flex;align-items:center;gap:8px;background:#F6F4FC;border:1px solid #EAE5F7;border-radius:999px;padding:6px 6px 6px 16px}
+.ibox input{flex:1;min-width:0;border:0;background:none;outline:none;font-family:inherit;font-size:13.5px;font-weight:600;color:#17151F;letter-spacing:-.02em;padding:6px 0}
+.ibox input::placeholder{color:#B5AEC8;font-weight:500}
+.send{width:34px;height:34px;flex:none;border:0;border-radius:50%;background:#6D4FE0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s}
+.send:hover{background:#5B3FD0}
+.send:disabled{background:#DCD6EC;cursor:default}
+.fade{opacity:0;transform:translateY(7px);animation:fade .42s cubic-bezier(.25,.8,.3,1) forwards}
+@keyframes fade{to{opacity:1;transform:none}}
+@media(max-width:820px){
+  body{flex-direction:column;align-items:center;gap:22px;padding:26px 16px}
+  .phone{order:1}
+  .aside{order:2;width:100%;max-width:360px}
+}
+/* 이벤트별 결과 그룹 */
+.clusters{display:flex;flex-direction:column;gap:16px}
+.result-cluster{padding:10px;border:1px solid #E7E1F3;border-radius:12px;background:#FCFBFE}
+.cluster-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.cluster-head h3{font-size:14px;font-weight:800;color:#39354A;letter-spacing:-.025em}
+.cluster-head p{font-size:10.5px;color:#8B84A8;margin-top:4px;line-height:1.5}
+.cluster-count{flex:none;border-radius:999px;background:#EEE8FC;color:#6D4FE0;font-size:11px;font-weight:800;padding:5px 8px}
+.demo-detail{margin:auto;width:min(680px,calc(100vw - 32px));max-height:85vh;border:1px solid #E7E1F3;border-radius:18px;padding:0;color:#39354A;background:#fff;font-family:inherit;box-shadow:0 24px 90px #26222F33}
+.demo-detail::backdrop{background:#26222F88}
+.detail-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;border-bottom:1px solid #EFEBF9}
+.detail-head h2{font-size:17px;overflow-wrap:anywhere}
+.detail-head button{border:0;background:#F3F0FD;border-radius:50%;width:32px;height:32px;flex:none;font-size:22px;cursor:pointer;color:#6D4FE0}
+.detail-body{padding:20px;overflow:auto;max-height:calc(85vh - 70px);font-size:14px;line-height:1.7}
+.detail-body p{margin-bottom:14px}
+.detail-image{display:block;width:100%;max-height:460px;object-fit:contain;border-radius:10px;margin:12px 0 20px}
+.detail-link,.folder-files a{color:#6D4FE0}
+.folder-files{display:flex;flex-direction:column;gap:12px;overflow-wrap:anywhere}
+.detail-body blockquote{padding:16px;background:#F6F4FC;border-radius:12px}
+.result-notice{font-size:13px;line-height:1.6;color:#6D4FE0;background:#F6F4FC;border-radius:10px;padding:10px 12px;margin-bottom:14px}
+.card:focus-visible,.doc:focus-visible{outline:2px solid #6D4FE0;outline-offset:3px}
 </style>
 </head>
 <body>
@@ -155,9 +314,9 @@ section.chap footer.fb{color:#8B84A8}
     <div class="eb"><span><b>01</b> PROBLEM</span><span class="tag">자료는 쌓이는데, 찾을 수는 없다</span></div>
     <h2 class="head">기기는 <span class="grad">저장소</span>가 됐지만, <span class="grad">검색 도구</span>는 되지 못했다</h2>
     <div class="grid3" style="margin-top:calc(0.62 * var(--u))">
-      <div class="card"><div class="statnum">31,130<span class="u">장</span></div><div class="statcap" style="white-space:nowrap">사내 동료 22명의 1인당 평균 <b>보유 사진</b></div></div>
-      <div class="card"><div class="statnum">40<span class="u">%</span></div><div class="statcap">1년 이상 지난 사진 <b>검색 실패율</b></div></div>
-      <div class="card soft"><div class="statnum">18<span class="u">분</span></div><div class="statcap" style="white-space:nowrap">직장인이 문서 한 건을 <b>찾는 데</b> 걸리는 시간</div></div>
+      <div class="statcard"><div class="statnum">31,130<span class="u">장</span></div><div class="statcap" style="white-space:nowrap">사내 동료 22명의 1인당 평균 <b>보유 사진</b></div></div>
+      <div class="statcard"><div class="statnum">40<span class="u">%</span></div><div class="statcap">1년 이상 지난 사진 <b>검색 실패율</b></div></div>
+      <div class="statcard soft"><div class="statnum">18<span class="u">분</span></div><div class="statcap" style="white-space:nowrap">직장인이 문서 한 건을 <b>찾는 데</b> 걸리는 시간</div></div>
     </div>
     <p class="small muted" style="margin-top:calc(1.09 * var(--u))">※ 보유량은 사내 동료 22명 평균 · 40%는 학술 연구(Whittaker et al.) · 18분은 Gartner</p>
   </div>
@@ -170,11 +329,11 @@ section.chap footer.fb{color:#8B84A8}
     <div class="eb"><span><b>02</b> PROBLEM</span><span class="tag">왜 못 찾나</span></div>
     <h2 class="head tight">사람은 <span class="grad">의미로 기억</span>하고, 검색은 <span class="grad">키워드로 찾는다</span></h2>
     <div class="grid2" style="gap:calc(1.4 * var(--u));margin-bottom:calc(0.9 * var(--u))">
-      <div class="card" style="padding:calc(1.2 * var(--u)) calc(1.5 * var(--u))">
+      <div class="statcard" style="padding:calc(1.2 * var(--u)) calc(1.5 * var(--u))">
         <div class="pill" style="margin-bottom:calc(0.7 * var(--u))">내가 기억하는 것</div>
         <div style="font-size:calc(1.5 * var(--u));font-weight:800;letter-spacing:-.02em;line-height:1.5;color:#17151F">"창밖에 바다 보이던 그 카페"<br>"애들 어릴 때"<br>"작년에 받은 그 견적서"</div>
       </div>
-      <div class="card" style="padding:calc(1.2 * var(--u)) calc(1.5 * var(--u))">
+      <div class="statcard" style="padding:calc(1.2 * var(--u)) calc(1.5 * var(--u))">
         <div class="pill gray" style="margin-bottom:calc(0.7 * var(--u))">검색이 가진 것</div>
         <div style="font-size:calc(1.5 * var(--u));font-weight:800;letter-spacing:-.02em;line-height:1.5;color:#6C6680">파일명 · 날짜 · 위치<br>인물 태그 · 자동 분류 몇 가지<br><span class="muted" style="font-weight:400">— 메타데이터와 라벨을 조합해 일부 의미 기반 검색 지원</span></div>
       </div>
@@ -192,11 +351,11 @@ section.chap footer.fb{color:#8B84A8}
     <div class="eb"><span><b>03</b> TO-BE</span><span class="tag">무엇을 써서 찾나</span></div>
     <h2 class="head tight">라벨을 맞추던 검색에서, <span class="grad">설명을 판단하는 검색</span>으로</h2>
     <div class="grid2" style="gap:calc(1.4 * var(--u));margin-bottom:calc(0.8 * var(--u))">
-      <div class="card" style="padding:calc(1.05 * var(--u)) calc(1.5 * var(--u))">
+      <div class="statcard" style="padding:calc(1.05 * var(--u)) calc(1.5 * var(--u))">
         <div class="pill gray" style="margin-bottom:calc(0.6 * var(--u))">기존 · 고정된 라벨 몇 개를 저장</div>
         <div style="font-size:calc(1.5 * var(--u));font-weight:800;letter-spacing:-.03em;color:#6C6680;line-height:1.35;white-space:nowrap">저장해둔 라벨과 "검색어가 일치하나?"</div>
       </div>
-      <div class="card soft" style="padding:calc(1.05 * var(--u)) calc(1.5 * var(--u))">
+      <div class="statcard soft" style="padding:calc(1.05 * var(--u)) calc(1.5 * var(--u))">
         <div class="pill" style="margin-bottom:calc(0.6 * var(--u))">신규 · 풍부한 설명을 저장</div>
         <div style="font-size:calc(1.5 * var(--u));font-weight:800;letter-spacing:-.03em;line-height:1.35;color:#17151F;white-space:nowrap">저장해둔 설명을 <span class="grad">"질문에 맞춰 다시 판단"</span></div>
       </div>
@@ -236,26 +395,44 @@ section.chap footer.fb{color:#8B84A8}
   <footer class="fb"><span>04 · 타겟</span><span class="pg"></span></footer>
 </section>
 
-<!-- ══ 05 유스케이스 ══ -->
-<section class="slide" id="p5" data-slide data-label="05 · 유스케이스">
-  <div class="eb" style="display:none"></div>
-  <div class="inner">
-    <div class="eb"><span><b>05</b> USE CASES</span><a class="tag demolink" href="AI_Dictionary_demo.html" target="aidict-demo">이런 것을 찾을 수 있다</a></div>
-    <h2 class="head tight">사람은 보면 아는데, <span class="grad">지금 검색은 못 찾는 것들</span></h2>
-    <table>
-      <tr><th style="width:calc(3.4 * var(--u))"></th><th style="width:31%">질의</th><th>지금은 왜 안 되나</th><th style="width:25%">필요한 능력</th></tr>
-      <tr><td><span class="idx">1</span></td><td class="k">"창밖으로 바다가 보이는 카페에서 찍은 사진"</td><td>"바다" "카페" 태그는 붙어도 <b>"창밖에 바다"</b>는 없다</td><td><b>장면의 구성을 알아본다</b></td></tr>
-      <tr><td><span class="idx">2</span></td><td class="k">"이 신발 신고 찍은 사진" <span class="attach">사진 첨부</span></td><td>이미지를 검색어로 쓰는 기능이 <b>기본 갤러리에 없다</b></td><td><b>이미지로 검색한다</b></td></tr>
-      <tr><td><span class="idx">3</span></td><td class="k">"견적 금액 500만 원 넘는 견적서"</td><td>파일명으로는 <b>금액을 알 수 없다</b></td><td><b>문서 내용을 읽고 비교한다</b></td></tr>
-      <tr><td><span class="idx">4</span></td><td class="k">"지난주 회의 때 받은 자료"</td><td><b>"지난주"</b>에 회의가 세 번 — 어느 것인지 알 수 없다</td><td><b>애매하면 먼저 되묻는다</b></td></tr>
-      <tr><td><span class="idx">5</span></td><td class="k">"디올 성수에서 찍은 사진"</td><td><b>디올 성수가 무엇인지</b> 모른다</td><td><b>웹에서 정보를 가져와 비교한다</b></td></tr>
-      <tr><td><span class="idx">6</span></td><td class="k">"작년 송년회 와인이랑 4년 전 생일 와인"</td><td>조건이 둘이면 따로 검색해서 <b>직접 합쳐야 한다</b></td><td><b>여러 갈래로 찾아 하나로 합친다</b></td></tr>
-      <tr><td><span class="idx">7</span></td><td class="k">"동생 합격했다고 올렸던 날 파티 사진"</td><td>사진에 <b>"합격"은 찍혀 있지 않다</b> — 올릴 때 쓴 글은 검색 대상 밖</td><td><b>사진 밖의 글을 읽는다</b></td></tr>
-      <tr><td><span class="idx">8</span></td><td class="k">"메일로 보낸 그 PDF의 원본 PPT"</td><td>PDF와 원본이 <b>연결돼 있지 않고</b>, 원본은 <b>휴지통에 있다</b></td><td><b>휴지통까지 넓혀 찾는다</b></td></tr>
-      <tr><td><span class="idx">9</span></td><td class="k">"어제 회의 자료 표지에 쓴 제목 폰트와 커버 이미지"</td><td>파일은 찾아도 <b>그 안에 쓴 글꼴과 이미지</b>는 꺼낼 수 없다</td><td><b>자료 안에 쓴 것을 꺼낸다</b></td></tr>
-    </table>
+<!-- ══ 05 데모 ══ -->
+<section class="slide alt demo-stage" id="p5" data-slide data-label="05 · 데모">
+  <div class="demo-wrap">
+    <div class="aside">
+      <div class="brand">지금 검색은 못 찾는 것들</div>
+      <div class="qpick" id="qpick"></div>
+      <div class="acts">
+        <button class="replay" onclick="reset()">↻ 처음부터</button>
+        <a class="replay" href="AI_Dictionary_demo_pc.html">PC 화면 →</a>
+      </div>
+    </div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="statusbar">
+        <span>9:41</span>
+        <span class="ic">
+          <svg width="16" height="11" viewBox="0 0 16 11" fill="#17151F"><rect y="7" width="3" height="4" rx="1"/><rect x="4.3" y="5" width="3" height="6" rx="1"/><rect x="8.6" y="2.5" width="3" height="8.5" rx="1"/><rect x="12.9" width="3" height="11" rx="1" opacity=".3"/></svg>
+          <svg width="24" height="11" viewBox="0 0 24 11" fill="none"><rect x=".5" y=".5" width="20" height="10" rx="3" stroke="#17151F" stroke-opacity=".35"/><rect x="2" y="2" width="15" height="7" rx="1.8" fill="#17151F"/><path d="M22 4v3a2 2 0 0 0 0-3z" fill="#17151F" fill-opacity=".35"/></svg>
+        </span>
+      </div>
+    
+      <div class="apphead">
+        <div class="nm">AI <span>(&nbsp;&nbsp;)</span> Dictionary</div>
+      </div>
+    
+      <div class="chat" id="chat"></div>
+    
+      <div class="inputbar">
+        <div class="ibox">
+          <input id="inp" placeholder="무엇을 찾고 계세요?" autocomplete="off">
+          <button class="send" id="send" onclick="run()">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 13.5V3M8 3 3.5 7.5M8 3l4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-  <footer class="fb"><span>05 · 유스케이스</span><span class="pg"></span></footer>
+  <footer class="fb"><span>05 · 데모</span><span class="pg"></span></footer>
 </section>
 
 <!-- ══ 06 차별화 ══ -->
@@ -347,6 +524,10 @@ section.chap footer.fb{color:#8B84A8}
   window.addEventListener('load', jumpToHash);
 
   window.addEventListener('keydown', function(ev){
+    /* 05장 데모의 입력창·대화상자에서는 슬라이드를 넘기지 않는다 */
+    var t = ev.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    if (document.querySelector('dialog[open]')) return;
     var y = window.scrollY + window.innerHeight/2, cur = 0;
     slides.forEach(function(s,i){ if (s.offsetTop <= y) cur = i; });
     if (['ArrowDown','ArrowRight','PageDown',' '].indexOf(ev.key) > -1) {
@@ -358,6 +539,468 @@ section.chap footer.fb{color:#8B84A8}
     }
   });
 })();
+</script>
+<script src="AI_Dictionary_demo_data.js"></script>
+<script src="AI_Dictionary_demo_actions.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   합성데이터 연결 지점 — 아래 SCENARIOS 배열만 갈아끼우면 됩니다.
+   제안서 05장 “사람은 보면 아는데, 지금 검색은 못 찾는 것들” 질의 8개.
+
+   results[].src  실제 이미지 경로를 넣으면 플레이스홀더 대신 사진이 렌더됩니다.
+   steps[].type   cond(찾을 내용 정리) · stores(저장소 목록) · narrow(범위 좁히기)
+                  · note(설명 한 줄) · facts(밖에서 알아낸 정보) · ask(되묻기)
+   ═══════════════════════════════════════════════════════════════════════ */
+const STORES_ALL = [["갤러리","12,480"],["파일","3,210"],["카카오톡 받은 파일","1,940"],
+                    ["메일 첨부","860"],["인스타그램","2,130"],["페이스북","510"]];
+const STORES_DOC = [["파일","3,210"],["메일 첨부","860"],["카카오톡 받은 파일","1,940"]];
+
+const SCENARIOS = [
+{
+  q:"창밖으로 바다가 보이는 카페에서 찍은 사진", layout:"grid", core:"장면의 구성을 읽는다",
+  steps:[
+    {type:"cond", t:"찾을 내용을 정리했어요",
+     tags:[["대상","카페에서 찍은 사진"],["장면","창밖으로 바다가 보이는 구도"]]},
+    {type:"stores", t:"사진이 있는 곳을 모두 찾아봤어요", rows:STORES_ALL},
+    {type:"narrow", t:"카페에서 찍은 사진을 모았어요", from:"2,481", to:"24", unit:"장"},
+    {type:"note", t:"한 장씩 확인했어요", hop:true, wait:1400,
+     d:"창이 보이는지, <b>창밖이 바다인지</b> 확인했어요"},
+    {type:"note", t:"세 번 다녀오셨네요",
+     d:"<b>2022년 6월</b> · <b>2024년 7월</b> · <b>2026년 9월</b>, 서로 다른 카페예요"}
+  ],
+  results:[
+    {file:"IMG_012216.jpg", store:"갤러리", date:"2026.09.05", why:"아치 창 너머 노을 진 바다", src:"01_cafe_photo/IMG_012216.jpg"},
+    {file:"IMG_012218.jpg", store:"갤러리", date:"2026.09.05", why:"같은 자리 · 창밖 주황빛 바다", src:"01_cafe_photo/IMG_012218.jpg"},
+    {file:"IMG_007452.jpg", store:"갤러리", date:"2024.07.19", why:"빗방울 맺힌 창 너머 회색 바다", src:"01_cafe_photo/IMG_007452.jpg"},
+    {file:"IMG_007457.jpg", store:"카카오톡", date:"2024.07.19", why:"창가 좌석 · 비 내리는 바다", src:"01_cafe_photo/IMG_007457.jpg"},
+    {file:"IMG_002934.jpg", store:"갤러리", date:"2022.06.14", why:"흰 창틀 너머 푸른 바다", src:"01_cafe_photo/IMG_002934.jpg"},
+    {file:"IMG_002938.jpg", store:"인스타그램", date:"2022.06.14", why:"테이블 너머 창밖 바다", src:"01_cafe_photo/IMG_002938.jpg"},
+    {file:"IMG_002941.jpg", store:"갤러리", date:"2022.06.14", why:"창가 테이블 · 햇빛 비치는 바다", src:"01_cafe_photo/IMG_002941.jpg"},
+    {file:"IMG_007454.jpg", store:"갤러리", date:"2024.07.19", why:"같은 카페 · 창은 안 보임", src:"01_cafe_photo/IMG_007454.jpg", sub:true},
+    {file:"IMG_002935.jpg", store:"페이스북", date:"2022.06.14", why:"같은 방문 · 실내 쪽", src:"01_cafe_photo/IMG_002935.jpg", sub:true},
+    {file:"IMG_002937.jpg", store:"갤러리", date:"2022.06.14", why:"같은 방문 · 테이블 클로즈업", src:"01_cafe_photo/IMG_002937.jpg", sub:true}
+  ],
+  follow:["올해 것만 보기","이 카페 이름 알려줘","창밖이 보이는 것만"]
+},
+{
+  q:"이 신발 신고 찍은 사진", attach:"매장 진열대 위 에메랄드 스니커즈.png", attachSrc:"02_shoe_photo/매장 진열대 위 에메랄드 스니커즈.png",
+  layout:"grid", core:"이미지를 검색어로 쓴다",
+  steps:[
+    {type:"cond", t:"보내주신 사진을 기준으로 찾을게요",
+     tags:[["기준","보내주신 사진"],["대상","사진"],["조건","같은 신발을 신은"]]},
+    {type:"note", t:"신발만 따로 확인했어요",
+     d:"진열대의 다른 신발은 빼고, <b>초록색 스웨이드 · 아이보리 끈 · 검 밑창</b>이 기준이에요"},
+    {type:"stores", t:"사람이 나온 사진을 모두 찾아봤어요", rows:STORES_ALL},
+    {type:"narrow", t:"발이 보이는 사진을 모았어요", from:"1,840", to:"18", unit:"장"},
+    {type:"note", t:"같은 신발이 맞는지 확인했어요", hop:true, wait:1500,
+     d:"색과 무늬까지 비교해 <b>비슷한 다른 신발</b>은 제외했어요"}
+  ],
+  results:[
+    {file:"IMG_011872.jpg", store:"갤러리", date:"2026.08.20", why:"거울 셀카 · 정면에서 보임", src:"02_shoe_photo/IMG_011872.jpg"},
+    {file:"IMG_009641.jpg", store:"인스타그램", date:"2025.04.19", why:"피크닉 · 앞코와 아이보리 끈", src:"02_shoe_photo/IMG_009641.jpg"},
+    {file:"IMG_006825.jpg", store:"갤러리", date:"2024.06.08", why:"카페 의자 · 흰 양말 아래", src:"02_shoe_photo/IMG_006825.jpg"},
+    {file:"IMG_004318.jpg", store:"카카오톡", date:"2023.04.02", why:"교토 골목 · 전신 사진", src:"02_shoe_photo/IMG_004318.jpg"}
+  ],
+  follow:["오래된 순으로","산 날짜 찾기"]
+},
+{
+  q:"견적 금액 500만 원 넘는 견적서", layout:"list", core:"문서를 읽고 값을 비교한다",
+  steps:[
+    {type:"cond", t:"찾을 내용을 정리했어요",
+     tags:[["대상","문서"],["종류","견적서"],["금액","500만 원 넘는"]]},
+    {type:"stores", t:"문서가 있는 곳을 모두 찾아봤어요", rows:STORES_DOC},
+    {type:"narrow", t:"견적서만 모았어요", hop:true, wait:1600,
+     d:"파일 이름이 아니라 <b>문서 안을 열어서</b> 확인했어요", from:"214", to:"38", unit:"건"},
+    {type:"note", t:"금액을 확인했어요",
+     d:"견적서마다 <b>부가세 포함 합계</b>를 읽고 500만 원과 비교했어요"},
+    {type:"note", t:"사진으로 찍어둔 견적서도 찾았어요",
+     d:"문서 파일이 아니라 <b>화면을 캡처한 이미지</b> 안의 금액도 읽었어요"}
+  ],
+  results:[
+    {ext:"xlsx", file:"사무실이전_견적_v3.xlsx", store:"파일", date:"2024.08.23",
+     why:"부가세 포함 <em>12,700,000원</em> · 40석 사무실 이전", thumb:"03_quotation/사무실이전_견적_v3.png"},
+    {ext:"pdf",  file:"인테리어_견적서_최종.pdf", store:"카카오톡", date:"2023.11.16",
+     why:"부가세 포함 <em>8,420,000원</em> · 주거 공간 부분 리모델링", thumb:"03_quotation/인테리어_견적서_최종.png"},
+    {ext:"png",  file:"IMG_008426.png", store:"갤러리", date:"2025.10.08", shot:true,
+     why:"부가세 포함 <em>6,150,000원</em> · 촬영장비 렌탈 <b>스크린샷에서 읽음</b>", thumb:"03_quotation/IMG_008426.png"},
+    {ext:"pdf",  file:"웹사이트_구축제안견적.pdf", store:"메일 첨부", date:"2026.03.12",
+     why:"부가세 포함 <em>5,500,000원</em> · 반응형 웹사이트 구축", thumb:"03_quotation/웹사이트_구축제안견적.png"}
+  ],
+  follow:["금액 높은 순","올해 것만","엑셀로 정리해줘"]
+},
+{
+  q:"지난주 회의 때 받은 자료", layout:"list", core:"애매하면 먼저 되묻는다",
+  steps:[
+    {type:"cond", t:"찾을 내용을 정리했어요",
+     tags:[["대상","자료"],["받은 곳","회의"],["언제","지난주 중 어느 날일까요",1]]},
+    {type:"ask", t:"어느 회의인지 알려주세요", hop:true, wait:1400,
+     d:"지난주에 자료를 받은 회의가 <b>세 번</b> 있었어요",
+     opts:[
+      ["9월 24일 · 신규 기능 리뷰","카카오톡으로 2개 · 메일로 1개", {
+        steps:[
+          {type:"stores", t:"그날 받은 파일만 다시 확인했어요", rows:[["카카오톡 받은 파일","2"],["메일 첨부","1"]]},
+          {type:"note", t:"회의와 상관없는 파일은 제외했어요",
+           d:"같은 날 받았어도 <b>회의 내용과 이어지지 않는</b> 파일이에요"}
+        ],
+        results:[
+          {ext:"pptx", file:"신규기능_리뷰_0924.pptx", store:"카카오톡", date:"2026.09.24 14:05",
+           why:"검토 범위와 사용성 이슈, 후속 일정 · <em>본 자료</em>", thumb:"04_meeting_documents/신규기능_리뷰_0924.jpg"},
+          {ext:"pdf",  file:"사용성테스트_요약.pdf", store:"카카오톡", date:"2026.09.24 14:18",
+           why:"참여자 8명의 검색 과제 결과 보고서", thumb:"04_meeting_documents/사용성테스트_요약.jpg"},
+          {ext:"xlsx", file:"기능별_일정표_v2.xlsx", store:"메일 첨부", date:"2026.09.24 14:42",
+           why:"검색 입력 · 사진 첨부 기능의 개발 · 검수 일정", thumb:"04_meeting_documents/기능별_일정표_v2.jpg"}
+        ]}],
+      ["9월 22일 · 분기 예산 회의","메일로 3개", {
+        steps:[
+          {type:"stores", t:"그날 받은 파일만 다시 확인했어요", rows:[["메일 첨부","3"]]},
+          {type:"note", t:"회의와 상관없는 파일은 제외했어요",
+           d:"같은 날 받았어도 <b>회의 내용과 이어지지 않는</b> 파일이에요"}
+        ],
+        results:[
+          {ext:"xlsx", file:"4분기_예산안_v4.xlsx", store:"메일 첨부", date:"2026.09.22 10:05",
+           why:"요청 예산 6,200만 원 · 심의안 6,000만 원 · <em>본 자료</em>", thumb:"04_meeting_documents/4분기_예산안_v4.jpg"},
+          {ext:"pdf",  file:"상반기_집행실적.pdf", store:"메일 첨부", date:"2026.09.22 10:15",
+           why:"예산 1억 원 대비 집행액 8,200만 원과 미집행 사유", thumb:"04_meeting_documents/상반기_집행실적.jpg"},
+          {ext:"docx", file:"예산_심의의견_취합.docx", store:"메일 첨부", date:"2026.09.22 10:48",
+           why:"항목별 심의 의견과 도구 비용 200만 원 감액", thumb:"04_meeting_documents/예산_심의의견_취합.jpg"}
+        ]}],
+      ["9월 21일 · 디자인 시안 공유","카카오톡으로 2개", {
+        steps:[
+          {type:"stores", t:"그날 받은 파일만 다시 확인했어요", rows:[["카카오톡 받은 파일","2"]]},
+          {type:"note", t:"회의와 상관없는 파일은 제외했어요",
+           d:"같은 날 받았어도 <b>회의 내용과 이어지지 않는</b> 파일이에요"}
+        ],
+        results:[
+          {ext:"pdf",  file:"메인화면_시안_A안.pdf", store:"카카오톡", date:"2026.09.21 10:12",
+           why:"검색 중심 메인화면 A안 · <em>본 자료</em>", thumb:"04_meeting_documents/메인화면_시안_A안.jpg"},
+          {ext:"pptx", file:"시안_설명자료.pptx", store:"카카오톡", date:"2026.09.21 10:35",
+           why:"A안의 화면 구성 원칙과 검색 흐름 설명", thumb:"04_meeting_documents/시안_설명자료.jpg"}
+        ]}]
+     ]}
+  ],
+  follow:["다른 회의 자료 보기","이 회의 대화 내용 보기","한 폴더로 묶기"]
+},
+{
+  q:"디올 성수에서 찍은 사진", layout:"grid", core:"웹에서 알아내 비교한다",
+  steps:[
+    {type:"cond", t:"찾을 내용을 정리했어요",
+     tags:[["대상","사진"],["주제","디올 성수"],["언제","아직 모르겠어요",1]]},
+    {type:"note", t:"웹에서 검색 중", hop:true, wait:1800,
+     d:"<b>디올 성수</b>를 웹에서 찾아봤어요"},
+    {type:"facts", t:"디올 성수에 대해 알아왔어요",
+     facts:[["장소","서울 성동구 연무장길"],["운영","상시 · 시기마다 테마가 바뀜"],["설치물","2023 동물 조형물 · 2024 대형 의자"]]},
+    {type:"narrow", t:"그 장소에서 찍은 사진을 모았어요", from:"312", to:"5", unit:"장"},
+    {type:"note", t:"두 번 다녀오셨네요",
+     d:"<b>2023년 5월</b>과 <b>2024년 5월</b>, 테마가 다른 두 시기의 사진이에요"},
+    {type:"note", t:"간판이 안 보이는 사진도 함께 보여드려요",
+     d:"같은 날 · 같은 옷차림으로 이어진 <b>같은 방문</b>의 사진이에요"}
+  ],
+  results:[
+    {file:"IMG_006321.jpg", store:"갤러리", date:"2024.05.25", why:"DIOR 간판 · 대형 의자", src:"05_dior_photos/IMG_006321.jpg"},
+    {file:"IMG_006326.jpg", store:"인스타그램", date:"2024.05.25", why:"대형 의자 앞", src:"05_dior_photos/IMG_006326.jpg"},
+    {file:"IMG_006332.jpg", store:"갤러리", date:"2024.05.25", why:"같은 방문 · 간판은 안 보임", src:"05_dior_photos/IMG_006332.jpg"},
+    {file:"IMG_003714.jpg", store:"갤러리", date:"2023.05.21", why:"DIOR 간판 · 동물 조형물", src:"05_dior_photos/IMG_003714.jpg"},
+    {file:"IMG_003719.jpg", store:"카카오톡", date:"2023.05.21", why:"동물 조형물 옆", src:"05_dior_photos/IMG_003719.jpg"}
+  ],
+  follow:["2024년 것만","2023년 것만","인스타그램에 올린 것만"]
+},
+{
+  q:"작년 송년회 와인이랑 4년 전 생일 와인", layout:"grid", core:"여러 갈래로 찾아 합친다",
+  clusters:[
+    {title:"작년 송년회", date:"2025.12.19", description:"송년회에서 마신 와인 3종"},
+    {title:"4년 전 생일", date:"2022.03.19", description:"생일에 마신 와인 2종"}
+  ],
+  steps:[
+    {type:"cond", t:"찾을 게 둘이라 나눠서 찾을게요",
+     tags:[["하나","작년 송년회 · 와인"],["둘","4년 전 생일 · 와인"]]},
+    {type:"note", t:"두 날이 언제인지 먼저 확인했어요", hop:true, wait:1500,
+     d:"일정과 사진을 보고 <b>2025.12.19</b> · <b>2022.03.19</b>로 확인했어요"},
+    {type:"stores", t:"두 날짜를 따로 찾아봤어요", rows:STORES_ALL},
+    {type:"narrow", t:"와인이 보이는 사진을 모았어요", from:"430", to:"11", unit:"장"},
+    {type:"note", t:"라벨을 읽었어요",
+     d:"병에 적힌 <b>이름과 연도</b>까지 확인했어요 · 송년회 3종 · 생일 2종"}
+  ],
+  results:[
+    {file:"IMG_010842.jpg", store:"갤러리", date:"2025.12.19", why:"송년회 · 와인 세 병과 식탁", src:"06_wine_photos/IMG_010842.jpg"},
+    {file:"IMG_010844.jpg", store:"갤러리", date:"2025.12.19", why:"송년회 · CLOS DES AULNES 2021", src:"06_wine_photos/IMG_010844.jpg"},
+    {file:"IMG_010847.jpg", store:"카카오톡", date:"2025.12.19", why:"송년회 · VILLA ORIA 2022", src:"06_wine_photos/IMG_010847.jpg"},
+    {file:"IMG_010851.jpg", store:"갤러리", date:"2025.12.19", why:"송년회 · 건배 · 레드 두 병", src:"06_wine_photos/IMG_010851.jpg"},
+    {file:"IMG_010853.jpg", store:"인스타그램", date:"2025.12.19", why:"송년회 · MONT CLAIR 2023", src:"06_wine_photos/IMG_010853.jpg"},
+    {file:"IMG_010861.jpg", store:"갤러리", date:"2025.12.19", why:"송년회 · 식사 마무리 테이블", src:"06_wine_photos/IMG_010861.jpg"},
+    {file:"IMG_002184.jpg", store:"갤러리", date:"2022.03.19", why:"생일 · 케이크 양옆의 병", src:"06_wine_photos/IMG_002184.jpg"},
+    {file:"IMG_002186.jpg", store:"갤러리", date:"2022.03.19", why:"생일 · DOMAINE LORIEL 2018", src:"06_wine_photos/IMG_002186.jpg"},
+    {file:"IMG_002189.jpg", store:"페이스북", date:"2022.03.19", why:"생일 · BELLE RIVE BRUT", src:"06_wine_photos/IMG_002189.jpg"},
+    {file:"IMG_002194.jpg", store:"갤러리", date:"2022.03.19", why:"생일 · 건배 · 같은 레드", src:"06_wine_photos/IMG_002194.jpg"},
+    {file:"IMG_002203.jpg", store:"카카오톡", date:"2022.03.19", why:"생일 · 케이크와 남은 병", src:"06_wine_photos/IMG_002203.jpg"}
+  ],
+  follow:["와인 이름 정리해줘","송년회 것만","같은 와인이 또 있나"]
+},
+{
+  q:"동생 합격했다고 올렸던 날 파티 사진", layout:"grid", core:"사진 밖의 글을 읽는다",
+  steps:[
+    {type:"cond", t:"찾을 내용을 정리했어요",
+     tags:[["대상","그날 찍은 파티 사진"],["단서","사진에는 안 보이는 ‘합격’"]]},
+    {type:"note", t:"사진만 봐서는 찾을 수 없어요",
+     d:"‘합격’은 <b>사진에 찍히는 장면이 아니에요</b>"},
+    {type:"stores", t:"사진과 글이 함께 있는 곳을 찾아봤어요", rows:[["페이스북","1,240"],["인스타그램","980"]]},
+    {type:"note", t:"올릴 때 쓴 글에서 날짜를 찾았어요", hop:true, wait:1600,
+     d:"“동생 드디어 합격! 오늘은 집에서 조촐하게 축하 파티 🎉”라고 쓴 <b>게시글의 날짜</b>는 2024.04.12예요"},
+    {type:"narrow", t:"그날 찍은 파티 사진을 모았어요",
+     d:"케이크 · 건배 · 상차림처럼 <b>파티 장면</b>인 사진이에요", from:"48", to:"6", unit:"장"}
+  ],
+  results:[
+    {file:"IMG_005216.png", store:"페이스북", date:"2024.04.12 20:03", why:"게시글에 올린 사진 · 풍선과 케이크", src:"07_party_photos/IMG_005216.png"},
+    {file:"IMG_005217.png", store:"인스타그램", date:"2024.04.12 20:05", why:"파티 테이블 · 케이크와 피자", src:"07_party_photos/IMG_005217.png"},
+    {file:"IMG_005218.png", store:"페이스북", date:"2024.04.12 20:06", why:"게시글에 올린 사진 · 촛불 단체샷", src:"07_party_photos/IMG_005218.png"},
+    {file:"IMG_005220.png", store:"갤러리", date:"2024.04.12 20:07", why:"올리지 않은 원본 · 촛불 끄는 장면", src:"07_party_photos/IMG_005220.png"},
+    {file:"IMG_005232.png", store:"갤러리", date:"2024.04.12 20:20", why:"올리지 않은 원본 · 케이크 나누기", src:"07_party_photos/IMG_005232.png"},
+    {file:"IMG_005237.png", store:"카카오톡", date:"2024.04.12 20:24", why:"동생이 보내준 사진 · 건배", src:"07_party_photos/IMG_005237.png"}
+  ],
+  follow:["게시글 원문 보기","올리지 않은 것만","그날 사진 전부 보기"]
+},
+{
+  q:"메일로 보낸 그 PDF의 원본 PPT", layout:"list", core:"휴지통까지 넓혀 원본을 찾는다",
+  steps:[
+    {type:"cond", t:"찾을 내용을 정리했어요",
+     tags:[["기준","메일로 보낸 PDF"],["찾을 것","같은 문서의 원본 PPT"]]},
+    {type:"stores", t:"보낸 메일함을 확인했어요", rows:[["메일 첨부","860"]]},
+    {type:"note", t:"어느 PDF인지 확인했어요",
+     d:"가장 최근에 보낸 <b>브랜드전략_제안.pdf</b> · 4쪽 · 2026.09.24 발송"},
+    {type:"stores", t:"원본을 찾아봤어요", hop:true, wait:1500,
+     rows:[["모바일 파일","3,210"],["PC 파일","1,940"],["메일 첨부","860"]]},
+    {type:"narrow", t:"PDF와 일치하는 원본을 찾지 못했어요",
+     from:"96", to:"0", unit:"건"}
+  ],
+  results:[],
+  notice:"원본 PPT를 찾지 못했어요. 삭제한 파일이라면 휴지통에서 찾아볼 수 있어요.",
+  trashResults:[
+    {ext:"pptx", file:"브랜드전략_제안_v7.pptx", store:"PC", date:"2026.09.23 18:42",
+     why:"<em>가장 유력한 원본</em> · 4쪽 내용이 PDF와 일치 · PDF 공유 전 수정", thumb:"08_brand_documents/브랜드전략_제안_v7.png"},
+    {ext:"pptx", file:"브랜드전략_제안_v6.pptx", store:"모바일", date:"2026.09.20 16:10",
+     why:"이전 버전 · 같은 4쪽이지만 <b>핵심 메시지와 실행 일정이 다름</b>", thumb:"08_brand_documents/브랜드전략_제안_v6.png"},
+    {ext:"pdf", file:"브랜드전략_제안.pdf", store:"메일함", date:"2026.09.24 09:12",
+     why:"대조용 PDF 사본 · 삭제된 메일의 첨부파일", thumb:"08_brand_documents/브랜드전략_제안.png"}
+  ],
+  follow:["v7만 열기","v6와 달라진 점"]
+},
+{
+  q:"어제 회의 자료 표지에 쓴 제목 폰트와 커버 이미지", layout:"grid", core:"자료 안에 쓴 것을 꺼낸다",
+  steps:[
+    {type:"cond", t:"찾을 내용을 정리했어요",
+     tags:[["자료","어제 회의 자료"],["찾을 것","표지 제목 폰트 · 커버 이미지"]]},
+    {type:"stores", t:"문서가 있는 곳을 찾아봤어요", rows:STORES_DOC},
+    {type:"note", t:"어제 만든 자료는 하나였어요",
+     d:"<b>2026.10.18</b> 주거 경험 기획 회의 · 2027_주거경험_트렌드.pptx"},
+    {type:"note", t:"파일 안을 열어봤어요", hop:true, wait:1600,
+     d:"표지 슬라이드에서 <b>글꼴 지정과 이미지</b>를 꺼냈어요"}
+  ],
+  answer:{label:"표지 제목 폰트", value:"Noto Sans KR", sub:"45pt · 문서 기본 글꼴은 Aptos인데 표지 제목만 따로 지정했어요"},
+  results:[
+    {file:"IMG_013402.png", store:"파일", date:"2026.10.18", why:"표지에 깔린 커버 이미지 · 1672×941",
+     src:"09_interior_trend_documents/IMG_013402.png"}
+  ],
+  follow:["이 자료 어떤 내용이야","같은 글꼴 쓴 자료 더 보기"]
+}
+];
+
+
+/* 견적서는 기본적으로 최신 날짜부터 제공한다. */
+SCENARIOS.find(s=>s.q==="견적 금액 500만 원 넘는 견적서").results.sort((a,b)=>b.date.localeCompare(a.date));
+
+const U = path => encodeURI(path);   /* 한글 · 공백이 든 실제 파일 경로 */
+const ICON_PHOTO = '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6D4FE0" stroke-width="1.6" opacity=".3"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m3 16.5 4.5-4 4 3.5 4-5 4.5 5.5"/></svg>';
+
+const chat=document.getElementById('chat'), inp=document.getElementById('inp'),
+      send=document.getElementById('send'), qpick=document.getElementById('qpick');
+window.name='aidict-demo';                  /* 제안서에서 이 탭을 다시 쓰도록 이름을 붙인다 */
+let timers=[], busy=false;
+
+const wait=(ms,fn)=>timers.push(setTimeout(fn,ms));
+const add=html=>{const d=document.createElement('div');d.className='fade';d.innerHTML=html;
+                 chat.appendChild(d);chat.scrollTop=chat.scrollHeight;return d;};
+
+/* 왼쪽 패널 — 제안서 05장 질의 8개 (폰 밖 데모 조작부) */
+qpick.innerHTML=SCENARIOS.map((s,i)=>
+  '<button data-i="'+i+'"><span class="n">'+(i+1)+'</span><span class="q">'+s.q+'</span>'
+  +(s.attach?'<span class="att">사진 첨부</span>':'')
+  +'<span class="core">'+s.core+'</span></button>').join('');
+qpick.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+  reset();
+  qpick.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  typeQuery(SCENARIOS[+b.dataset.i].q);
+});
+
+function reset(){
+  SCENARIOS.forEach(s=>delete s.usedFollow);
+  activeScenario=null;
+  timers.forEach(clearTimeout); timers=[]; busy=false;
+  inp.value=''; inp.readOnly=false; inp.disabled=false; send.disabled=false;
+  chat.innerHTML='<div class="empty">'
+    +'<svg class="mark" viewBox="0 0 48 48" fill="none">'            /* 펼친 사전 + 돋보기 */
+    +'<g stroke="#6D4FE0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".5">'
+    +'<path d="M5 12c5.5-3 11.5-3 19 1v23c-7.5-4-13.5-4-19-1V12z"/>'
+    +'<path d="M43 12c-5.5-3-11.5-3-19 1v23c7.5-4 13.5-4 19-1V12z"/></g>'
+    +'<g stroke="#fff" stroke-width="6.5" stroke-linecap="round">'
+    +'<circle cx="31" cy="30" r="8.5"/><path d="M37.2 36.2 43 42"/></g>'
+    +'<g stroke="#6D4FE0" stroke-width="2.6" stroke-linecap="round">'
+    +'<circle cx="31" cy="30" r="8.5"/><path d="M37.2 36.2 43 42"/></g></svg>'
+    +'<h2>기억나는 대로 말해보세요</h2><p>알아서 찾아드려요</p></div>';
+  qpick.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+}
+
+function typeQuery(q){
+  inp.value=''; inp.readOnly=true; send.disabled=true;
+  inp.focus();
+  let i=0;
+  (function tick(){
+    if(i<=q.length){
+      inp.value=q.slice(0,i++);
+      inp.scrollLeft=inp.scrollWidth;
+      wait(45,tick);
+    } else wait(900,()=>{inp.readOnly=false; run();});
+  })();
+}
+
+function run(){
+  const q=inp.value.trim(); if(!q||busy||inp.readOnly) return;
+  if(activeScenario && [...availableFollow(activeScenario),...(activeScenario.origin?['이전 결과로 돌아가기']:[])].includes(q)){
+    inp.value='';
+    const latest=chat.querySelector('[data-results="current"]');
+    if(latest){
+      const chip=[...latest.querySelectorAll('[data-follow]')].find(button=>button.dataset.follow===q);
+      if(chip)chip.click();
+      else applyFollow(activeScenario,q,latest);
+    }
+    return;
+  }
+  const exact=SCENARIOS.find(s=>s.q===q);
+  const keywords=[['카페','바다'],['신발'],['견적'],['회의','자료'],['디올'],['와인'],['합격','파티'],['PDF','PPT']];
+  const S=exact||SCENARIOS.find((s,i)=>keywords[i].every(word=>q.toLowerCase().includes(word.toLowerCase())));
+  if(!S){
+    add('<div class="me"><div class="b">'+h(q)+'</div></div>');
+    chat.querySelectorAll('[data-results="current"]').forEach(el=>el.removeAttribute('data-results'));
+    results({q,layout:'grid',results:[],follow:[],notice:'이 검색어에 해당하는 준비된 결과가 없어요. 사진 속 장면이나 파일의 내용, 날짜를 함께 적어주시면 좋아요.'});
+    inp.value=''; send.disabled=false;return;
+  }
+  busy=true; inp.disabled=true; send.disabled=true;
+  chat.innerHTML=''; inp.value='';
+
+  add('<div class="me"><div class="b">'+h(q)
+    +(S.attach?'<div class="attimg">'+(S.attachSrc
+        ? '<img src="'+U(S.attachSrc)+'" alt="">'
+        : ICON_PHOTO.replace(/#6D4FE0/g,'#fff').replace('opacity=".3"','opacity=".85"').replace(/30"/g,'22"')+S.attach)+'</div>':'')
+    +'</div></div>');
+
+  wait(420, ()=>step(S,0,1));
+}
+
+/* 단계 하나를 그리고, 다음 단계까지 걸릴 시간을 반환 */
+function step(S,i,no){
+  chat.querySelectorAll('.dot.live').forEach(d=>d.classList.remove('live'));
+  chat.querySelectorAll('.hop').forEach(h=>h.remove());   /* 검색이 끝나면 도트를 멈춘다 */
+  if(i>=S.steps.length){ results(S); return; }
+  const s=S.steps[i]; let inner='';
+
+  if(s.type==='cond')
+    inner='<div class="d rv">'+s.tags.map(t=>'<i>'+t[0]+'</i> '+(t[2]?'<b>'+t[1]+'</b>':t[1])).join(' · ')+'</div>';
+  else if(s.type==='stores')
+    inner='<div class="stores">'+s.rows.map(r=>'<div class="srow rv"><span class="ck"></span><span>'+r[0]+'</span></div>').join('')+'</div>';
+  else if(s.type==='narrow')
+    inner='<div class="narrow rv"><span class="big">'+s.from+'</span><span>'+s.unit+'</span>'
+      +'<span>→</span><span class="big hit">'+s.to+'</span><span>'+s.unit+'</span></div>';
+  else if(s.type==='note') inner='<div class="d rv">'+s.d+'</div>';
+  else if(s.type==='facts')
+    inner='<div class="facts">'+s.facts.map(f=>'<div class="f rv"><i>'+f[0]+'</i><span>'+f[1]+'</span></div>').join('')+'</div>';
+  else if(s.type==='ask')
+    inner='<div class="d rv">'+s.d+'</div><div class="ask">'
+      +s.opts.map((o,k)=>'<button class="rv" data-k="'+k+'">'+o[0]+'</button>').join('')+'</div>';
+
+  const el=add('<div class="step"><div class="dot live"></div>'
+    +'<div class="body"><div class="t">'+s.t
+    +(s.hop?'<span class="hop"><i></i><i></i><i></i></span>':'')+'</div>'+inner+'</div></div>');
+
+  /* 한 줄씩 차례로 띄워 처리 중인 느낌을 낸다 */
+  const rows=[...el.querySelectorAll('.rv')];
+  const lag=s.wait||0;                       /* 도트만 도는 구간 */
+  rows.forEach((n,k)=>wait(lag+260+k*230,()=>{n.classList.add('on');chat.scrollTop=chat.scrollHeight;}));
+  const dur=700+rows.length*230+lag;
+
+  if(s.type==='ask'){                        /* 사용자가 고를 때까지 멈춤 */
+    if(s.hop) wait(lag+260+rows.length*230,()=>el.querySelectorAll('.hop').forEach(h=>h.remove()));
+    el.querySelectorAll('.ask button').forEach(b=>b.onclick=()=>{
+      const o=s.opts[+b.dataset.k];
+      el.querySelector('.ask').remove();
+      el.querySelector('.d').innerHTML='선택: <b>'+o[0]+'</b>';
+      add('<div class="me"><div class="b">'+o[0]+'</div></div>');
+      /* 고른 선택지에 따라 이후 단계와 결과가 달라진다 */
+      const N=o[2] ? Object.assign({},S,{steps:S.steps.slice(0,i+1).concat(o[2].steps),
+                                         results:o[2].results, follow:o[2].follow||S.follow}) : S;
+      wait(420,()=>step(N,i+1,no+1));
+    });
+    chat.scrollTop=chat.scrollHeight;
+    return;
+  }
+  wait(dur,()=>step(S,i+1,no+1));
+}
+
+function results(S, grouped=false, existing=null){
+  let body;
+  if(S.layout==='grid'){
+    const renderGrid=items=>'<div class="grid">'+items.map(r=>
+      '<div class="card" role="button" tabindex="0" aria-label="'+h(r.file)+'" data-file="'+r.file+'"><div class="thumb">'
+      +(r.src?'<img src="'+U(r.src)+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover">':ICON_PHOTO)
+      +'<span class="badge">'+(r.inTrash?'휴지통 · ':'')+r.store+'</span></div></div>').join('')+'</div>';
+    body=grouped && S.clusters
+      ? '<div class="clusters">'+S.clusters.map(group=>{
+          const items=S.results.filter(r=>r.date.slice(0,10)===group.date);
+          return '<section class="result-cluster" aria-label="'+group.title+'">'
+            +'<div class="cluster-head"><div><h3>'+group.title+'</h3><p>'+group.date+' · '+group.description+'</p></div>'
+            +'<span class="cluster-count">'+items.length+'장</span></div>'+renderGrid(items)+'</section>';
+        }).join('')+'</div>'
+      : renderGrid(S.results);
+  } else {
+    body='<div class="list">'+S.results.map(r=>
+      '<div class="doc" role="button" tabindex="0" aria-label="'+h(r.file)+'" data-file="'+r.file+'">'
+      +(r.shot
+        ? '<div class="pv"><img src="'+U(r.thumb)+'" alt="" loading="lazy"><span class="tag">'+r.ext.toUpperCase()+'</span></div>'
+        : '<div class="ext '+r.ext+'">'+r.ext.toUpperCase()+'</div>')
+      +'<div class="dm"><div class="fn">'+r.file+'</div><div class="why">'+r.why+'</div>'
+      +'<div class="src"><span>'+(r.inTrash?'휴지통 · ':'')+r.store+'</span><span>'+r.date+'</span></div></div></div>').join('')+'</div>';
+  }
+  const answer=S.answer?'<div class="answer"><div class="lbl">'+h(S.answer.label)+'</div>'
+    +'<div class="val">'+h(S.answer.value)+'</div><div class="sub">'+h(S.answer.sub)+'</div></div>':'';
+  const html='<div data-results="current">'+answer+'<div class="reshead"><div class="t"><b>'+S.results.length+(S.layout==='grid'?'장':'건')+'</b> 찾았어요'
+    +(grouped && S.clusters?' · '+S.clusters.length+'개 그룹':'')+'</div></div>'+(S.notice?'<div class="result-notice">'+h(S.notice)+'</div>':'')+body
+    +'<div class="follow">'
+    +(S.clusters?'<button data-action="group-results">'+(grouped?'한데 모아 보기':'이벤트별로 나눠 보기')+'</button>':'')
+    +(S.origin?'<button data-follow="이전 결과로 돌아가기">이전 결과로 돌아가기</button>':'')
+    +availableFollow(S).map(f=>'<button data-follow="'+h(f)+'">'+f+'</button>').join('')+'</div></div>';
+  const result=existing || add(html);
+  if(existing) result.innerHTML=html;
+  const groupChip=result.querySelector('[data-action="group-results"]');
+  if(groupChip) groupChip.onclick=()=>results(S,!grouped,result);
+  activeScenario=S;
+  result.querySelectorAll('[data-follow]').forEach(button=>button.onclick=()=>{
+    if(busy) return;
+    const label=button.dataset.follow;
+    button.remove();
+    applyFollow(S,label,result);
+  });
+  result.querySelectorAll('.card,.doc').forEach(card=>{
+    const open=()=>{if(!busy)previewFile(S.results.find(r=>r.file===card.dataset.file));};
+    card.onclick=open;
+    card.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};
+  });
+  inp.disabled=false; send.disabled=false; busy=false;
+  if(existing){
+    chat.scrollTop+=result.getBoundingClientRect().top-chat.getBoundingClientRect().top-24;
+  } else chat.scrollTop=chat.scrollHeight;
+}
+
+inp.addEventListener('keydown',e=>{if(e.key==='Enter') run();});
+reset();
+
 </script>
 </body>
 </html>
