@@ -297,8 +297,9 @@ a.replay{text-decoration:none}
 .card:focus-visible,.doc:focus-visible{outline:2px solid #6D4FE0;outline-offset:3px}
 
 /* ══════ 05·06장 유스케이스 — AI_Dictionary_usecase.html 에서 가져옴 ══════ */
-.ax .en{font-size:calc(2.3 * var(--u));font-weight:800;letter-spacing:-.03em;line-height:1.1;background:linear-gradient(90deg,#8B6CF6,#2EC9A0);-webkit-background-clip:text;background-clip:text;color:transparent}
-.ax .ko{font-size:calc(1.5 * var(--u));font-weight:800;color:#17151F;margin-top:calc(-0.3 * var(--u))}
+.ax .en{display:inline;font-size:calc(2.3 * var(--u));font-weight:800;letter-spacing:-.03em;line-height:1.1;background:linear-gradient(90deg,#8B6CF6,#2EC9A0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ax .ko{display:inline;font-size:calc(1.5 * var(--u));font-weight:800;color:#17151F;margin-left:calc(0.55 * var(--u))}
+.ax .ttl{line-height:1.15}
 .ax .def{font-size:calc(1.28 * var(--u));font-weight:700;line-height:1.55;color:#39354A;min-height:calc(4 * var(--u))}
 .ax .lbl,.rep .lbl{font-size:calc(0.95 * var(--u));font-weight:800;letter-spacing:.06em;color:#6C6680;margin-bottom:calc(0.3 * var(--u))}
 .ax ul.dots{gap:calc(0.4 * var(--u))}
@@ -438,7 +439,7 @@ a.replay{text-decoration:none}
     <h2 class="head tight">기억나는 대로 말하면 — <span class="grad">찾아가고, 답하고, 묶는다</span></h2>
     <div class="grid3">
       <div class="statcard ax">
-        <div class="en">Navigation</div><div class="ko">찾아가기</div>
+        <div class="ttl"><div class="en">Navigation</div><div class="ko">찾아가기</div></div>
         <div class="def">흐릿한 기억만으로 그 사진, 그 파일까지 데려다준다</div>
         <div><div class="lbl">이런 질문</div><ul class="dots purple">
           <li>"창밖으로 바다가 보이던 카페 사진"</li>
@@ -448,7 +449,7 @@ a.replay{text-decoration:none}
         <div class="out"><span>결과</span>찾던 사진 · 파일</div>
       </div>
       <div class="statcard ax">
-        <div class="en">QA</div><div class="ko">답하기</div>
+        <div class="ttl"><div class="en">QA</div><div class="ko">답하기</div></div>
         <div class="def">파일을 열어 보지 않아도, 그 안의 내용으로 답한다</div>
         <div><div class="lbl">이런 질문</div><ul class="dots purple">
           <li>"욕실 견적 중 제일 싼 데랑 계약한 데 차이"</li>
@@ -458,7 +459,7 @@ a.replay{text-decoration:none}
         <div class="out"><span>결과</span>답 + 근거 문서</div>
       </div>
       <div class="statcard ax">
-        <div class="en">Organization</div><div class="ko">묶기</div>
+        <div class="ttl"><div class="en">Organization</div><div class="ko">묶기</div></div>
         <div class="def">흩어진 사진과 자료를 '그 일' 단위로 모으고, 겹친 것은 정리한다</div>
         <div><div class="lbl">이런 질문</div><ul class="dots purple">
           <li>"엄마 칠순 때 사진 다 모아줘"</li>
@@ -468,7 +469,6 @@ a.replay{text-decoration:none}
         <div class="out"><span>결과</span>일 단위 묶음 · 중복 정리</div>
       </div>
     </div>
-    <div class="band">세 축 모두 같은 바탕 위에서 — <span class="grad">여섯 저장소의 사진과 문서를 미리 읽어 둔 하나의 사전</span></div>
   </div>
   <footer class="fb"><span>05 · 유스케이스</span><span class="pg"></span></footer>
 </section>
