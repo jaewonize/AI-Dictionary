@@ -620,10 +620,21 @@ a.replay{text-decoration:none}
   window.name = 'aidict-proposal';          /* 데모에서 이 탭으로 돌아올 수 있게 이름을 붙인다 */
   var slides = [].slice.call(document.querySelectorAll('[data-slide]'));
   var total = slides.length;
-  var pages = total - 1;                    /* 표지는 페이지 번호에서 뺀다 */
+  /* 본문과 부록은 따로 센다. 표지는 번호에서 뺀다 */
+  var isAppendix = function(s){ return /^Appendix_/.test(s.dataset.label || ''); };
+  var appendixTotal = slides.filter(isAppendix).length;
+  var bodyTotal = total - 1 - appendixTotal;
+  var bodyNo = 0, appendixNo = 0;
   slides.forEach(function(s,i){
     var pg = s.querySelector('.pg');
-    if (pg && i > 0) pg.textContent = String(i).padStart(2,'0') + ' / ' + String(pages).padStart(2,'0');
+    if (!pg || i === 0) return;
+    if (isAppendix(s)) {
+      appendixNo++;
+      pg.textContent = 'A' + appendixNo + ' / A' + appendixTotal;
+    } else {
+      bodyNo++;
+      pg.textContent = String(bodyNo).padStart(2,'0') + ' / ' + String(bodyTotal).padStart(2,'0');
+    }
   });
   /* #앵커로 들어오면 애니메이션 없이 그 장에 바로 놓는다 */
   function jumpToHash(){
