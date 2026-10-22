@@ -295,6 +295,24 @@ a.replay{text-decoration:none}
 .detail-body blockquote{padding:16px;background:#F6F4FC;border-radius:12px}
 .result-notice{font-size:13px;line-height:1.6;color:#6D4FE0;background:#F6F4FC;border-radius:10px;padding:10px 12px;margin-bottom:14px}
 .card:focus-visible,.doc:focus-visible{outline:2px solid #6D4FE0;outline-offset:3px}
+
+/* ══════ 05·06장 유스케이스 — AI_Dictionary_usecase.html 에서 가져옴 ══════ */
+.ax .en{font-size:calc(2.3 * var(--u));font-weight:800;letter-spacing:-.03em;line-height:1.1;background:linear-gradient(90deg,#8B6CF6,#2EC9A0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ax .ko{font-size:calc(1.5 * var(--u));font-weight:800;color:#17151F;margin-top:calc(-0.3 * var(--u))}
+.ax .def{font-size:calc(1.28 * var(--u));font-weight:700;line-height:1.55;color:#39354A;min-height:calc(4 * var(--u))}
+.ax .lbl,.rep .lbl{font-size:calc(0.95 * var(--u));font-weight:800;letter-spacing:.06em;color:#6C6680;margin-bottom:calc(0.3 * var(--u))}
+.ax ul.dots{gap:calc(0.4 * var(--u))}
+.ax ul.dots li{font-size:calc(1.12 * var(--u));line-height:1.5}
+.ax .out{margin-top:auto;font-size:calc(1.08 * var(--u));font-weight:800;color:#6D4FE0;background:#EFEAFE;border-radius:calc(0.6 * var(--u));padding:calc(0.5 * var(--u)) calc(0.8 * var(--u))}
+.ax .out span{color:#6C6680;font-weight:700;margin-right:calc(0.5 * var(--u))}
+.rep{display:flex;flex-direction:column;gap:calc(0.8 * var(--u));padding:calc(1.4 * var(--u)) calc(1.5 * var(--u))}
+.rep .q{background:#17151F;color:#fff;border-radius:calc(0.8 * var(--u));padding:calc(0.75 * var(--u)) calc(1 * var(--u));font-size:calc(1.22 * var(--u));font-weight:800;line-height:1.45;letter-spacing:-.01em}
+.rep .q::before{content:"Q";color:#8B6CF6;margin-right:calc(0.6 * var(--u))}
+.rep .now{font-size:calc(1.1 * var(--u));line-height:1.55;color:#6C6680}
+.rep ol{list-style:none;counter-reset:st;display:flex;flex-direction:column;gap:calc(0.35 * var(--u))}
+.rep ol li{counter-increment:st;position:relative;padding-left:calc(1.7 * var(--u));font-size:calc(1.1 * var(--u));line-height:1.5;color:#39354A}
+.rep ol li::before{content:counter(st);position:absolute;left:0;top:calc(0.12 * var(--u));width:calc(1.25 * var(--u));height:calc(1.25 * var(--u));border-radius:50%;background:#EFEAFE;color:#6D4FE0;font-size:calc(0.8 * var(--u));font-weight:800;display:flex;align-items:center;justify-content:center}
+.rep .res{margin-top:auto;background:linear-gradient(90deg,#EFEAFE,#DEF7EF);border-radius:calc(0.8 * var(--u));padding:calc(0.7 * var(--u)) calc(0.95 * var(--u));font-size:calc(1.12 * var(--u));font-weight:700;line-height:1.5;color:#17151F}
 </style>
 </head>
 <body>
@@ -413,10 +431,92 @@ a.replay{text-decoration:none}
   <footer class="fb"><span>04 · 데모</span><span class="pg"></span></footer>
 </section>
 
-<!-- ══ 05 전환 ══ -->
-<section class="slide alt" data-slide data-label="05 · 전환">
+<!-- ══ 05 유스케이스 ══ -->
+<section class="slide alt" data-slide data-label="05 · 유스케이스">
   <div class="inner">
-    <div class="eb"><span><b>05</b> TO-BE</span><span class="tag">무엇을 써서 찾나</span></div>
+    <div class="eb"><span><b>05</b> USE CASES</span><span class="tag">NAVIGATION · QA · ORGANIZATION</span></div>
+    <h2 class="head tight">기억나는 대로 말하면 — <span class="grad">찾아가고, 답하고, 묶는다</span></h2>
+    <div class="grid3">
+      <div class="statcard ax">
+        <div class="en">Navigation</div><div class="ko">찾아가기</div>
+        <div class="def">흐릿한 기억만으로 그 사진, 그 파일까지 데려다준다</div>
+        <div><div class="lbl">이런 질문</div><ul class="dots purple">
+          <li>"창밖으로 바다가 보이던 카페 사진"</li>
+          <li>"이 신발 신고 찍은 사진"</li>
+          <li>"지난주 회의 때 받은 자료"</li>
+          <li>"메일로 보낸 그 PDF의 원본 PPT"</li></ul></div>
+        <div class="out"><span>결과</span>찾던 사진 · 파일</div>
+      </div>
+      <div class="statcard ax">
+        <div class="en">QA</div><div class="ko">답하기</div>
+        <div class="def">파일을 열어 보지 않아도, 그 안의 내용으로 답한다</div>
+        <div><div class="lbl">이런 질문</div><ul class="dots purple">
+          <li>"욕실 견적 중 제일 싼 데랑 계약한 데 차이"</li>
+          <li>"공사비가 처음 계약보다 얼마나 늘었지"</li>
+          <li>"어제 자료 표지에 쓴 폰트"</li>
+          <li>"그 계약서 해지 조건"</li></ul></div>
+        <div class="out"><span>결과</span>답 + 근거 문서</div>
+      </div>
+      <div class="statcard ax">
+        <div class="en">Organization</div><div class="ko">묶기</div>
+        <div class="def">흩어진 사진과 자료를 '그 일' 단위로 모으고, 겹친 것은 정리한다</div>
+        <div><div class="lbl">이런 질문</div><ul class="dots purple">
+          <li>"엄마 칠순 때 사진 다 모아줘"</li>
+          <li>"작년 송년회 와인이랑 4년 전 생일 와인"</li>
+          <li>"카톡으로 받은 것 중 원본 있는 건 하나만"</li>
+          <li>"견적서 버전별로 정리해줘"</li></ul></div>
+        <div class="out"><span>결과</span>일 단위 묶음 · 중복 정리</div>
+      </div>
+    </div>
+    <div class="band">세 축 모두 같은 바탕 위에서 — <span class="grad">여섯 저장소의 사진과 문서를 미리 읽어 둔 하나의 사전</span></div>
+  </div>
+  <footer class="fb"><span>05 · 유스케이스</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ 06 대표 유스케이스 ══ -->
+<section class="slide" data-slide data-label="06 · 대표 유스케이스">
+  <div class="inner">
+    <div class="eb"><span><b>06</b> CORE USE CASES</span><span class="tag">축마다 하나씩</span></div>
+    <h2 class="head tight">지금은 <span class="grad">어떤 앱도</span> 제대로 못 하는 것</h2>
+    <div class="grid3">
+      <div class="statcard rep">
+        <div><span class="pill">Navigation</span></div>
+        <div class="q">창밖으로 바다가 보이던 카페에서 찍은 사진</div>
+        <div><div class="lbl">지금은</div><div class="now">'바다' '카페' 라벨은 붙어도 <b>"창밖에 바다"라는 구성</b>은 못 찾는다. 카톡으로 받은 사진은 아예 대상 밖</div></div>
+        <div><div class="lbl">AI Dictionary는</div><ol>
+          <li>갤러리 · 카톡 받은 사진에서 장면 구성을 판단</li>
+          <li>방문별로 묶고, 바다가 안 보이는 실내 컷도 함께</li></ol></div>
+        <div class="res">"세 번 다녀오셨네요" — 방문 3회, 사진 14장</div>
+      </div>
+      <div class="statcard rep">
+        <div><span class="pill green">QA</span></div>
+        <div class="q">욕실 견적 중에 제일 싼 데랑 계약한 데 얼마 차이야?</div>
+        <div><div class="lbl">지금은</div><div class="now">파일명은 <b>견적_최종(2).pdf</b>. 메일 · 카톡 · 다운로드를 뒤져 하나씩 열고 직접 계산해야 한다</div></div>
+        <div><div class="lbl">AI Dictionary는</div><ol>
+          <li>저장소마다 견적서를 찾고, 찍어 둔 사진은 글자를 읽음</li>
+          <li>욕실 금액 비교 · 같은 업체는 최신 버전만</li>
+          <li>계약서로 '맡긴 데' 확인</li></ol></div>
+        <div class="res">"최저 A업체 380만 원, 계약한 C업체 450만 원 — 70만 원 차이" + 근거 3건</div>
+      </div>
+      <div class="statcard rep">
+        <div><span class="pill">Organization</span></div>
+        <div class="q">엄마 칠순 때 사진 다 모아줘</div>
+        <div><div class="lbl">지금은</div><div class="now">내 갤러리엔 음식 사진뿐. <b>단체 사진은 사촌이 카톡에</b> 올렸고, 날짜도 기억나지 않는다</div></div>
+        <div><div class="lbl">AI Dictionary는</div><ol>
+          <li>일정 · 대화에서 그날을 확정</li>
+          <li>갤러리 · 카톡 · 인스타에서 그날 사진을 모음</li>
+          <li>압축본과 원본은 하나로, 단체 사진은 위로</li></ol></div>
+        <div class="res">'칠순' 묶음 41장 — 갤러리 12 · 카톡 26 · 인스타 3</div>
+      </div>
+    </div>
+  </div>
+  <footer class="fb"><span>06 · 대표 유스케이스</span><span class="pg"></span></footer>
+</section>
+
+<!-- ══ 07 전환 ══ -->
+<section class="slide alt" data-slide data-label="07 · 전환">
+  <div class="inner">
+    <div class="eb"><span><b>07</b> TO-BE</span><span class="tag">무엇을 써서 찾나</span></div>
     <h2 class="head tight">라벨을 맞추던 검색에서, <span class="grad">설명을 판단하는 검색</span>으로</h2>
     <div class="grid2" style="gap:calc(1.4 * var(--u));margin-bottom:calc(0.8 * var(--u))">
       <div class="statcard" style="padding:calc(1.05 * var(--u)) calc(1.5 * var(--u))">
@@ -440,13 +540,13 @@ a.replay{text-decoration:none}
       <tr><td class="k">사용자에게 질문</td><td>좁힌 선택지로 되물어 확정한다 <span class="chip llm">LLM</span></td><td style="text-align:center"><span class="mk off">—</span></td><td style="text-align:center"><span class="mk new">●</span></td></tr>
     </table>
   </div>
-  <footer class="fb"><span>05 · 전환</span><span class="pg"></span></footer>
+  <footer class="fb"><span>07 · 전환</span><span class="pg"></span></footer>
 </section>
 
-<!-- ══ 06 차별화 ══ -->
-<section class="slide alt" data-slide data-label="06 · 차별화">
+<!-- ══ 08 차별화 ══ -->
+<section class="slide alt" data-slide data-label="08 · 차별화">
   <div class="inner">
-    <div class="eb"><span><b>06</b> COMPETITION</span><span class="tag">검색 능력 비교</span></div>
+    <div class="eb"><span><b>08</b> COMPETITION</span><span class="tag">검색 능력 비교</span></div>
     <h2 class="head tight">기존 사진 앱은 <span class="grad">사진에 보이는 것</span>까지만 찾는다</h2>
     <table>
       <tr><th style="width:calc(3.4 * var(--u))"></th><th style="width:27%">검색 능력</th><th style="width:29%">구글 포토</th><th style="width:26%">애플 사진</th><th style="text-align:center">AI Dictionary</th></tr>
@@ -463,13 +563,13 @@ a.replay{text-decoration:none}
     </table>
     <p class="small muted" style="margin-top:calc(1.1 * var(--u))">2026년 10월 확인. Ask Photos는 구글 포토의 Gemini 기반 대화형 검색으로, 제공 여부와 기능은 지역에 따라 다름.</p>
   </div>
-  <footer class="fb"><span>06 · 차별화</span><span class="pg"></span></footer>
+  <footer class="fb"><span>08 · 차별화</span><span class="pg"></span></footer>
 </section>
 
-<!-- ══ 07 실현 방안 ══ -->
-<section class="slide" data-slide data-label="07 · 실현 방안">
+<!-- ══ 09 실현 방안 ══ -->
+<section class="slide" data-slide data-label="09 · 실현 방안">
   <div class="inner">
-    <div class="eb"><span><b>07</b> FEASIBILITY</span><span class="tag">어떤 구성이 가장 잘 찾나</span></div>
+    <div class="eb"><span><b>09</b> FEASIBILITY</span><span class="tag">어떤 구성이 가장 잘 찾나</span></div>
     <h2 class="head tight">미리 한 번 읽어두고, <span class="grad">찾을 때는 상위 후보만 확인한다</span></h2>
     <table style="margin-bottom:calc(1.1 * var(--u))">
       <tr><th style="width:calc(3.4 * var(--u))"></th><th style="width:15%">단계</th><th>하는 일</th><th style="width:20%">비용</th></tr>
@@ -483,13 +583,13 @@ a.replay{text-decoration:none}
       <tr><td><span class="idx">B</span></td><td class="k nw">하이브리드</td><td>클라우드 모델</td><td>클라우드 모델</td><td>질의문 · 인덱스 · 후보 일부</td></tr>
     </table>
   </div>
-  <footer class="fb"><span>07 · 실현 방안</span><span class="pg"></span></footer>
+  <footer class="fb"><span>09 · 실현 방안</span><span class="pg"></span></footer>
 </section>
 
-<!-- ══ 08 범위와 검증 ══ -->
-<section class="slide" data-slide data-label="08 · 범위와 검증">
+<!-- ══ 10 범위와 검증 ══ -->
+<section class="slide" data-slide data-label="10 · 범위와 검증">
   <div class="inner">
-    <div class="eb"><span><b>08</b> SCOPE</span><span class="tag">모바일 먼저, 다음은 갤럭시 북</span></div>
+    <div class="eb"><span><b>10</b> SCOPE</span><span class="tag">모바일 먼저, 다음은 갤럭시 북</span></div>
     <h2 class="head tight">모바일에서 되면, <span class="grad">갤럭시 북</span>에도 같은 방식으로</h2>
     <table style="table-layout:fixed;margin-bottom:calc(1.2 * var(--u))">
       <tr><th style="width:7%"></th><th style="width:22%">기기</th><th>저장소</th><th style="width:16%">데이터</th></tr>
@@ -506,7 +606,7 @@ a.replay{text-decoration:none}
       <tr><td><span class="idx">5</span></td><td class="k">중복 · 원본 추적</td><td>같은 파일이 여러 저장소에 있을 때의 처리 방식</td></tr>
     </table>
   </div>
-  <footer class="fb"><span>08 · 범위와 검증</span><span class="pg"></span></footer>
+  <footer class="fb"><span>10 · 범위와 검증</span><span class="pg"></span></footer>
 </section>
 
 <script>
