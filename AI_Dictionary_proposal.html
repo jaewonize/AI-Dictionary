@@ -303,10 +303,9 @@ a.replay{text-decoration:none}
 .ax .def{font-size:calc(1.28 * var(--u));font-weight:700;line-height:1.55;color:#39354A;min-height:calc(4 * var(--u))}
 .ax .lbl,.rep .lbl{font-size:calc(0.95 * var(--u));font-weight:800;letter-spacing:.06em;color:#6C6680;margin-bottom:calc(0.3 * var(--u))}
 /* 05장만: 이런 질문을 칩으로 세우고 살짝 위로 */
-.ax .lbl{display:inline-block;align-self:flex-start;background:#F3F0FD;color:#6D4FE0;border-radius:999px;padding:calc(0.22 * var(--u)) calc(0.72 * var(--u));letter-spacing:.03em;margin-bottom:calc(0.15 * var(--u))}
-/* 칩이 든 묶음을 통째로 위로 */
-.ax > div:not([class]){margin-top:calc(-0.75 * var(--u))}
-.ax ul.dots{gap:calc(0.4 * var(--u));margin-bottom:calc(0.7 * var(--u))}
+.ax .lbl{display:inline-block;align-self:flex-start;background:#F3F0FD;color:#6D4FE0;border-radius:999px;padding:calc(0.22 * var(--u)) calc(0.72 * var(--u));letter-spacing:.03em;margin-bottom:calc(0.15 * var(--u));position:relative;top:calc(-0.7 * var(--u))}
+
+.ax ul.dots{gap:calc(0.4 * var(--u));margin-top:calc(0.55 * var(--u));margin-bottom:calc(0.7 * var(--u))}
 .ax ul.dots li{font-size:calc(1.26 * var(--u));line-height:1.55}
 .ax .out{margin-top:auto;font-size:calc(1.08 * var(--u));font-weight:800;color:#6D4FE0;background:#EFEAFE;border-radius:calc(0.6 * var(--u));padding:calc(0.5 * var(--u)) calc(0.8 * var(--u))}
 .ax .out span{color:#6C6680;font-weight:700;margin-right:calc(0.5 * var(--u))}
