@@ -138,11 +138,8 @@ section.demo-stage{padding:calc(3.1 * var(--u)) calc(4.6 * var(--u)) calc(2.2 * 
 .demo-head{flex:none;width:100%;max-width:calc(90.8 * var(--u));margin:0 auto}
 /* 슬라이드 제목이 같은 말을 하므로 데모 패널의 제목은 감춘다 */
 section.demo-stage .aside .brand{display:none}
-/* 질의 아홉 개와 버튼이 한 화면에 들어오도록 조인다 */
-section.demo-stage .aside{gap:12px}
-section.demo-stage .qpick{gap:7px}
-section.demo-stage .qpick button{padding:11px 16px}
-.demo-wrap{flex:1;min-height:0;display:flex;align-items:flex-start;justify-content:center;gap:clamp(28px,4vw,64px);flex-wrap:wrap;width:100%;padding:0;font-family:'Pretendard Variable',Pretendard,sans-serif}
+section.demo-stage .aside{gap:14px}
+.demo-wrap{flex:1;min-height:0;display:flex;align-items:flex-start;justify-content:center;gap:clamp(28px,4vw,64px);flex-wrap:wrap;width:100%;padding:0 clamp(48px,7vw,110px) 0 0;font-family:'Pretendard Variable',Pretendard,sans-serif}
 section.demo-stage .phone{height:min(780px,calc(100vh - 186px))}
 section.demo-stage .aside{max-height:calc(100vh - 186px);overflow-y:auto;scrollbar-width:none}
 section.demo-stage .aside::-webkit-scrollbar{width:0}
