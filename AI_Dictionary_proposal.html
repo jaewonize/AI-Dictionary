@@ -134,10 +134,17 @@ section.chap footer.fb{color:#8B84A8}
 }
 
 /* ══════ 05장 데모 화면 — AI_Dictionary_demo.html 에서 가져옴 ══════ */
-section.demo-stage{padding:0;align-items:stretch}
-.demo-wrap{display:flex;align-items:center;justify-content:center;gap:clamp(28px,4vw,64px);flex-wrap:wrap;width:100%;padding:24px;font-family:'Pretendard Variable',Pretendard,sans-serif}
-section.demo-stage .phone{height:min(780px,calc(100vh - 56px))}
-section.demo-stage .aside{max-height:calc(100vh - 56px);overflow-y:auto;scrollbar-width:none}
+section.demo-stage{padding:calc(3.1 * var(--u)) calc(4.6 * var(--u)) calc(2.2 * var(--u));align-items:stretch;flex-direction:column;justify-content:flex-start}
+.demo-head{flex:none;width:100%;max-width:calc(90.8 * var(--u));margin:0 auto}
+/* 슬라이드 제목이 같은 말을 하므로 데모 패널의 제목은 감춘다 */
+section.demo-stage .aside .brand{display:none}
+/* 질의 아홉 개와 버튼이 한 화면에 들어오도록 조인다 */
+section.demo-stage .aside{gap:12px}
+section.demo-stage .qpick{gap:7px}
+section.demo-stage .qpick button{padding:11px 16px}
+.demo-wrap{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;gap:clamp(28px,4vw,64px);flex-wrap:wrap;width:100%;padding:10px 0 0;font-family:'Pretendard Variable',Pretendard,sans-serif}
+section.demo-stage .phone{height:min(780px,calc(100vh - 186px))}
+section.demo-stage .aside{max-height:calc(100vh - 186px);overflow-y:auto;scrollbar-width:none}
 section.demo-stage .aside::-webkit-scrollbar{width:0}
 .aside{width:600px;display:flex;flex-direction:column;gap:18px}
 .aside .brand{font-size:20px;font-weight:800;letter-spacing:-.01em;color:#6D4FE0}
@@ -367,6 +374,10 @@ a.replay{text-decoration:none}
 
 <!-- ══ 04 데모 ══ -->
 <section class="slide alt demo-stage" id="p4" data-slide data-label="04 · 데모">
+  <div class="demo-head">
+    <div class="eb"><span><b>04</b> USE CASES</span><span class="tag">이런 것을 찾을 수 있다</span></div>
+    <h2 class="head tight">사람은 보면 아는데, <span class="grad">지금 검색은 못 찾는 것들</span></h2>
+  </div>
   <div class="demo-wrap">
     <div class="aside">
       <div class="brand">지금 검색은 못 찾는 것들</div>
