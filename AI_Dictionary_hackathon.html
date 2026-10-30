@@ -34,7 +34,7 @@
 ul,li{list-style:none}
 html,body{width:100%;height:100%;overflow:hidden}
 body{background:#fff;color:var(--ink);font-family:var(--f-text);-webkit-font-smoothing:antialiased;
-  transition:background-color .6s var(--ease-io);cursor:default;user-select:none}
+  transition:background-color .6s var(--ease-io)}
 
 /* DECK */
 .stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform:translate(-50%,-50%) scale(var(--s,1))}
@@ -667,8 +667,14 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     }
   });
 
+  let downX = null, downY = null;
+  addEventListener('mousedown', e => { downX = e.clientX; downY = e.clientY; });
   addEventListener('click', e => {
     if (e.target.closest('.menu, .ov')) return;
+    // 끌어서 글자를 고르는 중이면 넘기지 않는다
+    if (downX !== null && Math.hypot(e.clientX - downX, e.clientY - downY) > 6) return;
+    if ((getSelection()?.toString() || '').trim()) return;
+    if (e.detail > 1) return; // 더블 · 트리플 클릭
     if (e.clientX < innerWidth * 0.3) go(cur - 1); else go(cur + 1);
   });
 
