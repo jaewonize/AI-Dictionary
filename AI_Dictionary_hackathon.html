@@ -68,6 +68,7 @@ body{background:#fff;color:var(--ink);font-family:var(--f-text);-webkit-font-smo
 .note span{color:var(--sub);font-weight:600}
 .note em{display:block;margin-top:6px;font-style:normal;font-family:var(--f-display);font-size:18px;letter-spacing:-.01em;font-weight:500;color:var(--dim)}
 .foot{margin-top:28px;font-size:17px;line-height:1.5;font-weight:500;letter-spacing:-.02em;color:var(--dim)}
+.vs__col .foot{font-size:21px}
 
 /* COVER */
 .cover{flex-direction:row;align-items:center;justify-content:space-between;padding:84px 120px}
@@ -106,18 +107,18 @@ body{background:#fff;color:var(--ink);font-family:var(--f-text);-webkit-font-smo
 
 /* 02 — 기억 vs 검색 */
 .vs{display:flex;gap:26px;align-items:stretch}
-.vs__col{flex:1;min-height:420px;border-radius:28px;background:#fff;box-shadow:var(--card);padding:42px 46px 44px;display:flex;flex-direction:column}
+.vs__col{flex:1;min-height:450px;border-radius:28px;background:#fff;box-shadow:var(--card);padding:42px 46px 44px;display:flex;flex-direction:column}
 .vs__col.is-now{background:var(--surface);box-shadow:none}
-.vs__h{font-family:var(--f-display);font-size:15px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--blue)}
+.vs__h{font-family:var(--f-display);font-size:18px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--blue)}
 .vs__col.is-now .vs__h{color:var(--dim)}
-.vs__list{margin-top:28px;display:flex;flex-direction:column;gap:18px}
-.vs__list li{font-size:33px;line-height:1.35;font-weight:700;letter-spacing:-.04em;color:var(--ink)}
-.vs__col.is-now .vs__list li{font-size:25px;font-weight:600;color:var(--sub)}
+.vs__list{margin-top:34px;display:flex;flex-direction:column;gap:22px}
+.vs__list li{font-size:40px;line-height:1.35;font-weight:700;letter-spacing:-.04em;color:var(--ink)}
+.vs__col.is-now .vs__list li{font-size:36px;font-weight:600;color:var(--sub)}
 .vs__x{align-self:center;flex:none;width:52px;height:52px;border-radius:50%;background:#fff;box-shadow:var(--card-sm);
   display:grid;place-items:center;color:var(--dim);font-size:26px}
 .stores{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px}
-.stores li{display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--line);
-  font-size:19px;font-weight:700;letter-spacing:-.035em;color:var(--ink-2)}
+.stores li{display:inline-flex;align-items:center;height:50px;padding:0 21px;border-radius:999px;border:1.5px solid var(--line);
+  font-size:22px;font-weight:700;letter-spacing:-.035em;color:var(--ink-2)}
 
 /* 표 */
 table{width:100%;border-collapse:collapse;font-size:21px;letter-spacing:-.03em}
@@ -290,7 +291,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
   <!-- ══════════ 01 PROBLEM ② ══════════ -->
   <section class="slide">
     <div class="kicker rv"><i>02</i>Problem<b>|</b>왜 못 찾나</div>
-    <h2 class="title title--md rv" style="--i:1;font-size:62px">사람은 <b>의미</b>로 기억하고,<br>검색은 <b>키워드</b>로 찾습니다.</h2>
+    <h2 class="title title--md rv" style="--i:1;font-size:62px">사람은 <b>의미로 기억</b>하고,<br>검색은 <b>키워드</b>로 찾습니다.</h2>
     <div class="body">
       <div class="vs">
         <div class="vs__col rv" style="--i:2">
