@@ -103,7 +103,7 @@ body{background:#fff;color:var(--ink);font-family:var(--f-text);-webkit-font-smo
 .stat{flex:1;border-radius:32px;background:#fff;box-shadow:var(--card);padding:40px 42px 44px;display:flex;flex-direction:column}
 .stat__n{font-family:var(--f-display);font-size:96px;line-height:1;letter-spacing:-.045em;font-weight:700;color:var(--blue)}
 .stat__n small{font-size:40px;letter-spacing:-.02em;margin-left:8px;color:var(--ink)}
-.stat__d{margin-top:26px;font-size:29px;line-height:1.45;font-weight:700;letter-spacing:-.04em;color:var(--ink-2);word-break:keep-all}
+.stat__d{margin-top:24px;font-size:25px;line-height:1.45;font-weight:700;letter-spacing:-.04em;color:var(--ink-2);word-break:keep-all}
 
 /* 02 — 기억 vs 검색 */
 .vs{display:flex;gap:26px;align-items:stretch}
@@ -124,7 +124,7 @@ body{background:#fff;color:var(--ink);font-family:var(--f-text);-webkit-font-smo
 table{width:100%;border-collapse:collapse;font-size:21px;letter-spacing:-.03em}
 thead th{padding:0 18px 14px;font-family:var(--f-display);font-size:15px;letter-spacing:.1em;text-transform:uppercase;
   font-weight:700;color:var(--dim);text-align:left;border-bottom:1.5px solid var(--line)}
-tbody td{padding:15px 18px;font-size:23px;font-weight:600;color:var(--ink-2);border-bottom:1px solid #ebebf0;vertical-align:top;line-height:1.4}
+tbody td{padding:17px 18px;font-weight:600;color:var(--ink-2);border-bottom:1px solid #ebebf0;vertical-align:top;line-height:1.4}
 tbody tr:last-child td{border-bottom:0}
 .plan ~ table tbody td{padding:26px 18px}
 td.k{font-weight:700;color:var(--ink)}
@@ -140,13 +140,13 @@ td.c{text-align:center}
 .tag.gray{background:var(--surface);color:var(--sub)}
 
 /* 04 — 질의 칩 리스트 */
-.qgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:19px;align-content:center}
-.qc{border-radius:24px;background:#fff;box-shadow:var(--card);padding:25px 28px 27px;display:flex;flex-direction:column;word-break:keep-all}
+.qgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-content:center}
+.qc{border-radius:24px;background:#fff;box-shadow:var(--card);padding:28px 30px 30px;display:flex;flex-direction:column;word-break:keep-all}
 .qc__n{font-family:var(--f-display);font-size:15px;letter-spacing:.12em;font-weight:700;color:var(--blue)}
 .qc__q{margin-top:14px;font-size:29px;line-height:1.32;font-weight:700;letter-spacing:-.045em;color:var(--ink)}
 .qc__q::before{content:"\201C"}
 .qc__q::after{content:"\201D"}
-.qc__c{margin-top:auto;padding-top:20px;font-size:23px;line-height:1.45;font-weight:600;letter-spacing:-.03em;color:var(--sub)}
+.qc__c{margin-top:auto;padding-top:20px;font-size:19px;line-height:1.45;font-weight:600;letter-spacing:-.03em;color:var(--sub)}
 .qc__att{display:inline-flex;align-items:center;height:28px;padding:0 10px;border-radius:999px;background:#eef1ff;
   font-size:15px;font-weight:700;letter-spacing:-.02em;color:var(--blue);margin-left:8px;vertical-align:4px}
 
@@ -168,24 +168,24 @@ td.c{text-align:center}
 .rep__q{margin-top:20px;font-size:31px;line-height:1.3;font-weight:700;letter-spacing:-.045em;color:var(--ink);word-break:keep-all}
 .rep__q::before{content:"\201C"}
 .rep__q::after{content:"\201D"}
-.rep__lbl{margin-top:26px;font-family:var(--f-display);font-size:16px;letter-spacing:.1em;font-weight:700;color:var(--dim)}
-.rep__now{margin-top:12px;font-size:23px;line-height:1.5;font-weight:600;letter-spacing:-.035em;color:var(--sub)}
+.rep__lbl{margin-top:26px;font-family:var(--f-display);font-size:14px;letter-spacing:.1em;font-weight:700;color:var(--dim)}
+.rep__now{margin-top:11px;font-size:20px;line-height:1.5;font-weight:600;letter-spacing:-.035em;color:var(--sub)}
 .rep__now b{font-weight:700;color:var(--ink-2)}
 .rep__ol{margin-top:11px;display:flex;flex-direction:column;gap:9px;counter-reset:r}
-.rep__ol li{position:relative;padding-left:34px;font-size:23px;line-height:1.45;font-weight:600;letter-spacing:-.035em;color:var(--ink-2)}
+.rep__ol li{position:relative;padding-left:32px;font-size:20px;line-height:1.45;font-weight:600;letter-spacing:-.035em;color:var(--ink-2)}
 .rep__ol li::before{counter-increment:r;content:counter(r);position:absolute;left:0;top:2px;width:22px;height:22px;border-radius:7px;
   background:#eef1ff;color:var(--blue);font-size:13px;font-weight:700;display:grid;place-items:center}
 .rep__res{margin-top:auto;padding-top:26px}
-.rep__res span{display:block;border-radius:16px;background:var(--surface);padding:17px 19px;
-  font-size:22px;line-height:1.45;font-weight:700;letter-spacing:-.035em;color:var(--ink)}
+.rep__res span{display:block;border-radius:16px;background:var(--surface);padding:16px 18px;
+  font-size:19px;line-height:1.45;font-weight:700;letter-spacing:-.035em;color:var(--ink)}
 
 /* 07 — 실현 방안 */
 .plan{display:flex;gap:24px;align-items:stretch}
 .plan__c{flex:1;min-height:300px;border-radius:26px;background:#fff;box-shadow:var(--card);padding:36px 36px 34px;display:flex;flex-direction:column;word-break:keep-all}
 .plan__n{font-family:var(--f-display);font-size:15px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--blue)}
 .plan__t{margin-top:12px;font-size:28px;line-height:1.28;font-weight:700;letter-spacing:-.045em}
-.plan__d{margin-top:16px;font-size:23px;line-height:1.5;font-weight:600;letter-spacing:-.03em;color:var(--sub)}
-.plan__cost{margin-top:auto;padding-top:22px;font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--dim)}
+.plan__d{margin-top:14px;font-size:19px;line-height:1.5;font-weight:600;letter-spacing:-.03em;color:var(--sub)}
+.plan__cost{margin-top:auto;padding-top:22px;font-size:17px;font-weight:700;letter-spacing:-.02em;color:var(--dim)}
 .plan__arrow{align-self:center;flex:none;color:var(--dim);font-size:28px}
 
 /* HUD */
