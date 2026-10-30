@@ -78,14 +78,14 @@ body{background:#fff;color:var(--ink);font-family:var(--f-text);-webkit-font-smo
 /* 커버 히어로 — 흐릿한 질의 카드가 부채처럼 펼쳐진다 */
 .fan{position:relative;top:-52px;flex:none;width:700px;height:620px;margin-right:92px}
 .fan i{position:absolute;left:50%;top:50%;display:block;width:420px;margin:-70px 0 0 -210px;
-  transform-origin:50% 240%;transform:translate(0,0) rotate(0deg) scale(.94);
+  transform-origin:50% 240%;transform:translate(var(--cx,0),var(--cy,0)) rotate(var(--cr,0deg)) scale(.94);
   background:#fff;border-radius:22px;box-shadow:0 26px 62px rgba(0,0,0,.18),0 0 0 1px rgba(0,0,0,.05);
   padding:24px 28px;font-size:25px;line-height:1.4;font-weight:700;letter-spacing:-.04em;color:var(--ink-2);word-break:keep-all}
 .fan i b{display:block;margin-bottom:8px;font-family:var(--f-display);font-size:14px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--blue)}
 @keyframes fan{
-  0%,6%{transform:translate(0,0) rotate(0deg) scale(.94)}
+  0%,6%{transform:translate(var(--cx,0),var(--cy,0)) rotate(var(--cr,0deg)) scale(.94)}
   30%,66%{transform:translate(var(--tx),var(--ty)) rotate(var(--r)) scale(1)}
-  90%,100%{transform:translate(0,0) rotate(0deg) scale(.94)}
+  90%,100%{transform:translate(var(--cx,0),var(--cy,0)) rotate(var(--cr,0deg)) scale(.94)}
 }
 .is-active .fan i{animation:fan 6.6s cubic-bezier(.22,1,.36,1) calc(var(--d,0) * 1s) infinite}
 .ov__thumb .fan i{animation:none !important;transform:translate(var(--tx),var(--ty)) rotate(var(--r))}
@@ -259,10 +259,10 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
       <p class="cover__sub rv" style="--i:2">1단계 · 모바일에서 사진과 문서 찾기</p>
     </div>
     <div class="fan" aria-label="흐릿한 질의">
-      <i style="--tx:-196px; --ty:-150px; --r:-13deg; --d:.12; z-index:3"><b>Query</b>창밖으로 바다가 보이는 카페에서 찍은 사진</i>
+      <i style="--tx:-196px; --ty:-150px; --r:-13deg; --cx:-6px; --cy:-14px; --cr:-2deg; --d:.12; z-index:3"><b>Query</b>창밖으로 바다가 보이는 카페에서 찍은 사진</i>
       <i style="--tx:-92px;  --ty:-10px;  --r:-6deg;  --d:.06; z-index:5"><b>Query</b>욕실 견적 중에 제일 싼 데랑 계약한 데 얼마 차이야?</i>
-      <i style="--tx:112px;  --ty:138px;  --r:6deg;   --d:.06; z-index:4"><b>Query</b>작년 송년회 와인이랑 4년 전 생일 와인</i>
-      <i style="--tx:208px;  --ty:276px;  --r:13deg;  --d:.12; z-index:2"><b>Query</b>동생 합격했다고 올렸던 날 파티 사진</i>
+      <i style="--tx:112px;  --ty:138px;  --r:6deg;   --cx:21px; --cy:15px; --cr:3.5deg; --d:.06; z-index:4"><b>Query</b>작년 송년회 와인이랑 4년 전 생일 와인</i>
+      <i style="--tx:208px;  --ty:276px;  --r:13deg;  --cx:42px; --cy:30px; --cr:7deg; --d:.12; z-index:2"><b>Query</b>동생 합격했다고 올렸던 날 파티 사진</i>
     </div>
   </section>
 
