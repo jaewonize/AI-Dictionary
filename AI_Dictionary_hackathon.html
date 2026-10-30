@@ -289,7 +289,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 
   <!-- ══════════ 01 PROBLEM ② ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>01</i>Problem<b>|</b>왜 못 찾나</div>
+    <div class="kicker rv"><i>02</i>Problem<b>|</b>왜 못 찾나</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">사람은 <b>의미</b>로 기억하고,<br>검색은 <b>키워드</b>로 찾습니다.</h2>
     <div class="body">
       <div class="vs">
@@ -321,7 +321,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 
   <!-- ══════════ 02 TARGET ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>02</i>Target<b>|</b>모바일 · 사진과 문서</div>
+    <div class="kicker rv"><i>03</i>Target<b>|</b>모바일 · 사진과 문서</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px"><b>여섯 저장소</b>의 <b>사진과 문서</b>를 찾습니다.</h2>
     <div class="body">
       <table class="rv" style="--i:2">
@@ -349,7 +349,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 
   <!-- ══════════ 03 TO-BE ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>03</i>To-be<b>|</b>무엇을 써서 찾나</div>
+    <div class="kicker rv"><i>04</i>To-be<b>|</b>무엇을 써서 찾나</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px"><b>라벨</b>을 맞추던 검색에서,<br><b>설명을 판단하는 검색</b>으로.</h2>
     <div class="body">
       <div class="cards rv" style="--i:2;flex:none;margin-bottom:34px">
@@ -383,7 +383,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 
   <!-- ══════════ 04 찾고자 하는 것들 ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>04</i>Use cases<b>|</b>사람은 보면 아는데, 지금 검색은 못 찾는 것들</div>
+    <div class="kicker rv"><i>05</i>Use cases<b>|</b>사람은 보면 아는데, 지금 검색은 못 찾는 것들</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">AI Dictionary로 <b>찾고자 하는 것들</b></h2>
     <div class="body">
       <div class="qgrid">
@@ -420,7 +420,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 
   <!-- ══════════ 05 세 축 ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>05</i>Use cases<b>|</b>Navigation · QA · Organization</div>
+    <div class="kicker rv"><i>06</i>Use cases<b>|</b>Navigation · QA · Organization</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">기억나는 대로 말하면 <b>찾아가고, 답하고, 묶습니다.</b></h2>
     <div class="body">
       <div class="cards">
@@ -467,7 +467,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 
   <!-- ══════════ 06 대표 질의 ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>06</i>Core use cases<b>|</b>축마다 하나씩 · 1단계 목표</div>
+    <div class="kicker rv"><i>07</i>Core use cases<b>|</b>축마다 하나씩 · 1단계 목표</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">우선적으로 구현해 볼 <b>대표 질의</b></h2>
     <div class="body">
       <div class="cards">
@@ -515,7 +515,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 
   <!-- ══════════ 07 실현 방안 ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>07</i>Feasibility<b>|</b>어떤 구성이 가장 잘 찾나</div>
+    <div class="kicker rv"><i>08</i>Feasibility<b>|</b>어떤 구성이 가장 잘 찾나</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">미리 한 번 <b>읽어두고</b>,<br>찾을 때는 <b>상위 후보만</b> 확인합니다.</h2>
     <div class="body">
       <div class="plan rv" style="--i:2;flex:none;margin-bottom:38px">
@@ -557,7 +557,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 <div class="hud" id="hud">
   <div class="hud__bar"><i id="bar"></i></div>
   <div class="hud__hint" id="hint">← → 이동 · M 전체 장표 · F 전체화면</div>
-  <div class="hud__count" id="count">01 / 09</div>
+  <div class="hud__count" id="count">— / 08</div>
 </div>
 
 <div class="menu" id="menu" title="전체 장표 (M)"><i></i><i></i><i></i></div>
@@ -582,6 +582,11 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 
   let cur = -1, ovBuilt = false;
 
+  // 표지는 번호에서 뺀다 — 키커 번호와 하단 번호를 같은 숫자로 맞추려고
+  const isCover = s => s.classList.contains('cover');
+  const bodyTotal = slides.filter(s => !isCover(s)).length;
+  const bodyNo = i => slides.slice(0, i + 1).filter(s => !isCover(s)).length;
+
   const fit = () => stage.style.setProperty('--s', Math.min(innerWidth / 1920, innerHeight / 1080));
   fit();
   addEventListener('resize', fit);
@@ -603,7 +608,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     s.classList.add('is-active');
     document.body.style.background = getComputedStyle(s).backgroundColor;
     document.body.classList.toggle('is-dark', s.classList.contains('slide--dark'));
-    count.textContent = pad(cur + 1) + ' / ' + pad(slides.length);
+    count.textContent = (isCover(s) ? '—' : pad(bodyNo(cur))) + ' / ' + pad(bodyTotal);
     bar.style.width = ((cur + 1) / slides.length * 100) + '%';
     if (cur > 0) hint.classList.add('off');
     if (ovBuilt) markOv();
@@ -633,7 +638,8 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     slides.forEach((s, i) => {
       const item = document.createElement('div');
       item.className = 'ov__item';
-      item.innerHTML = '<div class="ov__thumb"></div><p class="ov__cap"><i>' + pad(i + 1) + '</i><span>' + slideName(s) + '</span></p>';
+      const no = isCover(s) ? '—' : pad(bodyNo(i));
+      item.innerHTML = '<div class="ov__thumb"></div><p class="ov__cap"><i>' + no + '</i><span>' + slideName(s) + '</span></p>';
       const clone = s.cloneNode(true);
       clone.classList.remove('is-active');
       item.firstElementChild.appendChild(clone);
