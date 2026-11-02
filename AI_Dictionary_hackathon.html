@@ -187,6 +187,7 @@ td.c{text-align:center}
 .rep__now b{font-weight:700;color:var(--ink-2)}
 .rep__ol{margin-top:11px;padding-left:11px;display:flex;flex-direction:column;gap:9px;counter-reset:r}
 .rep__ol li{position:relative;padding-left:32px;font-size:20px;line-height:1.45;font-weight:600;letter-spacing:-.035em;color:var(--ink-2)}
+.rep__ol li.key{color:var(--blue)}
 .rep__ol li::before{counter-increment:r;content:counter(r);position:absolute;left:0;top:2px;width:22px;height:22px;border-radius:7px;
   background:#eef1ff;color:var(--blue);font-size:13px;font-weight:700;display:grid;place-items:center}
 .rep__res{margin-top:auto;padding-top:26px}
@@ -495,7 +496,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
           <div class="rep__lbl">AI Dictionary는</div>
           <ol class="rep__ol">
             <li>받은 포스터를 읽어 전시 이름을 확인</li>
-            <li>웹에서 그 전시의 장소와 기간을 알아냄</li>
+            <li class="key">웹에서 그 전시의 장소와 기간을 알아냄</li>
             <li>그 기간 · 그 장소에서 찍은 사진만 모음</li>
           </ol>
           <div class="rep__res"><span>“전시 기간에 찍은 사진만 모았어요” — 포스터 한 장에서 시작해</span></div>
@@ -509,7 +510,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
           <ol class="rep__ol">
             <li>저장소마다 견적서를 찾고, 찍어 둔 사진은 글자를 읽음</li>
             <li>욕실 금액 비교 · 같은 업체는 최신 버전만</li>
-            <li>계약서로 ‘맡긴 데’ 확인</li>
+            <li class="key">계약서로 ‘맡긴 데’ 확인</li>
           </ol>
           <div class="rep__res"><span>“최저 A업체 380만 원, 계약한 C업체 450만 원, 70만 원 차이가 나요” + 근거 3건</span></div>
         </div>
@@ -520,7 +521,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
           <p class="rep__now">조건이 둘이라 <b>따로 검색해 직접 합쳐야</b> 한다. 그 두 날이 언제인지도 알려주지 않는다</p>
           <div class="rep__lbl">AI Dictionary는</div>
           <ol class="rep__ol">
-            <li>누구의 생일인지 애매하면 먼저 되물음</li>
+            <li class="key">누구의 생일인지 애매하면 먼저 되물음</li>
             <li>일정과 사진으로 두 날짜를 확정</li>
             <li>두 날을 따로 찾아 하나로 합침</li>
             <li>병 라벨에서 이름과 연도까지 확인</li>
