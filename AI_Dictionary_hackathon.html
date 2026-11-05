@@ -265,7 +265,6 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 </svg>
 
 <main class="stage">
-
   <!-- ══════════ COVER ══════════ -->
   <section class="slide cover">
     <div class="cover__copy">
@@ -281,32 +280,9 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     </div>
   </section>
 
-  <!-- ══════════ 01 PROBLEM ① ══════════ -->
+  <!-- ══════════ 01 왜 못 찾나 ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>01</i>Problem<b>|</b>자료는 쌓이는데, 찾을 수는 없다</div>
-    <h2 class="title title--md rv" style="--i:1;font-size:62px">기기는 <b>저장소</b>가 됐지만,<br><b>검색 도구</b>는 되지 못했습니다.</h2>
-    <div class="body">
-      <div class="stats">
-        <div class="stat rv" style="--i:2">
-          <div class="stat__n">31,130<small>장</small></div>
-          <p class="stat__d">사내 동료 22명의<br>1인당 평균 보유 사진</p>
-        </div>
-        <div class="stat rv" style="--i:3">
-          <div class="stat__n">40<small>%</small></div>
-          <p class="stat__d">1년 이상 지난 사진<br>검색 실패율</p>
-        </div>
-        <div class="stat rv" style="--i:4">
-          <div class="stat__n">18<small>분</small></div>
-          <p class="stat__d">직장인이 문서 한 건을<br>찾는 데 걸리는 시간</p>
-        </div>
-      </div>
-    </div>
-    <p class="foot fd" style="--i:5">보유량은 사내 동료 22명 평균 · 40%는 학술 연구(Whittaker et al.) · 18분은 Gartner</p>
-  </section>
-
-  <!-- ══════════ 01 PROBLEM ② ══════════ -->
-  <section class="slide">
-    <div class="kicker rv"><i>02</i>Problem<b>|</b>왜 못 찾나</div>
+    <div class="kicker rv"><i>01</i>Problem<b>|</b>왜 못 찾나</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">사람은 <b>의미로 기억</b>하고,<br>검색은 <b>키워드</b>로 찾습니다.</h2>
     <div class="body">
       <div class="vs">
@@ -336,71 +312,32 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
       이 간극이 검색 실패로 이어지고, <span>같은 실패가 저장소 수만큼 반복됩니다.</span></div>
   </section>
 
-  <!-- ══════════ 02 TARGET ══════════ -->
+  <!-- ══════════ 02 자료는 쌓이는데, 찾을 수는 없다 ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>03</i>Target<b>|</b>모바일 · 사진과 문서</div>
-    <h2 class="title title--md rv" style="--i:1;font-size:62px"><b>여섯 저장소</b>의 <b>사진과 문서</b>를 찾습니다.</h2>
+    <div class="kicker rv"><i>02</i>Problem<b>|</b>자료는 쌓이는데, 찾을 수는 없다</div>
+    <h2 class="title title--md rv" style="--i:1;font-size:62px">기기는 <b>저장소</b>가 됐지만,<br><b>검색 도구</b>는 되지 못했습니다.</h2>
     <div class="body">
-      <table class="rv" style="--i:2">
-        <thead><tr>
-          <th style="width:19%">단계</th><th style="width:21%">저장소</th>
-          <th style="width:8%;text-align:center">사진</th><th style="width:8%;text-align:center">문서</th><th>가져오는 방법</th>
-        </tr></thead>
-        <tbody>
-          <tr><td class="k" rowspan="3"><span class="step">1</span> 기기 권한<div class="foot" style="margin-top:9px">이미 폰 안에 있다</div></td>
-              <td class="k">갤러리</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk off">—</span></td><td>OS 권한으로 직접 읽기</td></tr>
-          <tr><td class="k">파일</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk on">●</span></td><td>OS 권한으로 직접 읽기</td></tr>
-          <tr><td class="k">카카오톡 받은 파일</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk on">●</span></td><td>기기에 저장된 받은 파일을 OS 권한으로 읽기</td></tr>
-          <tr><td class="k" rowspan="3"><span class="step">2</span> 사용자 계정 연결<div class="foot" style="margin-top:9px">로그인 · 동의로 가져온다</div></td>
-              <td class="k">메일 첨부</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk on">●</span></td><td>Gmail · Outlook API / IMAP</td></tr>
-          <tr><td class="k">페이스북</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk off">—</span></td><td>user_photos 권한 · Meta 앱 리뷰</td></tr>
-          <tr><td class="k">인스타그램</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk off">—</span></td><td>프로페셔널 계정은 Instagram API · 개인 계정은 내보내기 파일 임포트</td></tr>
-          <tr><td class="k"><span class="step">3</span> 기업 간 제휴<div class="foot" style="margin-top:9px">동의만으로는 경로가 없다</div></td>
-              <td class="k">카카오톡 톡서랍 · 대화</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk on">●</span></td><td>공개 API 없음 · 제휴 필요</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="note rv" style="--i:3"><svg class="ic"><use href="#i-arrow-r"/></svg>
-      기기 권한 → 계정 연결 → 제휴 순으로 확보합니다.<span>뒤로 갈수록 외부 승인이 필요합니다.</span></div>
-  </section>
-
-  <!-- ══════════ 03 TO-BE ══════════ -->
-  <section class="slide">
-    <div class="kicker rv"><i>04</i>To-be<b>|</b>무엇을 써서 찾나</div>
-    <h2 class="title title--md rv" style="--i:1;font-size:62px"><b>라벨 일치</b>에서 <b>설명 판단</b>으로.</h2>
-    <div class="body">
-      <div class="cards rv" style="--i:2;flex:none;margin-bottom:34px">
-        <div class="card is-now" style="background:var(--surface);box-shadow:none;padding:26px 32px 28px">
-          <div class="vs__h" style="color:var(--dim)">기존 · 고정된 라벨 몇 개를 저장</div>
-          <p style="margin-top:14px;font-size:29px;font-weight:700;letter-spacing:-.045em;color:var(--sub)">저장해둔 라벨과 “검색어가 일치하나?”</p>
+      <div class="stats">
+        <div class="stat rv" style="--i:2">
+          <div class="stat__n">31,130<small>장</small></div>
+          <p class="stat__d">사내 동료 22명의<br>1인당 평균 보유 사진</p>
         </div>
-        <div class="card" style="padding:26px 32px 28px">
-          <div class="vs__h">신규 · 풍부한 설명을 저장</div>
-          <p style="margin-top:14px;font-size:29px;font-weight:700;letter-spacing:-.045em">저장해둔 설명을 <span style="color:var(--blue)">“질문에 맞춰 다시 판단”</span></p>
+        <div class="stat rv" style="--i:3">
+          <div class="stat__n">40<small>%</small></div>
+          <p class="stat__d">1년 이상 지난 사진<br>검색 실패율</p>
+        </div>
+        <div class="stat rv" style="--i:4">
+          <div class="stat__n">18<small>분</small></div>
+          <p class="stat__d">직장인이 문서 한 건을<br>찾는 데 걸리는 시간</p>
         </div>
       </div>
-      <table class="rv" style="--i:3">
-        <thead><tr>
-          <th style="width:21%">검색에 쓰는 것</th><th>하는 일</th>
-          <th style="width:11%;text-align:center">기존 검색</th><th style="width:13%;text-align:center">AI Dictionary</th>
-        </tr></thead>
-        <tbody>
-          <tr><td class="k">라벨 · 태그</td><td>붙여둔 라벨과 검색어가 일치하는지 확인한다</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk on">●</span></td></tr>
-          <tr><td class="k">사진 장면 · 문서 내용</td><td>사진은 장면과 구도를, 문서는 내용을 읽는다</td><td class="c"><span class="mk half">▲</span></td><td class="c"><span class="mk on">●</span></td></tr>
-          <tr><td class="k">맥락</td><td>촬영 시각 · 위치를 캘린더 · 메일과 함께 읽어 그때 상황을 확인한다</td><td class="c"><span class="mk half">▲</span></td><td class="c"><span class="mk on">●</span></td></tr>
-          <tr><td class="k">저장소별 단서</td><td>페이스북 · 인스타그램 캡션, 메일 본문, 폴더명을 함께 읽는다<span class="tag">신규</span></td><td class="c"><span class="mk half">▲</span></td><td class="c"><span class="mk on">●</span></td></tr>
-          <tr><td class="k">조건 추론</td><td>문장을 조건으로 나누고, 금액 · 인원수를 계산한다</td><td class="c"><span class="mk off">—</span></td><td class="c"><span class="mk on">●</span></td></tr>
-          <tr><td class="k">이미지 대조</td><td>받은 이미지를 검색어로 삼아 비교한다</td><td class="c"><span class="mk off">—</span></td><td class="c"><span class="mk on">●</span></td></tr>
-          <tr><td class="k">웹 검색</td><td>모르는 이름의 정보와 사진을 밖에서 가져온다</td><td class="c"><span class="mk off">—</span></td><td class="c"><span class="mk on">●</span></td></tr>
-          <tr><td class="k">사용자에게 질문</td><td>좁힌 선택지로 되물어 확정한다</td><td class="c"><span class="mk off">—</span></td><td class="c"><span class="mk on">●</span></td></tr>
-        </tbody>
-      </table>
     </div>
+    <p class="foot fd" style="--i:5">보유량은 사내 동료 22명 평균 · 40%는 학술 연구(Whittaker et al.) · 18분은 Gartner</p>
   </section>
 
-  <!-- ══════════ 04 찾고자 하는 것들 ══════════ -->
+  <!-- ══════════ 03 사람은 보면 아는데, 지금 검색은 못 찾는 것들 ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>05</i>Use cases<b>|</b>사람은 보면 아는데, 지금 검색은 못 찾는 것들</div>
+    <div class="kicker rv"><i>03</i>Use cases<b>|</b>사람은 보면 아는데, 지금 검색은 못 찾는 것들</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">AI Dictionary로 <b>찾고자 하는 것들</b></h2>
     <div class="body">
       <div class="qgrid">
@@ -435,9 +372,9 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     </div>
   </section>
 
-  <!-- ══════════ 05 세 축 ══════════ -->
+  <!-- ══════════ 04 Navigation · QA · Organization ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>06</i>Use cases<b>|</b>Navigation · QA · Organization</div>
+    <div class="kicker rv"><i>04</i>Use cases<b>|</b>Navigation · QA · Organization</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">기억나는 대로 말하면 <b>찾아가고, 답하고, 묶습니다.</b></h2>
     <div class="body">
       <div class="cards">
@@ -482,9 +419,9 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     </div>
   </section>
 
-  <!-- ══════════ 06 대표 질의 ══════════ -->
+  <!-- ══════════ 05 1단계 목표 ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>07</i>Core use cases<b>|</b>1단계 목표</div>
+    <div class="kicker rv"><i>05</i>Core use cases<b>|</b>1단계 목표</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px"><b>우선적으로 구현</b>해 볼 대표 질의</h2>
     <div class="body">
       <div class="cards">
@@ -533,7 +470,69 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     </div>
   </section>
 
-  <!-- ══════════ 07 실현 방안 ══════════ -->
+  <!-- ══════════ 06 모바일 · 사진과 문서 ══════════ -->
+  <section class="slide">
+    <div class="kicker rv"><i>06</i>Target<b>|</b>모바일 · 사진과 문서</div>
+    <h2 class="title title--md rv" style="--i:1;font-size:62px"><b>여섯 저장소</b>의 <b>사진과 문서</b>를 찾습니다.</h2>
+    <div class="body">
+      <table class="rv" style="--i:2">
+        <thead><tr>
+          <th style="width:19%">단계</th><th style="width:21%">저장소</th>
+          <th style="width:8%;text-align:center">사진</th><th style="width:8%;text-align:center">문서</th><th>가져오는 방법</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="k" rowspan="3"><span class="step">1</span> 기기 권한<div class="foot" style="margin-top:9px">이미 폰 안에 있다</div></td>
+              <td class="k">갤러리</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk off">—</span></td><td>OS 권한으로 직접 읽기</td></tr>
+          <tr><td class="k">파일</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk on">●</span></td><td>OS 권한으로 직접 읽기</td></tr>
+          <tr><td class="k">카카오톡 받은 파일</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk on">●</span></td><td>기기에 저장된 받은 파일을 OS 권한으로 읽기</td></tr>
+          <tr><td class="k" rowspan="3"><span class="step">2</span> 사용자 계정 연결<div class="foot" style="margin-top:9px">로그인 · 동의로 가져온다</div></td>
+              <td class="k">메일 첨부</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk on">●</span></td><td>Gmail · Outlook API / IMAP</td></tr>
+          <tr><td class="k">페이스북</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk off">—</span></td><td>user_photos 권한 · Meta 앱 리뷰</td></tr>
+          <tr><td class="k">인스타그램</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk off">—</span></td><td>프로페셔널 계정은 Instagram API · 개인 계정은 내보내기 파일 임포트</td></tr>
+          <tr><td class="k"><span class="step">3</span> 기업 간 제휴<div class="foot" style="margin-top:9px">동의만으로는 경로가 없다</div></td>
+              <td class="k">카카오톡 톡서랍 · 대화</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk on">●</span></td><td>공개 API 없음 · 제휴 필요</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note rv" style="--i:3"><svg class="ic"><use href="#i-arrow-r"/></svg>
+      기기 권한 → 계정 연결 → 제휴 순으로 확보합니다.<span>뒤로 갈수록 외부 승인이 필요합니다.</span></div>
+  </section>
+
+  <!-- ══════════ 07 무엇을 써서 찾나 ══════════ -->
+  <section class="slide">
+    <div class="kicker rv"><i>07</i>To-be<b>|</b>무엇을 써서 찾나</div>
+    <h2 class="title title--md rv" style="--i:1;font-size:62px"><b>라벨 일치</b>에서 <b>설명 판단</b>으로.</h2>
+    <div class="body">
+      <div class="cards rv" style="--i:2;flex:none;margin-bottom:34px">
+        <div class="card is-now" style="background:var(--surface);box-shadow:none;padding:26px 32px 28px">
+          <div class="vs__h" style="color:var(--dim)">기존 · 고정된 라벨 몇 개를 저장</div>
+          <p style="margin-top:14px;font-size:29px;font-weight:700;letter-spacing:-.045em;color:var(--sub)">저장해둔 라벨과 “검색어가 일치하나?”</p>
+        </div>
+        <div class="card" style="padding:26px 32px 28px">
+          <div class="vs__h">신규 · 풍부한 설명을 저장</div>
+          <p style="margin-top:14px;font-size:29px;font-weight:700;letter-spacing:-.045em">저장해둔 설명을 <span style="color:var(--blue)">“질문에 맞춰 다시 판단”</span></p>
+        </div>
+      </div>
+      <table class="rv" style="--i:3">
+        <thead><tr>
+          <th style="width:21%">검색에 쓰는 것</th><th>하는 일</th>
+          <th style="width:11%;text-align:center">기존 검색</th><th style="width:13%;text-align:center">AI Dictionary</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="k">라벨 · 태그</td><td>붙여둔 라벨과 검색어가 일치하는지 확인한다</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk on">●</span></td></tr>
+          <tr><td class="k">사진 장면 · 문서 내용</td><td>사진은 장면과 구도를, 문서는 내용을 읽는다</td><td class="c"><span class="mk half">▲</span></td><td class="c"><span class="mk on">●</span></td></tr>
+          <tr><td class="k">맥락</td><td>촬영 시각 · 위치를 캘린더 · 메일과 함께 읽어 그때 상황을 확인한다</td><td class="c"><span class="mk half">▲</span></td><td class="c"><span class="mk on">●</span></td></tr>
+          <tr><td class="k">저장소별 단서</td><td>페이스북 · 인스타그램 캡션, 메일 본문, 폴더명을 함께 읽는다<span class="tag">신규</span></td><td class="c"><span class="mk half">▲</span></td><td class="c"><span class="mk on">●</span></td></tr>
+          <tr><td class="k">조건 추론</td><td>문장을 조건으로 나누고, 금액 · 인원수를 계산한다</td><td class="c"><span class="mk off">—</span></td><td class="c"><span class="mk on">●</span></td></tr>
+          <tr><td class="k">이미지 대조</td><td>받은 이미지를 검색어로 삼아 비교한다</td><td class="c"><span class="mk off">—</span></td><td class="c"><span class="mk on">●</span></td></tr>
+          <tr><td class="k">웹 검색</td><td>모르는 이름의 정보와 사진을 밖에서 가져온다</td><td class="c"><span class="mk off">—</span></td><td class="c"><span class="mk on">●</span></td></tr>
+          <tr><td class="k">사용자에게 질문</td><td>좁힌 선택지로 되물어 확정한다</td><td class="c"><span class="mk off">—</span></td><td class="c"><span class="mk on">●</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════ 08 어떤 구성이 가장 잘 찾나 ══════════ -->
   <section class="slide">
     <div class="kicker rv"><i>08</i>Feasibility<b>|</b>어떤 구성이 가장 잘 찾나</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px"><b>미리 분석</b>해 두고,<br>찾을 때 <b>단서를 더 모읍니다.</b></h2>
@@ -578,7 +577,6 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
       </table>
     </div>
   </section>
-
 </main>
 
 <div class="hud" id="hud">
