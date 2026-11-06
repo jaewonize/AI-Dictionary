@@ -197,7 +197,7 @@ td.c{text-align:center}
 
 /* 07 — 실현 방안 */
 .plan{display:flex;gap:16px;align-items:stretch}
-.plan__c{flex:1;min-height:290px;border-radius:26px;background:#fff;box-shadow:var(--card);padding:30px 28px 28px;display:flex;flex-direction:column;word-break:keep-all}
+.plan__c{flex:1;min-height:0;border-radius:26px;background:#fff;box-shadow:var(--card);padding:36px 34px 34px;display:flex;flex-direction:column;word-break:keep-all}
 .plan__n{font-family:var(--f-display);font-size:15px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--blue)}
 .plan__t{margin-top:12px;font-size:28px;line-height:1.28;font-weight:700;letter-spacing:-.045em}
 .plan__d{margin-top:14px;font-size:19px;line-height:1.5;font-weight:600;letter-spacing:-.03em;color:var(--sub)}
@@ -721,7 +721,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     <div class="kicker rv"><i>09</i>Feasibility<b>|</b>어떤 구성이 가장 잘 찾나</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px"><b>미리 분석</b>해 두고,<br>찾을 때 <b>단서를 더 모읍니다.</b></h2>
     <div class="body">
-      <div class="plan rv" style="--i:2;flex:none;margin-bottom:34px">
+      <div class="plan rv" style="--i:2;flex:none;height:470px">
         <div class="plan__c">
           <div class="plan__n">미리 · 1회</div>
           <p class="plan__t">미리 분석</p>
@@ -750,15 +750,6 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
           <p class="plan__cost">수십 장 한정</p>
         </div>
       </div>
-      <table class="rv" style="--i:3">
-        <thead><tr>
-          <th style="width:22%">구성</th><th style="width:24%">미리 분석</th><th style="width:24%">정밀 판단</th><th>기기 밖으로 나가는 것</th>
-        </tr></thead>
-        <tbody>
-          <tr><td class="k"><span class="step">A</span> 완전 로컬</td><td>로컬 모델</td><td>로컬 모델</td><td>없음</td></tr>
-          <tr><td class="k"><span class="step">B</span> 하이브리드</td><td>클라우드 모델</td><td>클라우드 모델</td><td>질의문 · 인덱스 · 후보 일부</td></tr>
-        </tbody>
-      </table>
     </div>
   </section>
 </main>
