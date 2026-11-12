@@ -703,7 +703,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 
   <!-- ══════════ 08 무엇을 단서로 쓰나 ══════════ -->
   <section class="slide" id="s-clues">
-    <div class="kicker rv"><i>08</i>Clues<b>|</b>무엇을 단서로 쓰나</div>
+    <div class="kicker rv"><i>Appendix</i>Clues<b>|</b>무엇을 단서로 쓰나</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">찾는 데 쓰는 <b>단서 여덟 가지</b></h2>
     <div class="body">
       <div class="cards rv" style="--i:2;flex:none;margin-bottom:26px">
@@ -738,7 +738,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 
   <!-- ══════════ 09 모바일 · 사진과 문서 ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>09</i>Target<b>|</b>모바일 먼저, 다음은 PC</div>
+    <div class="kicker rv"><i>08</i>Target<b>|</b>모바일 먼저, 다음은 PC</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">모바일 <b>여섯 저장소</b>에서 시작해 <b>PC</b>로 넓힙니다.</h2>
     <div class="body">
       <table class="rv" style="--i:2">
@@ -795,10 +795,15 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 
   let cur = -1, ovBuilt = false;
 
-  // 표지는 번호에서 뺀다 — 키커 번호와 하단 번호를 같은 숫자로 맞추려고
+  // 단서 목록은 버튼으로만 들어가는 부록이다
+  const SKIP = 's-clues';
+
+  // 표지와 부록은 번호에서 뺀다 — 키커 번호와 하단 번호를 같은 숫자로 맞추려고
   const isCover = s => s.classList.contains('cover');
-  const bodyTotal = slides.filter(s => !isCover(s)).length;
-  const bodyNo = i => slides.slice(0, i + 1).filter(s => !isCover(s)).length;
+  const isAppendix = s => s.id === SKIP;
+  const counted = s => !isCover(s) && !isAppendix(s);
+  const bodyTotal = slides.filter(counted).length;
+  const bodyNo = i => slides.slice(0, i + 1).filter(counted).length;
 
   const fit = () => stage.style.setProperty('--s', Math.min(innerWidth / 1920, innerHeight / 1080));
   fit();
@@ -821,7 +826,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     s.classList.add('is-active');
     document.body.style.background = getComputedStyle(s).backgroundColor;
     document.body.classList.toggle('is-dark', s.classList.contains('slide--dark'));
-    count.textContent = (isCover(s) ? '—' : pad(bodyNo(cur))) + ' / ' + pad(bodyTotal);
+    count.textContent = (isCover(s) ? '—' : isAppendix(s) ? 'A' : pad(bodyNo(cur))) + ' / ' + pad(bodyTotal);
     bar.style.width = ((cur + 1) / slides.length * 100) + '%';
     if (cur > 0) hint.classList.add('off');
     if (ovBuilt) markOv();
@@ -829,8 +834,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     ping();
   };
 
-  // 단서 목록은 버튼으로만 들어간다 — 차례로 넘길 때는 지나친다
-  const SKIP = 's-clues';
+  // 차례로 넘길 때는 부록을 지나친다
   const step = d => {
     let n = cur + d;
     if (slides[n] && slides[n].id === SKIP) n += d;
@@ -859,7 +863,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     slides.forEach((s, i) => {
       const item = document.createElement('div');
       item.className = 'ov__item';
-      const no = isCover(s) ? '—' : pad(bodyNo(i));
+      const no = isCover(s) ? '—' : isAppendix(s) ? 'A' : pad(bodyNo(i));
       item.innerHTML = '<div class="ov__thumb"></div><p class="ov__cap"><i>' + no + '</i><span>' + slideName(s) + '</span></p>';
       const clone = s.cloneNode(true);
       clone.classList.remove('is-active');
