@@ -829,6 +829,14 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     ping();
   };
 
+  // 단서 목록은 버튼으로만 들어간다 — 차례로 넘길 때는 지나친다
+  const SKIP = 's-clues';
+  const step = d => {
+    let n = cur + d;
+    if (slides[n] && slides[n].id === SKIP) n += d;
+    go(n);
+  };
+
   const fromHash = () => (parseInt(location.hash.slice(1), 10) || 1) - 1;
   addEventListener('popstate', () => go(fromHash()));
 
@@ -875,11 +883,11 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     if (e.key === 'm' || e.key === 'M') { e.preventDefault(); openOv(); return; }
     switch (e.key) {
       case 'ArrowRight': case 'ArrowDown': case 'PageDown': case 'Enter':
-        e.preventDefault(); go(cur + 1); break;
+        e.preventDefault(); step(1); break;
       case ' ':
-        e.preventDefault(); go(cur + (e.shiftKey ? -1 : 1)); break;
+        e.preventDefault(); step(e.shiftKey ? -1 : 1); break;
       case 'ArrowLeft': case 'ArrowUp': case 'PageUp': case 'Backspace': case 'Escape':
-        e.preventDefault(); go(cur - 1); break;
+        e.preventDefault(); step(-1); break;
       case 'Home': go(0); break;
       case 'End': go(slides.length - 1); break;
       case 'f': case 'F': toggleFs(); break;
@@ -901,7 +909,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     if (downX !== null && Math.hypot(e.clientX - downX, e.clientY - downY) > 6) return;
     if ((getSelection()?.toString() || '').trim()) return;
     if (e.detail > 1) return; // 더블 · 트리플 클릭
-    if (e.clientX < innerWidth * 0.3) go(cur - 1); else go(cur + 1);
+    if (e.clientX < innerWidth * 0.3) step(-1); else step(1);
   });
 
   let wheelAcc = 0, wheelLock = false;
@@ -909,7 +917,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     if (wheelLock) return;
     wheelAcc += Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
     if (Math.abs(wheelAcc) < 60) return;
-    go(cur + (wheelAcc > 0 ? 1 : -1));
+    step(wheelAcc > 0 ? 1 : -1);
     wheelAcc = 0; wheelLock = true;
     setTimeout(() => { wheelLock = false; wheelAcc = 0; }, 800);
   }, { passive: true });
@@ -919,7 +927,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
   addEventListener('touchend', e => {
     if (tx === null) return;
     const dx = e.changedTouches[0].clientX - tx;
-    if (Math.abs(dx) > 50) go(cur + (dx < 0 ? 1 : -1));
+    if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
     tx = null;
   }, { passive: true });
 
