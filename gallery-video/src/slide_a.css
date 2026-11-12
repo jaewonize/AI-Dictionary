@@ -1,0 +1,8 @@
+/* A안 — 01 슬라이드 오른쪽에 폰을 세우고, 숫자 셋은 왼쪽에 세로로 쌓는다 */
+.slide.gpA{padding-right:calc(148px + 378px * 1.04 + 84px)}
+.gpA__slot{position:absolute;right:148px;top:50%;margin-top:calc(798px * 1.04 / -2)}
+.gpA .gp{--gs:1.04}
+.gpA .stats{flex-direction:column;gap:20px}
+.gpA .stat{flex:none;flex-direction:row;align-items:center;gap:30px;padding:30px 42px;border-radius:28px}
+.gpA .stat__n{flex:none;width:400px;font-size:88px}
+.gpA .stat__d{margin-top:0}

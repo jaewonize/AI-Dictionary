@@ -1,0 +1,110 @@
+/* ── 갤러리에서 직접 찾기 — 폰 화면 목업. 덱의 스타일과 섞이지 않게 .gp 아래로 가둔다 ── */
+.gp{--gs:1;position:relative;flex:none;width:calc(378px * var(--gs));height:calc(798px * var(--gs));
+  font-family:"GP Sans","Noto Sans KR","Noto Sans CJK KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:14px;line-height:1.3;letter-spacing:-.01em;font-weight:500;color:#1c1c1e;text-align:left;
+  word-break:keep-all;-webkit-font-smoothing:antialiased;user-select:none;-webkit-user-select:none}
+.gp *{margin:0;padding:0;box-sizing:border-box}
+.gp i{font-style:normal}
+.gp svg{display:block;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* 기기 — 금속 테두리 3px + 검은 베젤 6px */
+.gp__dev{position:absolute;left:0;top:0;width:378px;height:798px;transform:scale(var(--gs));transform-origin:0 0;
+  border-radius:47px;background:linear-gradient(145deg,#6a6c73,#2b2c30 30%,#17181a 62%,#55575d);
+  box-shadow:0 0 0 1px rgba(0,0,0,.35),0 30px 70px rgba(0,0,0,.20),0 8px 20px rgba(0,0,0,.10)}
+.gp__btn{position:absolute;right:-3px;width:3.5px;border-radius:0 2px 2px 0;background:linear-gradient(90deg,#2b2c30,#4a4c52)}
+.gp__btn--vol{top:152px;height:76px}
+.gp__btn--pw{top:252px;height:46px}
+.gp__scr{position:absolute;left:9px;top:9px;width:360px;height:780px;border-radius:38px;overflow:hidden;background:#fff;
+  box-shadow:0 0 0 6px #050506;isolation:isolate}
+.gp__cam{position:absolute;left:50%;top:13px;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;
+  background:#0a0a0c;box-shadow:inset 0 0 0 2px #1e1f24;z-index:60}
+
+/* 상태바 */
+.gp__status{position:absolute;left:0;right:0;top:0;height:38px;padding:3px 20px 0 25px;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:600;letter-spacing:0}
+.gp__sticons{display:flex;align-items:center;gap:5px}
+.gp__sticons svg{stroke:none;fill:currentColor}
+.gp__nav{position:absolute;left:50%;bottom:7px;width:108px;height:4px;margin-left:-54px;border-radius:2px;background:#1c1c1e;opacity:.8;z-index:65}
+
+.gp__view{position:absolute;inset:0;background:#fff}
+
+/* 사진 탭 */
+.gp__photos{z-index:1}
+.gp__top{position:absolute;left:0;right:0;top:38px;height:46px;padding:0 14px;display:flex;align-items:center;justify-content:flex-end;gap:18px;z-index:3;background:#fff}
+.gp__top svg{width:22px;height:22px}
+.gp__list{position:absolute;left:0;right:0;top:84px;bottom:58px;overflow:hidden}
+.gp__c{position:absolute;left:0;top:0;width:88.5px;height:88.5px;background-color:#e9e9ee;background-image:var(--gp-sprite);
+  background-size:calc(var(--gp-cols) * 100%) calc(var(--gp-rows) * 100%);will-change:transform}
+.gp__h{position:absolute;left:0;top:0;width:360px;height:44px;padding:0 16px 9px;display:flex;align-items:flex-end;gap:8px;
+  font-size:14.5px;font-weight:700;letter-spacing:-.02em;white-space:nowrap;will-change:transform}
+.gp__h span{font-size:12px;font-weight:500;color:#8e8e93}
+.gp__fs{position:absolute;right:5px;top:0;width:26px;height:44px;border-radius:13px;background:#fff;z-index:4;opacity:0;
+  box-shadow:0 1px 7px rgba(0,0,0,.28);display:grid;place-items:center;color:#5b5b60;will-change:transform,opacity}
+.gp__fs svg{width:14px;height:22px;stroke-width:1.8}
+.gp__fs.is-on{background:#0a84ff;color:#fff}
+.gp__fsb{position:absolute;right:42px;top:0;height:40px;padding:0 17px;border-radius:20px;background:rgba(38,38,41,.92);z-index:4;opacity:0;
+  display:flex;align-items:center;font-size:15px;font-weight:600;color:#fff;white-space:nowrap;will-change:transform,opacity}
+.gp__tabs{position:absolute;left:0;right:0;bottom:0;height:58px;padding:9px 26px 0;background:#fff;z-index:3;
+  display:flex;align-items:flex-start;justify-content:space-between;font-size:15.5px;font-weight:500;color:#8e8e93}
+.gp__tabs span{position:relative;padding:3px 10px 6px}
+.gp__tabs span.is-on{font-weight:700;color:#1c1c1e}
+.gp__tabs span.is-on::after{content:"";position:absolute;left:10px;right:10px;bottom:1px;height:2px;border-radius:1px;background:#1c1c1e}
+.gp__tabs svg{width:22px;height:22px;margin:3px 6px 0}
+
+/* 검색 */
+.gp__search{z-index:2;will-change:transform,opacity}
+.gp__sbar{position:absolute;left:0;right:0;top:40px;height:52px;display:flex;align-items:center;padding:0 14px 0 6px;gap:2px}
+.gp__back{flex:none;width:42px;height:42px;display:grid;place-items:center}
+.gp__back svg{width:24px;height:24px;stroke-width:2}
+.gp__field{flex:1;height:44px;border-radius:22px;background:#f1f1f4;display:flex;align-items:center;padding:0 12px 0 18px;font-size:16px;font-weight:500}
+.gp__q{white-space:pre}
+.gp__ph{order:1;color:#a0a0a6}   /* 비어 있을 때는 커서가 안내 글자 앞에 선다 */
+.gp__caret{flex:none;width:1.5px;height:19px;margin-left:1px;background:#0a84ff}
+.gp__clear{order:2;margin-left:auto;flex:none;width:20px;height:20px;border-radius:50%;background:#b4b4ba;color:#fff;display:grid;place-items:center}
+.gp__clear svg{width:10px;height:10px;stroke-width:2.4}
+.gp__recent{position:absolute;left:0;right:0;top:104px;padding:0 22px}
+.gp__recent p{font-size:13px;font-weight:600;color:#8e8e93;margin-bottom:6px}
+.gp__recent li{list-style:none;display:flex;align-items:center;gap:13px;height:44px;font-size:15.5px}
+.gp__recent svg{width:19px;height:19px;color:#a0a0a6}
+.gp__none{position:absolute;left:0;right:0;top:92px;bottom:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:40px;opacity:0}
+.gp__none svg{width:52px;height:52px;color:#c5c5cb;stroke-width:1.5;margin-bottom:18px}
+.gp__none b{font-size:16.5px;font-weight:700;letter-spacing:-.02em}
+.gp__none span{margin-top:7px;font-size:13.5px;color:#8e8e93}
+.gp__spin{position:absolute;left:50%;top:300px;width:30px;height:30px;margin-left:-15px;border-radius:50%;
+  border:3px solid #e3e3e8;border-top-color:#0a84ff;opacity:0}
+
+/* 키보드 */
+.gp__kb{position:absolute;left:0;right:0;bottom:0;height:306px;padding:0 3px;background:#eceef2;will-change:transform}
+.gp__kt{height:36px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;color:#6c6f77}
+.gp__kt svg{width:20px;height:20px;stroke-width:1.6}
+.gp__kt b{font-size:11px;font-weight:700;letter-spacing:.02em;border:1.6px solid currentColor;border-radius:5px;padding:1px 4px}
+.gp__kr{display:flex;gap:5px;padding:0 2px;margin-bottom:7px}
+.gp__kr--in{padding:0 20px}
+.gp__k{flex:1 1 0;min-width:0;height:42px;border-radius:7px;background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.2);
+  display:grid;place-items:center;font-size:18.5px;font-weight:500;color:#1c1c1e}
+.gp__kr--num .gp__k{height:36px;font-size:16px}
+.gp__k--fn{background:#d3d6dd;font-size:12.5px;font-weight:600}
+.gp__k--go{background:#0a84ff;color:#fff}
+.gp__k svg{width:19px;height:19px;stroke-width:1.9}
+.gp__k.is-on{background:#b9bdc6}
+.gp__k--go.is-on{background:#0064d2}
+
+/* 사진 크게 보기 */
+.gp__viewer{z-index:3;background:none;pointer-events:none}
+.gp__vbg{position:absolute;inset:0;background:#fff;opacity:0}
+.gp__vimg{position:absolute;left:0;top:0;width:88.5px;height:88.5px;background-image:var(--gp-hero);background-size:cover;background-position:center;
+  opacity:0;will-change:left,top,width,height}
+.gp__vui{position:absolute;inset:0;opacity:0}
+.gp__vbar{position:absolute;left:0;right:0;top:40px;height:52px;display:flex;align-items:center;padding:0 14px 0 6px;gap:2px}
+.gp__vbar div{font-size:15px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.gp__vbar div span{display:block;font-size:12px;font-weight:500;color:#8e8e93}
+.gp__strip{position:absolute;left:0;right:0;bottom:84px;height:42px;display:flex;justify-content:center;align-items:center;gap:2px}
+.gp__strip i{flex:none;width:24px;height:36px;border-radius:2px;background-color:#e9e9ee;background-image:var(--gp-sprite);
+  background-size:calc(var(--gp-cols) * 100%) calc(var(--gp-rows) * 100%)}
+.gp__strip i.is-on{width:42px;height:42px;margin:0 5px;background-image:var(--gp-hero);background-size:cover;background-position:center}
+.gp__vtools{position:absolute;left:0;right:0;bottom:22px;height:48px;display:flex;align-items:center;justify-content:space-around;padding:0 18px}
+.gp__vtools svg{width:23px;height:23px}
+
+/* 손가락 — 안드로이드 '터치 표시'와 같은 점 */
+.gp__touch{position:absolute;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;z-index:70;opacity:0;
+  background:rgba(118,118,128,.42);border:1.5px solid rgba(255,255,255,.8);box-shadow:0 0 0 1px rgba(0,0,0,.12);will-change:transform,opacity}
