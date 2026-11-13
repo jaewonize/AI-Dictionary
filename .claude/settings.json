@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./.envrc)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/.envrc)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"require([process.env.CLAUDE_PROJECT_DIR,'.'].find(Boolean)+'/.claude/hooks/guard-git.ts').runHook()\"",
+            "onFailure": "block"
+          },
+          {
+            "type": "command",
+            "command": "node -e \"require([process.env.CLAUDE_PROJECT_DIR,'.'].find(Boolean)+'/.claude/hooks/guard-env.ts').runHook()\"",
+            "onFailure": "block"
+          }
+        ]
+      }
+    ]
+  }
+}

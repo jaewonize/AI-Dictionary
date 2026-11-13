@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+set -eu
+
+branch=$(git symbolic-ref --short -q HEAD || true)
+if [ "$branch" = "main" ]; then
+  echo 'main에는 직접 커밋하지 않습니다(AGENTS.md). 작업 브랜치(예: feat/*, hackathon)에서 커밋하세요.' >&2
+  exit 1
+fi
+
+env_files=$(git -c core.quotepath=false diff --cached --no-relative --diff-filter=d --name-only | grep -aiE '(^|[/\\])\.env[^/\\]*$' || true)
+if [ -n "$env_files" ]; then
+  printf '.env 파일은 커밋하지 않습니다(AGENTS.md): %s\ngit restore --staged 로 스테이징에서 빼세요.\n' "$env_files" >&2
+  exit 1
+fi
+
+if git diff --cached --no-relative --no-textconv --text --no-color --no-ext-diff -U0 \
+  | LC_ALL=C grep -aE '^\+([^+]|$)' \
+  | LC_ALL=C grep -aqE '(^|[^0-9A-Za-z_])(gh[pousr]_[0-9A-Za-z]{36,}|github_pat_[0-9A-Za-z_]{22,}|sk-[0-9A-Za-z_-]{20,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35})'; then
+  echo '커밋할 변경에 토큰·API 키(ghp_·sk-·AKIA·AIza 등)로 보이는 값이 있습니다(AGENTS.md). 값을 지우고 다시 스테이징하세요.' >&2
+  exit 1
+fi

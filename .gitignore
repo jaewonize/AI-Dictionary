@@ -1,2 +1,5 @@
 .DS_Store
 poc/index.json
+.env*
+.claude/settings.local.json
+CLAUDE.local.md
