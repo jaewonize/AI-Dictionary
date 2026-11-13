@@ -51,8 +51,9 @@
 - 그 밖의 흐름은 `git remote -v`로 클론 종류를 보고 정한다.
   - 원본 클론(`origin`이 jaewonize/AI-Dictionary): 브랜치·푸시·PR 방식은 사용자가 정한 대로 한다. 정해지지 않았으면 묻는다.
   - fork 클론(`origin`이 개인 fork, `upstream`이 jaewonize/AI-Dictionary):
-    - 각자 자신의 fork에서 목적에 맞게 자유롭게 작업 브랜치(예: `feat/...`, `fix/...` 등, `main` 제외)를 따서 커밋·푸시(`origin`)하고, 원본의 `hackathon`으로 PR을 만든다.
-    - 새 작업 브랜치는 최신 `upstream/hackathon`에서 분기해 앞선 PR이 열려 있는 동안에도 다른 작업을 병렬로 진행할 수 있게 한다.
+    - 최신 `upstream/hackathon`에서 작업 브랜치(예: `feat/...`, `fix/...` 등, `main` 제외)를 따서 커밋하고 개인 fork(`origin`)에 푸시한다.
+    - **1단계 (내 포크 사전 리뷰):** 내 포크의 `hackathon` 브랜치(`--repo <fork 소유자>/AI-Dictionary --base hackathon --head <작업 브랜치>`)로 먼저 PR을 만들어 개인 Codex 자동 리뷰를 받고 필요한 수정을 마친 뒤 머지한다.
+    - **2단계 (원본 반영):** 검증이 끝난 내 포크 브랜치를 원본 저장소(`--repo jaewonize/AI-Dictionary --base hackathon --head <fork 소유자>:<브랜치>`)로 PR을 올려 팀원 리뷰·머지를 진행한다.
 
 ### 범위
 - PR 하나에는 가능한 한 목적 하나만 담는다. 요청받지 않은 주변 정리나 무관한 포맷 변경은 넣지 않는다.
@@ -71,13 +72,13 @@
 - 기능 추가는 `feat:`, 버그 수정은 `fix:`, 문서는 `docs:`, 동작 변화 없는 리팩터링은 `refactor:`, 테스트는 `test:`, 설정·잡무는 `chore:` 접두를 붙인다.
 
 ### PR 본문
-- 필수 항목(**요약**, **변경 내용**, **테스트**)을 간결하게 채우고, 선택 항목은 해당할 때만 적는다(해당 없는 섹션은 생략한다).
+- `.github/pull_request_template.md` 구성을 따라 필수 항목(**요약**, **변경 내용**, **테스트**)을 간결하게 채우고, 선택 항목은 해당할 때만 적는다(해당 없는 섹션은 생략한다).
   - 요약: 무엇을 왜 바꿨는지 1~3줄
   - 변경 내용: `- 파일명: 핵심 변경` 형식
   - 테스트: 실제로 실행·확인한 항목과 결과 (실행하지 못한 검증은 숨기지 않고 적는다)
   - 스크린샷(선택): 화면을 바꿨을 때 전/후 이미지
   - 리뷰어 참고(선택): 특이사항, 남은 작업, 트레이드오프
-- 본문을 임시 파일에 쓰고 `gh pr create --repo jaewonize/AI-Dictionary --base hackathon --head <브랜치 소유자>:<작업 브랜치> --title "<제목>" --body-file <파일>`로 만든다.
+- 본문을 임시 파일에 쓰고 `gh pr create --repo <대상 저장소> --base hackathon --head <출발 브랜치> --title "<제목>" --body-file <파일>`로 만든다. 원본 저장소(jaewonize/AI-Dictionary)로 올릴 때는 작성자 본인을 제외한 팀원(`.github/CODEOWNERS` 기준)을 `--reviewer`로 함께 붙인다.
 
 ### 머지 전 검증과 생성
 - 화면이나 API를 바꿨다면 가능한 범위에서 직접 실행·호출해 동작을 확인하고 결과를 PR 본문 "테스트"에 적는다.
