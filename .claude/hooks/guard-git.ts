@@ -43,15 +43,20 @@ const GLOBAL_VALUE = new Set(["-c", "--git-dir", "--work-tree", "--namespace", "
 
 // 막아야 하면 이유를, 아니면 undefined를 돌려준다
 export function blockReason(command: string, cwd: string, git: Git): string | undefined {
-  const parts = splitCommands(command);
+  const parts = executedParts(command);
   const kinds = parts.map(callKind);
   if (kinds.includes("wrapped")) return BLOCK.wrapped;
   if (kinds.includes("env")) return BLOCK.env;
+  if (commandSubstitutions(command).shellBodies.some(b => scriptCallsCommitOrPush(b))) {
+    const first = dropPrefixes(parts[0] ?? [])[0] ?? "";
+    return /^\w+=/.test(first) || binName(first) === "env" ? BLOCK.env : BLOCK.wrapped;
+  }
   if (!kinds.includes("direct")) return undefined;
-  // 앞뒤 명령(cd·괄호 안의 cd·git add·대입 등)이 실행 디렉터리와 상태를 바꿀 수 있으므로 단독 호출만 검사한다
-  if (parts.length > 1) return BLOCK.alone;
+  // 앞뒤 명령(cd·괄호 안의 cd·git add·대입·명령 치환 등)이 실행 디렉터리와 상태를 바꿀 수 있으므로 단독 호출만 검사한다
+  if (kinds[0] !== "direct" || splitCommands(command).length > 1) return BLOCK.alone;
   const parsed = parseGit(dropPrefixes(parts[0]).slice(1));
   if (parsed.unknownGlobal) return BLOCK.globals;
+  if (parts.length > 1) return BLOCK.alone;
   const target = parsed.dir === undefined ? cwd : path.resolve(cwd, parsed.dir);
   const branch = git.branch(target);
   if (parsed.sub === "push") return pushMayReachMain(parsed.rest, branch, target, git) ? BLOCK.pushMain : undefined;
@@ -105,7 +110,18 @@ export function splitCommands(command: string, keepRedirects = false): string[][
   };
   for (let i = 0; i < text.length; i++) {
     const c = text[i];
-    if (c === "'") {
+    if (c === "#" && !word) {
+      const nl = text.indexOf("\n", i + 1);
+      i = nl < 0 ? text.length : nl - 1;
+    } else if (c === "$" && text[i + 1] === "'") {
+      let j = i + 2;
+      add("", false);
+      for (; j < text.length && text[j] !== "'"; j++) {
+        if (text[j] === "\\" && j + 1 < text.length) j++;
+        add(text[j], false);
+      }
+      i = j;
+    } else if (c === "'") {
       const end = text.indexOf("'", i + 1);
       const stop = end < 0 ? text.length : end;
       add(text.slice(i + 1, stop), false);
@@ -118,8 +134,20 @@ export function splitCommands(command: string, keepRedirects = false): string[][
           j += text[j + 1] === "\r" ? 2 : 1;
           continue;
         }
-        if (text[j] === "\\" && j + 1 < text.length && '"\\$`'.includes(text[j + 1])) j++;
-        add(text[j], false);
+        if (text[j] === "\\" && j + 1 < text.length && '"\\$`'.includes(text[j + 1])) {
+          add(text[++j], false);
+        } else if (text[j] === "$" && text[j + 1] === "(") {
+          const end = findParenEnd(text, j + 1);
+          add(text.slice(j, end + Math.min(1, text.length - end)), false);
+          j = end;
+        } else if (text[j] === "`") {
+          let k = j + 1;
+          for (; k < text.length && text[k] !== "`"; k++) if (text[k] === "\\") k++;
+          add(text.slice(j, k + Math.min(1, text.length - k)), false);
+          j = k;
+        } else {
+          add(text[j], false);
+        }
       }
       i = j;
     } else if (c === "\\" && (text[i + 1] === "\n" || (text[i + 1] === "\r" && text[i + 2] === "\n"))) {
@@ -140,6 +168,166 @@ export function splitCommands(command: string, keepRedirects = false): string[][
   return parts;
 }
 
+// $( 뒤의 '(' 위치(start)에서 시작해 따옴표·백슬래시·주석을 건너뛰고 짝이 맞는 ')' 위치를 찾는다
+function findParenEnd(text: string, start: number): number {
+  let depth = 0;
+  let wordStart = true;
+  for (let i = start; i < text.length; i++) {
+    const c = text[i];
+    if (c === "\\") {
+      i += text[i + 1] === "\r" && text[i + 2] === "\n" ? 2 : 1;
+      wordStart = false;
+    } else if (c === "#" && wordStart && i > start) {
+      const nl = text.indexOf("\n", i + 1);
+      i = nl < 0 ? text.length : nl - 1;
+    } else if (c === "$" && text[i + 1] === "'") {
+      for (i += 2; i < text.length && text[i] !== "'"; i++) if (text[i] === "\\") i++;
+      wordStart = false;
+    } else if (c === "'") {
+      const end = text.indexOf("'", i + 1);
+      i = end < 0 ? text.length : end;
+      wordStart = false;
+    } else if (c === '"') {
+      for (i++; i < text.length && text[i] !== '"'; i++) {
+        if (text[i] === "\\") i += text[i + 1] === "\r" && text[i + 2] === "\n" ? 2 : 1;
+        else if (text[i] === "$" && text[i + 1] === "(") i = findParenEnd(text, i + 1);
+        else if (text[i] === "`") {
+          for (i++; i < text.length && text[i] !== "`"; i++) if (text[i] === "\\") i++;
+        }
+      }
+      wordStart = false;
+    } else if (c === "`") {
+      for (i++; i < text.length && text[i] !== "`"; i++) if (text[i] === "\\") i++;
+      wordStart = false;
+    } else if (c === "(") {
+      depth++;
+      wordStart = true;
+    } else if (c === ")") {
+      if (--depth === 0) return i;
+      wordStart = true;
+    } else {
+      wordStart = /[\s;&|]/.test(c);
+    }
+  }
+  return text.length;
+}
+
+const unescapeBacktick = (s: string, dq: boolean) =>
+  s.replace(/\\(\r?\n|.)/g, (m, ch) => (ch === "\n" || ch === "\r\n" ? "" : (dq ? '"\\$`' : "\\$`").includes(ch) ? ch : m));
+
+function isBareCat(script: string): boolean {
+  const { subs, shellBodies } = commandSubstitutions(script);
+  if (subs.length || shellBodies.length) return false;
+  const parts = splitCommands(script, true);
+  return parts.length === 1 && parts[0].length === 1 && parts[0][0] === "cat";
+}
+
+// 큰따옴표·인용하지 않은 heredoc 안의 명령 치환($( )·`…`)과 셸 인터프리터가 읽는 heredoc·here-string 본문을 꺼낸다.
+// 메시지 전달용 "$(cat <<'EOF'…)"처럼 안전한 heredoc을 인자·리다이렉션 없는 cat으로 읽기만 하는 치환은 상태 변경이 없으므로 건너뛴다
+function commandSubstitutions(command: string): { subs: string[]; shellBodies: string[] } {
+  const subs: string[] = [];
+  const shellBodies: string[] = [];
+  let hadSafeHeredoc = false;
+  for (const m of command.matchAll(HEREDOC)) {
+    if (!m[0].includes("\n")) continue;
+    const body = m[0].slice(m[0].indexOf("\n") + 1, m[0].lastIndexOf("\n")).replace(/\r$/, "");
+    const before = splitCommands(command.slice(command.lastIndexOf("\n", m.index - 1) + 1, m.index)).at(-1) ?? [];
+    const after = splitCommands(m[0].slice(0, m[0].indexOf("\n")).replace(/\r$/, "").replace(/^<<-?[ \t]*(['"]?)\w+\1/, "").split(/[;&]/)[0]).flat();
+    if ([...before, ...after].some(w => /^(?:ba|z|da|k)?sh$/.test(binName(w)))) {
+      shellBodies.push(body);
+      continue;
+    }
+    const hSubs: string[] = [];
+    if (!m[1]) {
+      for (let i = 0; i < body.length; i++) {
+        if (body[i] === "\\") {
+          i += body[i + 1] === "\r" && body[i + 2] === "\n" ? 2 : 1;
+        } else if (body[i] === "$" && body[i + 1] === "(") {
+          const end = findParenEnd(body, i + 1);
+          hSubs.push(body.slice(i + 2, end));
+          i = end;
+        } else if (body[i] === "`") {
+          let j = i + 1;
+          for (; j < body.length && body[j] !== "`"; j++) if (body[j] === "\\") j++;
+          hSubs.push(unescapeBacktick(body.slice(i + 1, j), false));
+          i = j;
+        }
+      }
+    }
+    if (hSubs.length) subs.push(...hSubs);
+    else hadSafeHeredoc = true;
+  }
+  for (const words of splitCommands(command, true)) {
+    if (!words.some(w => /^(?:ba|z|da|k)?sh$/.test(binName(w.split("<<<")[0])))) continue;
+    for (let i = 0; i < words.length; i++) {
+      const idx = words[i].indexOf("<<<");
+      if (idx >= 0) shellBodies.push(words[i].slice(idx + 3) || (words[++i] ?? ""));
+    }
+  }
+  const text = stripHeredocs(command);
+  let wordStart = true;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (c === "\\") {
+      i += text[i + 1] === "\r" && text[i + 2] === "\n" ? 2 : 1;
+      wordStart = false;
+    } else if (c === "#" && wordStart) {
+      const nl = text.indexOf("\n", i + 1);
+      i = nl < 0 ? text.length : nl - 1;
+    } else if (c === "$" && text[i + 1] === "'") {
+      for (i += 2; i < text.length && text[i] !== "'"; i++) if (text[i] === "\\") i++;
+      wordStart = false;
+    } else if (c === "'") {
+      const end = text.indexOf("'", i + 1);
+      i = end < 0 ? text.length : end;
+      wordStart = false;
+    } else if (c === '"') {
+      for (i++; i < text.length && text[i] !== '"'; i++) {
+        if (text[i] === "\\") {
+          i += text[i + 1] === "\r" && text[i + 2] === "\n" ? 2 : 1;
+        } else if (text[i] === "$" && text[i + 1] === "(") {
+          const end = findParenEnd(text, i + 1);
+          const raw = text.slice(i + 2, end);
+          if (!(hadSafeHeredoc && isBareCat(raw))) subs.push(raw);
+          i = end;
+        } else if (text[i] === "`") {
+          let j = i + 1;
+          for (; j < text.length && text[j] !== "`"; j++) if (text[j] === "\\") j++;
+          const raw = unescapeBacktick(text.slice(i + 1, j), true);
+          if (!(hadSafeHeredoc && isBareCat(raw))) subs.push(raw);
+          i = j;
+        }
+      }
+      wordStart = false;
+    } else if (c === "$" && text[i + 1] === "(") {
+      const end = findParenEnd(text, i + 1);
+      subs.push(text.slice(i + 2, end));
+      i = end;
+      wordStart = false;
+    } else if (c === "`") {
+      let j = i + 1;
+      for (; j < text.length && text[j] !== "`"; j++) if (text[j] === "\\") j++;
+      subs.push(unescapeBacktick(text.slice(i + 1, j), false));
+      i = j;
+      wordStart = false;
+    } else {
+      wordStart = /[\s;&|()]/.test(c);
+    }
+  }
+  return { subs, shellBodies };
+}
+
+function executedParts(command: string, seen = new Set<string>()): string[][] {
+  if (seen.has(command)) return [];
+  seen.add(command);
+  const out = splitCommands(command);
+  for (const sub of commandSubstitutions(command).subs) {
+    const inner = executedParts(sub, seen);
+    out.push(...(inner.length ? inner : [[""]]));
+  }
+  return out;
+}
+
 // heredoc은 표시(<<'EOF')와 본문을 지우고 표시 뒤의 같은 줄(> 파일, )" 등)만 남긴다
 export function stripHeredocs(command: string): string {
   return command.replace(HEREDOC, m => (m.includes("\n") ? m.slice(0, m.indexOf("\n")).replace(/\r$/, "") : m).replace(/^<<-?[ \t]*(['"]?)\w+\1/, ""));
@@ -156,14 +344,20 @@ function stripRedirects(words: { text: string; plain: boolean }[]): string[] {
   return out;
 }
 
+function scriptCallsCommitOrPush(script: string, seen = new Map<string, boolean>()): boolean {
+  if (!seen.has(script)) {
+    seen.set(script, false);
+    const { shellBodies } = commandSubstitutions(script);
+    seen.set(script, shellBodies.some(b => scriptCallsCommitOrPush(b, seen)) || executedParts(script).some(w => callsCommitOrPush(w, seen)));
+  }
+  return seen.get(script)!;
+}
+
 // 단어 어디서든 commit·push를 부르는지: git 뒤 하위 명령(xargs git commit, bash -c 'exec "$@"' _ git commit 등)과,
 // 다시 나눠 실행되는 문자열(셸 -c 스크립트, env -S 값, eval 인자) 안. 스크립트를 본 뒤에도 뒤 단어(스크립트에 넘기는 실행 인자)를 계속 훑는다.
 // 같은 스크립트는 한 번만 나눠 보므로(seen) 감싸기가 겹쳐도 빨리 끝난다
 function callsCommitOrPush(words: string[], seen = new Map<string, boolean>()): boolean {
-  const inScript = (script: string) => {
-    if (!seen.has(script)) seen.set(script, splitCommands(script).some(w => callsCommitOrPush(w, seen)));
-    return seen.get(script)!;
-  };
+  const inScript = (script: string) => scriptCallsCommitOrPush(script, seen);
   for (let i = 0; i < words.length; i++) {
     const name = binName(words[i]);
     const rest = words.slice(i + 1);
@@ -303,10 +497,11 @@ const realGit: Git = {
   staged(dir, all) {
     const base = all ? "HEAD" : "--cached";
     // -z: core.quotePath로 인용된 이름이 아니라 원래 경로를 받는다. --no-relative: diff.relative여도 하위 디렉터리 밖 변경까지 본다.
+    // --diff-filter=d: 이미 추적 중인 .env를 git rm으로 지우는 정리 커밋은 허용한다.
     // --no-textconv·--text: textconv로 바꾼 내용이 아니라 커밋될 내용을, 바이너리 파일도 원문 그대로 본다
     const opts = ["--no-relative", "--no-textconv"];
     return {
-      names: run(dir, ["diff", base, ...opts, "--name-only", "-z"]).split("\0").filter(Boolean),
+      names: run(dir, ["diff", base, ...opts, "--diff-filter=d", "--name-only", "-z"]).split("\0").filter(Boolean),
       diff: run(dir, ["diff", base, ...opts, "--text", "--no-color", "--no-ext-diff", "-U0"]),
     };
   },

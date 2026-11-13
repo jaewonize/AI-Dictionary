@@ -128,6 +128,47 @@ test("heredoc 본문과 따옴표 안의 git 명령 글자는 명령으로 보�
   assert.ok(blockReason("cat <<EOF\nx\nEOF\ngit push origin main", "/repo", fakeGit("feat/a")));
 });
 
+test("큰따옴표·인용하지 않은 heredoc의 명령 치환과 셸 표준입력으로 감싼 commit·push를 막는다", () => {
+  for (const cmd of [
+    'git commit -m "$(git add credentials.txt; printf cleanup)"',
+    'git commit -m "$(git add credentials.txt)"',
+    'git commit -m "`git add credentials.txt`"',
+    'git commit -m "`git add \\"credentials.txt\\"`"',
+    'git commit -m "$(printf \')\'; git add credentials.txt)"',
+    'git commit -m "$(echo ")" && git add credentials.txt)"',
+    'git commit -m $\'a\\\'\' -m "$(git add credentials.txt)"',
+    'git commit -m "${MSG:-$(git add credentials.txt)}"',
+    'git commit -m "$(>credentials.txt)"',
+    "git commit -F - <<EOF\ncleanup $(git add credentials.txt)\nEOF",
+    'git commit -m "$(cat <<EOF\ncleanup $(git add credentials.txt)\nEOF\n)"',
+    'git commit -m "$(cat <<\'EOF\'\nmsg\nEOF\ngit add credentials.txt)"',
+    'echo "$(git commit -m x)"',
+    'echo "`echo \\`git commit -m x\\``"',
+  ]) {
+    const git = fakeGit("feat/a");
+    assert.match(blockReason(cmd, "/repo", git) ?? "", /단독 Bash 호출/, cmd);
+    assert.deepEqual(git.calls, [], cmd);
+  }
+  for (const cmd of [
+    `bash -c 'echo "$(git commit -m x)"'`,
+    "bash <<'EOF'\ngit commit -m x\nEOF",
+    "cat <<'EOF' | sh\ngit push origin main\nEOF",
+    "bash <<< 'git push origin main'",
+  ]) {
+    assert.match(blockReason(cmd, "/repo", fakeGit("feat/a")) ?? "", /감싼/, cmd);
+  }
+  assert.ok(blockReason("# don't push\ngit push origin main", "/repo", fakeGit("feat/a")));
+  for (const cmd of [
+    "git commit -m 'literal $(git add credentials.txt) and `sk-`'",
+    'git commit -m "literal \\$(git add credentials.txt) and \\`sk-\\`"',
+    'git commit -m "$(cat <<\'EOF\'\nmsg; $(git add credentials.txt)\nEOF\n)"',
+    "git commit -F - <<EOF\nplain message without substitution\nEOF",
+    'echo "$(date)"',
+  ]) {
+    assert.equal(blockReason(cmd, "/repo", fakeGit("feat/a")), undefined, cmd);
+  }
+});
+
 test("경로 지정·작업 트리에서 고르는 커밋은 막고 메시지 옵션 값은 경로로 보지 않는다", () => {
   for (const cmd of ["git commit --only -m x source.ts", "git commit -o -m x a.ts", "git commit -m x a.ts", "git commit -i -m x", "git commit -m x -- a.ts", "git commit -p", "git commit --pathspec-from-file=f"]) {
     assert.match(blockReason(cmd, "/repo", fakeGit("feat/a")) ?? "", /경로를 지정/, cmd);
@@ -314,14 +355,34 @@ test("settings.json 훅 명령과 .githooks(pre-commit·pre-push)가 Windows·Li
   fs.writeFileSync(path.join(repo, ".env.local"), "A=1\n");
   gitSpawn("add", "-f", ".env.local");
   assert.notEqual(gitSpawn("commit", "-m", "leak-env").status, 0);
-  gitSpawn("restore", "--staged", ".env.local");
+  // 이미 잘못 추적된 .env 파일을 제거하는 정리 커밋은 두 훅 모두 통과시킨다
+  assert.equal(gitSpawn("commit", "--no-verify", "-m", "seed-tracked-env").status, 0);
   fs.rmSync(path.join(repo, ".env.local"));
+  const allowCommitAllDelete = spawnSync(hookCmds[0], { shell: true, env: { ...process.env, CLAUDE_PROJECT_DIR: projectRoot }, input: JSON.stringify({ tool_input: { command: "git commit -am remove-env" }, cwd: repo }), encoding: "utf8", timeout: 10000 });
+  assert.equal(allowCommitAllDelete.status, 0, allowCommitAllDelete.stderr);
+  gitSpawn("add", "-u", ".env.local");
+  const allowStagedDelete = spawnSync(hookCmds[0], { shell: true, env: { ...process.env, CLAUDE_PROJECT_DIR: projectRoot }, input: JSON.stringify({ tool_input: { command: "git commit -m remove-env" }, cwd: repo }), encoding: "utf8", timeout: 10000 });
+  assert.equal(allowStagedDelete.status, 0, allowStagedDelete.stderr);
+  assert.equal(gitSpawn("commit", "-m", "chore: remove tracked env").status, 0);
 
   const secret = ["sk", "proj", "abcdefghij1234567890"].join("-");
   fs.writeFileSync(path.join(repo, "ok.txt"), `key=${secret}\n`);
   gitSpawn("add", "ok.txt");
   assert.notEqual(gitSpawn("commit", "-m", "leak-token").status, 0);
   gitSpawn("checkout", "--", "ok.txt");
+
+  // NUL이 섞인 바이너리 파일의 토큰도 pre-commit이 텍스트로 검사해 차단한다
+  fs.writeFileSync(path.join(repo, "data.bin"), Buffer.from(`\0key=${secret}\n`));
+  gitSpawn("add", "data.bin");
+  assert.notEqual(gitSpawn("commit", "-m", "leak-binary-token").status, 0);
+  gitSpawn("restore", "--staged", "data.bin");
+  fs.rmSync(path.join(repo, "data.bin"));
+
+  // 커밋 인자의 명령 치환으로 시크릿 파일을 몰래 스테이징하려 해도 guard-git이 차단한다
+  fs.writeFileSync(path.join(repo, "credentials.txt"), `token=${secret}\n`);
+  const blockedSub = spawnSync(hookCmds[0], { shell: true, env: { ...process.env, CLAUDE_PROJECT_DIR: projectRoot }, input: JSON.stringify({ tool_input: { command: 'git commit -m "$(git add credentials.txt; printf cleanup)"' }, cwd: repo }), encoding: "utf8", timeout: 10000 });
+  assert.equal(blockedSub.status, 2, blockedSub.stderr);
+  fs.rmSync(path.join(repo, "credentials.txt"));
 
   // 3) .githooks/pre-push: main으로 푸시 차단, 작업 브랜치 푸시 허용
   assert.notEqual(gitSpawn("push", "origin", "HEAD:refs/heads/main").status, 0);
