@@ -457,9 +457,10 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
   font-family:var(--f-text)}
 .gpB__slot{position:absolute;right:148px;top:50%;margin-top:calc(798px * 1.1 / -2)}
 .gpB .gp{--gs:1.1}
-.gpB__goal{align-self:flex-start;display:flex;align-items:center;gap:15px;font-size:36px;line-height:1.3;
+/* 아래 단계 목록과 같은 기둥에 세운다 — 번호는 left:30px 에 36px, 글은 86px 에서 시작 */
+.gpB__goal{position:relative;align-self:flex-start;padding-left:86px;font-size:36px;line-height:1.3;
   font-weight:700;letter-spacing:-.045em;color:var(--blue);word-break:keep-all}
-.gpB__goal .ic{flex:none;stroke-width:2.1}
+.gpB__goal .ic{position:absolute;left:28px;top:50%;width:40px;height:40px;margin-top:-20px;stroke-width:2.2}
 .gpB__steps{margin-top:30px;display:flex;flex-direction:column;gap:12px;counter-reset:g}
 .gpB__steps li{position:relative;display:flex;align-items:baseline;gap:18px;padding:21px 30px 21px 86px;border-radius:22px;
   font-size:31px;line-height:1.3;font-weight:700;letter-spacing:-.045em;color:var(--mute);word-break:keep-all;
