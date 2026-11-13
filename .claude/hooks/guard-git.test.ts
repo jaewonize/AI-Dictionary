@@ -165,6 +165,8 @@ test("refspec을 생략한 푸시는 설정된 원격·목적지를 git과 같�
 
 test("스테이징한 .env와 토큰 값을 막고 문서 속 접두만 있는 줄은 통과시킨다", () => {
   assert.match(blockReason("git commit -m x", "/repo", fakeGit("feat/a", ["server/.env.local"])) ?? "", /\.env/);
+  assert.match(blockReason("git commit -m x", "/repo", fakeGit("feat/a", ["server\\.ENV"])) ?? "", /\.ENV/);
+  assert.match(blockReason('"C:\\Program Files\\Git\\cmd\\git.exe" commit -m x', "/repo", fakeGit("main")) ?? "", /main에는 직접 커밋/);
   assert.match(blockReason("git commit -m x", "/repo", fakeGit("feat/a", ["설정/.env"])) ?? "", /\.env/);
   assert.match(blockReason("git commit -m x", "/repo", fakeGit("feat/a", [".envrc"])) ?? "", /\.envrc/);
   assert.equal(blockReason("git commit -m x", "/repo", fakeGit("feat/a", ["docs/.env.md/a.ts", "a.env"])), undefined);
@@ -265,4 +267,63 @@ test("실제 저장소에서 diff.relative·별도 인덱스·서브셸 cd로도
   assert.equal(run("git commit -m x", main.repo).status, 2);
   assert.equal(run("(cd ../other && git status --short); git commit -m x", main.repo).status, 2);
   assert.equal(run("git commit -m x", path.join(root, "other")).status, 0);
+});
+
+test("settings.json 훅 명령과 .githooks(pre-commit·pre-push)가 Windows·Linux 셸에서 모두 동작한다", t => {
+  const projectRoot = path.resolve(import.meta.dirname, "..", "..");
+  const settings = JSON.parse(fs.readFileSync(path.join(projectRoot, ".claude", "settings.json"), "utf8"));
+  const hookCmds: string[] = settings.hooks.PreToolUse[0].hooks.map((h: { command: string }) => h.command);
+
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "agent-githooks-"));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const remote = path.join(root, "remote.git");
+  const repo = path.join(root, "work with space");
+  execFileSync("git", ["init", "-q", "--bare", remote], { timeout: 5000 });
+  execFileSync("git", ["init", "-q", "-b", "main", repo], { timeout: 5000 });
+  const gitSpawn = (...args: string[]) => spawnSync("git", ["-C", repo, ...args], { encoding: "utf8", timeout: 5000 });
+  gitSpawn("config", "user.name", "t");
+  gitSpawn("config", "user.email", "t@t");
+  gitSpawn("config", "core.hooksPath", path.join(projectRoot, ".githooks"));
+  gitSpawn("remote", "add", "origin", remote);
+
+  // 1) settings.json의 셸 명령이 기본 셸(Windows cmd / Linux sh)·bash와 공백 경로에서도 정상 차단·통과한다
+  for (const cmd of hookCmds) {
+    const res = spawnSync(cmd, { shell: true, env: { ...process.env, CLAUDE_PROJECT_DIR: projectRoot }, input: JSON.stringify({ tool_input: { command: "git status" }, cwd: repo }), encoding: "utf8", timeout: 10000 });
+    assert.equal(res.status, 0, res.stderr);
+  }
+  const gitBash = process.platform === "win32" ? "C:\\Program Files\\Git\\bin\\bash.exe" : "bash";
+  if (fs.existsSync(gitBash) || process.platform !== "win32") {
+    for (const cmd of hookCmds) {
+      const res = spawnSync(gitBash, ["-c", cmd], { env: { ...process.env, CLAUDE_PROJECT_DIR: projectRoot }, input: JSON.stringify({ tool_input: { command: "git status" }, cwd: repo }), encoding: "utf8", timeout: 10000 });
+      assert.equal(res.status, 0, res.stderr);
+    }
+  }
+  const blockedGit = spawnSync(hookCmds[0], { shell: true, env: { ...process.env, CLAUDE_PROJECT_DIR: projectRoot }, input: JSON.stringify({ tool_input: { command: "git commit -m x" }, cwd: repo }), encoding: "utf8", timeout: 10000 });
+  assert.equal(blockedGit.status, 2, blockedGit.stderr);
+  const blockedEnv = spawnSync(hookCmds[1], { shell: true, env: { ...process.env, CLAUDE_PROJECT_DIR: projectRoot }, input: JSON.stringify({ tool_input: { command: "cat .env" }, cwd: repo }), encoding: "utf8", timeout: 10000 });
+  assert.equal(blockedEnv.status, 2, blockedEnv.stderr);
+
+  // 2) .githooks/pre-commit: main 직접 커밋 차단 → 작업 브랜치 허용 → .env 차단 → 토큰 차단
+  fs.writeFileSync(path.join(repo, "ok.txt"), "hello\n");
+  gitSpawn("add", "ok.txt");
+  assert.notEqual(gitSpawn("commit", "-m", "on-main").status, 0);
+
+  gitSpawn("switch", "-q", "-c", "feat/demo");
+  assert.equal(gitSpawn("commit", "-m", "feat: ok").status, 0);
+
+  fs.writeFileSync(path.join(repo, ".env.local"), "A=1\n");
+  gitSpawn("add", "-f", ".env.local");
+  assert.notEqual(gitSpawn("commit", "-m", "leak-env").status, 0);
+  gitSpawn("restore", "--staged", ".env.local");
+  fs.rmSync(path.join(repo, ".env.local"));
+
+  const secret = ["sk", "proj", "abcdefghij1234567890"].join("-");
+  fs.writeFileSync(path.join(repo, "ok.txt"), `key=${secret}\n`);
+  gitSpawn("add", "ok.txt");
+  assert.notEqual(gitSpawn("commit", "-m", "leak-token").status, 0);
+  gitSpawn("checkout", "--", "ok.txt");
+
+  // 3) .githooks/pre-push: main으로 푸시 차단, 작업 브랜치 푸시 허용
+  assert.notEqual(gitSpawn("push", "origin", "HEAD:refs/heads/main").status, 0);
+  assert.equal(gitSpawn("push", "origin", "feat/demo").status, 0);
 });

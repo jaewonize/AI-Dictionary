@@ -45,13 +45,18 @@ test("Bash 인자·리다이렉션·따옴표를 푼 단어로 쓴 .env 경로�
     "echo x>.env",
     "bash<<<'cat .env'",
     'echo "$(<.env)"',
+    'cat "sub\\.env"',
+    "cat 'sub\\.env'",
+    "cat 'C:\\repo\\.env.local'",
+    "cat .envrc",
+    "cat sub/.envrc",
   ]) {
     assert.match(blockReason(cmd, "/repo") ?? "", /Bash에서 그 경로/, cmd);
   }
 });
 
 test(".env에 펼쳐질 수 있는 glob만 막는다", () => {
-  for (const cmd of ["cat .e*", "ls .*", "cat .en?", "cat .env*", "cat .env.p*", "cat .env.pr?d", "cat .[e]nv", "cat .[!x]nv", "cat .??v", "cat .e*l", "cat sub/.e*", "cat .en?.staging", "cat .*.staging", "cat .e?v.x[0-9]", "cat .[z-ae]nv"]) {
+  for (const cmd of ["cat .e*", "ls .*", "cat .en?", "cat .env*", "cat .envrc*", "cat .env.p*", "cat .env.pr?d", "cat .[e]nv", "cat .[!x]nv", "cat .??v", "cat .e*l", "cat sub/.e*", "cat 'sub\\.e*'", "cat .en?.staging", "cat .*.staging", "cat .e?v.x[0-9]", "cat .[z-ae]nv"]) {
     assert.match(blockReason(cmd, "/repo") ?? "", /Bash에서 그 경로/, cmd);
   }
   for (const cmd of [
@@ -59,7 +64,6 @@ test(".env에 펼쳐질 수 있는 glob만 막는다", () => {
     "cat *",
     "ls .git*",
     "cat .eslintrc*",
-    "cat .envrc*",
     "cat .[x]nv",
     "cat .{git,eslint}rc",
     "echo {1..3}",
@@ -127,7 +131,6 @@ test("env.example·메시지 속 .env 글자는 통과시킨다", () => {
     "echo $process.env",
     `node -e "console.log(process.env.PORT)"`,
     "cat .gitignore",
-    "cat .envrc",
     `grep -n "\\.env" docs/USAGE.md`,
     "gh api x -f body='`head -n1<./.env.local`·`echo x>.env` 테스트를 넣었습니다.'",
     // 코드를 실행하지 않는 명령의 -e·here-string 값은 다시 나누지 않는다
@@ -146,10 +149,11 @@ test("env.example·메시지 속 .env 글자는 통과시킨다", () => {
 
 test(".env가 있는 디렉터리를 재귀 grep하면 막는다", t => {
   const dir = tempDir(t, [".env", "sub/a.ts", "nested/.env.local"]);
-  for (const cmd of ["grep -rn X", "grep -R X .", `grep -rin X ${dir}`, "grep -r -e X", "grep --recursive X .", "grep -d recurse X .", "grep --directories=recurse X", "grep -nr --include '*.ts' X .", "grep -r X nested", "grep -rn '' 2>/dev/null", "grep -rn X 2> /dev/null", "grep -rn X >out.txt 2>&1", "grep -r X *", 'grep -r X "$D"', "xargs grep -r X"]) {
+  const posixDir = dir.replaceAll("\\", "/");
+  for (const cmd of ["grep -rn X", "grep -R X .", `grep -rin X '${dir}'`, `grep -rin X ${posixDir}`, "grep -r -e X", "grep --recursive X .", "grep -d recurse X .", "grep --directories=recurse X", "grep -nr --include '*.ts' X .", "grep -r X nested", "grep -rn '' 2>/dev/null", "grep -rn X 2> /dev/null", "grep -rn X >out.txt 2>&1", "grep -r X *", 'grep -r X "$D"', "xargs grep -r X"]) {
     assert.match(blockReason(cmd, dir) ?? "", /grep -r/, cmd);
   }
-  for (const cmd of ["grep -rn X sub", "grep -n X a.ts", "grep -e -r X .", "grep -A 3 X sub/a.ts", "rg -n X", `grep -r X ${path.join(dir, "sub")}`]) {
+  for (const cmd of ["grep -rn X sub", "grep -n X a.ts", "grep -e -r X .", "grep -A 3 X sub/a.ts", "rg -n X", `grep -r X '${path.join(dir, "sub")}'`, `grep -r X ${path.posix.join(posixDir, "sub")}`]) {
     assert.equal(blockReason(cmd, dir), undefined, cmd);
   }
   const clean = tempDir(t, ["a.ts"]);
@@ -158,10 +162,12 @@ test(".env가 있는 디렉터리를 재귀 grep하면 막는다", t => {
 
 test("cd·pushd로 바뀐 디렉터리의 재귀 grep도 .env가 있으면 막는다", t => {
   const dir = tempDir(t, ["a.ts", "nested/.env", "clean/a.ts"]);
+  const posixNested = path.posix.join(dir.replaceAll("\\", "/"), "nested");
   for (const cmd of [
     "cd nested && grep --recursive X .",
     "cd nested; grep -rn X",
-    `cd ${path.join(dir, "nested")} && grep -r X .`,
+    `cd '${path.join(dir, "nested")}' && grep -r X .`,
+    `cd ${posixNested} && grep -r X .`,
     "pushd nested >/dev/null && grep -r X .",
     "(cd nested && grep -r X .)",
     "cd clean && cd ../nested && grep -r X .",

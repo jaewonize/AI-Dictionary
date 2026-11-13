@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+set -eu
+
+while read -r _local_ref _local_oid remote_ref _remote_oid; do
+  if [ "$remote_ref" = "refs/heads/main" ]; then
+    echo 'main 브랜치로 직접 푸시할 수 없습니다(AGENTS.md). 작업 브랜치로 푸시한 뒤 PR을 여세요.' >&2
+    exit 1
+  fi
+done

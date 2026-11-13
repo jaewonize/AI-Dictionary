@@ -9,9 +9,10 @@ import { fileURLToPath } from "node:url";
 
 // 흔한 토큰·API 키 형식: GitHub(ghp_·github_pat_), OpenAI·Anthropic(sk-…), AWS 액세스 키(AKIA…), Google API 키(AIza…)
 const SECRET = /\b(?:gh[pousr]_[0-9A-Za-z]{36,}|github_pat_[0-9A-Za-z_]{22,}|sk-[0-9A-Za-z_-]{20,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35})/;
-// .gitignore의 .env*와 같은 범위(.env·.env.local·.envrc 등)
-const ENV_FILE = /(?:^|\/)\.env[^/]*$/;
-export const HEREDOC = /<<-?[ \t]*(['"]?)(\w+)\1[^\n]*(?:\n[\s\S]*?)?\n[ \t]*\2[ \t]*(?=\n|$)/g;
+// .gitignore의 .env*와 같은 범위(.env·.env.local·.envrc 등). Windows 역슬래시 경로와 대소문자 무시 파일 시스템도 함께 본다
+const ENV_FILE = /(?:^|[/\\])\.env[^/\\]*$/i;
+export const binName = (p: string) => p.split(/[/\\]/).pop()?.replace(/\.exe$/i, "") ?? "";
+export const HEREDOC = /<<-?[ \t]*(['"]?)(\w+)\1[^\r\n]*(?:\r?\n[\s\S]*?)?\r?\n[ \t]*\2[ \t]*(?=\r?\n|$)/g;
 
 export type Git = {
   // git -C <dir>의 현재 브랜치, 저장소가 아니면 undefined
@@ -28,7 +29,7 @@ const BLOCK = {
   env: "환경변수 대입(GIT_INDEX_FILE= 등)이나 env를 붙인 git commit·push는 훅이 검사할 대상을 확정할 수 없어 막는다. 대입 없이 실행한다.",
   globals: "그대로 쓴 경로의 -C와 --no-pager 밖의 git 전역 옵션(-c·--git-dir, ~·$를 쓴 -C 등)을 붙인 commit·push는 훅이 결과를 확정할 수 없어 막는다. 옵션 없이 실행한다.",
   pathspec: "경로를 지정하거나 작업 트리에서 고르는 커밋(git commit <경로>·--only·--include·--patch·--interactive)은 막는다. git add로 스테이징한 뒤 경로 없이 git commit을 실행한다.",
-  commitMain: "main에는 직접 커밋하지 않는다(AGENTS.md \"브랜치와 흐름\"). main이 아닌 작업 브랜치(예: hackathon)에서 커밋한다.",
+  commitMain: "main에는 직접 커밋하지 않는다(AGENTS.md \"브랜치와 흐름\"). main이 아닌 작업 브랜치(예: feat/*, hackathon)에서 커밋한다.",
   pushMain: "main으로 갈 수 있는 푸시는 막는다(AGENTS.md \"브랜치와 흐름\"). git push <원격> <브랜치>처럼 main이 아닌 브랜치를 지정해 푸시한다.",
   secret: "커밋할 변경에 토큰·API 키(ghp_·sk-·AKIA 등)로 보이는 값이 있다(AGENTS.md \"커밋\"). 값을 지우고 다시 스테이징한다.",
 };
@@ -66,7 +67,7 @@ export function blockReason(command: string, cwd: string, git: Git): string | un
   const { names, diff } = staged;
   const envFiles = names.filter(n => ENV_FILE.test(n));
   if (envFiles.length) return `.env 파일은 커밋하지 않는다(AGENTS.md "커밋"): ${envFiles.join(", ")}. git restore --staged로 뺀다.`;
-  if (diff.split("\n").some(l => l.startsWith("+") && !l.startsWith("+++") && SECRET.test(l))) return BLOCK.secret;
+  if (diff.split(/\r?\n/).some(l => l.startsWith("+") && !l.startsWith("+++") && SECRET.test(l))) return BLOCK.secret;
   return undefined;
 }
 
@@ -75,9 +76,9 @@ function callKind(raw: string[]): "direct" | "env" | "wrapped" | undefined {
   const words = dropPrefixes(raw);
   if (!words.length) return undefined;
   const [cmd, ...args] = words;
-  if (path.basename(cmd) === "git" && /^(?:commit|push)$/.test(parseGit(args).sub ?? "")) return "direct";
+  if (binName(cmd) === "git" && /^(?:commit|push)$/.test(parseGit(args).sub ?? "")) return "direct";
   if (!callsCommitOrPush(words)) return undefined;
-  return /^\w+=/.test(cmd) || path.basename(cmd) === "env" ? "env" : "wrapped";
+  return /^\w+=/.test(cmd) || binName(cmd) === "env" ? "env" : "wrapped";
 }
 
 // 명령을 ; & | 줄바꿈 괄호로 나눈 조각마다, 따옴표·백슬래시를 풀어 단어 목록으로 만든다. heredoc 본문은 지운다.
@@ -113,21 +114,21 @@ export function splitCommands(command: string, keepRedirects = false): string[][
       let j = i + 1;
       add("", false);
       for (; j < text.length && text[j] !== '"'; j++) {
-        if (text[j] === "\\" && text[j + 1] === "\n") {
-          j++;
+        if (text[j] === "\\" && (text[j + 1] === "\n" || (text[j + 1] === "\r" && text[j + 2] === "\n"))) {
+          j += text[j + 1] === "\r" ? 2 : 1;
           continue;
         }
         if (text[j] === "\\" && j + 1 < text.length && '"\\$`'.includes(text[j + 1])) j++;
         add(text[j], false);
       }
       i = j;
-    } else if (c === "\\" && text[i + 1] === "\n") {
-      i++; // 줄 연속: 백슬래시와 줄바꿈을 함께 지운다
+    } else if (c === "\\" && (text[i + 1] === "\n" || (text[i + 1] === "\r" && text[i + 2] === "\n"))) {
+      i += text[i + 1] === "\r" ? 2 : 1; // 줄 연속: 백슬래시와 줄바꿈(LF·CRLF)을 함께 지운다
     } else if (c === "\\" && i + 1 < text.length) {
       add(text[++i], false);
     } else if (c === "&" && (text[i - 1] === ">" || text[i - 1] === "<" || text[i + 1] === ">")) {
       add(c, true);
-    } else if (/[;&|\n()`]/.test(c)) {
+    } else if (/[;&|\r\n()`]/.test(c)) {
       endPart();
     } else if (/\s/.test(c)) {
       endWord();
@@ -141,7 +142,7 @@ export function splitCommands(command: string, keepRedirects = false): string[][
 
 // heredoc은 표시(<<'EOF')와 본문을 지우고 표시 뒤의 같은 줄(> 파일, )" 등)만 남긴다
 export function stripHeredocs(command: string): string {
-  return command.replace(HEREDOC, m => (m.includes("\n") ? m.slice(0, m.indexOf("\n")) : m).replace(/^<<-?[ \t]*(['"]?)\w+\1/, ""));
+  return command.replace(HEREDOC, m => (m.includes("\n") ? m.slice(0, m.indexOf("\n")).replace(/\r$/, "") : m).replace(/^<<-?[ \t]*(['"]?)\w+\1/, ""));
 }
 
 // 리다이렉션(2>&1, > 파일, <파일)은 명령 인자가 아니므로 뗀다. 연산자만 있는 단어면 다음 단어(대상)도 뗀다
@@ -164,7 +165,7 @@ function callsCommitOrPush(words: string[], seen = new Map<string, boolean>()): 
     return seen.get(script)!;
   };
   for (let i = 0; i < words.length; i++) {
-    const name = path.basename(words[i]);
+    const name = binName(words[i]);
     const rest = words.slice(i + 1);
     if (name === "git" && /^(?:commit|push)$/.test(parseGit(rest).sub ?? "")) return true;
     // eval은 뒤 단어를 이어 붙여 다시 나눠 실행한다. env -u eval처럼 인자일 수도 있으므로 원래 단어도 계속 훑는다
@@ -311,15 +312,15 @@ const realGit: Git = {
   },
   config(dir, key) {
     try {
-      // 값 없이 키만 쓴 설정은 빈 줄로 나오므로 끝의 줄바꿈만 뗀다
-      return run(dir, ["config", "--get-all", key]).replace(/\n$/, "").split("\n");
+      // 값 없이 키만 쓴 설정은 빈 줄로 나오므로 끝의 줄바꿈(LF·CRLF)만 뗀다
+      return run(dir, ["config", "--get-all", key]).replace(/\r?\n$/, "").split(/\r?\n/);
     } catch {
       return [];
     }
   },
 };
 
-if (process.argv[1] && fs.realpathSync(process.argv[1]) === fileURLToPath(import.meta.url)) {
+export function runHook(): void {
   const input = JSON.parse(fs.readFileSync(0, "utf8"));
   const command = input?.tool_input?.command;
   if (typeof command === "string") {
@@ -329,4 +330,8 @@ if (process.argv[1] && fs.realpathSync(process.argv[1]) === fileURLToPath(import
       process.exit(2);
     }
   }
+}
+
+if (process.argv[1] && fs.existsSync(process.argv[1]) && fs.realpathSync(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  runHook();
 }

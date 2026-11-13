@@ -6,12 +6,12 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { HEREDOC, splitCommands, stripHeredocs } from "./guard-git.ts";
+import { HEREDOC, binName, splitCommands, stripHeredocs } from "./guard-git.ts";
 
-// .env·.env.local 등(deny 규칙과 같은 범위, .envrc는 아님). 앞은 경로 구분자·옵션 값(--env-file=)·git rev(HEAD:). macOS처럼 대소문자를 가리지 않는 파일 시스템을 위해 i.
+// .env·.env.local·.envrc 등(.gitignore·guard-git.ts와 같은 범위). 앞은 경로 구분자(/·경로 뒤 \)·옵션 값(--env-file=)·git rev(HEAD:). 정규식 이스케이프(\.env)는 제외한다.
 // 접미는 공백·따옴표·백틱에서 끊어 메시지 글(`.env.local`·`echo x`)을 경로로 보지 않는다
-const ENV_PATH = /(?:^|[/=:])\.env(?:\.[^/\s'"`]*)?$/i;
-const ENV_ENTRY = /^\.env(?:\.|$)/i;
+const ENV_PATH = /(?:^|[/=:]|[^\s'"`=]\\)\.env(?:rc|\.[^/\\\s'"`]*)?$/i;
+const ENV_ENTRY = /^\.env(?:rc|\.|$)/i;
 // 단어 안 어디든 붙은 리다이렉션 연산자(split의 구분자로 남김)
 const REDIRECTS = /(\d*(?:&>>?|>>?&?|<<<|<<?&?|>\|))/;
 // 인용하지 않은 heredoc 본문에서 셸이 실행하는 명령 치환(괄호 두 겹까지)
@@ -50,7 +50,7 @@ export function blockReason(command: string, cwd: string): string | undefined {
     for (const words of splitCommands(script, true)) {
       if (grepsEnvDir(words, dirs)) return BLOCK.grep;
       const inner = codeStrings(words);
-      const interpreted = words.some(w => INTERPRETER.test(path.basename(w.split(REDIRECTS)[0])));
+      const interpreted = words.some(w => INTERPRETER.test(binName(w.split(REDIRECTS)[0])));
       for (let i = 0; i < words.length; i++) {
         // 따옴표 밖 리다이렉션은 명령·인자에 붙어 있어도(cat<.env, x>.env) 대상을 따로 연다
         const segments = words[i].split(REDIRECTS);
@@ -73,13 +73,13 @@ export function blockReason(command: string, cwd: string): string | undefined {
     }
     for (const m of script.matchAll(HEREDOC)) {
       if (!m[0].includes("\n")) continue;
-      const body = m[0].slice(m[0].indexOf("\n") + 1, m[0].lastIndexOf("\n"));
+      const body = m[0].slice(m[0].indexOf("\n") + 1, m[0].lastIndexOf("\n")).replace(/\r$/, "");
       // <<EOF 앞 같은 줄의 마지막 명령이나 표시 뒤 같은 줄의 파이프(cat <<'EOF' | node)에 인터프리터가 있으면 본문 전체가 코드로 실행된다.
       // cat·git commit -F - 등의 본문(메시지)은 구분자를 인용하지 않았을 때(<<EOF) 셸이 실행하는 명령 치환만 본다
       const before = splitCommands(script.slice(script.lastIndexOf("\n", m.index - 1) + 1, m.index)).at(-1) ?? [];
-      const after = splitCommands(m[0].slice(0, m[0].indexOf("\n")).replace(/^<<-?[ \t]*(['"]?)\w+\1/, "").split(/[;&]/)[0]).flat();
+      const after = splitCommands(m[0].slice(0, m[0].indexOf("\n")).replace(/\r$/, "").replace(/^<<-?[ \t]*(['"]?)\w+\1/, "").split(/[;&]/)[0]).flat();
       const owner = [...before, ...after];
-      const code = owner.some(w => INTERPRETER.test(path.basename(w))) ? [body] : m[1] ? [] : [...body.matchAll(SUBSTITUTION)].map(s => s[0]);
+      const code = owner.some(w => INTERPRETER.test(binName(w))) ? [body] : m[1] ? [] : [...body.matchAll(SUBSTITUTION)].map(s => s[0]);
       for (const s of code) {
         const reason = visit(s, dirs);
         if (reason) return reason;
@@ -94,7 +94,7 @@ export function blockReason(command: string, cwd: string): string | undefined {
 function codeStrings(words: string[]): string[] {
   const out: string[] = [];
   words.forEach((w, i) => {
-    const name = path.basename(w);
+    const name = binName(w);
     const rest = words.slice(i + 1);
     if (name === "eval") out.push(rest.join(" "));
     if (SHELL.test(name)) {
@@ -149,7 +149,7 @@ function changedDirs(words: string[], dirs: Dirs): Dirs {
   const i = words.findIndex(w => w !== "builtin" && w !== "command");
   if (!/^(?:cd|pushd)$/.test(words[i] ?? "")) return dirs;
   const target = words.slice(i + 1).find(a => !/^-[LPe@]+$/.test(a));
-  const home = (target ?? "~").replace(/^~(?=\/|$)/, os.homedir());
+  const home = (target ?? "~").replace(/^~(?=[/\\]|$)/, os.homedir());
   const next = target === "-" || /[$`*?[]/.test(home) ? [undefined] : dirs.map(d => (path.isAbsolute(home) ? home : d && path.resolve(d, home)));
   return [...new Set([...dirs, ...next])];
 }
@@ -208,9 +208,9 @@ function sequence(from: string, to: string, limit: number): string[] | undefined
 
 function mentionsEnvPiece(word: string): boolean {
   if (ENV_PATH.test(word)) return true;
-  // 셸 glob은 점으로 시작하는 이름에만 점 파일을 펼친다. .env나 .env.*(접미 아무것)에 맞을 수 있으면(.*·.e*·.[e]nv·.en?.staging) 막고,
-  // jq 필터(.[]·.[0].name)처럼 맞을 수 없는 것은 통과시킨다
-  const base = word.split(/[/=:]/).at(-1) ?? "";
+  // 셸 glob은 점으로 시작하는 이름에만 점 파일을 펼친다. .env·.env.*·.envrc에 맞을 수 있으면(.*·.e*·.[e]nv·.en?.staging) 막고,
+  // jq 필터(.[]·.[0].name)나 정규식(\.e*)처럼 맞을 수 없는 것은 통과시킨다
+  const base = word.replace(/^(?:.*[/=:]|.*[^\s'"`=]\\)/, "");
   if (!base.startsWith(".")) return false;
   const tokens = globTokens(base);
   return tokens !== undefined && globMatchesEnv(tokens);
@@ -265,12 +265,12 @@ function globMatchesEnv(tokens: (((c: string) => boolean) | null)[]): boolean {
     }
     return states;
   };
-  return run(".env").has(tokens.length) || run(".env.").size > 0;
+  return run(".env").has(tokens.length) || run(".env.").size > 0 || run(".envrc").has(tokens.length);
 }
 
 // grep -r·-R·-d recurse로 .env·.env.*를 바로 담은 디렉터리를 훑는지. 경로가 없으면 현재 디렉터리를 훑는다
 function grepsEnvDir(words: string[], dirs: Dirs): boolean {
-  const start = words.findIndex(w => /^[ef]?grep$/.test(path.basename(w)));
+  const start = words.findIndex(w => /^[ef]?grep$/.test(binName(w)));
   if (start < 0) return false;
   // 리다이렉션(2>/dev/null, > out)은 검색 경로가 아니므로 연산자와 대상을 뗀다
   const args: string[] = [];
@@ -314,9 +314,10 @@ function grepsEnvDir(words: string[], dirs: Dirs): boolean {
 function hasEnvEntry(p: string, cwd: string | undefined): boolean {
   // 셸이 펼치는 $·`는 실제 경로를 알 수 없으므로 막는 쪽으로 본다
   if (/[$`]/.test(p)) return true;
-  // glob(*·src/*)은 펼쳐질 디렉터리를 본다
+  // glob(*·src/*·src\*)은 펼쳐질 디렉터리를 본다
   const g = p.search(/[*?[]/);
-  const plain = (g < 0 ? p : p.slice(0, p.lastIndexOf("/", g) + 1) || ".").replace(/^~(?=\/|$)/, os.homedir());
+  const sep = g < 0 ? -1 : Math.max(p.lastIndexOf("/", g), p.lastIndexOf("\\", g));
+  const plain = (g < 0 ? p : sep < 0 ? "." : p.slice(0, sep + 1)).replace(/^~(?=[/\\]|$)/, os.homedir());
   // cd "$D" 뒤처럼 현재 디렉터리를 알 수 없으면 상대 경로는 막는 쪽으로 본다
   if (cwd === undefined && !path.isAbsolute(plain)) return true;
   const dir = path.resolve(cwd ?? "/", plain);
@@ -327,7 +328,7 @@ function hasEnvEntry(p: string, cwd: string | undefined): boolean {
   }
 }
 
-if (process.argv[1] && fs.realpathSync(process.argv[1]) === fileURLToPath(import.meta.url)) {
+export function runHook(): void {
   const input = JSON.parse(fs.readFileSync(0, "utf8"));
   const command = input?.tool_input?.command;
   if (typeof command === "string") {
@@ -337,4 +338,8 @@ if (process.argv[1] && fs.realpathSync(process.argv[1]) === fileURLToPath(import
       process.exit(2);
     }
   }
+}
+
+if (process.argv[1] && fs.existsSync(process.argv[1]) && fs.realpathSync(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  runHook();
 }
