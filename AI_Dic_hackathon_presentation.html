@@ -501,9 +501,9 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     </div>
   </section>
 
-  <!-- ══════════ 01 자료는 쌓이는데, 찾을 수는 없다 ══════════ -->
+  <!-- ══════════ 01AS-IS 자료는 쌓이는데, 찾을 수는 없다 ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>01</i>Problem<b>|</b>자료는 쌓이는데, 찾을 수는 없다</div>
+    <div class="kicker rv"><i>01</i>AS-IS<b>|</b>자료는 쌓이는데, 찾을 수는 없다</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">기기는 <b>저장소</b>가 됐지만,<br><b>검색 도구</b>는 되지 못했습니다.</h2>
     <div class="body">
       <div class="stats">
@@ -524,9 +524,41 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     <p class="foot fd" style="--i:5">보유량은 사내 동료 22명 평균 · 40%는 학술 연구(Whittaker et al.) · 18분은 Gartner</p>
   </section>
 
-  <!-- ══════════ 01-2 직접 찾아보면 (gallery-video/build.py 가 넣는다) ══════════ -->
+  <!-- ══════════ 02AS-IS 왜 못 찾나 ══════════ -->
+  <section class="slide">
+    <div class="kicker rv"><i>02</i>AS-IS<b>|</b>왜 못 찾나</div>
+    <h2 class="title title--md rv" style="--i:1;font-size:62px">사람은 <b>의미로 기억</b>하고,<br>검색은 <b>키워드</b>로 찾습니다.</h2>
+    <div class="body">
+      <div class="vs">
+        <div class="vs__col rv" style="--i:2">
+          <div class="vs__h">내가 기억하는 것</div>
+          <ul class="vs__list">
+            <li>“창밖에 바다 보이는 그 카페”</li>
+            <li>“애들 어릴 때”</li>
+            <li>“작년에 받은 그 견적서”</li>
+          </ul>
+        </div>
+        <div class="vs__x rv" style="--i:4">VS</div>
+        <div class="vs__col is-now rv" style="--i:3">
+          <div class="vs__h">검색이 요구하는 것</div>
+          <ul class="vs__list">
+            <li>파일명 · 날짜 · 위치</li>
+            <li>인물 태그 · 자동 분류 몇 가지</li>
+          </ul>
+          <p class="foot" style="margin-top:18px">메타데이터와 라벨을 조합해 일부 의미 기반 검색 지원</p>
+        </div>
+      </div>
+      <ul class="stores rv" style="--i:5">
+        <li>갤러리</li><li>파일</li><li>카카오톡</li><li>메일</li><li>인스타그램</li><li>페이스북</li>
+      </ul>
+    </div>
+    <div class="note rv" style="--i:6"><svg class="ic"><use href="#i-search"/></svg>
+      이 간극이 검색 실패로 이어지고, <span>같은 실패가 저장소 수만큼 반복됩니다.</span></div>
+  </section>
+
+  <!-- ══════════ 03AS-IS 직접 찾아보면 ══════════ -->
   <section class="slide gpB" data-gp-cont>
-    <div class="kicker rv"><i>01</i>Problem<b>|</b>직접 찾아보면</div>
+    <div class="kicker rv"><i>03</i>AS-IS<b>|</b>직접 찾아보면</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px"><b>3년 전 사진 한 장</b>을 찾으려면<br>몇 년 치를 <b>직접 넘겨 봐야</b> 합니다.</h2>
     <div class="body">
       <div class="gpB__goal rv" style="--i:2"><i>찾는 사진</i>“미셸 들라크루아 전시 보고 나서 갔던 카페 사진”</div>
@@ -621,41 +653,9 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     </div>
   </section>
 
-  <!-- ══════════ 02 왜 못 찾나 ══════════ -->
-  <section class="slide">
-    <div class="kicker rv"><i>02</i>Problem<b>|</b>왜 못 찾나</div>
-    <h2 class="title title--md rv" style="--i:1;font-size:62px">사람은 <b>의미로 기억</b>하고,<br>검색은 <b>키워드</b>로 찾습니다.</h2>
-    <div class="body">
-      <div class="vs">
-        <div class="vs__col rv" style="--i:2">
-          <div class="vs__h">내가 기억하는 것</div>
-          <ul class="vs__list">
-            <li>“창밖에 바다 보이는 그 카페”</li>
-            <li>“애들 어릴 때”</li>
-            <li>“작년에 받은 그 견적서”</li>
-          </ul>
-        </div>
-        <div class="vs__x rv" style="--i:4">VS</div>
-        <div class="vs__col is-now rv" style="--i:3">
-          <div class="vs__h">검색이 요구하는 것</div>
-          <ul class="vs__list">
-            <li>파일명 · 날짜 · 위치</li>
-            <li>인물 태그 · 자동 분류 몇 가지</li>
-          </ul>
-          <p class="foot" style="margin-top:18px">메타데이터와 라벨을 조합해 일부 의미 기반 검색 지원</p>
-        </div>
-      </div>
-      <ul class="stores rv" style="--i:5">
-        <li>갤러리</li><li>파일</li><li>카카오톡</li><li>메일</li><li>인스타그램</li><li>페이스북</li>
-      </ul>
-    </div>
-    <div class="note rv" style="--i:6"><svg class="ic"><use href="#i-search"/></svg>
-      이 간극이 검색 실패로 이어지고, <span>같은 실패가 저장소 수만큼 반복됩니다.</span></div>
-  </section>
-
-  <!-- ══════════ 03 “미셸 들라크루아 전시 보고 나서 갔던 카페 사진” ══════════ -->
+  <!-- ══════════ 04TO-BE “미셸 들라크루아 전시 보고 나서 갔던 카페 사진” ══════════ -->
   <section class="slide" style="--exs:.91">
-    <div class="kicker rv"><i>03</i>Product<b>|</b>“미셸 들라크루아 전시 보고 나서 갔던 카페 사진”</div>
+    <div class="kicker rv"><i>04</i>TO-BE<b>|</b>“미셸 들라크루아 전시 보고 나서 갔던 카페 사진”</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px"><b>기억나는 대로</b> 말하면 <b>알아서 찾아드려요.</b></h2>
     <div class="body" style="padding-top:58px">
       <div class="exrow">
@@ -762,9 +762,9 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     </div>
   </section>
 
-  <!-- ══════════ 04 사람은 보면 아는데, 지금 검색은 못 찾는 것들 ══════════ -->
+  <!-- ══════════ 05Use 사람은 보면 아는데, 지금 검색은 못 찾는 것들 ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>04</i>Use cases<b>|</b>사람은 보면 아는데, 지금 검색은 못 찾는 것들</div>
+    <div class="kicker rv"><i>05</i>Use cases<b>|</b>사람은 보면 아는데, 지금 검색은 못 찾는 것들</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">AI Dictionary로 <b>찾고자 하는 것들</b></h2>
     <div class="body">
       <div class="qgrid">
@@ -799,9 +799,9 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     </div>
   </section>
 
-  <!-- ══════════ 05 Navigation · QA · Organization ══════════ -->
+  <!-- ══════════ 06Outcomes Navigation · QA · Organization ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>05</i>Outcomes<b>|</b>Navigation · QA · Organization</div>
+    <div class="kicker rv"><i>06</i>Outcomes<b>|</b>Navigation · QA · Organization</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">질문에 따라 <b>찾아가고, 답하고, 묶습니다.</b></h2>
     <div class="body">
       <div class="cards">
@@ -846,9 +846,9 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     </div>
   </section>
 
-  <!-- ══════════ 06 1단계 검증 ══════════ -->
+  <!-- ══════════ 07Test 1단계 검증 ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>06</i>Test cases<b>|</b>1단계 검증</div>
+    <div class="kicker rv"><i>07</i>Test cases<b>|</b>1단계 검증</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">기능 구현 후, <b>검증해 볼 테스트 예제</b></h2>
     <div class="body">
       <div class="cards" style="margin-bottom:36px">
@@ -898,9 +898,9 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
       상기 테스트 예제는 후보입니다. <span>진행하면서 다른 질의로 바뀌거나 범위가 달라질 수 있습니다.</span></div>
   </section>
 
-  <!-- ══════════ 07 찾아내는 네 단계 ══════════ -->
+  <!-- ══════════ 08Feasibility 찾아내는 네 단계 ══════════ -->
   <section class="slide" id="s-plan">
-    <div class="kicker rv"><i>07</i>Feasibility<b>|</b>찾아내는 네 단계</div>
+    <div class="kicker rv"><i>08</i>Feasibility<b>|</b>찾아내는 네 단계</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px"><b>미리 분석</b>해 두고,<br>찾을 때 <b>단서를 더 모읍니다.</b></h2>
     <div class="body">
       <div class="plan rv" style="--i:2;flex:none;height:470px">
@@ -936,7 +936,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     </div>
   </section>
 
-  <!-- ══════════ 08 무엇을 단서로 쓰나 ══════════ -->
+  <!-- ══════════ AppendixClues 무엇을 단서로 쓰나 ══════════ -->
   <section class="slide" id="s-clues">
     <div class="kicker rv"><i>Appendix</i>Clues<b>|</b>무엇을 단서로 쓰나</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">찾는 데 쓰는 <b>단서 여덟 가지</b></h2>
@@ -971,9 +971,9 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     </div>
   </section>
 
-  <!-- ══════════ 09 모바일 · 사진과 문서 ══════════ -->
+  <!-- ══════════ 09Target 모바일 먼저, 다음은 PC ══════════ -->
   <section class="slide">
-    <div class="kicker rv"><i>08</i>Target<b>|</b>모바일 먼저, 다음은 PC</div>
+    <div class="kicker rv"><i>09</i>Target<b>|</b>모바일 먼저, 다음은 PC</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">모바일 <b>여섯 저장소</b>에서 시작해 <b>PC</b>로 넓힙니다.</h2>
     <div class="body">
       <table class="rv" style="--i:2">
@@ -1036,7 +1036,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
   // 표지와 부록은 번호에서 뺀다 — 키커 번호와 하단 번호를 같은 숫자로 맞추려고
   const isCover = s => s.classList.contains('cover');
   const isAppendix = s => s.id === SKIP;
-  const counted = s => !isCover(s) && !isAppendix(s) && !s.hasAttribute('data-gp-cont');
+  const counted = s => !isCover(s) && !isAppendix(s);
   const bodyTotal = slides.filter(counted).length;
   const bodyNo = i => slides.slice(0, i + 1).filter(counted).length;
 
