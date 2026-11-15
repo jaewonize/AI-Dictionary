@@ -388,3 +388,34 @@ test("settings.json 훅 명령과 .githooks(pre-commit·pre-push)가 Windows·Li
   assert.notEqual(gitSpawn("push", "origin", "HEAD:refs/heads/main").status, 0);
   assert.equal(gitSpawn("push", "origin", "feat/demo").status, 0);
 });
+
+test("원본 저장소(jaewonize/AI-Dictionary)로 가는 gh pr create는 main·hackathon 출발 브랜치를 막고 작업 브랜치만 통과시킨다", () => {
+  const forkCfg = {
+    "remote.origin.url": ["https://github.com/tt2-woo/AI-Dictionary.git"],
+    "remote.upstream.url": ["https://github.com/jaewonize/AI-Dictionary.git"],
+  };
+  for (const cmd of [
+    'gh pr create --repo jaewonize/AI-Dictionary --base hackathon --head tt2-woo:hackathon --title "t" --body "b"',
+    'gh pr create -R jaewonize/AI-Dictionary -B hackathon -H hackathon -t "t" -b "b"',
+    'gh pr create --repo=https://github.com/jaewonize/AI-Dictionary.git --head=tt2-woo:main --title "t" --body "b"',
+    'gh pr create --repo jaewonize/AI-Dictionary --base hackathon --title "t" --body "b"',
+    'gh pr create --base hackathon --title "t" --body "b"',
+    'bash -c "gh pr create -R jaewonize/AI-Dictionary -B hackathon -H tt2-woo:hackathon -t t -b b"',
+    'git switch hackathon && gh pr create --repo jaewonize/AI-Dictionary --base hackathon --title "t" --body "b"',
+  ]) {
+    assert.match(blockReason(cmd, "/repo", fakeGit("hackathon", [], "", forkCfg)) ?? "", /출발 브랜치/, cmd);
+  }
+  assert.match(
+    blockReason('git switch hackathon && gh pr create --repo jaewonize/AI-Dictionary --base hackathon --title "t" --body "b"', "/repo", fakeGit("feat/a", [], "", forkCfg)) ?? "",
+    /출발 브랜치/,
+  );
+  for (const cmd of [
+    'gh pr create --repo jaewonize/AI-Dictionary --base hackathon --head tt2-woo:feat/search --title "hackathon 개선" --body "b"',
+    'gh pr create -R jaewonize/AI-Dictionary -B hackathon -H docs/architecture -t "t" -b "b"',
+    'gh pr create --repo tt2-woo/AI-Dictionary --base hackathon --head feat/search --title "t" --body "b"',
+    'gh pr create --base hackathon --title "t" --body "b"',
+    "gh pr list --repo jaewonize/AI-Dictionary --state open",
+  ]) {
+    assert.equal(blockReason(cmd, "/repo", fakeGit("feat/search", [], "", forkCfg)), undefined, cmd);
+  }
+});

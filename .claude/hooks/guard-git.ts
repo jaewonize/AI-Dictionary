@@ -32,7 +32,12 @@ const BLOCK = {
   commitMain: "main에는 직접 커밋하지 않는다(AGENTS.md \"브랜치와 흐름\"). main이 아닌 작업 브랜치(예: feat/*, hackathon)에서 커밋한다.",
   pushMain: "main으로 갈 수 있는 푸시는 막는다(AGENTS.md \"브랜치와 흐름\"). git push <원격> <브랜치>처럼 main이 아닌 브랜치를 지정해 푸시한다.",
   secret: "커밋할 변경에 토큰·API 키(ghp_·sk-·AKIA 등)로 보이는 값이 있다(AGENTS.md \"커밋\"). 값을 지우고 다시 스테이징한다.",
+  upstreamPrHead: "원본 저장소(jaewonize/AI-Dictionary)로 가는 PR의 출발 브랜치(--head)에는 main·hackathon을 쓸 수 없다(AGENTS.md \"브랜치와 흐름\"). 포크의 누적 커밋이 섞이지 않도록 upstream/hackathon에서 분기한 작업 브랜치(--head <fork>:<작업 브랜치>)로 PR을 올린다.",
 };
+
+const UPSTREAM_REPO = /(?:^|[:/])jaewonize\/ai-dictionary(?:\.git)?\/?$/i;
+const GH_VALUE_LONG = new Set(["--repo", "--head", "--base", "--title", "--body", "--body-file", "--label", "--assignee", "--reviewer", "--milestone", "--project", "--template", "--recover", "--hostname"]);
+const GH_SHORT_VALUE = "RHBtbFlarmpT";
 
 // 값을 다음 인자로 받는 commit·push 옵션
 const COMMIT_VALUE = new Set(["--message", "--file", "--reuse-message", "--reedit-message", "--author", "--date", "--fixup", "--squash", "--trailer", "--cleanup", "--template"]);
@@ -51,7 +56,7 @@ export function blockReason(command: string, cwd: string, git: Git): string | un
     const first = dropPrefixes(parts[0] ?? [])[0] ?? "";
     return /^\w+=/.test(first) || binName(first) === "env" ? BLOCK.env : BLOCK.wrapped;
   }
-  if (!kinds.includes("direct")) return undefined;
+  if (!kinds.includes("direct")) return checkGhPrCreate(command, cwd, git);
   // 앞뒤 명령(cd·괄호 안의 cd·git add·대입·명령 치환 등)이 실행 디렉터리와 상태를 바꿀 수 있으므로 단독 호출만 검사한다
   if (kinds[0] !== "direct" || splitCommands(command).length > 1) return BLOCK.alone;
   const parsed = parseGit(dropPrefixes(parts[0]).slice(1));
@@ -73,6 +78,100 @@ export function blockReason(command: string, cwd: string, git: Git): string | un
   const envFiles = names.filter(n => ENV_FILE.test(n));
   if (envFiles.length) return `.env 파일은 커밋하지 않는다(AGENTS.md "커밋"): ${envFiles.join(", ")}. git restore --staged로 뺀다.`;
   if (diff.split(/\r?\n/).some(l => l.startsWith("+") && !l.startsWith("+++") && SECRET.test(l))) return BLOCK.secret;
+  return undefined;
+}
+
+function parseGhPrCreate(args: string[]): { isPrCreate: boolean; repo?: string; head?: string } {
+  const positionals: string[] = [];
+  let repo: string | undefined;
+  let head: string | undefined;
+  for (let i = 0; i < args.length; i++) {
+    const a = args[i];
+    if (a === "--") break;
+    if (a.startsWith("--")) {
+      if (a.startsWith("--repo=")) repo = a.slice(7);
+      else if (a.startsWith("--head=")) head = a.slice(7);
+      else if (!a.includes("=") && GH_VALUE_LONG.has(a)) {
+        const v = args[++i] ?? "";
+        if (a === "--repo") repo = v;
+        else if (a === "--head") head = v;
+      }
+    } else if (a.startsWith("-") && a.length > 1) {
+      for (let j = 1; j < a.length; j++) {
+        const ch = a[j];
+        if (GH_SHORT_VALUE.includes(ch)) {
+          const v = j < a.length - 1 ? a.slice(j + 1) : (args[++i] ?? "");
+          if (ch === "R") repo = v;
+          else if (ch === "H") head = v;
+          break;
+        }
+      }
+    } else {
+      positionals.push(a);
+    }
+  }
+  return { isPrCreate: positionals[0] === "pr" && positionals[1] === "create", repo, head };
+}
+
+function defaultTargetsUpstream(cwd: string, git: Git): boolean {
+  for (const key of ["remote.upstream.gh-resolved", "remote.origin.gh-resolved", "remote.upstream.url", "remote.origin.url"]) {
+    if (git.config(cwd, key).some(v => v === "base" || UPSTREAM_REPO.test(v))) return true;
+  }
+  return false;
+}
+
+const MAY_HAVE_GH_PR_CREATE = (s: string) => /[gG]/.test(s) && /[hH]/.test(s) && /[pP]/.test(s) && /[rR]/.test(s) && /[cC]/.test(s);
+
+// gh pr create가 원본 저장소(jaewonize/AI-Dictionary)를 향할 때 --head가 main·hackathon이거나 확정할 수 없으면 막는다
+function checkGhPrCreate(command: string, cwd: string, git: Git, wrapped = false, seen = new Set<string>()): string | undefined {
+  if (!MAY_HAVE_GH_PR_CREATE(command) || seen.has(command)) return undefined;
+  seen.add(command);
+  const parts = executedParts(command);
+  const multi = wrapped || splitCommands(command).length > 1 || parts.length > 1;
+  for (const body of commandSubstitutions(command).shellBodies) {
+    const inner = checkGhPrCreate(body, cwd, git, true, seen);
+    if (inner) return inner;
+  }
+  for (const raw of parts) {
+    const words = dropPrefixes(raw);
+    for (let i = 0; i < words.length; i++) {
+      const name = binName(words[i]).toLowerCase();
+      const rest = words.slice(i + 1);
+      if (name === "gh") {
+        const parsed = parseGhPrCreate(rest);
+        if (!parsed.isPrCreate) continue;
+        const targetsUpstream = parsed.repo !== undefined
+          ? UPSTREAM_REPO.test(parsed.repo) || /[$`]/.test(parsed.repo)
+          : defaultTargetsUpstream(cwd, git);
+        if (!targetsUpstream) continue;
+        if (parsed.head !== undefined) {
+          const branchPart = headName(parsed.head.includes(":") ? parsed.head.slice(parsed.head.indexOf(":") + 1) : parsed.head) ?? "";
+          if (!branchPart || branchPart === "main" || branchPart === "hackathon" || /[$`]/.test(parsed.head)) return BLOCK.upstreamPrHead;
+        } else {
+          if (multi) return BLOCK.upstreamPrHead;
+          const cur = git.branch(cwd);
+          if (!cur || cur === "main" || cur === "hackathon") return BLOCK.upstreamPrHead;
+        }
+      } else if (name === "eval") {
+        const inner = checkGhPrCreate(rest.join(" "), cwd, git, true, seen);
+        if (inner) return inner;
+      } else if (name === "env") {
+        for (let j = 0; j < rest.length && (rest[j].startsWith("-") || /^\w+=/.test(rest[j])); j++) {
+          const s = /^(?:-[A-Za-z0-9]*S|--split-string(?:=|$))(.*)$/.exec(rest[j]);
+          if (s) {
+            const inner = checkGhPrCreate(s[1] || (rest[++j] ?? ""), cwd, git, true, seen);
+            if (inner) return inner;
+          } else if (/^(?:-[A-Za-z0-9]*[uC]|--unset|--chdir)$/.test(rest[j])) j++;
+        }
+      } else if (/^(?:ba|z|da|k)?sh$/.test(name)) {
+        const c = rest.findIndex(a => /^-[A-Za-z]*c[A-Za-z]*$/.test(a));
+        if (c >= 0) {
+          const inner = checkGhPrCreate(rest.slice(c + 1).find(a => !a.startsWith("-")) ?? "", cwd, git, true, seen);
+          if (inner) return inner;
+        }
+      }
+    }
+  }
   return undefined;
 }
 
