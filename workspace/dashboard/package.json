@@ -1,0 +1,13 @@
+{
+  "name": "aidic-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "사진 색인 품질 비교 대시보드(Claude vs Gemini, hindsight 시나리오 시험). Node 내장 모듈만 쓴다.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.mjs"
+  }
+}

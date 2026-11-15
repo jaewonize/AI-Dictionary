@@ -1,0 +1,198 @@
+{
+ "exported_at": "2026-11-15T03:12:35.448Z",
+ "made_by": "workspace/scripts/compare_describe.py prepare",
+ "rows": [
+  {
+   "key": "P01",
+   "id": "DCIM/Camera/20231221_093512.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P02",
+   "id": "DCIM/Camera/20231221_101046.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P03",
+   "id": "DCIM/Camera/20231221_124018.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P04",
+   "id": "DCIM/Camera/20231221_130824.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P05",
+   "id": "DCIM/Camera/20231221_142033.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P06",
+   "id": "Download/IMG_0093.jpeg",
+   "width": 2016,
+   "height": 1512,
+   "frames": 2,
+   "orientation": 1
+  },
+  {
+   "key": "P07",
+   "id": "Download/IMG_0095.jpeg",
+   "width": 2016,
+   "height": 1512,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P08",
+   "id": "Download/IMG_0098.jpeg",
+   "width": 2016,
+   "height": 1512,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P09",
+   "id": "Download/IMG_0114.jpeg",
+   "width": 1512,
+   "height": 2016,
+   "frames": 2,
+   "orientation": 6
+  },
+  {
+   "key": "P10",
+   "id": "Download/IMG_0121.jpeg",
+   "width": 2016,
+   "height": 1512,
+   "frames": 2,
+   "orientation": 1
+  },
+  {
+   "key": "P11",
+   "id": "Download/b28a7f19.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P12",
+   "id": "Download/img_004982.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P13",
+   "id": "DCIM/Camera/20260901_153212.jpg",
+   "width": 1500,
+   "height": 1900,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P14",
+   "id": "DCIM/Screenshots/Screenshot_20260906-120215.png",
+   "width": 1080,
+   "height": 1700,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P15",
+   "id": "DCIM/Screenshots/Screenshot_20250511-183816.png",
+   "width": 853,
+   "height": 1844,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P16",
+   "id": "DCIM/Camera/20221224_191616.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P17",
+   "id": "DCIM/Camera/20230610_102416.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P18",
+   "id": "DCIM/Camera/20231216_152241.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P19",
+   "id": "DCIM/Camera/20240921_191414.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P20",
+   "id": "DCIM/Camera/20250614_115431.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P21",
+   "id": "DCIM/Camera/20260404_132914.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P22",
+   "id": "Pictures/KakaoTalk/KakaoTalk_20230827_152606454.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P23",
+   "id": "Pictures/KakaoTalk/KakaoTalk_20250308_144432679.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  },
+  {
+   "key": "P24",
+   "id": "Pictures/KakaoTalk/KakaoTalk_20260516_205410270.jpg",
+   "width": 1448,
+   "height": 1086,
+   "frames": 1,
+   "orientation": 1
+  }
+ ]
+}
