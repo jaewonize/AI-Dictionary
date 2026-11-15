@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>사진 색인 품질 비교</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/app.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+<div class="tip" id="tip" hidden></div>
+<header class="top">
+  <div class="wrap top-inner">
+    <div>
+      <h1 class="title">사진 색인 품질 비교</h1>
+      <p class="lede">Claude Opus 5.5와 Gemini 모델에게 폰 사진을 같은 지시문, 같은 출력 형식(장면 설명, 사진 속 글자, 사진 종류)으로 설명하게 했다. 찍은 시각과 찍은 곳은 주지 않았다. 이 설명을 hindsight에 넣어 recall에 쓸 수 있는지, 사진과 대조한 블라인드 심사와 한국어 검색 실험으로 쟀다.</p>
+    </div>
+    <div class="top-side">
+      <button type="button" class="btn" id="reload">데이터 다시 읽기</button>
+      <span class="muted small" id="stamp">불러오는 중…</span>
+    </div>
+  </div>
+  <nav class="wrap nav" aria-label="섹션">
+    <a href="#findings">판정</a><a href="#scenario">시나리오 A</a><a href="#kpi">한눈에</a><a href="#judge">블라인드 심사</a><a href="#adjudication">엇갈린 판정</a><a href="#recall">검색 실험</a><a href="#tokenizer">한국어 BM25</a><a href="#queries">질의별</a><a href="#photos">사진별</a><a href="#cost">비용·속도</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <p class="banner" id="missing" hidden></p>
+  <p class="take" id="takeaway">—</p>
+
+  <section id="findings" class="sec">
+    <h2>판정</h2>
+    <p class="sub">두 심사 결과가 엇갈린 사진은 원본을 확대해 다시 보고 판정했다. 아래는 그 종합이다.</p>
+    <ol class="findings" id="findings-list"></ol>
+  </section>
+
+  <section id="scenario" class="sec">
+    <h2>시나리오 A: hindsight가 '전시 보고 나서 간 카페'를 찾나</h2>
+    <p class="sub">질의는 "미셸 들라크루아 전시 보고 나서 갔던 카페 사진"이다. 폰 사진 261장을 보강 지시문(v2)으로 설명해 hindsight 은행 하나에 넣었다. 사진마다 기억 하나이고, 찍은 시각은 timestamp로, 출처 폴더와 사진 id는 글과 메타데이터로 붙였다. A는 사진 기억만 있을 때, B는 날짜마다 그날 사진을 찍은 시각 순으로 한 줄씩 적은 하루 타임라인 기억을 더한 뒤다. hindsight의 LLM은 Gemini 4 Argon, 임베딩은 bge-m3, 전문 검색은 pgroonga다.</p>
+    <div id="scenario-empty" class="banner" hidden>시나리오 시험 결과가 아직 없다. scenario_hindsight.py 의 ask(A·B)와 dash 를 돌리면 여기에 나타난다.</div>
+    <div id="scenario-body" hidden>
+      <ul class="legend"><li><i class="sw sw-ok"></i>정답: 전시 뒤 카페</li><li><i class="sw sw-bad"></i>함정: 전시 전 카페</li><li><i class="sw sw-1"></i>전시장</li><li><i class="sw sw-line"></i>그 밖의 사진</li></ul>
+      <h3>그날 찍은 사진(찍은 시각순)</h3>
+      <div class="day" id="scenario-day"></div>
+      <h3>방법별로 고른 사진</h3>
+      <p class="sub">recall은 질의 한 번으로 뽑은 기억에서 사진 상위 10장을 센 것이고, reflect는 hindsight가 recall을 여러 번 불러 추론한 뒤 고른 사진이다. 정답은 6장이다. 썸네일에 마우스를 올리면 순서·시각·장소가 보인다.</p>
+      <div class="tablewrap"><table class="tbl" id="scenario-table">
+        <thead><tr><th>단계</th><th>방법</th><th class="n">정답</th><th class="n">함정</th><th class="n">그 밖</th><th class="n">recall 호출</th><th class="n">걸린 초</th><th>고른 사진</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <details class="det"><summary>reflect가 적은 근거</summary><div id="scenario-reasons"></div></details>
+    </div>
+  </section>
+
+  <section id="kpi" class="sec">
+    <h2>한눈에</h2>
+    <p class="sub">심사 점수는 Claude 심사와 Gemini 4 Argon 심사의 평균이다. 검색은 의미 검색과 2글자 단위 BM25를 합친 결과다. 비용은 12월 1일부터의 정가(입력·출력 100만 토큰당 4달러·20달러, 두 회사 같음) 기준 사진 한 장 값이다. Argon 가격은 구글 공식 가격표에서 확인하지 못했다.</p>
+    <div class="cards" id="kpi-cards"></div>
+  </section>
+
+  <section id="judge" class="sec">
+    <h2>블라인드 심사: 사진과 대조한 점수</h2>
+    <p class="sub">심사자는 라벨(A–E)만 보고 어느 모델이 쓴 글인지 모른 채 사진을 직접 보며 채점했다. 심사자가 자기 회사 모델을 편드는지 보려고 Claude 심사와 Gemini 4 Argon 심사를 따로 돌렸다. 점 두 개가 멀수록 두 심사가 엇갈린 변형이다.</p>
+    <ul class="legend"><li><i class="sw sw-1"></i>Claude 심사(에이전트)</li><li><i class="sw sw-2"></i>Gemini 4 Argon 심사</li></ul>
+    <div class="chart" id="judge-chart" role="img" aria-label="변형마다 두 심사의 종합 점수"></div>
+    <div class="controls"><label for="judge-sel">표의 점수</label>
+      <select id="judge-sel"><option value="avg">두 심사 평균</option><option value="claude">Claude 심사</option><option value="gemini">Gemini 4 Argon 심사</option></select>
+    </div>
+    <div class="tablewrap"><table class="tbl" id="judge-table">
+      <thead><tr><th>변형</th><th class="n">정확성</th><th class="n">사진 속 글자</th><th class="n">핵심 요소</th><th class="n">구별력</th><th class="n">검색 유용성</th><th class="n">종합</th><th class="n">틀린 주장 수</th><th class="n">최고로 뽑힌 사진 수</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+
+  <section id="adjudication" class="sec">
+    <h2>심사가 엇갈린 사진 판정</h2>
+    <p class="sub">두 심사의 점수나 지적이 크게 엇갈린 사진을 원본을 확대해 다시 보고 어느 쪽이 맞는지 판정했다. 썸네일을 누르면 아래 사진별 비교에서 그 사진이 열린다.</p>
+    <div class="tablewrap"><table class="tbl" id="adj-table">
+      <thead><tr><th>사진</th><th>쟁점</th><th>판정</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+
+  <section id="recall" class="sec">
+    <h2>검색 실험: 정답 사진을 찾았나</h2>
+    <p class="sub">설명은 보지 않고 사진만 보고 만든 한국어 질의로, 변형마다 그 변형이 쓴 설명 24개를 검색했다. 의미 검색은 gemini-embedding-001을 썼고, BM25는 pgroonga처럼 한글을 2글자씩 잘라 셌으며, 융합은 두 순위를 RRF로 합쳤다. 실제 hindsight는 사실 추출, 엔티티, 시간 검색과 재정렬을 더 거치므로 이 값은 근사다. 섞은 은행은 사진 절반을 Claude 설명, 절반을 Argon ULTRA_HIGH 설명으로 채웠고 A와 B는 반대로 배정했다.</p>
+    <div class="controls"><label for="arm-sel">검색 방식</label>
+      <select id="arm-sel"><option value="fused">의미 검색 + BM25 융합</option><option value="semantic">의미 검색만</option><option value="bm25_bigram">BM25 · 2글자 단위(pgroonga)</option><option value="bm25_native">BM25 · 띄어쓰기 단위(기본 native)</option></select>
+    </div>
+    <ul class="legend"><li><i class="sw sw-1"></i>1위</li><li><i class="sw sw-2"></i>3위 안</li><li><i class="sw sw-3"></i>5위 안</li></ul>
+    <div class="chart" id="recall-chart" role="img" aria-label="은행마다 정답 사진이 1위, 3위 안, 5위 안에 든 비율"></div>
+  </section>
+
+  <section id="tokenizer" class="sec">
+    <h2>한국어 BM25: 띄어쓰기 단위 대 2글자 단위</h2>
+    <p class="sub">hindsight 기본값(native)은 PostgreSQL 영어 사전이라 '카페에서'와 '카페'를 다른 낱말로 본다. pgroonga는 한글을 2글자씩 잘라 조사가 붙어도 맞춘다. 같은 설명과 같은 질의로 BM25만 돌린 MRR(첫 정답 순위의 역수 평균, 1이 만점)이다.</p>
+    <ul class="legend"><li><i class="sw sw-4"></i>띄어쓰기 단위(native)</li><li><i class="sw sw-1"></i>2글자 단위(pgroonga)</li></ul>
+    <div class="chart" id="token-chart" role="img" aria-label="변형마다 띄어쓰기 단위와 2글자 단위 BM25의 MRR"></div>
+  </section>
+
+  <section id="kinds" class="sec">
+    <h2>질의 종류별 3위 안 적중률</h2>
+    <p class="sub">의미 검색 + BM25 융합 기준. 칸마다 그 종류의 질의 가운데 정답이 3위 안에 든 비율이다.</p>
+    <div class="tablewrap"><table class="tbl" id="kind-table">
+      <thead><tr><th>질의 종류</th><th class="n">질의 수</th><th class="n">Claude medium</th><th class="n">Claude low</th><th class="n">Argon ULTRA_HIGH</th><th class="n">Argon 기본</th><th class="n">3.8 Flash</th><th class="n">섞은 은행 A</th><th class="n">섞은 은행 B</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+
+  <section id="queries" class="sec">
+    <h2>질의별 첫 정답 순위</h2>
+    <p class="sub">의미 검색 + BM25 융합에서 첫 정답 사진이 몇 위였는지다. 1이 가장 좋다. 정답 사진 썸네일을 누르면 아래 사진별 비교에서 그 사진이 열린다.</p>
+    <div class="tablewrap"><table class="tbl" id="query-table">
+      <thead><tr><th>번호</th><th>질의</th><th>종류</th><th>정답 사진</th><th class="n">Claude medium</th><th class="n">Claude low</th><th class="n">Argon ULTRA_HIGH</th><th class="n">Argon 기본</th><th class="n">3.8 Flash</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+
+  <section id="photos" class="sec">
+    <h2>사진별 설명 비교</h2>
+    <p class="sub">저장소 폰 폴더(Mobile Storage)의 원본 사진이다. 모델에는 숨은 정보를 지운 같은 사진을 보냈다. 썸네일을 누르면 그 사진과 다섯 변형의 설명이 나란히 나오고, 큰 사진을 누르면 새 탭에서 원본 크기로 열린다.</p>
+    <div class="thumbs" id="photo-thumbs"></div>
+    <div class="controls"><label for="photo-sel">사진</label><select id="photo-sel"></select></div>
+    <figure class="photo" id="photo-view"></figure>
+    <div class="tablewrap"><table class="tbl" id="photo-table">
+      <thead><tr><th>변형</th><th>종류</th><th>장면 설명</th><th>사진 속 글자</th><th class="n">Claude 심사</th><th class="n">Gemini 심사</th><th>Claude 심사가 짚은 문제</th><th>Gemini 심사가 짚은 문제</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+
+  <section id="cost" class="sec">
+    <h2>비용과 속도</h2>
+    <p class="sub">사진 한 장당 평균이다. Argon 응답 시간에는 8개를 동시에 보낼 때 받은 요청 한도(429) 재시도 대기가 섞여 있어 중앙값을 함께 적었다. 측정 비용은 Argon 도입가(입력·출력 100만 토큰당 2달러·10달러, 11월 30일까지) 기준이다. 3.8 Flash는 가격을 확인하지 못했다.</p>
+    <div class="tablewrap"><table class="tbl" id="cost-table">
+      <thead><tr><th>변형</th><th class="n">입력 토큰</th><th class="n">출력 토큰(생각 포함)</th><th class="n">사진당 비용(정가)</th><th class="n">사진당 비용(측정 당시)</th><th class="n">응답 시간 중앙값</th><th class="n">응답 시간 평균</th><th class="n">장면 설명 글자 수</th><th class="n">사진 속 글자 수</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+
+  <details class="det sec" id="method">
+    <summary>방법과 한계</summary>
+    <p>사진은 폰 폴더의 갤러리, 캡처, 카카오톡, 다운로드 폴더에서 고르게 고르고 카페·전시장 사진과 글자가 많은 문서·캡처 사진을 더했다. 사진마다 숨은 정보(EXIF, XMP)를 지운 사본을 원본 크기로 보냈다.</p>
+    <p>변형은 다섯 가지다. Claude Opus 5.5는 effort medium과 low, Gemini 4 Argon은 thinking MEDIUM에 해상도 HIGH(기본과 같은 이미지당 약 1,120토큰)와 ULTRA_HIGH(약 2배), Gemini 3.8 Flash는 비교 기준으로 넣었다.</p>
+    <p>심사는 두 갈래다. Claude 심사 에이전트 여섯이 사진을 네 장씩 맡았고, Gemini 4 Argon(thinking HIGH)이 같은 기준표로 따로 채점했다. 라벨은 사진마다 무작위로 섞었다. 두 심사가 크게 엇갈린 사진은 사진을 다시 보고 판정했다.</p>
+    <p>검색 질의는 설명을 보지 않고 사진만 보고 만들었고, 질의마다 정답 사진과 느슨하게 관련된 사진을 표시했다. 표본이 작아서 질의 한두 개 차이로 적중률이 몇 퍼센트포인트씩 움직인다.</p>
+    <p>시나리오 A 시험은 폰 사진 261장 전부를 쓴 실제 hindsight 시험이다. 사실 추출과 reflect는 Gemini 4 Argon이 했고, 관찰(자동 요약)은 꺼서 사실 기억만으로 비교했다.</p>
+  </details>
+</main>
+<footer class="wrap foot muted small">workspace/dashboard · 결과는 dashboard/data/ 스냅숏에서, 사진은 저장소의 Mobile Storage/ 에서 읽는다</footer>
+</body>
+</html>

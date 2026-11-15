@@ -1,0 +1,66 @@
+{
+ "exported_at": "2026-11-15T03:12:35.448Z",
+ "made_by": "workspace/scripts/compare_describe.py dashdata",
+ "rows": [
+  {
+   "photo": "P06",
+   "photo_label": "P06",
+   "issue": "Gemini 심사는 Claude 두 항목이 '차단봉을 받침대로 오인'했다고 정확성 3점을 줬다. Claude 심사는 Argon ULTRA·Flash의 '벽에 걸림'을 오류로 봤다. 글자는 claude_medium의 COUTELLERIE와 argon_ultra의 설명판이 쟁점이다.",
+   "verdict": "Claude 심사가 맞다. 액자마다 검은 기둥이 프레임 하단에 붙어 바닥의 둥근 받침까지 내려오고, 차단봉은 뒤쪽에 따로 서 있다. 설명판도 자기 기둥에 서 있어 argon_ultra의 '벽면에 붙어 있다'도 틀렸다. COUTELLERIE는 그림 어디에도 없다(실제 간판은 CAFE TABAC·MONTECRISTO·CORDONNERIE·RESTAURANT D…). 지어낸 글자이고, Gemini 심사는 '확인 불가'로 약하게만 봤다. argon_ultra의 설명판 영문 'Montecristo Café Tabac en Panorama'는 글자 모양과 그림 속 MONTECRISTO 포스터에 맞아 실제로 읽은 것으로 보인다(Gemini 심사는 추측으로 감점, Claude 심사는 인정). 한글 '몬테네그로산'은 '몬테크리스토'의 오독으로 보인다."
+  },
+  {
+   "photo": "P07",
+   "photo_label": "P07",
+   "issue": "Claude 심사는 argon_high 글자에 2점을 줬다(크기 74×60, '물랑', 가려진 글자 채움). Gemini 심사는 3점을 주고 오히려 Claude 항목의 'BELLE'를 지적했다.",
+   "verdict": "양쪽 다 일부 맞다. 설명판은 '비가 내리는 물랭 루주 / 74 × 89 cm'다. argon_high(60)와 ultra(90)가 숫자를 틀렸고, Gemini 계열 세 변형 모두 '물랑'으로 적었다. 포스터는 'A LA / BEL / JARDI / QUAI DU PO / PARIS'까지만 보인다. Claude의 'BELLE'는 두 글자를 채운 것이고(Gemini 심사가 맞음), argon_high는 JARDINIERE·PONT NEUF·PHARMACIE·BAL DU MOULIN ROUGE를 단어째 채웠다. 반면 광고탑의 CHOCOLAT MENIER는 실제로 보이고 argon_high만 옮겼다. Claude는 설명판의 연도·크기를 아예 뺐다."
+  },
+  {
+   "photo": "P08",
+   "photo_label": "P08",
+   "issue": "Claude 심사는 claude_medium의 'Finison'과 argon_high의 '60×73'을 지적했다. Gemini 심사는 '60×73'과 claude_medium의 '(그림 속 간판)' 주석을 지적했다.",
+   "verdict": "설명판은 60 × 72 cm(argon_high 오독 확정), 간판은 'LIQUEU… Pinson SPIRITUEUX'(claude_medium 오독 확정, Gemini 심사가 놓침)다. 주석은 규칙 위반이지만 검색에는 해가 없다. LULU·서명은 argon_high만, CHEZ FERNAND·Pinson은 Claude만 옮겼다. 오류 1건씩으로 대등하다. 무오류는 claude_low와 argon_ultra인데, ultra는 간판을 절반쯤 뺐다."
+  },
+  {
+   "photo": "P10",
+   "photo_label": "P10",
+   "issue": "Gemini 심사는 claude_medium의 'JARDINS ET BOSQUETS'를 기호 오독으로, argon_high의 'MARTRE'를 채움으로 봤다. Claude 심사는 argon_high의 'JARDIN'(S 누락)을 지적했다.",
+   "verdict": "사소한 차이, 무승부. 가운데 기호는 '&/et' 모양이라 뜻이 같다. 'MARTR' 뒤 글자는 기둥에 반쯤 가려 MARTRE도 허용 범위다. ENTREE는 Argon만, VINS는 Claude만 옮겼다. 정작 중요한 차이는 argon_high 장면에 물랭루즈·파리·에펠탑이 없다는 점이다('붉은 건물')."
+  },
+  {
+   "photo": "P02",
+   "photo_label": "P02",
+   "issue": "argon_high의 '나무 바닥': Claude 심사 정확성 3점, Gemini 심사 4점에 최고 선정.",
+   "verdict": "Claude 심사가 맞다. 바닥은 연회색 대리석 무늬 타일이다. Gemini 심사가 Argon 오류를 놓쳤다."
+  },
+  {
+   "photo": "P23",
+   "photo_label": "P23",
+   "issue": "argon_high의 '책 두 권': Claude 심사 3점, Gemini 심사 4점에 최고 선정.",
+   "verdict": "Claude 심사가 맞다(경미). 책은 세 권이다. argon_high는 리모컨·흰 커튼 같은 고유 세부가 있지만 '분갈이'·'스킨답서스' 같은 검색어가 없다."
+  },
+  {
+   "photo": "P21",
+   "photo_label": "P21",
+   "issue": "claude_medium의 '수저통에 검은 도마': Gemini 심사 3점, Claude 심사 5점.",
+   "verdict": "Gemini 심사가 맞다(경미). 검은 도마 두 장은 식기건조대 옆 도마 꽂이에 기대어 수저통 뒤에 서 있다. '갈색 펌프형 세제병'도 라벨을 읽을 수 없는데 단정했다(claude_low는 '세제(또는 핸드솝)'으로 피해 갔다)."
+  },
+  {
+   "photo": "P15",
+   "photo_label": "P15",
+   "issue": "'오층탑/5층 목탑'(claude_medium·claude_low·argon_high)을 Claude 심사만 '확인 불가'로 감점했다. 최고 라벨도 갈렸다(Claude 심사 argon_ultra, Gemini 심사 claude_low).",
+   "verdict": "Claude 심사가 맞다. 배너에는 지붕 3개만 보이고 아래는 나무에 가렸다. 세 변형이 같은 '교토면 오층탑' 추론을 했고 argon_ultra만 '전통 탑'으로 썼다. 모델 차이가 아닌 공통 습관이다."
+  },
+  {
+   "photo": "P04",
+   "photo_label": "P04 (P05)",
+   "issue": "엽서를 Claude는 '노트르담 성당 설경·파리 오페라 극장'으로, Argon은 '유럽 풍경 일러스트'·'강가의 성당과 밤거리'로 적었다. 두 심사 모두 Claude를 높게 봤다.",
+   "verdict": "Claude의 이름 붙이기는 맞다. 확대하면 눈 덮인 노트르담과 센강, 오페라 가르니에가 분명하다. 같은 자리의 세 컷(P03~P05)을 가르는 결정적 단서다."
+  },
+  {
+   "photo": "P24",
+   "photo_label": "P24",
+   "issue": "Gemini 심사는 Claude·Argon 네 항목이 도로 글씨 '천천'을 빠뜨렸다며 글자 3점을 줬다. Claude 심사는 판독 불가로 봤다.",
+   "verdict": "Claude 심사가 맞다. 노란 노면 표시는 원근이 심해 글자로 읽히지 않는다. Flash의 '천천히'는 추측이다. 네 항목 공통 감점이라 Claude/Argon 비교에는 영향이 없다."
+  }
+ ]
+}
