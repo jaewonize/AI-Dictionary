@@ -223,40 +223,80 @@ def _status(e: Exception) -> int | None:
     return None
 
 
-# 요청 폭주 막기: 429가 연달아 나면 계속 두드리지 않고 작업 전체를 멈춘다.
-# (2026-11-15 Gemini 4 Argon을 동시 8개·짧은 재시도로 부르다 Vertex AI 프로젝트가 정지됐다.)
-MAX_CONSECUTIVE_429 = 5
+# Gemini(Vertex AI) 호출 규칙. 2026-11-15 Gemini 4 Argon을 동시 8개·짧은 재시도로 부르다 Vertex AI 프로젝트가
+# 정지됐고, 재검토 요청에서 아래를 약속했다. 그래서 Gemini 호출은 모두 gemini_call() 을 거쳐 코드로 강제한다.
+#   한 번에 1~2개만 보낸다 · 429에는 지수 백오프 · 몇 번 뒤 포기 · 한도에 닿으면 재시도하지 않고 멈춘다(할당량 상향 요청)
+# Claude는 이 규칙을 따르지 않는다(429가 나지 않았다). Claude 쪽 재시도는 with_retry 와 Anthropic SDK가 맡는다.
+GEMINI_MAX_CONCURRENCY = 2      # 동시 호출 상한. 인자로 더 큰 값을 줘도 이 값을 넘지 않는다
+GEMINI_MIN_INTERVAL_S = 2.0     # 요청 시작 사이 최소 간격(분당 30회 이하로 고르게)
+MAX_CONSECUTIVE_429 = 5         # Gemini 429가 이만큼 연달아 나면 작업 전체를 멈춘다
+_gemini_sem = threading.BoundedSemaphore(GEMINI_MAX_CONCURRENCY)
+_gemini_pace = {"next_start": 0.0}
+_gemini_pace_lock = threading.Lock()
 _breaker = {"consecutive_429": 0, "tripped": False}
 _breaker_lock = threading.Lock()
 
 
-def with_retry(fn, tries: int = 3):
-    delay = 15.0
+def _transient(e: Exception, st: int | None) -> bool:
+    name = type(e).__name__.lower()
+    return st in (408, 429, 500, 502, 503, 504) or "timeout" in name or "connection" in name
+
+
+def with_retry(fn, tries: int = 3, base_delay: float = 5.0):
+    """일시 오류만 지수 백오프로 다시 보낸다(Claude 등 일반 호출)."""
+    delay = base_delay
     for attempt in range(1, tries + 1):
-        if _breaker["tripped"]:
-            raise RuntimeError("429가 연달아 나서 멈춘 상태다. 동시 호출을 줄여 잠시 뒤 다시 돌린다")
         try:
-            out = fn()
-            with _breaker_lock:
-                _breaker["consecutive_429"] = 0
-            return out
-        except Exception as e:  # 일시 오류만 다시 보낸다
+            return fn()
+        except Exception as e:
             st = _status(e)
-            if st == 429:
-                with _breaker_lock:
-                    _breaker["consecutive_429"] += 1
-                    if _breaker["consecutive_429"] >= MAX_CONSECUTIVE_429:
-                        _breaker["tripped"] = True
-                if _breaker["tripped"]:
-                    raise RuntimeError(f"429가 연달아 {MAX_CONSECUTIVE_429}번 나서 멈춘다. 동시 호출을 줄여 잠시 뒤 다시 돌린다") from e
-            transient = st in (408, 429, 500, 502, 503, 504) or "timeout" in type(e).__name__.lower() \
-                or "connection" in type(e).__name__.lower()
-            if not transient or attempt == tries:
+            if not _transient(e, st) or attempt == tries:
                 raise
             wait = delay + random.uniform(0, delay / 2)  # 여러 작업이 같은 순간에 다시 보내지 않게 흩뜨린다
             print(f"   재시도 {attempt}/{tries - 1} ({type(e).__name__} {st}) {wait:.0f}s 뒤", flush=True)
             time.sleep(wait)
             delay *= 2
+
+
+def _gemini_wait_turn() -> None:
+    with _gemini_pace_lock:
+        now = time.monotonic()
+        start = max(now, _gemini_pace["next_start"])
+        _gemini_pace["next_start"] = start + GEMINI_MIN_INTERVAL_S
+    if start > now:
+        time.sleep(start - now)
+
+
+def gemini_call(fn, tries: int = 3):
+    """Gemini 호출: 동시 2개 상한, 요청 간격, 429 백오프(15초부터), 429 연속 시 작업 전체 중단."""
+    delay = 15.0
+    for attempt in range(1, tries + 1):
+        if _breaker["tripped"]:
+            raise RuntimeError("Gemini 429가 연달아 나서 멈춘 상태다. 재시도하지 말고 할당량을 확인·상향한 뒤 다시 돌린다")
+        with _gemini_sem:
+            _gemini_wait_turn()
+            try:
+                out = fn()
+            except Exception as e:
+                st = _status(e)
+                err = e
+            else:
+                with _breaker_lock:
+                    _breaker["consecutive_429"] = 0
+                return out
+        if st == 429:
+            with _breaker_lock:
+                _breaker["consecutive_429"] += 1
+                if _breaker["consecutive_429"] >= MAX_CONSECUTIVE_429:
+                    _breaker["tripped"] = True
+            if _breaker["tripped"]:
+                raise RuntimeError(f"Gemini 429가 연달아 {MAX_CONSECUTIVE_429}번 나서 멈춘다. 재시도하지 말고 할당량을 확인·상향한다") from err
+        if not _transient(err, st) or attempt == tries:
+            raise err
+        wait = delay + random.uniform(0, delay / 2)
+        print(f"   Gemini 재시도 {attempt}/{tries - 1} ({type(err).__name__} {st}) {wait:.0f}s 뒤", flush=True)
+        time.sleep(wait)  # 기다리는 동안은 동시 호출 자리를 내준다
+        delay *= 2
 
 
 def call_claude(client, v: dict, jpeg: bytes) -> dict:
@@ -320,7 +360,7 @@ def call_gemini(client, v: dict, jpeg: bytes) -> dict:
     elif v.get("media"):
         cfg["media_resolution"] = getattr(types.MediaResolution, f"MEDIA_RESOLUTION_{v['media']}")
     t0 = time.perf_counter()
-    resp = with_retry(lambda: client.models.generate_content(
+    resp = gemini_call(lambda: client.models.generate_content(
         model=v["model"],
         contents=[image, USER_PROMPT],
         config=types.GenerateContentConfig(**cfg),
@@ -396,8 +436,12 @@ def cmd_run(args) -> None:
         return {**base, **rec}
 
     ok = fail = 0
-    with ThreadPoolExecutor(max_workers=args.workers) as ex:
-        futs = [ex.submit(work, s, n) for s, n in jobs]
+    gemini_workers = min(args.gemini_workers, GEMINI_MAX_CONCURRENCY)
+    if args.gemini_workers > GEMINI_MAX_CONCURRENCY:
+        print(f"Gemini 동시 호출은 {GEMINI_MAX_CONCURRENCY}개를 넘기지 않는다(요청 {args.gemini_workers} → {gemini_workers})")
+    # 모델별로 실행 풀을 나눈다: Claude는 차단 없이 돌던 기준(동시 8개), Gemini는 상한 2개
+    with ThreadPoolExecutor(max_workers=args.claude_workers) as ex_c, ThreadPoolExecutor(max_workers=gemini_workers) as ex_g:
+        futs = [(ex_c if VARIANTS[n]["provider"] == "anthropic" else ex_g).submit(work, s, n) for s, n in jobs]
         for f in as_completed(futs):
             r = f.result()
             with _lock:
@@ -511,7 +555,7 @@ def cmd_judge_gemini(args) -> None:
             media_resolution=types.MediaResolution.MEDIA_RESOLUTION_HIGH,
             max_output_tokens=32000,
         )
-        resp = with_retry(lambda: client.models.generate_content(
+        resp = gemini_call(lambda: client.models.generate_content(
             model=args.judge_model,
             contents=[types.Part.from_bytes(data=jpeg, mime_type="image/jpeg"),
                       f"색인 항목들입니다. 라벨마다 채점하세요.\n{listing}"],
@@ -524,7 +568,7 @@ def cmd_judge_gemini(args) -> None:
             parsed = JudgeResult.model_validate(parsed)
         return {"key": e["key"], "judge": args.judge_model, **parsed.model_dump()}
 
-    with ThreadPoolExecutor(max_workers=args.workers) as ex:
+    with ThreadPoolExecutor(max_workers=min(args.workers, GEMINI_MAX_CONCURRENCY)) as ex:
         futs = {ex.submit(work, e): e["key"] for e in todo}
         for f in as_completed(futs):
             k = futs[f]
@@ -761,15 +805,15 @@ def embed_all(client, texts: list[str], task: str) -> list[list[float]]:
     for i in range(0, len(todo), 50):
         chunk = todo[i:i + 50]
         try:
-            r = with_retry(lambda: client.models.embed_content(
+            r = gemini_call(lambda: client.models.embed_content(
                 model=EMBED_MODEL, contents=[t for _, t in chunk], config=types.EmbedContentConfig(task_type=task)))
         except Exception:  # task_type 를 받지 않는 모델이면 빼고 다시
-            r = with_retry(lambda: client.models.embed_content(model=EMBED_MODEL, contents=[t for _, t in chunk]))
+            r = gemini_call(lambda: client.models.embed_content(model=EMBED_MODEL, contents=[t for _, t in chunk]))
         embs = list(r.embeddings or [])
         if len(embs) != len(chunk):  # 묶음을 한 덩어리로 본 모델이면 한 문장씩 다시 보낸다
             embs = []
             for _, t in chunk:
-                one = with_retry(lambda: client.models.embed_content(
+                one = gemini_call(lambda: client.models.embed_content(
                     model=EMBED_MODEL, contents=t, config=types.EmbedContentConfig(task_type=task)))
                 embs.append(one.embeddings[0])
         for (k, _), e in zip(chunk, embs):
@@ -1013,11 +1057,12 @@ def main() -> None:
     p = sub.add_parser("run")
     p.add_argument("--variants", default="")
     p.add_argument("--limit", type=int, default=0)
-    p.add_argument("--workers", type=int, default=2, help="동시 호출 수. Gemini는 1~2개를 넘기지 않는다")
+    p.add_argument("--claude-workers", type=int, default=8, help="Claude 동시 호출 수(차단 없이 돌던 기준 8)")
+    p.add_argument("--gemini-workers", type=int, default=2, help=f"Gemini 동시 호출 수(상한 {GEMINI_MAX_CONCURRENCY})")
     sub.add_parser("blind")
     p = sub.add_parser("judge-gemini")
     p.add_argument("--judge-model", default="gemini-4-argon")
-    p.add_argument("--workers", type=int, default=2, help="동시 호출 수. Gemini는 1~2개를 넘기지 않는다")
+    p.add_argument("--workers", type=int, default=2, help=f"Gemini 동시 호출 수(상한 {GEMINI_MAX_CONCURRENCY})")
     sub.add_parser("report")
     p = sub.add_parser("recall")
     p.add_argument("--mix-with", default="argon_ultra")
