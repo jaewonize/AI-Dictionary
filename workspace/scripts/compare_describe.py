@@ -473,16 +473,19 @@ def cmd_blind(args) -> None:
     key_map: dict[str, dict[str, str]] = {}
     groups: list[list[dict]] = []
     for s in samples:
-        items = [(n, best[(s["key"], n)]) for n in VARIANTS if (s["key"], n) in best]
+        # 라벨은 결과가 있는 변형이 아니라 전체 변형 목록을 사진마다 섞어 고정한다.
+        # 변형을 나중에 더 돌려도 기존 라벨의 뜻이 바뀌지 않는다(결과가 없는 변형의 라벨은 비워 둔다).
+        order = list(VARIANTS)
         rng = random.Random(int(hashlib.sha256(s["key"].encode()).hexdigest()[:8], 16))
-        rng.shuffle(items)
-        labels = "ABCDEFGH"
-        key_map[s["key"]] = {labels[i]: n for i, (n, _) in enumerate(items)}
+        rng.shuffle(order)
+        label_of = {n: "ABCDEFGH"[i] for i, n in enumerate(order)}
+        items = [(label_of[n], best[(s["key"], n)]) for n in order if (s["key"], n) in best]
+        key_map[s["key"]] = {lab: n for n, lab in label_of.items() if (s["key"], n) in best}
         entry = {
             "key": s["key"],
             "image": str((PHOTOS / f"{s['key']}.jpg").resolve()),
-            "entries": [{"label": labels[i], "scene": r["scene"], "text_in_photo": r["text_in_photo"],
-                         "photo_type": r["photo_type"]} for i, (_, r) in enumerate(items)],
+            "entries": [{"label": lab, "scene": r["scene"], "text_in_photo": r["text_in_photo"],
+                         "photo_type": r["photo_type"]} for lab, r in items],
         }
         if not groups or len(groups[-1]) >= GROUP_SIZE:
             groups.append([])
@@ -538,9 +541,9 @@ def cmd_judge_gemini(args) -> None:
     client = gemini_client(env)
     groups = sorted(JUDGE_IN.glob("group_*.json"))
     entries = [e for g in groups for e in json.loads(g.read_text(encoding="utf-8"))]
-    done = set()
-    if JUDGE_GEMINI.is_file():
-        done = {json.loads(x)["key"] for x in JUDGE_GEMINI.read_text(encoding="utf-8").splitlines() if x.strip()}
+    key_map = json.loads(JUDGE_KEY.read_text(encoding="utf-8"))
+    # 심사 결과에 그때의 라벨표를 함께 남기고, 라벨표가 지금과 같은 사진만 끝난 것으로 본다
+    done = {k for k, r in load_judges()["gemini"].items() if r.get("labels") == key_map.get(k)}
     todo = [e for e in entries if e["key"] not in done]
     print(f"Gemini 심사 {len(todo)}장 (모델 {args.judge_model})")
 
@@ -566,7 +569,7 @@ def cmd_judge_gemini(args) -> None:
             parsed = JudgeResult.model_validate_json(resp.text)
         if isinstance(parsed, dict):
             parsed = JudgeResult.model_validate(parsed)
-        return {"key": e["key"], "judge": args.judge_model, **parsed.model_dump()}
+        return {"key": e["key"], "judge": args.judge_model, "labels": key_map.get(e["key"]), **parsed.model_dump()}
 
     with ThreadPoolExecutor(max_workers=min(args.workers, GEMINI_MAX_CONCURRENCY)) as ex:
         futs = {ex.submit(work, e): e["key"] for e in todo}
@@ -590,11 +593,18 @@ CRITERIA = ["accuracy", "text", "coverage", "distinctiveness", "retrievability"]
 def load_judges() -> dict[str, dict[str, dict]]:
     """{'claude': {key: result}, 'gemini': {key: result}}"""
     out: dict[str, dict[str, dict]] = {"claude": {}, "gemini": {}}
+    key_map = json.loads(JUDGE_KEY.read_text(encoding="utf-8")) if JUDGE_KEY.is_file() else {}
+    stale = []
     if JUDGE_GEMINI.is_file():
         for x in JUDGE_GEMINI.read_text(encoding="utf-8").splitlines():
             if x.strip():
                 r = json.loads(x)
+                if key_map and r.get("labels") != key_map.get(r["key"]):
+                    stale.append(r["key"])  # 라벨표가 바뀐 뒤의 옛 점수는 다른 모델 점수로 읽힐 수 있어 쓰지 않는다
+                    continue
                 out["gemini"][r["key"]] = r
+    if stale:
+        print(f"  라벨표가 지금과 다른 Gemini 심사 {len(set(stale))}장은 건너뛴다(judge-gemini 로 다시 심사): {', '.join(sorted(set(stale)))}")
     if JUDGE_CLAUDE_DIR.is_dir():
         for f in sorted(JUDGE_CLAUDE_DIR.glob("*.json")):
             data = json.loads(f.read_text(encoding="utf-8"))
@@ -748,7 +758,7 @@ def cmd_report(args) -> None:
 
 
 # ---------------------------------------------------------------- 검색 실험(hindsight recall 근사)
-RECALL_QUERIES = OUT / "recall_queries.json"
+RECALL_QUERIES = Path(__file__).with_name("recall_queries.json")  # 사진만 보고 만든 질의와 정답(저장소에 함께 둔다)
 RECALL_OUT = OUT / "recall.json"
 EMBED_CACHE = OUT / "embed_cache.json"
 EMBED_MODEL = "gemini-embedding-001"  # 다국어. gemini-embedding-2 는 여러 문장을 보내면 벡터를 하나만 돌려준다
@@ -951,10 +961,13 @@ def cmd_dashdata(args) -> None:
         rows.append({
             "variant": n, "label": v["label"], "provider": "Anthropic" if v["provider"] == "anthropic" else "Google",
             "model": v["model"], "photos_ok": r["ok"], "photos": r["n"],
-            "latency_mean_s": r["latency_s"], "latency_median_s": round(statistics.median(x["latency_s"] for x in rs), 2),
+            # 성공 결과가 하나도 없는 변형(일부만 돌렸거나 모두 실패)은 값을 비워 둔다
+            "latency_mean_s": r["latency_s"],
+            "latency_median_s": round(statistics.median(x["latency_s"] for x in rs), 2) if rs else None,
             "in_tok": r["in_tok"], "out_tok": r["out_tok"],
-            "cost_per_photo_usd": round(r["cost_usd_total"] / r["ok"], 5) if r["cost_usd_total"] is not None else None,
-            "cost_per_photo_list_usd": round((r["in_tok"] * lp[0] + r["out_tok"] * lp[1]) / 1e6, 5) if lp else None,
+            "cost_per_photo_usd": round(r["cost_usd_total"] / r["ok"], 5) if r["cost_usd_total"] is not None and r["ok"] else None,
+            "cost_per_photo_list_usd": round((r["in_tok"] * lp[0] + r["out_tok"] * lp[1]) / 1e6, 5)
+            if lp and r["in_tok"] is not None and r["out_tok"] is not None else None,
             "price_basis": "확인된 정가" if v["provider"] == "anthropic" else ("도입가 $2/$10(미확인)" if lp else "가격 미확인"),
             "scene_chars": r["scene_chars"], "text_chars": r["text_chars"], "type_agree": r["type_agree"],
         })
