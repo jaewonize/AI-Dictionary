@@ -1,0 +1,26 @@
+# 사진 설명(색인) 비교용 샘플 24장. 폰 폴더 안의 상대 경로(id) 한 줄에 하나.
+# 폴더마다 고르게 뽑고, 데모가 먼저 색인할 A 장면 사진(카페·전시장)과 글자가 많은 사진(문서·캡처)을 더했다.
+DCIM/Camera/20231221_093512.jpg
+DCIM/Camera/20231221_101046.jpg
+DCIM/Camera/20231221_124018.jpg
+DCIM/Camera/20231221_130824.jpg
+DCIM/Camera/20231221_142033.jpg
+Download/IMG_0093.jpeg
+Download/IMG_0095.jpeg
+Download/IMG_0098.jpeg
+Download/IMG_0114.jpeg
+Download/IMG_0121.jpeg
+Download/b28a7f19.jpg
+Download/img_004982.jpg
+DCIM/Camera/20260901_153212.jpg
+DCIM/Screenshots/Screenshot_20260906-120215.png
+DCIM/Screenshots/Screenshot_20250511-183816.png
+DCIM/Camera/20221224_191616.jpg
+DCIM/Camera/20230610_102416.jpg
+DCIM/Camera/20231216_152241.jpg
+DCIM/Camera/20240921_191414.jpg
+DCIM/Camera/20250614_115431.jpg
+DCIM/Camera/20260404_132914.jpg
+Pictures/KakaoTalk/KakaoTalk_20230827_152606454.jpg
+Pictures/KakaoTalk/KakaoTalk_20250308_144432679.jpg
+Pictures/KakaoTalk/KakaoTalk_20260516_205410270.jpg
