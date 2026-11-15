@@ -51,9 +51,10 @@
 - 그 밖의 흐름은 `git remote -v`로 클론 종류를 보고 정한다.
   - 원본 클론(`origin`이 jaewonize/AI-Dictionary): 브랜치·푸시·PR 방식은 사용자가 정한 대로 한다. 정해지지 않았으면 묻는다.
   - fork 클론(`origin`이 개인 fork, `upstream`이 jaewonize/AI-Dictionary):
-    - 최신 `upstream/hackathon`에서 작업 브랜치(예: `feat/...`, `fix/...` 등, `main` 제외)를 따서 커밋하고 개인 fork(`origin`)에 푸시한다.
-    - **1단계 (내 포크 사전 리뷰):** 내 포크의 `hackathon` 브랜치(`--repo <fork 소유자>/AI-Dictionary --base hackathon --head <작업 브랜치>`)로 먼저 PR을 만들어 개인 Codex 자동 리뷰를 받고 필요한 수정을 마친 뒤 머지한다.
-    - **2단계 (원본 반영):** 검증이 끝난 내 포크 브랜치를 원본 저장소(`--repo jaewonize/AI-Dictionary --base hackathon --head <fork 소유자>:<브랜치>`)로 PR을 올려 팀원 리뷰·머지를 진행한다.
+    - **사전 동기화 (`Sync fork`):** 새 작업 브랜치를 따기 전에 `origin/hackathon`이 최신 `upstream/hackathon`을 조상으로 포함하고 있는지(`git merge-base --is-ancestor upstream/hackathon origin/hackathon`) 확인한다. 원본에 Squash 머지된 커밋이 아직 포크 `hackathon`에 합쳐지지 않았고 두 브랜치의 파일 내용이 같다면, 먼저 포크 `hackathon`에 `upstream/hackathon`을 merge해 푸시(GitHub `Sync fork`와 동일)한다.
+    - **작업 브랜치 분기:** 포크의 `origin/hackathon`이 아니라 **반드시 최신 `upstream/hackathon`에서** 작업 브랜치(예: `feat/...`, `fix/...`, `docs/...`, `chore/...` 등, `main`·`hackathon` 제외)를 따서 커밋하고 개인 fork(`origin`)에 푸시한다.
+    - **1단계 (내 포크 사전 리뷰·이력 보존):** 내 포크의 `hackathon` 브랜치(`--repo <fork 소유자>/AI-Dictionary --base hackathon --head <작업 브랜치>`)로 먼저 PR을 만들어 개인 Codex 자동 리뷰를 받고, 필요한 수정을 마친 뒤 **일반 Merge commit**으로 합쳐 포크 `hackathon`에 상세 커밋 이력을 남긴다. 이때 **작업 브랜치는 삭제하지 않고 유지**한다.
+    - **2단계 (원본 반영):** 포크의 `hackathon` 브랜치(`--head <fork 소유자>:hackathon`)가 아니라, **1단계에서 검증한 작업 브랜치(`--repo jaewonize/AI-Dictionary --base hackathon --head <fork 소유자>:<작업 브랜치>`)**로 원본 저장소에 PR을 올려 이번 작업 커밋만 표시되게 하고 팀원 리뷰·머지(권장: Squash and merge)를 진행한다.
 
 ### 범위
 - PR 하나에는 가능한 한 목적 하나만 담는다. 요청받지 않은 주변 정리나 무관한 포맷 변경은 넣지 않는다.
