@@ -1,4 +1,4 @@
-// 시험장 PC 환경 점검. `node scripts/check-env.mjs` — 대시보드에 필요한 것과 hindsight 상태를 확인하고 고칠 방법을 알려 준다.
+// 다른 PC 환경 점검. `node scripts/check-env.mjs` — 대시보드에 필요한 것과 hindsight 상태를 확인하고 고칠 방법을 알려 준다.
 //   HINDSIGHT_URL(기본 http://localhost:8888), AIDIC_DASHBOARD_PORT(기본 8787), AIDIC_PHONE_DIR 를 따른다.
 import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
@@ -72,6 +72,7 @@ try {
   fail(`hindsight 에 접속하지 못했다 (${e.message})`, 'hindsight 를 띄우거나 HINDSIGHT_URL 로 주소를 준다. 대시보드만 쓸 거면 무시해도 된다');
 }
 note('임베딩 모델은 HINDSIGHT_API_EMBEDDINGS_LOCAL_MODEL=BAAI/bge-m3 (다국어) 인지 hindsight 설정에서 직접 확인한다');
+note('reflect 를 쓸 거면 hindsight 설정이 HINDSIGHT_API_LLM_PROVIDER=anthropic, HINDSIGHT_API_LLM_MODEL=claude-opus-5-5, HINDSIGHT_API_REFLECT_WALL_TIMEOUT=600 인지 직접 확인한다');
 
 console.log(bad ? `\n고칠 것 ${bad}개` : '\n모두 준비됐다');
 process.exitCode = bad ? 1 : 0;

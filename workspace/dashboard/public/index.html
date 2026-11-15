@@ -38,7 +38,7 @@
 
   <section id="scenario" class="sec">
     <h2>시나리오 A: hindsight가 '전시 보고 나서 간 카페'를 찾나</h2>
-    <p class="sub">질의는 "미셸 들라크루아 전시 보고 나서 갔던 카페 사진"이다. 폰 사진 261장을 보강 지시문(v2)으로 설명해 hindsight 은행 하나에 넣었다. 사진마다 기억 하나이고, 찍은 시각은 timestamp로, 출처 폴더와 사진 id는 글과 메타데이터로 붙였다. A는 사진 기억만 있을 때, B는 날짜마다 그날 사진을 찍은 시각 순으로 한 줄씩 적은 하루 타임라인 기억을 더한 뒤다. hindsight의 LLM은 Gemini 4 Argon, 임베딩은 bge-m3, 전문 검색은 pgroonga다.</p>
+    <p class="sub">질의는 "미셸 들라크루아 전시 보고 나서 갔던 카페 사진"이다. 폰 사진 261장을 Claude Opus 5.5가 보강 지시문(v2)으로 설명해 hindsight 은행 하나에 넣었다. 사진마다 기억 하나이고, 찍은 시각은 timestamp로, 출처 폴더와 사진 id는 글과 메타데이터로 붙였다. A는 사진 기억만 있을 때, B는 날짜마다 그날 사진을 찍은 시각 순으로 한 줄씩 적은 하루 타임라인 기억을 더한 뒤다. hindsight의 LLM(기억 정리·reflect)은 Claude Opus 5.5로 고정했다. 지금 은행의 기억은 그 전에 Gemini 4 Argon이 정리했다. 임베딩은 bge-m3, 전문 검색은 pgroonga다.</p>
     <div id="scenario-empty" class="banner" hidden>시나리오 시험 결과가 아직 없다. scenario_hindsight.py 의 ask(A·B)와 dash 를 돌리면 여기에 나타난다.</div>
     <div id="scenario-body" hidden>
       <ul class="legend"><li><i class="sw sw-ok"></i>정답: 전시 뒤 카페</li><li><i class="sw sw-bad"></i>함정: 전시 전 카페</li><li><i class="sw sw-1"></i>전시장</li><li><i class="sw sw-line"></i>그 밖의 사진</li></ul>
