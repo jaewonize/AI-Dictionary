@@ -1,0 +1,26 @@
+[project]
+name = "aidic"
+version = "0.1.0"
+description = "AI ( ) Dictionary: 폰의 사진과 문서를 기억나는 대로 물으면 찾아 주는 검색 에이전트"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "anthropic>=2.8,<3",
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "pillow>=11",
+    "python-dotenv>=1.0",
+    "pydantic>=2.8",
+    "httpx>=0.27",
+    "markitdown[pdf,docx,xlsx,pptx]==0.1.7",
+    "pypdf>=5",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

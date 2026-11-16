@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI ( ) Dictionary 다시 보기</title>
+<style>
+/*__APP_CSS__*/
+</style>
+<style>
+.replay-banner{flex:none;background:#fff8e1;color:#5c4700;font-size:13px;font-weight:600;line-height:1.5;
+  padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid #f1e3b0}
+.app .apphead{padding-top:12px}
+.replay-bar{flex:none;display:flex;gap:6px;align-items:center;padding:0 12px 10px}
+.replay-bar select{flex:1;min-width:0;font-size:13.5px;font-weight:600;color:var(--ink-2);background:var(--surface);
+  border:1px solid var(--line-2);border-radius:10px;padding:8px 10px}
+.replay-bar button{flex:none;font-size:13px;font-weight:700;color:var(--blue);background:var(--surface);
+  border:1px solid var(--line-2);padding:8px 12px;border-radius:999px}
+.replay-bar button.primary{color:#fff;background:var(--blue);border-color:var(--blue)}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="replay-banner" role="note">저장한 실행을 다시 보여 주는 화면입니다. 사진 설명과 웹 결과는 미리 만들어 둔 것입니다.</div>
+  <header class="apphead"><div class="nm">AI <span>(  )</span> Dictionary</div></header>
+  <div class="replay-bar">
+    <select id="run" aria-label="다시 볼 실행"></select>
+    <button id="play" class="primary" type="button">처음부터</button>
+    <button id="speed" type="button">1배속</button>
+  </div>
+  <main class="chat" id="chat"><div class="thread" id="thread"></div></main>
+  <div class="inputbar">
+    <div class="ibox">
+      <input type="text" placeholder="무엇을 찾고 계세요?" disabled aria-label="찾을 내용">
+      <button class="send" type="button" disabled aria-label="보내기">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 13.5V3M8 3 3.5 7.5M8 3l4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+<script type="application/json" id="aidic-data">/*__DATA__*/</script>
+<script>
+/*__RENDER_JS__*/
+</script>
+<script>
+/* 재생: 저장한 실행 기록의 이벤트를 실시간 화면과 같은 그리기 코드(render.js)에 차례로 넣는다. */
+(function () {
+  'use strict';
+  var DATA = JSON.parse(document.getElementById('aidic-data').textContent);
+  var photos = DATA.photos || {};
+  var runs = DATA.runs || [];
+  var chat = document.getElementById('chat');
+  var sel = document.getElementById('run');
+  var playBtn = document.getElementById('play');
+  var speedBtn = document.getElementById('speed');
+
+  var SPEEDS = [1, 2, 4];
+  var speedIdx = 0;
+  var DELAY = { progress: 650, card: 1100, ask: 1100, answer: 2600, result: 1200, error: 700, done: 300 };
+
+  var token = 0;       // 재생 번호. 처음부터를 누르면 앞의 재생은 멈춘다
+  var wake = null;     // 지금 기다리는 중이면 깨우는 함수
+  var expect = null;   // 기록에 남은 답의 option_id. 이것만 누를 수 있다
+  var clicked = false;
+
+  var R = AIDicRender.createRenderer(document.getElementById('thread'), {
+    scrollEl: chat,
+    photoUrl: function (id) { return photos[id] || ''; },
+    onOption: function (optionId) {
+      if (expect == null || String(expect) !== String(optionId)) return false;
+      expect = null;
+      clicked = true;
+      if (wake) wake();
+      return true;
+    }
+  });
+
+  function sleep(ms) {
+    return new Promise(function (resolve) {
+      var t = setTimeout(done, ms / SPEEDS[speedIdx]);
+      function done() { clearTimeout(t); wake = null; resolve(); }
+      wake = done;
+    });
+  }
+
+  // answer 이벤트가 없는 기록이면 고른 답(answers)으로 채운다
+  function playlist(run) {
+    var evs = (run.events || []).filter(function (e) { return e && typeof e === 'object'; });
+    var answers = run.answers || [];
+    if (!answers.length || evs.some(function (e) { return e.type === 'answer'; })) return evs;
+    var out = [], k = 0;
+    for (var i = 0; i < evs.length; i++) {
+      out.push(evs[i]);
+      if (evs[i].type === 'ask' && answers[k]) {
+        if (evs[i + 1] && evs[i + 1].type === 'done') out.push(evs[++i]);
+        out.push({ type: 'answer', run_id: run.run_id, option_id: answers[k].option_id, label: answers[k].label });
+        k++;
+      }
+    }
+    return out;
+  }
+
+  function nextAnswerId(evs, from) {
+    for (var j = from + 1; j < evs.length; j++) {
+      if (evs[j].type === 'ask') return null;
+      if (evs[j].type === 'answer') return evs[j].option_id;
+    }
+    return null;
+  }
+
+  async function play() {
+    var my = ++token;
+    if (wake) wake();
+    expect = null;
+    clicked = false;
+    var run = runs[Number(sel.value) || 0];
+    R.reset();
+    if (!run) return;
+    playBtn.textContent = '처음부터';
+    await sleep(400);
+    if (my !== token) return;
+    R.userBubble(run.query || '');
+    var evs = playlist(run);
+    for (var i = 0; i < evs.length; i++) {
+      var ev = evs[i];
+      if (ev.type === 'answer') {
+        if (!clicked) await sleep(DELAY.answer);
+        clicked = false;
+        expect = null;
+      } else {
+        await sleep(DELAY[ev.type] || 600);
+      }
+      if (my !== token) return;
+      R.handle(ev);
+      if (ev.type === 'ask') expect = nextAnswerId(evs, i);
+    }
+    playBtn.textContent = '다시 보기';
+  }
+
+  runs.forEach(function (run, i) {
+    var o = document.createElement('option');
+    o.value = String(i);
+    o.textContent = (run.test ? run.test + ' · ' : '') + (run.query || run.run_id || '실행 ' + (i + 1));
+    sel.appendChild(o);
+  });
+  sel.addEventListener('change', play);
+  playBtn.addEventListener('click', play);
+  speedBtn.addEventListener('click', function () {
+    speedIdx = (speedIdx + 1) % SPEEDS.length;
+    speedBtn.textContent = SPEEDS[speedIdx] + '배속';
+  });
+  play();
+})();
+</script>
+</body>
+</html>
