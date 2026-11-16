@@ -1,0 +1,7 @@
+START 2026-11-16  1:38:17.13 hs_pilot eval.hindsight retain --limit 10 --batch 10 --verify-recall 
+[retain] 은행=bali-trip · 목표=10장 (전체 사진 307장) · 기존 적재=0건 · 이번 적재 대상=10장 · 배치=10장 · observations=False
+  [1/1] 적재 문서 10/10장 (전체 은행 10건, 실패 작업 0) · 추출 사실 20개 · retain LLM 10회(오류 0) · retain 누적 $0.1858 (은행 전체 $0.1858) · 35.8s
+  [recall 점검] 목표=20260716_202931.jpg · 순위=1 · 반환 사진=10장 (상위 ['20260716_202931.jpg', '20260716_221340.jpg', '20260716_234659.jpg']) · 사실 조각=20개 · 2.5s
+  [recall 점검] 목표=20260717_064122.jpg · 순위=1 · 반환 사진=10장 (상위 ['20260717_064122.jpg', '20260717_064105.jpg', '20260716_220325.jpg']) · 사실 조각=20개 · 2.7s
+[retain 완료] 적재 10/10장 · 미적재 0건 · 사실 20개 · LLM 10회 · retain 비용 $0.1858 -> C:\workspace\SR_Hackathon\AI-Dictionary\workspace\var\bali\hindsight_retain.json
+EXIT 0 2026-11-16  1:39:06.65 

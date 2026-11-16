@@ -1,0 +1,3115 @@
+{
+ "evaluated_at": "2026-11-15T16:08:53+00:00",
+ "model": "claude-opus-5-5",
+ "workers": 2,
+ "times": 1,
+ "total": 15,
+ "passed": 6,
+ "exact": 5,
+ "avg_recall": 0.5333,
+ "avg_precision": 0.5333,
+ "total_calls": 196,
+ "total_cost_usd": 23.49792,
+ "results": [
+  {
+   "id": "B01",
+   "kind": "sequence",
+   "query": "우붓에서 코코넛 아이스크림 먹고 나서 간 사원 사진 찾아줘",
+   "note": "7/17 15:57 코코넛 아이스크림 직후 16:10~16:11 우붓 붉은 벽돌 전통 사원 문 2장",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260717_161029.jpg",
+    "20260717_161153.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260717_110347.jpg",
+    "20260717_155744.jpg"
+   ],
+   "got_ids": [
+    "20260717_161029.jpg",
+    "20260717_161153.jpg"
+   ],
+   "matched_must": [
+    "20260717_161029.jpg",
+    "20260717_161153.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "7월 17일 오후 3시 57분에 우붓에서 코코넛 아이스크림을 먹은 뒤, 4시 10분쯤 들른 사원(우붓 왕궁으로 보이는 곳) 입구 사진 2장이에요.",
+   "plan": {
+    "target": "우붓에서 코코넛 아이스크림을 먹은 뒤 간 사원 사진",
+    "anchor": "우붓에서 코코넛 아이스크림 먹은 일",
+    "relation": "after",
+    "known": [
+     "장소: 우붓",
+     "기준: 코코넛 아이스크림 먹음",
+     "대상: 그 뒤에 간 사원"
+    ],
+    "unknown": [
+     "코코넛 아이스크림 먹은 날짜와 시각",
+     "그 뒤 방문한 사원 사진"
+    ]
+   },
+   "cutoffs": [
+    "2026-07-17T15:57:46+08:00"
+   ],
+   "cards": [
+    {
+     "no": 1,
+     "kind": "plan",
+     "title": "찾을 내용을 정리했어요",
+     "sentence": "우붓에서 코코넛 아이스크림을 먹은 뒤 들른 사원 사진을 찾을게요.",
+     "evidence": null
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "우붓에서 코코넛 아이스크림을 먹은 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": "2026-07-17",
+      "from_count": 60,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "코코넛 아이스크림 사진이 맞는지 확인하고 있어요.",
+     "evidence": {
+      "photo_ids": [
+       "20260717_155744.jpg"
+      ],
+      "read_text": [],
+      "date": "2026-07-17",
+      "from_count": 60,
+      "to_count": 1,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "아이스크림을 먹은 뒤 찍은 사원 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": "2026-07-17",
+      "from_count": 60,
+      "to_count": null,
+      "cutoff": "2026-07-17T15:57:46+08:00"
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "아이스크림을 먹은 뒤 찍은 사진 중 사원 사진을 하나씩 확인하고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": "2026-07-17",
+      "from_count": 60,
+      "to_count": 0,
+      "cutoff": "2026-07-17T15:57:46+08:00"
+     }
+    }
+   ],
+   "calls": 11,
+   "loop_calls": 7,
+   "input_tokens": 41243,
+   "output_tokens": 4236,
+   "cache_read_input_tokens": 309041,
+   "cost_usd": 0.379399,
+   "elapsed_ms": 64078,
+   "run_id": "B01_20261115_160658_001"
+  },
+  {
+   "id": "B02",
+   "kind": "sequence",
+   "query": "수건 코끼리 찍고 나서 바로 간 카페 사진 찾아줘",
+   "note": "7/18 12:56 침대 수건 코끼리 4장 직후 13:15~13:33 BLACKLIST COFFEE ROASTERS 외관·메뉴판·패스트리 3장(카페 앞 거리 1장 선택)",
+   "passed": false,
+   "exact_match": false,
+   "status": "failed",
+   "error": "단계가 너무 길어져 멈췄어요(16회 초과).",
+   "answer_ids": [
+    "20260718_131524.jpg",
+    "20260718_132437.jpg",
+    "20260718_133318.jpg"
+   ],
+   "optional_ids": [
+    "20260718_132014.jpg"
+   ],
+   "trap_ids": [
+    "20260718_125637.jpg",
+    "20260718_125650.jpg",
+    "20260718_125654.jpg",
+    "20260718_125656.jpg"
+   ],
+   "got_ids": [
+    "20260718_131524.jpg",
+    "20260718_132437.jpg",
+    "20260718_133318.jpg"
+   ],
+   "matched_must": [
+    "20260718_131524.jpg",
+    "20260718_132437.jpg",
+    "20260718_133318.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "7월 18일 낮 12시 56분에 호텔 방에서 수건 코끼리를 찍고, 약 20분 뒤 짱구의 블랙리스트 커피 로스터스에 간 사진들이에요.",
+   "plan": {
+    "target": "수건 코끼리를 찍은 직후 간 카페 사진",
+    "anchor": "수건으로 접은 코끼리 사진",
+    "relation": "after",
+    "known": [
+     "수건으로 만든 코끼리를 찍음",
+     "그 다음 바로 카페에 감"
+    ],
+    "unknown": [
+     "수건 코끼리를 찍은 날짜와 시각",
+     "그 직후 카페 사진"
+    ]
+   },
+   "cutoffs": [],
+   "cards": [
+    {
+     "no": 1,
+     "kind": "plan",
+     "title": "찾을 내용을 정리했어요",
+     "sentence": "수건 코끼리 사진을 먼저 찾고, 그 뒤에 간 카페 사진을 찾아볼게요.",
+     "evidence": null
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "수건으로 접은 코끼리 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "수건으로 접은 코끼리 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "타월 아트 코끼리가 보이는 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "수건으로 접은 코끼리 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "수건으로 접은 코끼리 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "수건으로 접은 코끼리 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "수건으로 접은 코끼리 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "수건으로 접은 코끼리 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "수건으로 접은 코끼리가 보이는 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "수건으로 접은 코끼리가 보이는 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": [
+       "2026-07-18",
+       "2026-07-19",
+       "2026-07-20"
+      ],
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "수건 코끼리 사진들을 직접 확인하고 있어요.",
+     "evidence": {
+      "photo_ids": [
+       "20260718_125637.jpg",
+       "20260718_125650.jpg",
+       "20260718_125654.jpg",
+       "20260718_125656.jpg",
+       "20260719_212413.jpg",
+       "20260720_111242.jpg"
+      ],
+      "read_text": [
+       "EASTIN"
+      ],
+      "date": [
+       "2026-07-18",
+       "2026-07-19",
+       "2026-07-20"
+      ],
+      "from_count": null,
+      "to_count": 6,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 18일 수건 코끼리를 찍은 뒤 간 카페 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 19일 밤 수건 코끼리 뒤 카페 사진이 있는지 보고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 20일 수건 코끼리를 찍은 뒤 간 카페 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 18일 수건 코끼리를 찍은 뒤 간 카페 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 20일 수건 코끼리를 찍은 뒤 간 카페 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 19일 밤 수건 코끼리 뒤 카페 사진이 있는지 보고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 18일 수건 코끼리를 찍은 직후의 사진들을 모아 보고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "수건 코끼리 다음에 들른 카페 사진들을 직접 확인하고 있어요.",
+     "evidence": {
+      "photo_ids": [
+       "20260720_155349.jpg",
+       "20260720_155409.jpg",
+       "20260720_155708.jpg",
+       "20260720_155835.jpg"
+      ],
+      "read_text": [
+       "Rise n' Dine",
+       "Marissa Spa"
+      ],
+      "date": null,
+      "from_count": null,
+      "to_count": 4,
+      "cutoff": null
+     }
+    }
+   ],
+   "calls": 22,
+   "loop_calls": 16,
+   "input_tokens": 75781,
+   "output_tokens": 8778,
+   "cache_read_input_tokens": 3015800,
+   "cost_usd": 4.040784,
+   "elapsed_ms": 122123,
+   "run_id": "B02_20261115_154435_002"
+  },
+  {
+   "id": "B03",
+   "kind": "sequence",
+   "query": "판다 그려진 가게 지나고 나서 들른 마트랑 빵집 사진 찾아줘",
+   "note": "7/18 20:45 판다 캐릭터 가게(Nuna) 직후 20:58~21:02 마트 냉장 매대·바게트·빵집 파노라마·케이크 쇼케이스 4장",
+   "passed": false,
+   "exact_match": false,
+   "status": "failed",
+   "error": "단계가 너무 길어져 멈췄어요(16회 초과).",
+   "answer_ids": [
+    "20260718_205821.jpg",
+    "20260718_210131.jpg",
+    "20260718_210147.jpg",
+    "20260718_210211.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260718_204530.jpg",
+    "20260718_213538.jpg"
+   ],
+   "got_ids": [
+    "20260718_205821.jpg",
+    "20260718_210131.jpg",
+    "20260718_210147.jpg",
+    "20260718_210211.jpg"
+   ],
+   "matched_must": [
+    "20260718_205821.jpg",
+    "20260718_210131.jpg",
+    "20260718_210147.jpg",
+    "20260718_210211.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "7월 18일 밤 짱구에서 판다 그림 크레페 가게 'Nuna'를 지난 뒤 들른 마트와 빵집 사진 4장을 찾았어요.",
+   "plan": {
+    "target": "마트와 빵집 사진",
+    "anchor": "판다가 그려진 가게를 지난 때",
+    "relation": "after",
+    "known": [
+     "판다 그림이 있는 가게를 지나감",
+     "그 뒤에 마트와 빵집에 들름"
+    ],
+    "unknown": [
+     "판다 가게 사진의 날짜와 찍은 시각",
+     "그 뒤 마트·빵집 사진"
+    ]
+   },
+   "cutoffs": [
+    "2026-07-18T20:45:30+08:00"
+   ],
+   "cards": [
+    {
+     "no": 1,
+     "kind": "plan",
+     "title": "찾을 내용을 정리했어요",
+     "sentence": "판다 그려진 가게를 먼저 찾고, 그 뒤에 들른 마트와 빵집 사진을 찾을게요.",
+     "evidence": null
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "판다가 그려진 가게 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "판다 그림이 있는 가게 사진을 골라 보고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "판다 그림이 있는 가게 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "판다 그림이 있는 가게 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "판다 그림이 있는 가게 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "판다 그림이 있는 가게 사진만 골라 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "판다가 그려진 가게 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "판다가 그려진 가게 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "판다가 그려진 가게 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "판다가 그려진 가게 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": [
+       "2026-07-18",
+       "2026-07-19"
+      ],
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "판다 그림 가게가 맞는지 사진을 직접 확인하고 있어요.",
+     "evidence": {
+      "photo_ids": [
+       "20260718_204530.jpg"
+      ],
+      "read_text": [
+       "Nuna CRÊPERIE, COFFEE & JUICE BAR / Welcome to Nuna WHERE HAPPINESS IS SERVED DAILY"
+      ],
+      "date": [
+       "2026-07-18",
+       "2026-07-19"
+      ],
+      "from_count": null,
+      "to_count": 1,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "판다 가게를 지난 뒤 같은 날 밤에 들른 마트와 빵집 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "판다 가게를 지난 뒤 그날 밤에 찍은 사진을 추리고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": "2026-07-18",
+      "from_count": 135,
+      "to_count": null,
+      "cutoff": "2026-07-18T20:45:30+08:00"
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "그날 밤 사진 중 마트와 빵집 사진을 직접 확인하고 있어요.",
+     "evidence": {
+      "photo_ids": [
+       "20260718_205821.jpg",
+       "20260718_210131.jpg",
+       "20260718_210147.jpg",
+       "20260718_210211.jpg"
+      ],
+      "read_text": [
+       "UBUD SMOKEHOUSE",
+       "French Bread",
+       "FRESHLY BAKED FOR YOU",
+       "Blueberry Mousse 39K"
+      ],
+      "date": "2026-07-18",
+      "from_count": 135,
+      "to_count": 4,
+      "cutoff": "2026-07-18T20:45:30+08:00"
+     }
+    }
+   ],
+   "calls": 19,
+   "loop_calls": 16,
+   "input_tokens": 36788,
+   "output_tokens": 3917,
+   "cache_read_input_tokens": 2275483,
+   "cost_usd": 1.990598,
+   "elapsed_ms": 81001,
+   "run_id": "B03_20261115_154435_003"
+  },
+  {
+   "id": "B04",
+   "kind": "sequence",
+   "query": "바다에서 뱀 본 날 그 뒤에 간 삼겹살집 사진 찾아줘",
+   "note": "7/20 10:42 바투 볼롱 해변 바다뱀 이후 12:25~13:20 한식 오겹살 식당 방문(갤러리+카카오톡 혼합, 맥주 건배·벽 액자 2장 선택)",
+   "passed": true,
+   "exact_match": false,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260720_122515.jpg",
+    "1784539535638.jpg",
+    "20260720_123002.jpg",
+    "1784539535486.jpg",
+    "1784539535346.jpg",
+    "1784539535285.jpg",
+    "1784539535122.jpg"
+   ],
+   "optional_ids": [
+    "20260720_123829.jpg",
+    "20260720_132004.jpg"
+   ],
+   "trap_ids": [
+    "20260720_085806.jpg",
+    "20260720_104222.jpg",
+    "20260720_185335.jpg"
+   ],
+   "got_ids": [
+    "20260720_122515.jpg",
+    "1784539535638.jpg",
+    "20260720_123002.jpg",
+    "20260720_123829.jpg",
+    "1784539535486.jpg",
+    "1784539535346.jpg",
+    "1784539535285.jpg",
+    "1784539535122.jpg",
+    "20260720_132004.jpg"
+   ],
+   "matched_must": [
+    "1784539535122.jpg",
+    "1784539535285.jpg",
+    "1784539535346.jpg",
+    "1784539535486.jpg",
+    "1784539535638.jpg",
+    "20260720_122515.jpg",
+    "20260720_123002.jpg"
+   ],
+   "matched_optional": [
+    "20260720_123829.jpg",
+    "20260720_132004.jpg"
+   ],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "7월 20일 바투 볼롱 비치에서 뱀을 본 뒤 점심때 짱구의 삼겹살집 '목구멍'에서 찍은 사진 9장을 찾았어요.",
+   "plan": {
+    "target": "삼겹살집 사진",
+    "anchor": "바다에서 뱀을 본 일",
+    "relation": "after",
+    "known": [
+     "바다에서 뱀을 봄",
+     "그 뒤에 삼겹살집에 감"
+    ],
+    "unknown": [
+     "뱀을 본 날짜와 찍은 시각",
+     "삼겹살집 사진"
+    ]
+   },
+   "cutoffs": [
+    "2026-07-20T10:42:23+08:00"
+   ],
+   "cards": [
+    {
+     "no": 1,
+     "kind": "plan",
+     "title": "찾을 내용을 정리했어요",
+     "sentence": "바다에서 뱀을 본 날을 먼저 찾고, 그 뒤에 간 삼겹살집 사진을 찾을게요.",
+     "evidence": null
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "바다에서 뱀을 찍은 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": "2026-07-20",
+      "from_count": 31,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "해변에서 찍은 뱀 사진이 맞는지 확인할게요.",
+     "evidence": {
+      "photo_ids": [
+       "20260720_104222.jpg"
+      ],
+      "read_text": [],
+      "date": "2026-07-20",
+      "from_count": 31,
+      "to_count": 1,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "뱀을 본 뒤 같은 날 찍은 삼겹살집 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": "2026-07-20",
+      "from_count": 31,
+      "to_count": null,
+      "cutoff": "2026-07-20T10:42:23+08:00"
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "삼겹살집에서 찍은 사진이 맞는지 하나씩 확인할게요.",
+     "evidence": {
+      "photo_ids": [
+       "20260720_122515.jpg",
+       "1784539535638.jpg",
+       "20260720_123002.jpg",
+       "20260720_123829.jpg",
+       "1784539535486.jpg",
+       "1784539535346.jpg",
+       "1784539535285.jpg",
+       "1784539535122.jpg"
+      ],
+      "read_text": [
+       "숙성이고 나발이고 좋은고기가 맛있습니다. / 오겹살 특목살",
+       "BINTANG",
+       "목구멍 해외대장정 대돈여지도 The Great Pork Map"
+      ],
+      "date": "2026-07-20",
+      "from_count": 31,
+      "to_count": 9,
+      "cutoff": "2026-07-20T10:42:23+08:00"
+     }
+    }
+   ],
+   "calls": 12,
+   "loop_calls": 7,
+   "input_tokens": 53689,
+   "output_tokens": 3891,
+   "cache_read_input_tokens": 311544,
+   "cost_usd": 0.431869,
+   "elapsed_ms": 51288,
+   "run_id": "B04_20261115_160802_002"
+  },
+  {
+   "id": "B05",
+   "kind": "sequence",
+   "query": "포테이토 헤드 갔다가 공항 가기 전에 들른 수영장 사진 찾아줘",
+   "note": "7/21 11:19~14:49 포테이토 헤드 퇴장 후, 18:16 공항 라운지 전인 16:00~16:01 바투벨릭 루프탑 수영장 4장(같은 곳 지붕 전망 1장 선택)",
+   "passed": false,
+   "exact_match": false,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260721_160058.jpg",
+    "20260721_160107.jpg",
+    "20260721_160125.jpg",
+    "20260721_160126.jpg"
+   ],
+   "optional_ids": [
+    "20260721_160211.jpg"
+   ],
+   "trap_ids": [
+    "20260721_112459.jpg",
+    "20260721_181605.jpg"
+   ],
+   "got_ids": [],
+   "matched_must": [],
+   "matched_optional": [],
+   "missing_ids": [
+    "20260721_160058.jpg",
+    "20260721_160107.jpg",
+    "20260721_160125.jpg",
+    "20260721_160126.jpg"
+   ],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 0.0,
+   "precision": 0.0,
+   "result_sentence": "포테이토 헤드 방문과 그 뒤 공항 가기 전 수영장 사진을 확인하지 못해 보여 드릴 사진이 없어요.",
+   "plan": {
+    "target": "수영장 사진",
+    "anchor": "포테이토 헤드 방문",
+    "relation": "after",
+    "known": [
+     "포테이토 헤드에 다녀옴",
+     "그 뒤 공항 가기 전에 수영장에 들름"
+    ],
+    "unknown": [
+     "포테이토 헤드 방문 날짜와 시각",
+     "그 뒤 수영장 사진"
+    ]
+   },
+   "cutoffs": [],
+   "cards": [
+    {
+     "no": 1,
+     "kind": "plan",
+     "title": "찾을 내용을 정리했어요",
+     "sentence": "포테이토 헤드 방문 뒤, 공항 가기 전에 들른 수영장 사진을 찾을게요.",
+     "evidence": null
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "포테이토 헤드에 갔던 날을 먼저 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "포테이토 헤드에 갔던 날을 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "포테이토 헤드 글자나 장면이 담긴 사진을 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "포테이토 헤드 비치클럽 장면이 담긴 사진을 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "사진 속 글자에 포테이토 헤드가 보이는 사진을 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "사진 속 글자에 포테이토 헤드가 보이는 사진을 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "포테이토 헤드 글자가 보이는 사진을 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "공항에 간 마지막 날 사진을 먼저 살펴볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "여행 마지막 이틀(7/20~21) 사진 가운데 포테이토 헤드 장면을 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "7/20~21 사진 가운데 포테이토 헤드 장면을 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "7/21 공항 가던 날 사진을 모두 살펴볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "7/20~21 사진에서 포테이토 헤드 장면을 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    }
+   ],
+   "calls": 14,
+   "loop_calls": 14,
+   "input_tokens": 32,
+   "output_tokens": 4235,
+   "cache_read_input_tokens": 2173246,
+   "cost_usd": 2.035127,
+   "elapsed_ms": 59219,
+   "run_id": "B05_20261115_154637_005"
+  },
+  {
+   "id": "B06",
+   "kind": "sequence",
+   "query": "원숭이 숲 가기 전에 아침에 먹은 조식 음식 사진만 찾아줘",
+   "note": "7/17 08:32 원숭이 숲 입장 전 숙소 조식 음식 접시 3장(종이 메뉴판과 다음 날 7/18 조식은 제외)",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260717_071708.jpg",
+    "20260717_073035.jpg",
+    "20260717_073152.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260717_070858.jpg",
+    "20260717_073424.jpg",
+    "20260718_072253.jpg",
+    "20260718_072259.jpg"
+   ],
+   "got_ids": [
+    "20260717_071708.jpg",
+    "20260717_073035.jpg",
+    "20260717_073152.jpg"
+   ],
+   "matched_must": [
+    "20260717_071708.jpg",
+    "20260717_073035.jpg",
+    "20260717_073152.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "7월 17일 원숭이 숲에 들어가기 전 아침에 찍은 조식 음식 사진 3장을 찾았어요.",
+   "plan": {
+    "target": "조식 음식 사진",
+    "anchor": "원숭이 숲 방문",
+    "relation": "before",
+    "known": [
+     "원숭이 숲에 간 날 아침",
+     "조식 음식이 찍힌 사진만"
+    ],
+    "unknown": [
+     "원숭이 숲에 간 날짜와 시각",
+     "그 전에 찍은 조식 사진"
+    ]
+   },
+   "cutoffs": [],
+   "cards": [
+    {
+     "no": 1,
+     "kind": "plan",
+     "title": "찾을 내용을 정리했어요",
+     "sentence": "원숭이 숲에 가기 전 아침에 찍은 조식 사진을 찾을게요.",
+     "evidence": null
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "원숭이 숲에 간 날을 먼저 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "원숭이 숲에 간 날과 들어간 시각을 확인할게요.",
+     "evidence": {
+      "photo_ids": [
+       "20260717_083201.jpg",
+       "20260717_090310.jpg",
+       "20260717_090331.jpg",
+       "20260717_090338.jpg"
+      ],
+      "read_text": [
+       "monkey forest UBUD ENTRANCE TICKET",
+       "KEPUNDUNG"
+      ],
+      "date": null,
+      "from_count": null,
+      "to_count": 4,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "원숭이 숲에 들어가기 전 그날 아침에 찍은 조식 음식 사진을 추려볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "원숭이 숲 매표소 사진(7월 17일 오전 8시 32분) 전에 찍은 아침 음식 사진을 추려볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "그날 아침 식당에서 찍은 사진 중에 음식이 보이는 사진만 골라볼게요.",
+     "evidence": {
+      "photo_ids": [
+       "20260717_071708.jpg",
+       "20260717_073035.jpg",
+       "20260717_073152.jpg"
+      ],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": 3,
+      "cutoff": null
+     }
+    }
+   ],
+   "calls": 10,
+   "loop_calls": 8,
+   "input_tokens": 56530,
+   "output_tokens": 4019,
+   "cache_read_input_tokens": 293801,
+   "cost_usd": 0.781814,
+   "elapsed_ms": 46787,
+   "run_id": "B06_20261115_154706_006"
+  },
+  {
+   "id": "B07",
+   "kind": "meal_time",
+   "query": "발리 첫날 밤에 먹은 야식이랑 맥주 사진 찾아줘",
+   "note": "7/16 밤 22:40~23:23 우붓 도착 첫 식사(나시고랭·나초·타코·빈땅·BALI HAI 맥주) 2장",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260716_224057.jpg",
+    "20260716_232314.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260716_233340.jpg",
+    "20260717_182209.jpg"
+   ],
+   "got_ids": [
+    "20260716_224057.jpg",
+    "20260716_232314.jpg"
+   ],
+   "matched_must": [
+    "20260716_224057.jpg",
+    "20260716_232314.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "발리 첫날인 7월 16일 밤 우붓에서 먹은 야식과 맥주 사진 2장을 찾았어요.",
+   "plan": {
+    "target": "발리 여행 첫날 밤에 먹은 야식과 맥주 사진",
+    "anchor": "발리 여행 첫날",
+    "relation": "same_day",
+    "known": [
+     "장소: 발리",
+     "시점: 여행 첫날 밤",
+     "내용: 야식과 맥주"
+    ],
+    "unknown": [
+     "발리 여행 날짜와 첫날",
+     "첫날 밤 야식·맥주 사진"
+    ]
+   },
+   "cutoffs": [],
+   "cards": [
+    {
+     "no": 1,
+     "kind": "plan",
+     "title": "찾을 내용을 정리했어요",
+     "sentence": "발리 여행 첫날을 먼저 확인하고, 그날 밤 야식과 맥주 사진을 찾을게요.",
+     "evidence": null
+    },
+    {
+     "no": 4,
+     "kind": "visit_day",
+     "title": "다녀온 날을 찾았어요",
+     "sentence": "발리에서 찍은 사진으로 여행 첫날을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "발리 첫날인 7월 16일 밤에 찍은 야식과 맥주 사진을 추리고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "첫날 밤 사진을 직접 보며 야식과 맥주가 보이는지 확인하고 있어요.",
+     "evidence": {
+      "photo_ids": [
+       "20260716_224057.jpg",
+       "20260716_232314.jpg"
+      ],
+      "read_text": [
+       "BINTANG",
+       "BALI HAI Romantic Day Lager"
+      ],
+      "date": null,
+      "from_count": null,
+      "to_count": 2,
+      "cutoff": null
+     }
+    }
+   ],
+   "calls": 7,
+   "loop_calls": 6,
+   "input_tokens": 22047,
+   "output_tokens": 2128,
+   "cache_read_input_tokens": 153165,
+   "cost_usd": 0.445296,
+   "elapsed_ms": 27883,
+   "run_id": "B07_20261115_154736_007"
+  },
+  {
+   "id": "B08",
+   "kind": "sign_text",
+   "query": "우붓 숙소 이름 뭐였지? 간판 찍어둔 사진 찾아줘",
+   "note": "7/16 23:33 ALAYA UBUD / DALA SPA 돌 간판 1장",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260716_233340.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260717_110347.jpg",
+    "20260717_132002.jpg"
+   ],
+   "got_ids": [
+    "20260716_233340.jpg"
+   ],
+   "matched_must": [
+    "20260716_233340.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "우붓 숙소는 ‘알라야 우붓(ALAYA UBUD)’이었고, 7월 16일 밤에 찍은 입구 돌 간판 사진을 찾았어요.",
+   "plan": {
+    "target": "우붓 숙소 간판 사진",
+    "anchor": "",
+    "relation": "none",
+    "known": [
+     "장소: 발리 우붓",
+     "숙소 간판을 찍은 사진"
+    ],
+    "unknown": [
+     "숙소 이름",
+     "찍은 날짜"
+    ]
+   },
+   "cutoffs": [],
+   "cards": [
+    {
+     "no": 1,
+     "kind": "plan",
+     "title": "찾을 내용을 정리했어요",
+     "sentence": "우붓에서 찍은 숙소 간판 사진을 찾아볼게요.",
+     "evidence": null
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "우붓에서 찍은 숙소 간판 사진을 추리고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "숙소 이름이 적힌 간판 사진이 더 있는지 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "우붓에서 ‘ALAYA’ 글자가 보이는 사진을 더 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "우붓에서 ‘ALAYA’ 글자가 보이는 사진을 더 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "숙소 이름이 적힌 간판이 보이는지 사진을 직접 확인하고 있어요.",
+     "evidence": {
+      "photo_ids": [
+       "20260716_233340.jpg"
+      ],
+      "read_text": [
+       "ALAYA UBUD / DALA SPA"
+      ],
+      "date": null,
+      "from_count": null,
+      "to_count": 1,
+      "cutoff": null
+     }
+    }
+   ],
+   "calls": 9,
+   "loop_calls": 8,
+   "input_tokens": 17929,
+   "output_tokens": 2457,
+   "cache_read_input_tokens": 384977,
+   "cost_usd": 0.726823,
+   "elapsed_ms": 30407,
+   "run_id": "B08_20261115_154753_008"
+  },
+  {
+   "id": "B09",
+   "kind": "animal",
+   "query": "원숭이 숲에서 본 거북이 사진 찾아줘",
+   "note": "7/17 09:00 몽키 포레스트 육지거북 사진 1장",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260717_090024.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260717_090310.jpg",
+    "20260717_090331.jpg",
+    "20260717_090536.jpg"
+   ],
+   "got_ids": [
+    "20260717_090024.jpg"
+   ],
+   "matched_must": [
+    "20260717_090024.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "7월 17일 오전 9시쯤 우붓 원숭이 숲에서 찍은 거북이 사진 1장을 찾았어요.",
+   "plan": {
+    "target": "원숭이 숲에서 찍은 거북이 사진",
+    "anchor": "",
+    "relation": "none",
+    "known": [
+     "장소: 원숭이 숲",
+     "대상: 거북이"
+    ],
+    "unknown": [
+     "원숭이 숲 방문 날짜",
+     "거북이가 보이는 사진"
+    ]
+   },
+   "cutoffs": [],
+   "cards": [
+    {
+     "no": 1,
+     "kind": "plan",
+     "title": "찾을 내용을 정리했어요",
+     "sentence": "원숭이 숲에서 찍은 거북이 사진을 찾아볼게요.",
+     "evidence": null
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "원숭이 숲에서 찍은 거북이 사진을 추리고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "거북이가 찍힌 사진을 넓게 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "원숭이 숲을 다녀간 날 찍은 거북이 사진을 더 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "원숭이 숲 사진들을 다시 보며 거북이가 찍힌 사진을 확인하고 있어요.",
+     "evidence": {
+      "photo_ids": [
+       "20260717_090024.jpg"
+      ],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": 1,
+      "cutoff": null
+     }
+    }
+   ],
+   "calls": 8,
+   "loop_calls": 6,
+   "input_tokens": 48238,
+   "output_tokens": 2651,
+   "cache_read_input_tokens": 226984,
+   "cost_usd": 0.701563,
+   "elapsed_ms": 29546,
+   "run_id": "B09_20261115_154804_009"
+  },
+  {
+   "id": "B10",
+   "kind": "object_scene",
+   "query": "계단에 꽃으로 LOVE 써놓은 사진 찾아줘",
+   "note": "7/17 16:41 나무 계단 위 마리골드 꽃송이로 만든 LOVE 사진 1장",
+   "passed": false,
+   "exact_match": false,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260717_164142.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260716_234659.jpg",
+    "20260717_164237.jpg"
+   ],
+   "got_ids": [],
+   "matched_must": [],
+   "matched_optional": [],
+   "missing_ids": [
+    "20260717_164142.jpg"
+   ],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 0.0,
+   "precision": 0.0,
+   "result_sentence": "계단에 꽃으로 LOVE를 써 놓은 사진은 아직 찾지 못했어요. 이번 여행 사진 307장 중 앞쪽 48장만 살펴봤고 그 안에는 없었어요.",
+   "plan": {
+    "target": "계단에 꽃으로 LOVE 글자를 꾸며 놓은 사진",
+    "anchor": "",
+    "relation": "none",
+    "known": [
+     "계단",
+     "꽃으로 만든 LOVE 글자"
+    ],
+    "unknown": [
+     "찍은 날짜",
+     "찍은 곳"
+    ]
+   },
+   "cutoffs": [],
+   "cards": [
+    {
+     "no": 1,
+     "kind": "plan",
+     "title": "찾을 내용을 정리했어요",
+     "sentence": "계단에 꽃으로 LOVE라고 꾸민 사진을 찾아볼게요.",
+     "evidence": null
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "꽃으로 LOVE를 꾸민 계단 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "계단에 꽃으로 LOVE라고 꾸민 장면을 골라볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "계단 위에 꽃으로 LOVE를 꾸민 장면을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "사진 속에 LOVE 글자가 있는 사진도 함께 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "계단 위에 꽃으로 LOVE를 꾸민 장면을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "꽃으로 LOVE라고 꾸민 계단을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "꽃으로 LOVE라고 꾸민 계단을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "꽃으로 LOVE라고 꾸민 계단을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "꽃으로 LOVE라고 꾸민 계단 장면으로 좁혀 볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "계단에 꽃으로 LOVE라고 꾸민 장면을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    }
+   ],
+   "calls": 12,
+   "loop_calls": 12,
+   "input_tokens": 28,
+   "output_tokens": 3334,
+   "cache_read_input_tokens": 1565560,
+   "cost_usd": 1.645854,
+   "elapsed_ms": 43973,
+   "run_id": "B10_20261115_154823_010"
+  },
+  {
+   "id": "B11",
+   "kind": "shopping",
+   "query": "발리에서 산 견과류 과자 이름이 뭐였지? 과자 봉지 여러 개 찍어둔 사진 찾아줘",
+   "note": "7/18 10:39 YAVA 캐슈넛 과자 봉지 여러 개 사진 1장(브랜드명 없이 질문)",
+   "passed": false,
+   "exact_match": false,
+   "status": "failed",
+   "error": "단계가 너무 길어져 멈췄어요(16회 초과).",
+   "answer_ids": [
+    "20260718_103956.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260718_110910.jpg",
+    "20260719_214739.jpg"
+   ],
+   "got_ids": [],
+   "matched_must": [],
+   "matched_optional": [],
+   "missing_ids": [
+    "20260718_103956.jpg"
+   ],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 0.0,
+   "precision": 0.0,
+   "result_sentence": "",
+   "plan": {
+    "target": "발리에서 산 견과류 과자 봉지 여러 개가 찍힌 사진",
+    "anchor": "",
+    "relation": "none",
+    "known": [
+     "찍은 곳: 발리",
+     "견과류 과자",
+     "과자 봉지 여러 개"
+    ],
+    "unknown": [
+     "과자 이름",
+     "찍은 날짜"
+    ]
+   },
+   "cutoffs": [],
+   "cards": [
+    {
+     "no": 1,
+     "kind": "plan",
+     "title": "찾을 내용을 정리했어요",
+     "sentence": "발리에서 찍은 견과류 과자 봉지 사진을 찾아볼게요.",
+     "evidence": null
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "발리에서 찍은 과자 봉지 사진을 추리고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "견과류 과자 봉지 사진을 넓게 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "발리 여행 중 견과류 과자 봉지가 여러 개 찍힌 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "발리 여행 기간 중 견과류 과자 봉지 사진을 골라볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "발리 여행 기간 중 견과류 과자 봉지 사진만 골라볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "견과류 과자 봉지가 찍힌 사진으로 좁혀볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "여행 기간 중 과자 봉지가 여러 개 찍힌 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "여행 기간에 찍은 견과류 과자 봉지 사진을 골라볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "견과류 과자 봉지가 찍힌 사진만 골라볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "발리 여행 중 견과류 과자 봉지 여러 개가 찍힌 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "견과류 과자 봉지가 여러 개 찍힌 사진으로 좁혀볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "견과류 과자 봉지가 여러 개 보이는 사진을 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "견과류 과자 봉지 사진으로 좁혀서 다시 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 16일~21일 발리 여행 사진 중 견과류 과자 봉지 사진을 찾을게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "견과류 과자 봉지가 여러 개 찍힌 사진만 골라볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "발리 여행 사진 중 견과류 과자 봉지가 여러 개 찍힌 사진을 찾을게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    }
+   ],
+   "calls": 16,
+   "loop_calls": 16,
+   "input_tokens": 34,
+   "output_tokens": 2700,
+   "cache_read_input_tokens": 2645732,
+   "cost_usd": 2.459217,
+   "elapsed_ms": 66073,
+   "run_id": "B11_20261115_154834_011"
+  },
+  {
+   "id": "B12",
+   "kind": "menu_text",
+   "query": "핀스 비치클럽 메뉴판 사진 찾아줘",
+   "note": "7/19 13:18 브라와 FINNS 비치클럽 검은색 Signature Menu 2장",
+   "passed": false,
+   "exact_match": false,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260719_131801.jpg",
+    "20260719_131806.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260718_132437.jpg",
+    "20260718_154515.jpg"
+   ],
+   "got_ids": [],
+   "matched_must": [],
+   "matched_optional": [],
+   "missing_ids": [
+    "20260719_131801.jpg",
+    "20260719_131806.jpg"
+   ],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 0.0,
+   "precision": 0.0,
+   "result_sentence": "핀스 비치클럽 메뉴판 사진은 아직 찾지 못했어요. 7월 18~20일 짱구 사진 중에 있을 가능성이 커요.",
+   "plan": {
+    "target": "핀스 비치클럽 메뉴판 사진",
+    "anchor": "",
+    "relation": "none",
+    "known": [
+     "장소: 핀스 비치클럽",
+     "대상: 메뉴판"
+    ],
+    "unknown": [
+     "찍은 날짜",
+     "메뉴판이 보이는 사진"
+    ]
+   },
+   "cutoffs": [],
+   "cards": [
+    {
+     "no": 1,
+     "kind": "plan",
+     "title": "찾을 내용을 정리했어요",
+     "sentence": "핀스 비치클럽에서 찍은 메뉴판 사진을 찾아볼게요.",
+     "evidence": null
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "핀스 비치클럽에서 찍은 메뉴판 사진을 추리고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "사진 속 글자로 핀스 메뉴판을 찾아보고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "사진 속 'FINNS' 글자로 찾아보고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "짱구에서 찍은 메뉴판 사진을 찾아보고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "사진 속 'FINNS' 글자로 핀스 비치클럽 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "짱구에 머문 7월 18~20일 사진 중 핀스 메뉴판을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "짱구에 머문 날 사진 중 핀스 메뉴판을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "짱구에 머문 날 사진 중 핀스 메뉴판을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 18~20일 짱구 사진 중 'FINNS' 글자가 있는 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 18~20일 짱구 사진 중 핀스 메뉴판을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 18~20일 짱구 사진 중 핀스 메뉴판을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 18~20일 짱구 사진 중 핀스 메뉴판을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 18~20일 사진 중 'FINNS' 글자가 보이는 메뉴판을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    }
+   ],
+   "calls": 15,
+   "loop_calls": 15,
+   "input_tokens": 34,
+   "output_tokens": 3742,
+   "cache_read_input_tokens": 2519880,
+   "cost_usd": 2.214308,
+   "elapsed_ms": 50126,
+   "run_id": "B12_20261115_154907_012"
+  },
+  {
+   "id": "B13",
+   "kind": "dinner_food",
+   "query": "화덕피자랑 트러플 파스타에 와인 마신 저녁 사진 찾아줘",
+   "note": "7/20 18:53~19:02 부라타 화덕피자·레드와인 건배·트러플 파스타 3장(다른 날 피자 3건은 함정)",
+   "passed": false,
+   "exact_match": false,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260720_185335.jpg",
+    "20260720_185351.jpg",
+    "20260720_190217.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260717_182209.jpg",
+    "20260718_164723.jpg",
+    "20260721_123636.jpg"
+   ],
+   "got_ids": [],
+   "matched_must": [],
+   "matched_optional": [],
+   "missing_ids": [
+    "20260720_185335.jpg",
+    "20260720_185351.jpg",
+    "20260720_190217.jpg"
+   ],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 0.0,
+   "precision": 0.0,
+   "result_sentence": "화덕피자·트러플 파스타·와인이 함께 찍힌 저녁 사진은 아직 찾지 못했어요.",
+   "plan": {
+    "target": "화덕피자, 트러플 파스타, 와인이 함께 나온 저녁 식사 사진",
+    "anchor": "",
+    "relation": "none",
+    "known": [
+     "화덕피자",
+     "트러플 파스타",
+     "와인",
+     "저녁 시간"
+    ],
+    "unknown": [
+     "날짜",
+     "식당 위치"
+    ]
+   },
+   "cutoffs": [],
+   "cards": [
+    {
+     "no": 1,
+     "kind": "plan",
+     "title": "찾을 내용을 정리했어요",
+     "sentence": "화덕피자와 트러플 파스타, 와인을 곁들인 저녁 사진을 찾아볼게요.",
+     "evidence": null
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "화덕피자, 트러플 파스타, 와인이 보이는 저녁 식사 사진을 추리고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "화덕피자와 트러플 파스타, 와인이 함께 차려진 저녁 식탁 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "트러플 파스타가 담긴 사진을 따로 찾아보고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "화덕피자와 트러플 파스타, 와인이 함께 차려진 저녁 식탁 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "화덕피자와 트러플 파스타, 와인이 함께 차려진 저녁 식탁 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "화덕피자와 트러플 파스타, 와인이 보이는 저녁 식사 사진만 골라 보고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "화덕피자와 트러플 파스타, 와인이 보이는 저녁 식사 사진만 골라 보고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "화덕피자와 트러플 파스타, 와인이 보이는 저녁 식사 사진만 골라 보고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "화덕피자와 트러플 파스타, 와인이 보이는 저녁 식탁 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "화덕피자와 트러플 파스타, 와인이 함께 나온 저녁 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "화덕피자와 트러플 파스타, 와인이 함께 나온 저녁 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 18일 이후 사진 중 화덕피자·트러플 파스타·와인이 보이는 저녁 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 18일부터 21일 사이에서 피자·파스타·와인 저녁 사진을 찾고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    }
+   ],
+   "calls": 15,
+   "loop_calls": 15,
+   "input_tokens": 32,
+   "output_tokens": 3363,
+   "cache_read_input_tokens": 2271939,
+   "cost_usd": 2.154497,
+   "elapsed_ms": 44279,
+   "run_id": "B13_20261115_154940_013"
+  },
+  {
+   "id": "B14",
+   "kind": "object_drink",
+   "query": "나무 얼굴 모양 잔에 나온 칵테일 사진 찾아줘",
+   "note": "7/21 11:58 나무 조각 티키 머그잔 칵테일 클로즈업 1장(같은 쟁반에 머그잔이 함께 찍힌 전경 2장 선택)",
+   "passed": false,
+   "exact_match": false,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260721_115834.jpg"
+   ],
+   "optional_ids": [
+    "20260721_115852.jpg",
+    "20260721_115855.jpg"
+   ],
+   "trap_ids": [
+    "20260721_125420.jpg",
+    "20260721_183528.jpg"
+   ],
+   "got_ids": [],
+   "matched_must": [],
+   "matched_optional": [],
+   "missing_ids": [
+    "20260721_115834.jpg"
+   ],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 0.0,
+   "precision": 0.0,
+   "result_sentence": "나무 얼굴 모양 잔에 담긴 칵테일 사진은 확인한 사진 중에서 찾지 못했어요.",
+   "plan": {
+    "target": "나무 얼굴 모양(티키) 잔에 담긴 칵테일 사진",
+    "anchor": "",
+    "relation": "none",
+    "known": [
+     "칵테일",
+     "나무 얼굴 모양 잔"
+    ],
+    "unknown": [
+     "찍은 날짜",
+     "찍은 곳"
+    ]
+   },
+   "cutoffs": [],
+   "cards": [
+    {
+     "no": 1,
+     "kind": "plan",
+     "title": "찾을 내용을 정리했어요",
+     "sentence": "나무 얼굴 모양 잔에 담긴 칵테일 사진을 찾아볼게요.",
+     "evidence": null
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "얼굴 모양 잔에 나온 칵테일 사진을 고르고 있어요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "나무 얼굴 모양 잔에 담긴 칵테일 장면으로 다시 골라볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "'티키'라는 글자가 들어간 사진도 함께 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "나무 얼굴 모양 잔에 담긴 칵테일 장면으로 골라볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "나무 얼굴 모양 잔에 담긴 칵테일 장면으로 골라볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "얼굴이 조각된 나무 잔에 담긴 칵테일 사진만 골라볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "얼굴이 조각된 나무 잔에 담긴 칵테일 사진만 골라볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "얼굴이 조각된 나무 잔에 담긴 칵테일 사진만 골라볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "얼굴이 조각된 나무 잔에 담긴 칵테일 사진만 골라볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "얼굴이 조각된 나무 잔에 담긴 칵테일 사진만 골라볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "칵테일 잔이 나온 사진만 다시 추려볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    }
+   ],
+   "calls": 13,
+   "loop_calls": 13,
+   "input_tokens": 30,
+   "output_tokens": 3384,
+   "cache_read_input_tokens": 1915629,
+   "cost_usd": 1.839321,
+   "elapsed_ms": 63049,
+   "run_id": "B14_20261115_154957_014"
+  },
+  {
+   "id": "B15",
+   "kind": "airport_return",
+   "query": "집에 오는 날 공항 탑승 줄이랑 탑승권 봉투 찍은 사진 찾아줘",
+   "note": "7/21 19:32~19:41 발리 공항 싱가포르항공 탑승 대기 줄 2장과 kris+ 탑승권 봉투 1장(앞선 라운지 식사·칵테일 제외)",
+   "passed": false,
+   "exact_match": false,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260721_193247.jpg",
+    "20260721_193250.jpg",
+    "20260721_194125.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260721_181605.jpg",
+    "20260721_183528.jpg"
+   ],
+   "got_ids": [],
+   "matched_must": [],
+   "matched_optional": [],
+   "missing_ids": [
+    "20260721_193247.jpg",
+    "20260721_193250.jpg",
+    "20260721_194125.jpg"
+   ],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 0.0,
+   "precision": 0.0,
+   "result_sentence": "7월 21일 공항 사진을 아직 확인하지 못해 탑승 줄과 탑승권 봉투 사진을 고르지 못했어요.",
+   "plan": {
+    "target": "공항 탑승 줄과 탑승권 봉투 사진",
+    "anchor": "",
+    "relation": "none",
+    "known": [
+     "집에 돌아오는 날",
+     "공항",
+     "탑승 줄",
+     "탑승권 봉투"
+    ],
+    "unknown": [
+     "어느 여행의 귀국일인지",
+     "해당 사진의 찍은 시각과 장소"
+    ]
+   },
+   "cutoffs": [],
+   "cards": [
+    {
+     "no": 1,
+     "kind": "plan",
+     "title": "찾을 내용을 정리했어요",
+     "sentence": "집에 오는 날 공항에서 찍은 탑승 줄과 탑승권 봉투 사진을 찾을게요.",
+     "evidence": null
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "공항 탑승구 줄과 탑승권 봉투가 보이는 사진을 추려볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "탑승권 봉투가 찍힌 사진도 따로 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "여행 마지막 날 공항 근처에서 찍은 사진을 추려볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "여행 마지막 날인 7월 21일 공항 근처 사진을 추려볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 21일 투반 공항 근처에서 찍은 사진만 추려볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 21일 투반 공항에서 찍은 사진만 골라볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 21일 투반 공항에서 찍은 탑승 줄과 탑승권 봉투 사진을 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 21일 투반에서 찍은 공항 탑승 줄·탑승권 봉투 사진을 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 21일 투반 공항에서 찍은 사진을 날짜와 찍은 곳으로 좁혀볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    },
+    {
+     "no": 5,
+     "kind": "picked",
+     "title": "조건에 맞는 사진만 골랐어요",
+     "sentence": "7월 21일 투반 공항에서 찍은 탑승 줄과 탑승권 봉투 사진을 찾아볼게요.",
+     "evidence": {
+      "photo_ids": [],
+      "read_text": [],
+      "date": null,
+      "from_count": null,
+      "to_count": null,
+      "cutoff": null
+     }
+    }
+   ],
+   "calls": 13,
+   "loop_calls": 13,
+   "input_tokens": 30,
+   "output_tokens": 3070,
+   "cache_read_input_tokens": 1622554,
+   "cost_usd": 1.65145,
+   "elapsed_ms": 39768,
+   "run_id": "B15_20261115_155024_015"
+  }
+ ]
+}
