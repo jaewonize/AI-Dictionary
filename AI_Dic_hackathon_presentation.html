@@ -490,6 +490,100 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 .gpB[data-gp-step="3"] .gpB__steps li:nth-child(3)::before,.gpB[data-gp-step="4"] .gpB__steps li:nth-child(4)::before{background:var(--blue);color:#fff}
 .gpB[data-gp-step="1"] .gpB__steps li:nth-child(1) span,.gpB[data-gp-step="2"] .gpB__steps li:nth-child(2) span,
 .gpB[data-gp-step="3"] .gpB__steps li:nth-child(3) span,.gpB[data-gp-step="4"] .gpB__steps li:nth-child(4) span{color:var(--sub)}
+/* 폰은 360x780 그대로. 배율은 07 슬라이드에서만 줄인다 */
+.tcdemo .ex .phone{box-shadow:0 0 0 5px var(--ink),0 0 0 6px #3a3a40,0 26px 60px rgba(0,0,0,.18)}
+/* 내비게이션 바 — One UI 3버튼(최근 · 홈 · 뒤로). 경계선 없이 화면 위에 떠 있다 */
+.tcdemo .ex .navbar{position:absolute;left:0;right:0;bottom:0;height:48px;z-index:20;display:flex;
+  align-items:center;justify-content:space-around;padding:0 54px;background:transparent;pointer-events:none}
+.tcdemo .ex .navbar i{display:block;opacity:.55;color:var(--ink)}
+.tcdemo .ex .navbar .recent{width:16px;height:13px;border-top:1.8px solid currentColor;border-bottom:1.8px solid currentColor;position:relative}
+.tcdemo .ex .navbar .recent::after{content:"";position:absolute;left:0;right:0;top:50%;margin-top:-.9px;height:1.8px;background:currentColor}
+.tcdemo .ex .navbar .home{width:15px;height:15px;border:1.8px solid currentColor;border-radius:50%}
+.tcdemo .ex .navbar .back{width:10px;height:10px;border-left:1.8px solid currentColor;border-bottom:1.8px solid currentColor;transform:rotate(45deg)}
+/* 입력 줄이 내비게이션 바에 가리지 않게 자리를 낸다 */
+.tcdemo .ex .inputbar{padding-bottom:52px}
+/* 썸네일 사진 — 덱에는 이미지가 없어 규칙만 더한다 */
+.tcdemo .ex .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+
+
+.tcdemo .ex .docs{margin-top:9px;display:flex;flex-direction:column;gap:6px}
+.tcdemo .ex .docc{display:flex;align-items:center;gap:9px;text-decoration:none;background:#fff;
+  border:1px solid #e9eaf0;border-radius:11px;padding:9px 10px;transition:border-color .16s,box-shadow .16s,background .16s}
+.tcdemo .ex .docc:hover{border-color:var(--blue);background:#fbfcff;box-shadow:0 2px 10px rgba(37,99,235,.12)}
+.tcdemo .ex .docc:active{background:#f4f6ff}
+.tcdemo .ex .docc .ext{flex:none;width:30px;height:36px;border-radius:5px;display:grid;place-items:center;
+  font-size:8.5px;font-weight:800;color:#fff;letter-spacing:.02em}
+.tcdemo .ex .docc .ext.pdf{background:#d8453b}
+.tcdemo .ex .docc .ext.xls{background:#1f8a54}
+.tcdemo .ex .docc .pv{flex:none;width:30px;height:36px;border-radius:5px;overflow:hidden;background:#eceef6;border:1px solid #e4e6ee}
+.tcdemo .ex .docc .pv img{width:100%;height:100%;object-fit:cover;display:block}
+.tcdemo .ex .docc .dm{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.tcdemo .ex .docc .fn{font-size:12px;font-weight:700;color:var(--ink);line-height:1.35;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tcdemo .ex .docc .why{font-size:10.5px;font-weight:600;color:var(--mute);line-height:1.3}
+.tcdemo .ex .docc .amt{flex:none;font-size:13px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.tcdemo .ex .docc .go{flex:none;width:7px;height:7px;border-right:1.6px solid #c3c6d2;border-top:1.6px solid #c3c6d2;
+  transform:rotate(45deg);margin-left:1px}
+.tcdemo .ex .docc:hover .go{border-color:var(--blue)}.tcdemo .ex .me .b{max-width:100%;text-wrap:pretty}
+.tcdemo .ex .facts .f i{width:52px}
+.tcdemo .ex .chat{position:relative;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tcdemo .ex .chat::-webkit-scrollbar{width:0;height:0}
+/* 무언가를 가져오는 동안에만 점 세 개가 튄다 */
+@keyframes tdot{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-4px);opacity:1}}
+.tcdemo .ex .hop i{animation:tdot 1s ease-in-out infinite}
+.tcdemo .ex .hop i:nth-child(2){animation-delay:.16s}
+.tcdemo .ex .hop i:nth-child(3){animation-delay:.32s}
+/* 단계 속 줄도 하나씩 나타난다 */
+.tcdemo .ex .sbody > *:not(.t){opacity:0;transform:translateY(6px);transition:opacity .28s,transform .28s}
+.tcdemo .ex .sbody > *.in{opacity:1;transform:none}
+
+/* 손가락이 닿는 자리 */
+.tcdemo .ex .tap{position:absolute;width:34px;height:34px;border-radius:50%;pointer-events:none;z-index:15;
+  background:rgba(31,64,255,.18);border:1.5px solid rgba(31,64,255,.5);transform:translate(-50%,-50%) scale(.4);
+  opacity:0;animation:tap .7s ease-out forwards}
+@keyframes tap{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}
+  35%{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.5)}
+}
+.tcdemo .ex .ask button{transition:border-color .18s,background .18s,color .18s}
+.tcdemo .ex .follow button{transition:border-color .18s,background .18s,color .18s}
+.tcdemo .ex .follow button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.tcdemo .ex .follow + .me{margin-top:20px}
+.tcdemo .ex .me[data-br]{margin-top:20px}
+/* 대화는 한 줄씩 나타난다 */
+.tcdemo .ex .chat > *{opacity:0;transform:translateY(8px);transition:opacity .32s,transform .32s}
+.tcdemo .ex .chat > *.in{opacity:1;transform:none}
+
+/* 07 — 머리줄(이름 + 데모 칩) 아래에 폰 화면을 통째로 세운다 */
+.slide--demos .cards{gap:72px;align-items:flex-start;justify-content:center}
+.slide--demos .cards > .card{flex:none;width:calc(360px * var(--exs));
+  background:none;box-shadow:none;border-radius:0;padding:0;overflow:visible;
+  display:flex;flex-direction:column}
+.slide--demos .cards > .card > .rep__q,
+.slide--demos .cards > .card > .rep__lbl,
+.slide--demos .cards > .card > .rep__now,
+.slide--demos .cards > .card > .rep__ol,
+.slide--demos .cards > .card > .rep__res{display:none}
+.slide--demos .cards > .card > .rep__head{flex:none;order:3;margin:20px 0 0;justify-content:center}
+/* 눌러보고 싶게 — 테두리와 그림자가 천천히 숨 쉰다 */
+.slide--demos .demochip{flex:none;order:-1;align-self:center;margin:0 0 20px;font-family:inherit;font-size:15px;font-weight:700;letter-spacing:-.03em;
+  color:var(--ink-2);background:#fff;border:1.5px solid var(--line);border-radius:999px;
+  padding:9px 17px;cursor:pointer;transition:.16s;animation:jumpglow 2.4s ease-in-out infinite}
+.slide--demos .demochip:hover{border-color:var(--blue);color:var(--blue);
+  box-shadow:0 0 0 4px rgba(37,99,235,.14),0 6px 22px rgba(37,99,235,.28);transform:translateY(-1px)}
+.slide--demos .demochip.is-run{animation:none;color:var(--dim);border-color:var(--line);
+  box-shadow:none;cursor:default;transform:none}
+@media (prefers-reduced-motion:reduce){ .slide--demos .demochip{animation:none} }
+.slide--demos .tcdemo{display:block;flex:none;height:calc(780px * var(--exs));overflow:visible}
+.slide--demos .tcdemo .ex{transform:scale(var(--exs));transform-origin:top left}
+/* 발표용 시작 화면 — 실제 폰에는 없는 화면이다 */
+.ex .intro{position:absolute;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;
+  padding:0 36px;background:#fff;text-align:center;transition:opacity .35s}
+.ex .intro p{font-size:27px;line-height:1.5;font-weight:700;letter-spacing:-.045em;color:var(--ink);
+  word-break:keep-all;text-wrap:balance}
+.ex .intro.out{opacity:0;pointer-events:none}
+.tcdemo{display:none}
 </style>
 </head>
 <body>
@@ -510,7 +604,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
       <p class="cover__sub rv" style="--i:2">1단계 · 모바일에서 사진과 문서 찾기</p>
     </div>
     <div class="fan" aria-label="흐릿한 질의">
-      <i style="--tx:-196px; --ty:-150px; --r:-13deg; --cx:26px; --cy:-16px; --cr:6.5deg; --d:.12; z-index:3"><span><b>Query</b>창밖으로 바다가 보이는 카페에서 찍은 사진</span></i>
+      <i style="--tx:-196px; --ty:-150px; --r:-13deg; --cx:26px; --cy:-16px; --cr:6.5deg; --d:.12; z-index:3"><span><b>Query</b>미셸 들라크루아 전시 보고 나서 갔던 카페 사진</span></i>
       <i class="top" style="--tx:-92px;  --ty:-10px;  --r:-6deg;  --cx:0px; --cy:0px; --cr:0deg; --d:.06; z-index:5"><span><b>Query</b>욕실 견적 중에 제일 싼 데랑 계약한 데 얼마 차이야?</span></i>
       <i style="--tx:112px;  --ty:138px;  --r:6deg;   --cx:-16px; --cy:24px; --cr:-5.5deg; --d:.06; z-index:4"><span><b>Query</b>작년 송년회 와인이랑 4년 전 생일 와인</span></i>
       <i style="--tx:208px;  --ty:276px;  --r:13deg;  --cx:17px; --cy:54px; --cr:-4.5deg; --d:.12; z-index:2"><span><b>Query</b>동생 합격했다고 올렸던 날 파티 사진</span></i>
@@ -750,11 +844,11 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
               <div class="me"><div class="b">2023.12 – 2024.3 · 예술의전당</div></div>
               <div class="step"><div class="dot"></div><div class="sbody">
                 <div class="t">다녀온 날을 찾았어요</div>
-                <div class="d">전시 기간(<b>2023.12.16 – 2024.3.31</b>) 안에서 <b>벽에 걸린 그림</b>이 찍힌 사진이 있던 날은 <b>2024.1.13</b> 하루예요</div>
+                <div class="d">전시 기간(<b>2023.12.16 – 2024.3.31</b>) 안에서 <b>벽에 걸린 그림</b>이 찍힌 사진이 있던 날은 <b>2023.12.21</b> 하루예요</div>
               </div></div>
               <div class="step"><div class="dot"></div><div class="sbody">
                 <div class="t">그날 전시를 본 뒤에 찍은 카페 사진만 골랐어요</div>
-                <div class="d">오후 4시 이후, <b>창가 자리</b>와 <b>커피잔</b>이 같이 찍힌 사진이에요</div>
+                <div class="d">오전에 들른 카페는 빼고, <b>관람 뒤 12시 40분 이후</b> 사진만 남겼어요</div>
                 <div class="narrow"><span class="big">48</span><span>장</span><span>→</span><span class="big hit">6</span><span>장</span></div>
               </div></div>
               <div class="reshead"><div class="t"><b>6장</b> 찾았어요</div></div>
@@ -863,13 +957,13 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
   </section>
 
   <!-- ══════════ 07Test 1단계 검증 ══════════ -->
-  <section class="slide">
+  <section class="slide slide--demos">
     <div class="kicker rv"><i>07</i>Test cases<b>|</b>1단계 검증</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">기능 구현 후, <b>검증해 볼 테스트 예제</b></h2>
     <div class="body">
       <div class="cards">
         <div class="card rv" style="--i:2">
-          <span class="rep__pill">찾기 · Navigation</span>
+          <div class="rep__head"><span class="rep__pill">찾아가기</span></div>
           <p class="rep__q">미셸 들라크루아 전시 보고 나서 갔던 카페 사진</p>
           <div class="rep__lbl">지금은</div>
           <p class="rep__now">전시 이름으로는 <b>아무것도 걸리지 않는다</b>. 언제 갔는지 떠올려 그 무렵 사진을 직접 넘겨 봐야 한다</p>
@@ -879,10 +973,99 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
             <li>국내 전시가 세 번이라 어느 쪽인지 되물음</li>
             <li>전시 사진으로 다녀온 날을 확정하고, 그 뒤 카페 사진을 고름</li>
           </ol>
-          <div class="rep__res"><span>“2024년 1월 13일에 다녀오셨네요” — 전시 뒤에 찍은 카페 사진 6장</span></div>
+          <div class="rep__res"><span>“2023년 12월 21일에 다녀오셨네요” — 전시 뒤에 찍은 카페 사진 6장</span></div>
+        
+          <div class="tcdemo">
+<div class="ex">
+  <div class="phone">
+      <div class="notch"></div>
+      <div class="statusbar"><span>9:41</span><span class="ic">
+        <svg width="16" height="11" viewBox="0 0 16 11" fill="#1d1d1f"><rect y="7" width="3" height="4" rx="1"/><rect x="4.3" y="5" width="3" height="6" rx="1"/><rect x="8.6" y="2.5" width="3" height="8.5" rx="1"/><rect x="12.9" width="3" height="11" rx="1" opacity=".3"/></svg>
+        <svg width="24" height="11" viewBox="0 0 24 11" fill="none"><rect x=".5" y=".5" width="20" height="10" rx="3" stroke="#1d1d1f" stroke-opacity=".35"/><rect x="2" y="2" width="15" height="7" rx="1.8" fill="#1d1d1f"/><path d="M22 4v3a2 2 0 0 0 0-3z" fill="#1d1d1f" fill-opacity=".35"/></svg>
+      </span></div>
+      <div class="apphead"><div class="nm">AI <span>(&nbsp;&nbsp;)</span> Dictionary</div></div>      <div class="chat" data-flow>
+        <div class="me"><div class="b">미셸 들라크루아 전시 보고 나서 갔던 카페 사진</div></div>
+        <div class="step"><div class="dot"></div><div class="sbody">
+          <div class="t">찾을 내용을 정리했어요</div>
+          <div class="d"><i>대상</i> 카페 사진 · <i>기준</i> 미셸 들라크루아 전시 직후 · <i>언제</i> 아직 모르겠어요</div>
+        </div></div>
+        <div class="step"><div class="dot"></div><div class="sbody">
+          <div class="t" data-doing="웹에서 찾아보는 중" data-done="웹에서 찾아봤어요">웹에서 찾아봤어요<span class="hop"><i></i><i></i><i></i></span></div>
+          <div class="facts"><div class="f"><i>인물</i><span>프랑스 나이브아트 화가</span></div><div class="f"><i>전시</i><span>국내에서 세 차례 열림</span></div></div>
+        </div></div>
+        <div class="step"><div class="dot live"></div><div class="sbody">
+          <div class="t">어느 전시였는지 알려주세요</div>
+          <div class="d">국내 전시가 <b>세 번</b> 있었어요</div>
+          <div class="ask">
+            <button>2023.12 – 2024.3 · 예술의전당<br>파리의 벨 에포크</button>
+            <button>2025.5 – 8 · 현대백화점 무역센터<br>영원히, 화가</button>
+            <button>2025.12 – 2026.2 · 송도 트리플스트리트<br>행복했던 시간의 기억</button>
+          </div>
+        </div></div>
+        <div class="me"><div class="b">2023.12 – 2024.3 · 예술의전당</div></div>
+        <div class="step"><div class="dot"></div><div class="sbody">
+          <div class="t">다녀온 날을 찾았어요</div>
+          <div class="d">전시 기간 안에서 <b>벽에 걸린 그림</b>이 찍힌 사진이 있던 날은 <b>2023.12.21</b> 하루예요</div>
+        </div></div>
+        <div class="step"><div class="dot"></div><div class="sbody">
+          <div class="t">그날 전시를 본 뒤에 찍은 카페 사진만 골랐어요</div>
+          <div class="d">오전에 들른 카페는 빼고, <b>관람 뒤 12시 40분 이후</b> 사진만 남겼어요</div>
+          <div class="narrow"><span class="big">48</span><span>장</span><span>→</span><span class="big hit">6</span><span>장</span></div>
+        </div></div>
+        <div class="reshead"><div class="t"><b>6장</b> 찾았어요</div></div>
+        <div class="grid">
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20231221_124018.jpg" alt="" style="object-position:62% 66%"><span class="badge">갤러리</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20231221_125236.jpg" alt="" style="object-position:50% 42%"><span class="badge">갤러리</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20231221_130824.jpg" alt="" style="object-position:44% 80%"><span class="badge">갤러리</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20231221_132641.jpg" alt="" style="object-position:80% 32%"><span class="badge">갤러리</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20231221_134809.jpg" alt="" style="object-position:36% 48%"><span class="badge">갤러리</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20231221_142033.jpg" alt="" style="object-position:76% 74%"><span class="badge">갤러리</span></div></div>
+        </div>
+        <div class="follow"><button data-open="ex">전시장 사진도 보기</button><button data-open="pre">전시 전에 갔던 카페</button></div>
+        <div class="me" data-br="ex"><div class="b">전시장 사진도 보기</div></div>
+        <div class="step" data-br="ex"><div class="dot"></div><div class="sbody">
+          <div class="t">같은 날 전시장에서 찍은 사진으로 바꿨어요</div>
+          <div class="d">카페에 가기 전, <b>10시 34분 – 11시 56분</b> 예술의전당에서 찍은 사진이에요</div>
+          <div class="narrow"><span class="big">48</span><span>장</span><span>→</span><span class="big hit">9</span><span>장</span></div>
+        </div></div>
+        <div class="reshead" data-br="ex"><div class="t"><b>9장</b> 찾았어요</div></div>
+        <div class="grid" data-br="ex">
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/Download/IMG_0093.jpeg" alt="" style="object-position:50% 46%"><span class="badge">카카오톡</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/Download/IMG_0094.jpeg" alt="" style="object-position:50% 40%"><span class="badge">카카오톡</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/Download/IMG_0095.jpeg" alt="" style="object-position:50% 52%"><span class="badge">카카오톡</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/Download/IMG_0096.jpeg" alt="" style="object-position:50% 44%"><span class="badge">카카오톡</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/Download/IMG_0098.jpeg" alt="" style="object-position:50% 50%"><span class="badge">카카오톡</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/Download/IMG_0099.jpeg" alt="" style="object-position:50% 42%"><span class="badge">카카오톡</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/Download/IMG_0100.jpeg" alt="" style="object-position:50% 48%"><span class="badge">카카오톡</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/Download/IMG_0114.jpeg" alt="" style="object-position:50% 54%"><span class="badge">카카오톡</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/Download/IMG_0121.jpeg" alt="" style="object-position:50% 50%"><span class="badge">카카오톡</span></div></div>
+        </div>
+        <div class="follow" data-br="ex"><button data-close="ex">이전 검색결과로 돌아가기</button><button data-open="pre">전시 전에 갔던 카페</button></div>
+        <div class="me" data-br="pre"><div class="b">전시 전에 갔던 카페</div></div>
+        <div class="step" data-br="pre"><div class="dot"></div><div class="sbody">
+          <div class="t">전시 전에 예술의전당 근처에서 찍은 카페 사진이에요</div>
+          <div class="d">같은 날 <b>9시 35분 – 10시 10분</b>, 전시장에 들어가기 전에 머문 카페예요</div>
+          <div class="narrow"><span class="big">48</span><span>장</span><span>→</span><span class="big hit">4</span><span>장</span></div>
+        </div></div>
+        <div class="reshead" data-br="pre"><div class="t"><b>4장</b> 찾았어요</div></div>
+        <div class="grid" data-br="pre">
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20231221_093512.jpg" alt="" style="object-position:48% 72%"><span class="badge">갤러리</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20231221_095208.jpg" alt="" style="object-position:40% 62%"><span class="badge">갤러리</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20231221_100527.jpg" alt="" style="object-position:45% 32%"><span class="badge">갤러리</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20231221_101046.jpg" alt="" style="object-position:55% 50%"><span class="badge">갤러리</span></div></div>
+        </div>
+        <div class="follow" data-br="pre"><button data-close="pre">이전 검색결과로 돌아가기</button><button data-open="ex">전시장 사진도 보기</button></div>
+      </div>
+      <div class="inputbar"><div class="ibox"><p class="ph">무엇을 찾고 계세요?</p>
+        <span class="send"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 13.5V3M8 3 3.5 7.5M8 3l4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div></div>
+      <div class="navbar"><i class="recent"></i><i class="home"></i><i class="back"></i></div>  </div>
+</div>
+          </div>
+          <button class="demochip" type="button" data-demo>재생하기</button>
         </div>
         <div class="card rv" style="--i:3">
-          <span class="rep__pill">답하기 · QA</span>
+          <div class="rep__head"><span class="rep__pill">Q&amp;A</span></div>
           <p class="rep__q">욕실 견적 중에 제일 싼 데랑 계약한 데 얼마 차이야?</p>
           <div class="rep__lbl">지금은</div>
           <p class="rep__now">파일명은 <b>견적_최종(2).pdf</b>. 메일 · 카톡 · 다운로드를 뒤져 하나씩 열고 직접 계산해야 한다</p>
@@ -893,9 +1076,84 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
             <li>계약서로 ‘맡긴 데’ 확인</li>
           </ol>
           <div class="rep__res"><span>“최저 A업체 380만 원, 계약한 C업체 450만 원, 70만 원 차이가 나요” + 근거 3건</span></div>
+        
+          <div class="tcdemo">
+<div class="ex">
+  <div class="phone">
+      <div class="notch"></div>
+      <div class="statusbar"><span>9:41</span><span class="ic">
+        <svg width="16" height="11" viewBox="0 0 16 11" fill="#1d1d1f"><rect y="7" width="3" height="4" rx="1"/><rect x="4.3" y="5" width="3" height="6" rx="1"/><rect x="8.6" y="2.5" width="3" height="8.5" rx="1"/><rect x="12.9" width="3" height="11" rx="1" opacity=".3"/></svg>
+        <svg width="24" height="11" viewBox="0 0 24 11" fill="none"><rect x=".5" y=".5" width="20" height="10" rx="3" stroke="#1d1d1f" stroke-opacity=".35"/><rect x="2" y="2" width="15" height="7" rx="1.8" fill="#1d1d1f"/><path d="M22 4v3a2 2 0 0 0 0-3z" fill="#1d1d1f" fill-opacity=".35"/></svg>
+      </span></div>
+      <div class="apphead"><div class="nm">AI <span>(&nbsp;&nbsp;)</span> Dictionary</div></div>      <div class="chat" data-flow>
+        <div class="me"><div class="b">욕실 견적 중에 제일 싼 데랑 계약한 데 얼마 차이야?</div></div>
+        <div class="step"><div class="dot"></div><div class="sbody">
+          <div class="t">찾을 내용을 정리했어요</div>
+          <div class="d"><i>대상</i> 욕실 견적서 · <i>비교</i> 최저가와 계약한 곳 · <i>확인</i> 계약서</div>
+        </div></div>
+        <div class="step"><div class="dot"></div><div class="sbody">
+          <div class="t" data-doing="저장소를 뒤지는 중" data-done="욕실 견적 5건을 찾았어요">욕실 견적 5건을 찾았어요<span class="hop"><i></i><i></i><i></i></span></div>
+          <div class="d">PDF · 엑셀 같은 문서뿐 아니라 <b>사진과 스크린샷에 적힌 금액</b>까지 함께 읽었어요</div>
+          <div class="narrow"><span class="big">127</span><span>건</span><span>→</span><span class="big hit">5</span><span>건</span></div>
+          <div class="docs">
+            <a class="docc" href="Mobile%20Storage/DCIM/Camera/20260901_153212.jpg" target="_blank" rel="noopener">
+              <span class="pv"><img src="Mobile%20Storage/DCIM/Camera/20260901_153212.jpg" alt=""></span>
+              <span class="dm"><span class="fn">20260901_153212.jpg</span><span class="why">하람디자인 · 갤러리</span></span>
+              <span class="amt">380만</span><span class="go"></span>
+            </a>
+            <a class="docc" href="Mobile%20Storage/KakaoTalkDownload/%ED%95%9C%EC%9A%B8%EC%84%A4%EB%B9%84_%EA%B2%AC%EC%A0%81_1%EC%B0%A8.pdf" target="_blank" rel="noopener">
+              <span class="ext pdf">PDF</span>
+              <span class="dm"><span class="fn">한울설비_견적_1차.pdf</span><span class="why">한울설비 1차 · 카카오톡</span></span>
+              <span class="amt">390만</span><span class="go"></span>
+            </a>
+            <a class="docc" href="Mobile%20Storage/DCIM/Screenshots/Screenshot_20260906-120215.png" target="_blank" rel="noopener">
+              <span class="pv"><img src="Mobile%20Storage/DCIM/Screenshots/Screenshot_20260906-120215.png" alt=""></span>
+              <span class="dm"><span class="fn">Screenshot_20260906-120215.png</span><span class="why">연남리빙 · 스크린샷</span></span>
+              <span class="amt">405만</span><span class="go"></span>
+            </a>
+            <a class="docc" href="Mobile%20Storage/Download/%EA%B2%AC%EC%A0%81%EC%84%9C_%EC%88%98%EB%A6%BC%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4.xlsx" target="_blank" rel="noopener">
+              <span class="ext xls">XLS</span>
+              <span class="dm"><span class="fn">견적서_수림인테리어.xlsx</span><span class="why">수림인테리어 · 다운로드</span></span>
+              <span class="amt">420만</span><span class="go"></span>
+            </a>
+            <a class="docc" href="Mobile%20Storage/KakaoTalkDownload/%EA%B2%AC%EC%A0%81_%EC%B5%9C%EC%A2%85(2).pdf" target="_blank" rel="noopener">
+              <span class="ext pdf">PDF</span>
+              <span class="dm"><span class="fn">견적_최종(2).pdf</span><span class="why">한울설비 최종 · 카카오톡</span></span>
+              <span class="amt">450만</span><span class="go"></span>
+            </a>
+          </div>
+        </div></div>
+        <div class="step"><div class="dot live"></div><div class="sbody">
+          <div class="t">한울설비 견적이 둘인데 어느 쪽인가요</div>
+          <div class="d">같은 업체 견적이 <b>두 번</b> 왔어요</div>
+          <div class="ask">
+            <button>2026.09.24 · 최종 견적<br>공급가 450만 원</button>
+            <button>2026.09.05 · 1차 견적<br>공급가 390만 원</button>
+          </div>
+        </div></div>
+        <div class="me"><div class="b">2026.09.24 · 최종 견적</div></div>
+        <div class="step"><div class="dot"></div><div class="sbody">
+          <div class="t">계약서로 맡긴 곳을 확인했어요</div>
+          <div class="d">10월 7일 계약서의 업체는 <b>한울설비</b>, 공급가 <b>450만 원</b>이에요</div>
+        </div></div>
+        <div class="reshead"><div class="t">최저 <b>380만</b> · 계약 <b>450만</b> — <b>70만 원</b> 차이</div></div>
+        <div class="facts" style="margin-top:2px">
+          <div class="f"><i>근거</i><span>20260901_153212.jpg · 하람디자인 380만</span></div>
+          <div class="f"><i></i><span>견적_최종(2).pdf · 한울설비 450만</span></div>
+          <div class="f"><i></i><span>스캔_1007.pdf · 공사 계약서</span></div>
+        </div>
+        <div class="follow"><button>1차 견적과 비교</button><button>견적서 모아 보기</button></div>
+      </div>
+      <div class="inputbar"><div class="ibox"><p class="ph">무엇을 찾고 계세요?</p>
+        <span class="send"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 13.5V3M8 3 3.5 7.5M8 3l4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div></div>
+      <div class="navbar"><i class="recent"></i><i class="home"></i><i class="back"></i></div>  </div>
+</div>
+          </div>
+          <button class="demochip" type="button" data-demo>재생하기</button>
         </div>
         <div class="card rv" style="--i:4">
-          <span class="rep__pill">정리하기 · Organization</span>
+          <div class="rep__head"><span class="rep__pill">정리하기</span></div>
           <p class="rep__q">작년 송년회 와인이랑 4년 전 생일 와인</p>
           <div class="rep__lbl">지금은</div>
           <p class="rep__now">조건이 둘이라 <b>따로 검색해 직접 합쳐야</b> 한다. 그 두 날이 언제인지도 알려주지 않는다</p>
@@ -906,6 +1164,67 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
             <li>병 라벨에서 이름과 연도까지 확인</li>
           </ol>
           <div class="rep__res"><span>두 날 11장 — 송년회 6 · 생일 5 · 와인 5종</span></div>
+        
+          <div class="tcdemo">
+<div class="ex">
+  <div class="phone">
+      <div class="notch"></div>
+      <div class="statusbar"><span>9:41</span><span class="ic">
+        <svg width="16" height="11" viewBox="0 0 16 11" fill="#1d1d1f"><rect y="7" width="3" height="4" rx="1"/><rect x="4.3" y="5" width="3" height="6" rx="1"/><rect x="8.6" y="2.5" width="3" height="8.5" rx="1"/><rect x="12.9" width="3" height="11" rx="1" opacity=".3"/></svg>
+        <svg width="24" height="11" viewBox="0 0 24 11" fill="none"><rect x=".5" y=".5" width="20" height="10" rx="3" stroke="#1d1d1f" stroke-opacity=".35"/><rect x="2" y="2" width="15" height="7" rx="1.8" fill="#1d1d1f"/><path d="M22 4v3a2 2 0 0 0 0-3z" fill="#1d1d1f" fill-opacity=".35"/></svg>
+      </span></div>
+      <div class="apphead"><div class="nm">AI <span>(&nbsp;&nbsp;)</span> Dictionary</div></div>      <div class="chat" data-flow>
+        <div class="me"><div class="b">작년 송년회 와인이랑 4년 전 생일 와인</div></div>
+        <div class="step"><div class="dot"></div><div class="sbody">
+          <div class="t">찾을 내용을 정리했어요</div>
+          <div class="d"><i>대상</i> 와인이 찍힌 사진 · <i>때</i> 두 날 · <i>묶기</i> 와인별</div>
+        </div></div>
+        <div class="step"><div class="dot"></div><div class="sbody">
+          <div class="t" data-doing="두 날이 언제인지 짚는 중" data-done="두 날을 찾았어요">두 날을 찾았어요<span class="hop"><i></i><i></i><i></i></span></div>
+          <div class="d">올해가 2026년이니 <b>작년 송년회</b>와 <b>4년 전 생일</b>은 이 두 날이에요</div>
+          <div class="facts">
+            <div class="f"><i>송년회</i><span>2025.12.19 · 을지로 모임</span></div>
+            <div class="f"><i>생일</i><span>2022.03.19 · 망원동 집</span></div>
+          </div>
+        </div></div>
+        <div class="step"><div class="dot"></div><div class="sbody">
+          <div class="t">두 날을 따로 찾아 합쳤어요</div>
+          <div class="d">사진에 <b>병이 찍힌 것</b>만 남겼어요</div>
+          <div class="narrow"><span class="big">270</span><span>장</span><span>→</span><span class="big hit">11</span><span>장</span></div>
+        </div></div>
+        <div class="step"><div class="dot"></div><div class="sbody">
+          <div class="t">병 라벨에서 이름과 연도를 읽었어요</div>
+          <div class="facts" style="margin-top:7px">
+            <div class="f"><i>송년회</i><span>CLOS DES AULNES BORDEAUX 2021</span></div>
+            <div class="f"><i></i><span>VILLA ORIA CHIANTI 2022</span></div>
+            <div class="f"><i></i><span>MONT CLAIR CHARDONNAY 2023</span></div>
+            <div class="f"><i>생일</i><span>DOMAINE LORIEL PINOT NOIR 2018</span></div>
+            <div class="f"><i></i><span>BELLE RIVE BRUT</span></div>
+          </div>
+        </div></div>
+        <div class="reshead"><div class="t"><b>11장</b>의 사진에서 <b>5종</b>의 와인을 발견했어요</div></div>
+        <div class="grid">
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20251219_190824.jpg" alt=""><span class="badge">갤러리</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20251219_191206.jpg" alt=""><span class="badge">갤러리</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20251219_192138.jpg" alt=""><span class="badge">카카오톡</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20251219_193817.jpg" alt=""><span class="badge">갤러리</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20251219_194552.jpg" alt=""><span class="badge">갤러리</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20251219_201609.jpg" alt=""><span class="badge">인스타그램</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20220319_190631.jpg" alt=""><span class="badge">갤러리</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20220319_190814.jpg" alt=""><span class="badge">갤러리</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20220319_191147.jpg" alt=""><span class="badge">카카오톡</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20220319_191722.jpg" alt=""><span class="badge">갤러리</span></div></div>
+          <div class="card"><div class="thumb"><img src="Mobile%20Storage/DCIM/Camera/20220319_200458.jpg" alt=""><span class="badge">갤러리</span></div></div>
+        </div>
+        <div class="follow"><button>날짜별로 묶어 보기</button><button>와인별로 묶어 보기</button></div>
+      </div>
+      <div class="inputbar"><div class="ibox"><p class="ph">무엇을 찾고 계세요?</p>
+        <span class="send"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 13.5V3M8 3 3.5 7.5M8 3l4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div></div>
+      <div class="navbar"><i class="recent"></i><i class="home"></i><i class="back"></i></div>  </div>
+</div>
+          </div>
+          <button class="demochip" type="button" data-demo>재생하기</button>
         </div>
       </div>
     </div></section>
@@ -1528,6 +1847,245 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
   };
   render(STILL);
   requestAnimationFrame(frame);
+})();
+</script>
+<script>
+/* 07 테스트 예제 — 쿼리 아래 칩을 누르면 폰 화면이 돌아간다 */
+(function () {
+  const LINE = 320, FETCH = 1300;
+  const wait = el => {
+    if (el.classList.contains('me')) return 700;
+    if (el.classList.contains('step')) return 300;
+    if (el.classList.contains('grid') || el.classList.contains('list')) return 1300;
+    if (el.classList.contains('follow')) return 1000;
+    return 700;
+  };
+  const tail = el => el.classList.contains('step') ? 480 : 0;
+
+  function Screen(ex, onEnd) {
+    const chat = ex.querySelector('[data-flow]');
+    if (!chat) return null;
+    const items = [].slice.call(chat.children);
+    const linesOf = el => {
+      const body = el.querySelector && el.querySelector('.sbody');
+      if (!body) return [];
+      return [].slice.call(body.children).filter(n => !n.classList.contains('t'));
+    };
+    items.forEach(el => {
+      el.dataset.disp = getComputedStyle(el).display;
+      linesOf(el).forEach(n => { n.dataset.disp = getComputedStyle(n).display; });
+    });
+    const order = items.slice();
+    const main = items.filter(el => !el.dataset.br);
+    const branch = key => items.filter(el => el.dataset.br === key);
+
+    // 말풍선은 글자 길이에 맞게 폭을 줄인다
+    const fitBubble = b => {
+      if (b.querySelector('br')) { b.style.width = 'max-content'; return; }
+      b.style.width = 'auto';
+      const r = b.getBoundingClientRect();
+      if (!r.width) return;
+      const k = b.offsetWidth ? (r.width / b.offsetWidth) : 1;   // 덱에서는 화면이 줄어 있다
+      const h0 = r.height;
+      let lo = 64, hi = r.width / k;
+      while (hi - lo > 2) {
+        const mid = (lo + hi) / 2;
+        b.style.width = mid + 'px';
+        if (b.getBoundingClientRect().height > h0) lo = mid; else hi = mid;
+      }
+      b.style.width = (Math.ceil(hi) + 2) + 'px';   // 1px 모자라 접히는 일이 없게
+    };
+    let measured = false;
+
+    const toBottom = () => {
+      const over = chat.scrollHeight - chat.clientHeight;
+      if (over > 0) chat.scrollTo({ top: over, behavior: 'smooth' });
+    };
+    const show = el => {
+      el.style.display = el.dataset.disp;
+      requestAnimationFrame(() => { el.classList.add('in'); toBottom(); });
+    };
+    const hide = el => {
+      el.classList.remove('in');
+      el.style.display = 'none';
+      linesOf(el).forEach(n => { n.classList.remove('in'); n.style.display = 'none'; });
+    };
+    const ripple = btn => {
+      const b = btn.getBoundingClientRect(), c = chat.getBoundingClientRect();
+      const k = c.width ? (chat.clientWidth / c.width) : 1;   // 덱에서는 화면이 줄어 있다
+      const node = document.createElement('span');
+      node.className = 'tap';
+      node.style.left = ((b.left - c.left) * k + (b.width * k) / 2) + 'px';
+      node.style.top = ((b.top - c.top) * k + chat.scrollTop + (b.height * k) / 2) + 'px';
+      chat.appendChild(node);
+      setTimeout(() => node.remove(), 760);
+    };
+
+    let timers = [];
+    const used = new Set();
+    const refresh = () => {
+      chat.querySelectorAll('button[data-open]').forEach(b => {
+        const keep = used.has(b.dataset.open) && b.classList.contains('picked');
+        b.classList.toggle('on', keep);
+        b.style.display = (used.has(b.dataset.open) && !keep) ? 'none' : '';
+      });
+    };
+
+    const run = (list, at) => {
+      for (let i = 0; i < list.length; i++) {
+        const el = list[i];
+        timers.push(setTimeout(() => show(el), at));
+        at += wait(el);
+        const doing = el.querySelector && el.querySelector('.t[data-doing]');
+        if (doing) {
+          at += FETCH;
+          timers.push(setTimeout(() => {
+            doing.firstChild.textContent = doing.dataset.done;
+            doing.querySelector('.hop').style.display = 'none';
+            toBottom();
+          }, at));
+          at += 300;
+        }
+        linesOf(el).forEach(n => {
+          timers.push(setTimeout(() => {
+            n.style.display = n.dataset.disp;
+            requestAnimationFrame(() => { n.classList.add('in'); toBottom(); });
+          }, at));
+          at += LINE;
+        });
+        const pick = el.querySelector && el.querySelector('.ask button');
+        if (pick) {
+          at += 700;
+          timers.push(setTimeout(() => {
+            ripple(pick);
+            setTimeout(() => pick.classList.add('on'), 260);
+          }, at));
+          at += 850;
+        } else at += tail(el);
+      }
+      return at;
+    };
+
+    const reset = () => {
+      timers.forEach(clearTimeout);
+      timers = [];
+      used.clear();
+      chat.querySelectorAll('.picked').forEach(b => b.classList.remove('picked'));
+      order.forEach(el => chat.appendChild(el));
+      chat.querySelectorAll('.tap').forEach(n => n.remove());
+      chat.querySelectorAll('button.on').forEach(b => b.classList.remove('on'));
+      items.forEach(el => {
+        hide(el);
+        const d = el.querySelector && el.querySelector('.t[data-doing]');
+        if (d) { d.firstChild.textContent = d.dataset.doing; d.querySelector('.hop').style.display = ''; }
+      });
+      refresh();
+      chat.scrollTop = 0;
+      const first = main[0];
+      if (first) { first.style.display = first.dataset.disp; first.classList.add('in'); }
+    };
+
+    chat.addEventListener('click', e => {
+      if (!e.target.closest) return;
+      if (e.target.closest('.ask button')) { e.stopPropagation(); return; }
+      if (e.target.closest('.docc')) { e.stopPropagation(); return; }
+      const back = e.target.closest('button[data-close]');
+      if (back) {
+        e.stopPropagation();
+        const key = back.dataset.close;
+        branch(key).forEach(hide);
+        used.delete(key);
+        chat.querySelectorAll('button[data-open="' + key + '"]').forEach(b => b.classList.remove('picked'));
+        refresh();
+        requestAnimationFrame(toBottom);
+        return;
+      }
+      const btn = e.target.closest('button[data-open]');
+      if (!btn) return;
+      e.stopPropagation();
+      if (used.has(btn.dataset.open)) return;
+      used.add(btn.dataset.open);
+      btn.classList.add('picked');
+      refresh();
+      ripple(btn);
+      const part = branch(btn.dataset.open);
+      part.forEach(el => chat.appendChild(el));
+      run(part, 260);
+    });
+
+    const measure = () => {
+      if (measured) return;
+      items.forEach(el => { const b = el.querySelector && el.querySelector('.b'); if (b) fitBubble(b); });
+      measured = true;
+    };
+    reset();
+    return {
+      measure,
+      play() {
+        measure();
+        reset();
+        const end = run(main.slice(1), 400);
+        timers.push(setTimeout(() => { if (onEnd) onEnd(); }, end + 600));
+      },
+      stop() { timers.forEach(clearTimeout); timers = []; reset(); }
+    };
+  }
+
+  // 폰 세 대가 가로로 들어가게 배율을 잡는다
+  const row = document.querySelector('.slide--demos .cards');
+  const fit = () => {
+    if (!row) return;
+    const w = row.clientWidth, h = row.clientHeight;
+    if (!w || !h) return;
+    const gap = parseFloat(getComputedStyle(row).gap) || 0;
+    const box = el => {
+      if (!el) return 0;
+      const s = getComputedStyle(el);
+      return el.offsetHeight + (parseFloat(s.marginTop) || 0) + (parseFloat(s.marginBottom) || 0);
+    };
+    const hh = box(row.querySelector('.rep__head')) + box(row.querySelector('.demochip'));
+    const byW = (w - gap * 2) / 3 / 360;
+    const byH = (h - hh) / 780;
+    row.style.setProperty('--exs', Math.max(.1, Math.min(1, byW, byH)));
+  };
+  fit();
+  window.addEventListener('resize', fit);
+
+  document.querySelectorAll('.slide--demos .cards > .card').forEach(card => {
+    const hold = card.querySelector('.tcdemo');
+    const chip = card.querySelector('[data-demo]');
+    const ex = hold && hold.querySelector('.ex');
+    if (!hold || !chip || !ex) return;
+    // 덱은 화면을 누르면 다음 장으로 넘어간다 — 화면 안 클릭은 여기서 멈춘다
+    hold.addEventListener('click', e => e.stopPropagation());
+    // 쿼리를 큼직하게 보여주는 시작 화면
+    const q = card.querySelector('.rep__q');
+    let intro = null;
+    if (q) {
+      intro = document.createElement('div');
+      intro.className = 'intro';
+      const p = document.createElement('p');
+      p.textContent = '\u201C' + q.textContent.trim() + '\u201D';
+      intro.appendChild(p);
+      const phone = ex.querySelector('.phone');
+      if (phone) phone.appendChild(intro);
+    }
+    const scr = Screen(ex, () => { chip.textContent = '다시 보기'; chip.classList.remove('is-run'); });
+    if (scr) {
+      const ready = () => { scr.measure(); scr.stop(); };
+      if (document.fonts && document.fonts.ready) {
+        Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]).then(ready);
+      } else ready();
+    }
+    chip.addEventListener('click', e => {
+      e.stopPropagation();
+      chip.textContent = '재생 중';
+      chip.classList.add('is-run');
+      fit();
+      if (intro) { intro.classList.add('out'); setTimeout(() => intro.remove(), 400); intro = null; }
+      if (scr) scr.play();
+    });
+  });
 })();
 </script>
 </body>
