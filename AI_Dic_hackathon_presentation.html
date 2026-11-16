@@ -175,6 +175,11 @@ td.c{text-align:center}
 .ax__out span i{font-style:normal;color:var(--dim);margin-right:9px}
 
 /* 06 — 대표 질의 */
+/* 07 테스트 예제 — 블록 안에서 데모 화면으로 바꿔 보기 */
+.rep__head{display:flex;align-items:center;gap:12px;justify-content:space-between}
+
+.card.is-demo .rep__lbl,.card.is-demo .rep__now,.card.is-demo .rep__ol,.card.is-demo .rep__res{display:none}
+
 .rep__pill{display:inline-flex;align-items:center;height:34px;padding:0 15px;border-radius:999px;background:#eef1ff;
   font-family:var(--f-display);font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--blue);align-self:flex-start}
 .rep__q{margin-top:20px;font-size:31px;line-height:1.3;font-weight:700;letter-spacing:-.045em;color:var(--ink);word-break:keep-all;
@@ -282,9 +287,20 @@ td.c{text-align:center}
   border:1.5px solid var(--line);border-radius:999px;background:#fff;cursor:pointer;
   font-family:inherit;font-size:19px;font-weight:700;letter-spacing:-.03em;color:var(--ink-2);
   padding:11px 18px;transition:.16s}
-.jumpbtn:hover{border-color:var(--blue);color:var(--blue)}
+.jumpbtn:hover{border-color:var(--blue);color:var(--blue);box-shadow:0 0 0 4px rgba(37,99,235,.14),0 6px 22px rgba(37,99,235,.28);transform:translateY(-1px)}
+/* 눌러보고 싶게 — 테두리와 그림자가 천천히 숨 쉰다 */
+.jumpbtn{animation:jumpglow 2.4s ease-in-out infinite}
+@keyframes jumpglow{
+  0%,100%{box-shadow:0 0 0 0 rgba(37,99,235,.0),0 2px 10px rgba(37,99,235,.10);border-color:var(--line)}
+  50%    {box-shadow:0 0 0 6px rgba(37,99,235,.10),0 8px 24px rgba(37,99,235,.24);border-color:var(--blue)}
+}
+.jumpbtn span{transition:transform .16s}
+.jumpbtn:hover span{transform:translateX(3px)}
+@media (prefers-reduced-motion:reduce){ .jumpbtn{animation:none} }
 .jumpbtn span{color:var(--blue);font-weight:700}
-.backrow{margin-top:16px;display:flex}
+.backrow{margin-top:16px;display:flex;justify-content:flex-end}
+.jumpbtn--back{align-self:flex-end}
+.jumpbtn--back:hover{transform:translateY(-1px)}
 #s-clues tbody td{padding:13px 18px}   /* 돌아가기 버튼 자리를 낸다 */
 
 /* HUD */
@@ -852,7 +868,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     <div class="kicker rv"><i>07</i>Test cases<b>|</b>1단계 검증</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">기능 구현 후, <b>검증해 볼 테스트 예제</b></h2>
     <div class="body">
-      <div class="cards" style="margin-bottom:36px">
+      <div class="cards">
         <div class="card rv" style="--i:2">
           <span class="rep__pill">찾기 · Navigation</span>
           <p class="rep__q">미셸 들라크루아 전시 보고 나서 갔던 카페 사진</p>
@@ -894,10 +910,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
           <div class="rep__res"><span>두 날 11장 — 송년회 6 · 생일 5 · 와인 5종</span></div>
         </div>
       </div>
-    </div>
-    <div class="note rv" style="--i:5"><svg class="ic"><use href="#i-arrow-r"/></svg>
-      상기 테스트 예제는 후보입니다. <span>진행하면서 다른 질의로 바뀌거나 범위가 달라질 수 있습니다.</span></div>
-  </section>
+    </div></section>
 
   <!-- ══════════ 08Feasibility 찾아내는 네 단계 ══════════ -->
   <section class="slide" id="s-plan">
@@ -938,41 +951,6 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
   </section>
 
   <!-- ══════════ AppendixClues 무엇을 단서로 쓰나 ══════════ -->
-  <section class="slide" id="s-clues">
-    <div class="kicker rv"><i>Appendix</i>Clues<b>|</b>무엇을 단서로 쓰나</div>
-    <h2 class="title title--md rv" style="--i:1;font-size:62px">찾는 데 쓰는 <b>단서 여덟 가지</b></h2>
-    <div class="body">
-      <div class="cards rv" style="--i:2;flex:none;margin-bottom:26px">
-        <div class="card is-now" style="background:var(--surface);box-shadow:none;padding:26px 32px 28px">
-          <div class="vs__h" style="color:var(--dim)">기존 · 고정된 라벨 몇 개를 저장</div>
-          <p style="margin-top:14px;font-size:29px;font-weight:700;letter-spacing:-.045em;color:var(--sub)">저장해둔 라벨과 “검색어가 일치하나?”</p>
-        </div>
-        <div class="card" style="padding:26px 32px 28px">
-          <div class="vs__h">신규 · 풍부한 설명을 저장</div>
-          <p style="margin-top:14px;font-size:29px;font-weight:700;letter-spacing:-.045em">저장해둔 설명을 <span style="color:var(--blue)">“질문에 맞춰 다시 판단”</span></p>
-        </div>
-      </div>
-      <table class="rv" style="--i:3">
-        <thead><tr>
-          <th style="width:21%">검색에 쓰는 것</th><th>하는 일</th>
-          <th style="width:11%;text-align:center">기존 검색</th><th style="width:13%;text-align:center">AI Dictionary</th>
-        </tr></thead>
-        <tbody>
-          <tr><td class="k">라벨 · 태그</td><td>붙여둔 라벨과 검색어가 일치하는지 확인한다</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk on">●</span></td></tr>
-          <tr><td class="k">사진 장면 · 문서 내용</td><td>사진은 장면과 구도를, 문서는 내용을 읽는다</td><td class="c"><span class="mk half">▲</span></td><td class="c"><span class="mk on">●</span></td></tr>
-          <tr><td class="k">맥락</td><td>위치 · 시각 등의 메타데이터와 PDE · AI 메모리를 함께 읽어 그때 상황을 확인한다</td><td class="c"><span class="mk half">▲</span></td><td class="c"><span class="mk on">●</span></td></tr>
-          <tr><td class="k">저장소별 단서</td><td>페이스북 · 인스타그램 캡션, 메일 본문, 폴더명을 함께 읽는다</td><td class="c"><span class="mk half">▲</span></td><td class="c"><span class="mk on">●</span></td></tr>
-          <tr><td class="k">조건 추론</td><td>문장을 조건으로 나누고, 금액 · 인원수를 계산한다</td><td class="c"><span class="mk off">—</span></td><td class="c"><span class="mk on">●</span></td></tr>
-          <tr><td class="k">이미지 대조</td><td>받은 이미지를 검색어로 삼아 비교한다</td><td class="c"><span class="mk off">—</span></td><td class="c"><span class="mk on">●</span></td></tr>
-          <tr><td class="k">웹 검색</td><td>모르는 이름의 정보와 사진을 밖에서 가져온다</td><td class="c"><span class="mk off">—</span></td><td class="c"><span class="mk on">●</span></td></tr>
-          <tr><td class="k">사용자에게 질문</td><td>좁힌 선택지로 되물어 확정한다</td><td class="c"><span class="mk off">—</span></td><td class="c"><span class="mk on">●</span></td></tr>
-        </tbody>
-      </table>
-      <div class="backrow"><button class="jumpbtn" data-goto="s-plan"><span>←</span> 네 단계로 돌아가기</button></div>
-    </div>
-  </section>
-
-  <!-- ══════════ 09Target 모바일 먼저, 다음은 PC ══════════ -->
   <section class="slide">
     <div class="kicker rv"><i>09</i>Target<b>|</b>모바일 먼저, 다음은 PC</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px">모바일 <b>여섯 저장소</b>에서 시작해 <b>PC</b>로 넓힙니다.</h2>
@@ -1000,7 +978,42 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
       기기 권한 → 계정 연결 → 제휴 순으로 확보합니다.<span>뒤로 갈수록 외부 승인이 필요합니다.</span></div>
     <div class="note rv" style="--i:4;margin-top:16px"><svg class="ic"><use href="#i-arrow-r"/></svg>
       갤럭시 북에도 같은 방식이 그대로 갑니다.<span>PC 드라이브가 더해지고, 메일 · 메신저 · SNS는 계정을 그대로 씁니다.</span></div>
+  </section><section class="slide" id="s-clues">
+    <div class="kicker rv"><i>Appendix</i>Clues<b>|</b>무엇을 단서로 쓰나</div>
+    <h2 class="title title--md rv" style="--i:1;font-size:62px">찾는 데 쓰는 <b>단서 여덟 가지</b></h2>
+    <div class="body">
+      <div class="cards rv" style="--i:2;flex:none;margin-bottom:26px">
+        <div class="card is-now" style="background:var(--surface);box-shadow:none;padding:26px 32px 28px">
+          <div class="vs__h" style="color:var(--dim)">기존 · 고정된 라벨 몇 개를 저장</div>
+          <p style="margin-top:14px;font-size:29px;font-weight:700;letter-spacing:-.045em;color:var(--sub)">저장해둔 라벨과 “검색어가 일치하나?”</p>
+        </div>
+        <div class="card" style="padding:26px 32px 28px">
+          <div class="vs__h">신규 · 풍부한 설명을 저장</div>
+          <p style="margin-top:14px;font-size:29px;font-weight:700;letter-spacing:-.045em">저장해둔 설명을 <span style="color:var(--blue)">“질문에 맞춰 다시 판단”</span></p>
+        </div>
+      </div>
+      <table class="rv" style="--i:3">
+        <thead><tr>
+          <th style="width:21%">검색에 쓰는 것</th><th>하는 일</th>
+          <th style="width:13%;text-align:center">미리 분석</th><th style="width:13%;text-align:center">실시간 확보</th>
+        </tr></thead>
+        <tbody>
+        <tr><td class="k">라벨 · 태그</td><td>붙여둔 라벨과 검색어가 일치하는지 확인한다</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk off">—</span></td></tr>
+        <tr><td class="k">사진 장면 · 문서 내용</td><td>사진은 장면과 구도를, 문서는 내용을 읽는다</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk off">—</span></td></tr>
+        <tr><td class="k">맥락</td><td>위치 · 시각 등의 메타데이터와 PDE · AI 메모리를 함께 읽어 그때 상황을 확인한다</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk off">—</span></td></tr>
+        <tr><td class="k">이미지 대조</td><td>받은 이미지를 검색어로 삼아 비교한다</td><td class="c"><span class="mk on">●</span></td><td class="c"><span class="mk off">—</span></td></tr>
+        <tr><td class="k">저장소별 단서</td><td>페이스북 · 인스타그램 캡션, 메일 본문, 폴더명을 함께 읽는다</td><td class="c"><span class="mk half">▲</span></td><td class="c"><span class="mk half">▲</span></td></tr>
+        <tr><td class="k">조건 추론</td><td>문장을 조건으로 나누고, 금액 · 인원수를 계산한다</td><td class="c"><span class="mk half">▲</span></td><td class="c"><span class="mk half">▲</span></td></tr>
+        <tr><td class="k">웹 검색</td><td>모르는 이름의 정보와 사진을 밖에서 가져온다</td><td class="c"><span class="mk off">—</span></td><td class="c"><span class="mk on">●</span></td></tr>
+        <tr><td class="k">사용자에게 질문</td><td>좁힌 선택지로 되물어 확정한다</td><td class="c"><span class="mk off">—</span></td><td class="c"><span class="mk on">●</span></td></tr>
+      </tbody>
+      </table>
+      <div class="backrow"><button class="jumpbtn jumpbtn--back" data-goto="s-plan"><span>←</span> 네 단계로 돌아가기</button></div>
+    </div>
   </section>
+
+  <!-- ══════════ 09Target 모바일 먼저, 다음은 PC ══════════ -->
+  
 </main>
 
 <div class="hud" id="hud">
@@ -1071,9 +1084,16 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
   };
 
   // 차례로 넘길 때는 부록을 지나친다
+  let fromIdx = -1;
+
   const step = d => {
+    if (slides[cur] && slides[cur].id === SKIP && d < 0) {
+      const back = fromIdx >= 0 ? fromIdx : slides.findIndex(s => s.id === 's-plan');
+      if (back >= 0) { go(back); return; }
+    }
     let n = cur + d;
     if (slides[n] && slides[n].id === SKIP) n += d;
+    if (n < 0 || n >= slides.length) return;
     go(n);
   };
 
@@ -1140,7 +1160,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     e.preventDefault();
     e.stopPropagation();
     const t = document.getElementById(btn.dataset.goto);
-    if (t) go(slides.indexOf(t));
+    if (t) { fromIdx = cur; go(slides.indexOf(t)); }
   }));
 
   addEventListener('click', e => {
