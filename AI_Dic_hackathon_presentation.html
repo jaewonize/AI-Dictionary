@@ -1093,7 +1093,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
           <div class="d"><i>대상</i> 욕실 견적서 · <i>비교</i> 최저가와 계약한 곳 · <i>확인</i> 계약서</div>
         </div></div>
         <div class="step"><div class="dot"></div><div class="sbody">
-          <div class="t" data-doing="저장소를 뒤지는 중" data-done="욕실 견적 5건을 찾았어요">욕실 견적 5건을 찾았어요<span class="hop"><i></i><i></i><i></i></span></div>
+          <div class="t" data-doing="저장소를 탐색하는 중" data-done="욕실 견적 5건을 찾았어요">욕실 견적 5건을 찾았어요<span class="hop"><i></i><i></i><i></i></span></div>
           <div class="d">PDF · 엑셀 같은 문서뿐 아니라 <b>사진과 스크린샷에 적힌 금액</b>까지 함께 읽었어요</div>
           <div class="narrow"><span class="big">127</span><span>건</span><span>→</span><span class="big hit">5</span><span>건</span></div>
           <div class="docs">
@@ -2052,6 +2052,18 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
   fit();
   window.addEventListener('resize', fit);
 
+  // 세 화면을 차례로 돌린다. 재생하기를 눌러도 되고, 가만 두면 알아서 시작한다
+  const decks = [];
+  let chaining = false, chainTimer = null;
+  const cancelChain = () => { chaining = false; clearTimeout(chainTimer); };
+  const afterDone = item => {
+    if (!chaining) return;
+    const i = decks.indexOf(item);
+    if (i >= 0 && i + 1 < decks.length) {
+      chainTimer = setTimeout(() => { if (chaining) decks[i + 1].start(); }, 1200);
+    } else chaining = false;
+  };
+
   document.querySelectorAll('.slide--demos .cards > .card').forEach(card => {
     const hold = card.querySelector('.tcdemo');
     const chip = card.querySelector('[data-demo]');
@@ -2061,32 +2073,75 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
     hold.addEventListener('click', e => e.stopPropagation());
     // 쿼리를 큼직하게 보여주는 시작 화면
     const q = card.querySelector('.rep__q');
-    let intro = null;
+    const item = { chip, intro: null, scr: null, start: null, timer: null };
     if (q) {
-      intro = document.createElement('div');
+      const intro = document.createElement('div');
       intro.className = 'intro';
       const p = document.createElement('p');
-      p.innerHTML = '\u201C' + q.innerHTML.trim() + '\u201D';
+      p.innerHTML = '“' + q.innerHTML.trim() + '”';
       intro.appendChild(p);
       const phone = ex.querySelector('.phone');
-      if (phone) phone.appendChild(intro);
+      if (phone) { phone.appendChild(intro); item.intro = intro; }
     }
-    const scr = Screen(ex, () => { chip.textContent = '다시 보기'; chip.classList.remove('is-run'); });
-    if (scr) {
-      const ready = () => { scr.measure(); scr.stop(); };
+    item.scr = Screen(ex, () => {
+      chip.textContent = '다시 보기';
+      chip.classList.remove('is-run');
+      afterDone(item);
+    });
+    if (item.scr) {
+      const ready = () => { item.scr.measure(); item.scr.stop(); };
       if (document.fonts && document.fonts.ready) {
         Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]).then(ready);
       } else ready();
     }
-    chip.addEventListener('click', e => {
-      e.stopPropagation();
+    item.start = () => {
+      clearTimeout(item.timer);
       chip.textContent = '재생 중';
       chip.classList.add('is-run');
       fit();
-      if (intro) { intro.classList.add('out'); setTimeout(() => intro.remove(), 400); intro = null; }
-      if (scr) scr.play();
+      if (item.scr) item.scr.stop();                       // 앞서 띄운 결과를 치우고
+      if (item.intro) item.intro.classList.remove('out');  // 쿼리만 떠 있는 시작 화면부터
+      item.timer = setTimeout(() => {
+        if (item.intro) item.intro.classList.add('out');
+        if (item.scr) item.scr.play();
+      }, 1400);
+    };
+    chip.addEventListener('click', e => {
+      e.stopPropagation();
+      cancelChain();          // 직접 눌렀으면 차례 돌리기는 멈춘다
+      item.start();
     });
+    decks.push(item);
   });
+
+  // 07 슬라이드로 오면 잠시 뒤 첫 화면부터 저절로 돈다
+  const stage = document.querySelector('.slide--demos');
+  if (stage && decks.length) {
+    const reset = () => {
+      cancelChain();
+      decks.forEach(d => {
+        clearTimeout(d.timer);
+        if (d.scr) d.scr.stop();
+        if (d.intro) d.intro.classList.remove('out');
+        d.chip.textContent = '재생하기';
+        d.chip.classList.remove('is-run');
+      });
+    };
+    const enter = () => {
+      if (chaining) return;
+      chaining = true;
+      fit();
+      chainTimer = setTimeout(() => { if (chaining) decks[0].start(); }, 2000);
+    };
+    let on = stage.classList.contains('is-active');
+    if (on) enter();
+    new MutationObserver(() => {
+      const now = stage.classList.contains('is-active');
+      if (now === on) return;
+      on = now;
+      if (now) enter(); else reset();
+    }).observe(stage, { attributes: true, attributeFilter: ['class'] });
+  }
 })();
 </script>
 </body>
