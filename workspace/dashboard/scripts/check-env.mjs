@@ -53,6 +53,16 @@ const ips = Object.entries(os.networkInterfaces()).flatMap(([n, a]) => (a ?? [])
 ips.length ? ok(`다른 PC가 접속할 주소: ${ips.map((ip) => `http://${ip.split(' ')[0]}:${PORT}`).join(', ')}`) : fail('사내망 IPv4 주소가 없다', '네트워크 연결을 확인한다');
 note('다른 PC에서 안 열리면 Windows 방화벽에서 node.exe 를 개인 네트워크에 허용한다');
 
+console.log(`\n[발리 실데이터] var/bali`);
+const BALI = path.resolve(WS, process.env.AIDIC_BALI_DIR || 'var/bali');
+const baliFiles = ['catalog.jsonl', 'index.jsonl', 'answer_key.json', 'eval_results.json', 'hindsight_retain.json', 'hindsight_eval.json', 'bali-trip.zip'];
+const missingBali = baliFiles.filter((f) => !existsSync(path.join(BALI, f)));
+missingBali.length
+  ? note(`발리 파일 일부 없음: ${missingBali.join(', ')} (test/claude_finish 브랜치에서 받는다)`)
+  : ok(`발리 색인·채점·은행 백업 파일 ${baliFiles.length}개 확인`);
+const baliScreen = path.join(BALI, 'photos', 'screen');
+existsSync(baliScreen) ? ok('발리 화면용 사진 사본 폴더(var/bali/photos/screen) 확인') : note('발리 사진 사본 폴더 없음');
+
 console.log(`\n[hindsight] ${HS}`);
 const zip = path.join(DASH, 'hindsight', `${BANK}.zip`);
 existsSync(zip) ? ok(`은행 파일 ${path.relative(path.resolve(WS, '..'), zip)}`) : fail('은행 파일(aidic-scenario.zip)이 없다', 'git pull 로 workspace/dashboard/hindsight 를 받는다');
@@ -64,10 +74,12 @@ try {
     const spec = await getJson(`${HS}/openapi.json`, 10000);
     spec.paths?.['/v1/default/banks/{bank_id}/transfer/import'] ? ok('은행 가져오기(transfer/import) 지원') : fail('은행 가져오기(transfer/import) 없음', 'hindsight 를 1.2 이상으로 올린다');
   } catch { note('openapi.json 을 읽지 못해 transfer/import 지원 여부는 확인하지 못했다'); }
-  try {
-    const docs = await getJson(`${HS}/v1/default/banks/${BANK}/documents?limit=1`);
-    note(`은행 ${BANK} 이(가) 이미 있다 (문서 ${docs.total ?? '?'}개). 다시 가져오려면 target_bank_id 를 다른 이름으로 한다`);
-  } catch { ok(`은행 ${BANK} 아직 없음(가져오기 가능)`); }
+  for (const bName of [BANK, 'bali-trip']) {
+    try {
+      const docs = await getJson(`${HS}/v1/default/banks/${bName}/documents?limit=1`);
+      ok(`은행 ${bName} 준비됨 (문서 ${docs.total ?? '확인됨'})`);
+    } catch { note(`은행 ${bName} 아직 없음(필요하면 transfer/import 로 가져오기 가능)`); }
+  }
 } catch (e) {
   fail(`hindsight 에 접속하지 못했다 (${e.message})`, 'hindsight 를 띄우거나 HINDSIGHT_URL 로 주소를 준다. 대시보드만 쓸 거면 무시해도 된다');
 }
