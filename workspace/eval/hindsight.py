@@ -931,6 +931,46 @@ def _write_eval_doc(out_path: Path, url: str, bank: str, srv: dict, by_id: dict[
     return doc
 
 
+def cmd_import_bank(args: argparse.Namespace) -> int:
+    url, bank = _hs_base()
+    target_bank = args.target_bank or bank
+    zip_path = Path(args.zip_file) if args.zip_file else (settings.var_dir / f"{bank}.zip")
+    if not zip_path.is_file():
+        sys.exit(f"은행 백업 파일이 없다: {zip_path}")
+
+    docs_now = existing_docs(url, target_bank)
+    if docs_now:
+        print(f"[import-bank] 은행 {target_bank} 에 이미 문서 {len(docs_now)}건이 있어 건너뜁니다.", flush=True)
+        return 0
+
+    print(f"[import-bank] {zip_path} -> 은행 {target_bank} 복원 시작 (LLM 호출 없음, $0)...", flush=True)
+    with httpx.Client(base_url=url, timeout=httpx.Timeout(600.0, connect=10.0)) as c:
+        with zip_path.open("rb") as fh:
+            r = c.post(
+                f"/v1/default/banks/{target_bank}/transfer/import",
+                params={"mode": "restore", "target_bank_id": target_bank},
+                files={"file": (zip_path.name, fh, "application/zip")},
+            )
+        if r.status_code >= 400:
+            raise RuntimeError(f"import 실패 ({r.status_code}): {r.text[:400]}")
+        res = r.json()
+
+    op_id = res.get("operation_id") or (res.get("operation_ids") or [None])[0]
+    if op_id:
+        _, fail_n, errs = wait_ops(url, target_bank, [op_id], "import-bank", timeout_s=1200.0)
+        if fail_n:
+            sys.exit(f"은행 복원 실패: {errs}")
+
+    docs_after = existing_docs(url, target_bank)
+    st_after = bank_stats(url, target_bank)
+    print(
+        f"[import-bank 완료] 은행={target_bank} · 문서 {len(docs_after)}건 "
+        f"· 사실 노드 {st_after.get('total_nodes', 0)}개 복원 완료",
+        flush=True,
+    )
+    return 0
+
+
 def cmd_status(_args: argparse.Namespace) -> int:
     url, bank = _hs_base()
     srv = _server_info(url)
@@ -966,6 +1006,9 @@ def main() -> int:
 
     sub.add_parser("status", help="은행 상태 및 누적 토큰·비용 조회")
     sub.add_parser("reconcile", help="은행 LLM trace 기준으로 문서·비용 정합성 동기화")
+    p_imp = sub.add_parser("import-bank", help="bali-trip.zip 백업을 Hindsight 은행으로 무비용 복원")
+    p_imp.add_argument("--zip-file", default="", help="복원할 zip 경로(기본 var/bali/bali-trip.zip)")
+    p_imp.add_argument("--target-bank", default="", help="대상 은행 이름(기본 AIDIC_HINDSIGHT_BANK)")
 
     args = ap.parse_args()
     if args.cmd == "retain":
@@ -974,6 +1017,8 @@ def main() -> int:
         return cmd_eval(args)
     if args.cmd == "reconcile":
         return cmd_reconcile(args)
+    if args.cmd == "import-bank":
+        return cmd_import_bank(args)
     return cmd_status(args)
 
 
