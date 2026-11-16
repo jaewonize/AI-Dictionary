@@ -580,6 +580,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 /* 발표용 시작 화면 — 실제 폰에는 없는 화면이다 */
 .ex .intro{position:absolute;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;
   padding:0 36px;background:#fff;text-align:center;transition:opacity .35s}
+.ex .intro b{color:var(--blue)}
 .ex .intro p{font-size:27px;line-height:1.5;font-weight:700;letter-spacing:-.045em;color:var(--ink);
   word-break:keep-all;text-wrap:balance}
 .ex .intro.out{opacity:0;pointer-events:none}
@@ -964,7 +965,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
       <div class="cards">
         <div class="card rv" style="--i:2">
           <div class="rep__head"><span class="rep__pill">찾아가기</span></div>
-          <p class="rep__q">미셸 들라크루아 전시 보고 나서 갔던 카페 사진</p>
+          <p class="rep__q"><b>미셸 들라크루아 전시</b> <b>보고 나서</b> 갔던 카페 사진</p>
           <div class="rep__lbl">지금은</div>
           <p class="rep__now">전시 이름으로는 <b>아무것도 걸리지 않는다</b>. 언제 갔는지 떠올려 그 무렵 사진을 직접 넘겨 봐야 한다</p>
           <div class="rep__lbl rep__lbl--ai">AI Dictionary는</div>
@@ -1066,7 +1067,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
         </div>
         <div class="card rv" style="--i:3">
           <div class="rep__head"><span class="rep__pill">Q&amp;A</span></div>
-          <p class="rep__q">욕실 견적 중에 제일 싼 데랑 계약한 데 얼마 차이야?</p>
+          <p class="rep__q">욕실 견적 중에 <b>제일 싼 데</b>랑 <b>계약한 데</b> 얼마 차이야?</p>
           <div class="rep__lbl">지금은</div>
           <p class="rep__now">파일명은 <b>견적_최종(2).pdf</b>. 메일 · 카톡 · 다운로드를 뒤져 하나씩 열고 직접 계산해야 한다</p>
           <div class="rep__lbl rep__lbl--ai">AI Dictionary는</div>
@@ -1154,7 +1155,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
         </div>
         <div class="card rv" style="--i:4">
           <div class="rep__head"><span class="rep__pill">정리하기</span></div>
-          <p class="rep__q">작년 송년회 와인이랑 4년 전 생일 와인</p>
+          <p class="rep__q"><b>작년 송년회</b> 와인이랑 <b>4년 전 생일</b> 와인</p>
           <div class="rep__lbl">지금은</div>
           <p class="rep__now">조건이 둘이라 <b>따로 검색해 직접 합쳐야</b> 한다. 그 두 날이 언제인지도 알려주지 않는다</p>
           <div class="rep__lbl rep__lbl--ai">AI Dictionary는</div>
@@ -2065,7 +2066,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
       intro = document.createElement('div');
       intro.className = 'intro';
       const p = document.createElement('p');
-      p.textContent = '\u201C' + q.textContent.trim() + '\u201D';
+      p.innerHTML = '\u201C' + q.innerHTML.trim() + '\u201D';
       intro.appendChild(p);
       const phone = ex.querySelector('.phone');
       if (phone) phone.appendChild(intro);
