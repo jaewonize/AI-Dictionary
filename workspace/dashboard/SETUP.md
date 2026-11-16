@@ -150,7 +150,7 @@ node server.mjs
    docker compose --env-file .env `
      -f docker/docker-compose/pgroonga/docker-compose.yaml `
      -f docker/docker-compose/pgroonga/docker-compose.aidic.yaml `
-     up -d db hindsight
+     up -d
    ```
    - 상태 확인: `curl.exe http://localhost:8888/version` (`"observations": false` 확인), 웹 UI는 `http://localhost:9999`
 4. `AI-Dictionary` 폴더에서 `bali-trip` 은행을 **LLM 호출 없이(\$0)** 그대로 복원한다:
