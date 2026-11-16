@@ -1,0 +1,4747 @@
+{
+ "prompt_version": "places-v1",
+ "model": "claude-opus-5-5",
+ "groups": [
+  {
+   "group": "G01",
+   "photos": 1,
+   "days": [
+    "2026-07-16"
+   ],
+   "spread_m": 0,
+   "lat": -8.74127,
+   "lon": 115.16495,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Segara",
+      "kind": "PPL",
+      "m": 332
+     },
+     {
+      "name": "Pesalakan",
+      "kind": "PPL",
+      "m": 508
+     },
+     {
+      "name": "Tuban",
+      "kind": "PPL",
+      "m": 834
+     },
+     {
+      "name": "Kelandesa",
+      "kind": "PPL",
+      "m": 1358
+     },
+     {
+      "name": "Anyar",
+      "kind": "PPL",
+      "m": 1424
+     },
+     {
+      "name": "Kelanabian",
+      "kind": "PPLA4",
+      "m": 1767
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kecamatan Kuta",
+      "kind": "ADM3",
+      "m": 2131
+     },
+     {
+      "name": "Kelurahan Kedonganan",
+      "kind": "ADM4",
+      "m": 2841
+     },
+     {
+      "name": "Kelurahan Legian",
+      "kind": "ADM4",
+      "m": 4258
+     }
+    ],
+    "spots": [
+     {
+      "name": "Ngurah Rai International Airport",
+      "kind": "AIRP",
+      "m": 989
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Tuban",
+   "area_ko": "투반",
+   "near_en": "",
+   "near_ko": "",
+   "note": "투반 일대 마을 이름들이 가깝고 공항은 989m로 멀어 명소는 비웠습니다."
+  },
+  {
+   "group": "G02",
+   "photos": 47,
+   "days": [
+    "2026-07-16",
+    "2026-07-17",
+    "2026-07-18"
+   ],
+   "spread_m": 294,
+   "lat": -8.5186,
+   "lon": 115.26433,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Banjar Padangtegal Kelod",
+      "kind": "PPLX",
+      "m": 329
+     },
+     {
+      "name": "Banjar Padangtegalmekarsari",
+      "kind": "PPLX",
+      "m": 441
+     },
+     {
+      "name": "Banjar Tengah Kangin",
+      "kind": "PPLX",
+      "m": 450
+     },
+     {
+      "name": "Banjar Tengah Kauh",
+      "kind": "PPLX",
+      "m": 521
+     },
+     {
+      "name": "Banjar Pengosekan Kaja",
+      "kind": "PPLX",
+      "m": 589
+     },
+     {
+      "name": "Banjar Teruna",
+      "kind": "PPLX",
+      "m": 641
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kecamatan Ubud",
+      "kind": "ADM3",
+      "m": 636
+     },
+     {
+      "name": "Desa Peliatan",
+      "kind": "ADM4",
+      "m": 862
+     },
+     {
+      "name": "Kelurahan Ubud",
+      "kind": "ADM4",
+      "m": 2173
+     }
+    ],
+    "spots": [],
+    "lodging": [
+     {
+      "name": "Sahadewa Resort & Spa",
+      "kind": "HTL",
+      "m": 119
+     }
+    ]
+   },
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": "",
+   "note": "파당테갈·텡아 반자르는 우붓 지역 안의 마을입니다."
+  },
+  {
+   "group": "G03",
+   "photos": 11,
+   "days": [
+    "2026-07-17"
+   ],
+   "spread_m": 131,
+   "lat": -8.51871,
+   "lon": 115.2597,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Banjar Padangtegal Kelod",
+      "kind": "PPLX",
+      "m": 463
+     },
+     {
+      "name": "Banjar Padangtegalmekarsari",
+      "kind": "PPLX",
+      "m": 550
+     },
+     {
+      "name": "Banjar Pengosekan Kaja",
+      "kind": "PPLX",
+      "m": 768
+     },
+     {
+      "name": "Banjar Padangtegal Tengah",
+      "kind": "PPLX",
+      "m": 868
+     },
+     {
+      "name": "Banjar Nyungkuning",
+      "kind": "PPLX",
+      "m": 898
+     },
+     {
+      "name": "Banjar Tengah Kangin",
+      "kind": "PPLX",
+      "m": 958
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kecamatan Ubud",
+      "kind": "ADM3",
+      "m": 145
+     },
+     {
+      "name": "Desa Peliatan",
+      "kind": "ADM4",
+      "m": 1369
+     },
+     {
+      "name": "Desa Singakerta",
+      "kind": "ADM4",
+      "m": 1828
+     }
+    ],
+    "spots": [],
+    "lodging": [
+     {
+      "name": "Garden View Cottages",
+      "kind": "HTL",
+      "m": 102
+     }
+    ]
+   },
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": "",
+   "note": "우붓 군 안의 파당테갈 일대입니다."
+  },
+  {
+   "group": "G04",
+   "photos": 1,
+   "days": [
+    "2026-07-17"
+   ],
+   "spread_m": 0,
+   "lat": -8.51944,
+   "lon": 115.25685,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Banjar Ketiklantang",
+      "kind": "PPLX",
+      "m": 671
+     },
+     {
+      "name": "Banjar Nyungkuning",
+      "kind": "PPLX",
+      "m": 733
+     },
+     {
+      "name": "Banjar Padangtegal Kelod",
+      "kind": "PPLX",
+      "m": 767
+     },
+     {
+      "name": "Banjar Padangtegalmekarsari",
+      "kind": "PPLX",
+      "m": 835
+     },
+     {
+      "name": "Banjar Pengosekan Kaja",
+      "kind": "PPLX",
+      "m": 958
+     },
+     {
+      "name": "Banjar Lobong",
+      "kind": "PPLX",
+      "m": 992
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kecamatan Ubud",
+      "kind": "ADM3",
+      "m": 193
+     },
+     {
+      "name": "Desa Singakerta",
+      "kind": "ADM4",
+      "m": 1515
+     },
+     {
+      "name": "Desa Peliatan",
+      "kind": "ADM4",
+      "m": 1689
+     }
+    ],
+    "spots": [],
+    "lodging": []
+   },
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": "",
+   "note": "우붓 군 안의 마을들이 주변에 있습니다."
+  },
+  {
+   "group": "G05",
+   "photos": 3,
+   "days": [
+    "2026-07-17"
+   ],
+   "spread_m": 5,
+   "lat": -8.51568,
+   "lon": 115.25809,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Banjar Padangtegal Kelod",
+      "kind": "PPLX",
+      "m": 530
+     },
+     {
+      "name": "Banjar Padangtegalmekarsari",
+      "kind": "PPLX",
+      "m": 536
+     },
+     {
+      "name": "Banjar Padangtegal Tengah",
+      "kind": "PPLX",
+      "m": 753
+     },
+     {
+      "name": "Banjar Padangtegal Kaja",
+      "kind": "PPLX",
+      "m": 896
+     },
+     {
+      "name": "Banjar Ubud Kelod",
+      "kind": "PPLX",
+      "m": 930
+     },
+     {
+      "name": "Banjar Ketiklantang",
+      "kind": "PPLX",
+      "m": 946
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kecamatan Ubud",
+      "kind": "ADM3",
+      "m": 422
+     },
+     {
+      "name": "Desa Peliatan",
+      "kind": "ADM4",
+      "m": 1555
+     },
+     {
+      "name": "Desa Sayan",
+      "kind": "ADM4",
+      "m": 1702
+     }
+    ],
+    "spots": [],
+    "lodging": [
+     {
+      "name": "Ala S Green Lagoon",
+      "kind": "HTL",
+      "m": 114
+     }
+    ]
+   },
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": "",
+   "note": "파당테갈 반자르들은 우붓 중심 남쪽 지역입니다."
+  },
+  {
+   "group": "G06",
+   "photos": 2,
+   "days": [
+    "2026-07-17"
+   ],
+   "spread_m": 1,
+   "lat": -8.5144,
+   "lon": 115.26046,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Banjar Padangtegalmekarsari",
+      "kind": "PPLX",
+      "m": 274
+     },
+     {
+      "name": "Banjar Padangtegal Kelod",
+      "kind": "PPLX",
+      "m": 322
+     },
+     {
+      "name": "Banjar Padangtegal Tengah",
+      "kind": "PPLX",
+      "m": 456
+     },
+     {
+      "name": "Banjar Padangtegal Kaja",
+      "kind": "PPLX",
+      "m": 605
+     },
+     {
+      "name": "Banjar Ubud Kelod",
+      "kind": "PPLX",
+      "m": 677
+     },
+     {
+      "name": "Ubud",
+      "kind": "PPL",
+      "m": 746
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kecamatan Ubud",
+      "kind": "ADM3",
+      "m": 597
+     },
+     {
+      "name": "Desa Peliatan",
+      "kind": "ADM4",
+      "m": 1329
+     },
+     {
+      "name": "Kelurahan Ubud",
+      "kind": "ADM4",
+      "m": 1704
+     }
+    ],
+    "spots": [],
+    "lodging": [
+     {
+      "name": "Barong Resort",
+      "kind": "HTL",
+      "m": 29
+     },
+     {
+      "name": "Royal Kamuela Villas Monkey Forest Ubud",
+      "kind": "HTL",
+      "m": 67
+     }
+    ]
+   },
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": "",
+   "note": "파당테갈 일대로 우붓 지역에 속합니다."
+  },
+  {
+   "group": "G07",
+   "photos": 1,
+   "days": [
+    "2026-07-17"
+   ],
+   "spread_m": 0,
+   "lat": -8.51248,
+   "lon": 115.26099,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Banjar Padangtegal Tengah",
+      "kind": "PPLX",
+      "m": 323
+     },
+     {
+      "name": "Banjar Padangtegalmekarsari",
+      "kind": "PPLX",
+      "m": 341
+     },
+     {
+      "name": "Banjar Padangtegal Kaja",
+      "kind": "PPLX",
+      "m": 434
+     },
+     {
+      "name": "Banjar Padangtegal Kelod",
+      "kind": "PPLX",
+      "m": 444
+     },
+     {
+      "name": "Banjar Ubud Kelod",
+      "kind": "PPLX",
+      "m": 460
+     },
+     {
+      "name": "Ubud",
+      "kind": "PPL",
+      "m": 569
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kecamatan Ubud",
+      "kind": "ADM3",
+      "m": 817
+     },
+     {
+      "name": "Desa Peliatan",
+      "kind": "ADM4",
+      "m": 1348
+     },
+     {
+      "name": "Kelurahan Ubud",
+      "kind": "ADM4",
+      "m": 1486
+     }
+    ],
+    "spots": [],
+    "lodging": [
+     {
+      "name": "Champlung Sari Ubud",
+      "kind": "HTL",
+      "m": 0
+     },
+     {
+      "name": "Royal Kamuela Ubud",
+      "kind": "HTL",
+      "m": 0
+     }
+    ]
+   },
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": "",
+   "note": "우붓 중심에서 약 570m 거리의 파당테갈 일대입니다."
+  },
+  {
+   "group": "G08",
+   "photos": 1,
+   "days": [
+    "2026-07-17"
+   ],
+   "spread_m": 0,
+   "lat": -8.51112,
+   "lon": 115.26114,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Banjar Ubud Kelod",
+      "kind": "PPLX",
+      "m": 322
+     },
+     {
+      "name": "Banjar Padangtegal Tengah",
+      "kind": "PPLX",
+      "m": 323
+     },
+     {
+      "name": "Banjar Padangtegal Kaja",
+      "kind": "PPLX",
+      "m": 373
+     },
+     {
+      "name": "Banjar Padangtegalmekarsari",
+      "kind": "PPLX",
+      "m": 463
+     },
+     {
+      "name": "Ubud",
+      "kind": "PPL",
+      "m": 491
+     },
+     {
+      "name": "Banjar Taman Kelod",
+      "kind": "PPLX",
+      "m": 532
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kecamatan Ubud",
+      "kind": "ADM3",
+      "m": 966
+     },
+     {
+      "name": "Kelurahan Ubud",
+      "kind": "ADM4",
+      "m": 1334
+     },
+     {
+      "name": "Desa Peliatan",
+      "kind": "ADM4",
+      "m": 1405
+     }
+    ],
+    "spots": [],
+    "lodging": [
+     {
+      "name": "Y Resort",
+      "kind": "HTL",
+      "m": 62
+     },
+     {
+      "name": "Yulia Village Inn",
+      "kind": "HTL",
+      "m": 79
+     }
+    ]
+   },
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": "",
+   "note": "우붓 중심에서 약 490m 거리입니다."
+  },
+  {
+   "group": "G09",
+   "photos": 2,
+   "days": [
+    "2026-07-17"
+   ],
+   "spread_m": 11,
+   "lat": -8.50678,
+   "lon": 115.26278,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Banjar Taman Kelod",
+      "kind": "PPLX",
+      "m": 26
+     },
+     {
+      "name": "Banjar Ubud Tengah",
+      "kind": "PPLX",
+      "m": 120
+     },
+     {
+      "name": "Banjar Ubud Kelod",
+      "kind": "PPLX",
+      "m": 225
+     },
+     {
+      "name": "Banjar Ubud Kaja",
+      "kind": "PPLX",
+      "m": 394
+     },
+     {
+      "name": "Banjar Taman Kaja",
+      "kind": "PPLX",
+      "m": 399
+     },
+     {
+      "name": "Ubud",
+      "kind": "PPL",
+      "m": 443
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kelurahan Ubud",
+      "kind": "ADM4",
+      "m": 848
+     },
+     {
+      "name": "Kecamatan Ubud",
+      "kind": "ADM3",
+      "m": 1481
+     },
+     {
+      "name": "Desa Peliatan",
+      "kind": "ADM4",
+      "m": 1581
+     }
+    ],
+    "spots": [],
+    "lodging": []
+   },
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": "",
+   "note": "우붓 중심 반자르들 바로 옆입니다."
+  },
+  {
+   "group": "G10",
+   "photos": 6,
+   "days": [
+    "2026-07-17"
+   ],
+   "spread_m": 109,
+   "lat": -8.50877,
+   "lon": 115.2644,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Ubud",
+      "kind": "PPL",
+      "m": 159
+     },
+     {
+      "name": "Banjar Ubud Kelod",
+      "kind": "PPLX",
+      "m": 165
+     },
+     {
+      "name": "Banjar Padangtegal Kaja",
+      "kind": "PPLX",
+      "m": 215
+     },
+     {
+      "name": "Banjar Taman Kelod",
+      "kind": "PPLX",
+      "m": 277
+     },
+     {
+      "name": "Banjar Padangtegal Tengah",
+      "kind": "PPLX",
+      "m": 374
+     },
+     {
+      "name": "Banjar Ubud Tengah",
+      "kind": "PPLX",
+      "m": 389
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kelurahan Ubud",
+      "kind": "ADM4",
+      "m": 1094
+     },
+     {
+      "name": "Desa Peliatan",
+      "kind": "ADM4",
+      "m": 1297
+     },
+     {
+      "name": "Kecamatan Ubud",
+      "kind": "ADM3",
+      "m": 1346
+     }
+    ],
+    "spots": [],
+    "lodging": [
+     {
+      "name": "Hanging Gardens Ubud Bali",
+      "kind": "HTL",
+      "m": 96
+     }
+    ]
+   },
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": "",
+   "note": "우붓 중심에서 약 160m 거리입니다."
+  },
+  {
+   "group": "G11",
+   "photos": 2,
+   "days": [
+    "2026-07-17"
+   ],
+   "spread_m": 2,
+   "lat": -8.51109,
+   "lon": 115.26386,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Banjar Padangtegal Kaja",
+      "kind": "PPLX",
+      "m": 83
+     },
+     {
+      "name": "Banjar Padangtegal Tengah",
+      "kind": "PPLX",
+      "m": 113
+     },
+     {
+      "name": "Ubud",
+      "kind": "PPL",
+      "m": 222
+     },
+     {
+      "name": "Banjar Ubud Kelod",
+      "kind": "PPLX",
+      "m": 275
+     },
+     {
+      "name": "Banjar Padangtegalmekarsari",
+      "kind": "PPLX",
+      "m": 437
+     },
+     {
+      "name": "Banjar Taman Kelod",
+      "kind": "PPLX",
+      "m": 497
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kecamatan Ubud",
+      "kind": "ADM3",
+      "m": 1093
+     },
+     {
+      "name": "Desa Peliatan",
+      "kind": "ADM4",
+      "m": 1160
+     },
+     {
+      "name": "Kelurahan Ubud",
+      "kind": "ADM4",
+      "m": 1337
+     }
+    ],
+    "spots": [],
+    "lodging": []
+   },
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": "",
+   "note": "우붓 중심에서 약 220m 거리입니다."
+  },
+  {
+   "group": "G12",
+   "photos": 3,
+   "days": [
+    "2026-07-17"
+   ],
+   "spread_m": 2,
+   "lat": -8.52298,
+   "lon": 115.26352,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Banjar Pengosekan Kaja",
+      "kind": "PPLX",
+      "m": 134
+     },
+     {
+      "name": "Banjar Tengah Kauh",
+      "kind": "PPLX",
+      "m": 580
+     },
+     {
+      "name": "Banjar Kalah",
+      "kind": "PPLX",
+      "m": 615
+     },
+     {
+      "name": "Banjar Pengosekan Kelod",
+      "kind": "PPLX",
+      "m": 695
+     },
+     {
+      "name": "Banjar Tengah Kangin",
+      "kind": "PPLX",
+      "m": 755
+     },
+     {
+      "name": "Banjar Padangtegal Kelod",
+      "kind": "PPLX",
+      "m": 779
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kecamatan Ubud",
+      "kind": "ADM3",
+      "m": 668
+     },
+     {
+      "name": "Desa Peliatan",
+      "kind": "ADM4",
+      "m": 1117
+     },
+     {
+      "name": "Desa Singakerta",
+      "kind": "ADM4",
+      "m": 2072
+     }
+    ],
+    "spots": [],
+    "lodging": [
+     {
+      "name": "The Grand Sunti Ubud",
+      "kind": "HTL",
+      "m": 61
+     },
+     {
+      "name": "The Grand Sunti Resort And Spa",
+      "kind": "HTL",
+      "m": 111
+     }
+    ]
+   },
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": "",
+   "note": "프응오세칸은 우붓 지역 남쪽 마을입니다."
+  },
+  {
+   "group": "G13",
+   "photos": 1,
+   "days": [
+    "2026-07-18"
+   ],
+   "spread_m": 0,
+   "lat": -8.52053,
+   "lon": 115.26289,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Banjar Pengosekan Kaja",
+      "kind": "PPLX",
+      "m": 406
+     },
+     {
+      "name": "Banjar Padangtegal Kelod",
+      "kind": "PPLX",
+      "m": 504
+     },
+     {
+      "name": "Banjar Tengah Kauh",
+      "kind": "PPLX",
+      "m": 608
+     },
+     {
+      "name": "Banjar Padangtegalmekarsari",
+      "kind": "PPLX",
+      "m": 626
+     },
+     {
+      "name": "Banjar Tengah Kangin",
+      "kind": "PPLX",
+      "m": 659
+     },
+     {
+      "name": "Banjar Kalah",
+      "kind": "PPLX",
+      "m": 805
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kecamatan Ubud",
+      "kind": "ADM3",
+      "m": 486
+     },
+     {
+      "name": "Desa Peliatan",
+      "kind": "ADM4",
+      "m": 1064
+     },
+     {
+      "name": "Desa Singakerta",
+      "kind": "ADM4",
+      "m": 2072
+     }
+    ],
+    "spots": [],
+    "lodging": [
+     {
+      "name": "Green Field Hotel And Bungalow",
+      "kind": "HTL",
+      "m": 38
+     },
+     {
+      "name": "Artini Cottages 3",
+      "kind": "HTL",
+      "m": 65
+     }
+    ]
+   },
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": "",
+   "note": "프응오세칸·파당테갈 일대로 우붓 지역입니다."
+  },
+  {
+   "group": "G14",
+   "photos": 3,
+   "days": [
+    "2026-07-18"
+   ],
+   "spread_m": 80,
+   "lat": -8.53715,
+   "lon": 115.22363,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Banjar Umahanjar",
+      "kind": "PPLX",
+      "m": 191
+     },
+     {
+      "name": "Banjar Baturhening",
+      "kind": "PPLX",
+      "m": 549
+     },
+     {
+      "name": "Banjar Gunung",
+      "kind": "PPLX",
+      "m": 857
+     },
+     {
+      "name": "Banjar Pengiasan",
+      "kind": "PPLX",
+      "m": 894
+     },
+     {
+      "name": "Banjar Bendungmambal",
+      "kind": "PPLX",
+      "m": 1085
+     },
+     {
+      "name": "Banjar Aseman",
+      "kind": "PPLX",
+      "m": 1187
+     }
+    ],
+    "districts": [
+     {
+      "name": "Desa Mambal",
+      "kind": "ADM4",
+      "m": 449
+     },
+     {
+      "name": "Desa Abiansemal",
+      "kind": "ADM4",
+      "m": 1096
+     },
+     {
+      "name": "Desa Mekar Bhuwana",
+      "kind": "ADM4",
+      "m": 1585
+     }
+    ],
+    "spots": [],
+    "lodging": []
+   },
+   "area_en": "Mambal",
+   "area_ko": "맘발",
+   "near_en": "",
+   "near_ko": "",
+   "note": "맘발 마을 행정 구역이 가장 가깝습니다."
+  },
+  {
+   "group": "G15",
+   "photos": 1,
+   "days": [
+    "2026-07-18"
+   ],
+   "spread_m": 0,
+   "lat": -8.6517,
+   "lon": 115.13254,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Pengembungan",
+      "kind": "PPL",
+      "m": 899
+     },
+     {
+      "name": "Padanglinjong",
+      "kind": "PPL",
+      "m": 1058
+     },
+     {
+      "name": "Delodpadonan",
+      "kind": "PPL",
+      "m": 1141
+     },
+     {
+      "name": "Tegalgundul",
+      "kind": "PPL",
+      "m": 1420
+     },
+     {
+      "name": "Batu",
+      "kind": "PPL",
+      "m": 1527
+     },
+     {
+      "name": "Canggu",
+      "kind": "PPL",
+      "m": 1536
+     }
+    ],
+    "districts": [
+     {
+      "name": "Desa Pererenan",
+      "kind": "ADM4",
+      "m": 1212
+     },
+     {
+      "name": "Desa Canggu",
+      "kind": "ADM4",
+      "m": 1237
+     },
+     {
+      "name": "Desa Tibubeneng",
+      "kind": "ADM4",
+      "m": 2207
+     }
+    ],
+    "spots": [
+     {
+      "name": "Echo Beach",
+      "kind": "BCH",
+      "m": 905
+     },
+     {
+      "name": "Batu Bolong Beach",
+      "kind": "BCH",
+      "m": 977
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": "",
+   "note": "짱구 해안 지역이며 해변들은 900m 이상 떨어져 있습니다."
+  },
+  {
+   "group": "G16",
+   "photos": 37,
+   "days": [
+    "2026-07-18",
+    "2026-07-19",
+    "2026-07-20"
+   ],
+   "spread_m": 157,
+   "lat": -8.65432,
+   "lon": 115.12962,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Pengembungan",
+      "kind": "PPL",
+      "m": 1045
+     },
+     {
+      "name": "Delodpadonan",
+      "kind": "PPL",
+      "m": 1393
+     },
+     {
+      "name": "Padanglinjong",
+      "kind": "PPL",
+      "m": 1480
+     },
+     {
+      "name": "Tegalgundul",
+      "kind": "PPL",
+      "m": 1578
+     },
+     {
+      "name": "Brawa",
+      "kind": "PPL",
+      "m": 1787
+     },
+     {
+      "name": "Seseh",
+      "kind": "PPL",
+      "m": 1822
+     }
+    ],
+    "districts": [
+     {
+      "name": "Desa Pererenan",
+      "kind": "ADM4",
+      "m": 1517
+     },
+     {
+      "name": "Desa Canggu",
+      "kind": "ADM4",
+      "m": 1671
+     },
+     {
+      "name": "Desa Tibubeneng",
+      "kind": "ADM4",
+      "m": 2618
+     }
+    ],
+    "spots": [
+     {
+      "name": "Echo Beach",
+      "kind": "BCH",
+      "m": 499
+     },
+     {
+      "name": "Batu Bolong Beach",
+      "kind": "BCH",
+      "m": 650
+     }
+    ],
+    "lodging": [
+     {
+      "name": "Villa Lovecho Canggu",
+      "kind": "HTL",
+      "m": 6
+     },
+     {
+      "name": "Villa Grace & Milena",
+      "kind": "HTL",
+      "m": 66
+     }
+    ]
+   },
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치",
+   "note": "짱구 해안이며 에코 비치가 약 500m 거리입니다."
+  },
+  {
+   "group": "G17",
+   "photos": 2,
+   "days": [
+    "2026-07-18"
+   ],
+   "spread_m": 0,
+   "lat": -8.65194,
+   "lon": 115.12955,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Pengembungan",
+      "kind": "PPL",
+      "m": 785
+     },
+     {
+      "name": "Delodpadonan",
+      "kind": "PPL",
+      "m": 1128
+     },
+     {
+      "name": "Padanglinjong",
+      "kind": "PPL",
+      "m": 1282
+     },
+     {
+      "name": "Batu",
+      "kind": "PPL",
+      "m": 1565
+     },
+     {
+      "name": "Tegalgundul",
+      "kind": "PPL",
+      "m": 1689
+     },
+     {
+      "name": "Jempinis",
+      "kind": "PPL",
+      "m": 1693
+     }
+    ],
+    "districts": [
+     {
+      "name": "Desa Pererenan",
+      "kind": "ADM4",
+      "m": 1258
+     },
+     {
+      "name": "Desa Canggu",
+      "kind": "ADM4",
+      "m": 1512
+     },
+     {
+      "name": "Desa Tibubeneng",
+      "kind": "ADM4",
+      "m": 2523
+     }
+    ],
+    "spots": [
+     {
+      "name": "Echo Beach",
+      "kind": "BCH",
+      "m": 612
+     },
+     {
+      "name": "Batu Bolong Beach",
+      "kind": "BCH",
+      "m": 915
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": "",
+   "note": "짱구 지역이며 에코 비치는 600m를 약간 넘습니다."
+  },
+  {
+   "group": "G18",
+   "photos": 7,
+   "days": [
+    "2026-07-18"
+   ],
+   "spread_m": 91,
+   "lat": -8.65004,
+   "lon": 115.13007,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Pengembungan",
+      "kind": "PPL",
+      "m": 604
+     },
+     {
+      "name": "Delodpadonan",
+      "kind": "PPL",
+      "m": 917
+     },
+     {
+      "name": "Padanglinjong",
+      "kind": "PPL",
+      "m": 1095
+     },
+     {
+      "name": "Batu",
+      "kind": "PPL",
+      "m": 1349
+     },
+     {
+      "name": "Jempinis",
+      "kind": "PPL",
+      "m": 1474
+     },
+     {
+      "name": "Canggu",
+      "kind": "PPL",
+      "m": 1563
+     }
+    ],
+    "districts": [
+     {
+      "name": "Desa Pererenan",
+      "kind": "ADM4",
+      "m": 1040
+     },
+     {
+      "name": "Desa Canggu",
+      "kind": "ADM4",
+      "m": 1352
+     },
+     {
+      "name": "Desa Tibubeneng",
+      "kind": "ADM4",
+      "m": 2404
+     }
+    ],
+    "spots": [
+     {
+      "name": "Echo Beach",
+      "kind": "BCH",
+      "m": 800
+     },
+     {
+      "name": "Batu Bolong Beach",
+      "kind": "BCH",
+      "m": 1124
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": "",
+   "note": "짱구 지역이며 600m 안의 명소가 없습니다."
+  },
+  {
+   "group": "G19",
+   "photos": 94,
+   "days": [
+    "2026-07-18"
+   ],
+   "spread_m": 156,
+   "lat": -8.65456,
+   "lon": 115.12473,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Pengembungan",
+      "kind": "PPL",
+      "m": 1104
+     },
+     {
+      "name": "Seseh",
+      "kind": "PPL",
+      "m": 1407
+     },
+     {
+      "name": "Delodpadonan",
+      "kind": "PPL",
+      "m": 1524
+     },
+     {
+      "name": "Sogsogan",
+      "kind": "PPL",
+      "m": 1844
+     },
+     {
+      "name": "Padanglinjong",
+      "kind": "PPL",
+      "m": 1867
+     },
+     {
+      "name": "Batu",
+      "kind": "PPL",
+      "m": 1986
+     }
+    ],
+    "districts": [
+     {
+      "name": "Desa Pererenan",
+      "kind": "ADM4",
+      "m": 1706
+     },
+     {
+      "name": "Desa Canggu",
+      "kind": "ADM4",
+      "m": 2113
+     },
+     {
+      "name": "Desa Cemagi",
+      "kind": "ADM4",
+      "m": 2812
+     }
+    ],
+    "spots": [
+     {
+      "name": "Echo Beach",
+      "kind": "BCH",
+      "m": 108
+     },
+     {
+      "name": "Batu Bolong Beach",
+      "kind": "BCH",
+      "m": 858
+     },
+     {
+      "name": "Pantai Selasih",
+      "kind": "BCH",
+      "m": 1351
+     }
+    ],
+    "lodging": [
+     {
+      "name": "Bali Kubu Rama",
+      "kind": "HTL",
+      "m": 108
+     }
+    ]
+   },
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치",
+   "note": "에코 비치에서 약 110m 거리의 짱구 해안입니다."
+  },
+  {
+   "group": "G20",
+   "photos": 1,
+   "days": [
+    "2026-07-19"
+   ],
+   "spread_m": 0,
+   "lat": -8.65375,
+   "lon": 115.13219,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Pengembungan",
+      "kind": "PPL",
+      "m": 1076
+     },
+     {
+      "name": "Padanglinjong",
+      "kind": "PPL",
+      "m": 1276
+     },
+     {
+      "name": "Tegalgundul",
+      "kind": "PPL",
+      "m": 1339
+     },
+     {
+      "name": "Delodpadonan",
+      "kind": "PPL",
+      "m": 1355
+     },
+     {
+      "name": "Canggupermai",
+      "kind": "PPL",
+      "m": 1660
+     },
+     {
+      "name": "Brawa",
+      "kind": "PPL",
+      "m": 1672
+     }
+    ],
+    "districts": [
+     {
+      "name": "Desa Canggu",
+      "kind": "ADM4",
+      "m": 1428
+     },
+     {
+      "name": "Desa Pererenan",
+      "kind": "ADM4",
+      "m": 1438
+     },
+     {
+      "name": "Desa Tibubeneng",
+      "kind": "ADM4",
+      "m": 2337
+     }
+    ],
+    "spots": [
+     {
+      "name": "Batu Bolong Beach",
+      "kind": "BCH",
+      "m": 747
+     },
+     {
+      "name": "Echo Beach",
+      "kind": "BCH",
+      "m": 788
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": "",
+   "note": "짱구 지역이며 해변들이 700m 이상 떨어져 있습니다."
+  },
+  {
+   "group": "G21",
+   "photos": 1,
+   "days": [
+    "2026-07-19"
+   ],
+   "spread_m": 0,
+   "lat": -8.65539,
+   "lon": 115.13181,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Pengembungan",
+      "kind": "PPL",
+      "m": 1226
+     },
+     {
+      "name": "Tegalgundul",
+      "kind": "PPL",
+      "m": 1311
+     },
+     {
+      "name": "Padanglinjong",
+      "kind": "PPL",
+      "m": 1457
+     },
+     {
+      "name": "Delodpadonan",
+      "kind": "PPL",
+      "m": 1527
+     },
+     {
+      "name": "Brawa",
+      "kind": "PPL",
+      "m": 1544
+     },
+     {
+      "name": "Pelambengan",
+      "kind": "PPL",
+      "m": 1710
+     }
+    ],
+    "districts": [
+     {
+      "name": "Desa Canggu",
+      "kind": "ADM4",
+      "m": 1593
+     },
+     {
+      "name": "Desa Pererenan",
+      "kind": "ADM4",
+      "m": 1619
+     },
+     {
+      "name": "Desa Tibubeneng",
+      "kind": "ADM4",
+      "m": 2461
+     }
+    ],
+    "spots": [
+     {
+      "name": "Batu Bolong Beach",
+      "kind": "BCH",
+      "m": 562
+     },
+     {
+      "name": "Echo Beach",
+      "kind": "BCH",
+      "m": 726
+     }
+    ],
+    "lodging": [
+     {
+      "name": "The Kirana Bali",
+      "kind": "HTL",
+      "m": 72
+     }
+    ]
+   },
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Batu Bolong Beach",
+   "near_ko": "바투 볼롱 비치",
+   "note": "바투 볼롱 비치에서 약 560m 거리의 짱구입니다."
+  },
+  {
+   "group": "G22",
+   "photos": 7,
+   "days": [
+    "2026-07-19",
+    "2026-07-20"
+   ],
+   "spread_m": 59,
+   "lat": -8.65947,
+   "lon": 115.13033,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Brawa",
+      "kind": "PPL",
+      "m": 1335
+     },
+     {
+      "name": "Tegalgundul",
+      "kind": "PPL",
+      "m": 1416
+     },
+     {
+      "name": "Pengembungan",
+      "kind": "PPL",
+      "m": 1622
+     },
+     {
+      "name": "Pelambengan",
+      "kind": "PPL",
+      "m": 1889
+     },
+     {
+      "name": "Padanglinjong",
+      "kind": "PPL",
+      "m": 1937
+     },
+     {
+      "name": "Delodpadonan",
+      "kind": "PPL",
+      "m": 1965
+     }
+    ],
+    "districts": [
+     {
+      "name": "Desa Canggu",
+      "kind": "ADM4",
+      "m": 2055
+     },
+     {
+      "name": "Desa Pererenan",
+      "kind": "ADM4",
+      "m": 2078
+     },
+     {
+      "name": "Desa Tibubeneng",
+      "kind": "ADM4",
+      "m": 2848
+     }
+    ],
+    "spots": [
+     {
+      "name": "Batu Bolong Beach",
+      "kind": "BCH",
+      "m": 80
+     },
+     {
+      "name": "Echo Beach",
+      "kind": "BCH",
+      "m": 722
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Batu Bolong Beach",
+   "near_ko": "바투 볼롱 비치",
+   "note": "바투 볼롱 비치에서 약 80m 거리입니다."
+  },
+  {
+   "group": "G23",
+   "photos": 2,
+   "days": [
+    "2026-07-19",
+    "2026-07-20"
+   ],
+   "spread_m": 43,
+   "lat": -8.65815,
+   "lon": 115.12842,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Pengembungan",
+      "kind": "PPL",
+      "m": 1452
+     },
+     {
+      "name": "Brawa",
+      "kind": "PPL",
+      "m": 1591
+     },
+     {
+      "name": "Tegalgundul",
+      "kind": "PPL",
+      "m": 1627
+     },
+     {
+      "name": "Delodpadonan",
+      "kind": "PPL",
+      "m": 1824
+     },
+     {
+      "name": "Padanglinjong",
+      "kind": "PPL",
+      "m": 1906
+     },
+     {
+      "name": "Seseh",
+      "kind": "PPL",
+      "m": 1976
+     }
+    ],
+    "districts": [
+     {
+      "name": "Desa Pererenan",
+      "kind": "ADM4",
+      "m": 1958
+     },
+     {
+      "name": "Desa Canggu",
+      "kind": "ADM4",
+      "m": 2068
+     },
+     {
+      "name": "Desa Tibubeneng",
+      "kind": "ADM4",
+      "m": 2938
+     }
+    ],
+    "spots": [
+     {
+      "name": "Batu Bolong Beach",
+      "kind": "BCH",
+      "m": 290
+     },
+     {
+      "name": "Echo Beach",
+      "kind": "BCH",
+      "m": 467
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Batu Bolong Beach",
+   "near_ko": "바투 볼롱 비치",
+   "note": "바투 볼롱 비치에서 약 290m 거리입니다."
+  },
+  {
+   "group": "G24",
+   "photos": 34,
+   "days": [
+    "2026-07-19"
+   ],
+   "spread_m": 57,
+   "lat": -8.66665,
+   "lon": 115.13918,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Brawa",
+      "kind": "PPL",
+      "m": 101
+     },
+     {
+      "name": "Tegalgundul",
+      "kind": "PPL",
+      "m": 968
+     },
+     {
+      "name": "Pelambengan",
+      "kind": "PPL",
+      "m": 1413
+     },
+     {
+      "name": "Tunoon",
+      "kind": "PPL",
+      "m": 1438
+     },
+     {
+      "name": "Bumbak",
+      "kind": "PPL",
+      "m": 1692
+     },
+     {
+      "name": "Batubelig",
+      "kind": "PPL",
+      "m": 1769
+     }
+    ],
+    "districts": [
+     {
+      "name": "Desa Canggu",
+      "kind": "ADM4",
+      "m": 2506
+     },
+     {
+      "name": "Kelurahan Kerobokan Kelod",
+      "kind": "ADM4",
+      "m": 2654
+     },
+     {
+      "name": "Desa Tibubeneng",
+      "kind": "ADM4",
+      "m": 2822
+     }
+    ],
+    "spots": [
+     {
+      "name": "Canggu Club Tennis Centre",
+      "kind": "ATHF",
+      "m": 886
+     },
+     {
+      "name": "Splash Waterpark Bali",
+      "kind": "AMUS",
+      "m": 1059
+     },
+     {
+      "name": "Pantai Batubelig",
+      "kind": "BCH",
+      "m": 1167
+     },
+     {
+      "name": "Batu Bolong Beach",
+      "kind": "BCH",
+      "m": 1231
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": "",
+   "note": "브라와 마을에서 약 100m이며 명소는 모두 600m 밖입니다."
+  },
+  {
+   "group": "G25",
+   "photos": 9,
+   "days": [
+    "2026-07-20"
+   ],
+   "spread_m": 11,
+   "lat": -8.63916,
+   "lon": 115.14742,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Pipitan",
+      "kind": "PPL",
+      "m": 238
+     },
+     {
+      "name": "Kayutulang",
+      "kind": "PPL",
+      "m": 336
+     },
+     {
+      "name": "Umabuluh",
+      "kind": "PPL",
+      "m": 699
+     },
+     {
+      "name": "Canggu",
+      "kind": "PPL",
+      "m": 810
+     },
+     {
+      "name": "Tandeg",
+      "kind": "PPL",
+      "m": 893
+     },
+     {
+      "name": "Aseman Kawan",
+      "kind": "PPL",
+      "m": 1021
+     }
+    ],
+    "districts": [
+     {
+      "name": "Desa Tibubeneng",
+      "kind": "ADM4",
+      "m": 689
+     },
+     {
+      "name": "Desa Canggu",
+      "kind": "ADM4",
+      "m": 914
+     },
+     {
+      "name": "Desa Pererenan",
+      "kind": "ADM4",
+      "m": 1741
+     }
+    ],
+    "spots": [],
+    "lodging": [
+     {
+      "name": "Jabunami Villa",
+      "kind": "HTL",
+      "m": 98
+     }
+    ]
+   },
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": "",
+   "note": "티부베neng·짱구 경계의 작은 마을들로 짱구 지역에 속합니다."
+  },
+  {
+   "group": "G26",
+   "photos": 3,
+   "days": [
+    "2026-07-20"
+   ],
+   "spread_m": 5,
+   "lat": -8.6562,
+   "lon": 115.12891,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Pengembungan",
+      "kind": "PPL",
+      "m": 1241
+     },
+     {
+      "name": "Tegalgundul",
+      "kind": "PPL",
+      "m": 1599
+     },
+     {
+      "name": "Delodpadonan",
+      "kind": "PPL",
+      "m": 1605
+     },
+     {
+      "name": "Brawa",
+      "kind": "PPL",
+      "m": 1688
+     },
+     {
+      "name": "Padanglinjong",
+      "kind": "PPL",
+      "m": 1696
+     },
+     {
+      "name": "Seseh",
+      "kind": "PPL",
+      "m": 1876
+     }
+    ],
+    "districts": [
+     {
+      "name": "Desa Pererenan",
+      "kind": "ADM4",
+      "m": 1736
+     },
+     {
+      "name": "Desa Canggu",
+      "kind": "ADM4",
+      "m": 1873
+     },
+     {
+      "name": "Desa Tibubeneng",
+      "kind": "ADM4",
+      "m": 2783
+     }
+    ],
+    "spots": [
+     {
+      "name": "Echo Beach",
+      "kind": "BCH",
+      "m": 417
+     },
+     {
+      "name": "Batu Bolong Beach",
+      "kind": "BCH",
+      "m": 458
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치",
+   "note": "에코 비치에서 약 420m 거리의 짱구입니다."
+  },
+  {
+   "group": "G27",
+   "photos": 15,
+   "days": [
+    "2026-07-21"
+   ],
+   "spread_m": 123,
+   "lat": -8.67938,
+   "lon": 115.15019,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Batubelig",
+      "kind": "PPL",
+      "m": 97
+     },
+     {
+      "name": "Lebaon",
+      "kind": "PPL",
+      "m": 1111
+     },
+     {
+      "name": "Jimbarancarik",
+      "kind": "PPL",
+      "m": 1115
+     },
+     {
+      "name": "Umalas Kauh",
+      "kind": "PPL",
+      "m": 1403
+     },
+     {
+      "name": "Tunoon",
+      "kind": "PPL",
+      "m": 1570
+     },
+     {
+      "name": "Tamanwirasaba",
+      "kind": "PPL",
+      "m": 1693
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kelurahan Kerobokan Kelod",
+      "kind": "ADM4",
+      "m": 1628
+     },
+     {
+      "name": "Kelurahan Seminyak",
+      "kind": "ADM4",
+      "m": 2162
+     },
+     {
+      "name": "Kelurahan Legian",
+      "kind": "ADM4",
+      "m": 3602
+     }
+    ],
+    "spots": [
+     {
+      "name": "Pantai Batubelig",
+      "kind": "BCH",
+      "m": 696
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": "",
+   "note": "바투벨릭 마을에서 약 100m이며 해변은 약 700m입니다."
+  },
+  {
+   "group": "G28",
+   "photos": 5,
+   "days": [
+    "2026-07-21"
+   ],
+   "spread_m": 24,
+   "lat": -8.67285,
+   "lon": 115.14747,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Batubelig",
+      "kind": "PPL",
+      "m": 689
+     },
+     {
+      "name": "Tunoon",
+      "kind": "PPL",
+      "m": 978
+     },
+     {
+      "name": "Brawa",
+      "kind": "PPL",
+      "m": 1067
+     },
+     {
+      "name": "Umalas Kauh",
+      "kind": "PPL",
+      "m": 1145
+     },
+     {
+      "name": "Kerobokan Kelod",
+      "kind": "PPL",
+      "m": 1444
+     },
+     {
+      "name": "Lebaon",
+      "kind": "PPL",
+      "m": 1478
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kelurahan Kerobokan Kelod",
+      "kind": "ADM4",
+      "m": 1688
+     },
+     {
+      "name": "Kelurahan Seminyak",
+      "kind": "ADM4",
+      "m": 2844
+     },
+     {
+      "name": "Desa Tibubeneng",
+      "kind": "ADM4",
+      "m": 3214
+     }
+    ],
+    "spots": [
+     {
+      "name": "Pantai Batubelig",
+      "kind": "BCH",
+      "m": 246
+     },
+     {
+      "name": "Canggu Club Tennis Centre",
+      "kind": "ATHF",
+      "m": 1115
+     },
+     {
+      "name": "Splash Waterpark Bali",
+      "kind": "AMUS",
+      "m": 1230
+     }
+    ],
+    "lodging": [
+     {
+      "name": "The Akasha Villas",
+      "kind": "HTL",
+      "m": 70
+     },
+     {
+      "name": "Astana Batu Belig Suite Villa",
+      "kind": "HTL",
+      "m": 115
+     }
+    ]
+   },
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "Batu Belig Beach",
+   "near_ko": "바투벨릭 비치",
+   "note": "바투벨릭 비치에서 약 250m 거리입니다."
+  },
+  {
+   "group": "G29",
+   "photos": 5,
+   "days": [
+    "2026-07-21"
+   ],
+   "spread_m": 89,
+   "lat": -8.74452,
+   "lon": 115.16767,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Tuban",
+      "kind": "PPL",
+      "m": 558
+     },
+     {
+      "name": "Pesalakan",
+      "kind": "PPL",
+      "m": 668
+     },
+     {
+      "name": "Segara",
+      "kind": "PPL",
+      "m": 796
+     },
+     {
+      "name": "Kelandesa",
+      "kind": "PPL",
+      "m": 1107
+     },
+     {
+      "name": "Kelanabian",
+      "kind": "PPLA4",
+      "m": 1305
+     },
+     {
+      "name": "Anyar",
+      "kind": "PPL",
+      "m": 1697
+     }
+    ],
+    "districts": [
+     {
+      "name": "Kecamatan Kuta",
+      "kind": "ADM3",
+      "m": 2260
+     },
+     {
+      "name": "Kelurahan Kedonganan",
+      "kind": "ADM4",
+      "m": 2382
+     },
+     {
+      "name": "Kelurahan Legian",
+      "kind": "ADM4",
+      "m": 4573
+     }
+    ],
+    "spots": [
+     {
+      "name": "Ngurah Rai International Airport",
+      "kind": "AIRP",
+      "m": 619
+     },
+     {
+      "name": "Pantai Kelan",
+      "kind": "BCH",
+      "m": 1231
+     },
+     {
+      "name": "Pasar Ikan Kedonganan",
+      "kind": "MKT",
+      "m": 1401
+     }
+    ],
+    "lodging": [
+     {
+      "name": "Biyukukung Suites And Spa",
+      "kind": "HTL",
+      "m": 94
+     }
+    ]
+   },
+   "area_en": "Tuban",
+   "area_ko": "투반",
+   "near_en": "",
+   "near_ko": "",
+   "note": "투반이 가장 가깝고 공항은 600m를 약간 넘습니다."
+  }
+ ],
+ "photos": {
+  "20260716_202931.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v1",
+   "area_en": "Tuban",
+   "area_ko": "투반",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260716_220325.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260716_221340.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260716_221632.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260716_224057.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260716_232314.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260716_233340.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260716_234659.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_064105.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_064122.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_064545.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_065819.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_065827.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_070124.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_070858.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_071708.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_073035.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_073152.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_073424.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_073429.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_075044.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_082600.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_094234.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_100520.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_100527.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_101836.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_110005.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_110007.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_110347.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_132002.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v3",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_132005.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v3",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_132007.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v3",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_140624.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v3",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_182209.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v4",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_224335.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v5",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_224346.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v5",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_065544.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v6",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_071616.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v6",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_072253.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v6",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_072259.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v6",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_073459.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v6",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_075117.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v6",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_075147.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v6",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_081533.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v6",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_091432.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v6",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_101806.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v6",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_103956.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v6",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_110910.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v6",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_083201.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_090024.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_090310.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_090314.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_090331.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_090332.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_090338.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_090340.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_090415.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_090536.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_090731.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_091536.jpg": {
+   "place_group": "G04",
+   "visit": "G04-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_141735.jpg": {
+   "place_group": "G05",
+   "visit": "G05-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_150458.jpg": {
+   "place_group": "G05",
+   "visit": "G05-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_153405.jpg": {
+   "place_group": "G05",
+   "visit": "G05-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_154542.jpg": {
+   "place_group": "G06",
+   "visit": "G06-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_154545.jpg": {
+   "place_group": "G06",
+   "visit": "G06-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_154955.jpg": {
+   "place_group": "G07",
+   "visit": "G07-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_155744.jpg": {
+   "place_group": "G08",
+   "visit": "G08-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_161029.jpg": {
+   "place_group": "G09",
+   "visit": "G09-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_161153.jpg": {
+   "place_group": "G09",
+   "visit": "G09-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_162308.jpg": {
+   "place_group": "G10",
+   "visit": "G10-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_162447.jpg": {
+   "place_group": "G10",
+   "visit": "G10-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_163641.jpg": {
+   "place_group": "G10",
+   "visit": "G10-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_163644.jpg": {
+   "place_group": "G10",
+   "visit": "G10-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_163856.jpg": {
+   "place_group": "G10",
+   "visit": "G10-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_163900.jpg": {
+   "place_group": "G10",
+   "visit": "G10-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_164142.jpg": {
+   "place_group": "G11",
+   "visit": "G11-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_164237.jpg": {
+   "place_group": "G11",
+   "visit": "G11-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_172045.jpg": {
+   "place_group": "G12",
+   "visit": "G12-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_172108.jpg": {
+   "place_group": "G12",
+   "visit": "G12-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260717_172547.jpg": {
+   "place_group": "G12",
+   "visit": "G12-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_112627.jpg": {
+   "place_group": "G13",
+   "visit": "G13-v1",
+   "area_en": "Ubud",
+   "area_ko": "우붓",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_115433.jpg": {
+   "place_group": "G14",
+   "visit": "G14-v1",
+   "area_en": "Mambal",
+   "area_ko": "맘발",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_115436.jpg": {
+   "place_group": "G14",
+   "visit": "G14-v1",
+   "area_en": "Mambal",
+   "area_ko": "맘발",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_115450.jpg": {
+   "place_group": "G14",
+   "visit": "G14-v1",
+   "area_en": "Mambal",
+   "area_ko": "맘발",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_124513.jpg": {
+   "place_group": "G15",
+   "visit": "G15-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_124905.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_124923.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_125013.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_125637.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_125650.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_125654.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_125656.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_130201.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_130237.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_205821.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v2",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_210131.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v2",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_210147.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v2",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_210211.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v2",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_213538.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v2",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_222654.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v2",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260719_082256.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v3",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260719_212413.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v4",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260719_212920.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v4",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260719_212923.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v4",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260719_214739.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v4",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_083906.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v5",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_085806.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v5",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "1784519999278.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v5",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_111242.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v5",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_133301.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v6",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_141101.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v6",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_141109.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v6",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_141726.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v6",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_141730.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v6",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_143634.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v6",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_155349.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v6",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_155409.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v6",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_155708.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v6",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_155835.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v6",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_185335.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v7",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_185351.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v7",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_190217.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v7",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_131145.jpg": {
+   "place_group": "G17",
+   "visit": "G17-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_131148.jpg": {
+   "place_group": "G17",
+   "visit": "G17-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_131524.jpg": {
+   "place_group": "G18",
+   "visit": "G18-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_132014.jpg": {
+   "place_group": "G18",
+   "visit": "G18-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_132437.jpg": {
+   "place_group": "G18",
+   "visit": "G18-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_133318.jpg": {
+   "place_group": "G18",
+   "visit": "G18-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_142446.jpg": {
+   "place_group": "G18",
+   "visit": "G18-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_142934.jpg": {
+   "place_group": "G18",
+   "visit": "G18-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_144827.jpg": {
+   "place_group": "G18",
+   "visit": "G18-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260718_153601.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_153630.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_153636.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_153805.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_153809.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_154140.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_154157.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_154234.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_154452.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_154515.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "1784366596195.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_154850.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_155620.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_155627.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_155638.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_160351.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_160713.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_160745.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_160802.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "1784366596328.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_161906.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "1784366596447.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_161912.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_162152.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_162215.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_162244.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_162306.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_164723.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_170051.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_170055.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_170058.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_173535.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_173540.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_173543.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_173823.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_173837.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_173838.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_174305.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_174308.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_174542.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_174548.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_174556.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_174652.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_174746.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_174749.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_174753.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_174927.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_175213.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_175218.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_175221.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_175231.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_175248.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_180123.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_180129.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_180131.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_180134.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_180140.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_180244.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_180333.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_180726.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_180729.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_182844.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_182846.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_182854.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_182857.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_182858.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_182901.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_182904.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_183255.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_183523.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_183543.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_183546.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_183549.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_184055.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_184104.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_184107.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_184118.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_184515.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_184520.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_184523.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_184528.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_184555.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_185942.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_191308.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_192506.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_192510.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_192514.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_193011.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_200028.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_202552.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_204207.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_204212.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_204220.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260718_204530.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260719_083910.jpg": {
+   "place_group": "G20",
+   "visit": "G20-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_093536.jpg": {
+   "place_group": "G21",
+   "visit": "G21-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Batu Bolong Beach",
+   "near_ko": "바투 볼롱 비치"
+  },
+  "20260719_094315.jpg": {
+   "place_group": "G22",
+   "visit": "G22-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Batu Bolong Beach",
+   "near_ko": "바투 볼롱 비치"
+  },
+  "20260719_094319.jpg": {
+   "place_group": "G22",
+   "visit": "G22-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Batu Bolong Beach",
+   "near_ko": "바투 볼롱 비치"
+  },
+  "20260719_094524.jpg": {
+   "place_group": "G22",
+   "visit": "G22-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Batu Bolong Beach",
+   "near_ko": "바투 볼롱 비치"
+  },
+  "20260719_094527.jpg": {
+   "place_group": "G22",
+   "visit": "G22-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Batu Bolong Beach",
+   "near_ko": "바투 볼롱 비치"
+  },
+  "20260719_094530.jpg": {
+   "place_group": "G22",
+   "visit": "G22-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Batu Bolong Beach",
+   "near_ko": "바투 볼롱 비치"
+  },
+  "20260719_094531.jpg": {
+   "place_group": "G22",
+   "visit": "G22-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Batu Bolong Beach",
+   "near_ko": "바투 볼롱 비치"
+  },
+  "20260720_222621.jpg": {
+   "place_group": "G22",
+   "visit": "G22-v2",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Batu Bolong Beach",
+   "near_ko": "바투 볼롱 비치"
+  },
+  "20260719_095536.jpg": {
+   "place_group": "G23",
+   "visit": "G23-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Batu Bolong Beach",
+   "near_ko": "바투 볼롱 비치"
+  },
+  "20260720_104222.jpg": {
+   "place_group": "G23",
+   "visit": "G23-v2",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Batu Bolong Beach",
+   "near_ko": "바투 볼롱 비치"
+  },
+  "20260719_125525.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_130241.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_130652.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_130654.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_130656.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_131105.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_131132.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_131801.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_131806.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_133136.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_133139.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_134358.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_140512.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_140514.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_141211.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_141213.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_172531.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_172533.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_172534.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_172652.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_182357.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_182359.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_182600.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_182621.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_183821.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_183822.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_183823.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_183826.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_190142.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_190144.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_190145.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_190147.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_193429.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260719_203456.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v2",
+   "area_en": "Berawa",
+   "area_ko": "브라와",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260720_122515.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "1784539535638.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260720_123002.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260720_123829.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "1784539535486.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "1784539535346.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "1784539535285.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "1784539535122.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260720_132004.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "1784565079005.jpg": {
+   "place_group": "G26",
+   "visit": "G26-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_213642.jpg": {
+   "place_group": "G26",
+   "visit": "G26-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260720_213651.jpg": {
+   "place_group": "G26",
+   "visit": "G26-v1",
+   "area_en": "Canggu",
+   "area_ko": "짱구",
+   "near_en": "Echo Beach",
+   "near_ko": "에코 비치"
+  },
+  "20260721_111955.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_112012.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_112459.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_114854.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_115834.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_115852.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_115855.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_123232.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_123235.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_123636.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_125420.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_133329.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_133334.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_144932.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_144946.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_160058.jpg": {
+   "place_group": "G28",
+   "visit": "G28-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "Batu Belig Beach",
+   "near_ko": "바투벨릭 비치"
+  },
+  "20260721_160107.jpg": {
+   "place_group": "G28",
+   "visit": "G28-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "Batu Belig Beach",
+   "near_ko": "바투벨릭 비치"
+  },
+  "20260721_160125.jpg": {
+   "place_group": "G28",
+   "visit": "G28-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "Batu Belig Beach",
+   "near_ko": "바투벨릭 비치"
+  },
+  "20260721_160126.jpg": {
+   "place_group": "G28",
+   "visit": "G28-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "Batu Belig Beach",
+   "near_ko": "바투벨릭 비치"
+  },
+  "20260721_160211.jpg": {
+   "place_group": "G28",
+   "visit": "G28-v1",
+   "area_en": "Batu Belig",
+   "area_ko": "바투벨릭",
+   "near_en": "Batu Belig Beach",
+   "near_ko": "바투벨릭 비치"
+  },
+  "20260721_181605.jpg": {
+   "place_group": "G29",
+   "visit": "G29-v1",
+   "area_en": "Tuban",
+   "area_ko": "투반",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_183528.jpg": {
+   "place_group": "G29",
+   "visit": "G29-v1",
+   "area_en": "Tuban",
+   "area_ko": "투반",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_193247.jpg": {
+   "place_group": "G29",
+   "visit": "G29-v1",
+   "area_en": "Tuban",
+   "area_ko": "투반",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_193250.jpg": {
+   "place_group": "G29",
+   "visit": "G29-v1",
+   "area_en": "Tuban",
+   "area_ko": "투반",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "20260721_194125.jpg": {
+   "place_group": "G29",
+   "visit": "G29-v1",
+   "area_en": "Tuban",
+   "area_ko": "투반",
+   "near_en": "",
+   "near_ko": ""
+  }
+ }
+}

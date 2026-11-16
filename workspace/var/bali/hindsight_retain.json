@@ -1,0 +1,57 @@
+{
+ "updated_at": "2026-11-15T16:58:20+00:00",
+ "bank": "bali-trip",
+ "url": "http://localhost:8888",
+ "total_index_photos": 307,
+ "target_photos": 307,
+ "inserted_memories": 307,
+ "failed_count": 0,
+ "batch_failures": 0,
+ "missing_documents": [],
+ "errors": [],
+ "stats": {
+  "total_documents": 307,
+  "total_nodes": 628,
+  "total_links": 42587,
+  "total_observations": 0,
+  "failed_operations": 0
+ },
+ "llm_usage": {
+  "calls": 309,
+  "success": 309,
+  "errors": 0,
+  "input_tokens": 1562877,
+  "output_tokens": 197259,
+  "cached_tokens": 1338827,
+  "cost_usd": 5.109145,
+  "provider": "anthropic",
+  "model": "claude-opus-5-5"
+ },
+ "bank_total_llm_usage": {
+  "calls": 421,
+  "success": 421,
+  "errors": 0,
+  "input_tokens": 4387990,
+  "output_tokens": 252280,
+  "cached_tokens": 1613350,
+  "cost_usd": 16.46683,
+  "provider": "anthropic",
+  "model": "claude-opus-5-5"
+ },
+ "settings": {
+  "api_version": "1.2.1",
+  "observations": false,
+  "llm_trace": true,
+  "llm_provider": "anthropic",
+  "llm_model": "claude-opus-5-5",
+  "embeddings_provider": "local",
+  "embeddings_model": "BAAI/bge-m3",
+  "reranker_model": "hindsight-ai/hs-rerank-1",
+  "text_search_extension": "pgroonga",
+  "vector_extension": "pgvector",
+  "max_concurrent": 2,
+  "max_retries": 8
+ },
+ "elapsed_s": 1063.5,
+ "verify_recall": []
+}

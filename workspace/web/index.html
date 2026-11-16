@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>AI ( ) Dictionary</title>
+<link rel="stylesheet" href="/web/app.css">
+</head>
+<body>
+<div class="app">
+  <header class="apphead"><div class="nm">AI <span>(  )</span> Dictionary</div></header>
+
+  <main class="chat" id="chat">
+    <div class="empty" id="empty">
+      <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <g stroke="#1f40ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".5"><path d="M5 12c5.5-3 11.5-3 19 1v23c-7.5-4-13.5-4-19-1V12z"/><path d="M43 12c-5.5-3-11.5-3-19 1v23c7.5-4 13.5-4 19-1V12z"/></g>
+        <g stroke="#fff" stroke-width="6.5" stroke-linecap="round"><circle cx="31" cy="30" r="8.5"/><path d="M37.2 36.2 43 42"/></g>
+        <g stroke="#1f40ff" stroke-width="2.6" stroke-linecap="round"><circle cx="31" cy="30" r="8.5"/><path d="M37.2 36.2 43 42"/></g>
+      </svg>
+      <h2>기억나는 대로 말해보세요</h2>
+      <p>알아서 찾아드려요</p>
+    </div>
+    <div class="thread" id="thread"></div>
+  </main>
+
+  <form class="inputbar" id="form" autocomplete="off">
+    <div class="ibox">
+      <input id="q" type="text" placeholder="무엇을 찾고 계세요?" enterkeyhint="send" aria-label="찾을 내용">
+      <button class="send" id="send" type="submit" aria-label="보내기">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 13.5V3M8 3 3.5 7.5M8 3l4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </form>
+</div>
+<script src="/web/render.js"></script>
+<script src="/web/live.js"></script>
+</body>
+</html>

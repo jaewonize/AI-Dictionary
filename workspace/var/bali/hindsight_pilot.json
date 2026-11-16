@@ -1,0 +1,88 @@
+{
+ "updated_at": "2026-11-15T16:39:06+00:00",
+ "bank": "bali-trip",
+ "url": "http://localhost:8888",
+ "total_index_photos": 307,
+ "target_photos": 10,
+ "inserted_memories": 10,
+ "failed_count": 0,
+ "batch_failures": 0,
+ "missing_documents": [],
+ "errors": [],
+ "stats": {
+  "total_documents": 10,
+  "total_nodes": 20,
+  "total_links": 671,
+  "total_observations": 0,
+  "failed_operations": 0
+ },
+ "llm_usage": {
+  "calls": 10,
+  "success": 10,
+  "errors": 0,
+  "input_tokens": 49963,
+  "output_tokens": 5927,
+  "cached_tokens": 34888,
+  "cost_usd": 0.185818,
+  "provider": "anthropic",
+  "model": "claude-opus-5-5"
+ },
+ "bank_total_llm_usage": {
+  "calls": 10,
+  "success": 10,
+  "errors": 0,
+  "input_tokens": 49963,
+  "output_tokens": 5927,
+  "cached_tokens": 34888,
+  "cost_usd": 0.185818,
+  "provider": "anthropic",
+  "model": "claude-opus-5-5"
+ },
+ "settings": {
+  "api_version": "1.2.1",
+  "observations": false,
+  "llm_trace": true,
+  "llm_provider": "anthropic",
+  "llm_model": "claude-opus-5-5",
+  "embeddings_provider": "local",
+  "embeddings_model": "BAAI/bge-m3",
+  "reranker_model": "hindsight-ai/hs-rerank-1",
+  "text_search_extension": "pgroonga",
+  "vector_extension": "pgvector",
+  "max_concurrent": 2,
+  "max_retries": 8
+ },
+ "elapsed_s": 41.2,
+ "verify_recall": [
+  {
+   "target_photo_id": "20260716_202931.jpg",
+   "probe_query": "밤에 달리는 차 안에서 차창 너머로 찍은 것으로 보이는 실외 도로 사진으로, 흔들림이 심하다",
+   "found_rank": 1,
+   "returned_photos": [
+    "20260716_202931.jpg",
+    "20260716_221340.jpg",
+    "20260716_234659.jpg",
+    "20260716_220325.jpg",
+    "20260716_221632.jpg"
+   ],
+   "fact_hits": 20,
+   "top_fact_preview": "2026년 7월 16일 밤 20:29경 투반(Tuban)에서 달리는 차 안에서 차창 너머로 도로 사진을 찍음. 사진은 흔들림이 심하며, 오른쪽으로 휘는 도로, 중앙분리대, 붉은 차량, 밝은 가로등이 보이고, 조명이 켜진 철골 구조의 다층 주차 건물과 붉은 기둥의 요금소·게이트로 보이는 시설이 있음. | When: 2026년 7월 16일 목요일 20:29 | Where: 투반 (Tuban), 도로 | Involving: user",
+   "elapsed_ms": 2455
+  },
+  {
+   "target_photo_id": "20260717_064122.jpg",
+   "probe_query": "높은 곳의 처마 아래에서 바라본 실외 마을 풍경으로, 화면 위쪽은 어두운 지붕 처마가 가로로 가리고 있다",
+   "found_rank": 1,
+   "returned_photos": [
+    "20260717_064122.jpg",
+    "20260717_064105.jpg",
+    "20260716_220325.jpg",
+    "20260716_221632.jpg",
+    "20260716_234659.jpg"
+   ],
+   "fact_hits": 20,
+   "top_fact_preview": "사용자가 2026년 7월 17일(금) 오전 6시 41분, 우붓에서 높은 곳의 처마 아래(발코니·테라스)에서 마을 풍경 사진을 찍었다. 주황·갈색 기와지붕 집들이 빽빽하고, 발리 전통 양식의 탑 모양 지붕 건물과 짓다 만 콘크리트 건물, 대나무와 무성한 나무, 통신 철탑들이 보였다. | When: 2026년 7월 17일 금요일 06:41 | Where: 우붓 (Ubud), 발코니·테라스 전망 | Involving: user | ",
+   "elapsed_ms": 2731
+  }
+ ]
+}

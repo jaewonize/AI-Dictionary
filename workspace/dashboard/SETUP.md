@@ -101,3 +101,68 @@ git clone만으로는 그 PC의 hindsight에 은행이 들어가지 않는다. �
 | 가져오기 뒤 검색 품질이 개발 PC보다 낮다 | 그 PC의 임베딩 모델·전문 검색 방식이 다르다(1절) |
 | reflect가 504로 끊긴다 | `HINDSIGHT_API_REFLECT_WALL_TIMEOUT=600`을 넣고 hindsight를 다시 띄웠는지(1절) |
 | 모두 안 될 때 | 인터넷이 되면 claude.ai 대시보드 링크로 같은 내용을 볼 수 있다(사진 포함 공개 링크) |
+
+---
+
+## 6. 발리 실데이터(`test/claude_finish`) 다른 PC 실행 안내 (Docker 불필요)
+
+`test/claude_finish` 브랜치에는 발리 실사진 사본(`workspace/var/bali/photos/`), 색인(`index.jsonl`), `without hindsight`·`with hindsight` 채점 결과, 그리고 Hindsight 은행 백업(`workspace/var/bali/bali-trip.zip`)이 모두 들어 있다. **Docker를 설치하거나 띄울 수 없는 다른 PC 환경에서도 그대로 동작한다.**
+
+### 6-1. 대시보드 바로 보기 (필수: `git`, `Node 20 이상` · Docker/Python/API 키 불필요)
+
+```powershell
+git clone -b test/claude_finish https://github.com/tt2-woo/AI-Dictionary.git
+cd AI-Dictionary\workspace\dashboard
+node scripts/check-env.mjs
+node server.mjs
+```
+
+- 브라우저에서 `http://localhost:8787/#bali` 를 열면 발리 사진 307장, 설명 표본, `without hindsight`(6/15) 및 `with hindsight`(15/15) 채점표·3경로 비교표·비용표가 바로 열린다.
+
+### 6-2. Python 실행 환경 세팅 (단위 시험 · 기본 에이전트 실행용, Docker 불필요)
+
+1. `uv` 설치(관리자 권한 불필요, 유저 폴더 설치):
+   ```powershell
+   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+   ```
+   *(또는 `winget install --id=astral-sh.uv -e`)*
+2. 가상환경 동기화 및 `.env` 준비:
+   ```powershell
+   cd AI-Dictionary\workspace
+   uv sync
+   copy env.example .env
+   ```
+   - 채점이나 실시간 질의를 새로 돌릴 때만 `workspace/.env`의 `ANTHROPIC_API_KEY=` 뒤에 키를 적는다.
+   - 단위 시험 확인(API 호출 없음): `uv run pytest -q`
+
+### 6-3. Docker 없이 Hindsight 서버 띄우고 `bali-trip` 은행 복원하기
+
+`hindsight-api==1.2.1` 패키지에는 **설치·관리자 권한 없이 동작하는 내장 PostgreSQL(`pg0` + `pgvector`)**이 포함되어 있어 Docker도, 별도 `hindsight` 저장소 클론도 필요 없다.
+
+1. **창 1**에서 Docker 없는 Hindsight 서버 기동 (`workspace/.env`에 키가 있으면 자동 인식, 없어도 `recall` 전용으로 기동됨):
+   ```powershell
+   cd AI-Dictionary\workspace
+   var\bali\start-hindsight-nodocker.cmd
+   ```
+   - 첫 실행 시 패키지·내장 DB(`pg0`)·다국어 임베딩(`BAAI/bge-m3`, 약 2.2GB)을 자동 다운로드한 뒤 `http://localhost:8888` 이 열린다.
+   - 참고: 내장 DB(`pg0`)는 의미 검색(`BAAI/bge-m3` + 한국어 리랭커 `hs-rerank-1`)과 엔티티·시간 검색은 100% 동일하며, 전문 검색만 `pgroonga` 대신 `native(simple)`로 동작한다(외부 윈도우 PostgreSQL에 `pgroonga`가 깔려 있다면 `HINDSIGHT_API_DATABASE_URL`만 지정하면 `pgroonga`로 동작).
+2. **창 2**에서 `bali-trip` 은행을 **LLM 호출 0회(\$0)**로 복원:
+   ```powershell
+   cd AI-Dictionary\workspace
+   var\bali\run.cmd hs_import eval.hindsight import-bank
+   type var\bali\logs\hs_import.log
+   ```
+   - `[import-bank 완료] 은행=bali-trip · 문서 307건 · 사실 노드 628개 복원 완료`가 찍히면 준비 완료다.
+   - *(수동 `curl.exe`로 복원하려면: `curl.exe -X POST "http://localhost:8888/v1/default/banks/bali-trip/transfer/import?mode=restore&target_bank_id=bali-trip" -F "file=@var/bali/bali-trip.zip"`)*
+
+### 6-4. 채점 스크립트 다시 돌려보기(선택)
+
+```powershell
+cd AI-Dictionary\workspace
+var\bali\run.cmd hs_status eval.hindsight status
+var\bali\run.cmd eval_b01 eval.run B01
+var\bali\run.cmd hs_eval_b01 eval.hindsight eval B01
+```
+
+*(참고: Docker를 쓸 수 있는 환경에서는 `tt2-woo/hindsight`(`dev`) 저장소에서 `docker compose --env-file .env -f docker/docker-compose/pgroonga/docker-compose.yaml -f docker/docker-compose/pgroonga/docker-compose.aidic.yaml up -d`로 띄울 수도 있다.)*
+

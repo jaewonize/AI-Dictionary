@@ -1,0 +1,1843 @@
+{
+ "evaluated_at": "2026-11-15T17:43:00+00:00",
+ "bank": "bali-trip",
+ "model": "claude-opus-5-5",
+ "settings": {
+  "api_version": "1.2.1",
+  "observations": false,
+  "llm_trace": true,
+  "llm_provider": "anthropic",
+  "llm_model": "claude-opus-5-5",
+  "embeddings_provider": "local",
+  "embeddings_model": "BAAI/bge-m3",
+  "reranker_model": "hindsight-ai/hs-rerank-1",
+  "text_search_extension": "pgroonga",
+  "vector_extension": "pgvector",
+  "max_concurrent": 2,
+  "max_retries": 8
+ },
+ "bank_stats": {
+  "total_documents": 307,
+  "total_nodes": 628,
+  "total_links": 42587,
+  "total_observations": 0,
+  "failed_operations": 0
+ },
+ "llm_usage": {
+  "retain": {
+   "calls": 309,
+   "success": 309,
+   "errors": 0,
+   "input_tokens": 1562877,
+   "output_tokens": 197259,
+   "cached_tokens": 1338827,
+   "cost_usd": 5.109145,
+   "provider": "anthropic",
+   "model": "claude-opus-5-5"
+  },
+  "reflect": {
+   "calls": 112,
+   "success": 112,
+   "errors": 0,
+   "input_tokens": 2825113,
+   "output_tokens": 55021,
+   "cached_tokens": 274523,
+   "cost_usd": 11.357685,
+   "provider": "anthropic",
+   "model": "claude-opus-5-5"
+  },
+  "total": {
+   "calls": 421,
+   "success": 421,
+   "errors": 0,
+   "input_tokens": 4387990,
+   "output_tokens": 252280,
+   "cached_tokens": 1613350,
+   "cost_usd": 16.46683,
+   "provider": "anthropic",
+   "model": "claude-opus-5-5"
+  }
+ },
+ "total": 15,
+ "passed": 15,
+ "failed": 0,
+ "exact": 13,
+ "avg_recall": 1.0,
+ "avg_precision": 1.0,
+ "total_calls": 112,
+ "total_cost_usd": 11.357684,
+ "elapsed_s": 2518.5,
+ "recall_summary": {
+  "rank1_queries": 8,
+  "top3_hit_queries": 10,
+  "top10_hit_queries": 12,
+  "found_any_queries": 15,
+  "mrr": 0.6295,
+  "avg_recall_at_10": 0.75,
+  "calls": 0,
+  "cost_usd": 0.0
+ },
+ "reflect_rank_summary": {
+  "rank1_queries": 15,
+  "found_any_queries": 15,
+  "mrr": 1.0
+ },
+ "without_hindsight_rank_summary": {
+  "rank1_queries": 8,
+  "found_any_queries": 8,
+  "mrr": 0.5333
+ },
+ "comparison": {
+  "reflect_better_ids": [
+   "B02",
+   "B03",
+   "B05",
+   "B10",
+   "B11",
+   "B12",
+   "B13",
+   "B14",
+   "B15"
+  ],
+  "reflect_worse_ids": [],
+  "both_passed_ids": [
+   "B01",
+   "B04",
+   "B06",
+   "B07",
+   "B08",
+   "B09"
+  ],
+  "both_failed_ids": []
+ },
+ "results": [
+  {
+   "id": "B01",
+   "kind": "sequence",
+   "query": "우붓에서 코코넛 아이스크림 먹고 나서 간 사원 사진 찾아줘",
+   "note": "7/17 15:57 코코넛 아이스크림 직후 16:10~16:11 우붓 붉은 벽돌 전통 사원 문 2장",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260717_161029.jpg",
+    "20260717_161153.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260717_110347.jpg",
+    "20260717_155744.jpg"
+   ],
+   "got_ids": [
+    "20260717_161029.jpg",
+    "20260717_161153.jpg"
+   ],
+   "matched_must": [
+    "20260717_161029.jpg",
+    "20260717_161153.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "2026년 7월 17일 15:57에 우붓 거리에서 코코넛 아이스크림을 먹은 사진(20260717_155744.jpg)을 기준 시각으로 삼았습니다. 그로부터 약 13~14분 뒤인 16:10과 16:11에 '사원·궁전 유적지'로 분류된 사진 두 장이 연속으로 찍혔습니다. 두 장 모두 붉은 벽돌 문(코리 아궁), 검은 돌계단, \"Don't Step Up\" 안내문이 있어 같은 방문으로 판단했습니다. 이후 16:23부터는 상점·골목·카페·식당 사진만 이어지므로 사원 사진은 이 두 장뿐입니다. 11:03 정원 사당, 16:39 거리 사진, 17:20대 식당 정원 사당 사진은 사원 방문이 아니라고 보아 제외했습니다.",
+   "ranked_got_ids": [
+    "20260717_161029.jpg",
+    "20260717_161153.jpg"
+   ],
+   "invalid_ids": [],
+   "first_must_rank": 1,
+   "first_allowed_rank": 1,
+   "time_ordered_first_must_rank": 1,
+   "recall_tool_calls": 5,
+   "tool_queries": [
+    "우붓 코코넛 아이스크림 이후 방문한 사원 사진",
+    "Ubud coconut ice cream",
+    "우붓 사원 temple pura 2026년 7월 17일 오후",
+    "우붓 왕궁 푸리 사렌 코리 아궁 사원 문 석상",
+    "2026년 7월 17일 16시 사원 유적지 석조 조각 문 탑 힌두 사원 사진"
+   ],
+   "calls": 8,
+   "input_tokens": 238613,
+   "output_tokens": 3478,
+   "cache_read_input_tokens": 21711,
+   "cost_usd": 0.94151,
+   "elapsed_ms": 151512,
+   "recall_channel": {
+    "top10_ids": [
+     "20260717_155744.jpg",
+     "20260718_071616.jpg",
+     "20260717_070858.jpg",
+     "20260717_064105.jpg",
+     "20260717_070124.jpg",
+     "20260717_064545.jpg",
+     "20260717_163644.jpg",
+     "20260717_065827.jpg",
+     "20260718_065544.jpg",
+     "20260717_161153.jpg"
+    ],
+    "total_photo_hits": 43,
+    "fact_hits": 52,
+    "first_must_rank": 10,
+    "first_allowed_rank": 10,
+    "matched_must_top10": [
+     "20260717_161153.jpg"
+    ],
+    "matched_optional_top10": [],
+    "trap_hits_top10": [
+     "20260717_155744.jpg"
+    ],
+    "extra_top10": [
+     "20260717_155744.jpg",
+     "20260718_071616.jpg",
+     "20260717_070858.jpg",
+     "20260717_064105.jpg",
+     "20260717_070124.jpg",
+     "20260717_064545.jpg",
+     "20260717_163644.jpg",
+     "20260717_065827.jpg",
+     "20260718_065544.jpg"
+    ],
+    "recall_at_10": 0.5,
+    "elapsed_ms": 27645,
+    "calls": 0,
+    "cost_usd": 0.0
+   },
+   "without_hindsight": {
+    "available": true,
+    "passed": true,
+    "exact_match": true,
+    "got_ids": [
+     "20260717_161029.jpg",
+     "20260717_161153.jpg"
+    ],
+    "matched_must_count": 2,
+    "trap_hits_count": 0,
+    "extra_ids_count": 0,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "calls": 11,
+    "cost_usd": 0.379399
+   },
+   "trace_id": "493f52d3-c276-4a88-bb42-f4a252134118"
+  },
+  {
+   "id": "B02",
+   "kind": "sequence",
+   "query": "수건 코끼리 찍고 나서 바로 간 카페 사진 찾아줘",
+   "note": "7/18 12:56 침대 수건 코끼리 4장 직후 13:15~13:33 BLACKLIST COFFEE ROASTERS 외관·메뉴판·패스트리 3장(카페 앞 거리 1장 선택)",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260718_131524.jpg",
+    "20260718_132437.jpg",
+    "20260718_133318.jpg"
+   ],
+   "optional_ids": [
+    "20260718_132014.jpg"
+   ],
+   "trap_ids": [
+    "20260718_125637.jpg",
+    "20260718_125650.jpg",
+    "20260718_125654.jpg",
+    "20260718_125656.jpg"
+   ],
+   "got_ids": [
+    "20260718_131524.jpg",
+    "20260718_132437.jpg",
+    "20260718_133318.jpg"
+   ],
+   "matched_must": [
+    "20260718_131524.jpg",
+    "20260718_132437.jpg",
+    "20260718_133318.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "7월 18일 12:56에 짱구 에코 비치 부근 이스틴 호텔 객실에서 여행 중 처음으로 수건 코끼리 사진을 찍었습니다. 그 뒤 13:02 숙소 안 계단·안뜰 사진과 13:11 짱구 거리 사진이 이어집니다. 13:15에 블랙리스트 커피 로스터스 외관 사진이 찍혔고, 13:24에 실내 메뉴판, 13:33에 페이스트리 사진이 이어져 코끼리 이후 처음 들른 카페로 판단했습니다. 13:20의 거리 사진은 카페 사진이 아니라서 제외했습니다. 다른 날의 수건 코끼리 사진은 다음 카페 기록까지 시간 간격이 길거나 중간 행적이 확인되지 않아 제외했습니다.",
+   "ranked_got_ids": [
+    "20260718_131524.jpg",
+    "20260718_132437.jpg",
+    "20260718_133318.jpg"
+   ],
+   "invalid_ids": [],
+   "first_must_rank": 1,
+   "first_allowed_rank": 1,
+   "time_ordered_first_must_rank": 1,
+   "recall_tool_calls": 5,
+   "tool_queries": [
+    "수건 코끼리 사진 (towel elephant photo)",
+    "towel elephant photo 수건 코끼리",
+    "카페 사진 커피 cafe",
+    "BLACKLIST COFFEE ROASTERS 짱구 2026-07-18 13시 사진",
+    "짱구 카페 테라스 강아지 리드줄 7월 18일 오후 블랙리스트 커피 음료"
+   ],
+   "calls": 8,
+   "input_tokens": 257720,
+   "output_tokens": 5678,
+   "cache_read_input_tokens": 21711,
+   "cost_usd": 1.061938,
+   "elapsed_ms": 172984,
+   "recall_channel": {
+    "top10_ids": [
+     "20260719_212413.jpg",
+     "20260720_111242.jpg",
+     "20260718_125656.jpg",
+     "20260718_125654.jpg",
+     "20260718_125637.jpg",
+     "1784366596195.jpg",
+     "20260718_213538.jpg",
+     "20260718_161912.jpg",
+     "20260718_174305.jpg",
+     "20260720_155708.jpg"
+    ],
+    "total_photo_hits": 47,
+    "fact_hits": 56,
+    "first_must_rank": 14,
+    "first_allowed_rank": 14,
+    "matched_must_top10": [],
+    "matched_optional_top10": [],
+    "trap_hits_top10": [
+     "20260718_125656.jpg",
+     "20260718_125654.jpg",
+     "20260718_125637.jpg"
+    ],
+    "extra_top10": [
+     "20260719_212413.jpg",
+     "20260720_111242.jpg",
+     "20260718_125656.jpg",
+     "20260718_125654.jpg",
+     "20260718_125637.jpg",
+     "1784366596195.jpg",
+     "20260718_213538.jpg",
+     "20260718_161912.jpg",
+     "20260718_174305.jpg",
+     "20260720_155708.jpg"
+    ],
+    "recall_at_10": 0.0,
+    "elapsed_ms": 26981,
+    "calls": 0,
+    "cost_usd": 0.0
+   },
+   "without_hindsight": {
+    "available": true,
+    "passed": false,
+    "exact_match": false,
+    "got_ids": [
+     "20260718_131524.jpg",
+     "20260718_132437.jpg",
+     "20260718_133318.jpg"
+    ],
+    "matched_must_count": 3,
+    "trap_hits_count": 0,
+    "extra_ids_count": 0,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "calls": 22,
+    "cost_usd": 4.040784
+   },
+   "trace_id": "f290bc6a-ec7e-4b8e-a219-c301f41bf9fe"
+  },
+  {
+   "id": "B03",
+   "kind": "sequence",
+   "query": "판다 그려진 가게 지나고 나서 들른 마트랑 빵집 사진 찾아줘",
+   "note": "7/18 20:45 판다 캐릭터 가게(Nuna) 직후 20:58~21:02 마트 냉장 매대·바게트·빵집 파노라마·케이크 쇼케이스 4장",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260718_205821.jpg",
+    "20260718_210131.jpg",
+    "20260718_210147.jpg",
+    "20260718_210211.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260718_204530.jpg",
+    "20260718_213538.jpg"
+   ],
+   "got_ids": [
+    "20260718_205821.jpg",
+    "20260718_210131.jpg",
+    "20260718_210147.jpg",
+    "20260718_210211.jpg"
+   ],
+   "matched_must": [
+    "20260718_205821.jpg",
+    "20260718_210131.jpg",
+    "20260718_210147.jpg",
+    "20260718_210211.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "판다 캐릭터가 그려진 Nuna 크레페·커피·주스 바 사진(20260718_204530.jpg, 2026-07-18 20:45:30, 짱구·에코 비치 부근)을 기준점으로 삼았습니다. 그 뒤 21:35 호텔 객실 사진(20260718_213538.jpg) 전까지 찍힌 마트·빵집 사진 4장을 골랐습니다. 순서는 20:58 마트 냉장 진열대, 21:01 BAKEHOUSE 빵집, 21:01:57 마트 베이커리 코너, 21:02 디저트 쇼케이스입니다. 4장 모두 짱구·에코 비치 부근의 같은 장소 묶음에 속하며, 장소 종류 태그도 마트·빵집·베이커리로 분류되어 있습니다. 다만 4번(GOURMET DELI)은 디저트 가게에 가까워, 엄격하게 빵집만 따진다면 1~3번만 해당합니다.",
+   "ranked_got_ids": [
+    "20260718_205821.jpg",
+    "20260718_210131.jpg",
+    "20260718_210147.jpg",
+    "20260718_210211.jpg"
+   ],
+   "invalid_ids": [],
+   "first_must_rank": 1,
+   "first_allowed_rank": 1,
+   "time_ordered_first_must_rank": 1,
+   "recall_tool_calls": 5,
+   "tool_queries": [
+    "판다 그려진 가게 사진 (panda shop)",
+    "panda shop photo 판다 가게",
+    "2026-07-18 밤 짱구 에코 비치 마트 베이커리 빵집 사진",
+    "마트 진열대 장보기 슈퍼마켓 2026-07-18 21시 에코 비치",
+    "Nuna 판다 크레페 카페 이후 마트 과일 채소 계산대 쇼핑"
+   ],
+   "calls": 8,
+   "input_tokens": 223724,
+   "output_tokens": 4448,
+   "cache_read_input_tokens": 28465,
+   "cost_usd": 0.875689,
+   "elapsed_ms": 235927,
+   "recall_channel": {
+    "top10_ids": [
+     "20260718_210131.jpg",
+     "20260718_204530.jpg",
+     "20260718_133318.jpg",
+     "20260717_075044.jpg",
+     "20260717_073152.jpg",
+     "20260718_210147.jpg",
+     "20260718_081533.jpg",
+     "20260718_205821.jpg",
+     "20260718_132014.jpg",
+     "20260718_075147.jpg"
+    ],
+    "total_photo_hits": 51,
+    "fact_hits": 57,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "matched_must_top10": [
+     "20260718_210131.jpg",
+     "20260718_210147.jpg",
+     "20260718_205821.jpg"
+    ],
+    "matched_optional_top10": [],
+    "trap_hits_top10": [
+     "20260718_204530.jpg"
+    ],
+    "extra_top10": [
+     "20260718_204530.jpg",
+     "20260718_133318.jpg",
+     "20260717_075044.jpg",
+     "20260717_073152.jpg",
+     "20260718_081533.jpg",
+     "20260718_132014.jpg",
+     "20260718_075147.jpg"
+    ],
+    "recall_at_10": 0.75,
+    "elapsed_ms": 27875,
+    "calls": 0,
+    "cost_usd": 0.0
+   },
+   "without_hindsight": {
+    "available": true,
+    "passed": false,
+    "exact_match": false,
+    "got_ids": [
+     "20260718_205821.jpg",
+     "20260718_210131.jpg",
+     "20260718_210147.jpg",
+     "20260718_210211.jpg"
+    ],
+    "matched_must_count": 4,
+    "trap_hits_count": 0,
+    "extra_ids_count": 0,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "calls": 19,
+    "cost_usd": 1.990598
+   },
+   "trace_id": "064c7469-56ca-4972-8b69-9136e6468af6"
+  },
+  {
+   "id": "B04",
+   "kind": "sequence",
+   "query": "바다에서 뱀 본 날 그 뒤에 간 삼겹살집 사진 찾아줘",
+   "note": "7/20 10:42 바투 볼롱 해변 바다뱀 이후 12:25~13:20 한식 오겹살 식당 방문(갤러리+카카오톡 혼합, 맥주 건배·벽 액자 2장 선택)",
+   "passed": true,
+   "exact_match": false,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260720_122515.jpg",
+    "1784539535638.jpg",
+    "20260720_123002.jpg",
+    "1784539535486.jpg",
+    "1784539535346.jpg",
+    "1784539535285.jpg",
+    "1784539535122.jpg"
+   ],
+   "optional_ids": [
+    "20260720_123829.jpg",
+    "20260720_132004.jpg"
+   ],
+   "trap_ids": [
+    "20260720_085806.jpg",
+    "20260720_104222.jpg",
+    "20260720_185335.jpg"
+   ],
+   "got_ids": [
+    "20260720_122515.jpg",
+    "1784539535638.jpg",
+    "20260720_123002.jpg",
+    "20260720_123829.jpg",
+    "1784539535486.jpg",
+    "1784539535346.jpg",
+    "1784539535285.jpg",
+    "1784539535122.jpg",
+    "20260720_132004.jpg"
+   ],
+   "matched_must": [
+    "1784539535122.jpg",
+    "1784539535285.jpg",
+    "1784539535346.jpg",
+    "1784539535486.jpg",
+    "1784539535638.jpg",
+    "20260720_122515.jpg",
+    "20260720_123002.jpg"
+   ],
+   "matched_optional": [
+    "20260720_123829.jpg",
+    "20260720_132004.jpg"
+   ],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "기준 사진은 2026년 7월 20일 오전 10:42에 짱구 바투 볼롱 비치 모래사장에서 바다뱀을 찍은 사진(20260720_104222.jpg)입니다. 같은 날 그 이후인 12:25~13:20에 짱구의 한국식 솥뚜껑 삼겹살 고깃집에서 찍은 사진들을 골랐습니다. 실내 포스터로 보아 이 가게는 '목구멍' 짱구점으로 보입니다. 갤러리 사진 4장과 카카오톡 공유 사진 5장의 촬영 시각과 장소가 같은 식사 자리와 일치해 모두 포함했습니다. 같은 날 저녁의 피자·파스타 식당과 7월 18일 비빔면 사진은 삼겹살집이 아니거나 날짜가 달라 제외했습니다.",
+   "ranked_got_ids": [
+    "20260720_122515.jpg",
+    "1784539535638.jpg",
+    "20260720_123002.jpg",
+    "20260720_123829.jpg",
+    "1784539535486.jpg",
+    "1784539535346.jpg",
+    "1784539535285.jpg",
+    "1784539535122.jpg",
+    "20260720_132004.jpg"
+   ],
+   "invalid_ids": [],
+   "first_must_rank": 1,
+   "first_allowed_rank": 1,
+   "time_ordered_first_must_rank": 1,
+   "recall_tool_calls": 5,
+   "tool_queries": [
+    "바다에서 뱀을 본 날",
+    "바다 뱀 sea snake",
+    "삼겹살 고기집 2026년 7월 20일",
+    "목구멍 Moggumung 짱구 고깃집 사진 불판 맥주 계란찜",
+    "짱구 식당 7월 20일 점심 고기 굽기 반찬 쌈채소 사진"
+   ],
+   "calls": 8,
+   "input_tokens": 224909,
+   "output_tokens": 4481,
+   "cache_read_input_tokens": 21711,
+   "cost_usd": 0.906754,
+   "elapsed_ms": 159328,
+   "recall_channel": {
+    "top10_ids": [
+     "20260720_104222.jpg",
+     "20260720_122515.jpg",
+     "1784539535638.jpg",
+     "1784539535285.jpg",
+     "20260720_123829.jpg",
+     "20260720_123002.jpg",
+     "1784539535122.jpg",
+     "1784539535486.jpg",
+     "1784539535346.jpg",
+     "20260719_094530.jpg"
+    ],
+    "total_photo_hits": 51,
+    "fact_hits": 59,
+    "first_must_rank": 2,
+    "first_allowed_rank": 2,
+    "matched_must_top10": [
+     "20260720_122515.jpg",
+     "1784539535638.jpg",
+     "1784539535285.jpg",
+     "20260720_123002.jpg",
+     "1784539535122.jpg",
+     "1784539535486.jpg",
+     "1784539535346.jpg"
+    ],
+    "matched_optional_top10": [
+     "20260720_123829.jpg"
+    ],
+    "trap_hits_top10": [
+     "20260720_104222.jpg"
+    ],
+    "extra_top10": [
+     "20260720_104222.jpg",
+     "20260719_094530.jpg"
+    ],
+    "recall_at_10": 1.0,
+    "elapsed_ms": 26926,
+    "calls": 0,
+    "cost_usd": 0.0
+   },
+   "without_hindsight": {
+    "available": true,
+    "passed": true,
+    "exact_match": false,
+    "got_ids": [
+     "20260720_122515.jpg",
+     "1784539535638.jpg",
+     "20260720_123002.jpg",
+     "20260720_123829.jpg",
+     "1784539535486.jpg",
+     "1784539535346.jpg",
+     "1784539535285.jpg",
+     "1784539535122.jpg",
+     "20260720_132004.jpg"
+    ],
+    "matched_must_count": 7,
+    "trap_hits_count": 0,
+    "extra_ids_count": 0,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "calls": 12,
+    "cost_usd": 0.431869
+   },
+   "trace_id": "d26ddd93-1090-48d2-bc55-263e44674bfe"
+  },
+  {
+   "id": "B05",
+   "kind": "sequence",
+   "query": "포테이토 헤드 갔다가 공항 가기 전에 들른 수영장 사진 찾아줘",
+   "note": "7/21 11:19~14:49 포테이토 헤드 퇴장 후, 18:16 공항 라운지 전인 16:00~16:01 바투벨릭 루프탑 수영장 4장(같은 곳 지붕 전망 1장 선택)",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260721_160058.jpg",
+    "20260721_160107.jpg",
+    "20260721_160125.jpg",
+    "20260721_160126.jpg"
+   ],
+   "optional_ids": [
+    "20260721_160211.jpg"
+   ],
+   "trap_ids": [
+    "20260721_112459.jpg",
+    "20260721_181605.jpg"
+   ],
+   "got_ids": [
+    "20260721_160058.jpg",
+    "20260721_160107.jpg",
+    "20260721_160125.jpg",
+    "20260721_160126.jpg"
+   ],
+   "matched_must": [
+    "20260721_160058.jpg",
+    "20260721_160107.jpg",
+    "20260721_160125.jpg",
+    "20260721_160126.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "2026년 7월 21일 포테이토 헤드(바투벨릭, G27) 방문의 마지막 사진은 14:49이고, 공항(투반, G29)의 첫 사진은 18:16입니다. 그 사이 16:00~16:01에 바투벨릭 비치 부근 호텔 루프탑 인피니티 풀(G28)에서 찍은 수영장 사진 4장을 골랐습니다. 11:24의 인피니티 풀 사진은 포테이토 헤드 안에서 찍은 것이라 제외했습니다. 16:02의 사진은 같은 장소에서 찍었지만 수영장이 나오지 않는 주택가 파노라마라서 제외했습니다.",
+   "ranked_got_ids": [
+    "20260721_160058.jpg",
+    "20260721_160107.jpg",
+    "20260721_160125.jpg",
+    "20260721_160126.jpg"
+   ],
+   "invalid_ids": [],
+   "first_must_rank": 1,
+   "first_allowed_rank": 1,
+   "time_ordered_first_must_rank": 1,
+   "recall_tool_calls": 6,
+   "tool_queries": [
+    "Potato Head 방문 후 공항 가기 전 수영장 사진",
+    "Potato Head pool photos before airport",
+    "2026년 7월 21일 바투벨릭 루프탑 수영장 사진",
+    "바투벨릭 비치 부근 호텔 루프탑 인피니티 풀 데이베드 오후",
+    "7월 21일 오후 수영장 물속 노란 의자 프랜지파니 바다 전망",
+    "2026년 7월 21일 오후 4시~6시 바투벨릭 비치 부근 사진"
+   ],
+   "calls": 9,
+   "input_tokens": 253465,
+   "output_tokens": 4120,
+   "cache_read_input_tokens": 28948,
+   "cost_usd": 0.986258,
+   "elapsed_ms": 186534,
+   "recall_channel": {
+    "top10_ids": [
+     "20260721_111955.jpg",
+     "20260721_112012.jpg",
+     "20260719_190147.jpg",
+     "20260719_183823.jpg",
+     "20260718_204220.jpg",
+     "20260719_190144.jpg",
+     "20260719_141211.jpg",
+     "20260719_141213.jpg",
+     "20260719_190145.jpg",
+     "20260720_141730.jpg"
+    ],
+    "total_photo_hits": 41,
+    "fact_hits": 58,
+    "first_must_rank": 12,
+    "first_allowed_rank": 12,
+    "matched_must_top10": [],
+    "matched_optional_top10": [],
+    "trap_hits_top10": [],
+    "extra_top10": [
+     "20260721_111955.jpg",
+     "20260721_112012.jpg",
+     "20260719_190147.jpg",
+     "20260719_183823.jpg",
+     "20260718_204220.jpg",
+     "20260719_190144.jpg",
+     "20260719_141211.jpg",
+     "20260719_141213.jpg",
+     "20260719_190145.jpg",
+     "20260720_141730.jpg"
+    ],
+    "recall_at_10": 0.0,
+    "elapsed_ms": 27085,
+    "calls": 0,
+    "cost_usd": 0.0
+   },
+   "without_hindsight": {
+    "available": true,
+    "passed": false,
+    "exact_match": false,
+    "got_ids": [],
+    "matched_must_count": 0,
+    "trap_hits_count": 0,
+    "extra_ids_count": 0,
+    "first_must_rank": null,
+    "first_allowed_rank": null,
+    "calls": 14,
+    "cost_usd": 2.035127
+   },
+   "trace_id": "88b40e0e-4564-4e02-ba01-633c3ab57a8c"
+  },
+  {
+   "id": "B06",
+   "kind": "sequence",
+   "query": "원숭이 숲 가기 전에 아침에 먹은 조식 음식 사진만 찾아줘",
+   "note": "7/17 08:32 원숭이 숲 입장 전 숙소 조식 음식 접시 3장(종이 메뉴판과 다음 날 7/18 조식은 제외)",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260717_071708.jpg",
+    "20260717_073035.jpg",
+    "20260717_073152.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260717_070858.jpg",
+    "20260717_073424.jpg",
+    "20260718_072253.jpg",
+    "20260718_072259.jpg"
+   ],
+   "got_ids": [
+    "20260717_071708.jpg",
+    "20260717_073035.jpg",
+    "20260717_073152.jpg"
+   ],
+   "matched_must": [
+    "20260717_071708.jpg",
+    "20260717_073035.jpg",
+    "20260717_073152.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "몽키 포레스트 이정표(08:26)와 매표소 사진(08:32)을 근거로 원숭이 숲 방문 전 아침을 2026년 7월 17일 08:26 이전으로 정했습니다. 그 시간대 우붓 식당에서 07:17~07:31에 찍은 음식 클로즈업 사진 3장(연어 밥, 아보카도 토스트, 크로크 마담)을 골랐습니다. 이 음식들은 같은 날 07:08·07:34에 찍은 조식 메뉴판의 Salmon Sun-Rice, Truffle Avo, D'Brasserie Melt와 일치합니다. 메뉴판·풍경 사진, 다른 여행객 식사 장면(07:50), 다음 날(7/18) 조식과 전날 저녁 사진은 제외했습니다.",
+   "ranked_got_ids": [
+    "20260717_071708.jpg",
+    "20260717_073035.jpg",
+    "20260717_073152.jpg"
+   ],
+   "invalid_ids": [],
+   "first_must_rank": 1,
+   "first_allowed_rank": 1,
+   "time_ordered_first_must_rank": 1,
+   "recall_tool_calls": 5,
+   "tool_queries": [
+    "원숭이 숲 방문 전 아침 조식 음식 사진",
+    "Monkey Forest visit day breakfast photo",
+    "2026년 7월 17일 아침 식사 음식 사진 우붓 카페",
+    "7월 17일 오전 조식 접시 커피 음료 과일 스무디볼 우붓 식당",
+    "2026-07-17 오전 7시 8시 커피 주스 음료 디저트 사진"
+   ],
+   "calls": 8,
+   "input_tokens": 208129,
+   "output_tokens": 4144,
+   "cache_read_input_tokens": 21711,
+   "cost_usd": 0.832894,
+   "elapsed_ms": 157510,
+   "recall_channel": {
+    "top10_ids": [
+     "20260717_090332.jpg",
+     "20260717_090340.jpg",
+     "20260717_090310.jpg",
+     "20260717_090331.jpg",
+     "20260717_090314.jpg",
+     "20260718_071616.jpg",
+     "20260717_090338.jpg",
+     "20260717_090536.jpg",
+     "20260717_070858.jpg",
+     "20260717_075044.jpg"
+    ],
+    "total_photo_hits": 39,
+    "fact_hits": 53,
+    "first_must_rank": 13,
+    "first_allowed_rank": 13,
+    "matched_must_top10": [],
+    "matched_optional_top10": [],
+    "trap_hits_top10": [
+     "20260717_070858.jpg"
+    ],
+    "extra_top10": [
+     "20260717_090332.jpg",
+     "20260717_090340.jpg",
+     "20260717_090310.jpg",
+     "20260717_090331.jpg",
+     "20260717_090314.jpg",
+     "20260718_071616.jpg",
+     "20260717_090338.jpg",
+     "20260717_090536.jpg",
+     "20260717_070858.jpg",
+     "20260717_075044.jpg"
+    ],
+    "recall_at_10": 0.0,
+    "elapsed_ms": 27044,
+    "calls": 0,
+    "cost_usd": 0.0
+   },
+   "without_hindsight": {
+    "available": true,
+    "passed": true,
+    "exact_match": true,
+    "got_ids": [
+     "20260717_071708.jpg",
+     "20260717_073035.jpg",
+     "20260717_073152.jpg"
+    ],
+    "matched_must_count": 3,
+    "trap_hits_count": 0,
+    "extra_ids_count": 0,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "calls": 10,
+    "cost_usd": 0.781814
+   },
+   "trace_id": "d82296db-2e0d-4ffe-bf63-f26ec4d19de9"
+  },
+  {
+   "id": "B07",
+   "kind": "meal_time",
+   "query": "발리 첫날 밤에 먹은 야식이랑 맥주 사진 찾아줘",
+   "note": "7/16 밤 22:40~23:23 우붓 도착 첫 식사(나시고랭·나초·타코·빈땅·BALI HAI 맥주) 2장",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260716_224057.jpg",
+    "20260716_232314.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260716_233340.jpg",
+    "20260717_182209.jpg"
+   ],
+   "got_ids": [
+    "20260716_224057.jpg",
+    "20260716_232314.jpg"
+   ],
+   "matched_must": [
+    "20260716_224057.jpg",
+    "20260716_232314.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "사진첩에서 발리 기록 중 가장 이른 날짜가 2026년 7월 16일(목) 밤 우붓(알라야 우붓 체크인)이어서 이날을 여행 첫날로 추정했습니다. 22:40 우붓 실내 식당에서 찍은 사진에는 나시고렝·나초·애피타이저와 빈탕(BINTANG) 맥주가 있습니다. 약 43분 뒤인 23:23 사진에는 같은 자리에서 식사를 마친 뒤의 발리하이(BALI HAI) 'Romantic Day Lager' 맥주와 남은 과카몰리가 있습니다. 같은 장소 그룹, 검은 석판 접시, 줄무늬 옷의 동행이 겹쳐 같은 식사로 판단했습니다. 다른 날짜의 맥주 사진과 음식이 없는 7월 16일 사진은 제외했으며, 입국 장면 기록이 없어 '첫날'은 추정입니다.",
+   "ranked_got_ids": [
+    "20260716_224057.jpg",
+    "20260716_232314.jpg"
+   ],
+   "invalid_ids": [],
+   "first_must_rank": 1,
+   "first_allowed_rank": 1,
+   "time_ordered_first_must_rank": 1,
+   "recall_tool_calls": 5,
+   "tool_queries": [
+    "발리 첫날 밤 야식 맥주 사진",
+    "발리 첫날 밤 야식 맥주 사진",
+    "2026년 7월 16일 우붓 식당 밤 음식 맥주",
+    "발리 도착 공항 7월 16일 첫날",
+    "7월 16일 밤 우붓 식당 나초 나시고렝 맥주 Catalogue of Afternoons 사진"
+   ],
+   "calls": 8,
+   "input_tokens": 217937,
+   "output_tokens": 4478,
+   "cache_read_input_tokens": 21711,
+   "cost_usd": 0.878806,
+   "elapsed_ms": 160691,
+   "recall_channel": {
+    "top10_ids": [
+     "20260716_232314.jpg",
+     "20260719_212923.jpg",
+     "20260717_172045.jpg",
+     "20260720_141109.jpg",
+     "20260720_141101.jpg",
+     "20260720_213651.jpg",
+     "20260716_224057.jpg",
+     "20260717_163900.jpg",
+     "20260719_193429.jpg",
+     "20260718_160713.jpg"
+    ],
+    "total_photo_hits": 49,
+    "fact_hits": 53,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "matched_must_top10": [
+     "20260716_232314.jpg",
+     "20260716_224057.jpg"
+    ],
+    "matched_optional_top10": [],
+    "trap_hits_top10": [],
+    "extra_top10": [
+     "20260719_212923.jpg",
+     "20260717_172045.jpg",
+     "20260720_141109.jpg",
+     "20260720_141101.jpg",
+     "20260720_213651.jpg",
+     "20260717_163900.jpg",
+     "20260719_193429.jpg",
+     "20260718_160713.jpg"
+    ],
+    "recall_at_10": 1.0,
+    "elapsed_ms": 27109,
+    "calls": 0,
+    "cost_usd": 0.0
+   },
+   "without_hindsight": {
+    "available": true,
+    "passed": true,
+    "exact_match": true,
+    "got_ids": [
+     "20260716_224057.jpg",
+     "20260716_232314.jpg"
+    ],
+    "matched_must_count": 2,
+    "trap_hits_count": 0,
+    "extra_ids_count": 0,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "calls": 7,
+    "cost_usd": 0.445296
+   },
+   "trace_id": "4bc2d58b-10b1-4d2a-95be-b5a638371518"
+  },
+  {
+   "id": "B08",
+   "kind": "sign_text",
+   "query": "우붓 숙소 이름 뭐였지? 간판 찍어둔 사진 찾아줘",
+   "note": "7/16 23:33 ALAYA UBUD / DALA SPA 돌 간판 1장",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260716_233340.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260717_110347.jpg",
+    "20260717_132002.jpg"
+   ],
+   "got_ids": [
+    "20260716_233340.jpg"
+   ],
+   "matched_must": [
+    "20260716_233340.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "2026-07-16 23:33:40에 우붓 알라야 우붓 호텔 입구에서 찍은 사진으로, 사진 속 돌 간판에 'ALAYA UBUD' 글자가 그대로 인식되어 있고 장소 종류도 '호텔 입구'로 기록되어 있습니다. 이 사진은 객실 침대 위 플루메리아, 객실 에어컨, 논 뷰 발코니, 리조트 수영장 등 숙소 사진들과 같은 장소 묶음(G02)에 속합니다. 7/16 밤 리조트 로비(22:03), 복도(22:13), 객실(22:16)에 이어 23:33에 입구 간판을 찍어 체크인 첫날 밤의 흐름과 맞습니다. 다만 숙소라는 점은 기억에 '숙소일 가능성'으로만 적혀 있고 예약 기록 같은 명시적 근거는 없습니다. 글자가 기록되지 않은 리조트 내 표지판 사진과 우붓 시내 다른 가게 간판 사진은 제외했습니다.",
+   "ranked_got_ids": [
+    "20260716_233340.jpg"
+   ],
+   "invalid_ids": [],
+   "first_must_rank": 1,
+   "first_allowed_rank": 1,
+   "time_ordered_first_must_rank": 1,
+   "recall_tool_calls": 4,
+   "tool_queries": [
+    "Ubud accommodation name signboard photo",
+    "Ubud accommodation sign photo",
+    "우붓 숙소 간판 리조트 이름 사진 속 글자",
+    "ALAYA UBUD 알라야 우붓 간판 로고"
+   ],
+   "calls": 7,
+   "input_tokens": 147153,
+   "output_tokens": 2816,
+   "cache_read_input_tokens": 14474,
+   "cost_usd": 0.589931,
+   "elapsed_ms": 113756,
+   "recall_channel": {
+    "top10_ids": [
+     "20260718_071616.jpg",
+     "20260716_233340.jpg",
+     "20260717_065819.jpg",
+     "20260717_100520.jpg",
+     "20260716_221632.jpg",
+     "20260718_112627.jpg",
+     "20260717_064105.jpg",
+     "20260717_070124.jpg",
+     "20260717_082600.jpg",
+     "20260717_100527.jpg"
+    ],
+    "total_photo_hits": 45,
+    "fact_hits": 58,
+    "first_must_rank": 2,
+    "first_allowed_rank": 2,
+    "matched_must_top10": [
+     "20260716_233340.jpg"
+    ],
+    "matched_optional_top10": [],
+    "trap_hits_top10": [],
+    "extra_top10": [
+     "20260718_071616.jpg",
+     "20260717_065819.jpg",
+     "20260717_100520.jpg",
+     "20260716_221632.jpg",
+     "20260718_112627.jpg",
+     "20260717_064105.jpg",
+     "20260717_070124.jpg",
+     "20260717_082600.jpg",
+     "20260717_100527.jpg"
+    ],
+    "recall_at_10": 1.0,
+    "elapsed_ms": 27303,
+    "calls": 0,
+    "cost_usd": 0.0
+   },
+   "without_hindsight": {
+    "available": true,
+    "passed": true,
+    "exact_match": true,
+    "got_ids": [
+     "20260716_233340.jpg"
+    ],
+    "matched_must_count": 1,
+    "trap_hits_count": 0,
+    "extra_ids_count": 0,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "calls": 9,
+    "cost_usd": 0.726823
+   },
+   "trace_id": "4f0d3134-9f53-42d6-a4dd-c24aef7c48de"
+  },
+  {
+   "id": "B09",
+   "kind": "animal",
+   "query": "원숭이 숲에서 본 거북이 사진 찾아줘",
+   "note": "7/17 09:00 몽키 포레스트 육지거북 사진 1장",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260717_090024.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260717_090310.jpg",
+    "20260717_090331.jpg",
+    "20260717_090536.jpg"
+   ],
+   "got_ids": [
+    "20260717_090024.jpg"
+   ],
+   "matched_must": [
+    "20260717_090024.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "기록에서 거북이가 찍힌 사진은 2026-07-17 09:00:25 우붓에서 찍은 20260717_090024.jpg 한 장뿐이며, 실외 사육장 흙바닥에 엎드린 큰 육지거북(설카타거북으로 보임)이 담겨 있습니다. 사진 설명에는 '몽키 포레스트'라는 말이 없지만, 이 사진은 몽키 포레스트 매표소 안내판 사진과 숲 산책로 원숭이 사진들과 같은 장소 그룹(G03)에 묶여 있습니다. 시간상으로도 08:32 매표소 사진과 09:03 원숭이 사진들 사이, 숲이 문을 여는 9시 직후에 찍혀 원숭이 숲 방문 중 찍은 것으로 추정했습니다. 다만 몽키 포레스트 안의 시설이라고 명시한 기록은 없어 시각과 장소 그룹에 근거한 추정입니다.",
+   "ranked_got_ids": [
+    "20260717_090024.jpg"
+   ],
+   "invalid_ids": [],
+   "first_must_rank": 1,
+   "first_allowed_rank": 1,
+   "time_ordered_first_must_rank": 1,
+   "recall_tool_calls": 4,
+   "tool_queries": [
+    "원숭이 숲 거북이 사진 (Monkey Forest turtle photo)",
+    "Monkey Forest turtle photo",
+    "거북 거북이 설카타거북 사육장",
+    "tortoise turtle reptile animal enclosure Ubud"
+   ],
+   "calls": 7,
+   "input_tokens": 172733,
+   "output_tokens": 2990,
+   "cache_read_input_tokens": 14474,
+   "cost_usd": 0.695731,
+   "elapsed_ms": 114975,
+   "recall_channel": {
+    "top10_ids": [
+     "20260717_090314.jpg",
+     "20260717_090340.jpg",
+     "20260717_090338.jpg",
+     "20260717_090332.jpg",
+     "20260717_090310.jpg",
+     "20260717_090331.jpg",
+     "20260717_090536.jpg",
+     "20260717_090415.jpg",
+     "20260717_090024.jpg",
+     "20260717_090731.jpg"
+    ],
+    "total_photo_hits": 42,
+    "fact_hits": 57,
+    "first_must_rank": 9,
+    "first_allowed_rank": 9,
+    "matched_must_top10": [
+     "20260717_090024.jpg"
+    ],
+    "matched_optional_top10": [],
+    "trap_hits_top10": [
+     "20260717_090310.jpg",
+     "20260717_090331.jpg",
+     "20260717_090536.jpg"
+    ],
+    "extra_top10": [
+     "20260717_090314.jpg",
+     "20260717_090340.jpg",
+     "20260717_090338.jpg",
+     "20260717_090332.jpg",
+     "20260717_090310.jpg",
+     "20260717_090331.jpg",
+     "20260717_090536.jpg",
+     "20260717_090415.jpg",
+     "20260717_090731.jpg"
+    ],
+    "recall_at_10": 1.0,
+    "elapsed_ms": 26308,
+    "calls": 0,
+    "cost_usd": 0.0
+   },
+   "without_hindsight": {
+    "available": true,
+    "passed": true,
+    "exact_match": true,
+    "got_ids": [
+     "20260717_090024.jpg"
+    ],
+    "matched_must_count": 1,
+    "trap_hits_count": 0,
+    "extra_ids_count": 0,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "calls": 8,
+    "cost_usd": 0.701563
+   },
+   "trace_id": "db613c29-97c0-4ada-ad30-a44d73000b1e"
+  },
+  {
+   "id": "B10",
+   "kind": "object_scene",
+   "query": "계단에 꽃으로 LOVE 써놓은 사진 찾아줘",
+   "note": "7/17 16:41 나무 계단 위 마리골드 꽃송이로 만든 LOVE 사진 1장",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260717_164142.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260716_234659.jpg",
+    "20260717_164237.jpg"
+   ],
+   "got_ids": [
+    "20260717_164142.jpg"
+   ],
+   "matched_must": [
+    "20260717_164142.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "2026년 7월 17일 16:41에 우붓(Ubud)의 계단에서 찍은 휴대폰 갤러리 사진으로, 나무 디딤판과 흰색 챌판 계단 위에 주황색 메리골드 꽃송이로 'LOVE'를 만든 장면입니다. 윗단에는 L과 O, 아랫단에는 V와 E가 놓여 있고 사진 속 글자도 'LOVE'로 인식되었습니다. 데사 포테이토 헤드 입구의 꽃 글자 사진, 우붓 왕궁 돌계단 사진, 메리골드 장식 사진 등은 'LOVE'가 아니거나 계단 또는 꽃 글자가 없어 제외했습니다.",
+   "ranked_got_ids": [
+    "20260717_164142.jpg"
+   ],
+   "invalid_ids": [],
+   "first_must_rank": 1,
+   "first_allowed_rank": 1,
+   "time_ordered_first_must_rank": 1,
+   "recall_tool_calls": 3,
+   "tool_queries": [
+    "계단에 꽃으로 LOVE 글자 쓴 사진 (flowers spelling LOVE on stairs photo)",
+    "LOVE spelled with flowers on stairs photo",
+    "메리골드 꽃 글자 계단 LOVE"
+   ],
+   "calls": 6,
+   "input_tokens": 98313,
+   "output_tokens": 1901,
+   "cache_read_input_tokens": 7237,
+   "cost_usd": 0.403771,
+   "elapsed_ms": 75956,
+   "recall_channel": {
+    "top10_ids": [
+     "20260717_164142.jpg",
+     "20260717_132005.jpg",
+     "20260718_191308.jpg",
+     "20260718_125013.jpg",
+     "20260718_130201.jpg",
+     "20260717_172045.jpg",
+     "20260717_161153.jpg",
+     "20260717_075044.jpg",
+     "20260721_160107.jpg",
+     "20260717_172108.jpg"
+    ],
+    "total_photo_hits": 51,
+    "fact_hits": 55,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "matched_must_top10": [
+     "20260717_164142.jpg"
+    ],
+    "matched_optional_top10": [],
+    "trap_hits_top10": [],
+    "extra_top10": [
+     "20260717_132005.jpg",
+     "20260718_191308.jpg",
+     "20260718_125013.jpg",
+     "20260718_130201.jpg",
+     "20260717_172045.jpg",
+     "20260717_161153.jpg",
+     "20260717_075044.jpg",
+     "20260721_160107.jpg",
+     "20260717_172108.jpg"
+    ],
+    "recall_at_10": 1.0,
+    "elapsed_ms": 25517,
+    "calls": 0,
+    "cost_usd": 0.0
+   },
+   "without_hindsight": {
+    "available": true,
+    "passed": false,
+    "exact_match": false,
+    "got_ids": [],
+    "matched_must_count": 0,
+    "trap_hits_count": 0,
+    "extra_ids_count": 0,
+    "first_must_rank": null,
+    "first_allowed_rank": null,
+    "calls": 12,
+    "cost_usd": 1.645854
+   },
+   "trace_id": "878b0414-8d39-4dab-a7ba-2d0e02c8be9d"
+  },
+  {
+   "id": "B11",
+   "kind": "shopping",
+   "query": "발리에서 산 견과류 과자 이름이 뭐였지? 과자 봉지 여러 개 찍어둔 사진 찾아줘",
+   "note": "7/18 10:39 YAVA 캐슈넛 과자 봉지 여러 개 사진 1장(브랜드명 없이 질문)",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260718_103956.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260718_110910.jpg",
+    "20260719_214739.jpg"
+   ],
+   "got_ids": [
+    "20260718_103956.jpg"
+   ],
+   "matched_must": [
+    "20260718_103956.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "실내 탁자 위에 놓인 주황색 YAVA(야바) 캐슈너트 과자 봉지 여러 개를 위에서 찍은 사진이라는 기억 내용을 근거로, '견과류 과자'와 '봉지 여러 개' 조건을 모두 만족하는 사진으로 골랐습니다. 촬영 시각은 2026년 7월 18일 토요일 오전 10시 39분이고, 장소는 우붓(Ubud)의 실내 탁자 위입니다. 카사바 칩 봉지 사진(20260719_214739.jpg), 과자 종류가 확인되지 않는 호텔 객실 사진들(20260718_222654.jpg, 20260720_133301.jpg), 같은 탁자에서 백팩을 찍은 사진(20260718_110910.jpg)은 조건에 맞지 않아 제외했습니다.",
+   "ranked_got_ids": [
+    "20260718_103956.jpg"
+   ],
+   "invalid_ids": [],
+   "first_must_rank": 1,
+   "first_allowed_rank": 1,
+   "time_ordered_first_must_rank": 1,
+   "recall_tool_calls": 4,
+   "tool_queries": [
+    "발리 견과류 과자 봉지 사진",
+    "발리 견과류 과자 봉지 사진",
+    "YAVA 캐슈너트 봉지",
+    "캐슈너트 견과류 간식 여러 봉지 탁자 위"
+   ],
+   "calls": 7,
+   "input_tokens": 148784,
+   "output_tokens": 2676,
+   "cache_read_input_tokens": 14474,
+   "cost_usd": 0.593655,
+   "elapsed_ms": 112728,
+   "recall_channel": {
+    "top10_ids": [
+     "20260718_103956.jpg",
+     "20260719_214739.jpg",
+     "20260717_163900.jpg",
+     "20260718_162244.jpg",
+     "20260717_090731.jpg",
+     "20260718_124905.jpg",
+     "20260717_090340.jpg",
+     "20260717_090338.jpg",
+     "20260719_082256.jpg",
+     "20260717_163641.jpg"
+    ],
+    "total_photo_hits": 51,
+    "fact_hits": 53,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "matched_must_top10": [
+     "20260718_103956.jpg"
+    ],
+    "matched_optional_top10": [],
+    "trap_hits_top10": [
+     "20260719_214739.jpg"
+    ],
+    "extra_top10": [
+     "20260719_214739.jpg",
+     "20260717_163900.jpg",
+     "20260718_162244.jpg",
+     "20260717_090731.jpg",
+     "20260718_124905.jpg",
+     "20260717_090340.jpg",
+     "20260717_090338.jpg",
+     "20260719_082256.jpg",
+     "20260717_163641.jpg"
+    ],
+    "recall_at_10": 1.0,
+    "elapsed_ms": 28525,
+    "calls": 0,
+    "cost_usd": 0.0
+   },
+   "without_hindsight": {
+    "available": true,
+    "passed": false,
+    "exact_match": false,
+    "got_ids": [],
+    "matched_must_count": 0,
+    "trap_hits_count": 0,
+    "extra_ids_count": 0,
+    "first_must_rank": null,
+    "first_allowed_rank": null,
+    "calls": 16,
+    "cost_usd": 2.459217
+   },
+   "trace_id": "099a0e76-83df-4559-99af-92ef8b600c28"
+  },
+  {
+   "id": "B12",
+   "kind": "menu_text",
+   "query": "핀스 비치클럽 메뉴판 사진 찾아줘",
+   "note": "7/19 13:18 브라와 FINNS 비치클럽 검은색 Signature Menu 2장",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260719_131801.jpg",
+    "20260719_131806.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260718_132437.jpg",
+    "20260718_154515.jpg"
+   ],
+   "got_ids": [
+    "20260719_131801.jpg",
+    "20260719_131806.jpg"
+   ],
+   "matched_must": [
+    "20260719_131801.jpg",
+    "20260719_131806.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "2026-07-19(일) 13:18경 브라와(Berawa)의 FINNS 비치클럽에서 6초 간격으로 연달아 찍은 사진 2장을 골랐습니다. 두 사진 모두 'FINNS' 로고와 'Signature Menu'가 적힌 검은색 시그니처 메뉴판을 손에 들고 찍은 것입니다. 한 장에는 로열 파에야와 판다 딤섬 타워 등이, 다른 한 장에는 트레저 체스트 미트 플래터와 씨푸드 세일보트 등이 담겨 있습니다. 13:43 '해변 식당' 사진(20260719_134358.jpg)에도 칵테일·시샤 메뉴 카드가 일부 보이지만, 장소 기록이 핀스가 아니고 음식이 주제인 사진이라 확정 목록에서는 제외했습니다. 13:06 풍경 사진과 다른 비치클럽의 메뉴판 사진도 제외했습니다.",
+   "ranked_got_ids": [
+    "20260719_131801.jpg",
+    "20260719_131806.jpg"
+   ],
+   "invalid_ids": [],
+   "first_must_rank": 1,
+   "first_allowed_rank": 1,
+   "time_ordered_first_must_rank": 1,
+   "recall_tool_calls": 3,
+   "tool_queries": [
+    "핀스 비치클럽 메뉴판 사진 (Finns Beach Club menu photo)",
+    "Finns Beach Club menu photo",
+    "FINNS 메뉴판 칵테일 시샤 메뉴 사진"
+   ],
+   "calls": 6,
+   "input_tokens": 103129,
+   "output_tokens": 3578,
+   "cache_read_input_tokens": 7237,
+   "cost_usd": 0.456575,
+   "elapsed_ms": 94513,
+   "recall_channel": {
+    "top10_ids": [
+     "20260719_131801.jpg",
+     "20260719_131806.jpg",
+     "20260719_172533.jpg",
+     "20260719_131132.jpg",
+     "20260719_183822.jpg",
+     "20260719_182600.jpg",
+     "20260719_172531.jpg",
+     "20260719_141211.jpg",
+     "20260719_125525.jpg",
+     "20260719_183823.jpg"
+    ],
+    "total_photo_hits": 38,
+    "fact_hits": 59,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "matched_must_top10": [
+     "20260719_131801.jpg",
+     "20260719_131806.jpg"
+    ],
+    "matched_optional_top10": [],
+    "trap_hits_top10": [],
+    "extra_top10": [
+     "20260719_172533.jpg",
+     "20260719_131132.jpg",
+     "20260719_183822.jpg",
+     "20260719_182600.jpg",
+     "20260719_172531.jpg",
+     "20260719_141211.jpg",
+     "20260719_125525.jpg",
+     "20260719_183823.jpg"
+    ],
+    "recall_at_10": 1.0,
+    "elapsed_ms": 25679,
+    "calls": 0,
+    "cost_usd": 0.0
+   },
+   "without_hindsight": {
+    "available": true,
+    "passed": false,
+    "exact_match": false,
+    "got_ids": [],
+    "matched_must_count": 0,
+    "trap_hits_count": 0,
+    "extra_ids_count": 0,
+    "first_must_rank": null,
+    "first_allowed_rank": null,
+    "calls": 15,
+    "cost_usd": 2.214308
+   },
+   "trace_id": "d406e7ee-ebc5-46ce-af00-34afe38ec674"
+  },
+  {
+   "id": "B13",
+   "kind": "dinner_food",
+   "query": "화덕피자랑 트러플 파스타에 와인 마신 저녁 사진 찾아줘",
+   "note": "7/20 18:53~19:02 부라타 화덕피자·레드와인 건배·트러플 파스타 3장(다른 날 피자 3건은 함정)",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260720_185335.jpg",
+    "20260720_185351.jpg",
+    "20260720_190217.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260717_182209.jpg",
+    "20260718_164723.jpg",
+    "20260721_123636.jpg"
+   ],
+   "got_ids": [
+    "20260720_185335.jpg",
+    "20260720_185351.jpg",
+    "20260720_190217.jpg"
+   ],
+   "matched_must": [
+    "20260720_185335.jpg",
+    "20260720_185351.jpg",
+    "20260720_190217.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "2026년 7월 20일(월) 저녁 18:53~19:02 약 9분 사이에 '짱구 · 에코 비치 부근'에서 연속 촬영된 사진 3장을 골랐습니다. 앞의 두 장은 te'amo 로고 종이 위의 화덕 피자와 레드 와인 건배 장면이고, 세 번째는 트러플 파스타 사진입니다. 트러플 파스타 사진은 로고가 보이지 않지만 대리석 테이블과 빨간 테두리 그릇 등 인테리어가 일치해 같은 가게로 추정했습니다. 7/18 해변 바의 피자·칵테일 사진이나 7/21 점심 피자 사진 등은 와인이나 트러플 파스타가 없어 제외했습니다.",
+   "ranked_got_ids": [
+    "20260720_185335.jpg",
+    "20260720_185351.jpg",
+    "20260720_190217.jpg"
+   ],
+   "invalid_ids": [],
+   "first_must_rank": 1,
+   "first_allowed_rank": 1,
+   "time_ordered_first_must_rank": 1,
+   "recall_tool_calls": 5,
+   "tool_queries": [
+    "화덕피자 트러플 파스타 와인 저녁 사진",
+    "wood-fired pizza truffle pasta wine dinner photo",
+    "화덕 피자 트러플 파스타 와인잔 저녁 식당",
+    "te'amo 피자집 2026년 7월 20일 저녁 레드 와인 나폴리 피자 파스타",
+    "7월 20일 저녁 19시 실내 식당 대리석 테이블 와인잔 피자 파스타 사진"
+   ],
+   "calls": 8,
+   "input_tokens": 229325,
+   "output_tokens": 3230,
+   "cache_read_input_tokens": 21711,
+   "cost_usd": 0.899398,
+   "elapsed_ms": 152325,
+   "recall_channel": {
+    "top10_ids": [
+     "20260720_185351.jpg",
+     "20260718_184118.jpg",
+     "20260720_190217.jpg",
+     "20260718_183549.jpg",
+     "20260718_164723.jpg",
+     "20260718_192514.jpg",
+     "20260720_185335.jpg",
+     "20260718_182846.jpg",
+     "20260718_183255.jpg",
+     "20260716_224057.jpg"
+    ],
+    "total_photo_hits": 48,
+    "fact_hits": 56,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "matched_must_top10": [
+     "20260720_185351.jpg",
+     "20260720_190217.jpg",
+     "20260720_185335.jpg"
+    ],
+    "matched_optional_top10": [],
+    "trap_hits_top10": [
+     "20260718_164723.jpg"
+    ],
+    "extra_top10": [
+     "20260718_184118.jpg",
+     "20260718_183549.jpg",
+     "20260718_164723.jpg",
+     "20260718_192514.jpg",
+     "20260718_182846.jpg",
+     "20260718_183255.jpg",
+     "20260716_224057.jpg"
+    ],
+    "recall_at_10": 1.0,
+    "elapsed_ms": 26839,
+    "calls": 0,
+    "cost_usd": 0.0
+   },
+   "without_hindsight": {
+    "available": true,
+    "passed": false,
+    "exact_match": false,
+    "got_ids": [],
+    "matched_must_count": 0,
+    "trap_hits_count": 0,
+    "extra_ids_count": 0,
+    "first_must_rank": null,
+    "first_allowed_rank": null,
+    "calls": 15,
+    "cost_usd": 2.154497
+   },
+   "trace_id": "57b96aed-6cb3-49ff-aa2d-f69ea3b68b5d"
+  },
+  {
+   "id": "B14",
+   "kind": "object_drink",
+   "query": "나무 얼굴 모양 잔에 나온 칵테일 사진 찾아줘",
+   "note": "7/21 11:58 나무 조각 티키 머그잔 칵테일 클로즈업 1장(같은 쟁반에 머그잔이 함께 찍힌 전경 2장 선택)",
+   "passed": true,
+   "exact_match": false,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260721_115834.jpg"
+   ],
+   "optional_ids": [
+    "20260721_115852.jpg",
+    "20260721_115855.jpg"
+   ],
+   "trap_ids": [
+    "20260721_125420.jpg",
+    "20260721_183528.jpg"
+   ],
+   "got_ids": [
+    "20260721_115834.jpg",
+    "20260721_115852.jpg",
+    "20260721_115855.jpg"
+   ],
+   "matched_must": [
+    "20260721_115834.jpg"
+   ],
+   "matched_optional": [
+    "20260721_115852.jpg",
+    "20260721_115855.jpg"
+   ],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "세 장 모두 2026년 7월 21일 오전 11시 58분경 바투벨릭(Batu Belig) 비치클럽에서 약 20초 사이에 연속으로 찍힌 사진입니다. 20260721_115834.jpg는 사진 설명에 '얼굴이 조각된 갈색 나무 티키 머그'가 노란 프랑지파니 꽃으로 장식되어 있다고 명시되어 있어 확실합니다. 20260721_115852.jpg는 '티키 머그 칵테일'로, 20260721_115855.jpg는 노란 꽃으로 장식된 '나무 컵 음료'로 설명되어 있습니다. 두 사진 모두 '얼굴 조각'이라는 표현은 없지만, 같은 시각·장소·꽃 장식이어서 같은 잔으로 판단했습니다. 마티니 잔, 마가리타 잔, 코코넛 음료가 나온 다른 칵테일 사진은 제외했습니다.",
+   "ranked_got_ids": [
+    "20260721_115834.jpg",
+    "20260721_115852.jpg",
+    "20260721_115855.jpg"
+   ],
+   "invalid_ids": [],
+   "first_must_rank": 1,
+   "first_allowed_rank": 1,
+   "time_ordered_first_must_rank": 1,
+   "recall_tool_calls": 4,
+   "tool_queries": [
+    "칵테일 나무 얼굴 모양 잔 (tiki mug cocktail) 사진",
+    "tiki mug cocktail photo carved wooden face cup",
+    "티키 머그 칵테일 얼굴 조각 나무 잔"
+   ],
+   "calls": 7,
+   "input_tokens": 154432,
+   "output_tokens": 3549,
+   "cache_read_input_tokens": 14474,
+   "cost_usd": 0.633707,
+   "elapsed_ms": 95035,
+   "recall_channel": {
+    "top10_ids": [
+     "20260721_115834.jpg",
+     "20260718_155620.jpg",
+     "20260718_184515.jpg",
+     "20260718_170051.jpg",
+     "20260721_115852.jpg",
+     "20260721_183528.jpg",
+     "20260718_170055.jpg",
+     "20260718_154234.jpg",
+     "20260718_164723.jpg",
+     "20260718_184523.jpg"
+    ],
+    "total_photo_hits": 54,
+    "fact_hits": 57,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "matched_must_top10": [
+     "20260721_115834.jpg"
+    ],
+    "matched_optional_top10": [
+     "20260721_115852.jpg"
+    ],
+    "trap_hits_top10": [
+     "20260721_183528.jpg"
+    ],
+    "extra_top10": [
+     "20260718_155620.jpg",
+     "20260718_184515.jpg",
+     "20260718_170051.jpg",
+     "20260721_183528.jpg",
+     "20260718_170055.jpg",
+     "20260718_154234.jpg",
+     "20260718_164723.jpg",
+     "20260718_184523.jpg"
+    ],
+    "recall_at_10": 1.0,
+    "elapsed_ms": 26657,
+    "calls": 0,
+    "cost_usd": 0.0
+   },
+   "without_hindsight": {
+    "available": true,
+    "passed": false,
+    "exact_match": false,
+    "got_ids": [],
+    "matched_must_count": 0,
+    "trap_hits_count": 0,
+    "extra_ids_count": 0,
+    "first_must_rank": null,
+    "first_allowed_rank": null,
+    "calls": 13,
+    "cost_usd": 1.839321
+   },
+   "trace_id": "e076c3fc-9d21-40f3-b62c-fd3d369f7350"
+  },
+  {
+   "id": "B15",
+   "kind": "airport_return",
+   "query": "집에 오는 날 공항 탑승 줄이랑 탑승권 봉투 찍은 사진 찾아줘",
+   "note": "7/21 19:32~19:41 발리 공항 싱가포르항공 탑승 대기 줄 2장과 kris+ 탑승권 봉투 1장(앞선 라운지 식사·칵테일 제외)",
+   "passed": true,
+   "exact_match": true,
+   "status": "answered",
+   "error": null,
+   "answer_ids": [
+    "20260721_193247.jpg",
+    "20260721_193250.jpg",
+    "20260721_194125.jpg"
+   ],
+   "optional_ids": [],
+   "trap_ids": [
+    "20260721_181605.jpg",
+    "20260721_183528.jpg"
+   ],
+   "got_ids": [
+    "20260721_193247.jpg",
+    "20260721_193250.jpg",
+    "20260721_194125.jpg"
+   ],
+   "matched_must": [
+    "20260721_193247.jpg",
+    "20260721_193250.jpg",
+    "20260721_194125.jpg"
+   ],
+   "matched_optional": [],
+   "missing_ids": [],
+   "extra_ids": [],
+   "trap_hits": [],
+   "recall": 1.0,
+   "precision": 1.0,
+   "result_sentence": "여행 동선이 우붓 → 짱구·브라와 → 바투벨릭을 거쳐 7월 21일 저녁 투반의 발리 응우라라이 국제공항에서 끝나므로, 이날을 귀국일로 추론했습니다(기록에 '귀국'이 직접 적혀 있지는 않음). 7월 21일 19:32:47과 19:32:50에 보딩 라운지 5 탑승구에서 연속 촬영된 사진 두 장은 싱가포르항공 우선 탑승 레인과 이코노미 그룹 4·5·6 레인의 탑승 대기 줄을 담고 있습니다. 19:41:26 사진은 Kris+ 안내가 인쇄되고 수하물 태그가 붙은 탑승권 종이 두 장을 찍은 것입니다. 기록에는 '봉투'가 아니라 '탑승권 뒷면으로 보이는 종이'로 되어 있으나, 형태가 탑승권 홀더와 일치해 포함했습니다. 같은 날 18:16의 음식 사진과 낮의 바투벨릭 사진은 탑승 줄이나 탑승권과 관련이 없어 제외했습니다.",
+   "ranked_got_ids": [
+    "20260721_193247.jpg",
+    "20260721_193250.jpg",
+    "20260721_194125.jpg"
+   ],
+   "invalid_ids": [],
+   "first_must_rank": 1,
+   "first_allowed_rank": 1,
+   "time_ordered_first_must_rank": 1,
+   "recall_tool_calls": 4,
+   "tool_queries": [
+    "집에 오는 날 공항 탑승 줄 탑승권 봉투 사진 (return flight day airport boarding line boarding pass envelope photo)",
+    "return day airport boarding queue boarding pass envelope photo",
+    "탑승권 봉투 싱가포르항공 공항 7월 21일",
+    "boarding pass envelope paper held in hand at airport gate"
+   ],
+   "calls": 7,
+   "input_tokens": 146747,
+   "output_tokens": 3454,
+   "cache_read_input_tokens": 14474,
+   "cost_usd": 0.601067,
+   "elapsed_ms": 121783,
+   "recall_channel": {
+    "top10_ids": [
+     "20260721_193250.jpg",
+     "20260721_193247.jpg",
+     "20260721_194125.jpg",
+     "20260721_123235.jpg",
+     "20260721_133334.jpg",
+     "20260721_144932.jpg",
+     "20260721_114854.jpg",
+     "20260721_160058.jpg",
+     "20260719_094531.jpg",
+     "20260721_144946.jpg"
+    ],
+    "total_photo_hits": 51,
+    "fact_hits": 55,
+    "first_must_rank": 1,
+    "first_allowed_rank": 1,
+    "matched_must_top10": [
+     "20260721_193250.jpg",
+     "20260721_193247.jpg",
+     "20260721_194125.jpg"
+    ],
+    "matched_optional_top10": [],
+    "trap_hits_top10": [],
+    "extra_top10": [
+     "20260721_123235.jpg",
+     "20260721_133334.jpg",
+     "20260721_144932.jpg",
+     "20260721_114854.jpg",
+     "20260721_160058.jpg",
+     "20260719_094531.jpg",
+     "20260721_144946.jpg"
+    ],
+    "recall_at_10": 1.0,
+    "elapsed_ms": 27657,
+    "calls": 0,
+    "cost_usd": 0.0
+   },
+   "without_hindsight": {
+    "available": true,
+    "passed": false,
+    "exact_match": false,
+    "got_ids": [],
+    "matched_must_count": 0,
+    "trap_hits_count": 0,
+    "extra_ids_count": 0,
+    "first_must_rank": null,
+    "first_allowed_rank": null,
+    "calls": 13,
+    "cost_usd": 1.65145
+   },
+   "trace_id": "5d87428c-a392-4667-bf71-1c6c3f6447d5"
+  }
+ ]
+}
