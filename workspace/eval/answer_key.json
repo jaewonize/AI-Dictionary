@@ -10,6 +10,12 @@
    "note": "2023-12-21 전시장 사진 9장(10:34–11:56) 뒤 오후 카페 6장(12:40–14:20). 함정은 관람 전 오전 카페 4장",
    "accept": {"after_id": "Download/IMG_0121.jpeg",
               "related": [{"name": "전시장 사진", "ids": ["Download/IMG_0093.jpeg", "Download/IMG_0094.jpeg", "Download/IMG_0095.jpeg", "Download/IMG_0096.jpeg", "Download/IMG_0098.jpeg", "Download/IMG_0099.jpeg", "Download/IMG_0100.jpeg", "Download/IMG_0114.jpeg", "Download/IMG_0121.jpeg"]},
-                          {"name": "관람 전 카페 사진", "ids": ["DCIM/Camera/20231221_093512.jpg", "DCIM/Camera/20231221_095208.jpg", "DCIM/Camera/20231221_100527.jpg", "DCIM/Camera/20231221_101046.jpg"]}]}}
+                          {"name": "관람 전 카페 사진", "ids": ["DCIM/Camera/20231221_093512.jpg", "DCIM/Camera/20231221_095208.jpg", "DCIM/Camera/20231221_100527.jpg", "DCIM/Camera/20231221_101046.jpg"]}]}},
+  {"id": "W", "kind": "object_drink", "query": "작년 송년회 와인이랑 4년 전 생일 와인",
+   "answers": [],
+   "answer_ids": ["DCIM/Camera/20220319_190631.jpg", "DCIM/Camera/20220319_190814.jpg", "DCIM/Camera/20220319_191147.jpg", "DCIM/Camera/20220319_191722.jpg", "DCIM/Camera/20220319_200458.jpg", "DCIM/Camera/20251219_190824.jpg", "DCIM/Camera/20251219_191206.jpg", "DCIM/Camera/20251219_192138.jpg", "DCIM/Camera/20251219_193817.jpg", "DCIM/Camera/20251219_194552.jpg", "DCIM/Camera/20251219_201609.jpg"],
+   "optional_ids": [],
+   "trap_ids": [],
+   "note": "2022-03-19 생일 5장과 2025-12-19 송년회 6장. 두 날의 사진은 이 11장뿐"}
  ]
 }
