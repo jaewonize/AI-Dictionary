@@ -9,6 +9,8 @@ card     no, kind, title, sentence, evidence, cached, data
 ask      no(3), title, question, options[{id, label, detail}]
 answer   option_id, label      되묻기에서 고른 답(화면과 재생 페이지가 사용자 말풍선으로 그린다)
 result   no(6), title, sentence, items[{id, badge, time_label}], related_title, related[{label, items[...]}]
+memory   n, query, bank, elapsed_ms, count, hits[{rank, document_id, kind, source_id, text}], error      기억 꺼내기 도구가 끝날 때(화면은 그리지 않아도 된다)
+reflect  n, query, known, bank, elapsed_ms, count, photo_ids, left_out, reasoning, inner_calls, inner_queries, usage{bank, model, calls, input_tokens, output_tokens, cache_read_input_tokens, cost_usd, cost_known, ms, ok}, error      기억 되짚기 도구가 끝날 때(화면은 그리지 않아도 된다)
 progress step, elapsed_ms, calls, tokens, cost_usd
 error    message
 done     status(answered, waiting, failed)

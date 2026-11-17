@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI ( ) Dictionary 브라우저 데모</title>
+<style>
+/*__FONT_CSS__*/
+</style>
+<style>
+/*__APP_CSS__*/
+</style>
+<style>
+/*__DEMO_CSS__*/
+</style>
+</head>
+<body>
+<div class="demo-viewport" id="demo-viewport">
+  <div class="demo-stage" id="demo-stage">
+    <header class="demo-topbar" id="demo-topbar">
+      <div class="demo-topbar-left">
+        <select id="demo-case-select" class="demo-select" aria-label="케이스 고르기"></select>
+        <div class="demo-controls" id="demo-controls">
+          <div class="demo-seg" role="group" aria-label="모드 고르기">
+            <button type="button" id="demo-mode-auto" class="demo-btn on">자동 재생</button>
+            <button type="button" id="demo-mode-try" class="demo-btn">직접 해 보기</button>
+          </div>
+          <button type="button" id="demo-restart" class="demo-btn">처음부터</button>
+          <button type="button" id="demo-playpause" class="demo-btn demo-btn-primary">멈춤</button>
+          <div class="demo-seg demo-speeds" id="demo-speeds" role="group" aria-label="배속">
+            <button type="button" class="demo-btn" data-speed="0.5">0.5배속</button>
+            <button type="button" class="demo-btn on" data-speed="1">1배속</button>
+            <button type="button" class="demo-btn" data-speed="2">2배속</button>
+            <button type="button" class="demo-btn" data-speed="4">4배속</button>
+          </div>
+          <nav class="demo-scenes" id="demo-scene-bar" aria-label="장면 목록"></nav>
+        </div>
+      </div>
+      <div class="demo-topbar-right">
+        <span class="demo-server-badge" id="demo-server-badge">서버 없음 · 저장해 둔 기록만 보여 줍니다</span>
+        <span class="demo-kind-badge" id="demo-kind-badge">대본</span>
+      </div>
+    </header>
+
+    <div class="demo-notice" id="demo-notice" role="status"></div>
+
+    <div class="demo-body" id="demo-body">
+      <aside class="demo-left" id="demo-left">
+        <div class="demo-steps" id="demo-steps" aria-label="진행 단계"></div>
+
+        <div class="phone" id="demo-phone">
+          <div class="demo-phone-strip" id="demo-phone-strip" hidden></div>
+          <div class="notch" aria-hidden="true"></div>
+          <div class="statusbar" aria-hidden="true">
+            <span>9:41</span>
+            <span class="ic">
+              <svg width="16" height="11" viewBox="0 0 16 11" fill="#1d1d1f"><rect y="7" width="3" height="4" rx="1"/><rect x="4.3" y="5" width="3" height="6" rx="1"/><rect x="8.6" y="2.5" width="3" height="8.5" rx="1"/><rect x="12.9" y="0" width="3" height="11" rx="1" opacity=".3"/></svg>
+              <svg width="24" height="11" viewBox="0 0 24 11" fill="none"><rect x=".5" y=".5" width="20" height="10" rx="3" stroke="#1d1d1f" stroke-opacity=".35"/><rect x="2" y="2" width="15" height="7" rx="1.8" fill="#1d1d1f"/><path d="M22 4v3a2 2 0 0 0 0-3z" fill="#1d1d1f" fill-opacity=".35"/></svg>
+            </span>
+          </div>
+          <div class="apphead"><div class="nm">AI <span>(  )</span> Dictionary</div></div>
+
+          <main class="chat" id="demo-chat">
+            <div class="empty" id="demo-empty">
+              <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                <g stroke="#1f40ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".5"><path d="M5 12c5.5-3 11.5-3 19 1v23c-7.5-4-13.5-4-19-1V12z"/><path d="M43 12c-5.5-3-11.5-3-19 1v23c7.5-4 13.5-4 19-1V12z"/></g>
+                <g stroke="#fff" stroke-width="6.5" stroke-linecap="round"><circle cx="31" cy="30" r="8.5"/><path d="M37.2 36.2 43 42"/></g>
+                <g stroke="#1f40ff" stroke-width="2.6" stroke-linecap="round"><circle cx="31" cy="30" r="8.5"/><path d="M37.2 36.2 43 42"/></g>
+              </svg>
+              <h2>기억나는 대로 말해보세요</h2>
+              <p>알아서 찾아드려요</p>
+            </div>
+            <div class="thread" id="demo-thread"></div>
+          </main>
+
+          <div class="demo-suggest-wrap" id="demo-suggest-wrap" hidden>
+            <button type="button" class="demo-suggest-btn" id="demo-suggest-btn"></button>
+          </div>
+
+          <form class="inputbar" id="demo-form" autocomplete="off">
+            <div class="ibox">
+              <input id="demo-q" type="text" placeholder="무엇을 찾고 계세요?" enterkeyhint="send" aria-label="찾을 내용">
+              <button class="send" id="demo-send" type="submit" aria-label="보내기">
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 13.5V3M8 3 3.5 7.5M8 3l4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </form>
+
+          <div class="navbar" aria-hidden="true"><i class="recent"></i><i class="home"></i><i class="back"></i></div>
+        </div>
+
+        <div class="demo-live-panel" id="demo-live-panel" hidden>
+          <label class="demo-live-row" id="demo-live-label">
+            <input type="checkbox" id="demo-live-toggle" checked>
+            <span class="demo-live-title">실시간으로 묻기</span>
+            <span class="demo-live-sub" id="demo-live-sub">질문마다 AI 모델 비용이 들어요</span>
+          </label>
+          <div class="demo-live-spent" id="demo-live-spent">이 화면에서 쓴 비용 약 $0.00</div>
+        </div>
+      </aside>
+
+      <section class="demo-right" id="demo-right" aria-label="대시보드">
+        <div class="db-col-left">
+          <section class="db-panel db-panel-1" id="db-panel-1">
+            <header class="db-head">
+              <div class="db-head-top">
+                <div class="db-title-row"><span class="db-num">①</span><h2 class="db-title">자료가 글자가 되는 과정</h2></div>
+                <button type="button" class="db-replay-prep" id="db-replay-prep" hidden>미리 해 두는 일 다시 보기</button>
+              </div>
+              <p class="db-sub" id="db-sub-1"></p>
+            </header>
+            <div class="db-p1-counts" id="db-p1-counts"></div>
+            <div class="db-p1-narrow" id="db-p1-narrow" hidden></div>
+            <div class="db-p1-status" id="db-p1-status" hidden></div>
+            <div class="db-p1-spotlight" id="db-p1-spotlight" hidden></div>
+            <div class="db-p1-grid-wrap" id="db-p1-grid-wrap">
+              <div class="db-p1-grid" id="db-p1-grid"></div>
+            </div>
+            <div class="db-p1-footer" id="db-p1-footer" hidden></div>
+            <div class="db-drawer" id="db-p1-drawer" hidden></div>
+          </section>
+        </div>
+
+        <div class="db-arrow-h" aria-hidden="true">→</div>
+
+        <div class="db-col-right">
+          <section class="db-panel db-panel-2" id="db-panel-2">
+            <header class="db-head">
+              <div class="db-title-row"><span class="db-num">②</span><h2 class="db-title">에이전트 파이프라인</h2></div>
+              <p class="db-sub">사진에서 뽑은 글자를 시간 순서와 관계로 잇고 묶어 기억 저장소에 넘깁니다</p>
+            </header>
+            <div class="db-p2-rows" id="db-p2-rows"></div>
+            <div class="db-p2-foot" id="db-p2-foot"></div>
+            <div class="db-popover" id="db-p2-popover" hidden></div>
+          </section>
+
+          <div class="db-arrow-v" aria-hidden="true">↓</div>
+
+          <section class="db-panel db-panel-3" id="db-panel-3">
+            <header class="db-head db-head-dark">
+              <div class="db-head-top">
+                <div class="db-title-row"><span class="db-num">③</span><h2 class="db-title">메모리 별자리</h2></div>
+                <div class="db-p3-stats" id="db-p3-stats"></div>
+              </div>
+              <p class="db-sub">Hindsight 기억 저장소 · 저장한 기억과 에이전트가 꺼낸 기억</p>
+            </header>
+            <div class="db-p3-stage" id="db-p3-stage">
+              <canvas id="db-p3-canvas" width="776" height="236"></canvas>
+              <div class="db-p3-tooltip" id="db-p3-tooltip" hidden></div>
+            </div>
+            <div class="db-p3-legend" id="db-p3-legend"></div>
+            <div class="db-p3-caption" id="db-p3-caption"></div>
+          </section>
+
+          <div class="db-gap-v" aria-hidden="true"></div>
+
+          <section class="db-panel db-panel-4" id="db-panel-4">
+            <header class="db-head">
+              <div class="db-title-row"><span class="db-num">④</span><h2 class="db-title">질문에 답하는 과정</h2></div>
+              <p class="db-sub">에이전트 루프 · AI 모델이 도구를 고르면 노트북 서버가 실행하고 결과를 돌려줍니다</p>
+            </header>
+            <div class="db-p4-tools" id="db-p4-tools"></div>
+            <div class="db-p4-log" id="db-p4-log"></div>
+            <div class="db-p4-foot" id="db-p4-foot"></div>
+            <div class="db-popover db-p4-calls" id="db-p4-calls" hidden></div>
+          </section>
+        </div>
+      </section>
+    </div>
+
+    <div class="demo-intro-overlay" id="demo-intro-overlay" hidden>
+      <div class="demo-intro-card">
+        <div class="demo-intro-kicker">찾으려는 질문</div>
+        <div class="demo-intro-query" id="demo-intro-query"></div>
+      </div>
+    </div>
+
+    <div class="demo-outro-overlay" id="demo-outro-overlay" hidden>
+      <div class="demo-outro-card" id="demo-outro-card"></div>
+    </div>
+  </div>
+</div>
+
+<script type="application/json" id="aidic-demo-data">/*__DATA__*/</script>
+<script>
+/*__RENDER_JS__*/
+</script>
+<script>
+/*__DEMO_JS__*/
+</script>
+</body>
+</html>

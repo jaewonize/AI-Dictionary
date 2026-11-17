@@ -505,7 +505,7 @@ flowchart LR
 - A, B, C: 시험 질의 세 개다. A는 덱 04장의 질의로, 전시를 보고 나서 간 카페의 사진을 찾는다. B는 '욕실 견적 중에 제일 싼 데랑 계약한 데 얼마 차이야?', C는 '견적서 버전별로 정리해줘'다.
 - A 단계와 문서 단계: A 단계는 A를 준비하고 완성하는 단계(할 일의 1, 2단계)다. 문서 단계는 3단계로, A가 통과한 뒤 문서를 색인에 넣고 B와 C를 붙인다.
 - A 다듬기: A가 통과한 뒤 골라서 붙이는 장면 보강 네 가지(가, 나, 다, 라)다. 하지 않아도 A는 완성이다.
-- 추가 아이디어: 문서 단계가 통과한 뒤 시간이 남는 만큼 붙이는 질의와 기능이다. 2부에서는 hindsight 채널, 현장 사진 올리기, 실시간 웹 검색, 진행 패널이 추가 아이디어다.
+- 추가 아이디어: 문서 단계가 통과한 뒤 시간이 남는 만큼 붙이는 질의와 기능이다. 2부에서는 현장 사진 올리기, 진행 패널이 추가 아이디어다. 실시간 웹 검색은 만들었다(app/websearch.py). Hindsight는 추가 아이디어가 아니라 맥락을 기억하고 저장하는 메모리로 동작한다. 사진 설명과 하루 타임라인을 은행에 넣어 두고, 에이전트 루프가 질문마다 기억 꺼내기 도구(recall_memory)로 꺼내고, 시간·순서 질문이면 기억 되짚기 도구(reflect_memory)로 은행 안의 AI 모델에게 맞는 사진과 근거를 정리하게 해, 후보 찾기와 사진 다시 보기에 쓴다.
 - 카드: A 화면에 차례로 나오는 일곱 장이다. 다녀온 날 카드는 4번('다녀온 날을 찾았어요'), 고른 이유 카드는 5번('그날 전시를 본 뒤에 찍은 카페 사진만 골랐어요')이다.
 - 정답 표와 정답 키: 정답 표는 폰 폴더에 함께 들어 있는 정답 목록이다. 정답 키는 팀이 채점용으로 만드는 eval/answer_key.json이다.
 - 할 일 N: 팀의 '본선 실행 계획' 문서에 있는 '제출까지 해야 할 일' 목록의 N번 일이다. 그 목록은 이 문서에 옮기지 않았다. '정한 것' 표도 같은 계획 문서에 있고, 팀이 정한 것을 모은 표다.
@@ -514,28 +514,29 @@ flowchart LR
 
 이 흐름은 1부의 그림 2(찾아내는 네 단계)와 그림 6(미리 해 두는 일)에 그렸다. 그림 2의 '미리 한 번' 묶음은 미리 한 번 돌리고, '질문할 때마다' 묶음은 질의마다 돈다. 덱 08장의 네 단계 가운데 미리 분석이 앞의 묶음이고, 단서 확보, 후보 추리기, 정밀 판단 세 단계가 뒤의 묶음이다. 서버는 색인에서 후보를 좁힌 뒤 상위 후보만 Claude가 다시 본다.
 
-A에 필요한 도구는 여섯 개다. 질의 정리, 웹 검색, 되묻기, 후보 찾기, 사진 다시 보기, 답 보이기다. 답 보이기는 찾은 답을 화면에 내는 도구라서 Claude가 마지막에 한 번 부른다. 문서 단계에서 문서 읽기와 계산 두 개를 더한다. 데이터에 캘린더 기록이 없어 일정을 찾는 도구는 만들지 않는다. 전시장 위치는 웹 결과를 캐시할 때 함께 적은 장소 좌표로 안다(할 일 2). 후보 찾기는 이 좌표에서 1km 안을 전시장 근처로 본다. 1km 안에는 전시장 밖에서 찍은 사진도 든다(A에서는 268m 떨어진 오전 카페 4장). 그래서 전시장 사진인지는 찍은 곳과 전시장 장면을 함께 보고 정한다. 좌표를 코드와 지시문에 적지 않는다.
+A에 필요한 도구는 여섯 개다. 기억 저장소의 주소와 은행이 있으면 기억 꺼내기(recall_memory)와 기억 되짚기(reflect_memory)를 더해 여덟 개로 돈다. 질의 정리, 웹 검색, 되묻기, 후보 찾기, 사진 다시 보기, 답 보이기다. 답 보이기는 찾은 답을 화면에 내는 도구라서 Claude가 마지막에 한 번 부른다. 문서 단계에서 문서 읽기와 계산 두 개를 더한다. 데이터에 캘린더 기록이 없어 일정을 찾는 도구는 만들지 않는다. 전시장 위치는 웹 결과를 캐시할 때 함께 적은 장소 좌표로 안다(할 일 2). 후보 찾기는 이 좌표에서 1km 안을 전시장 근처로 본다. 1km 안에는 전시장 밖에서 찍은 사진도 든다(A에서는 268m 떨어진 오전 카페 4장). 그래서 전시장 사진인지는 찍은 곳과 전시장 장면을 함께 보고 정한다. 좌표를 코드와 지시문에 적지 않는다.
 
 ### 구성 요소와 배치
 
 폰, 팀 노트북, Claude API가 맡는 일은 1부의 그림 1(전체 모습)과 그림 5(구성 요소)에 그렸다.
 
-폰은 화면만 맡는다. 폰에는 모델과 API 키가 없고, 케이블과 adb reverse로 노트북 서버에 붙는다. Claude API는 노트북에서만 부른다. 부르는 곳은 서버, 시험 실행기, 미리 돌리는 스크립트다. 행사장에서는 이 노트북 한 대로 시연한다.
+폰은 화면만 맡는다. 폰에는 모델과 API 키가 없고, 케이블과 adb reverse로 노트북 서버에 붙는다. Claude API는 노트북에서만 부른다. 부르는 곳은 서버, 시험 실행기, 미리 돌리는 스크립트다. 기억을 넣을 때와 되짚을 때는 노트북의 Hindsight 서버도 Claude API를 부른다. 행사장에서는 이 노트북 한 대로 시연한다.
 
 | 구성 요소 | 하는 일 | 기술 | 코드 |
 | --- | --- | --- | --- |
 | 채팅 화면 | 질의를 보내고, 서버가 보낸 카드, 되묻기 버튼, 결과, 연관 사진 버튼을 그린다. 판단은 하지 않는다 | HTML 한 페이지와 자바스크립트(빌드 없음), 덱 04장 CSS | `web/` |
 | 서버 | 질의마다 에이전트 루프를 돌리고 카드가 나오는 대로 폰에 보낸다. 화면용 사진 사본을 내주고 실행 기록을 남긴다 | Python 3.11, FastAPI, uvicorn | `app/main.py` |
 | 에이전트 루프 | Claude가 도구를 골라 부르면 서버가 실행하고 결과를 돌려준다. 되묻기에서 멈췄다가 답이 오면 같은 대화를 잇는다 | anthropic SDK, 직접 짠 루프 | `app/loop.py` |
-| 도구 | 아래 '도구' 소절의 여덟 개(A에 여섯, 문서 단계에 둘) | Python | `app/tools/` |
+| 도구 | 아래 '도구' 소절의 열 개(A에 여섯과 기억 꺼내기, 기억 되짚기, 문서 단계에 둘) | Python | `app/tools/` |
 | 웹 캐시 | 고유명사의 소개 한 줄과, 전시 같은 행사의 기간, 장소, 좌표, 출처 주소. 기본 설정(cache)에서 웹 검색 도구가 이것으로 답한다 | JSON 파일 | `data/web_cache.json` |
 | 색인 | 사진 261장과 문서 127건을 한 줄씩 담는다. 서버가 시작할 때 메모리에 올린다 | JSONL(한 줄에 JSON 하나) 파일 | `var/index.jsonl` |
 | 사진 사본 | 수집 때 만든다. 회전 정보대로 세우고 메타데이터를 모두 뺀 사본이다. Claude용은 원본 크기, 화면용은 긴 변 1280픽셀이고, 둘 다 JPEG(품질 90)다 | Pillow | `var/photos/model/`, `var/photos/screen/` |
-| 미리 돌리는 스크립트 | 수집(카탈로그와 사진 사본), 미리 분석, 문서 본문 뽑기, 색인 만들기 | Pillow, markitdown, anthropic SDK | `pipeline/` |
+| 미리 돌리는 스크립트 | 수집(카탈로그와 사진 사본), 미리 분석, 문서 본문 뽑기, 색인 만들기, 같은 자리와 같은 방문 묶기와 지명 붙이기(pipeline.places), 받은 사진 잇기(pipeline.link) | Pillow, markitdown, anthropic SDK | `pipeline/` |
+| 에이전트 파이프라인 | 미리 돌리는 일 가운데 사진에서 뽑은 글자를 시간 순서와 관계로 잇고 묶는 차례다. 같은 자리와 같은 방문 묶기와 지명 붙이기(pipeline.places), 받은 사진 잇기(pipeline.link, 지금은 돌리지 않는다), 하루 타임라인(eval.hindsight retain --kinds timeline). 결과는 색인과 Hindsight 기억에 들어간다. 수집, 사진 설명(미리 분석), 문서 본문 뽑기는 이 차례에 들지 않는다 | Python, anthropic SDK | `pipeline/places.py`, `pipeline/link.py`, `eval/hindsight.py` |
 | 시험 실행기 | 정답 키로 A, B, C를 명령줄에서 채점하고 실행 기록을 남긴다. 서버와 같은 루프를 쓴다 | Python | `eval/` |
 | 재생 페이지 만들기 | 통과한 실행(eval/passed/)을 서버 없이 보이는 html 파일 하나(var/replay.html)로 묶는다. 화면과 같은 그리기 코드를 쓴다 | Python | `replay/` |
-| Claude API | 에이전트 루프, 사진 설명, 사진 다시 보기, 설명에서 고르기, 문서 읽기, 실시간 웹 검색(추가 아이디어) | claude-opus-5-5 | 밖 |
-| hindsight 채널 | 추가 아이디어다. 팀이 포크해 둔 기억 저장소 서버를 두 번째 검색 경로로 붙인다 | 별도 프로세스 | 붙일 때 정한다 |
+| Claude API | 에이전트 루프, 사진 설명, 사진 다시 보기, 설명에서 고르기, 문서 읽기, 실시간 웹 검색 | claude-opus-5-5 | 밖 |
+| Hindsight 기억 저장소 | 맥락을 기억하고 저장하는 메모리로 동작한다. 사진 설명과 하루 타임라인을 기억으로 넣어 두고(eval.hindsight retain), 에이전트 루프가 질문마다 기억 꺼내기 도구(recall_memory)로 꺼내 쓰고, 시간·순서 질문이면 기억 되짚기 도구(reflect_memory)로 은행 안의 AI 모델에게 맞는 사진과 근거를 정리하게 한다. 꺼내기는 AI 모델을 부르지 않는다. 되짚기는 Hindsight 서버가 Claude API를 불러 비용이 들고, 따로 장부(var/hindsight_calls.jsonl)와 상한 25달러가 막는다 | 별도 프로세스(Hindsight 1.2.1, localhost:8888) | `app/hindsight.py`, `app/tools/memory.py`, `eval/hindsight.py` |
 
 코드 칸의 경로는 모두 workspace/ 안이다.
 
@@ -560,7 +561,7 @@ A에 필요한 도구는 여섯 개다. 질의 정리, 웹 검색, 되묻기, �
 
 1. 폰 화면이 `POST /api/ask`로 질의를 보낸다. 서버는 실행 번호(run_id)를 만들고 응답을 SSE로 연다. 실행은 한 번에 하나만 돈다.
 2. 서버는 지시문, 도구 목록, 첫 사용자 메시지(오늘 날짜와 질의)로 Claude를 부른다.
-3. Claude가 도구를 부르면 서버가 실행하고, 도구 입력과 결과로 카드를 만들어 바로 폰에 보낸다. 도구 결과는 같은 대화에 붙여 다시 Claude를 부른다. 카드는 도구 호출마다 한 장이 아니다. 어느 호출이 몇 번 카드가 되는지는 아래 '카드 만드는 규칙'을 따른다.
+3. Claude가 도구를 부르면 서버가 실행하고, 도구 입력과 결과로 카드를 만들어 바로 폰에 보낸다. 도구 결과는 같은 대화에 붙여 다시 Claude를 부른다. 카드는 도구 호출마다 한 장이 아니다. 어느 호출이 몇 번 카드가 되는지는 아래 '카드 만드는 규칙'을 따른다. 기억 꺼내기 도구가 붙은 실행이면 Claude는 웹 검색과 되묻기 뒤, 첫 후보 찾기 전에 기억을 꺼낸다. 서버는 꺼낸 기억을 도구 결과로 돌려주고 memory 이벤트를 보낸다. 시간·순서 질문이거나 꺼낸 기억으로 날짜나 대상을 정하지 못했으면 Claude는 이어서 기억 되짚기를 한 번 부른다. 서버는 Hindsight 은행 안의 AI 모델이 고른 사진과 근거를 도구 결과로 돌려주고 reflect 이벤트를 보낸다. 되짚기가 고른 사진은 후보이고, 후보 찾기나 사진 다시 보기로 확인한 사진만 답에 든다. 두 도구는 카드를 만들지 않는다.
 4. 되묻기가 불리면 서버는 선택지를 보내고 대화를 저장한 채 멈춘다. 폰에서 고르면 `POST /api/answer`로 오고, 서버가 같은 대화에 고른 답을 붙여 잇는다.
 5. Claude가 답 보이기를 부르면 서버가 결과와 연관 사진 버튼을 보낸다. Claude가 차례를 마치면 실행이 끝나고, 서버는 실행 기록을 `var/runs/`에 쓴다. 답 보이기 없이 차례를 마치면 'Claude 호출 규칙'대로 한 번 다시 부른다.
 
@@ -573,8 +574,10 @@ A에 필요한 도구는 여섯 개다. 질의 정리, 웹 검색, 되묻기, �
 | 도구(코드 이름) | 하는 일 | 받는 것 | 돌려주는 것 | 화면 |
 | --- | --- | --- | --- | --- |
 | 질의 정리(`plan_query`) | 질의를 찾는 것, 기준이 되는 일, 둘의 관계, 아는 것과 모르는 것으로 나눈다. 맨 먼저 부른다 | target, anchor, relation(before, after, same_day, none), known, unknown | 받은 값 그대로 | 찾을 내용을 정리했어요 |
-| 웹 검색(`search_web`) | 모르는 고유명사를 찾는다. AIDIC_WEB_SEARCH가 cache(기본)면 웹 캐시로만 답한다. 검색어에 캐시 항목의 별칭 하나가 들어 있으면 그 항목을 돌려주고, 대소문자와 띄어쓰기는 가리지 않는다. 맞는 항목이 없으면 found를 false로, events를 빈 목록으로 돌려준다. live(추가 아이디어)면 실제로 검색한다 | query | found, summary(고유명사 소개 한 줄), events(name, venue, start, end, status(past, upcoming), lat, lon, url), cached(캐시에서 왔는지) | 웹에서 찾아봤어요. 캐시면 미리 찾아 둔 결과라고 밝힌다 |
+| 웹 검색(`search_web`) | 모르는 고유명사를 찾는다. AIDIC_WEB_SEARCH가 cache(기본)면 웹 캐시로만 답한다. 검색어에 캐시 항목의 별칭 하나가 들어 있으면 그 항목을 돌려주고, 대소문자와 띄어쓰기는 가리지 않는다. 맞는 항목이 없으면 found를 false로, events를 빈 목록으로 돌려준다. live면 실제로 검색하고, 막히면 웹 캐시로 답한다 | query | found, summary(고유명사 소개 한 줄), events(name, venue, start, end, status(past, upcoming), lat, lon, url), cached(캐시에서 왔는지) | 웹에서 찾아봤어요. 캐시면 미리 찾아 둔 결과라고 밝힌다 |
 | 되묻기(`ask_user`) | 실제 후보가 둘 이상일 때 선택지를 보이고 멈춘다 | question, options(id, label, detail) | 사용자가 고른 id | 어느 전시였는지 알려주세요 |
+| 기억 꺼내기(`recall_memory`) | Hindsight 은행에서 질문과 관련된 기억(사진 설명, 하루 타임라인)을 순위대로 꺼낸다. 기억 저장소의 주소와 은행이 있을 때만 붙고, 한 질문에 두 번까지 부른다. AI 모델을 부르지 않는다 | query | ok, bank, count, shown, left_out, elapsed_ms, memories(rank, kind, id, date, time, text). 실패하면 ok false와 까닭 | 카드는 없다. memory 이벤트를 보낸다 |
+| 기억 되짚기(`reflect_memory`) | Hindsight 은행 안의 AI 모델이 기억을 되짚어 질문에 맞는 사진 id와 근거를 정리한다. 기억 저장소의 주소와 은행이 있을 때만 붙고, 시간·순서 질문이나 꺼낸 기억으로 날짜나 대상을 정하지 못했을 때 한 질문에 한 번 부른다. Hindsight 서버가 Claude API를 불러 비용이 들고, 따로 장부(var/hindsight_calls.jsonl)와 상한 25달러가 막는다 | query, known | ok, bank, count, shown, left_out, elapsed_ms, photos(id, date, time), reasoning. 실패하면 ok false와 까닭 | 카드는 없다. reflect 이벤트를 보낸다 |
 | 후보 찾기(`find_candidates`) | 색인에서 기간, 시각, 거리, 사진 속 글자, 장면 설명으로 후보를 좁힌다. 장면 설명으로 고를 때는 Claude를 한 번 부른다 | date_from, date_to, after, before, near(lat, lon, radius_m), text, about, kinds, limit, card, sentence. radius_m이 빠지면 서버가 1000(1km)으로 채운다. after와 before는 색인의 time과 같은 꼴로 초까지 받고, 그 시각에 찍은 사진은 넣지 않는다 | 조건에 맞는 수, 날짜별 장수(날짜마다 조건에 맞는 장수와 그날 전체 장수), 후보 목록(id, 초까지 적은 시각과 시각의 종류, 거리, 출처, 장면 요약). date_from과 date_to가 같은 날이면 그날 사진 전부의 id를 찍은 시각순으로 더한다. 찍은 곳별 사진 묶음은 A 다듬기의 가, 나, 다를 붙일 때만 더한다 | 다녀온 날 카드와 고른 이유 카드의 숫자, 연관 사진 버튼의 사진 |
 | 사진 다시 보기(`judge_photos`) | 상위 후보를 Claude가 이미지로 다시 본다. 8장씩 나눠 부른다 | ids(한 번에 48장까지. 서버가 확인한다), conditions, card, sentence | 사진마다 조건별 판정, 종합 판정(맞음, 같은 방문, 아님), 근거 한 줄, 읽은 글자 | 다녀온 날 카드와 고른 이유 카드의 근거 |
 | 답 보이기(`show_answer`) | 찾은 답을 화면에 낸다. 마지막에 한 번 부른다 | sentence, ids, related(label, ids). 문서 단계에서 groups(label, 버전 순서로 놓은 ids, latest_id)를 더해 C의 묶음과 최신판 표시를 담고, result 이벤트에도 같은 칸을 더한다 | 화면에 보였다는 확인 | N장 찾았어요, 연관된 사진을 보실래요?, B와 C의 답 카드 |
@@ -614,6 +617,7 @@ A에 필요한 도구는 여섯 개다. 질의 정리, 웹 검색, 되묻기, �
 | `POST /api/answer` | run_id, option_id | 같은 실행의 이어지는 SSE 이벤트. 그 run_id가 되묻기에서 기다리는 실행이 아니면 409 |
 | `GET /api/photo?id=` | 사진 id | 화면용 사본(JPEG). 색인에 있는 id만 내준다 |
 | `GET /api/health` | 없음 | 색인 줄 수, 모델, 웹 검색 방식 |
+| `GET /demo` | 없음 | 브라우저 데모 페이지(var/demo.html). 없으면 404 |
 
 화면은 fetch로 응답 본문을 이어 읽으며 빈 줄에서 이벤트를 나눈다. 이벤트 하나는 'data: '로 시작하는 JSON 한 줄과 빈 줄이다. JSON에는 type(아래 표의 이벤트 이름), run_id, seq(순번)와 그 이벤트의 필드를 담는다. 실행 기록과 재생 페이지도 이 JSON을 그대로 쓴다. 브라우저의 EventSource는 GET 요청만 보내므로 쓰지 않는다. 되묻기에서 기다리는 실행은 새 질의가 오면 버린다.
 
@@ -622,6 +626,8 @@ A에 필요한 도구는 여섯 개다. 질의 정리, 웹 검색, 되묻기, �
 | card | no, kind, title, sentence, evidence(photo_ids, read_text, date, from_count, to_count, cutoff), cached | 단계 카드 한 장. 같은 no가 다시 오면 그 카드를 바꾼다 |
 | ask | question, options | 선택지 버튼. 누르면 `POST /api/answer` |
 | result | sentence, items(id, badge, 시각 표시), related(label, items) | 결과 격자와 연관 사진 버튼 |
+| memory | n, query, bank, elapsed_ms, count, hits(rank, document_id, kind, source_id, text), error | 기억 꺼내기 도구가 끝날 때 보낸다. 채팅 화면은 그리지 않고, 브라우저 데모의 대시보드가 에이전트가 받은 기억으로 그린다 |
+| reflect | n, query, known, bank, elapsed_ms, count, photo_ids, left_out, reasoning, inner_calls, inner_queries, usage(bank, model, calls, input_tokens, output_tokens, cache_read_input_tokens, cost_usd, cost_known, ms, ok), error | 기억 되짚기 도구가 끝날 때 보낸다. usage는 요청을 보내지 않았으면 null이다. 채팅 화면은 그리지 않고, 브라우저 데모의 대시보드가 되짚기가 고른 사진과 근거로 그린다 |
 | progress | step, elapsed_ms, calls, tokens, cost_usd | 서버는 Claude 호출이나 도구 실행을 시작할 때 보낸다. 채팅 화면은 step만 써서 다음 카드가 올 때까지 진행 표시를 그리고, 모양은 할 일 7에서 정한다. 시간, 호출 수, 토큰, 비용은 화면에 그리지 않고 진행 패널(추가 아이디어)과 실행 기록에 쓴다 |
 | error | message | 오류 카드 |
 | done | status(answered, waiting, failed) | 입력창을 다시 연다 |
@@ -642,6 +648,11 @@ A에 필요한 도구는 여섯 개다. 질의 정리, 웹 검색, 되묻기, �
 | `eval/passed/*.json` | 시험 실행기(통과한 실행만) | 재생 페이지 만들기 | 함 | 시험마다 마지막으로 통과한 실행 기록 |
 | `data/blurred/` | 사람이 만든다(할 일 22) | 재생 페이지 만들기 | 함 | 관람객 얼굴을 흐린 전시장 사진 9장. 원본이 아니라 var/photos/screen/의 화면용 사본을 흐려 만든다. 그래서 메타데이터가 없고 IMG_0114도 바로 서 있다. 파일 이름은 원본과 같다. 데모 영상(할 일 23)은 이 사본을 쓰지 않으므로 얼굴을 영상에서 따로 흐린다 |
 | `var/replay.html` | 재생 페이지 만들기 | 사람(제출) | 안 함 | 재생 페이지. 제출할 때 이 파일만 따로 낸다 |
+| `data/places.json` | pipeline.places | build_index | 함 | 같은 자리 묶음과 사진마다 붙인 지명 |
+| `dashboard/hindsight/aidic-mobile.zip` | eval.hindsight export-bank | 브라우저 데모 만들기(demo.build) | 함 | 기억 저장소 aidic-mobile(사진 설명과 하루 타임라인)의 백업 |
+| `demo/recall/A.json` | eval.hindsight recall | 브라우저 데모 만들기(demo.build) | 함 | 화면 01의 질의로 aidic-mobile에서 따로 꺼낸 비교용 기억. 에이전트가 받은 기억은 실행 기록의 memory 이벤트에 있다 |
+| `var/demo.html` | demo.build | 서버의 GET /demo, 사람 | 안 함 | 브라우저 데모 페이지 |
+| `var/hindsight_calls.jsonl` | app.hindsight.reflect | reflect_spent_usd, 사람 | 안 함 | 기억 되짚기마다 Hindsight 사용량 집계로 잰 토큰과 비용 |
 
 id는 폰 폴더 안의 상대 경로를 /로 이은 것이다(예: DCIM/Camera/20231221_124018.jpg). Windows에서도 `Path.as_posix()`로 만든다. JSON과 JSONL 파일은 모두 `encoding='utf-8'`로 읽고 쓴다. 색인 한 줄의 필드는 다음과 같다.
 
@@ -663,8 +674,8 @@ id는 폰 폴더 안의 상대 경로를 /로 이은 것이다(예: DCIM/Camera/
 | 설명에서 고르기 | find_candidates 안 | low | 구조화 출력: 고른 id |
 | 사진 다시 보기 | judge_photos 안 | medium | 구조화 출력: 사진마다 판정 |
 | 문서 읽기 | read_documents 안 | medium | 구조화 출력: 문서마다 값 |
-| 실시간 웹 검색(추가 아이디어) | search_web 안, live일 때만 | low | 글과 출처 주소 |
-| 웹 결과 정리(추가 아이디어) | search_web 안, live일 때만 | low | 구조화 출력: 소개 한 줄과 행사 목록 |
+| 실시간 웹 검색(`search_web`) | search_web 안, live일 때만 | low | 글과 출처 주소 |
+| 웹 결과 정리(`search_web_extract`) | search_web 안, live일 때만 | low | 구조화 출력: 소개 한 줄과 행사 목록 |
 
 - 모든 호출은 `claude-opus-5-5`로 하고 effort를 `output_config.effort`에 꼭 적는다. 이 모델은 적지 않으면 medium이다. 생각(thinking)은 이 모델에서 끌 수 없으므로 thinking 칸은 보내지 않는다.
 - 모든 호출은 `client.beta.messages`(create와 parse)로 하고, 호출마다 betas에 server-side-fallback-2026-07-01을, fallbacks에 "default"를 넣는다. 거절(stop_reason이 refusal)되면 서버 쪽에서 대체 모델이 다시 답하게 하는 베타 설정이라 beta 쪽으로 불러야 붙는다. 대체 모델이 답했는지는 응답의 model과 usage.iterations의 fallback_message로 보고, 둘 다 실행 기록에 남긴다. 대체 모델은 claude-opus-5나 claude-opus-4-8이고(추정), claude-opus-5-5의 생각 블록을 받지 못한다. 한 번 대체된 대화는 약 1시간 동안 대체 모델이 받으므로, 시험을 다시 돌릴 때도 실행 기록의 model을 본다.
@@ -681,14 +692,16 @@ id는 폰 폴더 안의 상대 경로를 /로 이은 것이다(예: DCIM/Camera/
 - 사진 다시 보기는 8장씩 나눠 부른다. 8장 호출 하나의 입력은 사진 크기에 따라 약 1만 7천에서 3만 3천 토큰이다(추정). 동시에 부르는 수는 `app/claude.py`에 두고, 할 일 2에서 확인한 분당 입력 토큰 한도 안에서 정한다.
 - 요청 하나의 시간 제한은 SDK 기본값이 10분이다. 시간 초과도 다시 보내므로 한 호출이 약 30분 걸릴 수 있고, 그동안 서버는 새 질의를 받지 못한다. 그래서 timeout과 max_retries는 `app/claude.py`에 두고 시연용 값을 따로 정한다. SDK는 408, 409, 429, 5xx, 연결 오류, 시간 초과를 max_retries만큼 다시 보낸다(기본값은 두 번). 그래도 실패하거나 결제나 지출 한도 오류가 오면 그 실행을 실패로 끝내고 오류 카드를 보인다. 실패를 빈 결과로 바꾸지 않는다. 시연 중에 실패하면 발표자가 재생 페이지 파일을 열어 이어 간다. 화면 코드는 재생 페이지로 스스로 넘어가지 않는다.
 - 호출마다 usage의 input_tokens, cache_read_input_tokens, output_tokens와 usage.cache_creation의 ephemeral_5m_input_tokens, ephemeral_1h_input_tokens를 실행 기록에 남기고 비용을 계산한다. 캐시 쓰기는 5분짜리와 1시간짜리의 가격이 달라 합계(cache_creation_input_tokens)만으로는 값을 매길 수 없다. 대체 모델이 답한 호출은 맨 위 usage가 답을 낸 시도만 담으므로, 비용은 usage.iterations의 시도별 토큰으로 계산하고 대체 모델이 돌린 시도에는 그 모델의 가격을 쓴다. claude-opus-5-5는 100만 토큰당 입력 4달러, 출력 20달러, 캐시 쓰기 5달러(5분)와 8달러(1시간), 캐시 읽기 0.2달러다. claude-opus-5와 claude-opus-4-8은 입력 5달러, 출력 25달러다. 가격표는 `app/claude.py` 한 곳에 둔다.
-- 실시간 웹 검색은 추가 아이디어라 기본 설정(cache)에서는 부르지 않는다. 붙일 때는 도구 web_search_20260209를 준 요청으로 글과 출처 주소를 받는다. 이 결과에는 인용이 붙어 구조화 출력과 함께 쓸 수 없다. 그래서 그 글만 넣고 웹 검색 도구는 주지 않은 두 번째 요청에서, 구조화 출력으로 소개 한 줄과 행사 목록(이름, 장소, 시작일, 끝일, 출처 주소)을 받는다. 지난 것인지 예정인지는 서버가 오늘 날짜로 정하고, 위도와 경도는 웹 캐시의 장소 좌표에서 장소 이름으로 찾아 붙인다. 찾지 못한 행사는 좌표를 비워 두고 전시장 확인에 쓰지 않는다. 루프 지시문에는 빈 좌표를 기억으로 채우지 말라고 적는다. 그래서 search_web은 cache일 때와 같은 모양으로 돌려주고, 루프에는 인용 정보(citations)가 가지 않는다. API 버전 2026-10-21에서는 사용자 메시지 안의 인용이 400이다. 첫 요청에 pause_turn이 오면 받은 응답을 붙여 다시 보낸다(3회까지). 검색이 한 번도 돌지 않았으면(usage.server_tool_use.web_search_requests가 0) 실패로 본다. 검색 수도 실행 기록에 남기고 1,000회당 10달러를 비용에 더한다.
+- 실시간 웹 검색(`app/websearch.py`)은 기본 설정(cache)에서는 부르지 않고 `AIDIC_WEB_SEARCH`가 `live`일 때만 부른다. 먼저 `웹을 검색하는 중이에요` 진행 문구를 보내고, 도구 web_search_20260209를 준 첫 요청(`search_web`)으로 글과 출처 주소를 받는다. 이 결과에는 인용이 붙어 구조화 출력과 함께 쓸 수 없다. 그래서 `검색 결과를 정리하는 중이에요` 진행 문구를 보낸 뒤, 모은 글만 넣고 웹 검색 도구는 주지 않은 두 번째 요청(`search_web_extract`)에서 구조화 출력으로 소개 한 줄과 행사 목록(이름, 장소, 시작일, 끝일, 출처 주소)을 받는다. 지난 것인지 예정인지는 서버가 오늘 날짜로 정하고, 위도와 경도는 웹 캐시의 장소 좌표에서 장소 이름으로 찾아 붙인다. 찾지 못한 행사는 좌표를 비워 두고 전시장 확인에 쓰지 않는다. 루프 지시문에는 빈 좌표를 기억으로 채우지 말라고 적는다. 그래서 search_web은 cache일 때와 같은 모양(`cached`만 false)으로 돌려주고, 막히면 웹 캐시로 답하며, 루프에는 인용 정보(citations)가 가지 않는다. API 버전 2026-10-21에서는 사용자 메시지 안의 인용이 400이다. 첫 요청에 pause_turn이 오면 받은 응답을 붙여 다시 보낸다(3회까지). 검색이 한 번도 돌지 않았으면(usage.server_tool_use.web_search_requests가 0) 실패로 본다. 검색 수도 실행 기록에 남기고 1,000회당 10달러를 비용에 더한다.
 
 ### 밖으로 나가는 것
 
 | 가는 곳 | 나가는 것 | 나가지 않는 것 |
 | --- | --- | --- |
 | Claude API | 메타데이터를 뺀 사진 사본, 문서 본문, 질의와 대화, 도구 결과 | 원본 파일과 그 메타데이터, 정답 표 |
-| 실시간 웹 검색(추가 아이디어를 붙였을 때) | 모르는 고유명사 검색어 | 사진과 문서의 내용 |
+| 실시간 웹 검색(AIDIC_WEB_SEARCH가 live일 때) | 모르는 고유명사 검색어 | 사진과 문서의 내용 |
+| Hindsight 서버(기억 넣기) | 사진 설명, 사진 속 글자, 지명, 찍은 시각, 하루 타임라인 글. Hindsight 서버가 Claude API로 보낸다 | 사진 사본, 좌표, 받은·저장한·내려받은 시각 |
+| Hindsight 서버(기억 되짚기) | 질문, 앞선 결과로 확인한 것, 은행의 기억(사진 설명, 사진 속 글자, 지명, 찍은 시각, 하루 타임라인 글). Hindsight 서버가 Claude API로 보낸다 | 사진 사본, 좌표, 받은·저장한·내려받은 시각 |
 | 제출물 | 데모 영상, 소개자료, 재생 페이지(var/replay.html. 관람객 얼굴을 흐린 사진), 소스코드 압축본(workspace/, docs/, AGENTS.md) | .env와 키, var/의 다른 생성물, 폰 폴더 |
 
 소스코드 압축본에 폰 폴더를 넣지 않는 것은 전시장 사진 9장에 관람객 얼굴이 그대로 있어서다('정한 것' 표).
@@ -698,13 +711,14 @@ id는 폰 폴더 안의 상대 경로를 /로 이은 것이다(예: DCIM/Camera/
 ```text
 workspace/
   pyproject.toml  uv.lock  .python-version  env.example  .gitignore
-  app/        서버: __main__.py, main.py, loop.py, claude.py, index.py, events.py, tools/, prompts/
-  pipeline/   미리 돌리는 스크립트: collect.py, describe.py, extract_docs.py, build_index.py
+  app/        서버: __main__.py, main.py, loop.py, claude.py, index.py, events.py, websearch.py, hindsight.py, tools/(memory.py 포함), prompts/(loop-v2.md 포함)
+  pipeline/   미리 돌리는 스크립트: collect.py, describe.py, places.py, link.py, extract_docs.py, build_index.py
   web/        화면: index.html, app.css, render.js, live.js
-  eval/       시험: run.py, answer_key.json, passed/
+  eval/       시험: run.py, hindsight.py, accept.py, answer_key.json, passed/
   replay/     재생 페이지: build.py, template.html
-  data/       커밋하는 데이터: descriptions.jsonl, web_cache.json, blurred/
-  var/        커밋하지 않는 생성물: catalog.jsonl, docs.jsonl, index.jsonl, photos/, runs/, replay.html
+  demo/       브라우저 데모 페이지 만들기: build.py, export_bank.py, 화면 코드, runs/, scenes/, recall/
+  data/       커밋하는 데이터: descriptions.jsonl, places.json, web_cache.json, blurred/
+  var/        커밋하지 않는 생성물: catalog.jsonl, docs.jsonl, index.jsonl, photos/, runs/, replay.html, demo.html
   tests/      pytest 단위 시험. A 전용 낱말 검사(test_no_scenario_words.py)도 여기 있다
 ```
 
@@ -727,6 +741,13 @@ workspace/
 | 단위 시험 | `uv run pytest -q`. pytest는 pyproject.toml의 `[dependency-groups]` dev에 넣어 `uv sync`가 함께 깐다 |
 | A 전용 낱말 검사 | `uv run pytest -q tests/test_no_scenario_words.py`. 단위 시험에도 들어 있다 |
 | 재생 페이지 | `uv run python -m replay.build`. var/replay.html을 만든다 |
+| 브라우저 데모 페이지 | `uv run python -m demo.build`. var/demo.html을 만든다 |
+| 지명 붙이기 | `uv run python -m pipeline.places --geonames <지명 파일>`. data/places.json을 만든다 |
+| 사진 기억 넣기 | `uv run python -m eval.hindsight retain`. Hindsight 서버가 AI 모델을 불러 비용이 든다 |
+| 하루 타임라인 넣기 | `uv run python -m eval.hindsight retain --kinds timeline` |
+| 기억 저장소 백업 | `uv run python -m eval.hindsight export-bank --out <zip>` |
+| 비교용 기억 꺼내기 | `uv run python -m eval.hindsight recall --run <실행 기록> --out <파일>`. AI 모델을 부르지 않는다 |
+| 수용표 검사 | `AIDIC_HINDSIGHT_BANK=<은행> uv run python -m eval.accept <시험> --run <실행 기록>`. 기록으로 보는 일곱 줄을 맞춰 보고, `--save`를 주면 모두 맞을 때만 eval/passed/에 쓴다 |
 
 환경 변수는 workspace/.env에 적는다. 이 파일은 사람이 env.example을 복사해 만든다.
 
@@ -736,7 +757,9 @@ workspace/
 | `AIDIC_PHONE_DIR` | ../Mobile Storage | 폰 폴더 경로 |
 | `AIDIC_MODEL` | claude-opus-5-5 | 모든 호출의 모델 |
 | `AIDIC_PORT` | 8000 | 서버 포트 |
-| `AIDIC_WEB_SEARCH` | cache | cache면 웹 캐시로만 답한다. live는 추가 아이디어라 할 일 9에서는 만들지 않는다. 붙이는 방법은 'Claude 호출 규칙'의 실시간 웹 검색 항목에 있다 |
+| `AIDIC_WEB_SEARCH` | cache | cache면 웹 캐시로만 답한다. live면 실제로 검색하고, 막히면 웹 캐시로 답한다 |
+| `AIDIC_HINDSIGHT_URL` | http://localhost:8888 | Hindsight 서버 주소. 은행과 함께 주면 에이전트 루프에 기억 꺼내기와 되짚기 도구가 붙는다. eval.hindsight 명령도 쓴다 |
+| `AIDIC_HINDSIGHT_BANK` | aidic-mobile | 기억 은행 이름. 둘 가운데 하나라도 비면 루프는 도구 여섯 개와 지시문 loop-v1로 돈다 |
 
 저장소의 Claude Code 보호 훅이 .env 경로를 쓰는 명령을 읽기와 복사까지 막으므로, 에이전트는 이 파일을 만들거나 열지 않는다. 코드는 python-dotenv로 읽고, 실행 명령에는 .env 경로를 쓰지 않는다. .env는 커밋하지 않는다. 예시 파일 이름이 .env.example이 아니라 env.example인 것은 저장소의 .gitignore와 커밋 훅이 .env로 시작하는 파일을 모두 막기 때문이다.
 

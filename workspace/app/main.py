@@ -21,6 +21,7 @@ from app.config import WS, settings
 from app.events import sse
 
 WEB_DIR = WS / "web"
+DEMO_PAGE = settings.var_dir / "demo.html"
 
 app = FastAPI(title="AI ( ) Dictionary", docs_url=None, redoc_url=None, openapi_url=None)
 app.mount("/web", StaticFiles(directory=WEB_DIR), name="web")
@@ -82,6 +83,13 @@ def _stream(work: Callable[[Callable[[dict], None]], loop.RunState]) -> Streamin
 @app.get("/")
 def home() -> FileResponse:
     return FileResponse(WEB_DIR / "index.html", headers={"Cache-Control": "no-cache"})
+
+
+@app.get("/demo")
+def demo() -> FileResponse:
+    if not DEMO_PAGE.is_file():
+        raise HTTPException(404, "데모 페이지가 없다. 먼저 uv run python -m demo.build 를 돌린다")
+    return FileResponse(DEMO_PAGE, media_type="text/html", headers={"Cache-Control": "no-cache"})
 
 
 @app.post("/api/ask")

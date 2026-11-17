@@ -1,10 +1,13 @@
-"""Hindsight 채널 적재·검색·채점 실행기(docs/ARCHITECTURE.md '추가 아이디어: hindsight 채널').
+"""Hindsight 채널 적재·검색·채점 실행기(docs/ARCHITECTURE.md '구성 요소와 배치'의 Hindsight 기억 저장소).
 
-색인(settings.index)의 사진 기억을 Hindsight 은행(settings.hindsight_bank)에 적재하고,
+색인(settings.index)의 사진 기억과 하루 타임라인을 Hindsight 은행(settings.hindsight_bank)에 적재하고,
 정답 키(settings.answer_key)의 같은 질의로 recall(상위 10장)과 reflect를 돌려 기본 색인 경로와 비교한다.
 
   uv run python -m eval.hindsight retain --limit 10 --batch 10 --verify-recall
   uv run python -m eval.hindsight retain --batch 10
+  uv run python -m eval.hindsight retain --kinds timeline
+  uv run python -m eval.hindsight export-bank --out dashboard/hindsight/aidic-mobile.zip
+  uv run python -m eval.hindsight recall --run eval/passed/A.json --out demo/recall/A.json
   uv run python -m eval.hindsight eval
 """
 
@@ -111,6 +114,48 @@ def make_photo_memory_item(row: dict) -> dict:
     if when:
         item["timestamp"] = when
     return item
+
+
+def _timeline_first_sentence(s: str, n: int = 70) -> str:
+    s = " ".join((s or "").splitlines()).strip().split(". ")[0].split("다. ")[0]
+    return s if len(s) <= n else s[: n - 1] + "…"
+
+
+def make_timeline_memory_items(photo_rows: list[dict]) -> list[dict]:
+    """시각 기준이 taken 이나 filename 인 사진을 날짜별로 묶어 하루 타임라인 기억 항목을 만든다."""
+    by_date: dict[str, list[dict]] = {}
+    for r in photo_rows:
+        if r.get("time") and r.get("time_basis") in ("taken", "filename"):
+            by_date.setdefault(r["time"][:10], []).append(r)
+
+    items: list[dict] = []
+    wd = "월화수목금토일"
+    for date_s, rs in sorted(by_date.items()):
+        rs.sort(key=lambda r: (r["time"], r["id"]))
+        dt = datetime.fromisoformat(rs[0]["time"])
+        head = f"[하루 타임라인] {dt.year}년 {dt.month}월 {dt.day}일({wd[dt.weekday()]})에 찍은 사진 {len(rs)}장을 찍은 시각 순서로 적었다."
+        lines = [head]
+        for r in rs:
+            pl = idx_mod.place_label(r)
+            badge = r.get("badge") or r.get("source") or ""
+            parts = [r["time"][11:16], r.get("place") or ""]
+            if pl:
+                parts.append(pl)
+            parts.extend([f"출처 {badge}", f"사진 id {r['id']}", _timeline_first_sentence(r.get("scene") or "")])
+            line = "- " + " · ".join(parts)
+            txt = " ".join((r.get("text_in_photo") or "").split())
+            if txt:
+                line += f" · 사진 속 글자: {txt[:60]}"
+            lines.append(line)
+        items.append({
+            "content": "\n".join(lines),
+            "timestamp": rs[0]["time"],
+            "context": "하루 동안 찍은 사진의 시간 순서 기록",
+            "document_id": f"timeline:{date_s}",
+            "metadata": {"kind": "timeline", "date": date_s},
+            "tags": ["timeline"],
+        })
+    return items
 
 
 def assert_no_secret_leak(items: list[dict], photo_rows: list[dict]) -> None:
@@ -343,9 +388,22 @@ def _server_info(url: str) -> dict:
 def cmd_retain(args: argparse.Namespace) -> int:
     url, bank = _hs_base()
     photo_rows = load_photo_rows()
-    target_rows = photo_rows[: args.limit] if args.limit > 0 else photo_rows
-    all_target_items = [make_photo_memory_item(r) for r in target_rows]
+    kinds = getattr(args, "kinds", "photo") or "photo"
+    if kinds == "photo":
+        target_rows = photo_rows[: args.limit] if args.limit > 0 else photo_rows
+        all_target_items = [make_photo_memory_item(r) for r in target_rows]
+    elif kinds == "timeline":
+        target_rows = []
+        tl_items = make_timeline_memory_items(photo_rows)
+        all_target_items = tl_items[: args.limit] if args.limit > 0 else tl_items
+    elif kinds == "all":
+        target_rows = photo_rows[: args.limit] if args.limit > 0 else photo_rows
+        combined = [make_photo_memory_item(r) for r in photo_rows] + make_timeline_memory_items(photo_rows)
+        all_target_items = combined[: args.limit] if args.limit > 0 else combined
+    else:
+        sys.exit(f"알 수 없는 --kinds 값: {kinds}")
     assert_no_secret_leak(all_target_items, photo_rows)
+    target_doc_ids = {it["document_id"] for it in all_target_items}
 
     srv = _server_info(url)
     have = existing_docs(url, bank)
@@ -378,12 +436,12 @@ def cmd_retain(args: argparse.Namespace) -> int:
         all_errors.extend(errs)
 
         docs_now = existing_docs(url, bank)
-        photo_docs_n = sum(1 for d in docs_now if d.startswith("photo:"))
+        done_docs_n = len(target_doc_ids & docs_now)
         st_now = bank_stats(url, bank)
         u_ret = bank_llm_usage(url, bank, operation="retain")
         u_all = bank_llm_usage(url, bank)
         print(
-            f"  [{bi}/{len(batches)}] 적재 문서 {photo_docs_n}/{len(all_target_items)}장 "
+            f"  [{bi}/{len(batches)}] 적재 문서 {done_docs_n}/{len(all_target_items)}장 "
             f"(전체 은행 {len(docs_now)}건, 실패 작업 {total_batch_fail}) "
             f"· 추출 사실 {st_now.get('total_nodes', 0)}개 "
             f"· retain LLM {u_ret['calls']}회(오류 {u_ret['errors']}) "
@@ -393,8 +451,7 @@ def cmd_retain(args: argparse.Namespace) -> int:
         )
 
     docs_final = existing_docs(url, bank)
-    photo_docs_final = sum(1 for d in docs_final if d.startswith("photo:"))
-    target_doc_ids = {it["document_id"] for it in all_target_items}
+    done_docs_final = len(target_doc_ids & docs_final)
     missing_docs = sorted(target_doc_ids - docs_final)
     st_final = bank_stats(url, bank)
     u_retain = bank_llm_usage(url, bank, operation="retain")
@@ -434,13 +491,13 @@ def cmd_retain(args: argparse.Namespace) -> int:
         "url": url,
         "total_index_photos": len(photo_rows),
         "target_photos": len(all_target_items),
-        "inserted_memories": photo_docs_final,
+        "inserted_memories": done_docs_final,
         "failed_count": len(missing_docs) + int(st_final.get("failed_operations") or 0),
         "batch_failures": total_batch_fail,
         "missing_documents": missing_docs,
         "errors": all_errors,
         "stats": {
-            "total_documents": int(st_final.get("total_documents") or photo_docs_final),
+            "total_documents": int(st_final.get("total_documents") or done_docs_final),
             "total_nodes": int(st_final.get("total_nodes") or 0),
             "total_links": int(st_final.get("total_links") or 0),
             "total_observations": int(st_final.get("total_observations") or 0),
@@ -461,7 +518,7 @@ def cmd_retain(args: argparse.Namespace) -> int:
         pilot_path.write_text(json.dumps(retain_doc, ensure_ascii=False, indent=1), encoding="utf-8")
 
     print(
-        f"[retain 완료] 적재 {photo_docs_final}/{len(all_target_items)}장 · 미적재 {len(missing_docs)}건 "
+        f"[retain 완료] 적재 {done_docs_final}/{len(all_target_items)}장 · 미적재 {len(missing_docs)}건 "
         f"· 사실 {retain_doc['stats']['total_nodes']}개 · LLM {u_retain['calls']}회 "
         f"· retain 비용 ${u_retain['cost_usd']:.4f} -> {out_path}",
         flush=True,
@@ -990,15 +1047,118 @@ def cmd_status(_args: argparse.Namespace) -> int:
     return 0
 
 
+EXPORT_POLL_S = 2.0
+
+
+def cmd_export_bank(args: argparse.Namespace) -> int:
+    url, bank = _hs_base()
+    out_path = Path(args.out)
+    try:
+        with httpx.Client(base_url=url, timeout=httpx.Timeout(600.0, connect=10.0)) as c:
+            r = c.post(f"/v1/default/banks/{bank}/transfer/export")
+            if r.status_code >= 400:
+                print(f"export 요청 실패 ({r.status_code}): {r.text[:300]}", file=sys.stderr)
+                return 1
+            res = r.json() if r.content else {}
+            op_id = res.get("operation_id")
+            if not op_id:
+                print("export 응답에 operation_id 가 없다.", file=sys.stderr)
+                return 1
+
+            t0 = time.time()
+            st: dict = {}
+            while True:
+                r_op = c.get(f"/v1/default/banks/{bank}/operations/{op_id}")
+                if r_op.status_code == 404:
+                    print("not_found", file=sys.stderr)
+                    return 1
+                if r_op.status_code >= 400:
+                    print(f"operation 조회 실패 ({r_op.status_code})", file=sys.stderr)
+                    return 1
+                st = r_op.json() if r_op.content else {}
+                s = (st.get("status") or "").lower()
+                if s == "completed":
+                    break
+                if s in ("failed", "cancelled", "not_found"):
+                    print(str(st.get("error_message") or s), file=sys.stderr)
+                    return 1
+                if time.time() - t0 > 600.0:
+                    print(f"export 시간 초과 (status={s})", file=sys.stderr)
+                    return 1
+                time.sleep(EXPORT_POLL_S)
+
+            meta = st.get("result_metadata") or {}
+            dl_url = (meta.get("download_url") or "").strip()
+            if not dl_url:
+                print("result_metadata.download_url 이 없다.", file=sys.stderr)
+                return 1
+            r_dl = c.get(dl_url)
+            if r_dl.status_code >= 400:
+                print(f"zip 내려받기 실패 ({r_dl.status_code})", file=sys.stderr)
+                return 1
+            data = r_dl.content
+    except Exception as e:
+        print(f"export 실패 ({type(e).__name__}): {e}", file=sys.stderr)
+        return 1
+
+    if not data.startswith(b"PK"):
+        print("내려받은 바이트가 zip(PK) 형식이 아니다.", file=sys.stderr)
+        return 1
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_bytes(data)
+    print(f"[export-bank 완료] 은행={bank} · {len(data)} bytes -> {out_path}", flush=True)
+    return 0
+
+
+def cmd_recall(args: argparse.Namespace) -> int:
+    from app import hindsight as app_hs
+
+    run_path = Path(args.run)
+    if not run_path.is_file():
+        print(f"실행 기록 파일이 없다: {run_path}", file=sys.stderr)
+        return 1
+    run_doc = json.loads(run_path.read_text(encoding="utf-8"))
+    query = str(run_doc.get("query") or "")
+    try:
+        res = app_hs.recall(query)
+    except app_hs.RecallUnavailable as e:
+        print(str(e), file=sys.stderr)
+        return 1
+
+    out_doc = {**res, "run": run_path.stem}
+    out_path = Path(args.out)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(out_doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+
+    hits = res.get("hits") or []
+    photos_n = len({h["source_id"] for h in hits if h.get("kind") == "photo" and h.get("source_id")})
+    timelines_n = len({h["source_id"] for h in hits if h.get("kind") == "timeline" and h.get("source_id")})
+    sec = (res.get("elapsed_ms") or 0) / 1000
+    print(
+        f"[recall] 은행={res['bank']} · 꺼낸 기억 {len(hits)}개 · 사진 {photos_n}장 · 하루 타임라인 {timelines_n}개 · {sec:.1f}초 -> {out_path}",
+        flush=True,
+    )
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Hindsight 채널 적재·검색·채점 실행기")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
-    p_ret = sub.add_parser("retain", help="사진 기억을 Hindsight 은행에 적재")
+    p_ret = sub.add_parser("retain", help="사진·타임라인 기억을 Hindsight 은행에 적재")
+    p_ret.add_argument("--kinds", choices=["photo", "timeline", "all"], default="photo", help="적재 종류(기본 photo)")
     p_ret.add_argument("--limit", type=int, default=0, help="앞에서부터 넣을 사진 수(0이면 전체)")
     p_ret.add_argument("--batch", type=int, default=10, help="배치당 사진 수(기본 10)")
     p_ret.add_argument("--verify-recall", action="store_true", help="적재 후 recall 동작 확인")
     p_ret.add_argument("--stage-cap-usd", type=float, default=19.5, help="이 단계 최대 허용 비용(기본 $19.5)")
+
+    p_exp = sub.add_parser("export-bank", help="Hindsight 은행을 zip 백업으로 내보내기")
+    p_exp.add_argument("--out", required=True, help="저장할 zip 경로")
+
+    p_rec = sub.add_parser("recall", help="실행 기록의 질의로 기억을 한 번 꺼내 파일로 저장")
+    p_rec.add_argument("--run", required=True, help="실행 기록 JSON 경로")
+    p_rec.add_argument("--out", required=True, help="저장할 JSON 경로")
 
     p_ev = sub.add_parser("eval", help="정답 키 질의로 recall·reflect 채점 및 비교")
     p_ev.add_argument("targets", nargs="*", default=["all"], help="돌릴 질의 id 목록(기본 all)")
@@ -1013,6 +1173,10 @@ def main() -> int:
     args = ap.parse_args()
     if args.cmd == "retain":
         return cmd_retain(args)
+    if args.cmd == "export-bank":
+        return cmd_export_bank(args)
+    if args.cmd == "recall":
+        return cmd_recall(args)
     if args.cmd == "eval":
         return cmd_eval(args)
     if args.cmd == "reconcile":

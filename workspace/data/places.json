@@ -1,0 +1,5701 @@
+{
+ "prompt_version": "places-v1",
+ "model": "claude-opus-5-5",
+ "groups": [
+  {
+   "group": "G01",
+   "photos": 34,
+   "days": [
+    "2022-03-19",
+    "2022-10-16",
+    "2022-12-24",
+    "2023-06-10",
+    "2023-07-15",
+    "2023-08-12",
+    "2023-08-27",
+    "2023-09-30",
+    "2023-12-09",
+    "2023-12-16",
+    "2023-12-23",
+    "2024-01-13",
+    "2024-07-13"
+   ],
+   "spread_m": 201,
+   "lat": 37.55608,
+   "lon": 126.9051,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Mangwŏn-dong",
+      "kind": "PPL",
+      "m": 215
+     },
+     {
+      "name": "Mangwŏnil-tong",
+      "kind": "PPL",
+      "m": 585
+     },
+     {
+      "name": "Sŏngsanil-tong",
+      "kind": "PPL",
+      "m": 857
+     },
+     {
+      "name": "Hapjeong-dong",
+      "kind": "PPL",
+      "m": 1034
+     },
+     {
+      "name": "Sŏgyo-dong",
+      "kind": "PPL",
+      "m": 1043
+     },
+     {
+      "name": "Segyo-dong",
+      "kind": "PPLX",
+      "m": 1223
+     }
+    ],
+    "districts": [
+     {
+      "name": "Seongsan-dong",
+      "kind": "ADM3",
+      "m": 627
+     },
+     {
+      "name": "Mangwon-dong",
+      "kind": "ADM3",
+      "m": 843
+     },
+     {
+      "name": "Mangwon-dong",
+      "kind": "ADM3",
+      "m": 922
+     }
+    ],
+    "spots": [
+     {
+      "name": "Sŏultonggyo-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 332
+     },
+     {
+      "name": "Hapjeonggyunhyeongbaljeonchokjinjigu",
+      "kind": "AREA",
+      "m": 589
+     },
+     {
+      "name": "Sŏulsŏngsan-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 614
+     },
+     {
+      "name": "Sŏulmangwŏn-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 633
+     },
+     {
+      "name": "Sŏulsŏngsŏ-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 743
+     },
+     {
+      "name": "Mapogucheong",
+      "kind": "RSTN",
+      "m": 794
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": "",
+   "note": "망원동이 215m로 가장 가깝고, 600m 안에는 학교 외에 위치를 설명할 만한 명소가 없습니다."
+  },
+  {
+   "group": "G02",
+   "photos": 6,
+   "days": [
+    "2022-11-05",
+    "2024-10-12"
+   ],
+   "spread_m": 0,
+   "lat": 37.5444,
+   "lon": 127.0374,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Sŏngsuilgail-tong",
+      "kind": "PPL",
+      "m": 529
+     },
+     {
+      "name": "Sŏngsuilgai-dong",
+      "kind": "PPL",
+      "m": 618
+     },
+     {
+      "name": "Ttukseom",
+      "kind": "PPL",
+      "m": 663
+     },
+     {
+      "name": "Haengdong",
+      "kind": "PPLX",
+      "m": 719
+     },
+     {
+      "name": "Ŭngbong-dong",
+      "kind": "PPL",
+      "m": 729
+     },
+     {
+      "name": "Kŭmhosaga-dong",
+      "kind": "PPL",
+      "m": 1296
+     }
+    ],
+    "districts": [
+     {
+      "name": "Seongsu-dong",
+      "kind": "ADM3",
+      "m": 550
+     },
+     {
+      "name": "Eungbong-dong",
+      "kind": "ADM3",
+      "m": 574
+     },
+     {
+      "name": "Seongsu-dong",
+      "kind": "ADM3",
+      "m": 784
+     }
+    ],
+    "spots": [
+     {
+      "name": "Seoul Forest",
+      "kind": "PRK",
+      "m": 362
+     },
+     {
+      "name": "Seongsu-junghakgyo",
+      "kind": "SCH",
+      "m": 388
+     },
+     {
+      "name": "Yongbigyo",
+      "kind": "BDG",
+      "m": 562
+     },
+     {
+      "name": "Eungbonggyo",
+      "kind": "BDG",
+      "m": 581
+     },
+     {
+      "name": "Yusu-ji",
+      "kind": "PND",
+      "m": 652
+     },
+     {
+      "name": "Eungbongyeok",
+      "kind": "RSTN",
+      "m": 681
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Seongsu-dong",
+   "area_ko": "성수동",
+   "near_en": "Seoul Forest",
+   "near_ko": "서울숲",
+   "note": "성수동 일대이며 서울숲이 362m 거리에 있습니다."
+  },
+  {
+   "group": "G03",
+   "photos": 10,
+   "days": [
+    "2023-01-22",
+    "2024-02-10",
+    "2026-01-17"
+   ],
+   "spread_m": 0,
+   "lat": 37.6153,
+   "lon": 126.9308,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Taejo-dong",
+      "kind": "PPL",
+      "m": 631
+     },
+     {
+      "name": "Pulgwangi-dong",
+      "kind": "PPL",
+      "m": 685
+     },
+     {
+      "name": "Pulgwangil-tong",
+      "kind": "PPL",
+      "m": 845
+     },
+     {
+      "name": "Pulgwangsam-dong",
+      "kind": "PPL",
+      "m": 1139
+     },
+     {
+      "name": "Pulgwang-dong",
+      "kind": "PPL",
+      "m": 1288
+     },
+     {
+      "name": "Nokpŏn-dong",
+      "kind": "PPL",
+      "m": 1301
+     }
+    ],
+    "districts": [
+     {
+      "name": "Bulgwang-dong",
+      "kind": "ADM3",
+      "m": 689
+     },
+     {
+      "name": "Bulgwang-dong",
+      "kind": "ADM3",
+      "m": 735
+     },
+     {
+      "name": "Daejo-dong",
+      "kind": "ADM3",
+      "m": 980
+     }
+    ],
+    "spots": [
+     {
+      "name": "Cheonggwanggyohoe",
+      "kind": "CH",
+      "m": 230
+     },
+     {
+      "name": "Sŏulbulgwang-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 261
+     },
+     {
+      "name": "Dokbawiyeok",
+      "kind": "RSTN",
+      "m": 371
+     },
+     {
+      "name": "Sŏurŭnhye-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 385
+     },
+     {
+      "name": "Sioebŏsŭsŏbut’ŏminŏl",
+      "kind": "PKLT",
+      "m": 405
+     },
+     {
+      "name": "Bulgwangyeok",
+      "kind": "RSTN",
+      "m": 501
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Bulgwang-dong",
+   "area_ko": "불광동",
+   "near_en": "Dokbawi Station",
+   "near_ko": "독바위역",
+   "note": "불광동 일대이며 독바위역이 371m 거리에 있습니다."
+  },
+  {
+   "group": "G04",
+   "photos": 9,
+   "days": [
+    "2023-02-18",
+    "2025-02-15",
+    "2026-08-08"
+   ],
+   "spread_m": 0,
+   "lat": 37.7725,
+   "lon": 128.9482,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Kyŏnso",
+      "kind": "PPL",
+      "m": 91
+     },
+     {
+      "name": "Gyeonsodong",
+      "kind": "PPLX",
+      "m": 728
+     },
+     {
+      "name": "Namhangjin",
+      "kind": "PPL",
+      "m": 946
+     },
+     {
+      "name": "Byeongsandong",
+      "kind": "PPLX",
+      "m": 1322
+     },
+     {
+      "name": "Byeongsan",
+      "kind": "PPL",
+      "m": 1341
+     },
+     {
+      "name": "Songjŏng-dong",
+      "kind": "PPLX",
+      "m": 1372
+     }
+    ],
+    "districts": [
+     {
+      "name": "Songjeong-dong",
+      "kind": "ADM3",
+      "m": 1655
+     },
+     {
+      "name": "Seongdeok-dong",
+      "kind": "ADM3",
+      "m": 2638
+     },
+     {
+      "name": "Chodang-dong",
+      "kind": "ADM3",
+      "m": 3382
+     }
+    ],
+    "spots": [
+     {
+      "name": "Anmok-haesuyokjang",
+      "kind": "BCH",
+      "m": 373
+     },
+     {
+      "name": "Gangneunghang",
+      "kind": "FYT",
+      "m": 396
+     },
+     {
+      "name": "Jukdobong",
+      "kind": "PK",
+      "m": 444
+     },
+     {
+      "name": "Gonghangdaegyo",
+      "kind": "BDG",
+      "m": 480
+     },
+     {
+      "name": "Gangneung-hasucheorijang",
+      "kind": "SWT",
+      "m": 870
+     },
+     {
+      "name": "Namhangjingyo",
+      "kind": "BDG",
+      "m": 962
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Anmok",
+   "area_ko": "안목",
+   "near_en": "Anmok Beach",
+   "near_ko": "안목해변",
+   "note": "강릉 견소동의 안목해변(373m) 근처로, 흔히 안목이라고 부릅니다."
+  },
+  {
+   "group": "G05",
+   "photos": 5,
+   "days": [
+    "2023-03-11",
+    "2024-08-24",
+    "2024-08-31"
+   ],
+   "spread_m": 0,
+   "lat": 37.5644,
+   "lon": 126.9226,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Yŏnnam-dong",
+      "kind": "PPL",
+      "m": 215
+     },
+     {
+      "name": "Yŏnhŭiil-tong",
+      "kind": "PPL",
+      "m": 580
+     },
+     {
+      "name": "Tonggyo-dong",
+      "kind": "PPL",
+      "m": 936
+     },
+     {
+      "name": "Hyŏnŭi-dong",
+      "kind": "PPL",
+      "m": 979
+     },
+     {
+      "name": "Kung-dong",
+      "kind": "PPL",
+      "m": 979
+     },
+     {
+      "name": "Umdal-li",
+      "kind": "PPL",
+      "m": 979
+     }
+    ],
+    "districts": [
+     {
+      "name": "Yeonnam-dong",
+      "kind": "ADM3",
+      "m": 494
+     },
+     {
+      "name": "Namgajwa-dong",
+      "kind": "ADM3",
+      "m": 830
+     },
+     {
+      "name": "Yeonhui-dong",
+      "kind": "ADM3",
+      "m": 996
+     }
+    ],
+    "spots": [
+     {
+      "name": "Kyŏngsŏng-godŭnghakkyo",
+      "kind": "SCH",
+      "m": 260
+     },
+     {
+      "name": "Kyŏngsŏngyŏjasirŏp-kodŭnghakkyo",
+      "kind": "SCH",
+      "m": 372
+     },
+     {
+      "name": "Seogang",
+      "kind": "RSTN",
+      "m": 466
+     },
+     {
+      "name": "Sŏyŏn-junghakkyo",
+      "kind": "SCH",
+      "m": 606
+     },
+     {
+      "name": "Sacheongyo",
+      "kind": "BDG",
+      "m": 660
+     },
+     {
+      "name": "Songdouiwon",
+      "kind": "HSP",
+      "m": 684
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Yeonnam-dong",
+   "area_ko": "연남동",
+   "near_en": "Seogang Station",
+   "near_ko": "서강역",
+   "note": "연남동이 215m로 가장 가깝고 서강역이 466m 거리에 있습니다."
+  },
+  {
+   "group": "G06",
+   "photos": 9,
+   "days": [
+    "2023-04-08",
+    "2023-09-09",
+    "2025-04-05"
+   ],
+   "spread_m": 0,
+   "lat": 37.5526,
+   "lon": 126.8992,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Mangwŏnil-tong",
+      "kind": "PPL",
+      "m": 139
+     },
+     {
+      "name": "Mangwŏn-dong",
+      "kind": "PPL",
+      "m": 678
+     },
+     {
+      "name": "Hapjeong-dong",
+      "kind": "PPL",
+      "m": 1017
+     },
+     {
+      "name": "Yanghwadong",
+      "kind": "PPLX",
+      "m": 1446
+     },
+     {
+      "name": "Sŏngsanil-tong",
+      "kind": "PPL",
+      "m": 1487
+     },
+     {
+      "name": "Sŏgyo-dong",
+      "kind": "PPL",
+      "m": 1529
+     }
+    ],
+    "districts": [
+     {
+      "name": "Mangwon-dong",
+      "kind": "ADM3",
+      "m": 292
+     },
+     {
+      "name": "Mangwon-dong",
+      "kind": "ADM3",
+      "m": 426
+     },
+     {
+      "name": "Hapjeong-dong",
+      "kind": "ADM3",
+      "m": 1226
+     }
+    ],
+    "spots": [
+     {
+      "name": "Han River",
+      "kind": "STMSB",
+      "m": 496
+     },
+     {
+      "name": "Sŏultonggyo-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 678
+     },
+     {
+      "name": "Seongsandaegyo",
+      "kind": "BDG",
+      "m": 713
+     },
+     {
+      "name": "Sŏulmangwŏn-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 925
+     },
+     {
+      "name": "Seonyudogongwon",
+      "kind": "PRK",
+      "m": 997
+     },
+     {
+      "name": "Seongsangyo",
+      "kind": "BDG",
+      "m": 1022
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "Han River",
+   "near_ko": "한강",
+   "note": "망원동 일대이며 한강이 496m 거리에 있습니다."
+  },
+  {
+   "group": "G07",
+   "photos": 2,
+   "days": [
+    "2023-05-20"
+   ],
+   "spread_m": 25,
+   "lat": 33.55625,
+   "lon": 126.7956,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Tong-dong",
+      "kind": "PPLX",
+      "m": 236
+     },
+     {
+      "name": "Wŏlchŏng-ni",
+      "kind": "PPL",
+      "m": 367
+     },
+     {
+      "name": "Ipsu-dong",
+      "kind": "PPLX",
+      "m": 1008
+     },
+     {
+      "name": "Sang-dong",
+      "kind": "PPLX",
+      "m": 1239
+     },
+     {
+      "name": "Haengwŏl-li",
+      "kind": "PPL",
+      "m": 1542
+     }
+    ],
+    "districts": [],
+    "spots": [
+     {
+      "name": "Kujwajungang-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 531
+     },
+     {
+      "name": "Haengw’ŏlli-samuso",
+      "kind": "ADMF",
+      "m": 1167
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Woljeong-ri",
+   "area_ko": "월정리",
+   "near_en": "",
+   "near_ko": "",
+   "note": "제주 구좌읍의 월정리가 가깝고, 근처에 학교 외 명소가 없습니다."
+  },
+  {
+   "group": "G08",
+   "photos": 1,
+   "days": [
+    "2023-05-20"
+   ],
+   "spread_m": 0,
+   "lat": 33.5542,
+   "lon": 126.7964,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Tong-dong",
+      "kind": "PPLX",
+      "m": 57
+     },
+     {
+      "name": "Wŏlchŏng-ni",
+      "kind": "PPL",
+      "m": 517
+     },
+     {
+      "name": "Ipsu-dong",
+      "kind": "PPLX",
+      "m": 919
+     },
+     {
+      "name": "Sang-dong",
+      "kind": "PPLX",
+      "m": 1103
+     },
+     {
+      "name": "Haengwŏl-li",
+      "kind": "PPL",
+      "m": 1442
+     }
+    ],
+    "districts": [],
+    "spots": [
+     {
+      "name": "Kujwajungang-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 291
+     },
+     {
+      "name": "Haengw’ŏlli-samuso",
+      "kind": "ADMF",
+      "m": 1082
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Woljeong-ri",
+   "area_ko": "월정리",
+   "near_en": "",
+   "near_ko": "",
+   "note": "제주 구좌읍 월정리 동동 일대로, 근처에 학교 외 명소가 없습니다."
+  },
+  {
+   "group": "G09",
+   "photos": 1,
+   "days": [
+    "2023-05-20"
+   ],
+   "spread_m": 0,
+   "lat": 33.5239,
+   "lon": 126.8581,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Chŏnhang-dong",
+      "kind": "PPLX",
+      "m": 587
+     },
+     {
+      "name": "Kujwa",
+      "kind": "PPL",
+      "m": 757
+     },
+     {
+      "name": "Hapchŏn-dong",
+      "kind": "PPLX",
+      "m": 811
+     },
+     {
+      "name": "Myŏnsu-dong",
+      "kind": "PPLX",
+      "m": 855
+     },
+     {
+      "name": "Sehwa-ri",
+      "kind": "PPL",
+      "m": 1130
+     },
+     {
+      "name": "Sŏ-dong",
+      "kind": "PPLX",
+      "m": 1158
+     }
+    ],
+    "districts": [],
+    "spots": [
+     {
+      "name": "Saehwa-ch’odunghakkyo",
+      "kind": "SCH",
+      "m": 133
+     },
+     {
+      "name": "Saehwa-junghakkyo",
+      "kind": "SCH",
+      "m": 529
+     },
+     {
+      "name": "Kujwaŭp-samuso",
+      "kind": "ADMF",
+      "m": 584
+     },
+     {
+      "name": "Saehwa-godŭnghakkyo",
+      "kind": "SCH",
+      "m": 947
+     },
+     {
+      "name": "Yongmun-sa",
+      "kind": "TMPL",
+      "m": 978
+     },
+     {
+      "name": "Sŏngnim-sa",
+      "kind": "TMPL",
+      "m": 1122
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Sehwa-ri",
+   "area_ko": "세화리",
+   "near_en": "",
+   "near_ko": "",
+   "note": "세화초등학교·세화중학교 인근이라 제주 구좌읍 세화리로 보았습니다."
+  },
+  {
+   "group": "G10",
+   "photos": 1,
+   "days": [
+    "2023-07-15"
+   ],
+   "spread_m": 0,
+   "lat": 37.5487,
+   "lon": 126.9156,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Segyo-dong",
+      "kind": "PPLX",
+      "m": 173
+     },
+     {
+      "name": "Dangin-dong",
+      "kind": "PPLX",
+      "m": 539
+     },
+     {
+      "name": "Sŏgyo-dong",
+      "kind": "PPL",
+      "m": 546
+     },
+     {
+      "name": "Hapjeong-dong",
+      "kind": "PPL",
+      "m": 649
+     },
+     {
+      "name": "Sangsu-dong",
+      "kind": "PPL",
+      "m": 828
+     },
+     {
+      "name": "Ch’angjŏn-dong",
+      "kind": "PPL",
+      "m": 1219
+     }
+    ],
+    "districts": [
+     {
+      "name": "Seogyo-dong",
+      "kind": "ADM3",
+      "m": 552
+     },
+     {
+      "name": "Hapjeong-dong",
+      "kind": "ADM3",
+      "m": 837
+     },
+     {
+      "name": "Seogang-dong",
+      "kind": "ADM3",
+      "m": 987
+     }
+    ],
+    "spots": [
+     {
+      "name": "Sŏngsan-junghakkyo",
+      "kind": "SCH",
+      "m": 123
+     },
+     {
+      "name": "Hapjeongyeok",
+      "kind": "RSTN",
+      "m": 172
+     },
+     {
+      "name": "Sŏulsŏngsan-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 645
+     },
+     {
+      "name": "Sangsu",
+      "kind": "RSTN",
+      "m": 654
+     },
+     {
+      "name": "Hapjeonggyunhyeongbaljeonchokjinjigu",
+      "kind": "AREA",
+      "m": 750
+     },
+     {
+      "name": "Hongiktaehakkyosabŏmdaehakpusok-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 823
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Hapjeong",
+   "area_ko": "합정",
+   "near_en": "Hapjeong Station",
+   "near_ko": "합정역",
+   "note": "합정역이 172m 거리라 합정 일대로 보았습니다."
+  },
+  {
+   "group": "G11",
+   "photos": 1,
+   "days": [
+    "2023-07-15"
+   ],
+   "spread_m": 0,
+   "lat": 37.5515,
+   "lon": 126.9219,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Segyo-dong",
+      "kind": "PPLX",
+      "m": 490
+     },
+     {
+      "name": "Sŏgyo-dong",
+      "kind": "PPL",
+      "m": 528
+     },
+     {
+      "name": "Ch’angjŏn-dong",
+      "kind": "PPL",
+      "m": 682
+     },
+     {
+      "name": "Dangin-dong",
+      "kind": "PPLX",
+      "m": 717
+     },
+     {
+      "name": "Sangsu-dong",
+      "kind": "PPL",
+      "m": 754
+     },
+     {
+      "name": "Tonggyo-dong",
+      "kind": "PPL",
+      "m": 807
+     }
+    ],
+    "districts": [
+     {
+      "name": "Seogyo-dong",
+      "kind": "ADM3",
+      "m": 157
+     },
+     {
+      "name": "Seogang-dong",
+      "kind": "ADM3",
+      "m": 952
+     },
+     {
+      "name": "Yeonnam-dong",
+      "kind": "ADM3",
+      "m": 973
+     }
+    ],
+    "spots": [
+     {
+      "name": "Hongiktaehakkyosabŏmdaehakpusok-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 268
+     },
+     {
+      "name": "Hongik-taehakkyo",
+      "kind": "SCHC",
+      "m": 347
+     },
+     {
+      "name": "Hongiktaehakkyosabŏmdaehakpusogyŏja-godŭnghakkyo",
+      "kind": "SCH",
+      "m": 368
+     },
+     {
+      "name": "Sangsu",
+      "kind": "RSTN",
+      "m": 437
+     },
+     {
+      "name": "Sŏulsŏgyo-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 454
+     },
+     {
+      "name": "Seogyodongcheonjugyohoe",
+      "kind": "CH",
+      "m": 524
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Hongdae",
+   "area_ko": "홍대",
+   "near_en": "Hongik University",
+   "near_ko": "홍익대학교",
+   "note": "홍익대학교가 347m 거리인 서교동이라 홍대로 불립니다."
+  },
+  {
+   "group": "G12",
+   "photos": 1,
+   "days": [
+    "2023-08-12"
+   ],
+   "spread_m": 0,
+   "lat": 37.5574,
+   "lon": 126.9018,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Mangwŏn-dong",
+      "kind": "PPL",
+      "m": 160
+     },
+     {
+      "name": "Mangwŏnil-tong",
+      "kind": "PPL",
+      "m": 591
+     },
+     {
+      "name": "Sŏngsanil-tong",
+      "kind": "PPL",
+      "m": 962
+     },
+     {
+      "name": "Sŏngsani-dong",
+      "kind": "PPL",
+      "m": 1156
+     },
+     {
+      "name": "Hapjeong-dong",
+      "kind": "PPL",
+      "m": 1281
+     },
+     {
+      "name": "Sŏgyo-dong",
+      "kind": "PPL",
+      "m": 1364
+     }
+    ],
+    "districts": [
+     {
+      "name": "Mangwon-dong",
+      "kind": "ADM3",
+      "m": 700
+     },
+     {
+      "name": "Seongsan-dong",
+      "kind": "ADM3",
+      "m": 838
+     },
+     {
+      "name": "Mangwon-dong",
+      "kind": "ADM3",
+      "m": 851
+     }
+    ],
+    "spots": [
+     {
+      "name": "Sŏultonggyo-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 98
+     },
+     {
+      "name": "Sŏulmangwŏn-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 382
+     },
+     {
+      "name": "Seongsangyo",
+      "kind": "BDG",
+      "m": 551
+     },
+     {
+      "name": "Mapogucheong",
+      "kind": "RSTN",
+      "m": 656
+     },
+     {
+      "name": "Seongsan Il Gyo",
+      "kind": "BDG",
+      "m": 702
+     },
+     {
+      "name": "Pyeonghwauigongwon",
+      "kind": "PRK",
+      "m": 871
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": "",
+   "note": "망원동이 160m로 가장 가깝고, 600m 안에 학교·다리 외 명소가 없습니다."
+  },
+  {
+   "group": "G13",
+   "photos": 3,
+   "days": [
+    "2023-09-23"
+   ],
+   "spread_m": 0,
+   "lat": 37.5623,
+   "lon": 126.9243,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Yŏnnam-dong",
+      "kind": "PPL",
+      "m": 167
+     },
+     {
+      "name": "Tonggyo-dong",
+      "kind": "PPL",
+      "m": 659
+     },
+     {
+      "name": "Yŏnhŭiil-tong",
+      "kind": "PPL",
+      "m": 789
+     },
+     {
+      "name": "Hyŏnŭi-dong",
+      "kind": "PPL",
+      "m": 933
+     },
+     {
+      "name": "Kung-dong",
+      "kind": "PPL",
+      "m": 933
+     },
+     {
+      "name": "Umdal-li",
+      "kind": "PPL",
+      "m": 933
+     }
+    ],
+    "districts": [
+     {
+      "name": "Yeonnam-dong",
+      "kind": "ADM3",
+      "m": 390
+     },
+     {
+      "name": "Yeonhui-dong",
+      "kind": "ADM3",
+      "m": 1038
+     },
+     {
+      "name": "Namgajwa-dong",
+      "kind": "ADM3",
+      "m": 1095
+     }
+    ],
+    "spots": [
+     {
+      "name": "Seogang",
+      "kind": "RSTN",
+      "m": 197
+     },
+     {
+      "name": "Songdouiwon",
+      "kind": "HSP",
+      "m": 411
+     },
+     {
+      "name": "Kyŏngsŏng-godŭnghakkyo",
+      "kind": "SCH",
+      "m": 422
+     },
+     {
+      "name": "Kyŏngsŏngyŏjasirŏp-kodŭnghakkyo",
+      "kind": "SCH",
+      "m": 456
+     },
+     {
+      "name": "Hongdaeipguyeok",
+      "kind": "RSTN",
+      "m": 606
+     },
+     {
+      "name": "Sŏyŏn-junghakkyo",
+      "kind": "SCH",
+      "m": 718
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Yeonnam-dong",
+   "area_ko": "연남동",
+   "near_en": "Seogang Station",
+   "near_ko": "서강역",
+   "note": "연남동이 167m로 가장 가깝고 서강역이 197m 거리에 있습니다."
+  },
+  {
+   "group": "G14",
+   "photos": 3,
+   "days": [
+    "2023-10-14"
+   ],
+   "spread_m": 0,
+   "lat": 37.5523,
+   "lon": 126.9846,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Huam-dong",
+      "kind": "PPL",
+      "m": 425
+     },
+     {
+      "name": "Hoehyŏn-dong",
+      "kind": "PPL",
+      "m": 858
+     },
+     {
+      "name": "Yongsan-dong",
+      "kind": "PPL",
+      "m": 871
+     },
+     {
+      "name": "P’il-tong",
+      "kind": "PPL",
+      "m": 982
+     },
+     {
+      "name": "Myeong-dong",
+      "kind": "PPL",
+      "m": 1274
+     },
+     {
+      "name": "Yongsaniga-dong",
+      "kind": "PPL",
+      "m": 1313
+     }
+    ],
+    "districts": [
+     {
+      "name": "Yejang-dong",
+      "kind": "ADM3",
+      "m": 586
+     },
+     {
+      "name": "Huam-dong",
+      "kind": "ADM3",
+      "m": 712
+     },
+     {
+      "name": "Namsan-dong Il-ga",
+      "kind": "ADM3",
+      "m": 751
+     }
+    ],
+    "spots": [
+     {
+      "name": "Namsan",
+      "kind": "HLL",
+      "m": 164
+     },
+     {
+      "name": "Sŏurhuam-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 235
+     },
+     {
+      "name": "Namsan Park",
+      "kind": "PRK",
+      "m": 471
+     },
+     {
+      "name": "Sungŭiyŏjajŏnmun-daehakkyo",
+      "kind": "SCHC",
+      "m": 507
+     },
+     {
+      "name": "Sungŭiyŏja-godŭnghakkyo",
+      "kind": "SCH",
+      "m": 553
+     },
+     {
+      "name": "Sŏulsungŭi-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 607
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Huam-dong",
+   "area_ko": "후암동",
+   "near_en": "Namsan",
+   "near_ko": "남산",
+   "note": "후암동 일대이며 남산이 164m 거리에 있습니다."
+  },
+  {
+   "group": "G15",
+   "photos": 6,
+   "days": [
+    "2023-11-18",
+    "2026-04-25"
+   ],
+   "spread_m": 0,
+   "lat": 37.5448,
+   "lon": 127.0563,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Sŏngsuigasam-dong",
+      "kind": "PPL",
+      "m": 209
+     },
+     {
+      "name": "Seongsu-dong",
+      "kind": "PPL",
+      "m": 873
+     },
+     {
+      "name": "Sŏngsuigail-tong",
+      "kind": "PPL",
+      "m": 949
+     },
+     {
+      "name": "Noyuil-tong",
+      "kind": "PPL",
+      "m": 1055
+     },
+     {
+      "name": "Ttukseom",
+      "kind": "PPL",
+      "m": 1118
+     },
+     {
+      "name": "Noyudong",
+      "kind": "PPLX",
+      "m": 1227
+     }
+    ],
+    "districts": [
+     {
+      "name": "Seongsu-dong",
+      "kind": "ADM3",
+      "m": 245
+     },
+     {
+      "name": "Songjeong-dong",
+      "kind": "ADM3",
+      "m": 926
+     },
+     {
+      "name": "Seongsu-dong",
+      "kind": "ADM3",
+      "m": 1173
+     }
+    ],
+    "spots": [
+     {
+      "name": "Seongsuyeok",
+      "kind": "RSTN",
+      "m": 32
+     },
+     {
+      "name": "Sŏulgyŏngdong-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 526
+     },
+     {
+      "name": "Sŏulgyŏngsu-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 537
+     },
+     {
+      "name": "Kyŏngsu-junghakkyo",
+      "kind": "SCH",
+      "m": 609
+     },
+     {
+      "name": "Seongsu-chodeunghakgyo",
+      "kind": "SCH",
+      "m": 637
+     },
+     {
+      "name": "Sŏngsugongŏp-kodŭnghakkyo",
+      "kind": "SCH",
+      "m": 654
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Seongsu-dong",
+   "area_ko": "성수동",
+   "near_en": "Seongsu Station",
+   "near_ko": "성수역",
+   "note": "성수역이 32m 거리인 성수동입니다."
+  },
+  {
+   "group": "G16",
+   "photos": 4,
+   "days": [
+    "2023-12-21"
+   ],
+   "spread_m": 0,
+   "lat": 37.48215,
+   "lon": 127.01235,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Seochosam-dong",
+      "kind": "PPLX",
+      "m": 394
+     },
+     {
+      "name": "Seocho",
+      "kind": "PPL",
+      "m": 1153
+     },
+     {
+      "name": "Songdongmaeul",
+      "kind": "PPL",
+      "m": 1332
+     },
+     {
+      "name": "Umyeondong",
+      "kind": "PPLX",
+      "m": 1421
+     },
+     {
+      "name": "Pangbaeil-tong",
+      "kind": "PPL",
+      "m": 1492
+     },
+     {
+      "name": "Pangbaesam-dong",
+      "kind": "PPL",
+      "m": 1525
+     }
+    ],
+    "districts": [
+     {
+      "name": "Seocho-dong",
+      "kind": "ADM3",
+      "m": 327
+     },
+     {
+      "name": "Seocho-dong",
+      "kind": "ADM3",
+      "m": 654
+     },
+     {
+      "name": "Seocho-dong",
+      "kind": "ADM3",
+      "m": 1372
+     }
+    ],
+    "spots": [
+     {
+      "name": "Seochosamdong-samuso",
+      "kind": "ADMF",
+      "m": 163
+     },
+     {
+      "name": "Yesul-gongwon",
+      "kind": "PRK",
+      "m": 210
+     },
+     {
+      "name": "Sinjung-chodeunghakgyo",
+      "kind": "SCH",
+      "m": 319
+     },
+     {
+      "name": "Nambusioe Bus Terminal",
+      "kind": "PKLT",
+      "m": 364
+     },
+     {
+      "name": "Hangugyesuljonghap-hakgyo",
+      "kind": "SCH",
+      "m": 386
+     },
+     {
+      "name": "Seocho-junghakgyo",
+      "kind": "SCH",
+      "m": 479
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Seocho-dong",
+   "area_ko": "서초동",
+   "near_en": "Seoul Nambu Bus Terminal",
+   "near_ko": "남부터미널",
+   "note": "서초동 일대이며 남부터미널이 364m 거리에 있습니다."
+  },
+  {
+   "group": "G17",
+   "photos": 9,
+   "days": [
+    "2023-12-21"
+   ],
+   "spread_m": 0,
+   "lat": 37.48024,
+   "lon": 127.01421,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Seochosam-dong",
+      "kind": "PPLX",
+      "m": 625
+     },
+     {
+      "name": "Songdongmaeul",
+      "kind": "PPL",
+      "m": 1186
+     },
+     {
+      "name": "Seocho",
+      "kind": "PPL",
+      "m": 1256
+     },
+     {
+      "name": "Umyeondong",
+      "kind": "PPLX",
+      "m": 1257
+     },
+     {
+      "name": "Amsan",
+      "kind": "PPL",
+      "m": 1263
+     },
+     {
+      "name": "Yangjaeil-tong",
+      "kind": "PPL",
+      "m": 1359
+     }
+    ],
+    "districts": [
+     {
+      "name": "Seocho-dong",
+      "kind": "ADM3",
+      "m": 555
+     },
+     {
+      "name": "Seocho-dong",
+      "kind": "ADM3",
+      "m": 625
+     },
+     {
+      "name": "Seocho-dong",
+      "kind": "ADM3",
+      "m": 1308
+     }
+    ],
+    "spots": [
+     {
+      "name": "Hangugyesuljonghap-hakgyo",
+      "kind": "SCH",
+      "m": 290
+     },
+     {
+      "name": "Yesul-gongwon",
+      "kind": "PRK",
+      "m": 314
+     },
+     {
+      "name": "Sinjung-chodeunghakgyo",
+      "kind": "SCH",
+      "m": 387
+     },
+     {
+      "name": "Seochosamdong-samuso",
+      "kind": "ADMF",
+      "m": 404
+     },
+     {
+      "name": "Nambusioe Bus Terminal",
+      "kind": "PKLT",
+      "m": 452
+     },
+     {
+      "name": "Daeseong-sa",
+      "kind": "TMPL",
+      "m": 470
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Seocho-dong",
+   "area_ko": "서초동",
+   "near_en": "Seoul Nambu Bus Terminal",
+   "near_ko": "남부터미널",
+   "note": "서초동 일대이며 남부터미널이 452m 거리에 있습니다."
+  },
+  {
+   "group": "G18",
+   "photos": 6,
+   "days": [
+    "2023-12-21"
+   ],
+   "spread_m": 0,
+   "lat": 37.48463,
+   "lon": 127.04512,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Gaepo-dong",
+      "kind": "PPL",
+      "m": 468
+     },
+     {
+      "name": "Dogokdong",
+      "kind": "PPLX",
+      "m": 518
+     },
+     {
+      "name": "Togogil-tong",
+      "kind": "PPL",
+      "m": 669
+     },
+     {
+      "name": "Togogi-dong",
+      "kind": "PPL",
+      "m": 776
+     },
+     {
+      "name": "Maljukkŏ-ri",
+      "kind": "PPL",
+      "m": 1050
+     },
+     {
+      "name": "Gaeposa-dong",
+      "kind": "PPL",
+      "m": 1144
+     }
+    ],
+    "districts": [
+     {
+      "name": "Dogok-dong",
+      "kind": "ADM3",
+      "m": 343
+     },
+     {
+      "name": "Dogok-dong",
+      "kind": "ADM3",
+      "m": 469
+     },
+     {
+      "name": "Yeoksam-dong",
+      "kind": "ADM3",
+      "m": 1235
+     }
+    ],
+    "spots": [
+     {
+      "name": "Mongnyeon-gongwon",
+      "kind": "PRK",
+      "m": 84
+     },
+     {
+      "name": "Dogokhansinupyeonchwigeupso",
+      "kind": "PO",
+      "m": 120
+     },
+     {
+      "name": "Togogidong-samuso",
+      "kind": "ADMF",
+      "m": 159
+     },
+     {
+      "name": "Dokgolgeullin-gongwon",
+      "kind": "PRK",
+      "m": 166
+     },
+     {
+      "name": "Dogokkkachi-gongwon",
+      "kind": "PRK",
+      "m": 175
+     },
+     {
+      "name": "Gaepo-byeongwon",
+      "kind": "HSP",
+      "m": 197
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Dogok-dong",
+   "area_ko": "도곡동",
+   "near_en": "",
+   "near_ko": "",
+   "note": "도곡동 행정구역 안이며, 주변 명소는 작은 공원뿐이라 비웠습니다."
+  },
+  {
+   "group": "G19",
+   "photos": 1,
+   "days": [
+    "2024-05-18"
+   ],
+   "spread_m": 0,
+   "lat": 35.0975,
+   "lon": 129.0106,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Ch’ojang-dong",
+      "kind": "PPL",
+      "m": 640
+     },
+     {
+      "name": "Hoemangch’on",
+      "kind": "PPL",
+      "m": 1004
+     },
+     {
+      "name": "T’osŏng-dong",
+      "kind": "PPL",
+      "m": 1079
+     },
+     {
+      "name": "Nambumin-dong",
+      "kind": "PPL",
+      "m": 1433
+     },
+     {
+      "name": "Kamch’ŏn",
+      "kind": "PPL",
+      "m": 1583
+     },
+     {
+      "name": "Tongdaesin-dong",
+      "kind": "PPL",
+      "m": 1619
+     }
+    ],
+    "districts": [
+     {
+      "name": "Ami-dong",
+      "kind": "ADM3",
+      "m": 185
+     },
+     {
+      "name": "Bumin-dong",
+      "kind": "ADM3",
+      "m": 754
+     },
+     {
+      "name": "Gamcheon-dong",
+      "kind": "ADM3",
+      "m": 800
+     }
+    ],
+    "spots": [
+     {
+      "name": "Amisan",
+      "kind": "HLL",
+      "m": 466
+     },
+     {
+      "name": "Ami-chodeunghakgyo",
+      "kind": "SCH",
+      "m": 498
+     },
+     {
+      "name": "Chojang-junghakgyo",
+      "kind": "SCH",
+      "m": 760
+     },
+     {
+      "name": "Yongjuam",
+      "kind": "TMPL",
+      "m": 763
+     },
+     {
+      "name": "Busandaehakgyouigwa-daehak",
+      "kind": "SCHC",
+      "m": 776
+     },
+     {
+      "name": "Seunghak-chodeunghakgyo",
+      "kind": "SCH",
+      "m": 809
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Ami-dong",
+   "area_ko": "아미동",
+   "near_en": "Amisan",
+   "near_ko": "아미산",
+   "note": "부산 아미동 행정구역 안이며 아미산이 466m 거리에 있습니다."
+  },
+  {
+   "group": "G20",
+   "photos": 1,
+   "days": [
+    "2024-05-18"
+   ],
+   "spread_m": 0,
+   "lat": 35.1639,
+   "lon": 129.1607,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Haeundae",
+      "kind": "PPL",
+      "m": 695
+     }
+    ],
+    "districts": [
+     {
+      "name": "U-dong",
+      "kind": "ADM3",
+      "m": 766
+     },
+     {
+      "name": "Jung-dong",
+      "kind": "ADM3",
+      "m": 833
+     },
+     {
+      "name": "Jwa-dong",
+      "kind": "ADM3",
+      "m": 856
+     }
+    ],
+    "spots": [
+     {
+      "name": "Haeundaeucheguk",
+      "kind": "PO",
+      "m": 44
+     },
+     {
+      "name": "Haeundaeyeok",
+      "kind": "RSTN",
+      "m": 236
+     },
+     {
+      "name": "Haeundae-gucheong",
+      "kind": "ADMF",
+      "m": 243
+     },
+     {
+      "name": "Haeundaegwangwang-godeunghakgyo",
+      "kind": "SCH",
+      "m": 519
+     },
+     {
+      "name": "Haeundaehaesuyokjang",
+      "kind": "BCH",
+      "m": 563
+     },
+     {
+      "name": "Haeundaeyeoja-junghakgyo",
+      "kind": "SCH",
+      "m": 782
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Haeundae",
+   "area_ko": "해운대",
+   "near_en": "Haeundae Station",
+   "near_ko": "해운대역",
+   "note": "해운대역이 236m 거리인 해운대 중심가입니다."
+  },
+  {
+   "group": "G21",
+   "photos": 1,
+   "days": [
+    "2024-05-18"
+   ],
+   "spread_m": 0,
+   "lat": 35.1606,
+   "lon": 129.1764,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Changsapo",
+      "kind": "PPL",
+      "m": 1252
+     },
+     {
+      "name": "Jungdong",
+      "kind": "PPLX",
+      "m": 1509
+     },
+     {
+      "name": "Haeundae",
+      "kind": "PPL",
+      "m": 1972
+     },
+     {
+      "name": "Gudeok",
+      "kind": "PPL",
+      "m": 2121
+     }
+    ],
+    "districts": [
+     {
+      "name": "Jung-dong",
+      "kind": "ADM3",
+      "m": 671
+     },
+     {
+      "name": "Jung-dong",
+      "kind": "ADM3",
+      "m": 674
+     },
+     {
+      "name": "Jwa-dong",
+      "kind": "ADM3",
+      "m": 975
+     }
+    ],
+    "spots": [
+     {
+      "name": "Haeundaeseongsimbyeongwon",
+      "kind": "HSP",
+      "m": 448
+     },
+     {
+      "name": "Haeundaebogeonso",
+      "kind": "HSPC",
+      "m": 480
+     },
+     {
+      "name": "Haesong-chodeunghakgyo",
+      "kind": "SCH",
+      "m": 494
+     },
+     {
+      "name": "Dongbaek-chodeunghakgyo",
+      "kind": "SCH",
+      "m": 513
+     },
+     {
+      "name": "Dongbaek-junghakgyo",
+      "kind": "SCH",
+      "m": 590
+     },
+     {
+      "name": "Singok-junghakgyo",
+      "kind": "SCH",
+      "m": 933
+     }
+    ],
+    "lodging": [
+     {
+      "name": "Hotel Illua",
+      "kind": "HTL",
+      "m": 119
+     },
+     {
+      "name": "Royal Kingdom",
+      "kind": "HTL",
+      "m": 120
+     }
+    ]
+   },
+   "area_en": "Jung-dong, Haeundae",
+   "area_ko": "해운대 중동",
+   "near_en": "",
+   "near_ko": "",
+   "note": "해운대구 중동 행정구역 근처이며, 근처에 병원·학교 외 명소가 없습니다."
+  },
+  {
+   "group": "G22",
+   "photos": 1,
+   "days": [
+    "2024-05-18"
+   ],
+   "spread_m": 0,
+   "lat": 35.1596,
+   "lon": 129.1623,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Haeundae",
+      "kind": "PPL",
+      "m": 691
+     }
+    ],
+    "districts": [
+     {
+      "name": "Jung-dong",
+      "kind": "ADM3",
+      "m": 621
+     },
+     {
+      "name": "U-dong",
+      "kind": "ADM3",
+      "m": 1198
+     },
+     {
+      "name": "Jwa-dong",
+      "kind": "ADM3",
+      "m": 1210
+     }
+    ],
+    "spots": [
+     {
+      "name": "Haeundaehaesuyokjang",
+      "kind": "BCH",
+      "m": 109
+     },
+     {
+      "name": "Haeundae-gucheong",
+      "kind": "ADMF",
+      "m": 436
+     },
+     {
+      "name": "Haeundaeucheguk",
+      "kind": "PO",
+      "m": 491
+     },
+     {
+      "name": "Haeundaeyeok",
+      "kind": "RSTN",
+      "m": 624
+     },
+     {
+      "name": "Haeundaegongwon",
+      "kind": "PRK",
+      "m": 885
+     },
+     {
+      "name": "Haeundaeseongsimbyeongwon",
+      "kind": "HSP",
+      "m": 920
+     }
+    ],
+    "lodging": [
+     {
+      "name": "Seacloud Hotel Haeundae Beach",
+      "kind": "HTL",
+      "m": 89
+     },
+     {
+      "name": "Kunoh Seacloud Hotel",
+      "kind": "HTL",
+      "m": 91
+     }
+    ]
+   },
+   "area_en": "Haeundae",
+   "area_ko": "해운대",
+   "near_en": "Haeundae Beach",
+   "near_ko": "해운대해수욕장",
+   "note": "해운대해수욕장이 109m 거리에 있습니다."
+  },
+  {
+   "group": "G23",
+   "photos": 3,
+   "days": [
+    "2024-08-03",
+    "2024-08-04"
+   ],
+   "spread_m": 0,
+   "lat": 37.9476,
+   "lon": 128.7785,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Gopjanggae",
+      "kind": "PPL",
+      "m": 266
+     },
+     {
+      "name": "Namae",
+      "kind": "PPL",
+      "m": 414
+     },
+     {
+      "name": "Miryungmaeul",
+      "kind": "PPL",
+      "m": 761
+     },
+     {
+      "name": "Naenamae",
+      "kind": "PPL",
+      "m": 870
+     },
+     {
+      "name": "Gaetga",
+      "kind": "PPL",
+      "m": 1134
+     },
+     {
+      "name": "Oenamae",
+      "kind": "PPL",
+      "m": 1136
+     }
+    ],
+    "districts": [
+     {
+      "name": "Wonpo-ri",
+      "kind": "ADM4",
+      "m": 2206
+     },
+     {
+      "name": "Hyeonnam-myeon",
+      "kind": "ADM3",
+      "m": 2661
+     },
+     {
+      "name": "Dongsan-ri",
+      "kind": "ADM4",
+      "m": 4207
+     }
+    ],
+    "spots": [
+     {
+      "name": "Namae-chodeunghakgyo",
+      "kind": "SCH",
+      "m": 266
+     },
+     {
+      "name": "Namaehaesuyokjang",
+      "kind": "BCH",
+      "m": 554
+     },
+     {
+      "name": "Namae-ri",
+      "kind": "LCTY",
+      "m": 610
+     },
+     {
+      "name": "Pomaeho",
+      "kind": "LGN",
+      "m": 739
+     },
+     {
+      "name": "Namaehang",
+      "kind": "HBR",
+      "m": 879
+     },
+     {
+      "name": "Namaegyohoe",
+      "kind": "CH",
+      "m": 945
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Namae",
+   "area_ko": "남애",
+   "near_en": "Namae Beach",
+   "near_ko": "남애해수욕장",
+   "note": "양양 현남면 남애리 일대이며 남애해수욕장이 554m 거리에 있습니다."
+  },
+  {
+   "group": "G24",
+   "photos": 3,
+   "days": [
+    "2024-09-07"
+   ],
+   "spread_m": 0,
+   "lat": 37.5805,
+   "lon": 126.9846,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Gyedong",
+      "kind": "PPLX",
+      "m": 418
+     },
+     {
+      "name": "Kahoe-dong",
+      "kind": "PPL",
+      "m": 430
+     },
+     {
+      "name": "Samch’ŏng-dong",
+      "kind": "PPL",
+      "m": 770
+     },
+     {
+      "name": "Hunjeongdong",
+      "kind": "PPLX",
+      "m": 906
+     },
+     {
+      "name": "Jung-ang",
+      "kind": "PPL",
+      "m": 936
+     },
+     {
+      "name": "Insadong",
+      "kind": "PPLX",
+      "m": 949
+     }
+    ],
+    "districts": [
+     {
+      "name": "Gahoe-dong",
+      "kind": "ADM3",
+      "m": 124
+     },
+     {
+      "name": "Jae-dong",
+      "kind": "ADM3",
+      "m": 248
+     },
+     {
+      "name": "Sogyeok-dong",
+      "kind": "ADM3",
+      "m": 318
+     }
+    ],
+    "spots": [
+     {
+      "name": "Sŏulchaedong-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 135
+     },
+     {
+      "name": "Tŏksŏngyŏja-godŭnghakkyo",
+      "kind": "SCH",
+      "m": 275
+     },
+     {
+      "name": "Taedongjŏngbosanŏp-kodŭnghakkyo",
+      "kind": "SCH",
+      "m": 339
+     },
+     {
+      "name": "Kukkunsŏulchigu-byŏngwŏn",
+      "kind": "HSP",
+      "m": 385
+     },
+     {
+      "name": "Tŏksŏngyŏja-junghakkyo",
+      "kind": "SCH",
+      "m": 394
+     },
+     {
+      "name": "P’ungmunyŏja-godŭnghakkyo",
+      "kind": "SCH",
+      "m": 409
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Bukchon",
+   "area_ko": "북촌",
+   "near_en": "",
+   "near_ko": "",
+   "note": "가회동·재동 일대는 흔히 북촌이라 부르며, 근처에 학교 외 명소가 없습니다."
+  },
+  {
+   "group": "G25",
+   "photos": 57,
+   "days": [
+    "2024-09-14",
+    "2024-09-21",
+    "2024-10-05",
+    "2024-10-19",
+    "2024-11-09",
+    "2024-12-21",
+    "2025-01-18",
+    "2025-03-08",
+    "2025-06-08",
+    "2025-06-14",
+    "2025-06-21",
+    "2025-07-19",
+    "2025-08-30",
+    "2025-09-27",
+    "2025-11-15",
+    "2025-12-20",
+    "2026-03-14",
+    "2026-04-04",
+    "2026-06-06",
+    "2026-09-05",
+    "2026-09-19"
+   ],
+   "spread_m": 0,
+   "lat": 37.5483,
+   "lon": 126.9248,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Sangsu-dong",
+      "kind": "PPL",
+      "m": 396
+     },
+     {
+      "name": "Ch’angjŏn-dong",
+      "kind": "PPL",
+      "m": 436
+     },
+     {
+      "name": "Dangin-dong",
+      "kind": "PPLX",
+      "m": 549
+     },
+     {
+      "name": "Segyo-dong",
+      "kind": "PPLX",
+      "m": 741
+     },
+     {
+      "name": "Sŏgyo-dong",
+      "kind": "PPL",
+      "m": 937
+     },
+     {
+      "name": "Tonggyo-dong",
+      "kind": "PPL",
+      "m": 1009
+     }
+    ],
+    "districts": [
+     {
+      "name": "Seogang-dong",
+      "kind": "ADM3",
+      "m": 573
+     },
+     {
+      "name": "Seogyo-dong",
+      "kind": "ADM3",
+      "m": 576
+     },
+     {
+      "name": "Sinjeong-dong",
+      "kind": "ADM3",
+      "m": 768
+     }
+    ],
+    "spots": [
+     {
+      "name": "Hongiktaehakkyosabŏmdaehakpusogyŏja-godŭnghakkyo",
+      "kind": "SCH",
+      "m": 162
+     },
+     {
+      "name": "Sangsu",
+      "kind": "RSTN",
+      "m": 182
+     },
+     {
+      "name": "Sŏulsŏgang-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 218
+     },
+     {
+      "name": "Hongiktaehakkyosabŏmdaehakpusok-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 245
+     },
+     {
+      "name": "Hongik-taehakkyo",
+      "kind": "SCHC",
+      "m": 358
+     },
+     {
+      "name": "Gwangheungchang",
+      "kind": "RSTN",
+      "m": 639
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역",
+   "note": "상수역이 182m 거리인 상수동입니다."
+  },
+  {
+   "group": "G26",
+   "photos": 4,
+   "days": [
+    "2024-09-21"
+   ],
+   "spread_m": 0,
+   "lat": 37.5478,
+   "lon": 126.9221,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Dangin-dong",
+      "kind": "PPLX",
+      "m": 344
+     },
+     {
+      "name": "Sangsu-dong",
+      "kind": "PPL",
+      "m": 354
+     },
+     {
+      "name": "Segyo-dong",
+      "kind": "PPLX",
+      "m": 538
+     },
+     {
+      "name": "Ch’angjŏn-dong",
+      "kind": "PPL",
+      "m": 678
+     },
+     {
+      "name": "Sŏgyo-dong",
+      "kind": "PPL",
+      "m": 809
+     },
+     {
+      "name": "Tonggyo-dong",
+      "kind": "PPL",
+      "m": 1145
+     }
+    ],
+    "districts": [
+     {
+      "name": "Seogyo-dong",
+      "kind": "ADM3",
+      "m": 497
+     },
+     {
+      "name": "Seogang-dong",
+      "kind": "ADM3",
+      "m": 553
+     },
+     {
+      "name": "Sinjeong-dong",
+      "kind": "ADM3",
+      "m": 911
+     }
+    ],
+    "spots": [
+     {
+      "name": "Sangsu",
+      "kind": "RSTN",
+      "m": 72
+     },
+     {
+      "name": "Hongiktaehakkyosabŏmdaehakpusogyŏja-godŭnghakkyo",
+      "kind": "SCH",
+      "m": 358
+     },
+     {
+      "name": "Hongiktaehakkyosabŏmdaehakpusok-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 376
+     },
+     {
+      "name": "Sŏulsŏgang-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 462
+     },
+     {
+      "name": "Hongik-taehakkyo",
+      "kind": "SCHC",
+      "m": 519
+     },
+     {
+      "name": "Sŏngsan-junghakkyo",
+      "kind": "SCH",
+      "m": 545
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역",
+   "note": "상수역이 72m 거리인 상수동입니다."
+  },
+  {
+   "group": "G27",
+   "photos": 3,
+   "days": [
+    "2025-01-18",
+    "2025-06-08"
+   ],
+   "spread_m": 0,
+   "lat": 37.5469,
+   "lon": 126.9241,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Sangsu-dong",
+      "kind": "PPL",
+      "m": 230
+     },
+     {
+      "name": "Dangin-dong",
+      "kind": "PPLX",
+      "m": 413
+     },
+     {
+      "name": "Ch’angjŏn-dong",
+      "kind": "PPL",
+      "m": 567
+     },
+     {
+      "name": "Segyo-dong",
+      "kind": "PPLX",
+      "m": 740
+     },
+     {
+      "name": "Sŏgyo-dong",
+      "kind": "PPL",
+      "m": 999
+     },
+     {
+      "name": "Sinsu-dong",
+      "kind": "PPL",
+      "m": 1050
+     }
+    ],
+    "districts": [
+     {
+      "name": "Seogang-dong",
+      "kind": "ADM3",
+      "m": 416
+     },
+     {
+      "name": "Seogyo-dong",
+      "kind": "ADM3",
+      "m": 663
+     },
+     {
+      "name": "Sinjeong-dong",
+      "kind": "ADM3",
+      "m": 710
+     }
+    ],
+    "spots": [
+     {
+      "name": "Sangsu",
+      "kind": "RSTN",
+      "m": 135
+     },
+     {
+      "name": "Hongiktaehakkyosabŏmdaehakpusogyŏja-godŭnghakkyo",
+      "kind": "SCH",
+      "m": 329
+     },
+     {
+      "name": "Sŏulsŏgang-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 335
+     },
+     {
+      "name": "Hongiktaehakkyosabŏmdaehakpusok-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 403
+     },
+     {
+      "name": "Hongik-taehakkyo",
+      "kind": "SCHC",
+      "m": 524
+     },
+     {
+      "name": "Gwangheungchang",
+      "kind": "RSTN",
+      "m": 696
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역",
+   "note": "상수동이 230m로 가깝고 상수역이 135m 거리에 있습니다."
+  },
+  {
+   "group": "G28",
+   "photos": 2,
+   "days": [
+    "2025-05-10"
+   ],
+   "spread_m": 30,
+   "lat": 34.9988,
+   "lon": 135.7779,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Gion",
+      "kind": "PPLX",
+      "m": 608
+     },
+     {
+      "name": "Shijōdōri",
+      "kind": "PPLX",
+      "m": 1463
+     },
+     {
+      "name": "Keage",
+      "kind": "PPL",
+      "m": 1545
+     },
+     {
+      "name": "Imagumano",
+      "kind": "PPL",
+      "m": 1692
+     },
+     {
+      "name": "Kitakazan",
+      "kind": "PPL",
+      "m": 2273
+     }
+    ],
+    "districts": [
+     {
+      "name": "Higashiyama Ku",
+      "kind": "ADM3",
+      "m": 868
+     },
+     {
+      "name": "Shimogyo Ku",
+      "kind": "ADM3",
+      "m": 2581
+     },
+     {
+      "name": "Nakagyō Ku",
+      "kind": "ADM3",
+      "m": 3111
+     }
+    ],
+    "spots": [
+     {
+      "name": "Hokan-ji Temple (Yasaka Pagode)",
+      "kind": "TMPL",
+      "m": 120
+     },
+     {
+      "name": "Higashiyama-kuyakusho",
+      "kind": "ADMF",
+      "m": 248
+     },
+     {
+      "name": "Yasaka-jinja",
+      "kind": "SHRN",
+      "m": 541
+     },
+     {
+      "name": "Maruyama park",
+      "kind": "PRK",
+      "m": 656
+     },
+     {
+      "name": "Kyoto Shijo Minami za",
+      "kind": "THTR",
+      "m": 725
+     },
+     {
+      "name": "Gionshijō-eki",
+      "kind": "RSTN",
+      "m": 740
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Higashiyama",
+   "area_ko": "히가시야마",
+   "near_en": "Yasaka Pagoda",
+   "near_ko": "야사카탑",
+   "note": "교토 히가시야마이며 야사카탑(호칸지)이 120m 거리에 있습니다."
+  },
+  {
+   "group": "G29",
+   "photos": 1,
+   "days": [
+    "2025-05-10"
+   ],
+   "spread_m": 0,
+   "lat": 34.9978,
+   "lon": 135.7809,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Gion",
+      "kind": "PPLX",
+      "m": 836
+     },
+     {
+      "name": "Keage",
+      "kind": "PPL",
+      "m": 1441
+     },
+     {
+      "name": "Imagumano",
+      "kind": "PPL",
+      "m": 1608
+     },
+     {
+      "name": "Shijōdōri",
+      "kind": "PPLX",
+      "m": 1758
+     },
+     {
+      "name": "Kitakazan",
+      "kind": "PPL",
+      "m": 1984
+     }
+    ],
+    "districts": [
+     {
+      "name": "Higashiyama Ku",
+      "kind": "ADM3",
+      "m": 780
+     },
+     {
+      "name": "Shimogyo Ku",
+      "kind": "ADM3",
+      "m": 2822
+     },
+     {
+      "name": "Nakagyō Ku",
+      "kind": "ADM3",
+      "m": 3406
+     }
+    ],
+    "spots": [
+     {
+      "name": "Hokan-ji Temple (Yasaka Pagode)",
+      "kind": "TMPL",
+      "m": 179
+     },
+     {
+      "name": "Higashiyama-kuyakusho",
+      "kind": "ADMF",
+      "m": 422
+     },
+     {
+      "name": "Kiyomizu-dera",
+      "kind": "TMPL",
+      "m": 511
+     },
+     {
+      "name": "Yasaka-jinja",
+      "kind": "SHRN",
+      "m": 684
+     },
+     {
+      "name": "Maruyama park",
+      "kind": "PRK",
+      "m": 698
+     },
+     {
+      "name": "Chion-in",
+      "kind": "TMPL",
+      "m": 856
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Higashiyama",
+   "area_ko": "히가시야마",
+   "near_en": "Yasaka Pagoda",
+   "near_ko": "야사카탑",
+   "note": "교토 히가시야마이며 야사카탑이 179m 거리에 있습니다."
+  },
+  {
+   "group": "G30",
+   "photos": 2,
+   "days": [
+    "2025-05-10",
+    "2025-05-11"
+   ],
+   "spread_m": 0,
+   "lat": 34.9905,
+   "lon": 135.7591,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Shijōdōri",
+      "kind": "PPLX",
+      "m": 1519
+     },
+     {
+      "name": "Imagumano",
+      "kind": "PPL",
+      "m": 1860
+     },
+     {
+      "name": "Gion",
+      "kind": "PPLX",
+      "m": 2116
+     }
+    ],
+    "districts": [
+     {
+      "name": "Shimogyo Ku",
+      "kind": "ADM3",
+      "m": 827
+     },
+     {
+      "name": "Higashiyama Ku",
+      "kind": "ADM3",
+      "m": 1788
+     },
+     {
+      "name": "Nakagyō Ku",
+      "kind": "ADM3",
+      "m": 2477
+     }
+    ],
+    "spots": [
+     {
+      "name": "Higashi Hongan Ji",
+      "kind": "TMPL",
+      "m": 95
+     },
+     {
+      "name": "Shimogyō-kuyakusho",
+      "kind": "ADMF",
+      "m": 464
+     },
+     {
+      "name": "Gojō-eki",
+      "kind": "RSTN",
+      "m": 528
+     },
+     {
+      "name": "Kyōto",
+      "kind": "RSTN",
+      "m": 540
+     },
+     {
+      "name": "Takase-gawa",
+      "kind": "STMA",
+      "m": 578
+     },
+     {
+      "name": "Nishi Hongan Ji",
+      "kind": "TMPL",
+      "m": 668
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Kyoto Station area",
+   "area_ko": "교토역 일대",
+   "near_en": "Higashi Hongan-ji",
+   "near_ko": "히가시혼간지",
+   "note": "교토역이 540m 거리이고 히가시혼간지가 95m 거리에 있습니다."
+  },
+  {
+   "group": "G31",
+   "photos": 2,
+   "days": [
+    "2025-05-11"
+   ],
+   "spread_m": 0,
+   "lat": 35.0064,
+   "lon": 135.7684,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Shijōdōri",
+      "kind": "PPLX",
+      "m": 569
+     },
+     {
+      "name": "Gion",
+      "kind": "PPLX",
+      "m": 709
+     },
+     {
+      "name": "Keage",
+      "kind": "PPL",
+      "m": 2022
+     },
+     {
+      "name": "Kyoto",
+      "kind": "PPLA",
+      "m": 2102
+     }
+    ],
+    "districts": [
+     {
+      "name": "Higashiyama Ku",
+      "kind": "ADM3",
+      "m": 1951
+     },
+     {
+      "name": "Nakagyō Ku",
+      "kind": "ADM3",
+      "m": 2017
+     },
+     {
+      "name": "Shimogyo Ku",
+      "kind": "ADM3",
+      "m": 2217
+     }
+    ],
+    "spots": [
+     {
+      "name": "Kawara-machi-eki",
+      "kind": "RSTN",
+      "m": 293
+     },
+     {
+      "name": "Nishiki Market",
+      "kind": "MKT",
+      "m": 342
+     },
+     {
+      "name": "Osteria Italiana 7 EMBERS",
+      "kind": "REST",
+      "m": 420
+     },
+     {
+      "name": "Sanjō-eki",
+      "kind": "RSTN",
+      "m": 452
+     },
+     {
+      "name": "Gionshijō-eki",
+      "kind": "RSTN",
+      "m": 470
+     },
+     {
+      "name": "Kyoto Shijo Minami za",
+      "kind": "THTR",
+      "m": 486
+     }
+    ],
+    "lodging": [
+     {
+      "name": "Unizo",
+      "kind": "HTL",
+      "m": 102
+     }
+    ]
+   },
+   "area_en": "Kawaramachi",
+   "area_ko": "가와라마치",
+   "near_en": "Nishiki Market",
+   "near_ko": "니시키 시장",
+   "note": "교토 가와라마치역이 293m, 니시키 시장이 342m 거리에 있습니다."
+  },
+  {
+   "group": "G32",
+   "photos": 3,
+   "days": [
+    "2025-08-09"
+   ],
+   "spread_m": 0,
+   "lat": 37.0016,
+   "lon": 128.1683,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Cheongpung",
+      "kind": "PPL",
+      "m": 313
+     },
+     {
+      "name": "Pyeongdong",
+      "kind": "PPL",
+      "m": 479
+     },
+     {
+      "name": "Gomujae",
+      "kind": "PPL",
+      "m": 1054
+     },
+     {
+      "name": "Dotun",
+      "kind": "PPL",
+      "m": 1330
+     },
+     {
+      "name": "Motan",
+      "kind": "PPL",
+      "m": 1514
+     },
+     {
+      "name": "Yŏn’gong-ni",
+      "kind": "PPL",
+      "m": 1581
+     }
+    ],
+    "districts": [
+     {
+      "name": "Multae-ri",
+      "kind": "ADM4",
+      "m": 922
+     },
+     {
+      "name": "Dohwa-ri",
+      "kind": "ADM4",
+      "m": 1555
+     },
+     {
+      "name": "Daeryu-ri",
+      "kind": "ADM4",
+      "m": 1683
+     }
+    ],
+    "spots": [
+     {
+      "name": "Cheongpung",
+      "kind": "ADMF",
+      "m": 235
+     },
+     {
+      "name": "Mangwolsan",
+      "kind": "HLL",
+      "m": 572
+     },
+     {
+      "name": "Cheongpung-chojunggyo",
+      "kind": "SCH",
+      "m": 668
+     },
+     {
+      "name": "Cheongpungdaegyo",
+      "kind": "BDG",
+      "m": 1026
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Cheongpung",
+   "area_ko": "청풍",
+   "near_en": "Mangwolsan",
+   "near_ko": "망월산",
+   "note": "제천 청풍면 일대이며 망월산이 572m 거리에 있습니다."
+  },
+  {
+   "group": "G33",
+   "photos": 3,
+   "days": [
+    "2025-09-13"
+   ],
+   "spread_m": 0,
+   "lat": 37.5487,
+   "lon": 126.9205,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Segyo-dong",
+      "kind": "PPLX",
+      "m": 367
+     },
+     {
+      "name": "Dangin-dong",
+      "kind": "PPLX",
+      "m": 387
+     },
+     {
+      "name": "Sangsu-dong",
+      "kind": "PPL",
+      "m": 509
+     },
+     {
+      "name": "Sŏgyo-dong",
+      "kind": "PPL",
+      "m": 645
+     },
+     {
+      "name": "Ch’angjŏn-dong",
+      "kind": "PPL",
+      "m": 790
+     },
+     {
+      "name": "Hapjeong-dong",
+      "kind": "PPL",
+      "m": 1072
+     }
+    ],
+    "districts": [
+     {
+      "name": "Seogyo-dong",
+      "kind": "ADM3",
+      "m": 370
+     },
+     {
+      "name": "Seogang-dong",
+      "kind": "ADM3",
+      "m": 703
+     },
+     {
+      "name": "Sinjeong-dong",
+      "kind": "ADM3",
+      "m": 1084
+     }
+    ],
+    "spots": [
+     {
+      "name": "Sangsu",
+      "kind": "RSTN",
+      "m": 242
+     },
+     {
+      "name": "Hongiktaehakkyosabŏmdaehakpusok-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 418
+     },
+     {
+      "name": "Sŏngsan-junghakkyo",
+      "kind": "SCH",
+      "m": 421
+     },
+     {
+      "name": "Hongiktaehakkyosabŏmdaehakpusogyŏja-godŭnghakkyo",
+      "kind": "SCH",
+      "m": 445
+     },
+     {
+      "name": "Hapjeongyeok",
+      "kind": "RSTN",
+      "m": 535
+     },
+     {
+      "name": "Hongik-taehakkyo",
+      "kind": "SCHC",
+      "m": 559
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Hongdae",
+   "area_ko": "홍대",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역",
+   "note": "서교동 행정구역 안으로 홍대 일대이며, 상수역이 242m 거리에 있습니다."
+  },
+  {
+   "group": "G34",
+   "photos": 3,
+   "days": [
+    "2025-10-18"
+   ],
+   "spread_m": 0,
+   "lat": 37.2848,
+   "lon": 127.0119,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Sinan-dong",
+      "kind": "PPL",
+      "m": 133
+     },
+     {
+      "name": "Yeonghwa-dong",
+      "kind": "PPL",
+      "m": 784
+     },
+     {
+      "name": "Namhyang-dong",
+      "kind": "PPL",
+      "m": 850
+     },
+     {
+      "name": "Paldal-dong",
+      "kind": "PPL",
+      "m": 866
+     },
+     {
+      "name": "Hwaseoil-dong",
+      "kind": "PPL",
+      "m": 1094
+     },
+     {
+      "name": "Chi-dong",
+      "kind": "PPL",
+      "m": 1187
+     }
+    ],
+    "districts": [
+     {
+      "name": "Yeonghwa-dong",
+      "kind": "ADM4",
+      "m": 408
+     },
+     {
+      "name": "Haenggung-dong",
+      "kind": "ADM4",
+      "m": 720
+     },
+     {
+      "name": "Paldal-gu",
+      "kind": "ADM3",
+      "m": 1149
+     }
+    ],
+    "spots": [
+     {
+      "name": "Sinandong-samuso",
+      "kind": "ADMF",
+      "m": 88
+     },
+     {
+      "name": "Gyeonbul-sa",
+      "kind": "TMPL",
+      "m": 195
+     },
+     {
+      "name": "Gyeonggiminyogwaoegyoseupso",
+      "kind": "SCH",
+      "m": 218
+     },
+     {
+      "name": "Jangan-gongwon",
+      "kind": "PRK",
+      "m": 242
+     },
+     {
+      "name": "Sinpung-chodeunghakgyo",
+      "kind": "SCH",
+      "m": 246
+     },
+     {
+      "name": "Gwangje-byeongwon",
+      "kind": "HSP",
+      "m": 320
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Sinan-dong, Suwon",
+   "area_ko": "수원 신안동",
+   "near_en": "Jangan Park",
+   "near_ko": "장안공원",
+   "note": "수원 신안동이 133m로 가장 가깝고 장안공원이 242m 거리에 있습니다."
+  },
+  {
+   "group": "G35",
+   "photos": 1,
+   "days": [
+    "2025-10-18"
+   ],
+   "spread_m": 0,
+   "lat": 37.2779,
+   "lon": 127.0161,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Paldal-dong",
+      "kind": "PPL",
+      "m": 187
+     },
+     {
+      "name": "Namhyang-dong",
+      "kind": "PPL",
+      "m": 789
+     },
+     {
+      "name": "Sinan-dong",
+      "kind": "PPL",
+      "m": 893
+     },
+     {
+      "name": "Chi-dong",
+      "kind": "PPL",
+      "m": 939
+     },
+     {
+      "name": "Maegyo-dong",
+      "kind": "PPL",
+      "m": 944
+     },
+     {
+      "name": "Maesan-dong",
+      "kind": "PPL",
+      "m": 1021
+     }
+    ],
+    "districts": [
+     {
+      "name": "Haenggung-dong",
+      "kind": "ADM4",
+      "m": 133
+     },
+     {
+      "name": "Paldal-gu",
+      "kind": "ADM3",
+      "m": 323
+     },
+     {
+      "name": "Ji-dong",
+      "kind": "ADM4",
+      "m": 719
+     }
+    ],
+    "spots": [
+     {
+      "name": "Paldalgupaldangdong-samuso",
+      "kind": "ADMF",
+      "m": 139
+     },
+     {
+      "name": "Namchang-chodeunghakgyo",
+      "kind": "SCH",
+      "m": 177
+     },
+     {
+      "name": "Paldal-sa",
+      "kind": "TMPL",
+      "m": 205
+     },
+     {
+      "name": "Namhyangdong-samuso",
+      "kind": "ADMF",
+      "m": 293
+     },
+     {
+      "name": "Paldal-gongwon",
+      "kind": "PRK",
+      "m": 444
+     },
+     {
+      "name": "Doip-byeongwon",
+      "kind": "HSP",
+      "m": 456
+     }
+    ],
+    "lodging": [
+     {
+      "name": "Paldal-mun",
+      "kind": "HSTS",
+      "m": 50
+     }
+    ]
+   },
+   "area_en": "Haenggung-dong, Suwon",
+   "area_ko": "수원 행궁동",
+   "near_en": "Paldalsa",
+   "near_ko": "팔달사",
+   "note": "수원 행궁동 행정구역 안이며 팔달사가 205m 거리에 있습니다."
+  },
+  {
+   "group": "G36",
+   "photos": 4,
+   "days": [
+    "2025-12-19"
+   ],
+   "spread_m": 0,
+   "lat": 37.5667,
+   "lon": 126.9924,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Gwansudong",
+      "kind": "PPLX",
+      "m": 377
+     },
+     {
+      "name": "Bangsandong",
+      "kind": "PPLX",
+      "m": 479
+     },
+     {
+      "name": "Bonguidong",
+      "kind": "PPLX",
+      "m": 576
+     },
+     {
+      "name": "Nagwondong",
+      "kind": "PPLX",
+      "m": 591
+     },
+     {
+      "name": "Myeong-dong",
+      "kind": "PPL",
+      "m": 772
+     },
+     {
+      "name": "Insadong",
+      "kind": "PPLX",
+      "m": 832
+     }
+    ],
+    "districts": [
+     {
+      "name": "Euljiro Sam-ga",
+      "kind": "ADM3",
+      "m": 43
+     },
+     {
+      "name": "Cho-dong",
+      "kind": "ADM3",
+      "m": 259
+     },
+     {
+      "name": "Supyo-dong",
+      "kind": "ADM3",
+      "m": 265
+     }
+    ],
+    "spots": [
+     {
+      "name": "Euljiro Samga",
+      "kind": "RSTN",
+      "m": 47
+     },
+     {
+      "name": "Ŭlchich’igwa-byŏngwŏn",
+      "kind": "HSP",
+      "m": 103
+     },
+     {
+      "name": "Injedaesŏulbaek-pyŏngwŏn",
+      "kind": "HSP",
+      "m": 366
+     },
+     {
+      "name": "Euljiro Sa Ga",
+      "kind": "RSTN",
+      "m": 451
+     },
+     {
+      "name": "Yŏngnak-pyŏngwŏn",
+      "kind": "HSP",
+      "m": 460
+     },
+     {
+      "name": "Tŏksu-junghakkyo",
+      "kind": "SCH",
+      "m": 526
+     }
+    ],
+    "lodging": [
+     {
+      "name": "Staz Myeongdong 1",
+      "kind": "HTL",
+      "m": 101
+     },
+     {
+      "name": "Staz Hotel Myeongdong I",
+      "kind": "HTL",
+      "m": 102
+     }
+    ]
+   },
+   "area_en": "Euljiro",
+   "area_ko": "을지로",
+   "near_en": "Euljiro 3-ga Station",
+   "near_ko": "을지로3가역",
+   "note": "을지로3가역이 47m 거리입니다."
+  },
+  {
+   "group": "G37",
+   "photos": 3,
+   "days": [
+    "2026-02-14"
+   ],
+   "spread_m": 0,
+   "lat": 37.5545,
+   "lon": 126.9355,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Nogosan-dong",
+      "kind": "PPL",
+      "m": 468
+     },
+     {
+      "name": "Ch’angch’ŏn-dong",
+      "kind": "PPL",
+      "m": 480
+     },
+     {
+      "name": "Tonggyo-dong",
+      "kind": "PPL",
+      "m": 737
+     },
+     {
+      "name": "Ch’angjŏn-dong",
+      "kind": "PPL",
+      "m": 750
+     },
+     {
+      "name": "Taehŭng-dong",
+      "kind": "PPL",
+      "m": 895
+     },
+     {
+      "name": "Sinsu-dong",
+      "kind": "PPL",
+      "m": 1090
+     }
+    ],
+    "districts": [
+     {
+      "name": "Sinsu-dong",
+      "kind": "ADM3",
+      "m": 669
+     },
+     {
+      "name": "Daeheung-dong",
+      "kind": "ADM3",
+      "m": 741
+     },
+     {
+      "name": "Sinchon-dong",
+      "kind": "ADM3",
+      "m": 828
+     }
+    ],
+    "spots": [
+     {
+      "name": "Sinchonyeok",
+      "kind": "RSTN",
+      "m": 158
+     },
+     {
+      "name": "Sŏulch’angchŏn-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 338
+     },
+     {
+      "name": "Sŏulch’angsŏ-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 384
+     },
+     {
+      "name": "Wau-san",
+      "kind": "HLL",
+      "m": 536
+     },
+     {
+      "name": "Sŏgang-daehakkyo",
+      "kind": "SCHC",
+      "m": 611
+     },
+     {
+      "name": "Kwangsŏng-godŭnghakkyo",
+      "kind": "SCH",
+      "m": 643
+     }
+    ],
+    "lodging": [
+     {
+      "name": "Sinchon Casaville Residence",
+      "kind": "HTL",
+      "m": 12
+     },
+     {
+      "name": "Ws",
+      "kind": "HTL",
+      "m": 35
+     }
+    ]
+   },
+   "area_en": "Sinchon",
+   "area_ko": "신촌",
+   "near_en": "Sinchon Station",
+   "near_ko": "신촌역",
+   "note": "신촌역이 158m 거리인 창천동 일대로, 흔히 신촌이라 부릅니다."
+  },
+  {
+   "group": "G38",
+   "photos": 2,
+   "days": [
+    "2026-05-16"
+   ],
+   "spread_m": 41,
+   "lat": 34.84375,
+   "lon": 128.42365,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Chungang-dong",
+      "kind": "PPLX",
+      "m": 128
+     },
+     {
+      "name": "Hangnam-dong",
+      "kind": "PPL",
+      "m": 267
+     },
+     {
+      "name": "T’aep’ong-dong",
+      "kind": "PPL",
+      "m": 472
+     },
+     {
+      "name": "Tongho-dong",
+      "kind": "PPL",
+      "m": 585
+     },
+     {
+      "name": "Tongyeong",
+      "kind": "PPL",
+      "m": 749
+     },
+     {
+      "name": "Puksin-dong",
+      "kind": "PPLX",
+      "m": 1174
+     }
+    ],
+    "districts": [
+     {
+      "name": "Jungang-dong",
+      "kind": "ADM3",
+      "m": 152
+     },
+     {
+      "name": "Buksin-dong",
+      "kind": "ADM3",
+      "m": 848
+     },
+     {
+      "name": "Docheon-dong",
+      "kind": "ADM3",
+      "m": 1240
+     }
+    ],
+    "spots": [
+     {
+      "name": "Sŏ-san",
+      "kind": "MT",
+      "m": 385
+     },
+     {
+      "name": "T’ongyŏng-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 491
+     },
+     {
+      "name": "Nammang-san",
+      "kind": "HLL",
+      "m": 537
+     },
+     {
+      "name": "Ch’ungmu-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 735
+     },
+     {
+      "name": "Yŏhwang-san",
+      "kind": "MT",
+      "m": 782
+     },
+     {
+      "name": "Ch’ungnyŏl-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 784
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Jungang-dong, Tongyeong",
+   "area_ko": "통영 중앙동",
+   "near_en": "Nammangsan",
+   "near_ko": "남망산",
+   "note": "통영 중앙동 행정구역 안이며 남망산이 537m 거리에 있습니다."
+  },
+  {
+   "group": "G39",
+   "photos": 1,
+   "days": [
+    "2026-05-16"
+   ],
+   "spread_m": 0,
+   "lat": 34.8465,
+   "lon": 128.4254,
+   "nearby": {
+    "towns": [
+     {
+      "name": "T’aep’ong-dong",
+      "kind": "PPL",
+      "m": 143
+     },
+     {
+      "name": "Chungang-dong",
+      "kind": "PPLX",
+      "m": 245
+     },
+     {
+      "name": "Tongyeong",
+      "kind": "PPL",
+      "m": 405
+     },
+     {
+      "name": "Tongho-dong",
+      "kind": "PPL",
+      "m": 568
+     },
+     {
+      "name": "Hangnam-dong",
+      "kind": "PPL",
+      "m": 579
+     },
+     {
+      "name": "Puksin-dong",
+      "kind": "PPLX",
+      "m": 877
+     }
+    ],
+    "districts": [
+     {
+      "name": "Jungang-dong",
+      "kind": "ADM3",
+      "m": 312
+     },
+     {
+      "name": "Buksin-dong",
+      "kind": "ADM3",
+      "m": 568
+     },
+     {
+      "name": "Jeongnyang-dong",
+      "kind": "ADM3",
+      "m": 1088
+     }
+    ],
+    "spots": [
+     {
+      "name": "T’ongyŏng-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 310
+     },
+     {
+      "name": "Ch’ungmu-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 438
+     },
+     {
+      "name": "Sŏ-san",
+      "kind": "MT",
+      "m": 545
+     },
+     {
+      "name": "T’ongyŏngdong-junghakkyo",
+      "kind": "SCH",
+      "m": 565
+     },
+     {
+      "name": "Yuyŏng-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 571
+     },
+     {
+      "name": "Nuhwang-san",
+      "kind": "HLL",
+      "m": 627
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Tongyeong",
+   "area_ko": "통영",
+   "near_en": "",
+   "near_ko": "",
+   "note": "통영 태평동·중앙동 일대이며, 600m 안에 학교·산 외 명소가 없습니다."
+  },
+  {
+   "group": "G40",
+   "photos": 1,
+   "days": [
+    "2026-05-16"
+   ],
+   "spread_m": 0,
+   "lat": 34.8423,
+   "lon": 128.4248,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Hangnam-dong",
+      "kind": "PPL",
+      "m": 116
+     },
+     {
+      "name": "Chungang-dong",
+      "kind": "PPLX",
+      "m": 310
+     },
+     {
+      "name": "Tongho-dong",
+      "kind": "PPL",
+      "m": 482
+     },
+     {
+      "name": "T’aep’ong-dong",
+      "kind": "PPL",
+      "m": 611
+     },
+     {
+      "name": "Tongyeong",
+      "kind": "PPL",
+      "m": 853
+     },
+     {
+      "name": "Chŏngnyang-dong",
+      "kind": "PPLX",
+      "m": 1194
+     }
+    ],
+    "districts": [
+     {
+      "name": "Jungang-dong",
+      "kind": "ADM3",
+      "m": 344
+     },
+     {
+      "name": "Buksin-dong",
+      "kind": "ADM3",
+      "m": 1016
+     },
+     {
+      "name": "Jeongnyang-dong",
+      "kind": "ADM3",
+      "m": 1294
+     }
+    ],
+    "spots": [
+     {
+      "name": "Nammang-san",
+      "kind": "HLL",
+      "m": 361
+     },
+     {
+      "name": "Sŏ-san",
+      "kind": "MT",
+      "m": 552
+     },
+     {
+      "name": "T’ongyŏng-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 673
+     },
+     {
+      "name": "Ch’ungmu-ch’odŭnghakkyo",
+      "kind": "SCH",
+      "m": 781
+     },
+     {
+      "name": "Tongyeong",
+      "kind": "PRT",
+      "m": 812
+     },
+     {
+      "name": "Toguyogu Ko",
+      "kind": "HBR",
+      "m": 837
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Tongyeong",
+   "area_ko": "통영",
+   "near_en": "Nammangsan",
+   "near_ko": "남망산",
+   "note": "통영 항남동 일대이며 남망산이 361m 거리에 있습니다."
+  },
+  {
+   "group": "G41",
+   "photos": 4,
+   "days": [
+    "2026-08-22"
+   ],
+   "spread_m": 0,
+   "lat": 37.5137,
+   "lon": 127.0334,
+   "nearby": {
+    "towns": [
+     {
+      "name": "Nonhyŏni-dong",
+      "kind": "PPL",
+      "m": 276
+     },
+     {
+      "name": "Hakdong",
+      "kind": "PPL",
+      "m": 544
+     },
+     {
+      "name": "Nonhyŏnil-tong",
+      "kind": "PPL",
+      "m": 620
+     },
+     {
+      "name": "Nonhyŏn-dong",
+      "kind": "PPL",
+      "m": 699
+     },
+     {
+      "name": "Samsŏng-dong",
+      "kind": "PPL",
+      "m": 876
+     },
+     {
+      "name": "Samsŏngi-dong",
+      "kind": "PPL",
+      "m": 1389
+     }
+    ],
+    "districts": [
+     {
+      "name": "Nonhyeon-dong",
+      "kind": "ADM3",
+      "m": 232
+     },
+     {
+      "name": "Nonhyeon-dong",
+      "kind": "ADM3",
+      "m": 851
+     },
+     {
+      "name": "Samseong-dong",
+      "kind": "ADM3",
+      "m": 1388
+     }
+    ],
+    "spots": [
+     {
+      "name": "Hakdong",
+      "kind": "RSTN",
+      "m": 151
+     },
+     {
+      "name": "Ellimbyeongwon",
+      "kind": "HSP",
+      "m": 272
+     },
+     {
+      "name": "Hakdong-chodeunghakgyo",
+      "kind": "SCH",
+      "m": 564
+     },
+     {
+      "name": "Eonbuk-junghakgyo",
+      "kind": "SCH",
+      "m": 638
+     },
+     {
+      "name": "Haedongbyeongwon",
+      "kind": "HSP",
+      "m": 749
+     },
+     {
+      "name": "Ansebyeongwon",
+      "kind": "HSP",
+      "m": 761
+     }
+    ],
+    "lodging": []
+   },
+   "area_en": "Nonhyeon-dong",
+   "area_ko": "논현동",
+   "near_en": "Hakdong Station",
+   "near_ko": "학동역",
+   "note": "논현동 행정구역 안이며 학동역이 151m 거리에 있습니다."
+  }
+ ],
+ "photos": {
+  "DCIM/Camera/20220319_190631.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v1",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20220319_191722.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v1",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20220319_200458.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v1",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20221016_141219.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v2",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20221018_141630992.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v2",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20221016_142116.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v2",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20221016_162419.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v3",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20221224_191240.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v4",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20221224_192114.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v4",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20221226_193419655.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v4",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20230610_102026.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v5",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20230610_102918.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v5",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20230610_103512.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v5",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20230715_084130.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v6",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20230715_202032813.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v7",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20230812_112233.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v8",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20230812_113305625.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v8",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20230812_113141.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v8",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20230827_121041.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v9",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20230827_121950.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v9",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20230827_152606454.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v9",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20230930_151418.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v10",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20230930_151852.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v10",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20230930_152951.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v10",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20231209_110812.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v11",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20231209_141503999.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v11",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20231216_152241.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v12",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20231223_103218.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v13",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20240113_180721.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v14",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20240113_181628.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v14",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20240113_182213.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v14",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20240713_124626478.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v15",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20240713_122949.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v15",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20240713_123511.jpg": {
+   "place_group": "G01",
+   "visit": "G01-v15",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20221105_164848.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v1",
+   "area_en": "Seongsu-dong",
+   "area_ko": "성수동",
+   "near_en": "Seoul Forest",
+   "near_ko": "서울숲"
+  },
+  "DCIM/Camera/20221105_165208.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v1",
+   "area_en": "Seongsu-dong",
+   "area_ko": "성수동",
+   "near_en": "Seoul Forest",
+   "near_ko": "서울숲"
+  },
+  "DCIM/Camera/20221105_170312.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v1",
+   "area_en": "Seongsu-dong",
+   "area_ko": "성수동",
+   "near_en": "Seoul Forest",
+   "near_ko": "서울숲"
+  },
+  "DCIM/Camera/20241012_161818.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Seongsu-dong",
+   "area_ko": "성수동",
+   "near_en": "Seoul Forest",
+   "near_ko": "서울숲"
+  },
+  "DCIM/Camera/20241012_162741.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Seongsu-dong",
+   "area_ko": "성수동",
+   "near_en": "Seoul Forest",
+   "near_ko": "서울숲"
+  },
+  "DCIM/Camera/20241012_163330.jpg": {
+   "place_group": "G02",
+   "visit": "G02-v2",
+   "area_en": "Seongsu-dong",
+   "area_ko": "성수동",
+   "near_en": "Seoul Forest",
+   "near_ko": "서울숲"
+  },
+  "DCIM/Camera/20230122_121311.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v1",
+   "area_en": "Bulgwang-dong",
+   "area_ko": "불광동",
+   "near_en": "Dokbawi Station",
+   "near_ko": "독바위역"
+  },
+  "DCIM/Camera/20230122_122215.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v1",
+   "area_en": "Bulgwang-dong",
+   "area_ko": "불광동",
+   "near_en": "Dokbawi Station",
+   "near_ko": "독바위역"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20230122_124117951.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v1",
+   "area_en": "Bulgwang-dong",
+   "area_ko": "불광동",
+   "near_en": "Dokbawi Station",
+   "near_ko": "독바위역"
+  },
+  "DCIM/Camera/20240210_111545.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v2",
+   "area_en": "Bulgwang-dong",
+   "area_ko": "불광동",
+   "near_en": "Dokbawi Station",
+   "near_ko": "독바위역"
+  },
+  "DCIM/Camera/20240210_112237.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v2",
+   "area_en": "Bulgwang-dong",
+   "area_ko": "불광동",
+   "near_en": "Dokbawi Station",
+   "near_ko": "독바위역"
+  },
+  "DCIM/Camera/20240210_114906.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v2",
+   "area_en": "Bulgwang-dong",
+   "area_ko": "불광동",
+   "near_en": "Dokbawi Station",
+   "near_ko": "독바위역"
+  },
+  "DCIM/Camera/20240210_122418.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v2",
+   "area_en": "Bulgwang-dong",
+   "area_ko": "불광동",
+   "near_en": "Dokbawi Station",
+   "near_ko": "독바위역"
+  },
+  "DCIM/Camera/20260117_082224.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v3",
+   "area_en": "Bulgwang-dong",
+   "area_ko": "불광동",
+   "near_en": "Dokbawi Station",
+   "near_ko": "독바위역"
+  },
+  "DCIM/Camera/20260117_121729.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v4",
+   "area_en": "Bulgwang-dong",
+   "area_ko": "불광동",
+   "near_en": "Dokbawi Station",
+   "near_ko": "독바위역"
+  },
+  "DCIM/Camera/20260117_123014.jpg": {
+   "place_group": "G03",
+   "visit": "G03-v4",
+   "area_en": "Bulgwang-dong",
+   "area_ko": "불광동",
+   "near_en": "Dokbawi Station",
+   "near_ko": "독바위역"
+  },
+  "DCIM/Camera/20230218_140509.jpg": {
+   "place_group": "G04",
+   "visit": "G04-v1",
+   "area_en": "Anmok",
+   "area_ko": "안목",
+   "near_en": "Anmok Beach",
+   "near_ko": "안목해변"
+  },
+  "DCIM/Camera/20230218_140927.jpg": {
+   "place_group": "G04",
+   "visit": "G04-v1",
+   "area_en": "Anmok",
+   "area_ko": "안목",
+   "near_en": "Anmok Beach",
+   "near_ko": "안목해변"
+  },
+  "DCIM/Camera/20230218_142008.jpg": {
+   "place_group": "G04",
+   "visit": "G04-v1",
+   "area_en": "Anmok",
+   "area_ko": "안목",
+   "near_en": "Anmok Beach",
+   "near_ko": "안목해변"
+  },
+  "DCIM/Camera/20250215_120818.jpg": {
+   "place_group": "G04",
+   "visit": "G04-v2",
+   "area_en": "Anmok",
+   "area_ko": "안목",
+   "near_en": "Anmok Beach",
+   "near_ko": "안목해변"
+  },
+  "DCIM/Camera/20250215_121249.jpg": {
+   "place_group": "G04",
+   "visit": "G04-v2",
+   "area_en": "Anmok",
+   "area_ko": "안목",
+   "near_en": "Anmok Beach",
+   "near_ko": "안목해변"
+  },
+  "DCIM/Camera/20250215_122329.jpg": {
+   "place_group": "G04",
+   "visit": "G04-v2",
+   "area_en": "Anmok",
+   "area_ko": "안목",
+   "near_en": "Anmok Beach",
+   "near_ko": "안목해변"
+  },
+  "DCIM/Camera/20260808_101645.jpg": {
+   "place_group": "G04",
+   "visit": "G04-v3",
+   "area_en": "Anmok",
+   "area_ko": "안목",
+   "near_en": "Anmok Beach",
+   "near_ko": "안목해변"
+  },
+  "DCIM/Camera/20260808_102024.jpg": {
+   "place_group": "G04",
+   "visit": "G04-v3",
+   "area_en": "Anmok",
+   "area_ko": "안목",
+   "near_en": "Anmok Beach",
+   "near_ko": "안목해변"
+  },
+  "DCIM/Camera/20260808_103128.jpg": {
+   "place_group": "G04",
+   "visit": "G04-v3",
+   "area_en": "Anmok",
+   "area_ko": "안목",
+   "near_en": "Anmok Beach",
+   "near_ko": "안목해변"
+  },
+  "DCIM/Camera/20230311_143449.jpg": {
+   "place_group": "G05",
+   "visit": "G05-v1",
+   "area_en": "Yeonnam-dong",
+   "area_ko": "연남동",
+   "near_en": "Seogang Station",
+   "near_ko": "서강역"
+  },
+  "DCIM/Camera/20230311_143851.jpg": {
+   "place_group": "G05",
+   "visit": "G05-v1",
+   "area_en": "Yeonnam-dong",
+   "area_ko": "연남동",
+   "near_en": "Seogang Station",
+   "near_ko": "서강역"
+  },
+  "DCIM/Camera/20230311_144927.jpg": {
+   "place_group": "G05",
+   "visit": "G05-v1",
+   "area_en": "Yeonnam-dong",
+   "area_ko": "연남동",
+   "near_en": "Seogang Station",
+   "near_ko": "서강역"
+  },
+  "DCIM/Camera/20240824_132134.jpg": {
+   "place_group": "G05",
+   "visit": "G05-v2",
+   "area_en": "Yeonnam-dong",
+   "area_ko": "연남동",
+   "near_en": "Seogang Station",
+   "near_ko": "서강역"
+  },
+  "DCIM/Camera/20240831_141229.jpg": {
+   "place_group": "G05",
+   "visit": "G05-v3",
+   "area_en": "Yeonnam-dong",
+   "area_ko": "연남동",
+   "near_en": "Seogang Station",
+   "near_ko": "서강역"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20230408_123755212.jpg": {
+   "place_group": "G06",
+   "visit": "G06-v1",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "Han River",
+   "near_ko": "한강"
+  },
+  "DCIM/Camera/20230408_123435.jpg": {
+   "place_group": "G06",
+   "visit": "G06-v1",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "Han River",
+   "near_ko": "한강"
+  },
+  "DCIM/Camera/20230408_124611.jpg": {
+   "place_group": "G06",
+   "visit": "G06-v1",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "Han River",
+   "near_ko": "한강"
+  },
+  "DCIM/Camera/20230909_180430.jpg": {
+   "place_group": "G06",
+   "visit": "G06-v2",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "Han River",
+   "near_ko": "한강"
+  },
+  "DCIM/Camera/20230909_180842.jpg": {
+   "place_group": "G06",
+   "visit": "G06-v2",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "Han River",
+   "near_ko": "한강"
+  },
+  "DCIM/Camera/20230909_181914.jpg": {
+   "place_group": "G06",
+   "visit": "G06-v2",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "Han River",
+   "near_ko": "한강"
+  },
+  "DCIM/Camera/20250405_141025.jpg": {
+   "place_group": "G06",
+   "visit": "G06-v3",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "Han River",
+   "near_ko": "한강"
+  },
+  "DCIM/Camera/20250405_141944.jpg": {
+   "place_group": "G06",
+   "visit": "G06-v3",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "Han River",
+   "near_ko": "한강"
+  },
+  "DCIM/Camera/20250405_142521.jpg": {
+   "place_group": "G06",
+   "visit": "G06-v3",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "Han River",
+   "near_ko": "한강"
+  },
+  "DCIM/Camera/20230520_101817.jpg": {
+   "place_group": "G07",
+   "visit": "G07-v1",
+   "area_en": "Woljeong-ri",
+   "area_ko": "월정리",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20230520_110728.jpg": {
+   "place_group": "G07",
+   "visit": "G07-v1",
+   "area_en": "Woljeong-ri",
+   "area_ko": "월정리",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20230520_122246.jpg": {
+   "place_group": "G08",
+   "visit": "G08-v1",
+   "area_en": "Woljeong-ri",
+   "area_ko": "월정리",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20230520_174959694.jpg": {
+   "place_group": "G09",
+   "visit": "G09-v1",
+   "area_en": "Sehwa-ri",
+   "area_ko": "세화리",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20230715_085826.jpg": {
+   "place_group": "G10",
+   "visit": "G10-v1",
+   "area_en": "Hapjeong",
+   "area_ko": "합정",
+   "near_en": "Hapjeong Station",
+   "near_ko": "합정역"
+  },
+  "DCIM/Camera/20230715_091712.jpg": {
+   "place_group": "G11",
+   "visit": "G11-v1",
+   "area_en": "Hongdae",
+   "area_ko": "홍대",
+   "near_en": "Hongik University",
+   "near_ko": "홍익대학교"
+  },
+  "DCIM/Camera/20230812_120418.jpg": {
+   "place_group": "G12",
+   "visit": "G12-v1",
+   "area_en": "Mangwon-dong",
+   "area_ko": "망원동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20230923_144208793.jpg": {
+   "place_group": "G13",
+   "visit": "G13-v1",
+   "area_en": "Yeonnam-dong",
+   "area_ko": "연남동",
+   "near_en": "Seogang Station",
+   "near_ko": "서강역"
+  },
+  "DCIM/Camera/20230923_144409.jpg": {
+   "place_group": "G13",
+   "visit": "G13-v1",
+   "area_en": "Yeonnam-dong",
+   "area_ko": "연남동",
+   "near_en": "Seogang Station",
+   "near_ko": "서강역"
+  },
+  "DCIM/Camera/20230923_145008.jpg": {
+   "place_group": "G13",
+   "visit": "G13-v1",
+   "area_en": "Yeonnam-dong",
+   "area_ko": "연남동",
+   "near_en": "Seogang Station",
+   "near_ko": "서강역"
+  },
+  "DCIM/Camera/20231014_142351.jpg": {
+   "place_group": "G14",
+   "visit": "G14-v1",
+   "area_en": "Huam-dong",
+   "area_ko": "후암동",
+   "near_en": "Namsan",
+   "near_ko": "남산"
+  },
+  "DCIM/Camera/20231014_143212.jpg": {
+   "place_group": "G14",
+   "visit": "G14-v1",
+   "area_en": "Huam-dong",
+   "area_ko": "후암동",
+   "near_en": "Namsan",
+   "near_ko": "남산"
+  },
+  "DCIM/Camera/20231014_143838.jpg": {
+   "place_group": "G14",
+   "visit": "G14-v1",
+   "area_en": "Huam-dong",
+   "area_ko": "후암동",
+   "near_en": "Namsan",
+   "near_ko": "남산"
+  },
+  "DCIM/Camera/20231118_132031.jpg": {
+   "place_group": "G15",
+   "visit": "G15-v1",
+   "area_en": "Seongsu-dong",
+   "area_ko": "성수동",
+   "near_en": "Seongsu Station",
+   "near_ko": "성수역"
+  },
+  "DCIM/Camera/20231118_132417.jpg": {
+   "place_group": "G15",
+   "visit": "G15-v1",
+   "area_en": "Seongsu-dong",
+   "area_ko": "성수동",
+   "near_en": "Seongsu Station",
+   "near_ko": "성수역"
+  },
+  "DCIM/Camera/20231118_133521.jpg": {
+   "place_group": "G15",
+   "visit": "G15-v1",
+   "area_en": "Seongsu-dong",
+   "area_ko": "성수동",
+   "near_en": "Seongsu Station",
+   "near_ko": "성수역"
+  },
+  "DCIM/Camera/20260425_141650.jpg": {
+   "place_group": "G15",
+   "visit": "G15-v2",
+   "area_en": "Seongsu-dong",
+   "area_ko": "성수동",
+   "near_en": "Seongsu Station",
+   "near_ko": "성수역"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20260425_142713937.jpg": {
+   "place_group": "G15",
+   "visit": "G15-v2",
+   "area_en": "Seongsu-dong",
+   "area_ko": "성수동",
+   "near_en": "Seongsu Station",
+   "near_ko": "성수역"
+  },
+  "DCIM/Camera/20260425_143120.jpg": {
+   "place_group": "G15",
+   "visit": "G15-v2",
+   "area_en": "Seongsu-dong",
+   "area_ko": "성수동",
+   "near_en": "Seongsu Station",
+   "near_ko": "성수역"
+  },
+  "DCIM/Camera/20231221_093512.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v1",
+   "area_en": "Seocho-dong",
+   "area_ko": "서초동",
+   "near_en": "Seoul Nambu Bus Terminal",
+   "near_ko": "남부터미널"
+  },
+  "DCIM/Camera/20231221_095208.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v1",
+   "area_en": "Seocho-dong",
+   "area_ko": "서초동",
+   "near_en": "Seoul Nambu Bus Terminal",
+   "near_ko": "남부터미널"
+  },
+  "DCIM/Camera/20231221_100527.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v1",
+   "area_en": "Seocho-dong",
+   "area_ko": "서초동",
+   "near_en": "Seoul Nambu Bus Terminal",
+   "near_ko": "남부터미널"
+  },
+  "DCIM/Camera/20231221_101046.jpg": {
+   "place_group": "G16",
+   "visit": "G16-v1",
+   "area_en": "Seocho-dong",
+   "area_ko": "서초동",
+   "near_en": "Seoul Nambu Bus Terminal",
+   "near_ko": "남부터미널"
+  },
+  "Download/IMG_0093.jpeg": {
+   "place_group": "G17",
+   "visit": "G17-v1",
+   "area_en": "Seocho-dong",
+   "area_ko": "서초동",
+   "near_en": "Seoul Nambu Bus Terminal",
+   "near_ko": "남부터미널"
+  },
+  "Download/IMG_0094.jpeg": {
+   "place_group": "G17",
+   "visit": "G17-v1",
+   "area_en": "Seocho-dong",
+   "area_ko": "서초동",
+   "near_en": "Seoul Nambu Bus Terminal",
+   "near_ko": "남부터미널"
+  },
+  "Download/IMG_0095.jpeg": {
+   "place_group": "G17",
+   "visit": "G17-v1",
+   "area_en": "Seocho-dong",
+   "area_ko": "서초동",
+   "near_en": "Seoul Nambu Bus Terminal",
+   "near_ko": "남부터미널"
+  },
+  "Download/IMG_0096.jpeg": {
+   "place_group": "G17",
+   "visit": "G17-v1",
+   "area_en": "Seocho-dong",
+   "area_ko": "서초동",
+   "near_en": "Seoul Nambu Bus Terminal",
+   "near_ko": "남부터미널"
+  },
+  "Download/IMG_0098.jpeg": {
+   "place_group": "G17",
+   "visit": "G17-v1",
+   "area_en": "Seocho-dong",
+   "area_ko": "서초동",
+   "near_en": "Seoul Nambu Bus Terminal",
+   "near_ko": "남부터미널"
+  },
+  "Download/IMG_0099.jpeg": {
+   "place_group": "G17",
+   "visit": "G17-v1",
+   "area_en": "Seocho-dong",
+   "area_ko": "서초동",
+   "near_en": "Seoul Nambu Bus Terminal",
+   "near_ko": "남부터미널"
+  },
+  "Download/IMG_0100.jpeg": {
+   "place_group": "G17",
+   "visit": "G17-v1",
+   "area_en": "Seocho-dong",
+   "area_ko": "서초동",
+   "near_en": "Seoul Nambu Bus Terminal",
+   "near_ko": "남부터미널"
+  },
+  "Download/IMG_0114.jpeg": {
+   "place_group": "G17",
+   "visit": "G17-v1",
+   "area_en": "Seocho-dong",
+   "area_ko": "서초동",
+   "near_en": "Seoul Nambu Bus Terminal",
+   "near_ko": "남부터미널"
+  },
+  "Download/IMG_0121.jpeg": {
+   "place_group": "G17",
+   "visit": "G17-v1",
+   "area_en": "Seocho-dong",
+   "area_ko": "서초동",
+   "near_en": "Seoul Nambu Bus Terminal",
+   "near_ko": "남부터미널"
+  },
+  "DCIM/Camera/20231221_124018.jpg": {
+   "place_group": "G18",
+   "visit": "G18-v1",
+   "area_en": "Dogok-dong",
+   "area_ko": "도곡동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20231221_125236.jpg": {
+   "place_group": "G18",
+   "visit": "G18-v1",
+   "area_en": "Dogok-dong",
+   "area_ko": "도곡동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20231221_130824.jpg": {
+   "place_group": "G18",
+   "visit": "G18-v1",
+   "area_en": "Dogok-dong",
+   "area_ko": "도곡동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20231221_132641.jpg": {
+   "place_group": "G18",
+   "visit": "G18-v1",
+   "area_en": "Dogok-dong",
+   "area_ko": "도곡동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20231221_134809.jpg": {
+   "place_group": "G18",
+   "visit": "G18-v1",
+   "area_en": "Dogok-dong",
+   "area_ko": "도곡동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20231221_142033.jpg": {
+   "place_group": "G18",
+   "visit": "G18-v1",
+   "area_en": "Dogok-dong",
+   "area_ko": "도곡동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20240518_103144.jpg": {
+   "place_group": "G19",
+   "visit": "G19-v1",
+   "area_en": "Ami-dong",
+   "area_ko": "아미동",
+   "near_en": "Amisan",
+   "near_ko": "아미산"
+  },
+  "DCIM/Camera/20240518_121618.jpg": {
+   "place_group": "G20",
+   "visit": "G20-v1",
+   "area_en": "Haeundae",
+   "area_ko": "해운대",
+   "near_en": "Haeundae Station",
+   "near_ko": "해운대역"
+  },
+  "DCIM/Camera/20240518_144829.jpg": {
+   "place_group": "G21",
+   "visit": "G21-v1",
+   "area_en": "Jung-dong, Haeundae",
+   "area_ko": "해운대 중동",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20240519_161321446.jpg": {
+   "place_group": "G22",
+   "visit": "G22-v1",
+   "area_en": "Haeundae",
+   "area_ko": "해운대",
+   "near_en": "Haeundae Beach",
+   "near_ko": "해운대해수욕장"
+  },
+  "DCIM/Camera/20240803_152012.jpg": {
+   "place_group": "G23",
+   "visit": "G23-v1",
+   "area_en": "Namae",
+   "area_ko": "남애",
+   "near_en": "Namae Beach",
+   "near_ko": "남애해수욕장"
+  },
+  "DCIM/Camera/20240804_083429.jpg": {
+   "place_group": "G23",
+   "visit": "G23-v2",
+   "area_en": "Namae",
+   "area_ko": "남애",
+   "near_en": "Namae Beach",
+   "near_ko": "남애해수욕장"
+  },
+  "DCIM/Camera/20240804_084735.jpg": {
+   "place_group": "G23",
+   "visit": "G23-v2",
+   "area_en": "Namae",
+   "area_ko": "남애",
+   "near_en": "Namae Beach",
+   "near_ko": "남애해수욕장"
+  },
+  "DCIM/Camera/20240907_140340.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Bukchon",
+   "area_ko": "북촌",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20240907_141211.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Bukchon",
+   "area_ko": "북촌",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20240907_141847.jpg": {
+   "place_group": "G24",
+   "visit": "G24-v1",
+   "area_en": "Bukchon",
+   "area_ko": "북촌",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "DCIM/Camera/20240914_111625.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v1",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20240914_112239.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v1",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20240921_140646.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v2",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20240922_141549503.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v2",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20241005_114235.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v3",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20241005_114647.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v3",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20241006_115801804.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v3",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20241005_120309.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v3",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20241019_142047.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v4",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20241019_144150462.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v4",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20241019_184216.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v5",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20241109_131418.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v6",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20241109_152231.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v7",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20241109_153324.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v7",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20241221_152312.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v8",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20241221_152728.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v8",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20241221_181432.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v9",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20241221_182018.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v9",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250118_112924.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v10",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250308_130512.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v11",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250308_130933.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v11",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250308_132009.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v11",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250608_102419.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v12",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250608_102936.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v12",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20250608_143847516.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v12",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250614_102112.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v13",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250614_115431.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v14",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250614_120124.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v14",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250621_143219.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v15",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250719_101249.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v16",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250719_101633.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v16",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250719_102743.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v16",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250830_121316.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v17",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250830_121718.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v17",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250830_122814.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v17",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250927_141035.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v18",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250927_141430.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v18",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250927_141915.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v18",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250927_214328.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v19",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20251115_142321.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v20",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20251115_143212.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v20",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20251220_144407893.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v21",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20251220_143513.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v21",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20251220_144052.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v21",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20251220_220651392.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v22",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20260314_120429.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v23",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20260314_120847.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v23",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20260314_121943.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v23",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20260404_132513.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v24",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20260404_132914.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v24",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20260404_134013.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v24",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20260606_161634921.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v25",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20260606_161445.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v25",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20260606_162532.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v25",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20260905_123752.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v26",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20260919_131439.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v27",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20260919_144858958.jpg": {
+   "place_group": "G25",
+   "visit": "G25-v27",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20240921_191027.jpg": {
+   "place_group": "G26",
+   "visit": "G26-v1",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20240921_191414.jpg": {
+   "place_group": "G26",
+   "visit": "G26-v1",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20240921_191934.jpg": {
+   "place_group": "G26",
+   "visit": "G26-v1",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20240921_192522.jpg": {
+   "place_group": "G26",
+   "visit": "G26-v1",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20250118_104217918.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250118_104446.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v1",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250608_110714.jpg": {
+   "place_group": "G27",
+   "visit": "G27-v2",
+   "area_en": "Sangsu-dong",
+   "area_ko": "상수동",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250510_102738.jpg": {
+   "place_group": "G28",
+   "visit": "G28-v1",
+   "area_en": "Higashiyama",
+   "area_ko": "히가시야마",
+   "near_en": "Yasaka Pagoda",
+   "near_ko": "야사카탑"
+  },
+  "DCIM/Camera/20250510_131621.jpg": {
+   "place_group": "G28",
+   "visit": "G28-v2",
+   "area_en": "Higashiyama",
+   "area_ko": "히가시야마",
+   "near_en": "Yasaka Pagoda",
+   "near_ko": "야사카탑"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20250510_181256920.jpg": {
+   "place_group": "G29",
+   "visit": "G29-v1",
+   "area_en": "Higashiyama",
+   "area_ko": "히가시야마",
+   "near_en": "Yasaka Pagoda",
+   "near_ko": "야사카탑"
+  },
+  "DCIM/Camera/20250510_174832.jpg": {
+   "place_group": "G30",
+   "visit": "G30-v1",
+   "area_en": "Kyoto Station area",
+   "area_ko": "교토역 일대",
+   "near_en": "Higashi Hongan-ji",
+   "near_ko": "히가시혼간지"
+  },
+  "DCIM/Camera/20250511_171224.jpg": {
+   "place_group": "G30",
+   "visit": "G30-v2",
+   "area_en": "Kyoto Station area",
+   "area_ko": "교토역 일대",
+   "near_en": "Higashi Hongan-ji",
+   "near_ko": "히가시혼간지"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20250513_141135334.jpg": {
+   "place_group": "G31",
+   "visit": "G31-v1",
+   "area_en": "Kawaramachi",
+   "area_ko": "가와라마치",
+   "near_en": "Nishiki Market",
+   "near_ko": "니시키 시장"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20250511_154927894.jpg": {
+   "place_group": "G31",
+   "visit": "G31-v1",
+   "area_en": "Kawaramachi",
+   "area_ko": "가와라마치",
+   "near_en": "Nishiki Market",
+   "near_ko": "니시키 시장"
+  },
+  "DCIM/Camera/20250809_132628.jpg": {
+   "place_group": "G32",
+   "visit": "G32-v1",
+   "area_en": "Cheongpung",
+   "area_ko": "청풍",
+   "near_en": "Mangwolsan",
+   "near_ko": "망월산"
+  },
+  "DCIM/Camera/20250809_133544.jpg": {
+   "place_group": "G32",
+   "visit": "G32-v1",
+   "area_en": "Cheongpung",
+   "area_ko": "청풍",
+   "near_en": "Mangwolsan",
+   "near_ko": "망월산"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20250809_140735942.jpg": {
+   "place_group": "G32",
+   "visit": "G32-v1",
+   "area_en": "Cheongpung",
+   "area_ko": "청풍",
+   "near_en": "Mangwolsan",
+   "near_ko": "망월산"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20250913_142133676.jpg": {
+   "place_group": "G33",
+   "visit": "G33-v1",
+   "area_en": "Hongdae",
+   "area_ko": "홍대",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250913_133951.jpg": {
+   "place_group": "G33",
+   "visit": "G33-v1",
+   "area_en": "Hongdae",
+   "area_ko": "홍대",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20250913_134527.jpg": {
+   "place_group": "G33",
+   "visit": "G33-v1",
+   "area_en": "Hongdae",
+   "area_ko": "홍대",
+   "near_en": "Sangsu Station",
+   "near_ko": "상수역"
+  },
+  "DCIM/Camera/20251018_152146.jpg": {
+   "place_group": "G34",
+   "visit": "G34-v1",
+   "area_en": "Sinan-dong, Suwon",
+   "area_ko": "수원 신안동",
+   "near_en": "Jangan Park",
+   "near_ko": "장안공원"
+  },
+  "DCIM/Camera/20251018_152510.jpg": {
+   "place_group": "G34",
+   "visit": "G34-v1",
+   "area_en": "Sinan-dong, Suwon",
+   "area_ko": "수원 신안동",
+   "near_en": "Jangan Park",
+   "near_ko": "장안공원"
+  },
+  "DCIM/Camera/20251018_174216.jpg": {
+   "place_group": "G34",
+   "visit": "G34-v2",
+   "area_en": "Sinan-dong, Suwon",
+   "area_ko": "수원 신안동",
+   "near_en": "Jangan Park",
+   "near_ko": "장안공원"
+  },
+  "DCIM/Camera/20251018_161042.jpg": {
+   "place_group": "G35",
+   "visit": "G35-v1",
+   "area_en": "Haenggung-dong, Suwon",
+   "area_ko": "수원 행궁동",
+   "near_en": "Paldalsa",
+   "near_ko": "팔달사"
+  },
+  "DCIM/Camera/20251219_190824.jpg": {
+   "place_group": "G36",
+   "visit": "G36-v1",
+   "area_en": "Euljiro",
+   "area_ko": "을지로",
+   "near_en": "Euljiro 3-ga Station",
+   "near_ko": "을지로3가역"
+  },
+  "DCIM/Camera/20251219_192138.jpg": {
+   "place_group": "G36",
+   "visit": "G36-v1",
+   "area_en": "Euljiro",
+   "area_ko": "을지로",
+   "near_en": "Euljiro 3-ga Station",
+   "near_ko": "을지로3가역"
+  },
+  "DCIM/Camera/20251219_194552.jpg": {
+   "place_group": "G36",
+   "visit": "G36-v1",
+   "area_en": "Euljiro",
+   "area_ko": "을지로",
+   "near_en": "Euljiro 3-ga Station",
+   "near_ko": "을지로3가역"
+  },
+  "DCIM/Camera/20251219_201609.jpg": {
+   "place_group": "G36",
+   "visit": "G36-v1",
+   "area_en": "Euljiro",
+   "area_ko": "을지로",
+   "near_en": "Euljiro 3-ga Station",
+   "near_ko": "을지로3가역"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20260214_184002176.jpg": {
+   "place_group": "G37",
+   "visit": "G37-v1",
+   "area_en": "Sinchon",
+   "area_ko": "신촌",
+   "near_en": "Sinchon Station",
+   "near_ko": "신촌역"
+  },
+  "DCIM/Camera/20260214_183446.jpg": {
+   "place_group": "G37",
+   "visit": "G37-v1",
+   "area_en": "Sinchon",
+   "area_ko": "신촌",
+   "near_en": "Sinchon Station",
+   "near_ko": "신촌역"
+  },
+  "DCIM/Camera/20260214_194313.jpg": {
+   "place_group": "G37",
+   "visit": "G37-v1",
+   "area_en": "Sinchon",
+   "area_ko": "신촌",
+   "near_en": "Sinchon Station",
+   "near_ko": "신촌역"
+  },
+  "DCIM/Camera/20260516_113218.jpg": {
+   "place_group": "G38",
+   "visit": "G38-v1",
+   "area_en": "Jungang-dong, Tongyeong",
+   "area_ko": "통영 중앙동",
+   "near_en": "Nammangsan",
+   "near_ko": "남망산"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20260516_130515448.jpg": {
+   "place_group": "G38",
+   "visit": "G38-v1",
+   "area_en": "Jungang-dong, Tongyeong",
+   "area_ko": "통영 중앙동",
+   "near_en": "Nammangsan",
+   "near_ko": "남망산"
+  },
+  "DCIM/Camera/20260516_143621.jpg": {
+   "place_group": "G39",
+   "visit": "G39-v1",
+   "area_en": "Tongyeong",
+   "area_ko": "통영",
+   "near_en": "",
+   "near_ko": ""
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20260516_205410270.jpg": {
+   "place_group": "G40",
+   "visit": "G40-v1",
+   "area_en": "Tongyeong",
+   "area_ko": "통영",
+   "near_en": "Nammangsan",
+   "near_ko": "남망산"
+  },
+  "DCIM/Camera/20260822_112027.jpg": {
+   "place_group": "G41",
+   "visit": "G41-v1",
+   "area_en": "Nonhyeon-dong",
+   "area_ko": "논현동",
+   "near_en": "Hakdong Station",
+   "near_ko": "학동역"
+  },
+  "Pictures/KakaoTalk/KakaoTalk_20260822_121511994.jpg": {
+   "place_group": "G41",
+   "visit": "G41-v1",
+   "area_en": "Nonhyeon-dong",
+   "area_ko": "논현동",
+   "near_en": "Hakdong Station",
+   "near_ko": "학동역"
+  },
+  "DCIM/Camera/20260822_112939.jpg": {
+   "place_group": "G41",
+   "visit": "G41-v1",
+   "area_en": "Nonhyeon-dong",
+   "area_ko": "논현동",
+   "near_en": "Hakdong Station",
+   "near_ko": "학동역"
+  },
+  "DCIM/Camera/20260822_113514.jpg": {
+   "place_group": "G41",
+   "visit": "G41-v1",
+   "area_en": "Nonhyeon-dong",
+   "area_ko": "논현동",
+   "near_en": "Hakdong Station",
+   "near_ko": "학동역"
+  }
+ }
+}

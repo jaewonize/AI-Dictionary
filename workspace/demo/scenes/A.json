@@ -1,0 +1,19 @@
+{
+ "key": "A",
+ "menu_label": "1. 전시 보고 간 카페 사진",
+ "run": "A",
+ "kind": "photo",
+ "doc_photos": [],
+ "spotlight": ["Download/IMG_0093.jpeg", "DCIM/Camera/20231221_124018.jpg", "DCIM/Camera/20240210_111545.jpg"],
+ "doc_lines": {},
+ "steps": [
+  {"label": "질문하기", "on": "start"},
+  {"label": "찾는 과정 보기와 고르기", "on": "first_event"},
+  {"label": "답 받기", "on": "first_answer"}
+ ],
+ "narrow": [
+  {"label": "폰 사진", "on": "start", "set": "all"},
+  {"label": "다녀온 날 {date}의 사진", "on": {"card": "visit_day", "has": "to_count"}, "set": "day"},
+  {"label": "관람을 마친 {cutoff} 뒤 같은 카페", "on": {"card": "picked", "has": "to_count"}, "set": "evidence"}
+ ]
+}
