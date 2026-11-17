@@ -250,9 +250,8 @@ def run_plan_query(raw: dict, _ctx: ToolContext) -> tuple[dict, dict]:
     return data, {"card": "plan", "sentence": inp.sentence, "data": data}
 
 
-def run_search_web(raw: dict, ctx: ToolContext) -> tuple[dict, dict]:
-    inp = SearchWebIn.model_validate(raw)
-    q = _norm(inp.query)
+def _search_web_from_cache(query: str, sentence: str, ctx: ToolContext) -> tuple[dict, dict]:
+    q = _norm(query)
     items = []
     if settings.web_cache.is_file():
         try:
@@ -269,7 +268,7 @@ def run_search_web(raw: dict, ctx: ToolContext) -> tuple[dict, dict]:
             break
     today_s = ctx.today.isoformat()
     if not hit:
-        res = {"query": inp.query, "found": False, "summary": "", "events": [], "cached": True}
+        res = {"query": query, "found": False, "summary": "", "events": [], "cached": True}
     else:
         evs = []
         for e in hit.get("events") or []:
@@ -282,8 +281,17 @@ def run_search_web(raw: dict, ctx: ToolContext) -> tuple[dict, dict]:
                 ev_out["lat"] = e["lat"]
                 ev_out["lon"] = e["lon"]
             evs.append(ev_out)
-        res = {"query": inp.query, "found": True, "summary": hit.get("summary", ""), "events": evs, "cached": True}
-    return res, {"card": "web", "sentence": inp.sentence, "data": res, "cached": True}
+        res = {"query": query, "found": True, "summary": hit.get("summary", ""), "events": evs, "cached": True}
+    return res, {"card": "web", "sentence": sentence, "data": res, "cached": True}
+
+
+def run_search_web(raw: dict, ctx: ToolContext) -> tuple[dict, dict]:
+    inp = SearchWebIn.model_validate(raw)
+    if settings.web_search == "live":
+        from app import websearch
+
+        return websearch.search_live(inp.query, inp.sentence, ctx, _search_web_from_cache)
+    return _search_web_from_cache(inp.query, inp.sentence, ctx)
 
 
 def run_find_candidates(raw: dict, ctx: ToolContext) -> tuple[dict, dict]:
