@@ -34,7 +34,67 @@ AI ( ) Dictionary는 폰의 사진과 문서를 기억나는 대로 물으면 �
 
 **그림 0. 기억 계층의 일반 구조**
 
-![그림 0. 기억 계층의 일반 구조](images/architecture-memory-layer.png)
+```mermaid
+%%{init: {
+  'securityLevel': 'strict',
+  'theme': 'base',
+  'themeVariables': {
+    'fontSize': '15px',
+    'primaryColor': '#FFFFFF',
+    'primaryTextColor': '#1E293B',
+    'primaryBorderColor': '#64748B',
+    'lineColor': '#475569',
+    'clusterBkg': '#F3F6F8',
+    'clusterBorder': '#CBD5E1',
+    'edgeLabelBackground': '#FFFFFF'
+  },
+  'flowchart': {
+    'htmlLabels': true,
+    'wrappingWidth': 900,
+    'curve': 'stepBefore',
+    'nodeSpacing': 36,
+    'rankSpacing': 46,
+    'padding': 18
+  }
+}}%%
+flowchart TB
+    subgraph L1["1 사용자 자료"]
+        direction LR
+        u1("⠀ ⠀시간·장소 등 단서가 있는⠀ ⠀<br/>사진과 문서") ~~~ u2("일부 단서가 부족하지만<br/>⠀다른 자료와 연관된 사진과 문서⠀")
+    end
+
+    subgraph L2["2 외부 AI Vision"]
+        v1("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀사진 이해 및 텍스트화⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀<br/>장면 설명 생성 · 사진 속 글자 읽기")
+    end
+
+    subgraph L3["3 AI Dic Agent pipeline"]
+        a1("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀시간·장소·사건 등의 맥락을 연결하고⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀<br/>연관된 자료를 그룹화")
+    end
+
+    subgraph L4["4 기억 계층"]
+        direction LR
+        r1("retain<br/>내용과 맥락 저장") --> r2("context memory<br/>기억과 관계 유지") --> r3("recall<br/>필요한 기억 회상")
+    end
+
+    q1("⠀⠀사용자의 질문⠀⠀")
+    ans("⠀⠀기억을 활용한 응답⠀⠀")
+
+    L1 --> L2
+    L2 -->|"기존 메타정보도 함께 활용"| L3
+    L3 --> L4
+    L4 ~~~ q1
+    q1 --> L4
+    L4 --> ans
+
+    classDef card fill:#FFFFFF,stroke:#64748B,stroke-width:1.5px,color:#1E293B;
+    classDef io fill:#E8EEF3,stroke:#64748B,stroke-width:1.5px,color:#1E293B;
+    class u1,u2,v1,a1,r1,r2,r3 card;
+    class q1,ans io;
+    style L1 fill:#F3F6F8,stroke:#CBD5E1,stroke-width:1px,color:#1E293B
+    style L2 fill:#F3F6F8,stroke:#CBD5E1,stroke-width:1px,color:#1E293B
+    style L3 fill:#F3F6F8,stroke:#CBD5E1,stroke-width:1px,color:#1E293B
+    style L4 fill:#F3F6F8,stroke:#CBD5E1,stroke-width:1px,color:#1E293B
+```
 
 기억 계층은 AI ( ) Dictionary가 사용자의 사진과 문서를 미리 이해하고 자료 사이의 관계를 정리해 두었다가, 사용자가 질문할 때 필요한 기억을 찾아 쓰게 하는 부분입니다. 이 계층은 AI 모델이 아무리 좋아도 질문에 필요한 근거와 맥락을 받지 못하면 알맞은 답을 내기 어렵다는 생각에서 출발했습니다. 사용자 자료인 사진과 문서는 저마다의 내용뿐 아니라 시간, 장소, 사건으로 서로 관계를 갖습니다. 찍은 시각이나 찍은 곳처럼 시간·장소 등 단서가 있는 사진과 문서도 있고, 일부 단서가 부족하지만 내용을 보고 다른 자료와 이어 줄 수 있는 연관된 사진과 문서도 있습니다.
 
