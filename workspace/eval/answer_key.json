@@ -1,0 +1,15 @@
+{
+ "dataset": "Mobile Storage",
+ "created_from": "docs/ARCHITECTURE.md와 폰 폴더 사진의 찍은 시각",
+ "tests": [
+  {"id": "A", "kind": "sequence", "query": "미셸 들라크루아 전시 보고 나서 갔던 카페 사진",
+   "answers": ["예술의전당"],
+   "answer_ids": ["DCIM/Camera/20231221_124018.jpg", "DCIM/Camera/20231221_125236.jpg", "DCIM/Camera/20231221_130824.jpg", "DCIM/Camera/20231221_132641.jpg", "DCIM/Camera/20231221_134809.jpg", "DCIM/Camera/20231221_142033.jpg"],
+   "optional_ids": [],
+   "trap_ids": ["DCIM/Camera/20231221_093512.jpg", "DCIM/Camera/20231221_095208.jpg", "DCIM/Camera/20231221_100527.jpg", "DCIM/Camera/20231221_101046.jpg"],
+   "note": "2023-12-21 전시장 사진 9장(10:34–11:56) 뒤 오후 카페 6장(12:40–14:20). 함정은 관람 전 오전 카페 4장",
+   "accept": {"after_id": "Download/IMG_0121.jpeg",
+              "related": [{"name": "전시장 사진", "ids": ["Download/IMG_0093.jpeg", "Download/IMG_0094.jpeg", "Download/IMG_0095.jpeg", "Download/IMG_0096.jpeg", "Download/IMG_0098.jpeg", "Download/IMG_0099.jpeg", "Download/IMG_0100.jpeg", "Download/IMG_0114.jpeg", "Download/IMG_0121.jpeg"]},
+                          {"name": "관람 전 카페 사진", "ids": ["DCIM/Camera/20231221_093512.jpg", "DCIM/Camera/20231221_095208.jpg", "DCIM/Camera/20231221_100527.jpg", "DCIM/Camera/20231221_101046.jpg"]}]}}
+ ]
+}

@@ -1,0 +1,61 @@
+[
+  {
+    "aliases": [
+      "미셸 들라크루아",
+      "미셸 들라크루아 전시"
+    ],
+    "summary": "1933년 파리 태생의 화가로, 1930~1940년대 전쟁 전 평화로운 파리의 주요 건축물을 배경으로 그곳에 사는 다양한 사람들을 그려 왔습니다.",
+    "events": [
+      {
+        "name": "미셸 들라크루아, 파리의 벨 에포크",
+        "venue": "예술의전당 한가람디자인미술관",
+        "start": "2023-12-16",
+        "end": "2024-03-31",
+        "url": "https://www.sac.or.kr/site/main/show/show_view?SN=49107",
+        "lat": 37.4803,
+        "lon": 127.0111,
+        "coord_url": "https://en.wikipedia.org/wiki/Seoul_Arts_Center"
+      },
+      {
+        "name": "미셸 들라크루아, 판화로 다시 만나는 파리의 벨 에포크",
+        "venue": "한국경제신문사 1층",
+        "start": "",
+        "end": "2024-07-31",
+        "url": "https://plus.hankyung.com/apps/newsinside.view?aid=2024050854901&category=&sns=y",
+        "lat": null,
+        "lon": null,
+        "coord_url": null
+      },
+      {
+        "name": "<행복한 기억의 순간> 미셸 들라크루아 개인전",
+        "venue": "롯데백화점 잠실점 에비뉴엘 6F 아트홀",
+        "start": "2024-11-22",
+        "end": "2025-02-16",
+        "url": "https://popply.co.kr/popup/2795",
+        "lat": 37.5125,
+        "lon": 127.1028,
+        "coord_url": "https://en.wikipedia.org/wiki/Lotte_World_Tower"
+      },
+      {
+        "name": "미셸 들라크루아: 영원히, 화가",
+        "venue": "현대백화점 무역센터점 문화홀",
+        "start": "2025-05-24",
+        "end": "2025-08-31",
+        "url": "https://www.opengallery.co.kr/exhibition/4933/",
+        "lat": 37.5103,
+        "lon": 127.061,
+        "coord_url": "https://en.wikipedia.org/wiki/World_Trade_Center_Seoul"
+      },
+      {
+        "name": "사랑을 담아, 미셸 들라크루아 드림",
+        "venue": "롯데뮤지엄",
+        "start": "2026-12-04",
+        "end": "2027-03-07",
+        "url": "https://www.lottemuseum.com/Mobile/ko/exhibitionDetail/66",
+        "lat": 37.5125,
+        "lon": 127.1028,
+        "coord_url": "https://en.wikipedia.org/wiki/Lotte_World_Tower"
+      }
+    ]
+  }
+]
