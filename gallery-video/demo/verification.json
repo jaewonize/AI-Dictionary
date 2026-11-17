@@ -1,0 +1,61 @@
+{
+  "files": [
+    {
+      "file": "A.mp4",
+      "duration": 55.366667,
+      "frames": 1661,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 30,
+      "codec": "h264"
+    },
+    {
+      "file": "B.mp4",
+      "duration": 39.933333,
+      "frames": 1198,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 30,
+      "codec": "h264"
+    },
+    {
+      "file": "W.mp4",
+      "duration": 40.4,
+      "frames": 1212,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 30,
+      "codec": "h264"
+    },
+    {
+      "file": "AI-Dictionary-original.mp4",
+      "duration": 135.7,
+      "frames": 4071,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 30,
+      "codec": "h264"
+    }
+  ],
+  "source_hash_verified": true,
+  "browser_errors": {
+    "A": [],
+    "B": [],
+    "W": []
+  },
+  "full_video_decode": "passed",
+  "visual_checks": [
+    "원본 화면 장면별 미리보기",
+    "인코딩된 전시 선택 화면",
+    "인코딩된 와인 결과 화면"
+  ],
+  "subtitle_files": "4개 생성 확인"
+}

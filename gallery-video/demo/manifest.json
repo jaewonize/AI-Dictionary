@@ -1,0 +1,24 @@
+{
+  "source_url": "http://localhost:8000/demo",
+  "source_sha256": "f6cce0b83851513f05d72af2e44c10826813c29f884f093abf9be53dae40bfeb",
+  "format": "1920×1080, 30fps, H.264, 무음, 화면 내 자막",
+  "duration": 135.70000000000002,
+  "edits": "시나리오별 시작 4초 → 사전 준비 구간 생략 → 질문부터 결과까지 원래 속도 재생 → 결과 정지. 실제 브라우저 화면 캡처.",
+  "clips": [
+    {
+      "scene": "A",
+      "duration": 55.36666666666667,
+      "errors": []
+    },
+    {
+      "scene": "B",
+      "duration": 39.93333333333334,
+      "errors": []
+    },
+    {
+      "scene": "W",
+      "duration": 40.4,
+      "errors": []
+    }
+  ]
+}
