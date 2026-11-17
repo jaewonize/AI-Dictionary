@@ -1,0 +1,658 @@
+{
+ "bank": "aidic-mobile-docs",
+ "query": "욕실 견적 중에 제일 싼 데랑 계약한 데 얼마 차이야?",
+ "budget": "mid",
+ "max_tokens": 8192,
+ "elapsed_ms": 9745,
+ "hits": [
+  {
+   "rank": 1,
+   "document_id": "doc:Download/견적서_수림인테리어.xlsx",
+   "kind": "doc",
+   "source_id": "Download/견적서_수림인테리어.xlsx",
+   "type": "world",
+   "occurred_start": null,
+   "text": "수림인테리어 욕실 리모델링 견적 금액은 소계 4,200,000원, 부가세(10%) 420,000원, 합계 4,620,000원임."
+  },
+  {
+   "rank": 2,
+   "document_id": "doc:KakaoTalkDownload/한울설비_견적_1차.pdf",
+   "kind": "doc",
+   "source_id": "KakaoTalkDownload/한울설비_견적_1차.pdf",
+   "type": "world",
+   "occurred_start": "2026-09-04T15:00:00+00:00",
+   "text": "한울설비(서울 마포구 월드컵북로, 담당 정민석 대표)가 서울 마포구 연남동 빌라 욕실 1개소(1.4평) 공사 1차 견적서를 2026년 9월 5일에 발행함. 자재 등급 협의 전 기준이며, 이 문서는 카톡으로 받은 파일임."
+  },
+  {
+   "rank": 3,
+   "document_id": "doc:Download/견적서_수림인테리어.xlsx",
+   "kind": "doc",
+   "source_id": "Download/견적서_수림인테리어.xlsx",
+   "type": "world",
+   "occurred_start": null,
+   "text": "견적 주요 내역: 철거 및 폐기물 반출 62만원, 우레탄 방수 3회 도포 52만원, 벽타일 300x600 무광 화이트 82만원, 바닥타일 300x300 미끄럼방지 28만원, 투피스 절수형 양변기 34만원, 세면대+하부장 600mm 43만원, 샤워·세면수전 세트 30만원, 돔천장+LED 매입등 2개 36만원, 저소음 환풍기 교체 13만원, 급배수 배관 부분 교체 27만원, 인건비 13만원."
+  },
+  {
+   "rank": 4,
+   "document_id": "doc:KakaoTalkDownload/견적_최종(2).pdf",
+   "kind": "doc",
+   "source_id": "KakaoTalkDownload/견적_최종(2).pdf",
+   "type": "world",
+   "occurred_start": "2026-09-23T15:00:00+00:00",
+   "text": "한울설비(정민석 대표)가 서울 마포구 연남동 빌라 욕실 1개소(1.4평) 공사 최종 견적서를 발행함. 합계는 4,950,000원(공급가 4,500,000원 + 부가세 450,000원)이며, 2026-09-05 1차 견적을 대체함."
+  },
+  {
+   "rank": 5,
+   "document_id": "photo:DCIM/Camera/20260901_153212.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260901_153212.jpg",
+   "type": "world",
+   "occurred_start": "2026-08-31T15:00:00+00:00",
+   "text": "하람디자인(담당 김수아)이 연남동 빌라 302호 욕실 1개소(1.4평) 리모델링 견적서를 발행함. 공급가액 3,800,000원, 부가세 380,000원, 합계 4,180,000원."
+  },
+  {
+   "rank": 6,
+   "document_id": "doc:KakaoTalkDownload/견적_최종(2).pdf",
+   "kind": "doc",
+   "source_id": "KakaoTalkDownload/견적_최종(2).pdf",
+   "type": "world",
+   "occurred_start": null,
+   "text": "최종 견적 내역: 철거 및 폐기 650,000원, 우레탄 방수 3회+보강 580,000원, 타일(벽 수입 무광 300x600, 바닥 미끄럼방지) 1,330,000원, 위생도기(양변기, 세면대 하부장 600, 도기 등급 상향) 740,000원, 수전 및 액세서리(해바라기 샤워수전, 세면수전, 선반) 420,000원, 천장 및 조명(돔천장, LED 매입등 2, 저소음 환풍기) 460,000원, 급배수 배관 부분 교체 320,000"
+  },
+  {
+   "rank": 7,
+   "document_id": "photo:DCIM/Screenshots/Screenshot_20260906-120215.png",
+   "kind": "photo",
+   "source_id": "DCIM/Screenshots/Screenshot_20260906-120215.png",
+   "type": "world",
+   "occurred_start": "2026-09-06T10:12:00+00:00",
+   "text": "연남리빙 이현우 실장이 2026년 9월 5일(금) 사용자 집 욕실 현장을 보고, 9월 6일(토) 카카오톡으로 욕실 1개소 올수리 견적을 보냄: 철거·방수·타일·도기·수전·천장등·환풍기 포함, 공급가 405만 원(부가세 포함 445만 5천 원), 공사 기간 4일, 10월 중순부터 일정 가능."
+  },
+  {
+   "rank": 8,
+   "document_id": "doc:KakaoTalkDownload/한울설비_견적_1차.pdf",
+   "kind": "doc",
+   "source_id": "KakaoTalkDownload/한울설비_견적_1차.pdf",
+   "type": "world",
+   "occurred_start": null,
+   "text": "한울설비 견적 조건: 타일을 수입 무광으로 올리면 약 20만 원 증액, 욕조 철거 후 샤워부스로 변경 예정. 공사 기간 4일, 둘째 날 오전 약 3시간 단수 발생. 계약 시 계약금 10%, 착공일에 중도금 지급. | Where: 서울 마포구 연남동 빌라 | Involving: 한울설비, user | 자재 업그레이드 비용 및 공사 일정·결제 조건"
+  },
+  {
+   "rank": 9,
+   "document_id": "doc:KakaoTalkDownload/견적_최종(2).pdf",
+   "kind": "doc",
+   "source_id": "KakaoTalkDownload/견적_최종(2).pdf",
+   "type": "world",
+   "occurred_start": null,
+   "text": "이 최종 견적을 기준으로 욕실 공사 계약을 진행하기로 함."
+  },
+  {
+   "rank": 10,
+   "document_id": "doc:Download/견적서_수림인테리어.xlsx",
+   "kind": "doc",
+   "source_id": "Download/견적서_수림인테리어.xlsx",
+   "type": "world",
+   "occurred_start": "2026-09-02T15:00:00+00:00",
+   "text": "사용자가 수림인테리어(서울 마포구 성미산로)로부터 서울 마포구 연남동 빌라 욕실 1개소(1.4평) 리모델링 견적서를 받음. 담당자는 박지훈 실장이며, 견적 유효기간은 견적일로부터 30일(2026년 10월 3일까지)임."
+  },
+  {
+   "rank": 11,
+   "document_id": "photo:DCIM/Camera/20260901_153212.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260901_153212.jpg",
+   "type": "world",
+   "occurred_start": null,
+   "text": "공사 기간은 4일이며 2일차 오전에 약 3시간 단수가 있고, 욕조를 샤워부스로 변경하면 약 35만 원이 추가됨. 견적은 견적일로부터 30일간(2026년 10월 1일까지) 유효함."
+  },
+  {
+   "rank": 12,
+   "document_id": "timeline:2026-06-06",
+   "kind": "timeline",
+   "source_id": "2026-06-06",
+   "type": "world",
+   "occurred_start": "2026-06-06T07:25:00.020000+00:00",
+   "text": "사용자가 스프링 노트에 치수를 기록했다: 주방(KITCHEN) 2400 x 2100 mm, 욕실(BATH) 1800 x 2200 mm."
+  },
+  {
+   "rank": 13,
+   "document_id": "photo:DCIM/Camera/20260905_123752.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260905_123752.jpg",
+   "type": "world",
+   "occurred_start": "2026-09-05T03:37:52+00:00",
+   "text": "사용자가 주방·욕실 리노베이션(인테리어 공사) 계획 'RENO-2026-01'을 세우고 있으며, 2026년 9월 5일 상수역 부근에서 스프링 노트에 영어로 계획 메모를 작성해 사진으로 남겼다. 주방 치수는 2400 x 2100, 욕실 치수는 1800 x 2200이다."
+  },
+  {
+   "rank": 14,
+   "document_id": "doc:Download/견적서_수림인테리어.xlsx",
+   "kind": "doc",
+   "source_id": "Download/견적서_수림인테리어.xlsx",
+   "type": "world",
+   "occurred_start": null,
+   "text": "욕실 리모델링 시공 기간은 총 4일(타일 2일, 설비 1일, 마감 1일)로 견적됨. | Where: 서울 마포구 연남동 빌라 욕실 | Involving: 수림인테리어 | 공사 일정 계획에 필요"
+  },
+  {
+   "rank": 15,
+   "document_id": "doc:Download/스캔_1007.pdf",
+   "kind": "doc",
+   "source_id": "Download/스캔_1007.pdf",
+   "type": "world",
+   "occurred_start": null,
+   "text": "계약 총액은 4,950,000원(공급가액 4,500,000원 + 부가세 450,000원)이며, 2026년 9월 24일자 최종 견적서 기준(9월 5일자 1차 견적서는 기준이 아님). | Involving: 윤지아, 한울설비"
+  },
+  {
+   "rank": 16,
+   "document_id": "doc:Download/스캔_1007.pdf",
+   "kind": "doc",
+   "source_id": "Download/스캔_1007.pdf",
+   "type": "world",
+   "occurred_start": "2026-10-06T15:00:00+00:00",
+   "text": "윤지아(갑, 발주자)가 한울설비(을, 대표 정민석)와 연남동 빌라 302호 욕실(1개소, 1.4평) 리모델링 공사 계약을 2026년 10월 7일에 체결함."
+  },
+  {
+   "rank": 17,
+   "document_id": "photo:DCIM/Camera/20260606_162532.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260606_162532.jpg",
+   "type": "world",
+   "occurred_start": "2026-06-06T07:25:32+00:00",
+   "text": "사용자가 집 주방 식탁 위 스프링 노트에 주방(KITCHEN, 2400 x 2100 mm)과 욕실(BATH, 1800 x 2200 mm) 평면도를 펜으로 스케치하고 치수를 적어 둔 사진을 찍음."
+  },
+  {
+   "rank": 18,
+   "document_id": "timeline:2026-09-01",
+   "kind": "timeline",
+   "source_id": "2026-09-01",
+   "type": "world",
+   "occurred_start": "2026-09-01T06:32:12+00:00",
+   "text": "2026년 9월 1일(화) 15:32에 하람디자인이 작성한 욕실 리모델링 견적서를 사진으로 찍었다. 견적서에는 하람디자인(서울 마포구 연남로) 담당자 김수아의 이름이 적혀 있다."
+  },
+  {
+   "rank": 19,
+   "document_id": "photo:DCIM/Camera/20260822_113514.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260822_113514.jpg",
+   "type": "world",
+   "occurred_start": null,
+   "text": "사용자의 리노베이션 메모(RENO-2026-01)에 자재 후보와 제곱미터당 가격이 손글씨로 적혀 있음: W01 웜 화이트 ㎡당 180,000원~ 주방 상판?, O02 라이트 오크 ㎡당 160,000원~ 하부장?, T03 연그레이 테라조 ㎡당 220,000원~ 욕실 벽?"
+  },
+  {
+   "rank": 20,
+   "document_id": "timeline:2026-09-05",
+   "kind": "timeline",
+   "source_id": "2026-09-05",
+   "type": "world",
+   "occurred_start": "2026-09-05T03:37:52+00:00",
+   "text": "사용자가 나무 테이블 위 스프링 노트에 영어로 쓴 주방·욕실 리노베이션(인테리어 공사) 계획 메모를 사진으로 찍었다. 메모 내용: '2026-09-05 RENO-2026-01 Kitchen (2400 x 2100) - keep layout'."
+  },
+  {
+   "rank": 21,
+   "document_id": "doc:Download/스캔_1007.pdf",
+   "kind": "doc",
+   "source_id": "Download/스캔_1007.pdf",
+   "type": "world",
+   "occurred_start": "2026-10-18T15:00:00.010000+00:00",
+   "text": "욕실 리모델링 공사 기간은 2026년 10월 19일부터 10월 23일까지(4일, 공휴일 제외)로 예정됨."
+  },
+  {
+   "rank": 22,
+   "document_id": "timeline:2026-06-06",
+   "kind": "timeline",
+   "source_id": "2026-06-06",
+   "type": "world",
+   "occurred_start": null,
+   "text": "상수동 집의 욕실은 베이지색 정사각 타일 벽, 작은 타일 바닥과 가운데 배수구, 녹이 슨 금속 수건걸이, 흰색 받침대형(페데스탈) 세면대가 있는 낡은 상태이다."
+  },
+  {
+   "rank": 23,
+   "document_id": "photo:DCIM/Camera/20260606_161445.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260606_161445.jpg",
+   "type": "world",
+   "occurred_start": "2026-06-06T07:14:45+00:00",
+   "text": "사용자가 2026년 6월 6일(토) 오후 4시 14분 상수동 상수역 부근의 실내 욕실 사진을 찍었다. 베이지색 타일 벽에 녹슨 금속 수건걸이(회색 작은 수건 걸림)가 있고 그 아래 타일에 갈색 녹물 자국이 흘러내려 있으며, 가장자리가 부식된 오래된 거울에 흰 샤워커튼이 비친다."
+  },
+  {
+   "rank": 24,
+   "document_id": "photo:Pictures/KakaoTalk/KakaoTalk_20260919_144858958.jpg",
+   "kind": "photo",
+   "source_id": "Pictures/KakaoTalk/KakaoTalk_20260919_144858958.jpg",
+   "type": "world",
+   "occurred_start": "2026-09-19T04:18:17.010000+00:00",
+   "text": "사진 속 욕실 바닥은 물에 젖어 있고 타일 줄눈에 얼룩이 있으며 오른쪽에 배수구가 보인다. 사람은 찍혀 있지 않다."
+  },
+  {
+   "rank": 25,
+   "document_id": "timeline:2025-07-19",
+   "kind": "timeline",
+   "source_id": "2025-07-19",
+   "type": "world",
+   "occurred_start": "2025-07-19T01:21:11.020000+00:00",
+   "text": "사용자는 2025년 7월 19일 물방울이 맺힌 주황색 접이식 우산을 집 욕실 바닥에 펼쳐 말렸다."
+  },
+  {
+   "rank": 26,
+   "document_id": "photo:DCIM/Screenshots/Screenshot_20260919-132343.png",
+   "kind": "photo",
+   "source_id": "DCIM/Screenshots/Screenshot_20260919-132343.png",
+   "type": "world",
+   "occurred_start": null,
+   "text": "리모델링 참고 자료로 주방(2400 × 2100 mm, 흰색 상부장)과 욕실(1800 × 2200 mm, 샤워 커튼·세면대) 사진을 저장해 두었다. | Where: 서울 아파트 | Involving: user | 리모델링 대상 공간 치수 정보"
+  },
+  {
+   "rank": 27,
+   "document_id": "photo:DCIM/Camera/20250719_102111.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20250719_102111.jpg",
+   "type": "world",
+   "occurred_start": "2025-07-19T01:21:11+00:00",
+   "text": "2025년 7월 19일 오전 10시 21분, 집 욕실 바닥에 물방울이 맺힌 주황색 접이식 우산을 펼쳐 말리는 사진이 찍혔다."
+  },
+  {
+   "rank": 28,
+   "document_id": "doc:Download/스캔_1007.pdf",
+   "kind": "doc",
+   "source_id": "Download/스캔_1007.pdf",
+   "type": "world",
+   "occurred_start": null,
+   "text": "공사 범위는 철거·폐기물 반출, 우레탄 방수 3회 및 보강, 벽·바닥 타일 시공(수입 무광 300x600 / 미끄럼방지 300x300)이며, 구조 변경과 배관 전면 교체는 미포함(철거 후 배관 부식 시 갑과 협의). | Where: 연남동 빌라 302호 욕실 | Involving: 윤지아, 한울설비"
+  },
+  {
+   "rank": 29,
+   "document_id": "doc:KakaoTalkDownload/견적_최종(2).pdf",
+   "kind": "doc",
+   "source_id": "KakaoTalkDownload/견적_최종(2).pdf",
+   "type": "world",
+   "occurred_start": null,
+   "text": "1차 견적 대비 공급가가 3,900,000원에서 4,500,000원으로 600,000원 증가함. 타일을 수입 무광으로, 샤워수전을 해바라기형으로 변경했고, 도기 등급도 상향함. 증감 내역은 타일 +350,000원, 수전 및 액세서리 +110,000원, 방수 +60,000원, 위생도기 +50,000원, 천장 및 조명 +30,000원."
+  },
+  {
+   "rank": 30,
+   "document_id": "photo:DCIM/Screenshots/Screenshot_20260906-120215.png",
+   "kind": "photo",
+   "source_id": "DCIM/Screenshots/Screenshot_20260906-120215.png",
+   "type": "world",
+   "occurred_start": "2026-09-06T11:40:00.010000+00:00",
+   "text": "사용자는 연남리빙 견적에 대해 다른 업체 견적도 받아보고 연락하겠다고 답했고, 이현우 실장은 타일 등급을 올리면 약 25만 원이 추가된다고 안내함."
+  },
+  {
+   "rank": 31,
+   "document_id": "photo:DCIM/Camera/20260606_161916.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260606_161916.jpg",
+   "type": "world",
+   "occurred_start": "2026-06-06T07:19:16+00:00",
+   "text": "2026년 6월 6일 오후 4시 19분, 사용자가 욕실 세면대 위에 노란색 줄자를 펼쳐 놓고 치수를 재는 모습의 사진을 찍었다. 오래된 욕실의 리모델링이나 수리를 준비하는 것으로 보인다."
+  },
+  {
+   "rank": 32,
+   "document_id": "doc:Download/입주점검표.html",
+   "kind": "doc",
+   "source_id": "Download/입주점검표.html",
+   "type": "world",
+   "occurred_start": null,
+   "text": "점검 당시 주방 후드는 소음이 있고 욕실 환풍기는 약했으며, 수압은 동시 사용 시 약해졌다. 보일러 온수 도달은 40초, 분전반에는 여유 회로 2구가 있었다."
+  },
+  {
+   "rank": 33,
+   "document_id": "photo:Pictures/KakaoTalk/KakaoTalk_20240922_141549503.jpg",
+   "kind": "photo",
+   "source_id": "Pictures/KakaoTalk/KakaoTalk_20240922_141549503.jpg",
+   "type": "world",
+   "occurred_start": null,
+   "text": "해당 욕실에는 흰색 양변기, 흰색 세면대와 나무색 하부장(수납장)이 있고 바닥은 짙은 회색 타일임. | Where: 상수동 · 상수역 부근, 욕실 | 욕실 구성 묘사"
+  },
+  {
+   "rank": 34,
+   "document_id": "doc:Download/보름달베이커리_디자인용역계약서.pdf",
+   "kind": "doc",
+   "source_id": "Download/보름달베이커리_디자인용역계약서.pdf",
+   "type": "world",
+   "occurred_start": null,
+   "text": "계약 금액은 총 9,800,000원(부가세 별도)이며, 계약금 40% 3,920,000원은 계약 후 7일 내(2025년 4월 11일까지), 중도금 30% 2,940,000원은 로고 선정 완료 시, 잔금 30% 2,940,000원은 최종 납품 후 14일 내 지급"
+  },
+  {
+   "rank": 35,
+   "document_id": "photo:DCIM/Camera/20260606_161916.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260606_161916.jpg",
+   "type": "world",
+   "occurred_start": null,
+   "text": "사진 속 욕실은 노후 상태이다. 베이지색 타일 벽에 녹물 자국이 흘러내렸고, 거울 아래 가장자리 은박이 벗겨져 얼룩져 있다. 흰색 페데스탈 세면대, 유리 선반, 수건걸이, 잎사귀 무늬 샤워 커튼, 코너 선반이 있다."
+  },
+  {
+   "rank": 36,
+   "document_id": "photo:Pictures/KakaoTalk/KakaoTalk_20260606_161634921.jpg",
+   "kind": "photo",
+   "source_id": "Pictures/KakaoTalk/KakaoTalk_20260606_161634921.jpg",
+   "type": "world",
+   "occurred_start": "2026-06-06T07:10:21.010000+00:00",
+   "text": "욕실은 다소 낡은 상태다. 하얀 받침대형 세면대 위 큰 거울은 가장자리 은박이 벗겨져 있고, 수건걸이 아래 벽에는 녹물 자국이 있다. 세면대에는 펌프 용기와 칫솔 꽂힌 컵이 있고, 앞쪽에는 뚜껑 열린 하얀 변기가 있다."
+  },
+  {
+   "rank": 37,
+   "document_id": "photo:Download/image_81642.jpg",
+   "kind": "photo",
+   "source_id": "Download/image_81642.jpg",
+   "type": "world",
+   "occurred_start": "2026-07-11T08:21:42+00:00",
+   "text": "사용자가 2026년 7월 11일(토) 휴대폰 다운로드 폴더에 욕실 인테리어 사진(Download/image_81642.jpg)을 저장함. 베이지톤 타일 욕실로, 원목 하부장 위 타원형 탑볼 세면대, 벽 매립형 브러시드 골드 수전, 거울 수납장, 따뜻한 빛의 원통형 벽등이 있음."
+  },
+  {
+   "rank": 38,
+   "document_id": "doc:Download/스캔_0423.pdf",
+   "kind": "doc",
+   "source_id": "Download/스캔_0423.pdf",
+   "type": "world",
+   "occurred_start": null,
+   "text": "대금 지급 조건: 계약금 10%는 계약 체결 시, 중도금 40%는 철거 완료 후, 잔금 50%는 준공 검사 및 하자 확인 후 지급. | Involving: 윤지아, 수림인테리어"
+  },
+  {
+   "rank": 39,
+   "document_id": "doc:Download/스캔_0423.pdf",
+   "kind": "doc",
+   "source_id": "Download/스캔_0423.pdf",
+   "type": "world",
+   "occurred_start": null,
+   "text": "계약 총액 12,100,000원(주방 공사 공급가 11,000,000원, 2026-09-23 제안 기준 + 부가세 1,100,000원). 현관 3연동 중문은 다온창호와 직접 계약, 빌트인 가전은 하이가전유통에서 직접 구매하여 별도. | Involving: 윤지아, 수림인테리어, 다온창호, 하이가전유통"
+  },
+  {
+   "rank": 40,
+   "document_id": "timeline:2026-06-06",
+   "kind": "timeline",
+   "source_id": "2026-06-06",
+   "type": "world",
+   "occurred_start": "2026-06-06T07:10:00+00:00",
+   "text": "사용자가 2026년 6월 6일(토) 오후 상수동 상수역 부근의 한 집에서 욕실과 주방을 사진으로 기록하고, 노란색 줄자로 세면대 주변 등 치수를 재었다."
+  },
+  {
+   "rank": 41,
+   "document_id": "photo:Pictures/KakaoTalk/KakaoTalk_20260606_161634921.jpg",
+   "kind": "photo",
+   "source_id": "Pictures/KakaoTalk/KakaoTalk_20260606_161634921.jpg",
+   "type": "world",
+   "occurred_start": "2026-06-06T07:10:21+00:00",
+   "text": "상수역 부근 실내 욕실을 문틈으로 들여다본 사진이 2026년 6월 6일(토) 16:10에 찍혔다. 사진은 카카오톡 폴더에 저장되어 있다. 욕실은 베이지색 정사각 타일 벽, 작은 타일 바닥, 가운데 배수구를 갖추고 있고, 사람은 보이지 않는다."
+  },
+  {
+   "rank": 42,
+   "document_id": "photo:Pictures/KakaoTalk/KakaoTalk_20240922_141549503.jpg",
+   "kind": "photo",
+   "source_id": "Pictures/KakaoTalk/KakaoTalk_20240922_141549503.jpg",
+   "type": "world",
+   "occurred_start": "2024-09-21T05:15:40+00:00",
+   "text": "상수동(상수역 부근) 실내 욕실 벽의 흰색 직사각형 타일 한 장이 위쪽 모서리가 깨져 떨어져 나가고 아래로 길게 금이 간 상태로 촬영됨. 타일 파손·하자 기록용 사진으로 보임."
+  },
+  {
+   "rank": 43,
+   "document_id": "photo:Download/img_004982.jpg",
+   "kind": "photo",
+   "source_id": "Download/img_004982.jpg",
+   "type": "world",
+   "occurred_start": "2026-07-11T08:07:18+00:00",
+   "text": "사용자가 2026년 7월 11일(토)에 욕실 인테리어 사진(Download/img_004982.jpg)을 휴대폰 다운로드 폴더에 저장함. 밝은 회백색 벽, 원목 서랍장 위 흰색 직사각형 세면대와 브러시드 니켈 수전, 벽걸이형 변기, 유리 칸막이 워크인 샤워(레인 샤워+핸드 샤워), 검은 프레임 창문, 회색 테라조 바닥, 스킨답서스 등 식물로 꾸며진 욕실이며 사람은 없음."
+  },
+  {
+   "rank": 44,
+   "document_id": "doc:Download/보름달베이커리_브랜드리뉴얼_제안_v2.pptx",
+   "kind": "doc",
+   "source_id": "Download/보름달베이커리_브랜드리뉴얼_제안_v2.pptx",
+   "type": "world",
+   "occurred_start": null,
+   "text": "수정 견적 합계 980만원(부가세 별도): 로고 리디자인 480만원, 패키지 4종 400만원, 가이드 간략본 100만원 | Involving: 스튜디오 여백, 보름달베이커리"
+  },
+  {
+   "rank": 45,
+   "document_id": "doc:Download/달뜰코스메틱_견적서_수정.xlsx",
+   "kind": "doc",
+   "source_id": "Download/달뜰코스메틱_견적서_수정.xlsx",
+   "type": "world",
+   "occurred_start": null,
+   "text": "달뜰코스메틱 수정 견적의 소계는 6,840,000원, 부가세(10%) 684,000원, 합계 7,524,000원. 1차 견적 합계 6,600,000원 대비 924,000원 증가함."
+  },
+  {
+   "rank": 46,
+   "document_id": "doc:Download/주방_견적_참고.xlsx",
+   "kind": "doc",
+   "source_id": "Download/주방_견적_참고.xlsx",
+   "type": "world",
+   "occurred_start": null,
+   "text": "이 9/11 간이 패키지 견적은 '주방 견적 비교표(1차)'에 있는 모아디자인 정식 견적(공급가 13,200,000원)과 별개임."
+  },
+  {
+   "rank": 47,
+   "document_id": "photo:DCIM/Camera/20260606_161445.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260606_161445.jpg",
+   "type": "world",
+   "occurred_start": null,
+   "text": "같은 욕실에는 흰 세면대와 은색 수전, 펌프형 흰 용기, 칫솔이 꽂힌 컵, 유리 선반 위 검은 비누받침과 검은 튜브가 있다."
+  },
+  {
+   "rank": 48,
+   "document_id": "doc:Download/이사_체크리스트.html",
+   "kind": "doc",
+   "source_id": "Download/이사_체크리스트.html",
+   "type": "world",
+   "occurred_start": null,
+   "text": "새 집에서 창틀 곰팡이와 욕실 배수 문제가 하자 점검 항목이며, 하자는 2주 내 임대인에게 통보해야 한다."
+  },
+  {
+   "rank": 49,
+   "document_id": "photo:DCIM/Camera/20260905_123752.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260905_123752.jpg",
+   "type": "world",
+   "occurred_start": null,
+   "text": "욕실 계획: 세면대장 교체(플로팅 고려), 새 거울(수납장 겸용 고려), 타일 옵션 비교(T03 후보), 샤워 스크린 사이즈 확인, 수건걸이·액세서리 교체를 계획 중이다. T03은 회색 계열 타일이다. | Involving: user"
+  },
+  {
+   "rank": 50,
+   "document_id": "photo:Pictures/KakaoTalk/KakaoTalk_20260919_144858958.jpg",
+   "kind": "photo",
+   "source_id": "Pictures/KakaoTalk/KakaoTalk_20260919_144858958.jpg",
+   "type": "world",
+   "occurred_start": "2026-09-19T04:18:17+00:00",
+   "text": "상수동 상수역 부근의 실내 욕실 바닥을 위에서 찍은 사진(카카오톡 폴더). 베이지색 타일 바닥 가운데에 회색 테라조 무늬 사각형 발매트로 보이는 판이 있고, 흰색 샤워 커튼이 쳐진 욕조, 흰색 받침대형 세면대, 변기 일부, 샴푸·로션 병이 담긴 철제 벽걸이 선반이 보인다."
+  },
+  {
+   "rank": 51,
+   "document_id": "timeline:2026-09-19",
+   "kind": "timeline",
+   "source_id": "2026-09-19",
+   "type": "world",
+   "occurred_start": "2026-09-19T04:18:00.010000+00:00",
+   "text": "사용자가 집 욕실 바닥을 위에서 내려다본 사진을 카카오톡으로 주고받음"
+  },
+  {
+   "rank": 52,
+   "document_id": "doc:Download/빌트인가전_견적.xlsx",
+   "kind": "doc",
+   "source_id": "Download/빌트인가전_견적.xlsx",
+   "type": "world",
+   "occurred_start": null,
+   "text": "견적 소계는 379만원이며, 4품목 동시 구매 패키지 할인 40만원을 적용해 최종 결제액은 339만원(카드 3개월 무이자)임."
+  },
+  {
+   "rank": 53,
+   "document_id": "photo:Pictures/KakaoTalk/KakaoTalk_20260606_161634921.jpg",
+   "kind": "photo",
+   "source_id": "Pictures/KakaoTalk/KakaoTalk_20260606_161634921.jpg",
+   "type": "world",
+   "occurred_start": "2026-06-06T07:10:21.020000+00:00",
+   "text": "욕실 안쪽에는 다음이 있다. - 슬라이드 바 샤워기 - 코너 선반 위 샴푸·바디워시로 보이는 병들 - 샤워볼 - 연두색 잎사귀 무늬의 흰 샤워커튼 - 회색 수건이 걸린 링 수건걸이 - 왼쪽의 유리 선반"
+  },
+  {
+   "rank": 54,
+   "document_id": "doc:Download/주방_견적비교_v1.xlsx",
+   "kind": "doc",
+   "source_id": "Download/주방_견적비교_v1.xlsx",
+   "type": "world",
+   "occurred_start": null,
+   "text": "모아디자인 견적만 설비 배관 교체(450,000원)를 기본 포함하고 상판을 쿼츠(1,250,000원)로 제시함; 수림인테리어·연남리빙은 인조대리석 상판 480,000원. 싱크대 상하부장 2400mm는 PET 도어 기준, 인덕션 단독회로 전기 증설, 외벽 배기 3.1m 후드 배관 연장, 300x600 무광 벽타일 포함. | 모아디자인 견적이 높은 이유"
+  },
+  {
+   "rank": 55,
+   "document_id": "doc:Download/주방_견적비교_v2.xlsx",
+   "kind": "doc",
+   "source_id": "Download/주방_견적비교_v2.xlsx",
+   "type": "world",
+   "occurred_start": "2026-09-22T15:00:00.010000+00:00",
+   "text": "주방 리모델링 견적 재접수 결과(부가세 포함 총액): 수림인테리어 12,100,000원(공급가 11,000,000원), 모아디자인 13,090,000원(공급가 11,900,000원), 연남리빙 10,450,000원(공급가 9,500,000원)."
+  },
+  {
+   "rank": 56,
+   "document_id": "doc:Download/입주점검표.html",
+   "kind": "doc",
+   "source_id": "Download/입주점검표.html",
+   "type": "world",
+   "occurred_start": "2024-04-14T09:00:00.010000+00:00",
+   "text": "윤지아는 안방 창틀 하부 곰팡이 제거 및 실리콘 재시공, 욕실 세면대 배수 지연 조치, 안방 붙박이장 도어 경첩 조정 등 3건의 보수를 사진과 함께 임대인에게 요청했다."
+  },
+  {
+   "rank": 57,
+   "document_id": "doc:Download/스캔_1007.pdf",
+   "kind": "doc",
+   "source_id": "Download/스캔_1007.pdf",
+   "type": "world",
+   "occurred_start": null,
+   "text": "하자보수: 방수·설비 공사는 준공일로부터 2년, 타일·마감 공사는 1년 무상 보증. 시공자 귀책 지연 시 1일당 계약 총액의 0.1% 지체상금 공제. | Involving: 윤지아, 한울설비"
+  },
+  {
+   "rank": 58,
+   "document_id": "doc:Download/주방_견적비교_v2.xlsx",
+   "kind": "doc",
+   "source_id": "Download/주방_견적비교_v2.xlsx",
+   "type": "world",
+   "occurred_start": "2026-09-22T15:00:00.030000+00:00",
+   "text": "수림인테리어 2차 견적은 1차 대비 공급가 400,000원(부가세 포함 440,000원) 증가: 세라믹 상판 +1,300,000원(1,780,000원), 벽타일 +200,000원(620,000원), 시공 인건비 -850,000원(3,000,000원), 현장 관리비 -250,000원(260,000원)."
+  },
+  {
+   "rank": 59,
+   "document_id": "photo:Download/image_81642.jpg",
+   "kind": "photo",
+   "source_id": "Download/image_81642.jpg",
+   "type": "world",
+   "occurred_start": null,
+   "text": "사진 속 욕실에는 올리브 나무 가지를 꽂은 크림색 화병, 갈색 유리 펌프 디스펜서, 라탄 뚜껑 바구니, 나무 수건 사다리에 걸린 베이지색 수건, 잎 그림 액자가 있고, 왼쪽에는 레인샤워 헤드가 달린 유리 칸막이 샤워부스와 벽 수납 선반이 있음. | 따뜻한 내추럴 톤의 욕실 스타일링 특징"
+  },
+  {
+   "rank": 60,
+   "document_id": "photo:DCIM/Camera/20260905_123752.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260905_123752.jpg",
+   "type": "world",
+   "occurred_start": "2026-09-05T03:37:52.050000+00:00",
+   "text": "사용자는 흰 테라조풍 상판 샘플, 짙은 회색 석재·타일 샘플, 욕실 카탈로그를 보며 자재를 검토하고 있었다."
+  },
+  {
+   "rank": 61,
+   "document_id": "doc:Download/주방_견적_참고.xlsx",
+   "kind": "doc",
+   "source_id": "Download/주방_견적_참고.xlsx",
+   "type": "world",
+   "occurred_start": "2026-09-10T15:00:00+00:00",
+   "text": "모아디자인이 서울 마포구 연남동 빌라 주방 리모델링 간이 패키지 견적(철거·빌트인 가전 포함)을 2026년 9월 11일에 제시함: 소계 10,800,000원, 부가세 1,080,000원, 합계 11,880,000원."
+  },
+  {
+   "rank": 62,
+   "document_id": "doc:Download/달뜰코스메틱_패키지리뉴얼_제안.pptx",
+   "kind": "doc",
+   "source_id": "Download/달뜰코스메틱_패키지리뉴얼_제안.pptx",
+   "type": "world",
+   "occurred_start": null,
+   "text": "견적: 단상자 5종 350만원, 라벨 5종 160만원, 리필 파우치 90만원, 합계 600만원(부가세 별도) | Involving: 달뜰코스메틱"
+  },
+  {
+   "rank": 63,
+   "document_id": "doc:Download/전세계약서.pdf",
+   "kind": "doc",
+   "source_id": "Download/전세계약서.pdf",
+   "type": "world",
+   "occurred_start": "2024-03-22T15:00:00.010000+00:00",
+   "text": "계약금 32,000,000원은 계약 시인 2024년 3월 23일에 지급함. 잔금 288,000,000원은 입주일인 2024년 4월 15일에 지급할 예정임."
+  },
+  {
+   "rank": 64,
+   "document_id": "doc:Download/공사_계약서_변경합의.pdf",
+   "kind": "doc",
+   "source_id": "Download/공사_계약서_변경합의.pdf",
+   "type": "world",
+   "occurred_start": null,
+   "text": "변경 후 계약 공급가는 12,650,000원, 부가세(1,265,000원) 포함 총액은 13,915,000원이며, 계약금 10% / 중도금 40% 등 원 계약의 분할 비율로 정산한다. | Involving: 윤지아, 수림인테리어"
+  },
+  {
+   "rank": 65,
+   "document_id": "doc:Download/미용예약_확인서.html",
+   "kind": "doc",
+   "source_id": "Download/미용예약_확인서.html",
+   "type": "world",
+   "occurred_start": null,
+   "text": "선택한 시술은 전체 클리핑 및 비숑 컷(78,000원, 목욕·블로우 드라이·발톱 정리·귀 세정 포함), 약욕 애드온(15,000원), 스파 트리트먼트(22,000원)로 합계 115,000원이며 방문 시 현장 결제, 유치원 정기권 쿠폰과 중복 적용 불가."
+  },
+  {
+   "rank": 66,
+   "document_id": "doc:Download/전세_재계약_협의메모.docx",
+   "kind": "doc",
+   "source_id": "Download/전세_재계약_협의메모.docx",
+   "type": "world",
+   "occurred_start": "2026-02-23T15:00:00.010000+00:00",
+   "text": "박성훈 씨가 전화로 갱신 의사를 물었다. 사용자는 계속 살고 싶다고 답했다. 박성훈 씨는 주변 시세 상승을 이유로 보증금을 약 3,000만원 올리고 싶다고 했다. 사용자는 주방과 욕실의 노후 문제를 제기했고, 박성훈 씨는 수리 범위를 보고 조정하자고 했다."
+  },
+  {
+   "rank": 67,
+   "document_id": "doc:Download/달뜰코스메틱_견적서_수정.xlsx",
+   "kind": "doc",
+   "source_id": "Download/달뜰코스메틱_견적서_수정.xlsx",
+   "type": "world",
+   "occurred_start": null,
+   "text": "수정 견적 항목: 단상자 디자인(스킨케어 5종) 5 x 700,000원 = 3,500,000원, 라벨 디자인(본품 5종 및 리필 2종) 7 x 320,000원 = 2,240,000원, 리필 파우치(사양 변경 1종) 1,100,000원, 제품컷 가이드(촬영 지시서) 0원."
+  },
+  {
+   "rank": 68,
+   "document_id": "doc:Download/전세_재계약_협의메모.docx",
+   "kind": "doc",
+   "source_id": "Download/전세_재계약_협의메모.docx",
+   "type": "world",
+   "occurred_start": "2026-03-14T15:00:00.020000+00:00",
+   "text": "집에서 대면 협의를 했다. 사용자는 주방 후드 소음, 욕실 배수와 환풍기, 수압 문제를 직접 보여주었다. 박성훈 씨는 전면 수리가 부담스럽다고 하며, 사용자가 직접 공사하고 비용 일부를 지원받는 방식을 제안했다."
+  },
+  {
+   "rank": 69,
+   "document_id": "doc:Download/제안서_최종_수정3_진짜최종.pdf",
+   "kind": "doc",
+   "source_id": "Download/제안서_최종_수정3_진짜최종.pdf",
+   "type": "world",
+   "occurred_start": null,
+   "text": "확정 견적: 로고 480만원, 패키지 400만원, 가이드 100만원, 합계 980만원(부가세 별도) | Involving: 스튜디오 여백, 보름달베이커리"
+  },
+  {
+   "rank": 70,
+   "document_id": "doc:Download/제안서_최종_수정3_진짜최종.pptx",
+   "kind": "doc",
+   "source_id": "Download/제안서_최종_수정3_진짜최종.pptx",
+   "type": "world",
+   "occurred_start": null,
+   "text": "확정 견적: 로고 480만원, 패키지 400만원, 가이드 100만원, 합계 980만원(부가세 별도) | Involving: 스튜디오 여백, 보름달베이커리"
+  },
+  {
+   "rank": 71,
+   "document_id": "doc:Download/잔금_지급일정_확인서.pdf",
+   "kind": "doc",
+   "source_id": "Download/잔금_지급일정_확인서.pdf",
+   "type": "world",
+   "occurred_start": "2026-10-04T15:00:00.010000+00:00",
+   "text": "공사 계약금 10% 1,265,000원은 2026-10-05에 지급 완료, 중도금 40% 5,060,000원은 2026-10-20에 지급 완료됨(공급가 기준, 부가세 10% 별도)."
+  },
+  {
+   "rank": 72,
+   "document_id": "doc:Download/스캔_1007.pdf",
+   "kind": "doc",
+   "source_id": "Download/스캔_1007.pdf",
+   "type": "world",
+   "occurred_start": null,
+   "text": "대금 지급: 계약금 10% 495,000원(2026-10-07), 중도금 40% 1,980,000원(착공일 2026-10-19), 잔금 50% 2,475,000원(준공 검수 후 3일 이내)."
+  }
+ ],
+ "run": "B"
+}

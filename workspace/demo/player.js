@@ -221,7 +221,7 @@
       onOption: function (optId, optLabel) {
         return handleTryOption(optId, optLabel);
       },
-      onDone: function () {}
+      onDone: function () { }
     });
 
     var live = Bus.createLive({
@@ -451,7 +451,8 @@
 
       var hasValidCompare = false;
       if (!hasAgentMem && caseObj.recall) {
-        var bankMatch = !caseObj.recall.bank || !DATA.constellation.bank || caseObj.recall.bank === DATA.constellation.bank;
+        var activeConstObj = (isDoc && DATA.constellation_docs) ? DATA.constellation_docs : DATA.constellation;
+        var bankMatch = !caseObj.recall.bank || !activeConstObj.bank || caseObj.recall.bank === activeConstObj.bank;
         var qMatch = Bus.normSpace(caseObj.recall.query) === Bus.normSpace(run.query);
         hasValidCompare = bankMatch && qMatch;
       }
@@ -728,7 +729,7 @@
 
       // 비교용 기억 표시 시각이 이벤트 사이에 올 수 있으므로 시간 순서대로 처리
       while (lastRenderedEventCount < timeline.scheduledEvents.length &&
-             clamped >= timeline.scheduledEvents[lastRenderedEventCount].t) {
+        clamped >= timeline.scheduledEvents[lastRenderedEventCount].t) {
         var nextEvItem = timeline.scheduledEvents[lastRenderedEventCount];
         if (!lastRevealedCompare && timeline.compareRevealAt != null && timeline.compareRevealAt <= nextEvItem.t && clamped >= timeline.compareRevealAt) {
           lastRevealedCompare = true;

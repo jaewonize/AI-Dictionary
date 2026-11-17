@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import html as html_mod
 import io
 import json
 import re
@@ -87,6 +88,38 @@ DEFAULT_NARROW = [
 
 def norm_space(s: str | None) -> str:
     return WS_RE.sub(" ", str(s or "")).strip()
+
+
+def norm_preview_quote(s: str | None) -> str:
+    txt = str(s or "")
+    txt = txt.replace("|", " ").replace("NaN", " ")
+    txt = re.sub(r"-{4,}", " ", txt)
+    return WS_RE.sub(" ", txt).strip()
+
+
+def make_doc_svg_data_uri(doc_id: str, first_line: str = "") -> str:
+    ext = Path(doc_id).suffix.lstrip(".").upper() or "DOC"
+    fname = Path(doc_id).name
+    fname_disp = fname if len(fname) <= 22 else (fname[:20] + "…")
+    line_disp = (first_line or "").strip()
+    if len(line_disp) > 28:
+        line_disp = line_disp[:27] + "…"
+    esc_ext = html_mod.escape(ext, quote=True)
+    esc_name = html_mod.escape(fname_disp, quote=True)
+    esc_line = html_mod.escape(line_disp, quote=True)
+    svg = (
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" width="240" height="320">'
+        '<rect width="240" height="320" fill="#eef1f7"/>'
+        '<rect x="20" y="16" width="200" height="288" rx="12" fill="#ffffff" stroke="#cfd5e4" stroke-width="2"/>'
+        '<rect x="36" y="34" width="64" height="26" rx="6" fill="#2f5bff"/>'
+        f'<text x="68" y="52" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff">{esc_ext}</text>'
+        '<line x1="36" y1="78" x2="204" y2="78" stroke="#e5e9f2" stroke-width="1.5"/>'
+        f'<text x="120" y="156" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="700" fill="#1b2234">{esc_name}</text>'
+        '<line x1="36" y1="228" x2="204" y2="228" stroke="#e5e9f2" stroke-width="1.5"/>'
+        f'<text x="120" y="256" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#525d78">{esc_line}</text>'
+        "</svg>"
+    )
+    return "data:image/svg+xml;base64," + base64.b64encode(svg.encode("utf-8")).decode("ascii")
 
 
 def format_ko_time_label(iso_s: str | None) -> str:
@@ -233,6 +266,8 @@ def validate_run_record(
     label: str = "",
     catalog_by_id: dict[str, dict] | None = None,
     old_quote_map: dict[str, str] | None = None,
+    doc_text_map: dict[str, str] | None = None,
+    scene_doc_lines: dict[str, list[str]] | None = None,
     check_catalog: bool = True,
     check_quotes: bool = True,
 ) -> list[str]:
@@ -326,6 +361,53 @@ def validate_run_record(
                     if not any(nq in h for h in haystacks):
                         raise ValueError(f"{label}: 카드 {ev.get('no')} 인용 '{q}'가 근거 사진 속 글자에 없습니다")
 
+    if is_preview and check_quotes:
+        def _preview_haystack(item_id: str) -> tuple[str | None, bool]:
+            is_doc_item = bool(
+                (catalog_by_id and catalog_by_id.get(item_id, {}).get("kind") == "document")
+                or (doc_text_map and item_id in doc_text_map)
+            )
+            if is_doc_item:
+                if doc_text_map is None or item_id not in doc_text_map:
+                    return None, True
+                return norm_preview_quote(doc_text_map[item_id]), True
+            if old_quote_map is None:
+                return None, False
+            if item_id not in old_quote_map:
+                return None, False
+            return norm_preview_quote(old_quote_map[item_id]), False
+
+        for ev in all_evs:
+            if ev["type"] != "card":
+                continue
+            evid = ev.get("evidence") or {}
+            quotes = [q for q in (evid.get("read_text") or []) if isinstance(q, str) and q.strip()]
+            if not quotes:
+                continue
+            pids = [p for p in (evid.get("photo_ids") or []) if isinstance(p, str)]
+            hays: list[str] = []
+            for p in pids:
+                h_txt, _ = _preview_haystack(p)
+                if h_txt is not None:
+                    hays.append(h_txt)
+            if hays:
+                for q in quotes:
+                    nq = norm_preview_quote(q)
+                    if not any(nq in h for h in hays):
+                        raise ValueError(f"{label}: 설계 미리보기 카드 {ev.get('no')} 인용 '{q}'가 근거 자료 글자에 없습니다")
+
+        if scene_doc_lines:
+            for item_id, lines in scene_doc_lines.items():
+                h_txt, is_doc_item = _preview_haystack(item_id)
+                if h_txt is None:
+                    if is_doc_item and doc_text_map is not None:
+                        raise ValueError(f"{label}: doc_lines 자료 '{item_id}'의 문서 글자가 없습니다")
+                    continue
+                for ln in lines or []:
+                    nln = norm_preview_quote(ln)
+                    if nln and nln not in h_txt:
+                        raise ValueError(f"{label}: doc_lines['{item_id}']의 '{ln}'가 자료 글자에 없습니다")
+
     return notices
 
 
@@ -378,8 +460,14 @@ def check_scene_conditions(scene: dict, run: dict) -> list[str]:
     return unmatched
 
 
-def compute_narrow_counts(scene: dict, run: dict, catalog_photos_list: list[dict] | None = None) -> list[int | None]:
+def compute_narrow_counts(
+    scene: dict,
+    run: dict,
+    catalog_photos_list: list[dict] | None = None,
+    catalog_docs_count: int | None = None,
+) -> list[int | None]:
     evs = run.get("events") or []
+    is_doc_scene = scene.get("kind") == "document"
     counts: list[int | None] = []
     for nr in scene.get("narrow") or []:
         matched = match_event_condition(nr.get("on"), evs)
@@ -388,7 +476,10 @@ def compute_narrow_counts(scene: dict, run: dict, catalog_photos_list: list[dict
             continue
         s_type = nr.get("set")
         if s_type == "all":
-            counts.append(len(catalog_photos_list) if catalog_photos_list is not None else None)
+            if is_doc_scene:
+                counts.append(catalog_docs_count)
+            else:
+                counts.append(len(catalog_photos_list) if catalog_photos_list is not None else None)
         elif s_type == "day":
             if catalog_photos_list is None:
                 counts.append(None)
@@ -729,11 +820,13 @@ def build(argv: list[str] | None = None) -> int:
 
     catalog_rows = read_jsonl(settings.catalog)
     photo_rows = [r for r in catalog_rows if r.get("kind") == "photo"]
+    doc_rows = sorted([r for r in catalog_rows if r.get("kind") == "document"], key=lambda r: r["id"])
     catalog_by_id = {r["id"]: r for r in catalog_rows if r.get("id")}
 
     # 백업 zip 선택: aidic-mobile.zip -> aidic-scenario.zip
     mobile_zip = HINDSIGHT_DIR / "aidic-mobile.zip"
     scenario_zip = HINDSIGHT_DIR / "aidic-scenario.zip"
+    docs_zip = HINDSIGHT_DIR / "aidic-mobile-docs.zip"
     chosen_zip = mobile_zip if mobile_zip.is_file() else (scenario_zip if scenario_zip.is_file() else None)
     if chosen_zip is None:
         print("Hindsight 백업 zip이 없습니다(aidic-mobile.zip, aidic-scenario.zip).", file=sys.stderr)
@@ -748,12 +841,67 @@ def build(argv: list[str] | None = None) -> int:
         validate_scene_config(sc, label=f"scenes/{sc.get('key')}.json")
     scenes_raw.sort(key=lambda s: str(s.get("menu_label") or ""))
 
+    has_document_case = any(sc.get("kind") == "document" for sc in scenes_raw)
     doc_photo_exclusions: set[str] = set()
     for sc in scenes_raw:
         for pid in sc.get("doc_photos") or []:
             doc_photo_exclusions.add(pid)
 
     bank_export = export_bank(chosen_zip, exclude_label_photo_ids=doc_photo_exclusions)
+    doc_bank_export = (
+        export_bank(docs_zip, exclude_label_photo_ids=doc_photo_exclusions)
+        if (has_document_case and docs_zip.is_file())
+        else None
+    )
+
+    # 문서 본문 읽기(문서 케이스가 있을 때): var/docs.jsonl -> markitdown 직접 추출
+    doc_text_map: dict[str, str] = {}
+    doc_fail_count = 0
+    doc_source_label = ""
+    if has_document_case and doc_rows:
+        if settings.docs.is_file():
+            raw_docs = {r["id"]: r for r in read_jsonl(settings.docs) if r.get("id")}
+            for dr in doc_rows:
+                did = dr["id"]
+                if did in raw_docs and (raw_docs[did].get("body") or "").strip():
+                    doc_text_map[did] = str(raw_docs[did]["body"])
+                else:
+                    doc_fail_count += 1
+                    doc_text_map[did] = ""
+            doc_source_label = "var/docs.jsonl에서 읽음"
+        else:
+            from markitdown import MarkItDown
+
+            md_conv = MarkItDown()
+            for dr in doc_rows:
+                did = dr["id"]
+                p_doc = settings.phone_dir / did
+                try:
+                    body_txt = md_conv.convert(str(p_doc)).text_content or ""
+                    if not body_txt.strip():
+                        doc_fail_count += 1
+                    doc_text_map[did] = body_txt
+                except Exception:
+                    doc_fail_count += 1
+                    doc_text_map[did] = ""
+            doc_source_label = "markitdown으로 바로 뽑음"
+
+    doc_badge_map: dict[str, int] = {}
+    docs_meta: list[dict] = []
+    for dr in doc_rows:
+        did = dr["id"]
+        dbadge = dr.get("badge") or ""
+        doc_badge_map[dbadge] = doc_badge_map.get(dbadge, 0) + 1
+        docs_meta.append({
+            "id": did,
+            "badge": dbadge,
+            "ext": Path(did).suffix.lstrip(".").upper() or "DOC",
+            "chars": len(doc_text_map.get(did) or ""),
+        })
+    doc_badge_counts = [{"badge": b, "count": doc_badge_map[b]} for b in BADGE_ORDER if doc_badge_map.get(b)]
+    for b in sorted(doc_badge_map.keys()):
+        if b and b not in BADGE_ORDER:
+            doc_badge_counts.append({"badge": b, "count": doc_badge_map[b]})
 
     # 사진 설명 읽기: data/descriptions.jsonl -> 옛 백업 zip
     desc_rows = read_jsonl(settings.descriptions) if settings.descriptions.is_file() else []
@@ -819,21 +967,26 @@ def build(argv: list[str] | None = None) -> int:
     recall_out_lines: list[str] = []
     cases_payload: list[dict] = []
     large_needed_ids: dict[str, None] = {}
+    doc_svg_first_lines: dict[str, str] = {}
 
     for sc in scenes_raw:
         key = sc["key"]
         run_name = sc["run"]
+        is_doc_sc = sc.get("kind") == "document"
         raw_rec, kind_label, src_disp = choose_run_record(
             run_name,
             script_only=args.script,
             passed_dir=settings.passed_dir,
             runs_dir=RUNS_DIR,
         )
+        sc_doc_lines = dict(sc.get("doc_lines") or {})
         q_notices = validate_run_record(
             raw_rec,
             label=f"케이스 {key}({src_disp})",
             catalog_by_id=catalog_by_id,
             old_quote_map=old_quote_map,
+            doc_text_map=doc_text_map if is_doc_sc else None,
+            scene_doc_lines=sc_doc_lines if is_doc_sc else None,
             check_catalog=True,
             check_quotes=True,
         )
@@ -847,18 +1000,34 @@ def build(argv: list[str] | None = None) -> int:
             case_out_lines.append(f"케이스 {key}: 켜지지 않는 단계가 있습니다 -> {', '.join(unmatched)}")
 
         for pid in sc.get("spotlight") or []:
+            if catalog_by_id.get(pid, {}).get("kind") == "document":
+                fl = (sc_doc_lines.get(pid) or [""])[0] if sc_doc_lines.get(pid) else ""
+                doc_svg_first_lines.setdefault(pid, fl)
+            else:
+                large_needed_ids.setdefault(pid, None)
+        for pid in sc.get("doc_photos") or []:
             large_needed_ids.setdefault(pid, None)
         for pid in collect_run_photo_ids(raw_rec):
-            large_needed_ids.setdefault(pid, None)
+            if catalog_by_id.get(pid, {}).get("kind") == "document":
+                fl = (sc_doc_lines.get(pid) or [""])[0] if sc_doc_lines.get(pid) else ""
+                doc_svg_first_lines.setdefault(pid, fl)
+            else:
+                large_needed_ids.setdefault(pid, None)
+        if is_doc_sc:
+            for pid, lns in sc_doc_lines.items():
+                if catalog_by_id.get(pid, {}).get("kind") == "document":
+                    fl = (lns or [""])[0] if lns else ""
+                    doc_svg_first_lines.setdefault(pid, fl)
 
         clean_run = sanitize_run_for_page(raw_rec, default_kind=kind_label)
 
         # 비교용 꺼낸 기억
+        active_bank_for_case = (doc_bank_export or bank_export)["bank"] if is_doc_sc else bank_export["bank"]
         recall_path = RECALL_DIR / f"{run_name}.json"
         raw_recall = json.loads(recall_path.read_text(encoding="utf-8")) if recall_path.is_file() else None
         clean_recall, recall_skip_reason = sanitize_compare_recall(
             raw_recall,
-            expected_bank=bank_export["bank"],
+            expected_bank=active_bank_for_case,
             expected_query=clean_run.get("query") or "",
         )
 
@@ -1004,6 +1173,11 @@ def build(argv: list[str] | None = None) -> int:
         font_css = ""
         font_line = "글꼴 파일이 없어 컴퓨터의 글꼴로 그립니다"
 
+    doc_svgs: dict[str, str] = {
+        did: make_doc_svg_data_uri(did, first_ln)
+        for did, first_ln in sorted(doc_svg_first_lines.items())
+    }
+
     page_data = {
         "cases": cases_payload,
         "default_steps": DEFAULT_STEPS,
@@ -1015,11 +1189,18 @@ def build(argv: list[str] | None = None) -> int:
             "index_count": index_count,
             "photos": photos_meta,
         },
+        "catalog_docs": {
+            "total_docs": len(doc_rows),
+            "badges": doc_badge_counts,
+            "docs": docs_meta,
+        },
+        "doc_svgs": doc_svgs,
         "no_server_photo_ids": shared_download_ids,
         "photos_small": small_photos,
         "photos_large": large_photos,
         "pipeline": pipeline_summary,
         "constellation": build_constellation_payload(bank_export),
+        "constellation_docs": build_constellation_payload(doc_bank_export) if doc_bank_export is not None else None,
     }
 
     data_json = json.dumps(page_data, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
@@ -1069,6 +1250,10 @@ def build(argv: list[str] | None = None) -> int:
         print(f"사진 설명 {desc_present_count}장 · {desc_source_label} · 설명 없는 사진 {missing_desc_count}장")
     else:
         print(f"사진 설명 {desc_present_count}장 · {desc_source_label}")
+    if has_document_case and doc_rows:
+        print(
+            f"문서 {len(doc_rows)}건 글자 · {doc_source_label} · 실패 {doc_fail_count}건 · 문서 그림 {len(doc_svgs)}건"
+        )
     print(f"색인 {index_count}줄" if index_count is not None else "색인 줄 없음")
 
     places_part = (
@@ -1089,6 +1274,13 @@ def build(argv: list[str] | None = None) -> int:
         f"원인 연결 {st['causal_links']}개(범위를 벗어나 건너뜀 {st['causal_skipped']}개) · "
         f"낱말 {st['words']}개 · {bank_export['zip_name']}"
     )
+    if doc_bank_export is not None:
+        dst = doc_bank_export["stats"]
+        print(
+            f"기억 {dst['memories']}개 · 시간 연결 {dst['time_links']}개 · 낱말 연결 {dst['entity_links']}개 · "
+            f"원인 연결 {dst['causal_links']}개(범위를 벗어나 건너뜀 {dst['causal_skipped']}개) · "
+            f"낱말 {dst['words']}개 · {doc_bank_export['zip_name']}"
+        )
     for ln in recall_out_lines:
         print(ln)
     print(font_line)

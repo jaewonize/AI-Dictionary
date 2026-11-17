@@ -87,6 +87,8 @@
     var outroCardEl = document.getElementById('demo-outro-card');
 
     var catalog = data.catalog || { total_photos: 0, badges: [], described_count: 0, index_count: null, photos: [] };
+    var docCatalog = data.catalog_docs || { total_docs: 0, badges: [], docs: [] };
+    var docSvgs = data.doc_svgs || {};
     var smallPhotos = data.photos_small || {};
     var largePhotos = data.photos_large || {};
     var pipeData = data.pipeline || {};
@@ -94,6 +96,7 @@
 
     var currentMode = 'auto';
     var currentCase = null;
+    var isDocCase = false;
     var activePhotos = catalog.photos || [];
     var photoMap = {};
     var cellMap = {};
@@ -160,6 +163,88 @@
       p1CountsEl.textContent = parts.join(' · ');
     }
 
+    function rebuildDocGrid(caseObj) {
+      var docList = docCatalog.docs || [];
+      var docPhotoIds = (caseObj && caseObj.scene && caseObj.scene.doc_photos) || [];
+      var catPhotoById = {};
+      (catalog.photos || []).forEach(function (p) { catPhotoById[p.id] = p; });
+
+      activePhotos = [];
+      photoMap = {};
+      cellMap = {};
+      describedPhotos = [];
+      p1GridEl.textContent = '';
+
+      docList.forEach(function (d) {
+        var item = {
+          id: d.id,
+          badge: d.badge || '',
+          ext: d.ext || 'DOC',
+          chars: d.chars || 0,
+          isDoc: true,
+          has_desc: true
+        };
+        activePhotos.push(item);
+        photoMap[item.id] = item;
+        describedPhotos.push(item.id);
+
+        var cls = 'db-p1-cell is-doc' + (item.badge === '카톡 받은 파일' ? ' is-kakao-doc' : '');
+        var btn = Bus.el('button', cls, item.ext);
+        btn.type = 'button';
+        btn.dataset.id = item.id;
+        btn.dataset.ext = item.ext;
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (currentMode !== 'try') return;
+          openDrawer(item.id);
+        });
+        cellMap[item.id] = btn;
+        p1GridEl.appendChild(btn);
+      });
+
+      docPhotoIds.forEach(function (pid) {
+        var cp = catPhotoById[pid] || { id: pid, badge: '', time_dot: '' };
+        var item = {
+          id: pid,
+          badge: cp.badge || '',
+          time_dot: cp.time_dot || '',
+          isDoc: false,
+          isDocPhoto: true,
+          has_desc: false
+        };
+        activePhotos.push(item);
+        photoMap[pid] = item;
+
+        var btn = Bus.el('button', 'db-p1-cell');
+        btn.type = 'button';
+        btn.dataset.id = pid;
+        var src = smallPhotos[pid] || largePhotos[pid] || '';
+        if (src) {
+          var img = Bus.el('img');
+          img.alt = '';
+          img.decoding = 'async';
+          img.src = src;
+          btn.appendChild(img);
+        }
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (currentMode !== 'try') return;
+          openDrawer(pid);
+        });
+        cellMap[pid] = btn;
+        p1GridEl.appendChild(btn);
+      });
+
+      sub1El.textContent = '문서 ' + docList.length + '건 · 노트북의 코드가 문서에서 글자를 뽑습니다';
+      var dParts = [];
+      (docCatalog.badges || []).forEach(function (b) {
+        dParts.push(b.badge + ' ' + b.count);
+      });
+      dParts.push('모두 ' + docList.length + '건');
+      dParts.push('문서 사진 ' + docPhotoIds.length + '장');
+      p1CountsEl.textContent = dParts.join(' · ');
+    }
+
     function setGridChecks(count) {
       var targetSet = {};
       for (var i = 0; i < count && i < describedPhotos.length; i++) {
@@ -210,7 +295,10 @@
       if (!p) return;
       p1DrawerEl.textContent = '';
       var head = Bus.el('div', 'db-drawer-head');
-      var metaStr = [p.time_dot, p.badge].filter(Boolean).join(' · ');
+      var metaLeft = isDocCase
+        ? (p.isDoc ? (p.chars ? (p.chars + '자') : p.ext) : p.time_dot)
+        : p.time_dot;
+      var metaStr = [metaLeft, p.badge].filter(Boolean).join(' · ');
       head.appendChild(Bus.el('span', null, metaStr));
       var closeBtn = Bus.el('button', 'db-drawer-close', '닫기');
       closeBtn.type = 'button';
@@ -218,20 +306,28 @@
       head.appendChild(closeBtn);
       p1DrawerEl.appendChild(head);
 
-      var src = largePhotos[photoId] || smallPhotos[photoId] || '';
+      var src = docSvgs[photoId] || largePhotos[photoId] || smallPhotos[photoId] || '';
       if (src) {
         var img = Bus.el('img', 'db-drawer-img');
         img.alt = '';
         img.src = src;
         p1DrawerEl.appendChild(img);
       }
-      p1DrawerEl.appendChild(Bus.el('div', 'db-drawer-label', p.has_desc ? '미리 적어 둔 설명' : '설명 없음'));
-      if (p.scene) {
-        p1DrawerEl.appendChild(Bus.el('div', 'db-drawer-body', p.scene));
-      }
-      if (p.text) {
-        p1DrawerEl.appendChild(Bus.el('div', 'db-drawer-label', '사진 속 글자'));
-        p1DrawerEl.appendChild(Bus.el('div', 'db-drawer-body', p.text));
+      if (isDocCase) {
+        var dLines = (currentCase && currentCase.scene && currentCase.scene.doc_lines && currentCase.scene.doc_lines[photoId]) || [];
+        p1DrawerEl.appendChild(Bus.el('div', 'db-drawer-label', '뽑은 글자 가운데 일부'));
+        p1DrawerEl.appendChild(
+          Bus.el('div', 'db-drawer-body', dLines.length ? dLines.join('\n') : ('뽑은 글자 ' + (p.chars || 0) + '자'))
+        );
+      } else {
+        p1DrawerEl.appendChild(Bus.el('div', 'db-drawer-label', p.has_desc ? '미리 적어 둔 설명' : '설명 없음'));
+        if (p.scene) {
+          p1DrawerEl.appendChild(Bus.el('div', 'db-drawer-body', p.scene));
+        }
+        if (p.text) {
+          p1DrawerEl.appendChild(Bus.el('div', 'db-drawer-label', '사진 속 글자'));
+          p1DrawerEl.appendChild(Bus.el('div', 'db-drawer-body', p.text));
+        }
       }
       p1DrawerEl.hidden = false;
     }
@@ -250,7 +346,7 @@
       };
 
       var imgBox = Bus.el('div', 'db-p1-spot-img');
-      var src = largePhotos[photoId] || smallPhotos[photoId] || '';
+      var src = docSvgs[photoId] || largePhotos[photoId] || smallPhotos[photoId] || '';
       if (src) {
         var im = Bus.el('img');
         im.alt = '';
@@ -261,9 +357,20 @@
       p1SpotEl.appendChild(Bus.el('div', 'db-p1-spot-arrow', '→'));
 
       var body = Bus.el('div', 'db-p1-spot-body');
-      body.appendChild(Bus.el('div', 'db-p1-spot-meta', [p.time_dot, p.badge].filter(Boolean).join(' · ')));
+      var metaLeft = isDocCase
+        ? (p.isDoc ? (p.chars ? (p.chars + '자') : (p.ext || '')) : p.time_dot)
+        : p.time_dot;
+      body.appendChild(Bus.el('div', 'db-p1-spot-meta', [metaLeft, p.badge].filter(Boolean).join(' · ')));
 
-      if (!p.has_desc) {
+      if (isDocCase) {
+        var docLines = (currentCase && currentCase.scene && currentCase.scene.doc_lines && currentCase.scene.doc_lines[photoId]) || [];
+        var docFull = docLines.join('\n');
+        var docChars = Array.from(docFull);
+        var dInterval = Math.min(18, Math.max(0.5, (slotDurationMs - 500) / Math.max(1, docChars.length)));
+        var dShown = Math.min(docChars.length, Math.max(0, Math.floor(localElapsedMs / dInterval)));
+        body.appendChild(Bus.el('div', 'db-p1-spot-head', '뽑은 글자 가운데 일부'));
+        body.appendChild(Bus.el('div', 'db-p1-spot-text', docChars.slice(0, dShown).join('')));
+      } else if (!p.has_desc) {
         body.appendChild(Bus.el('div', 'db-p1-spot-head', '설명 없음'));
       } else {
         var sceneChars = Array.from(p.scene || '');
@@ -284,7 +391,16 @@
     }
 
     function showIndexFooter(show) {
-      if (show && catalog.index_count != null) {
+      p1FootEl.textContent = '';
+      if (!show) {
+        p1FootEl.hidden = true;
+        return;
+      }
+      if (isDocCase) {
+        p1FootEl.appendChild(Bus.el('div', null, '노트북의 코드가 문서에서 글자를 뽑습니다. AI 모델을 부르지 않습니다.'));
+        p1FootEl.appendChild(Bus.el('div', null, '질문에 답하는 문서 단계(문서 읽기, 계산)는 아직 만들지 않았습니다.'));
+        p1FootEl.hidden = false;
+      } else if (catalog.index_count != null) {
         p1FootEl.textContent = '찾을 자료 목록 ' + catalog.index_count + '건 · 에이전트는 이 목록에서 찾습니다';
         p1FootEl.hidden = false;
       } else {
@@ -330,7 +446,9 @@
       var ratio = durationMs > 0 ? Math.min(1, Math.max(0, localMs / durationMs)) : 1;
       var checkedNow = Math.round(describedPhotos.length * ratio);
       setGridChecks(checkedNow);
-      p1StatusEl.textContent = '설명을 적은 사진 ' + checkedNow + ' / ' + activePhotos.length;
+      p1StatusEl.textContent = isDocCase
+        ? ('글자를 뽑은 문서 ' + checkedNow + ' / ' + describedPhotos.length)
+        : ('설명을 적은 사진 ' + checkedNow + ' / ' + activePhotos.length);
       p1StatusEl.hidden = false;
 
       var spots = (spotlightIds && spotlightIds.length) ? spotlightIds : (activePhotos[0] ? [activePhotos[0].id] : []);
@@ -341,7 +459,7 @@
       } else {
         p1SpotEl.hidden = true;
       }
-      showIndexFooter(ratio >= 0.98);
+      showIndexFooter(isDocCase || ratio >= 0.98);
     }
 
     function setPanel1Ready() {
@@ -352,7 +470,9 @@
       p1SpotEl.hidden = true;
       clearGridHighlights();
       setGridChecks(describedPhotos.length);
-      p1StatusEl.textContent = '설명을 적은 사진 ' + describedPhotos.length + ' / ' + activePhotos.length;
+      p1StatusEl.textContent = isDocCase
+        ? ('글자를 뽑은 문서 ' + describedPhotos.length + ' / ' + describedPhotos.length)
+        : ('설명을 적은 사진 ' + describedPhotos.length + ' / ' + activePhotos.length);
       p1StatusEl.hidden = false;
       showIndexFooter(true);
     }
@@ -391,7 +511,8 @@
       narrowRules = rules || [];
       narrowStepsState = narrowRules.map(function (r) {
         if (r.on === 'start') {
-          return { rule: r, matched: true, text: r.label, count: activePhotos.length };
+          var allCnt = isDocCase ? (docCatalog.total_docs || describedPhotos.length) : activePhotos.length;
+          return { rule: r, matched: true, text: r.label, count: allCnt };
         }
         return { rule: r, matched: false, text: r.label, count: 0 };
       });
@@ -560,7 +681,17 @@
       return { text: '', muted: true };
     }
 
+    function updatePanel2FootText() {
+      p2FootEl.textContent = isDocCase
+        ? '사진 쪽 준비 단계예요. 문서는 이 차례를 거치지 않고 글자를 뽑아 바로 기억 저장소에 넣어요.'
+        : '↓ 사진 설명과 함께 Hindsight에 기억으로 넣어요';
+    }
+
     function setPanel2Empty() {
+      if (isDocCase) {
+        setPanel2Done();
+        return;
+      }
       p2PopEl.hidden = true;
       p2RowEls.forEach(function (item) {
         item.el.hidden = true;
@@ -571,6 +702,7 @@
 
     function setPanel2Progress(localMs, durationMs) {
       p2PopEl.hidden = true;
+      updatePanel2FootText();
       var stepDur = durationMs / 5;
       p2RowEls.forEach(function (item, idx) {
         var rowStart = idx * stepDur;
@@ -591,6 +723,7 @@
 
     function setPanel2Done() {
       p2PopEl.hidden = true;
+      updatePanel2FootText();
       p2RowEls.forEach(function (item) {
         item.el.hidden = false;
         item.el.classList.remove('is-off');
@@ -665,8 +798,11 @@
         var code = item[0];
         var ko = item[1];
         var isDoc = item[2];
-        var txt = ko + ' · ' + code + (isDoc ? ' (문서 단계)' : '');
-        var chip = Bus.el('span', 'db-tool-chip', txt);
+        var chip = Bus.el('span', 'db-tool-chip', ko + ' · ' + code);
+        if (isDoc) {
+          chip.appendChild(document.createTextNode(' '));
+          chip.appendChild(Bus.el('span', 'db-tool-tag', '문서 단계'));
+        }
         if (usedTools[code]) chip.classList.add('used');
         toolChipMap[code] = chip;
         p4ToolsEl.appendChild(chip);
@@ -1156,10 +1292,16 @@
       setCase: function (caseObj, mode) {
         currentCase = caseObj;
         currentMode = mode;
-        var photosForCase = (caseObj.scene && caseObj.scene.only_photos)
-          ? caseObj.scene.only_photos
-          : catalog.photos;
-        rebuildPhotoGrid(photosForCase, Boolean(caseObj.no_photos));
+        isDocCase = Boolean(caseObj && caseObj.scene && caseObj.scene.kind === 'document');
+        if (isDocCase) {
+          rebuildDocGrid(caseObj);
+        } else {
+          var photosForCase = (caseObj.scene && caseObj.scene.only_photos)
+            ? caseObj.scene.only_photos
+            : catalog.photos;
+          rebuildPhotoGrid(photosForCase, Boolean(caseObj.no_photos));
+        }
+        updatePanel2FootText();
         replayPrepBtn.hidden = (mode !== 'try') || Boolean(caseObj.scene && caseObj.scene.skip_prep);
       },
       setMode: function (mode) {

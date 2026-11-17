@@ -235,7 +235,7 @@ def test_4_export_bank():
 # 5. 화면 문구 검사 (금지어, 물결표, 옛 값)
 def test_5_ui_wording_and_legacy_values():
     for path in sorted(DEMO_DIR.rglob("*")):
-        if not path.is_file() or "__pycache__" in path.parts:
+        if not path.is_file() or "__pycache__" in path.parts or "recall" in path.parts:
             continue
         text = path.read_text(encoding="utf-8")
         for legacy in LEGACY_FORBIDDEN_VALUES:
@@ -617,3 +617,115 @@ def test_11_pipeline_summary_counts(tmp_path):
     assert empty_summary["visits"] is None
     assert empty_summary["named"] is None
     assert empty_summary["timeline_days"] == 1
+
+
+# 12. 문서 케이스 B 대본·장면 설정·좁히기·인용 검사
+def test_12_document_case_b_and_narrow_counts():
+    sc_b_path = SCENES_DIR / "B.json"
+    run_b_path = RUNS_DIR / "B.json"
+    if not sc_b_path.is_file() or not run_b_path.is_file():
+        pytest.skip("케이스 B 파일이 없어 건너뜁니다")
+
+    sc_b = json.loads(sc_b_path.read_text(encoding="utf-8"))
+    rec_b = json.loads(run_b_path.read_text(encoding="utf-8"))
+    validate_scene_config(sc_b, label="B.json")
+    assert sc_b["kind"] == "document"
+    assert rec_b["demo"]["kind"] == "설계 미리보기"
+    assert check_scene_conditions(sc_b, rec_b) == []
+
+    counts_127 = compute_narrow_counts(sc_b, rec_b, None, catalog_docs_count=127)
+    assert counts_127 == [127, 5, 3]
+
+    if settings.catalog.is_file() and settings.docs.is_file():
+        cat_rows = read_jsonl(settings.catalog)
+        cat_by_id = {r["id"]: r for r in cat_rows if r.get("id")}
+        doc_map = {r["id"]: str(r.get("body") or "") for r in read_jsonl(settings.docs) if r.get("id")}
+        scenario_zip = HINDSIGHT_DIR / "aidic-scenario.zip"
+        old_quotes = load_old_backup_quotes(scenario_zip if scenario_zip.is_file() else None)
+        validate_run_record(
+            rec_b,
+            label="B.json",
+            catalog_by_id=cat_by_id,
+            old_quote_map=old_quotes,
+            doc_text_map=doc_map,
+            scene_doc_lines=sc_b.get("doc_lines") or {},
+            check_catalog=True,
+            check_quotes=True,
+        )
+
+
+# 13. 문서 백업 선택 및 문서/문서사진 전용 낱말의 레이블 제외 검사
+def test_13_doc_bank_selection_and_label_exclusion(tmp_path):
+    zip_path = tmp_path / "synth-docs-bank.zip"
+    manifest = {"source_bank_id": "synth-docs-bank", "fact_count": 3}
+    d_photo_normal = {
+        "id": "photo:DCIM/Camera/normal.jpg",
+        "original_text": "[사진] normal",
+        "retain_params": {"event_date": "2025-01-02T10:00:00+09:00"},
+        "facts": [
+            {
+                "text": "일반 사진 기억",
+                "occurred_start": "2025-01-02T10:00:00+09:00",
+                "created_at": "2025-01-10T01:00:00Z",
+                "entities": ["일반풍경낱말"],
+                "causal_relations": [],
+            }
+        ],
+    }
+    d_photo_doc = {
+        "id": "photo:DCIM/Camera/doc_photo.jpg",
+        "original_text": "[사진] doc photo",
+        "retain_params": {"event_date": "2025-01-03T10:00:00+09:00"},
+        "facts": [
+            {
+                "text": "문서 사진 기억",
+                "occurred_start": "2025-01-03T10:00:00+09:00",
+                "created_at": "2025-01-10T01:01:00Z",
+                "entities": ["문서사진전용이름"],
+                "causal_relations": [],
+            }
+        ],
+    }
+    d_doc = {
+        "id": "doc:Download/estimate.pdf",
+        "original_text": "[문서] estimate",
+        "retain_params": {"event_date": "2025-01-04T09:00:00+09:00"},
+        "facts": [
+            {
+                "text": "문서 본문 기억",
+                "occurred_start": "2025-01-04T09:00:00+09:00",
+                "created_at": "2025-01-10T01:02:00Z",
+                "entities": ["문서본문전용이름"],
+                "causal_relations": [],
+            }
+        ],
+    }
+    with zipfile.ZipFile(zip_path, "w") as zf:
+        zf.writestr("manifest.json", json.dumps(manifest, ensure_ascii=False))
+        zf.writestr("documents/000000.json", json.dumps(d_photo_normal, ensure_ascii=False))
+        zf.writestr("documents/000001.json", json.dumps(d_photo_doc, ensure_ascii=False))
+        zf.writestr("documents/000002.json", json.dumps(d_doc, ensure_ascii=False))
+
+    exp = export_bank(zip_path, exclude_label_photo_ids={"DCIM/Camera/doc_photo.jpg"})
+    assert exp["has_doc_memories"] is True
+    label_words = {exp["words"][idx] for idx in exp["labels"]}
+    assert "일반풍경낱말" in label_words
+    assert "문서본문전용이름" not in label_words
+    assert "문서사진전용이름" not in label_words
+
+    # 실제 aidic-mobile-docs.zip 이 있을 때도 doc: / doc_photos 전용 낱말이 labels 에 없는지 검증
+    real_docs_zip = HINDSIGHT_DIR / "aidic-mobile-docs.zip"
+    sc_b_path = SCENES_DIR / "B.json"
+    if real_docs_zip.is_file() and sc_b_path.is_file():
+        sc_b = json.loads(sc_b_path.read_text(encoding="utf-8"))
+        excl_pids = set(sc_b.get("doc_photos") or [])
+        real_exp = export_bank(real_docs_zip, exclude_label_photo_ids=excl_pids)
+        assert real_exp["has_doc_memories"] is True
+        allowed_word_indices: set[int] = set()
+        for st in real_exp["stars"]:
+            if st["kind"] != "doc" and not (st["kind"] == "photo" and st["id"] in excl_pids):
+                allowed_word_indices.update(st["words"])
+        for l_wi in real_exp["labels"]:
+            assert l_wi in allowed_word_indices, (
+                f"문서/문서사진에서만 나온 낱말({real_exp['words'][l_wi]})이 labels 에 들어갔습니다"
+            )

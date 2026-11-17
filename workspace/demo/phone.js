@@ -47,6 +47,7 @@
     (data.no_server_photo_ids || []).forEach(function (id) { noServerSet[id] = true; });
     var largeMap = data.photos_large || {};
     var smallMap = data.photos_small || {};
+    var docSvgMap = data.doc_svgs || {};
 
     var noPhotosMode = false;
     var isLiveRun = false;
@@ -56,6 +57,7 @@
 
     function resolvePhotoUrl(id) {
       if (!id || noPhotosMode) return '';
+      if (docSvgMap[id]) return docSvgMap[id];
       if (largeMap[id]) return largeMap[id];
       if (isLiveRun && !noServerSet[id]) {
         return '/api/photo?id=' + encodeURIComponent(id);

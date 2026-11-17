@@ -1121,3 +1121,131 @@ def test_no_scenario_values_in_app_and_accept():
             if tok in text:
                 leaks.append((path.relative_to(WS).as_posix(), tok))
     assert not leaks, f"코드·지시문에 시나리오 값이 들어 있습니다: {leaks}"
+
+
+# ---------------------------------------------------------------- 3부 추가 검사 (수집·문서 추출·문서 기억)
+def test_part3_collect_screenshot_filename(tmp_path):
+    import zipfile
+    from PIL import Image
+    from pipeline.collect import read_photo_meta
+
+    img_path = tmp_path / "Screenshot_20250412-083015.png"
+    Image.new("RGB", (16, 16), (255, 255, 255)).save(img_path, "PNG")
+    with Image.open(img_path) as im:
+        meta = read_photo_meta(img_path, im, "screenshot")
+    assert meta["time"] == "2025-04-12T08:30:15+09:00"
+    assert meta["time_basis"] == "filename"
+
+    for legacy_name in ("IMG_20250412_083015.jpg", "PXL_20250412_083015.jpg", "20250412_083015.jpg"):
+        p = tmp_path / legacy_name
+        Image.new("RGB", (16, 16), (200, 200, 200)).save(p, "JPEG")
+        with Image.open(p) as im2:
+            m2 = read_photo_meta(p, im2, "gallery")
+        assert m2["time"] == "2025-04-12T08:30:15+09:00"
+        assert m2["time_basis"] == "filename"
+    assert zipfile is not None
+
+
+def test_part3_extract_docs_html_and_docx(tmp_path):
+    import zipfile
+    from pipeline.extract_docs import extract_one_document
+
+    html_file = tmp_path / "sample_notice.html"
+    html_file.write_text(
+        '<!doctype html><html><head>'
+        '<meta name="description" content="작성일 2025-05-10 | 키워드=비밀키워드 | 선정업체=비밀업체 | 버전=1차">'
+        '<title>정답표시제목</title></head>'
+        '<body><h1>안내문 본문</h1><p>엘리베이터 점검 안내입니다.</p></body></html>',
+        encoding="utf-8",
+    )
+    h_row = extract_one_document(html_file, "Download/sample_notice.html")
+    assert h_row["written"] == "2025-05-10"
+    assert h_row["updated"] is None
+    assert h_row["dates"] == [] and h_row["amounts"] == []
+    assert "엘리베이터 점검 안내" in h_row["body"]
+    for secret_attr in ("키워드=", "선정업체=", "버전=", "비밀키워드", "비밀업체"):
+        assert secret_attr not in h_row["body"]
+
+    # 최소 유효 .docx 생성 (core.xml 에 정답 속성을 심고 본문에는 옮기지 않는지 확인)
+    docx_file = tmp_path / "sample_memo.docx"
+    content_types = (
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+        '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
+        '<Default Extension="xml" ContentType="application/xml"/>'
+        '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>'
+        '<Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/>'
+        '</Types>'
+    )
+    rels = (
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+        '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>'
+        '<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/>'
+        '</Relationships>'
+    )
+    core_xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" '
+        'xmlns:dc="http://purl.org/dc/elements/1.1/" '
+        'xmlns:dcterms="http://purl.org/dc/terms/" '
+        'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'
+        '<dc:title>숨김제목</dc:title>'
+        '<dc:creator>숨김작성자</dc:creator>'
+        '<cp:keywords>키워드=숨김</cp:keywords>'
+        '<dc:description>작성일 2025-05-10 | 선정업체=숨김업체 | 버전=최종</dc:description>'
+        '<dcterms:modified xsi:type="dcterms:W3CDTF">2025-05-14T09:00:00Z</dcterms:modified>'
+        '</cp:coreProperties>'
+    )
+    doc_xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">'
+        '<w:body><w:p><w:r><w:t>회의 정리 본문입니다.</w:t></w:r></w:p></w:body>'
+        '</w:document>'
+    )
+    with zipfile.ZipFile(docx_file, "w") as zf:
+        zf.writestr("[Content_Types].xml", content_types)
+        zf.writestr("_rels/.rels", rels)
+        zf.writestr("docProps/core.xml", core_xml)
+        zf.writestr("word/document.xml", doc_xml)
+
+    d_row = extract_one_document(docx_file, "Download/sample_memo.docx")
+    assert d_row["written"] == "2025-05-10"
+    assert d_row["updated"] == "2025-05-14"
+    assert "회의 정리 본문" in d_row["body"]
+    for secret_attr in ("키워드=", "선정업체=", "버전=", "숨김작성자", "숨김업체"):
+        assert secret_attr not in d_row["body"]
+
+
+def test_part3_make_doc_memory_item():
+    from eval.hindsight import make_doc_memory_item
+
+    row_with_upd = {
+        "id": "Download/sample_doc.pdf",
+        "source": "download",
+        "badge": "다운로드",
+        "written": "2025-06-01",
+        "updated": "2025-06-05",
+        "body": "본문 첫 줄\n본문 둘째 줄",
+    }
+    it = make_doc_memory_item(row_with_upd)
+    assert it["document_id"] == "doc:Download/sample_doc.pdf"
+    assert it["context"] == "휴대폰에 저장된 문서 한 건의 본문"
+    assert it["tags"] == ["document"]
+    assert it["timestamp"] == "2025-06-01T09:00:00+09:00"
+    assert it["metadata"] == {
+        "kind": "document",
+        "doc_id": "Download/sample_doc.pdf",
+        "source": "download",
+        "written": "2025-06-01",
+    }
+    lines = it["content"].splitlines()
+    assert lines[0] == "[문서] 문서 id: Download/sample_doc.pdf"
+    assert lines[1] == "작성일: 2025-06-01"
+    assert lines[2] == "갱신일: 2025-06-05"
+    assert lines[3] == "출처: 다운로드 폴더"
+    assert "\n".join(lines[4:]) == "본문 첫 줄\n본문 둘째 줄"
+
+    row_no_upd = {**row_with_upd, "updated": None}
+    it2 = make_doc_memory_item(row_no_upd)
+    assert "갱신일:" not in it2["content"]

@@ -1,0 +1,19 @@
+{
+ "key": "W",
+ "menu_label": "3. 두 해의 와인",
+ "run": "W",
+ "kind": "photo",
+ "doc_photos": [],
+ "spotlight": ["DCIM/Camera/20251219_191206.jpg", "DCIM/Camera/20220319_191147.jpg", "DCIM/Camera/20251219_190824.jpg"],
+ "doc_lines": {},
+ "steps": [
+  {"label": "질문하기", "on": "start"},
+  {"label": "찾는 과정 보기", "on": "first_event"},
+  {"label": "답 받기", "on": "result"}
+ ],
+ "narrow": [
+  {"label": "폰 사진", "on": "start", "set": "all"},
+  {"label": "송년회와 생일, 두 날의 사진", "on": {"card": "visit_day", "has": "date"}, "set": "day"},
+  {"label": "와인 병이 찍힌 사진", "on": {"card": "picked", "has": "to_count"}, "set": "evidence"}
+ ]
+}
