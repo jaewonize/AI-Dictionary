@@ -158,6 +158,35 @@ def make_timeline_memory_items(photo_rows: list[dict]) -> list[dict]:
     return items
 
 
+def make_doc_memory_item(row: dict) -> dict:
+    """색인 문서 한 줄을 Hindsight 기억 항목 하나로 바꾼다."""
+    doc_id = str(row["id"])
+    written = str(row.get("written") or "")
+    updated = row.get("updated")
+    badge = row.get("badge") or row.get("source") or ""
+    lines = [
+        f"[문서] 문서 id: {doc_id}",
+        f"작성일: {written}",
+    ]
+    if updated:
+        lines.append(f"갱신일: {updated}")
+    lines.append(f"출처: {badge} 폴더")
+    lines.append(row.get("body") or "")
+    return {
+        "content": "\n".join(lines),
+        "context": "휴대폰에 저장된 문서 한 건의 본문",
+        "document_id": f"doc:{doc_id}",
+        "metadata": {
+            "kind": "document",
+            "doc_id": doc_id,
+            "source": str(row.get("source") or ""),
+            "written": written,
+        },
+        "tags": ["document"],
+        "timestamp": f"{written}T09:00:00{settings.default_tz}",
+    }
+
+
 def assert_no_secret_leak(items: list[dict], photo_rows: list[dict]) -> None:
     """기억 본문과 메타데이터에 GPS 좌표나 수신·저장·다운로드 시각 필드가 새지 않는지 검증한다."""
     dumped = json.dumps(items, ensure_ascii=False)
@@ -183,6 +212,15 @@ def load_photo_rows() -> list[dict]:
         sys.exit(f"색인이 없다({settings.index}). 먼저 pipeline.build_index 를 돌린다.")
     rows = [r for r in idx.values() if r.get("kind") == "photo"]
     rows.sort(key=lambda r: (r.get("time") or "", r["id"]))
+    return rows
+
+
+def load_doc_rows() -> list[dict]:
+    idx = idx_mod.load()
+    if not idx:
+        sys.exit(f"색인이 없다({settings.index}). 먼저 pipeline.build_index 를 돌린다.")
+    rows = [r for r in idx.values() if r.get("kind") == "document"]
+    rows.sort(key=lambda r: (r.get("written") or "", r["id"]))
     return rows
 
 
@@ -385,6 +423,19 @@ def _server_info(url: str) -> dict:
     }
 
 
+def _safe_doc_memory_items(doc_rows: list[dict], photo_rows: list[dict]) -> list[dict]:
+    items: list[dict] = []
+    for r in doc_rows:
+        it = make_doc_memory_item(r)
+        try:
+            assert_no_secret_leak([it], photo_rows)
+        except AssertionError as e:
+            print(f"  [보호 검사 제외] 문서 {r['id']} 제외 ({e})", flush=True)
+            continue
+        items.append(it)
+    return items
+
+
 def cmd_retain(args: argparse.Namespace) -> int:
     url, bank = _hs_base()
     photo_rows = load_photo_rows()
@@ -392,17 +443,26 @@ def cmd_retain(args: argparse.Namespace) -> int:
     if kinds == "photo":
         target_rows = photo_rows[: args.limit] if args.limit > 0 else photo_rows
         all_target_items = [make_photo_memory_item(r) for r in target_rows]
+        assert_no_secret_leak(all_target_items, photo_rows)
     elif kinds == "timeline":
         target_rows = []
         tl_items = make_timeline_memory_items(photo_rows)
         all_target_items = tl_items[: args.limit] if args.limit > 0 else tl_items
+        assert_no_secret_leak(all_target_items, photo_rows)
+    elif kinds == "document":
+        target_rows = []
+        doc_rows = load_doc_rows()
+        doc_items = _safe_doc_memory_items(doc_rows, photo_rows)
+        all_target_items = doc_items[: args.limit] if args.limit > 0 else doc_items
     elif kinds == "all":
         target_rows = photo_rows[: args.limit] if args.limit > 0 else photo_rows
-        combined = [make_photo_memory_item(r) for r in photo_rows] + make_timeline_memory_items(photo_rows)
+        photo_and_tl = [make_photo_memory_item(r) for r in photo_rows] + make_timeline_memory_items(photo_rows)
+        assert_no_secret_leak(photo_and_tl, photo_rows)
+        doc_items = _safe_doc_memory_items(load_doc_rows(), photo_rows)
+        combined = photo_and_tl + doc_items
         all_target_items = combined[: args.limit] if args.limit > 0 else combined
     else:
         sys.exit(f"알 수 없는 --kinds 값: {kinds}")
-    assert_no_secret_leak(all_target_items, photo_rows)
     target_doc_ids = {it["document_id"] for it in all_target_items}
 
     srv = _server_info(url)
@@ -1001,22 +1061,55 @@ def cmd_import_bank(args: argparse.Namespace) -> int:
         return 0
 
     print(f"[import-bank] {zip_path} -> 은행 {target_bank} 복원 시작 (LLM 호출 없음, $0)...", flush=True)
+    created_bootstrap = False
     with httpx.Client(base_url=url, timeout=httpx.Timeout(600.0, connect=10.0)) as c:
+        r_banks = c.get("/v1/default/banks")
+        banks_payload = r_banks.json() if (r_banks.status_code < 400 and r_banks.content) else {}
+        bank_items = (
+            banks_payload.get("banks")
+            or banks_payload.get("items")
+            or (banks_payload if isinstance(banks_payload, list) else [])
+        )
+        existing_bank_ids = [
+            str(b.get("bank_id") or b.get("id"))
+            for b in bank_items
+            if isinstance(b, dict) and (b.get("bank_id") or b.get("id"))
+        ]
+        host_bank = next((bid for bid in existing_bank_ids if bid != target_bank), None)
+        if not host_bank:
+            host_bank = "_import_host"
+            r_put = c.put(f"/v1/default/banks/{host_bank}", json={})
+            if r_put.status_code >= 400:
+                raise RuntimeError(f"임시 호스트 은행 생성 실패 ({r_put.status_code}): {r_put.text[:300]}")
+            created_bootstrap = True
+
         with zip_path.open("rb") as fh:
             r = c.post(
-                f"/v1/default/banks/{target_bank}/transfer/import",
+                f"/v1/default/banks/{host_bank}/transfer/import",
                 params={"mode": "restore", "target_bank_id": target_bank},
                 files={"file": (zip_path.name, fh, "application/zip")},
             )
         if r.status_code >= 400:
+            if created_bootstrap:
+                c.delete(f"/v1/default/banks/{host_bank}")
             raise RuntimeError(f"import 실패 ({r.status_code}): {r.text[:400]}")
         res = r.json()
 
     op_id = res.get("operation_id") or (res.get("operation_ids") or [None])[0]
     if op_id:
-        _, fail_n, errs = wait_ops(url, target_bank, [op_id], "import-bank", timeout_s=1200.0)
+        _, fail_n, errs = wait_ops(url, host_bank, [op_id], "import-bank", timeout_s=1200.0)
+        if created_bootstrap:
+            try:
+                hs_request(url, "DELETE", f"/v1/default/banks/{host_bank}", allow_404=True)
+            except Exception:
+                pass
         if fail_n:
             sys.exit(f"은행 복원 실패: {errs}")
+    elif created_bootstrap:
+        try:
+            hs_request(url, "DELETE", f"/v1/default/banks/{host_bank}", allow_404=True)
+        except Exception:
+            pass
 
     docs_after = existing_docs(url, target_bank)
     st_after = bank_stats(url, target_bank)
@@ -1134,9 +1227,11 @@ def cmd_recall(args: argparse.Namespace) -> int:
     hits = res.get("hits") or []
     photos_n = len({h["source_id"] for h in hits if h.get("kind") == "photo" and h.get("source_id")})
     timelines_n = len({h["source_id"] for h in hits if h.get("kind") == "timeline" and h.get("source_id")})
+    docs_n = len({h["source_id"] for h in hits if h.get("kind") == "doc" and h.get("source_id")})
+    doc_part = f" · 문서 {docs_n}건" if docs_n > 0 else ""
     sec = (res.get("elapsed_ms") or 0) / 1000
     print(
-        f"[recall] 은행={res['bank']} · 꺼낸 기억 {len(hits)}개 · 사진 {photos_n}장 · 하루 타임라인 {timelines_n}개 · {sec:.1f}초 -> {out_path}",
+        f"[recall] 은행={res['bank']} · 꺼낸 기억 {len(hits)}개 · 사진 {photos_n}장 · 하루 타임라인 {timelines_n}개{doc_part} · {sec:.1f}초 -> {out_path}",
         flush=True,
     )
     return 0
@@ -1146,8 +1241,8 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Hindsight 채널 적재·검색·채점 실행기")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
-    p_ret = sub.add_parser("retain", help="사진·타임라인 기억을 Hindsight 은행에 적재")
-    p_ret.add_argument("--kinds", choices=["photo", "timeline", "all"], default="photo", help="적재 종류(기본 photo)")
+    p_ret = sub.add_parser("retain", help="사진·타임라인·문서 기억을 Hindsight 은행에 적재")
+    p_ret.add_argument("--kinds", choices=["photo", "timeline", "document", "all"], default="photo", help="적재 종류(기본 photo)")
     p_ret.add_argument("--limit", type=int, default=0, help="앞에서부터 넣을 사진 수(0이면 전체)")
     p_ret.add_argument("--batch", type=int, default=10, help="배치당 사진 수(기본 10)")
     p_ret.add_argument("--verify-recall", action="store_true", help="적재 후 recall 동작 확인")
