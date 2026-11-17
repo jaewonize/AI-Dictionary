@@ -1,0 +1,28 @@
+{
+ "key": "B",
+ "menu_label": "2. 욕실 견적 금액 비교",
+ "run": "B",
+ "kind": "document",
+ "doc_photos": ["DCIM/Camera/20260901_153212.jpg", "DCIM/Screenshots/Screenshot_20260906-120215.png"],
+ "spotlight": ["KakaoTalkDownload/한울설비_견적_1차.pdf", "KakaoTalkDownload/견적_최종(2).pdf", "KakaoTalkDownload/KakaoTalk_20260911_1532.pdf", "DCIM/Camera/20260901_153212.jpg"],
+ "doc_lines": {
+  "DCIM/Camera/20260901_153212.jpg": ["하람디자인", "견적일 2026. 09. 01.", "공급가액 3,800,000", "부가세 380,000", "합계 4,180,000 원"],
+  "Download/견적서_수림인테리어.xlsx": ["업체: 수림인테리어", "견적일: 2026-09-03", "소계 4200000", "부가세 (10%) 420000", "합계 4620000"],
+  "KakaoTalkDownload/한울설비_견적_1차.pdf": ["욕실 공사 견적서 (1차)", "견적일 2026-09-05", "비고 1차 견적 — 자재 등급 협의 전 기준", "소계 3,900,000", "합계 4,290,000"],
+  "DCIM/Screenshots/Screenshot_20260906-120215.png": ["2026년 9월 6일 토요일", "공급가 405만 원,", "부가세 포함하면 445만 5천 원입니다."],
+  "KakaoTalkDownload/견적_최종(2).pdf": ["욕실 공사 견적서 (최종)", "견적일 2026-09-24", "비고 최종 견적 — 2026-09-05 1차 견적을 대체함", "소계 4,500,000", "합계 4,950,000"],
+  "Download/스캔_1007.pdf": ["욕실 리모델링 공사 계약서", "계약일 2026-10-07", "공급가액 4,500,000 2026-09-24자 최종 견적 기준", "계약 총액 4,950,000"],
+  "Download/주방_견적_참고.xlsx": ["주방 리모델링 견적서", "업체: 모아디자인", "견적일: 2026-09-11", "소계 10800000", "합계 11880000"],
+  "KakaoTalkDownload/KakaoTalk_20260911_1532.pdf": ["업체 상담 대화 정리 (메신저 캡처 전사)"]
+ },
+ "steps": [
+  {"label": "질문하기", "on": "start"},
+  {"label": "찾는 과정 보기와 고르기", "on": "first_event"},
+  {"label": "답 받기", "on": "first_answer"}
+ ],
+ "narrow": [
+  {"label": "폰 문서", "on": "start", "set": "all"},
+  {"label": "욕실 견적 5건(문서 사진 2장 포함)", "on": {"card": "docs_found"}, "set": "evidence"},
+  {"label": "답에 쓴 문서", "on": "result", "set": "result"}
+ ]
+}

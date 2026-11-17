@@ -66,7 +66,7 @@
 
   Bus.createConstellation = function createConstellation(data, callbacks) {
     callbacks = callbacks || {};
-    var cData = data.constellation || {
+    var emptyConst = {
       bank: '',
       has_doc_memories: false,
       stars: [],
@@ -84,150 +84,203 @@
     var legendEl = document.getElementById('db-p3-legend');
     var captionEl = document.getElementById('db-p3-caption');
     var ctx = canvas.getContext('2d');
-
-    var stars = cData.stars || [];
-    var words = cData.words || [];
-    var baseLabels = cData.labels || [];
-    var timeLinks = cData.time_links || [];
-    var entityLinks = cData.entity_links || [];
-    var causalLinks = cData.causal_links || [];
-    var bankName = cData.bank || '';
+    var W = canvas.width;
+    var H = canvas.height;
 
     var photoDateMap = {};
     ((data.catalog && data.catalog.photos) || []).forEach(function (p) {
       if (p && p.id && p.date) photoDateMap[p.id] = p.date;
     });
 
-    var starByN = {};
-    var starsByDoc = {};
-    var saveOrderStars = stars.slice().sort(function (a, b) {
-      return (a.order - b.order) || (a.n - b.n);
-    });
-    stars.forEach(function (s) {
-      starByN[s.n] = s;
-      var dk = s.kind + ':' + s.id;
-      if (!starsByDoc[dk]) starsByDoc[dk] = [];
-      starsByDoc[dk].push(s.n);
-    });
-    Object.keys(starsByDoc).forEach(function (dk) {
-      starsByDoc[dk].sort(function (a, b) { return a - b; });
-    });
+    function buildPack(rawConst) {
+      var cd = rawConst || emptyConst;
+      var stList = cd.stars || [];
+      var wList = cd.words || [];
+      var bLabels = cd.labels || [];
+      var tLinks = cd.time_links || [];
+      var eLinks = cd.entity_links || [];
+      var cLinks = cd.causal_links || [];
+      var bName = cd.bank || '';
 
-    // ---------------------------------------------------------------- 고정 씨앗 배치 (mulberry32, 300회)
-    var N = stars.length;
-    var W = canvas.width;
-    var H = canvas.height;
-    var posX = new Float64Array(N);
-    var posY = new Float64Array(N);
+      var sByN = {};
+      var sByDoc = {};
+      var sOrder = stList.slice().sort(function (a, b) {
+        return (a.order - b.order) || (a.n - b.n);
+      });
+      stList.forEach(function (s) {
+        sByN[s.n] = s;
+        var dk = s.kind + ':' + s.id;
+        if (!sByDoc[dk]) sByDoc[dk] = [];
+        sByDoc[dk].push(s.n);
+      });
+      Object.keys(sByDoc).forEach(function (dk) {
+        sByDoc[dk].sort(function (a, b) { return a - b; });
+      });
 
-    (function computeLayout() {
-      if (!N) return;
-      var rng = mulberry32(7);
-      var vx = new Float64Array(N);
-      var vy = new Float64Array(N);
-      var padX = 36;
-      var padY = 24;
-      var spanW = W - padX * 2;
-      var spanH = H - padY * 2;
+      var nLen = stList.length;
+      var pxArr = new Float64Array(nLen);
+      var pyArr = new Float64Array(nLen);
 
-      for (var i = 0; i < N; i++) {
-        posX[i] = padX + rng() * spanW;
-        posY[i] = padY + rng() * spanH;
-      }
+      if (nLen > 0) {
+        var rng = mulberry32(7);
+        var vx = new Float64Array(nLen);
+        var vy = new Float64Array(nLen);
+        var padX = 36;
+        var padY = 24;
+        var spanW = W - padX * 2;
+        var spanH = H - padY * 2;
 
-      var allEdges = [];
-      timeLinks.forEach(function (e) { allEdges.push([e[0], e[1], 0.025]); });
-      entityLinks.forEach(function (e) { allEdges.push([e[0], e[1], 0.018]); });
-      causalLinks.forEach(function (e) { allEdges.push([e[0], e[1], 0.035]); });
-
-      var cx = W / 2;
-      var cy = H / 2;
-      var repulse = N > 600 ? 180 : 280;
-      var useGrid = N > 1500;
-
-      for (var iter = 0; iter < 300; iter++) {
-        var damp = 0.82 * (1 - iter / 360);
-        for (var k = 0; k < N; k++) {
-          vx[k] = (cx - posX[k]) * 0.012;
-          vy[k] = (cy - posY[k]) * 0.016;
+        for (var i = 0; i < nLen; i++) {
+          pxArr[i] = padX + rng() * spanW;
+          pyArr[i] = padY + rng() * spanH;
         }
 
-        if (!useGrid) {
-          for (var a = 0; a < N; a++) {
-            var ax = posX[a];
-            var ay = posY[a];
-            for (var b = a + 1; b < N; b++) {
-              var dx = ax - posX[b];
-              var dy = ay - posY[b];
-              var d2 = dx * dx + dy * dy + 16;
-              if (d2 > 22500) continue;
-              var f = repulse / d2;
-              var fx = dx * f;
-              var fy = dy * f;
-              vx[a] += fx;
-              vy[a] += fy;
-              vx[b] -= fx;
-              vy[b] -= fy;
+        var allEdges = [];
+        tLinks.forEach(function (e) { allEdges.push([e[0], e[1], 0.025]); });
+        eLinks.forEach(function (e) { allEdges.push([e[0], e[1], 0.018]); });
+        cLinks.forEach(function (e) { allEdges.push([e[0], e[1], 0.035]); });
+
+        var cx = W / 2;
+        var cy = H / 2;
+        var repulse = nLen > 600 ? 180 : 280;
+        var useGrid = nLen > 1500;
+
+        for (var iter = 0; iter < 300; iter++) {
+          var damp = 0.82 * (1 - iter / 360);
+          for (var k = 0; k < nLen; k++) {
+            vx[k] = (cx - pxArr[k]) * 0.012;
+            vy[k] = (cy - pyArr[k]) * 0.016;
+          }
+
+          if (!useGrid) {
+            for (var a = 0; a < nLen; a++) {
+              var ax = pxArr[a];
+              var ay = pyArr[a];
+              for (var b = a + 1; b < nLen; b++) {
+                var dx = ax - pxArr[b];
+                var dy = ay - pyArr[b];
+                var d2 = dx * dx + dy * dy + 16;
+                if (d2 > 22500) continue;
+                var f = repulse / d2;
+                var fx = dx * f;
+                var fy = dy * f;
+                vx[a] += fx;
+                vy[a] += fy;
+                vx[b] -= fx;
+                vy[b] -= fy;
+              }
             }
-          }
-        } else {
-          var cellSize = 60;
-          var cols = Math.ceil(W / cellSize) + 2;
-          var buckets = {};
-          for (var gi = 0; gi < N; gi++) {
-            var gx = Math.floor(posX[gi] / cellSize);
-            var gy = Math.floor(posY[gi] / cellSize);
-            var gkey = gy * cols + gx;
-            if (!buckets[gkey]) buckets[gkey] = [];
-            buckets[gkey].push(gi);
-          }
-          for (var ai = 0; ai < N; ai++) {
-            var cxi = Math.floor(posX[ai] / cellSize);
-            var cyi = Math.floor(posY[ai] / cellSize);
-            for (var oy = -1; oy <= 1; oy++) {
-              for (var ox = -1; ox <= 1; ox++) {
-                var cell = buckets[(cyi + oy) * cols + (cxi + ox)];
-                if (!cell) continue;
-                for (var bi = 0; bi < cell.length; bi++) {
-                  var bj = cell[bi];
-                  if (bj <= ai) continue;
-                  var dxg = posX[ai] - posX[bj];
-                  var dyg = posY[ai] - posY[bj];
-                  var d2g = dxg * dxg + dyg * dyg + 16;
-                  var fg = repulse / d2g;
-                  vx[ai] += dxg * fg;
-                  vy[ai] += dyg * fg;
-                  vx[bj] -= dxg * fg;
-                  vy[bj] -= dyg * fg;
+          } else {
+            var cellSize = 60;
+            var cols = Math.ceil(W / cellSize) + 2;
+            var buckets = {};
+            for (var gi = 0; gi < nLen; gi++) {
+              var gx = Math.floor(pxArr[gi] / cellSize);
+              var gy = Math.floor(pyArr[gi] / cellSize);
+              var gkey = gy * cols + gx;
+              if (!buckets[gkey]) buckets[gkey] = [];
+              buckets[gkey].push(gi);
+            }
+            for (var ai = 0; ai < nLen; ai++) {
+              var cxi = Math.floor(pxArr[ai] / cellSize);
+              var cyi = Math.floor(pyArr[ai] / cellSize);
+              for (var oy = -1; oy <= 1; oy++) {
+                for (var ox = -1; ox <= 1; ox++) {
+                  var cell = buckets[(cyi + oy) * cols + (cxi + ox)];
+                  if (!cell) continue;
+                  for (var bi = 0; bi < cell.length; bi++) {
+                    var bj = cell[bi];
+                    if (bj <= ai) continue;
+                    var dxg = pxArr[ai] - pxArr[bj];
+                    var dyg = pyArr[ai] - pyArr[bj];
+                    var d2g = dxg * dxg + dyg * dyg + 16;
+                    var fg = repulse / d2g;
+                    vx[ai] += dxg * fg;
+                    vy[ai] += dyg * fg;
+                    vx[bj] -= dxg * fg;
+                    vy[bj] -= dyg * fg;
+                  }
                 }
               }
             }
           }
-        }
 
-        for (var ei = 0; ei < allEdges.length; ei++) {
-          var ed = allEdges[ei];
-          var u = ed[0];
-          var v = ed[1];
-          var st = ed[2];
-          var ex = posX[v] - posX[u];
-          var ey = posY[v] - posY[u];
-          var dist = Math.sqrt(ex * ex + ey * ey) || 1;
-          var pull = (dist - 28) * st;
-          var px = (ex / dist) * pull;
-          var py = (ey / dist) * pull;
-          vx[u] += px;
-          vy[u] += py;
-          vx[v] -= px;
-          vy[v] -= py;
-        }
+          for (var ei = 0; ei < allEdges.length; ei++) {
+            var ed = allEdges[ei];
+            var u = ed[0];
+            var v = ed[1];
+            var st = ed[2];
+            var ex = pxArr[v] - pxArr[u];
+            var ey = pyArr[v] - pyArr[u];
+            var dist = Math.sqrt(ex * ex + ey * ey) || 1;
+            var pull = (dist - 28) * st;
+            var px = (ex / dist) * pull;
+            var py = (ey / dist) * pull;
+            vx[u] += px;
+            vy[u] += py;
+            vx[v] -= px;
+            vy[v] -= py;
+          }
 
-        for (var m = 0; m < N; m++) {
-          posX[m] = Math.min(W - padX, Math.max(padX, posX[m] + Math.max(-8, Math.min(8, vx[m] * damp))));
-          posY[m] = Math.min(H - padY, Math.max(padY, posY[m] + Math.max(-8, Math.min(8, vy[m] * damp))));
+          for (var m = 0; m < nLen; m++) {
+            pxArr[m] = Math.min(W - padX, Math.max(padX, pxArr[m] + Math.max(-8, Math.min(8, vx[m] * damp))));
+            pyArr[m] = Math.min(H - padY, Math.max(padY, pyArr[m] + Math.max(-8, Math.min(8, vy[m] * damp))));
+          }
         }
       }
-    })();
+
+      return {
+        cData: cd,
+        stars: stList,
+        words: wList,
+        baseLabels: bLabels,
+        timeLinks: tLinks,
+        entityLinks: eLinks,
+        causalLinks: cLinks,
+        bankName: bName,
+        starByN: sByN,
+        starsByDoc: sByDoc,
+        saveOrderStars: sOrder,
+        N: nLen,
+        posX: pxArr,
+        posY: pyArr
+      };
+    }
+
+    var photoPack = buildPack(data.constellation);
+    var docPack = data.constellation_docs ? buildPack(data.constellation_docs) : null;
+
+    var cData = photoPack.cData;
+    var stars = photoPack.stars;
+    var words = photoPack.words;
+    var baseLabels = photoPack.baseLabels;
+    var timeLinks = photoPack.timeLinks;
+    var entityLinks = photoPack.entityLinks;
+    var causalLinks = photoPack.causalLinks;
+    var bankName = photoPack.bankName;
+    var starByN = photoPack.starByN;
+    var starsByDoc = photoPack.starsByDoc;
+    var saveOrderStars = photoPack.saveOrderStars;
+    var N = photoPack.N;
+    var posX = photoPack.posX;
+    var posY = photoPack.posY;
+
+    function activatePack(pack) {
+      cData = pack.cData;
+      stars = pack.stars;
+      words = pack.words;
+      baseLabels = pack.baseLabels;
+      timeLinks = pack.timeLinks;
+      entityLinks = pack.entityLinks;
+      causalLinks = pack.causalLinks;
+      bankName = pack.bankName;
+      starByN = pack.starByN;
+      starsByDoc = pack.starsByDoc;
+      saveOrderStars = pack.saveOrderStars;
+      N = pack.N;
+      posX = pack.posX;
+      posY = pack.posY;
+    }
 
     // ---------------------------------------------------------------- 맞추기 함수 (AIDicDemo 공개 API)
     function matchNormalizedHits(dedupHits, recallBank) {
@@ -459,10 +512,14 @@
       captionEl.textContent = '';
       if (phase === 'empty') return;
       if (phase === 'saving') {
-        var saveMsg = (currentCase && currentCase.scene.kind === 'document' && cData.has_doc_memories)
+        var isDocSc = Boolean(currentCase && currentCase.scene && currentCase.scene.kind === 'document');
+        var saveMsg = (isDocSc && cData.has_doc_memories)
           ? 'Hindsight가 사진 설명, 하루 타임라인, 문서 글자를 기억으로 나눠 저장한 순서대로 보여 줍니다. 시간은 줄였습니다.'
           : 'Hindsight가 사진 설명과 하루 타임라인을 기억으로 나눠 저장한 순서대로 보여 줍니다. 시간은 줄였습니다.';
         addCapLine(saveMsg, 'db-p3-cap-sub');
+        if (isDocSc && !cData.has_doc_memories) {
+          addCapLine('문서는 아직 기억 저장소에 넣지 않아 문서 사진 2장의 기억만 표시합니다.', 'db-p3-cap-sub');
+        }
         return;
       }
       if (phase === 'ready') {
@@ -531,15 +588,19 @@
         var cmp = validCompareRecall();
         var cPhotoSet = {};
         var cTlSet = {};
+        var cDocSet = {};
         recState.hits.forEach(function (h) {
           if (h.kind === 'photo' && h.id) cPhotoSet[h.id] = true;
           else if (h.kind === 'timeline' && h.id) cTlSet[h.id] = true;
+          else if (h.kind === 'doc' && h.id) cDocSet[h.id] = true;
         });
         var cSec = (((cmp && Number(cmp.elapsed_ms)) || 0) / 1000).toFixed(1);
+        var cDocCnt = Object.keys(cDocSet).length;
         var cNumLine =
           '같은 질의로 따로 꺼내 둔 기억 ' + recState.hits.length + '개 · 사진 ' +
-          Object.keys(cPhotoSet).length + '장 · 하루 타임라인 ' + Object.keys(cTlSet).length +
-          '개 · 꺼내는 데 ' + cSec + '초';
+          Object.keys(cPhotoSet).length + '장 · 하루 타임라인 ' + Object.keys(cTlSet).length + '개';
+        if (cDocCnt > 0) cNumLine += ' · 문서 ' + cDocCnt + '건';
+        cNumLine += ' · 꺼내는 데 ' + cSec + '초';
         if (recState.missing > 0) {
           cNumLine += ' · 별자리에 없는 기억 ' + recState.missing + '개';
         }
@@ -634,24 +695,38 @@
       if (resultItems && resultItems.length > 0 && !compareLoading) {
         if (hasRecallShown) {
           var who = recState.source === 'agent' ? '에이전트가 꺼낸 기억' : '비교용 기억';
-          var hitPhotoRanks = {};
+          var isDocCaseAns = Boolean(currentCase && currentCase.scene && currentCase.scene.kind === 'document');
+          var hitItemRanks = {};
           recState.hits.forEach(function (h, idx) {
-            if (h.kind === 'photo' && h.id) {
+            var matchable = isDocCaseAns ? (h.kind === 'doc' || h.kind === 'photo') : (h.kind === 'photo');
+            if (matchable && h.id) {
               var rk = h.rank != null ? Number(h.rank) : (idx + 1);
-              if (hitPhotoRanks[h.id] == null || rk < hitPhotoRanks[h.id]) {
-                hitPhotoRanks[h.id] = rk;
+              if (hitItemRanks[h.id] == null || rk < hitItemRanks[h.id]) {
+                hitItemRanks[h.id] = rk;
               }
             }
           });
           var mCnt = 0;
           var bestRank = null;
           resultItems.forEach(function (pid) {
-            if (hitPhotoRanks[pid] != null) {
+            if (hitItemRanks[pid] != null) {
               mCnt++;
-              if (bestRank == null || hitPhotoRanks[pid] < bestRank) bestRank = hitPhotoRanks[pid];
+              if (bestRank == null || hitItemRanks[pid] < bestRank) bestRank = hitItemRanks[pid];
             }
           });
-          if (mCnt > 0) {
+          if (isDocCaseAns) {
+            if (mCnt > 0) {
+              addCapLine(
+                '답에 쓴 문서 ' + resultItems.length + '건 가운데 ' + mCnt + '건이 ' + who + '에 있어요 · 가장 높은 순위 ' + bestRank + '위',
+                'db-p3-cap-hl'
+              );
+            } else {
+              addCapLine(
+                '답에 쓴 문서 ' + resultItems.length + '건은 ' + who + '에 없어요',
+                'db-p3-cap-sub'
+              );
+            }
+          } else if (mCnt > 0) {
             addCapLine(
               '답에 나온 사진 ' + resultItems.length + '장 가운데 ' + mCnt + '장이 ' + who + '에 있어요 · 가장 높은 순위 ' + bestRank + '위',
               'db-p3-cap-hl'
@@ -814,15 +889,33 @@
       ctx.globalAlpha = 1;
 
       // 별과 고리 그리기
+      var isDocDraw = Boolean(currentCase && currentCase.scene && currentCase.scene.kind === 'document');
+      var docPhotoSet = {};
+      if (isDocDraw && currentCase && Array.isArray(currentCase.scene.doc_photos)) {
+        currentCase.scene.doc_photos.forEach(function (pid) { docPhotoSet[pid] = true; });
+      }
       var visibleCount = 0;
       for (var si = 0; si < N; si++) {
         if (!unlockedSet[si]) continue;
         var st = stars[si];
         var isBright = !hasHighlightFilter || Boolean(brightStarSet[si]);
+        var starAlpha = isBright ? 1.0 : 0.25;
+        if (phase === 'saving' && isDocDraw) {
+          if (cData.has_doc_memories) {
+            starAlpha = st.kind === 'doc' ? 1.0 : 0.60;
+            isBright = true;
+          } else {
+            isBright = Boolean(st.kind === 'photo' && docPhotoSet[st.id]);
+            starAlpha = isBright ? 1.0 : 0.25;
+          }
+        } else if (phase === 'ready' && isDocDraw && !cData.has_doc_memories) {
+          isBright = Boolean(st.kind === 'photo' && docPhotoSet[st.id]);
+          starAlpha = isBright ? 1.0 : 0.25;
+        }
         if (isBright) visibleCount++;
 
         var p = screenCoords(si);
-        ctx.globalAlpha = isBright ? 1.0 : 0.25;
+        ctx.globalAlpha = starAlpha;
         ctx.fillStyle = '#e8ecff';
         ctx.beginPath();
         ctx.arc(p.x, p.y, isBright && hasHighlightFilter ? 3.4 : 2.3, 0, Math.PI * 2);
@@ -1093,6 +1186,8 @@
         currentCase = caseObj;
         currentMode = mode;
         currentRecordKind = recordKind || '대본';
+        var wantDocPack = Boolean(caseObj && caseObj.scene && caseObj.scene.kind === 'document' && docPack);
+        activatePack(wantDocPack ? docPack : photoPack);
         compareRecallForCase = (caseObj && caseObj.recall) || null;
         zoom = 1.0;
         panX = 0;
