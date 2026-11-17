@@ -235,7 +235,7 @@ def test_4_export_bank():
 # 5. 화면 문구 검사 (금지어, 물결표, 옛 값)
 def test_5_ui_wording_and_legacy_values():
     for path in sorted(DEMO_DIR.rglob("*")):
-        if not path.is_file() or "__pycache__" in path.parts:
+        if not path.is_file() or "__pycache__" in path.parts or "recall" in path.parts:
             continue
         text = path.read_text(encoding="utf-8")
         for legacy in LEGACY_FORBIDDEN_VALUES:

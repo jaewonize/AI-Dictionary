@@ -1,0 +1,622 @@
+{
+ "bank": "aidic-mobile",
+ "query": "작년 송년회 와인이랑 4년 전 생일 와인",
+ "budget": "mid",
+ "max_tokens": 8192,
+ "elapsed_ms": 9583,
+ "hits": [
+  {
+   "rank": 1,
+   "document_id": "photo:DCIM/Camera/20251219_193817.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20251219_193817.jpg",
+   "type": "world",
+   "occurred_start": "2025-12-19T10:38:17+00:00",
+   "text": "따뜻한 조명의 식당에서 네 명(남성 두 명, 여성 두 명)이 긴 나무 테이블에 둘러앉아 레드·화이트 와인으로 건배하며 웃는 연말 파티·송년회 분위기의 저녁 식사 사진을 찍음."
+  },
+  {
+   "rank": 2,
+   "document_id": "photo:DCIM/Camera/20251219_190824.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20251219_190824.jpg",
+   "type": "world",
+   "occurred_start": "2025-12-19T10:08:24+00:00",
+   "text": "을지로3가역 부근의 따뜻한 조명의 식당에서 네 명이 나무 테이블에 둘러앉아 와인을 곁들여 식사하며 웃고 이야기하는 연말 모임·송년회로 보이는 자리의 사진이 찍혔다. 검은 터틀넥과 회색 재킷 차림 남성이 손짓하며 말하고, 버건디색 니트 여성, 남색 스웨터 남성, 흰 니트 여성이 웃으며 듣고 있다."
+  },
+  {
+   "rank": 3,
+   "document_id": "photo:DCIM/Camera/20220319_191722.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20220319_191722.jpg",
+   "type": "world",
+   "occurred_start": "2022-03-19T10:17:22+00:00",
+   "text": "망원동 집 거실에서 세 사람이 식탁에 둘러앉아 와인잔으로 건배하며 웃는 홈파티(생일 파티 또는 기념일로 보임)가 열렸다. 두 사람은 레드 와인, 한 사람은 화이트 또는 스파클링 와인을 들고 있었다."
+  },
+  {
+   "rank": 4,
+   "document_id": "photo:DCIM/Camera/20220319_190814.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20220319_190814.jpg",
+   "type": "world",
+   "occurred_start": "2022-03-19T10:08:14+00:00",
+   "text": "2022년 3월 19일 저녁 집 거실에서 생일 파티 사진이 찍혔다. 식탁에는 초 세 개에 불이 켜진 딸기 생크림 생일 케이크, 'DOMAINE LORIEL PINOT NOIR 2018' 레드 와인 병과 와인잔, 파란 꽃무늬 포장지에 남색 리본을 두른 선물 상자, 카프레제 샐러드로 보이는 접시가 놓여 있었다."
+  },
+  {
+   "rank": 5,
+   "document_id": "timeline:2022-03-19",
+   "kind": "timeline",
+   "source_id": "2022-03-19",
+   "type": "world",
+   "occurred_start": "2022-03-19T10:06:00.010000+00:00",
+   "text": "생일 파티에서 DOMAINE LORIEL PINOT NOIR 2018 레드 와인과 BELLE RIVE BRUT(프랑스) 스파클링 와인을 마셨다."
+  },
+  {
+   "rank": 6,
+   "document_id": "photo:DCIM/Camera/20220319_190631.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20220319_190631.jpg",
+   "type": "world",
+   "occurred_start": "2022-03-19T10:06:31.020000+00:00",
+   "text": "생일 파티 식탁에는 '도멘 루아르 피노 누아(DOMAINE LOIRE PINOT NOIR) 2018' 레드 와인과 '벨 리브 브뤼(BELLE RIVE BRUT)' 스파클링 와인, 카프레제로 보이는 토마토·모차렐라 샐러드, 올리브 접시, 그리고 파란 꽃무늬 포장지에 남색 리본을 두른 선물 상자가 놓여 있었다."
+  },
+  {
+   "rank": 7,
+   "document_id": "timeline:2022-03-19",
+   "kind": "timeline",
+   "source_id": "2022-03-19",
+   "type": "world",
+   "occurred_start": "2022-03-19T10:06:00+00:00",
+   "text": "2022년 3월 19일(토) 저녁 망원동 집 거실에서 따뜻한 조명 아래 생일 파티가 열렸고, 세 사람이 식탁에 둘러앉아 와인잔을 들고 건배하며 웃었다."
+  },
+  {
+   "rank": 8,
+   "document_id": "photo:DCIM/Camera/20220319_200458.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20220319_200458.jpg",
+   "type": "world",
+   "occurred_start": "2022-03-19T11:04:58+00:00",
+   "text": "2022년 3월 19일 저녁 망원동 집 식탁에서 딸기 생크림 케이크, 와인(도멘 피노 누아 레드 와인, 벨 리브 브뤼 스파클링 와인), 카프레제 샐러드, 올리브를 차려 놓고 생일 또는 기념일로 보이는 파티를 함; 케이크를 한 조각 잘라 먹은 상태였음"
+  },
+  {
+   "rank": 9,
+   "document_id": "photo:DCIM/Camera/20220319_191722.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20220319_191722.jpg",
+   "type": "world",
+   "occurred_start": "2022-03-19T10:17:22.010000+00:00",
+   "text": "홈파티 식탁 가운데에는 케이크 스탠드 위에 딸기 생크림 케이크가 놓여 있었다. 그 양옆에는 도멘 로리엘 피노 누아(DOMAINE LORIEL PINOT NOIR) 2018 레드 와인과 벨 리브 브뤼(BELLE RIVE BRUT) 스파클링 와인이 있었다. 카프레제 샐러드, 올리브, 햄, 유리 캔들 촛불도 차려져 있었다."
+  },
+  {
+   "rank": 10,
+   "document_id": "photo:DCIM/Camera/20220319_191147.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20220319_191147.jpg",
+   "type": "world",
+   "occurred_start": "2022-03-19T10:11:47+00:00",
+   "text": "집 거실 식탁에서 세 사람이 생일 파티를 하며 스파클링 와인 '벨 리브 브뤼(BELLE RIVE BRUT)' 잔으로 건배하는 사진이 찍혔다. 세 사람의 얼굴은 보이지 않으며, 각각 흰 셔츠, 초록색 니트, 베이지색 니트를 입고 있다."
+  },
+  {
+   "rank": 11,
+   "document_id": "photo:DCIM/Camera/20251219_193817.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20251219_193817.jpg",
+   "type": "world",
+   "occurred_start": "2025-12-19T10:38:17.010000+00:00",
+   "text": "저녁 자리 테이블에 클로 데 졸른(CLOS DES AULNES) 보르도 2021, 빌라 오리아(VILLA ORIA) 키안티 2022, 몽 클레어(MONT CLAIR) 샤르도네 2025 와인 세 병이 놓여 있었음."
+  },
+  {
+   "rank": 12,
+   "document_id": "photo:DCIM/Camera/20251219_191206.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20251219_191206.jpg",
+   "type": "world",
+   "occurred_start": "2025-12-19T10:12:06+00:00",
+   "text": "2025년 12월 19일 저녁 식당으로 보이는 실내에서 연말/크리스마스 분위기의 저녁 식사 자리가 있었고, '클로 데 졸른(CLOS DES AULNES)' 보르도(BORDEAUX) 2021 레드 와인을 곁들였다."
+  },
+  {
+   "rank": 13,
+   "document_id": "timeline:2025-12-19",
+   "kind": "timeline",
+   "source_id": "2025-12-19",
+   "type": "world",
+   "occurred_start": "2025-12-19T10:08:00.010000+00:00",
+   "text": "2025년 12월 19일 을지로 저녁 식사 자리에서 CLOS DES AULNES BORDEAUX 2021(클로 데 졸른 보르도), VILLA ORIA CHIANTI 2022(DOCG), MONT CLAIR CHARDONNAY 2023(몽 클레르 샤르도네) 와인을 마셨고, 레드 와인과 화이트 와인을 함께 곁들였다."
+  },
+  {
+   "rank": 14,
+   "document_id": "timeline:2025-12-19",
+   "kind": "timeline",
+   "source_id": "2025-12-19",
+   "type": "world",
+   "occurred_start": "2025-12-19T10:08:00+00:00",
+   "text": "2025년 12월 19일(금) 저녁 을지로3가역 부근의 따뜻한 조명의 식당에서 네 명(남성 두 명, 여성 두 명)이 나무 테이블에 둘러앉아 와인을 곁들여 이탈리아 요리로 연말 저녁 식사를 하며 이야기를 나눴다."
+  },
+  {
+   "rank": 15,
+   "document_id": "photo:DCIM/Camera/20260404_132513.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260404_132513.jpg",
+   "type": "world",
+   "occurred_start": null,
+   "text": "상수동 집 주방에는 스테인리스 개수대, 식기건조대, 전기포트, 와인병·오일병, 전자레인지, 오븐토스터, 가스레인지(검은 냄비·프라이팬), 레인지후드, 메모와 사진 마그넷이 붙은 은색 냉장고, 걸린 앞치마, 나무 식탁과 의자가 있다."
+  },
+  {
+   "rank": 16,
+   "document_id": "photo:DCIM/Camera/20251219_192138.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20251219_192138.jpg",
+   "type": "world",
+   "occurred_start": "2025-12-19T10:21:38.010000+00:00",
+   "text": "그 연말 식사 자리에서 빌라 오리아(VILLA ORIA) 키안티(CHIANTI) 2022 레드 와인과 몽 클레르(MONT CLAIR) 샤르도네(CHARDONNAY) 2023 화이트 와인을 마셨고, 부라타 치즈(방울토마토·프로슈토), 샤퀴테리 플레이트, 뇨키, 껍질콩을 곁들인 스테이크, 샐러드 등을 먹었다."
+  },
+  {
+   "rank": 17,
+   "document_id": "photo:DCIM/Camera/20251219_201609.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20251219_201609.jpg",
+   "type": "world",
+   "occurred_start": "2025-12-19T11:16:09+00:00",
+   "text": "2025년 12월 19일(금) 저녁 을지로3가역 부근 식당에서 연말·크리스마스 분위기의 저녁 모임 사진을 찍음. 테이블에는 'CLOS DES AULNES BORDEAUX 2021'과 'VILLA ORIA CHIANTI 2022' 레드 와인 두 병이 놓여 있었음."
+  },
+  {
+   "rank": 18,
+   "document_id": "timeline:2022-03-19",
+   "kind": "timeline",
+   "source_id": "2022-03-19",
+   "type": "world",
+   "occurred_start": "2022-03-19T11:04:00.020000+00:00",
+   "text": "생일 파티에서 생크림과 딸기, 허브로 장식한 딸기 생크림 케이크를 흰 케이크 스탠드에 올려 나무 식탁에 두고 잘라 먹었다."
+  },
+  {
+   "rank": 19,
+   "document_id": "photo:DCIM/Camera/20260404_134013.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260404_134013.jpg",
+   "type": "world",
+   "occurred_start": "2026-04-04T04:40:13+00:00",
+   "text": "2026년 4월 4일 13:40에 상수동 집 주방의 싱크대 하부장 문을 양쪽으로 열고 사진을 찍었다. 스테인리스 개수대 아랫면과 흰색 배수관이 보이며, 사람은 없다."
+  },
+  {
+   "rank": 20,
+   "document_id": "photo:DCIM/Camera/20250405_141944.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20250405_141944.jpg",
+   "type": "world",
+   "occurred_start": "2025-04-05T05:19:44.010000+00:00",
+   "text": "사용자는 2025년 4월 5일 한강 피크닉에 바구니 달린 민트색 자전거와 남색 헬멧을 가져왔고 청바지를 입고 있었다. 자전거를 타고 한강에 온 것으로 보인다."
+  },
+  {
+   "rank": 21,
+   "document_id": "photo:DCIM/Camera/20220319_200458.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20220319_200458.jpg",
+   "type": "world",
+   "occurred_start": "2022-03-19T11:04:58.010000+00:00",
+   "text": "파티 식탁에 파란 꽃무늬 포장지에 남색 리본을 두른 선물 상자가 있었고, 유리 캔들 홀더 속 촛불이 켜져 있어 분위기가 따뜻했음"
+  },
+  {
+   "rank": 22,
+   "document_id": "timeline:2025-06-14",
+   "kind": "timeline",
+   "source_id": "2025-06-14",
+   "type": "world",
+   "occurred_start": "2025-06-14T03:01:24.020000+00:00",
+   "text": "사용자의 주방에는 스테인리스 전기레인지와 오븐이 있으며, 2025년 6월 14일 12시 1분경 유산지를 깐 베이킹 트레이에 구운 음식 부스러기가 남아 있었다."
+  },
+  {
+   "rank": 23,
+   "document_id": "photo:DCIM/Camera/20260404_133408.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260404_133408.jpg",
+   "type": "world",
+   "occurred_start": "2026-04-04T04:34:08+00:00",
+   "text": "2026년 4월 4일(토) 주방의 열린 상부 수납장(찬장)을 가까이에서 찍은 사진으로, 아이보리색 수납장 문의 경첩에 녹이 슬어 있고 문 모서리가 들뜨고 갈라져 얼룩이 져 있다."
+  },
+  {
+   "rank": 24,
+   "document_id": "photo:DCIM/Camera/20230408_124611.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20230408_124611.jpg",
+   "type": "world",
+   "occurred_start": "2023-04-08T03:46:11.010000+00:00",
+   "text": "피크닉 장소 옆에 앞바구니가 달린 흰색 자전거와 검은색 자전거 두 대가 세워져 있어, 두 사람이 자전거를 타고 온 것으로 보인다."
+  },
+  {
+   "rank": 25,
+   "document_id": "photo:DCIM/Camera/20260404_132513.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260404_132513.jpg",
+   "type": "world",
+   "occurred_start": "2026-04-04T04:25:13+00:00",
+   "text": "사용자가 2026년 4월 4일(토) 13:25에 상수동 상수역 부근 집 안의 ㄱ자형 주방 사진을 찍었다. 아이보리색 상부장·하부장, 회색 상판, 흰 타일 벽이 있는 주방이다."
+  },
+  {
+   "rank": 26,
+   "document_id": "timeline:2025-04-05",
+   "kind": "timeline",
+   "source_id": "2025-04-05",
+   "type": "world",
+   "occurred_start": "2025-04-05T05:25:00.020000+00:00",
+   "text": "2025년 4월 5일 망원동 한강공원의 벚꽃은 만개 상태로, 연분홍빛 꽃이 가지마다 빽빽하게 피어 있었다."
+  },
+  {
+   "rank": 27,
+   "document_id": "photo:DCIM/Camera/20220319_191147.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20220319_191147.jpg",
+   "type": "world",
+   "occurred_start": "2022-03-19T10:11:47.010000+00:00",
+   "text": "생일 파티 식탁에는 촛불 하나가 꽂힌 딸기 생크림 케이크, 남색 리본이 묶인 파란 꽃무늬 포장의 선물 상자, 방울토마토와 모차렐라(부라타로 보이는) 치즈 샐러드, 올리브 접시가 차려져 있었다. 따뜻한 노란 조명과 촛불, 책장, 식물이 있어 아늑한 분위기였다."
+  },
+  {
+   "rank": 28,
+   "document_id": "timeline:2024-09-21",
+   "kind": "timeline",
+   "source_id": "2024-09-21",
+   "type": "world",
+   "occurred_start": "2024-09-21T05:10:00.010000+00:00",
+   "text": "집 보기 때 본 주방에는 스테인리스 싱크대와 거위목 모양의 은색 수전, 그 뒤에 나뭇결이 선명한 원목 도마가 있었다."
+  },
+  {
+   "rank": 29,
+   "document_id": "timeline:2024-09-21",
+   "kind": "timeline",
+   "source_id": "2024-09-21",
+   "type": "world",
+   "occurred_start": "2024-09-21T10:19:00.030000+00:00",
+   "text": "2024년 9월 21일(토) 밤 상수동 일대에는 비가 내렸고, 젖은 아스팔트 골목에 노란 조명과 붉은 불빛이 반사되어 번졌다."
+  },
+  {
+   "rank": 30,
+   "document_id": "photo:DCIM/Camera/20251219_194552.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20251219_194552.jpg",
+   "type": "world",
+   "occurred_start": "2025-12-19T10:45:52+00:00",
+   "text": "사용자가 2025년 12월 19일(금) 저녁 을지로3가역 부근 식당에서 'MONT CLAIR CHARDONNAY 2023'(몽 클레르 샤르도네) 화이트 와인과 함께 스테이크(아스파라거스·방울토마토 구이 곁들임), 부라타 치즈 카프레제 계열 샐러드, 하몽·프로슈토·크래커·올리브 샤퀴테리 보드를 먹는 사진을 찍음."
+  },
+  {
+   "rank": 31,
+   "document_id": "timeline:2023-03-11",
+   "kind": "timeline",
+   "source_id": "2023-03-11",
+   "type": "world",
+   "occurred_start": "2023-03-11T05:34:49+00:00",
+   "text": "사용자가 2023년 3월 11일(토) 14:34~14:49경 연남동 서강역 부근의 실내 도예 공방에서 물레를 돌리며 회색 점토로 사발(그릇)을 빚었고, 넓은 사발을 완성해 물레 위에 놓인 모습을 사진 4장으로 남겼다."
+  },
+  {
+   "rank": 32,
+   "document_id": "photo:DCIM/Camera/20260901_153212.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260901_153212.jpg",
+   "type": "world",
+   "occurred_start": "2026-08-31T15:00:00+00:00",
+   "text": "하람디자인(담당 김수아)이 연남동 빌라 302호 욕실 1개소(1.4평) 리모델링 견적서를 발행함. 공급가액 3,800,000원, 부가세 380,000원, 합계 4,180,000원."
+  },
+  {
+   "rank": 33,
+   "document_id": "timeline:2025-04-05",
+   "kind": "timeline",
+   "source_id": "2025-04-05",
+   "type": "world",
+   "occurred_start": "2025-04-05T05:19:00.010000+00:00",
+   "text": "사용자는 2025년 4월 5일 벚꽃이 핀 한강공원 잔디밭에서 피크닉 매트 위에 앉아 종이에 싼 샌드위치를 먹으며 피크닉을 했다."
+  },
+  {
+   "rank": 34,
+   "document_id": "photo:DCIM/Camera/20260404_132914.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260404_132914.jpg",
+   "type": "world",
+   "occurred_start": "2026-04-04T04:29:14+00:00",
+   "text": "2026년 4월 4일(토) 13시 29분에 상수동 상수역 부근 집 주방의 싱크대 주변을 찍은 사진. 흰 타일 벽 한 장이 깨져 떨어져 누런 바탕이 드러나 있고 타일 줄눈이 거뭇하게 변색되어 있다."
+  },
+  {
+   "rank": 35,
+   "document_id": "timeline:2026-04-04",
+   "kind": "timeline",
+   "source_id": "2026-04-04",
+   "type": "world",
+   "occurred_start": "2026-04-04T04:25:13+00:00",
+   "text": "사용자가 2026년 4월 4일(토) 13:25~13:40 사이에 상수동 집 주방을 사진 4장으로 촬영했다: ㄱ자형 주방 전경, 싱크대 주변, 열린 상부 수납장(찬장), 양쪽으로 연 싱크대 하부장 내부."
+  },
+  {
+   "rank": 36,
+   "document_id": "timeline:2025-07-19",
+   "kind": "timeline",
+   "source_id": "2025-07-19",
+   "type": "world",
+   "occurred_start": "2025-07-19T01:27:43.030000+00:00",
+   "text": "사용자는 2025년 7월 19일 오전 집 거실의 흰색 원형 테이블에서 노란 양은냄비에 끓인 라면을 코르크 받침 위에 놓고 먹었다. 라면에는 반숙 계란으로 보이는 달걀이 들어 있었다."
+  },
+  {
+   "rank": 37,
+   "document_id": "photo:DCIM/Camera/20251219_194552.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20251219_194552.jpg",
+   "type": "world",
+   "occurred_start": "2025-12-19T10:45:52.010000+00:00",
+   "text": "식사 자리는 따뜻한 노란 조명과 보케, 유리 캔들 홀더의 촛불, 솔가지와 오너먼트 장식으로 아늑한 크리스마스·연말 분위기였음."
+  },
+  {
+   "rank": 38,
+   "document_id": "timeline:2024-11-09",
+   "kind": "timeline",
+   "source_id": "2024-11-09",
+   "type": "world",
+   "occurred_start": "2024-11-09T06:33:24.010000+00:00",
+   "text": "2024년 11월 9일 15:33, 주방 흰색 조리대 위에 놓인 가장자리가 짙은 파란색인 둥근 접시와 그 위의 사워도우 또는 캄파뉴로 보이는 둥근 빵을 촬영했다."
+  },
+  {
+   "rank": 39,
+   "document_id": "photo:DCIM/Camera/20250927_141430.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20250927_141430.jpg",
+   "type": "world",
+   "occurred_start": "2025-09-27T05:14:30.010000+00:00",
+   "text": "와이어프레임 시안 위에 '카피 조금 더 부드럽게?', '버튼 컬러 다시 검토', '아이콘 정리!', '리스트 간격 8→12?', '이미지 비율 확인', '하단 여백 더 주기' 같은 손글씨 수정 메모가 적혀 있었다."
+  },
+  {
+   "rank": 40,
+   "document_id": "photo:DCIM/Camera/20220319_191722.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20220319_191722.jpg",
+   "type": "world",
+   "occurred_start": "2022-03-19T10:17:22.020000+00:00",
+   "text": "파티 식탁에는 파란 꽃무늬 포장지에 남색 리본을 묶은 선물 상자가 있었다. 뒤쪽 벽에는 파스텔색 삼각 가랜드와 사진들이 걸려 있었고, 스탠드 조명, 책장, 화분이 따뜻한 노란 조명 아래 보였다."
+  },
+  {
+   "rank": 41,
+   "document_id": "timeline:2022-12-24",
+   "kind": "timeline",
+   "source_id": "2022-12-24",
+   "type": "world",
+   "occurred_start": "2022-12-24T10:21:14.010000+00:00",
+   "text": "2022년 12월 24일 크리스마스이브 저녁, 집 거실 나무 테이블 위의 생크림 딸기 케이크 사진을 찍었다."
+  },
+  {
+   "rank": 42,
+   "document_id": "photo:DCIM/Camera/20220319_190631.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20220319_190631.jpg",
+   "type": "world",
+   "occurred_start": "2022-03-19T10:06:31.010000+00:00",
+   "text": "생일 파티의 주인공으로 보이는 초록색 니트를 입은 긴 머리 여성이 가운데에서 두 손을 모으고 웃었고, 양옆의 흰 셔츠 단발 여성과 베이지 니트 남성이 턱을 괴고 그녀를 바라보며 웃었다."
+  },
+  {
+   "rank": 43,
+   "document_id": "photo:DCIM/Camera/20260822_112027.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260822_112027.jpg",
+   "type": "world",
+   "occurred_start": "2026-08-22T02:20:27.010000+00:00",
+   "text": "쇼룸 테이블에는 인테리어 카탈로그와 테라조 무늬 석재 샘플, 여러 상판 샘플이 함께 놓여 있었음. 간접 조명 선반의 나무 무늬 도어 샘플들, 싱크대와 수전이 있는 주방 아일랜드 전시대, 초록 식물이 담긴 꽃병도 보였음."
+  },
+  {
+   "rank": 44,
+   "document_id": "photo:DCIM/Camera/20251219_190824.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20251219_190824.jpg",
+   "type": "world",
+   "occurred_start": "2025-12-19T10:08:24.010000+00:00",
+   "text": "이 자리에서 클로 데 존(CLOS DES AULNES) 보르도 2021, 빌라 오리아(VILLA ORIA) 키안티 2022 레드와인과 몽 클레르(MONT CLAIR) 샤르도네 2023 화이트와인을 마셨고, 루콜라를 올린 스테이크, 부라타와 방울토마토 샐러드, 프로슈토·올리브 플래터, 치즈를 뿌린 파스타를 먹었다."
+  },
+  {
+   "rank": 45,
+   "document_id": "photo:DCIM/Camera/20260425_142527.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20260425_142527.jpg",
+   "type": "world",
+   "occurred_start": "2026-04-25T05:25:27+00:00",
+   "text": "사용자가 2026년 4월 25일 토요일 오후 2시 25분경 실내 카페 창가 자리에서 라떼로 보이는 음료(머스타드색 커피잔, 회색 받침)와 흰 아이싱에 피스타치오로 보이는 고명을 올린 파운드케이크·레몬케이크로 보이는 디저트 한 조각을 먹으며 사진을 찍음."
+  },
+  {
+   "rank": 46,
+   "document_id": "photo:DCIM/Camera/20250809_132628.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20250809_132628.jpg",
+   "type": "world",
+   "occurred_start": "2025-08-09T04:26:28.010000+00:00",
+   "text": "사진 속 날씨는 맑은 파란 하늘에 흰 구름이 떠 있었고, 원목 창틀과 밝은 자연광이 어우러진 분위기였으며 사람은 보이지 않았음."
+  },
+  {
+   "rank": 47,
+   "document_id": "timeline:2023-05-20",
+   "kind": "timeline",
+   "source_id": "2023-05-20",
+   "type": "world",
+   "occurred_start": "2023-05-20T02:07:28.010000+00:00",
+   "text": "2023년 5월 20일 오전 11시 7분, 월정리 해안 길에 바다를 향해 놓인 파란색 플라스틱 의자 사진을 찍었다."
+  },
+  {
+   "rank": 48,
+   "document_id": "photo:DCIM/Camera/20251018_174216.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20251018_174216.jpg",
+   "type": "world",
+   "occurred_start": "2025-10-18T08:42:16.010000+00:00",
+   "text": "사진 속 풍경: 산 능선 위로 해가 지며 하늘이 주황색·노란색 노을로 물들고, 지평선에 아파트·고층 건물 도시 전경이 보임. 단풍 든 나무와 초록 잔디 언덕, 성벽 위에 앉은 두 사람이 있어 가을 저녁 분위기를 띰."
+  },
+  {
+   "rank": 49,
+   "document_id": "photo:DCIM/Camera/20230715_085826.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20230715_085826.jpg",
+   "type": "world",
+   "occurred_start": "2023-07-14T23:58:26.010000+00:00",
+   "text": "사진 속 버스 내부에는 주황색 손잡이 기둥, 파란색 좌석, 천장 안내 전광판이 있었고, 신호등 불빛이 젖은 노면에 반사되어 출퇴근길 같은 흐릿하고 어두운 분위기였음."
+  },
+  {
+   "rank": 50,
+   "document_id": "timeline:2024-12-21",
+   "kind": "timeline",
+   "source_id": "2024-12-21",
+   "type": "world",
+   "occurred_start": "2024-12-21T06:23:12+00:00",
+   "text": "2024년 12월 21일(토) 오후 3시 23분, 상수동(상수역 부근) 집 거실의 원목 식탁 위에 흰 접시에 담긴 홀 초콜릿 케이크가 놓여 있었다. 윗면에는 초콜릿 크림이 거칠게 발려 있었다."
+  },
+  {
+   "rank": 51,
+   "document_id": "photo:DCIM/Camera/20230311_143449.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20230311_143449.jpg",
+   "type": "world",
+   "occurred_start": "2023-03-11T05:34:49+00:00",
+   "text": "2023년 3월 11일(토) 오후 2시 34분, 연남동 서강역 부근의 실내 도예 공방에서 물레 위에 놓인 회색 점토로 빚은 사발 사진을 찍음."
+  },
+  {
+   "rank": 52,
+   "document_id": "timeline:2025-08-30",
+   "kind": "timeline",
+   "source_id": "2025-08-30",
+   "type": "world",
+   "occurred_start": "2025-08-30T03:13:16+00:00",
+   "text": "2025년 8월 30일(토) 12:13~12:28 사이 상수동(상수역 부근) 주방에서 흰색 대리석 무늬 조리대 위에 놓인, 하늘색 유약에 갈색 반점이 있는 도자기 그릇이 세 조각으로 깨진 모습을 사진 4장으로 찍었다."
+  },
+  {
+   "rank": 53,
+   "document_id": "photo:DCIM/Camera/20231221_093512.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20231221_093512.jpg",
+   "type": "world",
+   "occurred_start": "2023-12-21T00:35:12.010000+00:00",
+   "text": "사진 속 테이블에는 고무밴드가 달린 짙은 초록색 수첩이 있고, 의자에는 카멜색 코트가 걸려 있었다(사용자의 소지품으로 추정)."
+  },
+  {
+   "rank": 54,
+   "document_id": "timeline:2023-05-20",
+   "kind": "timeline",
+   "source_id": "2023-05-20",
+   "type": "world",
+   "occurred_start": "2023-05-20T03:22:46.020000+00:00",
+   "text": "2023년 5월 20일 낮 12시 22분, 월정리 식당에서 나무 테이블 위 돌솥 전복솥밥(얇게 썬 전복 올림) 사진을 찍었다."
+  },
+  {
+   "rank": 55,
+   "document_id": "photo:DCIM/Camera/20241005_114647.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20241005_114647.jpg",
+   "type": "world",
+   "occurred_start": "2024-10-05T02:46:47+00:00",
+   "text": "상수동 상수역 부근 집 거실 사진: 남색 패브릭 소파 위에 크림색 담요와 회색·남색 쿠션이 있고, 열린 골판지 이삿짐 상자들이 쌓여 있어 이사 중이거나 짐을 정리하는 모습으로 보인다."
+  },
+  {
+   "rank": 56,
+   "document_id": "timeline:2025-10-18",
+   "kind": "timeline",
+   "source_id": "2025-10-18",
+   "type": "world",
+   "occurred_start": "2025-10-18T07:10:00.010000+00:00",
+   "text": "사용자는 2025년 10월 18일(토) 수원 행궁동 팔달사 부근 전통시장 안 노점식 식당에서 반반 치킨(양념치킨과 후라이드 치킨)을 먹었다."
+  },
+  {
+   "rank": 57,
+   "document_id": "timeline:2023-08-27",
+   "kind": "timeline",
+   "source_id": "2023-08-27",
+   "type": "world",
+   "occurred_start": "2023-08-27T03:19:00.010000+00:00",
+   "text": "사용자가 2023년 8월 27일 12:19경 완성한 토마토 스파게티 한 그릇을 흰 대리석 무늬 조리대 위에서 사진으로 찍었다."
+  },
+  {
+   "rank": 58,
+   "document_id": "photo:DCIM/Camera/20221224_192711.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20221224_192711.jpg",
+   "type": "world",
+   "occurred_start": "2022-12-24T10:27:11.010000+00:00",
+   "text": "2022년 12월 24일 크리스마스 선물로 보이는 열린 초록색 선물 상자 안에 술 장식이 달린 빨강·갈색 체크무늬 머플러(목도리)가 담겨 있었고, 빨간 리본이 묶인 초록 상자도 있었음."
+  },
+  {
+   "rank": 59,
+   "document_id": "timeline:2025-01-18",
+   "kind": "timeline",
+   "source_id": "2025-01-18",
+   "type": "world",
+   "occurred_start": "2025-01-18T01:35:00+00:00",
+   "text": "2025년 1월 18일 오전 10시 35분~10시 44분경 사용자가 눈이 소복이 쌓인 아파트 단지 안 공원 산책로를 산책하며 사진을 찍었다. 눈이 내리는 날이었고 눈이 쌓인 주황색 우산을 쓰고 있었다."
+  },
+  {
+   "rank": 60,
+   "document_id": "timeline:2023-06-10",
+   "kind": "timeline",
+   "source_id": "2023-06-10",
+   "type": "world",
+   "occurred_start": "2023-06-10T01:24:16.010000+00:00",
+   "text": "2023년 6월 10일 10:24, 하늘색 반점 무늬 도자기 그릇에 물기 맺힌 검붉은 서양 체리를 담아 사진을 찍었다."
+  },
+  {
+   "rank": 61,
+   "document_id": "timeline:2026-04-25",
+   "kind": "timeline",
+   "source_id": "2026-04-25",
+   "type": "world",
+   "occurred_start": null,
+   "text": "성수커피 카페 내부는 창가 자리에 짙은 초록색 벨벳 암체어와 둥근 원목 테이블이 있는 분위기다."
+  },
+  {
+   "rank": 62,
+   "document_id": "timeline:2025-09-27",
+   "kind": "timeline",
+   "source_id": "2025-09-27",
+   "type": "world",
+   "occurred_start": "2025-09-27T05:14:30.010000+00:00",
+   "text": "사용자가 인쇄한 'Flow 02' 와이어프레임 시안(01. 온보딩, '오늘도, 좋은 하루예요', '시작하기' 버튼)에 '카피 조금 더 부드럽게?', '아이콘 정리!'라는 피드백 메모를 남겼다."
+  },
+  {
+   "rank": 63,
+   "document_id": "timeline:2023-09-09",
+   "kind": "timeline",
+   "source_id": "2023-09-09",
+   "type": "world",
+   "occurred_start": "2023-09-09T09:19:00.020000+00:00",
+   "text": "2023년 9월 9일 18:19경 해 질 녘 강변 자전거도로에 민트색 자전거가 세워져 있는 사진을 찍었다(사용자가 자전거를 타고 온 것으로 보임)."
+  },
+  {
+   "rank": 64,
+   "document_id": "timeline:2023-01-22",
+   "kind": "timeline",
+   "source_id": "2023-01-22",
+   "type": "world",
+   "occurred_start": "2023-01-22T03:13:00+00:00",
+   "text": "사용자는 2023년 1월 22일(일) 점심 무렵 집에서 떡국 한 상과 파란 꽃무늬 테두리 흰 접시에 수북이 담긴 큼직한 찐 손만두를 먹었고, 이어 무늬 새겨진 유리 그릇에 담긴 껍질 깐 귤을 먹었다."
+  },
+  {
+   "rank": 65,
+   "document_id": "photo:DCIM/Camera/20230909_181337.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20230909_181337.jpg",
+   "type": "world",
+   "occurred_start": "2023-09-09T09:13:37.010000+00:00",
+   "text": "테이블 위에 검은색 자전거 헬멧이 있고 뒤에 바구니 달린 민트색 자전거가 세워져 있어 자전거를 타고 한강공원에 온 것으로 보임"
+  },
+  {
+   "rank": 66,
+   "document_id": "timeline:2023-02-18",
+   "kind": "timeline",
+   "source_id": "2023-02-18",
+   "type": "world",
+   "occurred_start": "2023-02-18T05:09:27.010000+00:00",
+   "text": "사용자는 2023년 2월 18일 안목해변 부근 카페의 둥근 원목 테이블에서 블루베리 타르트로 보이는 디저트(피스타치오로 보이는 토핑)와 라테로 보이는 커피를 먹었다."
+  },
+  {
+   "rank": 67,
+   "document_id": "photo:DCIM/Camera/20240113_181628.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20240113_181628.jpg",
+   "type": "world",
+   "occurred_start": "2024-01-13T09:16:28+00:00",
+   "text": "2024년 1월 13일(토) 저녁 6시 16분경 망원동 아파트 단지 산책로에서 회색 니트 장갑과 검은 패딩 차림으로 눈가루가 얇게 쌓인 검은 철제 난간을 잡고 사진을 찍음."
+  },
+  {
+   "rank": 68,
+   "document_id": "photo:DCIM/Camera/20230610_102026.jpg",
+   "kind": "photo",
+   "source_id": "DCIM/Camera/20230610_102026.jpg",
+   "type": "world",
+   "occurred_start": "2023-06-10T01:20:26+00:00",
+   "text": "사용자가 망원동 집 거실에서 나무 테이블 위에 놓인 빈 하늘색 수제 도자기 그릇(사발)을 가까이 찍음. 그릇에는 갈색 반점이 흩뿌려진 유약이 발라져 있음."
+  }
+ ],
+ "run": "W"
+}
