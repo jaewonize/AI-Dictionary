@@ -628,21 +628,39 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 .structure__queries .structure__box:first-child{margin-left:-32px}.structure__clues{position:absolute;top:456px;left:664px;width:248px;height:76px;background:var(--surface);z-index:2}
 .structure__clue-route{position:absolute;top:456px;left:0;width:100%;height:101px;color:#b7bac3;overflow:visible;pointer-events:none}
 .structure__clue-route path{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.structure .structure__demo-line{stroke:var(--blue);stroke-width:2.5;--glow:#526bff;--glow-soft:#526bffb8;filter:drop-shadow(0 0 1px var(--glow)) drop-shadow(0 0 2px var(--glow-soft))}
+.structure .structure__clue-route .structure__demo-line{stroke:#a5a8b2;stroke-width:1.8;--glow:#9398a5dc;--glow-soft:#9398a59e}
+.structure .structure__clue-route .structure__clue-shaft{stroke-dasharray:5 5}
+.slide.is-active .structure .structure__demo-line{animation:structure-glow-breathe 2.2s ease-in-out infinite}
+@keyframes structure-glow-breathe{0%,100%{filter:drop-shadow(0 0 1px var(--glow)) drop-shadow(0 0 2px var(--glow-soft))}50%{filter:drop-shadow(0 0 3.4px var(--glow)) drop-shadow(0 0 7.5px var(--glow-soft))}}
+@media(prefers-reduced-motion:reduce){.slide.is-active .structure .structure__demo-line{animation:none}}
+.structure__legend{position:absolute;left:0;top:456px;height:76px;display:flex;align-items:center;gap:24px;color:var(--ink-2);font-size:16px;font-weight:650}
+.structure__legend span{display:flex;align-items:center;gap:9px;white-space:nowrap}
+.structure__legend svg{width:40px;height:16px;overflow:visible}
+.structure__legend path{fill:none;stroke:var(--blue);stroke-width:1.7;stroke-linecap:round}
+.structure__legend .structure__optional{stroke:#b7bac3;stroke-dasharray:5 5}
 /* 11 — 온디바이스와 삼성전자 클라우드 */
-.samsung-flow{display:grid;grid-template-columns:266px 54px minmax(0,1fr) 94px 266px;align-items:center;flex:none}
-.samsung-flow__node{display:grid;grid-template-rows:30px 78px;align-content:center;align-items:start;width:236px;height:160px;padding:16px 10px;text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:18px}
-.samsung-flow__node strong{font-size:22px;line-height:1.22;letter-spacing:-.03em}
-.samsung-flow__node p{margin-top:5px;color:var(--sub);font-size:17px;font-weight:600;line-height:1.42;word-break:keep-all}
-.samsung-flow__group,.samsung-flow__boundary{position:relative;height:282px;border-radius:24px;padding:51px 14px;background:var(--surface);border:1px solid var(--line)}.samsung-flow__group{display:grid;place-items:center}.samsung-flow__group .samsung-flow__node{background:#fff}.samsung-flow__boundary{background:#f1f4ff;border-color:#dce3ff}
-.samsung-flow__group h3,.samsung-flow__boundary h3{position:absolute;top:16px;left:19px;margin:0;color:var(--blue);font-size:21px;letter-spacing:-.025em}
-.samsung-flow__inside{height:100%;display:grid;grid-template-columns:236px minmax(0,1fr) 236px;align-items:center}
-.samsung-flow__inside .samsung-flow__node{background:#fff;border:1px dashed var(--blue-soft)}
-.samsung-flow__arrow{position:relative;display:grid;place-items:center;height:27px;color:var(--blue);font-size:15px;font-weight:750;text-align:center}
-.samsung-flow__arrow span{position:absolute;left:0;right:0;bottom:100%;margin-bottom:6px}.samsung-flow__arrow svg{width:34px;height:27px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linejoin:round;stroke-linecap:round}
-.samsung-flow__arrow--blocked{color:var(--sub)}
-.samsung-flow__arrow--blocked svg{width:64px}
-.samsung-flow__external{background:#fff;border-style:dashed}
-.samsung-benefits{width:100%;table-layout:fixed;border-collapse:collapse;margin-top:32px;flex:none}
+.ondevice-architecture{--od-device-tint:#eaf0ff;--od-cloud-accent:#6a35c9;display:block;flex:none;width:100%;height:auto}
+.ondevice-architecture text{font-family:var(--f-text);fill:#252525;letter-spacing:-.025em}
+.ondevice-architecture .od-heading{font-size:21px;font-weight:750}
+.ondevice-architecture .od-name{font-size:21px;font-weight:750}
+.ondevice-architecture .od-detail{font-size:16px;font-weight:600;fill:#454545}
+.ondevice-architecture .od-note{font-size:16px;font-weight:600;fill:#626262}
+.ondevice-architecture .od-legend text{font-size:15px;letter-spacing:-.035em}
+.ondevice-architecture .od-legend .od-cloud-flow{stroke-dasharray:5 6}
+.ondevice-architecture .od-link-label{font-size:15px;font-weight:700;fill:#505050}
+.ondevice-architecture .od-link-label:not(.od-delegated){font-weight:650;fill:var(--blue)}
+.ondevice-architecture .od-emphasis{fill:#3f3f3f}.ondevice-architecture .od-device-heading{fill:var(--blue)}.ondevice-architecture .od-delegated{fill:var(--od-cloud-accent)}
+
+.od-domain{fill:#f6f6f6;stroke:#d0d0d0}.od-domain--samsung{fill:hsl(from var(--od-device-tint) h s 98%);stroke:#dbe3f6}.od-device{fill:var(--od-device-tint);stroke:#c9d6fb}
+.od-node{fill:#fff;stroke:#c1c1c1;stroke-width:1.4}.od-cylinder-rim{fill:#f3f3f3;stroke:#c1c1c1;stroke-width:1.4}
+.od-cloud{fill:#f4effc;stroke:#cdbce3}.od-result{fill:hsl(from var(--od-device-tint) h s 90%);stroke:hsl(from var(--od-device-tint) h s 87%)}
+.od-flow,.od-cloud-flow,.od-cloud-tip{fill:none;stroke:#505050;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ondevice-architecture .od-flow{stroke:var(--blue)}
+.od-cloud-flow,.od-cloud-tip{stroke:var(--od-cloud-accent)}.od-cloud-flow{stroke-dasharray:7 6}
+#s-ondevice{padding-top:74px;padding-bottom:94px}
+#s-ondevice .body{padding-top:36px}
+.samsung-benefits{width:100%;table-layout:fixed;border-collapse:collapse;margin-top:48px;flex:none}
 .samsung-benefits col:first-child{width:13%}
 .samsung-benefits th,.samsung-benefits td{padding:12px 20px;text-align:left;border-bottom:1px solid var(--line)}
 .samsung-benefits thead th{font-size:20px;font-weight:750;color:var(--ink-2);background:var(--surface)}
@@ -836,7 +854,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 
   <!-- ══════════ 04TO-BE “미셸 들라크루아 전시 보고 나서 갔던 카페 사진” ══════════ -->
   <section class="slide" style="--exs:var(--phone-scale)">
-    <div class="kicker rv"><i>04</i>To-be<b>|</b>같은 기억, 달라진 검색 경험</div>
+    <div class="kicker rv"><i>04</i>To-be<b>|</b>같은 기억, 달라지는 검색 경험</div>
     <h2 class="title title--md rv" style="--i:1;font-size:62px"><b>기억나는 대로</b> 말하면 <b>알아서 찾아드려요.</b></h2>
     <div class="body" style="padding-top:58px">
       <div class="exrow">
@@ -1346,7 +1364,7 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 
   <section class="slide" id="s-architecture">
     <div class="kicker rv"><i>09</i>Architecture<b>|</b>AI Dictionary 구현 구조</div>
-    <h2 class="title title--md rv" style="--i:1;font-size:62px">자료의 <b>맥락을 연결</b>하고,<br>질문에 필요한 <b>기억을 불러옵니다.</b></h2>
+    <h2 class="title title--md rv" style="--i:1;font-size:62px">자료의 <b>맥락을 연결</b>하고,<br>응답에 필요한 <b>기억을 불러옵니다.</b></h2>
     <div class="body">
       <div class="structure rv" style="--i:2">
         <section class="structure__layer">
@@ -1378,20 +1396,25 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
               <div class="structure__box"><b>retain</b><span class="structure__detail">자료가 들어올 때 내용·맥락·원본 참조 저장</span></div>
               <div class="structure__step"><svg viewBox="0 0 18 20" aria-hidden="true"><path d="M9 1v17m-4-4 4 4 4-4"/></svg></div>
               <div class="structure__box"><b>context memory</b><span class="structure__detail">저장한 기억과 기억 사이의 관계 유지</span></div>
-              <div class="structure__step"><svg viewBox="0 0 18 20" aria-hidden="true"><path d="M9 1v17m-4-4 4 4 4-4"/></svg></div>
+              <div class="structure__step"><svg viewBox="0 0 18 20" aria-hidden="true"><path class="structure__demo-line" d="M9 1v17m-4-4 4 4 4-4"/></svg></div>
               <div class="structure__box"><b>recall</b><span class="structure__detail">질의 시 의미·키워드·관계·시간으로 탐색</span></div>
             </div>
           </div>
           <svg class="structure__query-routes" viewBox="0 0 660 134" aria-hidden="true">
-            <path d="M267 96V-38H314m-6-5 6 5-6 5"/><path d="M476.5 0V95m-5-6 5 6 5-6"/>
+            <path class="structure__demo-line" d="M267 96V-38H314m-6-5 6 5-6 5"/><path class="structure__demo-line" d="M476.5 0V95m-5-6 5 6 5-6"/>
           </svg>
           <div class="structure__queries">
             <div class="structure__box">사용자의 희미한 기억 기반 질의</div>
             <div class="structure__box">AI 메모리를 활용한 응답<small>찾아낸 기억을 근거와 맥락으로 활용</small></div>
           </div>
         </section>
+        <div class="structure__legend" role="group" aria-label="화살표 범례">
+          <span><svg viewBox="0 0 40 16" aria-hidden="true"><path class="structure__optional" d="M1 8h37"/></svg>Optional</span>
+          <span><svg viewBox="0 0 40 16" aria-hidden="true"><path d="M1 8h37"/></svg>사전 분석</span>
+          <span><svg viewBox="0 0 40 16" aria-hidden="true"><path class="structure__demo-line" d="M1 8h37"/></svg>실 데모</span>
+        </div>
         <div class="structure__box structure__clues"><b>질의 시 확보되는 추가 단서</b>웹 정보 · re-asking</div>
-        <svg class="structure__clue-route" viewBox="0 0 1624 101" aria-hidden="true"><path d="M788 76v24H1440.5V77" stroke-dasharray="5 5"/><path d="m1435.5 83 5-6 5 6"/></svg>
+        <svg class="structure__clue-route" viewBox="0 0 1624 101" aria-hidden="true"><path class="structure__demo-line structure__clue-shaft" d="M788 76v24H1440.5V77"/><path class="structure__demo-line" d="m1435.5 83 5-6 5 6"/></svg>
       </div>
     </div>
   </section>
@@ -1427,27 +1450,66 @@ body.is-dark .hud{color:rgba(255,255,255,.6)}
 
   <section class="slide" id="s-ondevice">
     <div class="kicker rv"><i>11</i>Differentiation<b>|</b>차별화 제안</div>
-    <h2 class="title title--md rv" style="--i:1;font-size:62px"><b>민감한</b> 자료를 <b>지키고</b>,<br>클라우드 <b>호출을 줄이는</b> 설계</h2>
+    <h2 class="title title--md rv" style="--i:1;font-size:62px"><b>민감한</b> 자료를 <b>지키고</b>, 클라우드 <b>호출을 줄이는</b> 설계</h2>
     <div class="body">
-      <div class="samsung-flow rv" style="--i:2">
-        <div class="samsung-flow__group"><h3>입력 자료</h3><div class="samsung-flow__node"><strong>사진과 문서</strong></div></div>
-        <div class="samsung-flow__arrow"><svg viewBox="0 0 34 27" aria-hidden="true"><path d="M2 13.5h28m-7-6 7 6-7 6"/></svg></div>
-        <div class="samsung-flow__boundary">
-          <h3>삼성전자 기기·클라우드 경계 · 제안</h3>
-          <div class="samsung-flow__inside">
-            <div class="samsung-flow__node"><strong>갤럭시 온디바이스</strong><p>야간 충전 중 작은 AI 모델이<br>글자 없는 사진을 미리 읽어 장면을 설명</p></div>
-            <div class="samsung-flow__arrow"><span>폰에 무거운<br>작업만</span><svg viewBox="0 0 34 27" aria-hidden="true"><path d="M2 13.5h28m-7-6 7 6-7 6"/></svg></div>
-            <div class="samsung-flow__node"><strong>삼성전자 클라우드</strong><p>삼성전자 운영 AI가<br>작은 글자 읽기와 정밀 판단을 처리</p></div>
-          </div>
-        </div>
-        <div class="samsung-flow__arrow samsung-flow__arrow--blocked">
-          <span>자료 전송<br>차단</span><svg viewBox="0 0 64 27" aria-hidden="true"><path d="M2 13.5h44" stroke-dasharray="4 4"/><path d="m48 8 11 11m0-11L48 19"/></svg>
-        </div>
-        <div class="samsung-flow__group"><h3>삼성전자 외부</h3><div class="samsung-flow__node samsung-flow__external"><strong>타사 운영 AI 모델</strong><p>현재 구조에서 호출</p></div></div>
-      </div>
-      <table class="samsung-benefits rv" style="--i:3" aria-label="현재 구조와 제안 구조의 보안 및 비용 비교">
+      <svg class="ondevice-architecture rv" style="--i:2" viewBox="0 -28 1624 476.2" role="img" aria-labelledby="od-title od-desc">
+        <title id="od-title">갤럭시 온디바이스 우선 처리와 삼성 클라우드 선택 위임</title>
+        <desc id="od-desc">사용자 자료와 질의가 기기 내 에이전트로 들어간다. 에이전트가 기억을 저장하고 조회해 결과를 반환한다. 고부하 작업만 삼성 클라우드에 위임하며 결과는 에이전트로 돌아온다.</desc>
+        <defs>
+          <marker id="od-arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1 8 5 1 9" class="od-flow"/></marker>
+          <marker id="od-arrow-cloud" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1 8 5 1 9" class="od-cloud-tip"/></marker>
+        </defs>
+        <rect class="od-domain" x="1" y="1.08" width="231" height="444.96" rx="14"/>
+        <rect class="od-domain od-domain--samsung" x="257" y="1.08" width="1366" height="444.96" rx="14"/>
+        <rect class="od-device" x="276" y="142.56" width="1327" height="282.96" rx="14"/>
+        <text x="20" y="37.8" class="od-heading" text-anchor="start">사용자 영역</text>
+        <text x="277" y="37.8" class="od-heading" text-anchor="start">삼성전자 제공 AI 실행 영역</text>
+        <text x="277" y="63.72" class="od-note od-emphasis" text-anchor="start">갤럭시 기기 + 삼성 클라우드</text>
+        <text x="297" y="172.8" class="od-heading od-device-heading" text-anchor="start">기기 내 기본 처리</text>        <rect class="od-node" x="19" y="142.56" width="191" height="132.48" rx="14"/>
+        <text x="114.5" y="202.8" class="od-name" text-anchor="middle">사진과 텍스트</text>
+        <text x="114.5" y="226.8" class="od-note" text-anchor="middle">시간·장소·출처 · 연관 데이터</text>
+        <rect class="od-node" x="19" y="293.04" width="191" height="132.48" rx="14"/>
+        <text x="114.5" y="353.28" class="od-name" text-anchor="middle">사용자 질문</text>
+        <text x="114.5" y="377.28" class="od-note" text-anchor="middle">대상·단서·시간 관계</text>
+        <rect class="od-node" x="423" y="197.64" width="338" height="177.12" rx="14"/>
+        <text x="592" y="267" class="od-name" text-anchor="middle">AI Dictionary Agent</text>
+        <text x="592" y="300" class="od-detail" text-anchor="middle">멀티모달 해석 · 정보 연관</text>
+        <text x="592" y="325" class="od-detail" text-anchor="middle">질의 계획 · 도구 실행</text>
+        <path transform="scale(1 1.08)" class="od-node" d="M873 201.75A155 18.75 0 0 1 1183 201.75V338A155 18.75 0 0 1 873 338Z"/>
+        <ellipse transform="scale(1 1.08)" class="od-cylinder-rim" cx="1028" cy="201.75" rx="155" ry="18.75"/>
+        <text x="1028" y="267" class="od-name" text-anchor="middle">장기 기억·맥락 검색</text>
+        <text x="1028" y="300" class="od-detail" text-anchor="middle">사실·시간·출처 저장</text>
+        <text x="1028" y="325" class="od-detail" text-anchor="middle">연관 기억 검색·추론</text>
+        <rect class="od-result" x="1295" y="197.64" width="284" height="177.12" rx="14"/>
+        <text x="1437" y="267" class="od-name" text-anchor="middle">결과 반환</text>
+        <text x="1437" y="300" class="od-detail" text-anchor="middle">자료 · 연관 정보 · 근거</text>
+        <text x="1437" y="325" class="od-detail" text-anchor="middle">기기에서 사용자에게 제공</text>
+        <path transform="scale(1 1.08)" class="od-flow" d="M210 243.519H422" marker-end="url(#od-arrow)"/>
+        <text x="401" y="250" class="od-link-label" text-anchor="end">데이터 수집</text>
+        <path transform="scale(1 1.08)" class="od-flow" d="M210 286.481H422" marker-end="url(#od-arrow)"/>
+        <text x="401" y="296.4" class="od-link-label" text-anchor="end">질의</text>
+        <path transform="scale(1 1.08)" class="od-flow" d="M761 277H872" marker-end="url(#od-arrow)"/>
+        <text x="816.5" y="285.12" class="od-link-label" text-anchor="middle">기억 저장·조회</text>
+        <path transform="scale(1 1.08)" class="od-flow" d="M1183 277H1294" marker-end="url(#od-arrow)"/>
+        <text x="1238.5" y="285.12" class="od-link-label" text-anchor="middle">검색·추론</text>
+        <rect class="od-cloud" x="1028" y="17.8" width="575" height="105.32" rx="14"/>
+        <text x="1051" y="64.46" class="od-name od-delegated" text-anchor="start">삼성 클라우드 · 고부하 연산</text>
+        <text x="1051" y="91.960" class="od-detail" text-anchor="start">사전 처리·질의에서 무거운 이미지·텍스트 분석, 관계 분석·추론을 처리</text>
+        <path transform="scale(1 1.08)" class="od-cloud-flow" d="M654.5 183V52.741H1027" marker-end="url(#od-arrow-cloud)" stroke-dashoffset="3.241"/>
+        <text x="840.75" y="44.001" class="od-link-label od-delegated" text-anchor="middle">온디바이스 처리 부담이 큰 작업만</text>
+        <path transform="scale(1 1.08)" class="od-cloud-flow" d="M1028 80.055H684V182" marker-end="url(#od-arrow-cloud)" stroke-dashoffset="8.555"/>
+        <text x="856" y="109.141" class="od-link-label od-delegated" text-anchor="middle">처리 결과 반환 · 기기 작업 계속</text>
+        <text x="297" y="413.64" class="od-note od-emphasis" text-anchor="start">기본 경로는 클라우드 호출 없이 기기에서 완료</text>
+        <g class="od-legend" role="group" aria-label="다이어그램 경로 범례">
+          <path class="od-flow" d="M1367 -17h27"/>
+          <text x="1402" y="-12" class="od-note">기기 처리</text>
+          <path class="od-cloud-flow" d="M1474 -17h27"/>
+          <text x="1603" y="-12" class="od-note" text-anchor="end">선택적 위임·복귀</text>
+        </g>
+      </svg>
+      <table class="samsung-benefits rv" style="--i:3" aria-label="시연 구조와 제안 구조의 보안 및 비용 비교">
         <colgroup><col><col><col></colgroup>
-        <thead><tr><th scope="col">구분</th><th scope="col">현재</th><th scope="col">제안</th></tr></thead>
+        <thead><tr><th scope="col">구분</th><th scope="col">시연</th><th scope="col">제안</th></tr></thead>
         <tbody>
           <tr><th scope="row">보안</th><td>분석할 사진 사본과 문서 본문을 타사 AI 모델에 전송</td><td>갤럭시와 삼성전자 클라우드 안에서만 자료 처리</td></tr>
           <tr><th scope="row">비용</th><td>사진 분석량이 늘면 타사 모델 호출과 비용도 증가</td><td>갤럭시에서 처리한 사진은 클라우드 모델 호출 비용이 발생하지 않음</td></tr>
