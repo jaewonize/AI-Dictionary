@@ -45,7 +45,7 @@ FOLDER_SOURCE = [
 BADGE = {"gallery": "갤러리", "screenshot": "캡처", "kakao_photo": "카카오톡", "download": "다운로드",
          "kakao_download": "카톡 받은 파일"}
 KAKAO_MS_NAME = re.compile(r"^(1[5-9]\d{11})(?:_\d+)?\.(?:jpe?g|png)$", re.I)  # 카카오톡이 받은 사진에 붙이는 밀리초 이름
-CAMERA_NAME = re.compile(r"^(?:IMG_|PXL_)?(20\d{2})(\d{2})(\d{2})[_-](\d{2})(\d{2})(\d{2})")
+CAMERA_NAME = re.compile(r"^(?:IMG_|PXL_|Screenshot[_-])?(20\d{2})(\d{2})(\d{2})[_-](\d{2})(\d{2})(\d{2})", re.I)
 SCREENSHOT_NAME = re.compile(r"^Screenshot[_-]", re.I)
 POC = {"SourceType": "origin", "ReceivedAt": "received_at", "SavedAt": "saved_at", "DownloadedAt": "downloaded_at"}
 ORIGIN_MAP = {"user_supplied_download": "shared_download", "web_download": "web_download",
