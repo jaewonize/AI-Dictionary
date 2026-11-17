@@ -28,14 +28,20 @@ from app.tools import (
     run_show_answer,
     tool_specs,
 )
+from app.tools import memory as memory_mod
 from pipeline.common import prompt
 
 LOOP_PROMPT = "loop-v1"
+LOOP_PROMPT_MEMORY = "loop-v2"
 MAX_LOOP_CALLS = 16
+MAX_MEMORY_CALLS = 2
+MAX_REFLECT_CALLS = 1
 
 TOOL_RUNNERS = {
     "plan_query": run_plan_query,
     "search_web": run_search_web,
+    "recall_memory": memory_mod.run_recall_memory,
+    "reflect_memory": memory_mod.run_reflect_memory,
     "find_candidates": run_find_candidates,
     "judge_photos": run_judge_photos,
     "show_answer": run_show_answer,
@@ -64,6 +70,12 @@ class RunState:
     next_extra_no: int = 10
     nudged: bool = False
     loop_calls: int = 0
+    memory_calls: int = 0
+    reflect_calls: int = 0
+    memory_events: int = 0
+    reflect_events: int = 0
+    tool_trace: list[dict] = field(default_factory=list)
+    hindsight_usage: list[dict] = field(default_factory=list)
     status: str = "running"
     error_message: str | None = None
     on_event: Callable[[dict], None] | None = None
@@ -104,6 +116,19 @@ def _merge_evidence(dst: dict, src: dict | None) -> None:
 
 
 def _handle_card_meta(state: RunState, meta: dict) -> None:
+    if "memory" in meta:
+        state.memory_events += 1
+        state.emit("memory", n=state.memory_events, **meta["memory"])
+        return
+
+    if "reflect" in meta:
+        state.reflect_events += 1
+        rf = meta["reflect"]
+        if rf.get("usage") is not None:
+            state.hindsight_usage.append(dict(rf["usage"]))
+        state.emit("reflect", n=state.reflect_events, **rf)
+        return
+
     if "result_event" in meta:
         state.active_card = None
         re = meta["result_event"]
@@ -160,20 +185,66 @@ def _handle_card_meta(state: RunState, meta: dict) -> None:
         )
 
 
+def _sanitize_tool_input(name: str, raw_in: dict) -> dict:
+    inp = dict(raw_in)
+    if name == "find_candidates" and isinstance(inp.get("near"), dict):
+        inp["near"] = {"radius_m": inp["near"].get("radius_m")}
+    return inp
+
+
+def _extract_out_ids_dates(name: str, out: dict | None, ok: bool) -> tuple[list[str], list[str]]:
+    if not ok or not isinstance(out, dict):
+        return [], []
+    if name == "find_candidates":
+        c_ids = [c["id"] for c in (out.get("candidates") or []) if isinstance(c, dict) and c.get("id")]
+        d_ids = [x for x in (out.get("day_photo_ids") or []) if isinstance(x, str) and x]
+        return list(dict.fromkeys([*c_ids, *d_ids])), []
+    if name == "judge_photos":
+        m_ids = [x for x in (out.get("match_ids") or []) if isinstance(x, str) and x]
+        s_ids = [x for x in (out.get("same_visit_ids") or []) if isinstance(x, str) and x]
+        return list(dict.fromkeys([*m_ids, *s_ids])), []
+    if name == "show_answer":
+        return [x for x in (out.get("ids") or []) if isinstance(x, str) and x], []
+    if name == "recall_memory":
+        mems = out.get("memories") or []
+        ids = list(dict.fromkeys(m["id"] for m in mems if isinstance(m, dict) and m.get("kind") == "photo" and m.get("id")))
+        dates = list(dict.fromkeys(m["date"] for m in mems if isinstance(m, dict) and m.get("date")))
+        return ids, dates
+    if name == "reflect_memory":
+        phs = out.get("photos") or []
+        ids = list(dict.fromkeys(p["id"] for p in phs if isinstance(p, dict) and p.get("id")))
+        dates = list(dict.fromkeys(p["date"] for p in phs if isinstance(p, dict) and p.get("date")))
+        return ids, dates
+    return [], []
+
+
 def new_run(query: str, *, today: date | None = None, test: str | None = None,
             on_event: Callable[[dict], None] | None = None) -> RunState:
     now = datetime.now(timezone.utc)
     prefix = f"{test}_" if test else ""
     run_id = f"{prefix}{now.strftime('%Y%m%d_%H%M%S')}_{next(_run_seq):03d}"
     td = today or datetime.now().date()
+    has_mem = bool(settings.hindsight_url and settings.hindsight_bank)
+    base_specs = tool_specs()
+    if has_mem:
+        tools: list[dict] = []
+        for sp in base_specs:
+            tools.append(sp)
+            if sp["name"] == "ask_user":
+                tools.append(memory_mod.tool_spec())
+                tools.append(memory_mod.reflect_tool_spec())
+        sys_prompt = prompt(LOOP_PROMPT_MEMORY)
+    else:
+        tools = base_specs
+        sys_prompt = prompt(LOOP_PROMPT)
     state = RunState(
         run_id=run_id,
         query=query,
         today=td,
         started_at=now.isoformat(timespec="seconds"),
         t0=time.perf_counter(),
-        system=prompt(LOOP_PROMPT),
-        tools=tool_specs(),
+        system=sys_prompt,
+        tools=tools,
         event_log=EventLog(run_id=run_id),
         ctx=ToolContext(today=td),
         test=test,
@@ -238,35 +309,149 @@ def _step_until_pause_or_done(state: RunState) -> RunState:
             for b in tool_uses:
                 name = b.name
                 raw_in = b.input if isinstance(b.input, dict) else {}
+                clean_in = _sanitize_tool_input(name, raw_in)
+                trace_idx = len(state.tool_trace) + 1
                 if name == "ask_user":
                     try:
                         ask_inp = AskUserIn.model_validate(raw_in)
                         if len(ask_inp.options) < 2:
                             raise ValueError("ask_user 선택지는 2개 이상이어야 합니다.")
                         ask_block = b
+                        state.tool_trace.append({
+                            "i": trace_idx,
+                            "name": name,
+                            "input": clean_in,
+                            "ok": True,
+                            "error": None,
+                            "out_ids": [],
+                            "out_dates": [],
+                        })
                     except Exception as e:
+                        err_msg = f"입력 오류: {e}"
+                        state.tool_trace.append({
+                            "i": trace_idx,
+                            "name": name,
+                            "input": clean_in,
+                            "ok": False,
+                            "error": err_msg[:200],
+                            "out_ids": [],
+                            "out_dates": [],
+                        })
                         tool_results.append({
                             "type": "tool_result",
                             "tool_use_id": b.id,
                             "is_error": True,
-                            "content": f"입력 오류: {e}",
+                            "content": err_msg,
                         })
                     continue
 
                 runner = TOOL_RUNNERS.get(name)
                 if not runner:
+                    err_msg = f"알 수 없는 도구입니다: {name}"
+                    state.tool_trace.append({
+                        "i": trace_idx,
+                        "name": name,
+                        "input": clean_in,
+                        "ok": False,
+                        "error": err_msg[:200],
+                        "out_ids": [],
+                        "out_dates": [],
+                    })
                     tool_results.append({
                         "type": "tool_result",
                         "tool_use_id": b.id,
                         "is_error": True,
-                        "content": f"알 수 없는 도구입니다: {name}",
+                        "content": err_msg,
                     })
                     continue
 
                 state.emit_progress(f"{name} 실행 중")
+                if name == "recall_memory":
+                    state.memory_calls += 1
+                    if state.memory_calls > MAX_MEMORY_CALLS:
+                        err_msg = "기억 꺼내기는 한 질문에 2번까지입니다"
+                        state.tool_trace.append({
+                            "i": trace_idx,
+                            "name": name,
+                            "input": clean_in,
+                            "ok": False,
+                            "error": err_msg[:200],
+                            "out_ids": [],
+                            "out_dates": [],
+                            "memory_n": None,
+                            "bank": settings.hindsight_bank,
+                            "count": 0,
+                            "elapsed_ms": 0,
+                        })
+                        tool_results.append({
+                            "type": "tool_result",
+                            "tool_use_id": b.id,
+                            "is_error": True,
+                            "content": err_msg,
+                        })
+                        continue
+
+                if name == "reflect_memory":
+                    state.reflect_calls += 1
+                    if state.reflect_calls > MAX_REFLECT_CALLS:
+                        err_msg = "기억 되짚기는 한 질문에 1번까지입니다"
+                        state.tool_trace.append({
+                            "i": trace_idx,
+                            "name": name,
+                            "input": clean_in,
+                            "ok": False,
+                            "error": err_msg[:200],
+                            "out_ids": [],
+                            "out_dates": [],
+                            "reflect_n": None,
+                            "bank": settings.hindsight_bank,
+                            "count": 0,
+                            "elapsed_ms": 0,
+                            "cost_usd": None,
+                        })
+                        tool_results.append({
+                            "type": "tool_result",
+                            "tool_use_id": b.id,
+                            "is_error": True,
+                            "content": err_msg,
+                        })
+                        continue
+
                 try:
                     out, meta = runner(raw_in, state.ctx)
                     _handle_card_meta(state, meta)
+                    is_mem_tool = name in ("recall_memory", "reflect_memory")
+                    tool_ok = bool(out.get("ok")) if is_mem_tool else True
+                    tool_err = str(out.get("error") or "")[:200] or None if not tool_ok else None
+                    out_ids, out_dates = _extract_out_ids_dates(name, out, tool_ok)
+                    trace_item: dict = {
+                        "i": trace_idx,
+                        "name": name,
+                        "input": clean_in,
+                        "ok": tool_ok,
+                        "error": tool_err,
+                        "out_ids": out_ids,
+                        "out_dates": out_dates,
+                    }
+                    if name == "recall_memory":
+                        mem_m = meta.get("memory") or {}
+                        trace_item.update({
+                            "memory_n": state.memory_events,
+                            "bank": mem_m.get("bank"),
+                            "count": mem_m.get("count", 0),
+                            "elapsed_ms": mem_m.get("elapsed_ms", 0),
+                        })
+                    elif name == "reflect_memory":
+                        ref_m = meta.get("reflect") or {}
+                        u_m = ref_m.get("usage")
+                        trace_item.update({
+                            "reflect_n": state.reflect_events,
+                            "bank": ref_m.get("bank"),
+                            "count": ref_m.get("count", 0),
+                            "elapsed_ms": ref_m.get("elapsed_ms", 0),
+                            "cost_usd": u_m.get("cost_usd") if isinstance(u_m, dict) else None,
+                        })
+                    state.tool_trace.append(trace_item)
                     tool_results.append({
                         "type": "tool_result",
                         "tool_use_id": b.id,
@@ -275,11 +460,26 @@ def _step_until_pause_or_done(state: RunState) -> RunState:
                 except (claude.CostCapExceeded, claude.RateLimitTripped) as e:
                     return _fail(state, str(e))
                 except Exception as e:
+                    err_msg = f"도구 실행 오류: {e}"
+                    trace_item = {
+                        "i": trace_idx,
+                        "name": name,
+                        "input": clean_in,
+                        "ok": False,
+                        "error": err_msg[:200],
+                        "out_ids": [],
+                        "out_dates": [],
+                    }
+                    if name == "recall_memory":
+                        trace_item.update({"memory_n": None, "bank": settings.hindsight_bank, "count": 0, "elapsed_ms": 0})
+                    elif name == "reflect_memory":
+                        trace_item.update({"reflect_n": None, "bank": settings.hindsight_bank, "count": 0, "elapsed_ms": 0, "cost_usd": None})
+                    state.tool_trace.append(trace_item)
                     tool_results.append({
                         "type": "tool_result",
                         "tool_use_id": b.id,
                         "is_error": True,
-                        "content": f"도구 실행 오류: {e}",
+                        "content": err_msg,
                     })
 
             if ask_block is not None and ask_inp is not None:
@@ -356,6 +556,7 @@ def run_record(state: RunState) -> dict:
         "test": state.test,
         "query": state.query,
         "started_at": state.started_at,
+        "today": state.today.isoformat(),
         "elapsed_ms": int((time.perf_counter() - state.t0) * 1000),
         "status": state.status,
         "error": state.error_message,
@@ -363,6 +564,8 @@ def run_record(state: RunState) -> dict:
         "result_ids": state.shown_result["ids"] if state.shown_result else [],
         "result_sentence": state.shown_result["sentence"] if state.shown_result else "",
         "calls": state.calls,
+        "tools": state.tool_trace,
+        "hindsight": state.hindsight_usage,
         "summary": {
             "calls": len(state.calls),
             "loop_calls": state.loop_calls,
